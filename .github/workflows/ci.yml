@@ -48,10 +48,10 @@ jobs:
           ${{ runner.os }}-yarn-
     - run: yarn install
     - run: yarn build
-    - run: yarn test
+    # - run: yarn test
 
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.github_token }}
-        path-to-lcov: ./.coverage/lcov.info
+    # - name: Coveralls
+    #   uses: coverallsapp/github-action@master
+    #   with:
+    #     github-token: ${{ secrets.github_token }}
+    #     path-to-lcov: ./.coverage/lcov.info
