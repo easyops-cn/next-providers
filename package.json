@@ -6,11 +6,12 @@
   "scripts": {
     "prepare": "lerna bootstrap",
     "start": "lerna run start",
-    "build": "npm run build:libs && npm run build:bricks && npm run build:templates && npm run build:micro-apps",
+    "build": "npm run build:sdk && npm run build:libs && npm run build:bricks && npm run build:templates && npm run build:micro-apps",
     "build:libs": "if [ -d libs ]; then lerna run build --scope \"@next-libs/*\"; else echo \"no libs\"; fi",
     "build:bricks": "if [ -d bricks ]; then lerna run build --scope \"@next-bricks/*\"; else echo \"no bricks\"; fi",
     "build:templates": "if [ -d templates ]; then lerna run build --scope \"@next-legacy-templates/*\"; else echo \"no templates\"; fi",
     "build:micro-apps": "if [ -d micro-apps ]; then lerna run build --scope \"@next-micro-apps/*\"; else echo \"no micro-apps\"; fi",
+    "build:sdk": "if [ -d sdk ]; then lerna run build --scope \"@next-sdk/*\"; else echo \"no sdk\"; fi",
     "postbuild": "npm run size-limit",
     "size-limit": "size-limit",
     "serve": "brick-container-serve",
@@ -18,12 +19,18 @@
     "test:ci": "cross-env NODE_ENV='test' CI=true node --expose-gc ./node_modules/.bin/jest --logHeapUsage --ci",
     "yo": "brick-scripts",
     "yo-debug": "node --inspect-brk ./node_modules/@next-core/brick-scripts/dist/index.js",
+    "yo-sdk": "sdk-scripts",
+    "yo-sdk-debug": "node --inspect-brk ./node_modules/@next-core/sdk-scripts/dist/index.js",
     "renew": "dev-dependencies-renew",
     "extract": "dev-dependencies-extract"
   },
   "browserslist": {
-    "development": ["extends @next-core/browserslist-config-next/development"],
-    "production": ["extends @next-core/browserslist-config-next/production"]
+    "development": [
+      "extends @next-core/browserslist-config-next/development"
+    ],
+    "production": [
+      "extends @next-core/browserslist-config-next/production"
+    ]
   },
   "devDependencies": {
     "@ant-design/compatible": "^1.0.8",
@@ -39,6 +46,7 @@
     "@next-core/easyops-analytics": "^0.1.3",
     "@next-core/fontawesome-library": "^1.1.11",
     "@next-core/illustrations": "^0.3.1",
+    "@next-core/sdk-scripts": "^2.2.2",
     "@size-limit/file": "^4.9.1",
     "@types/classnames": "^2.2.11",
     "@types/d3": "^6.2.0",
@@ -77,11 +85,20 @@
     "react-i18next": "^11.8.5",
     "react-transition-group": "^4.4.1"
   },
-  "workspaces": ["bricks/*", "libs/*", "micro-apps/*", "templates/*"],
+  "workspaces": [
+    "bricks/*",
+    "libs/*",
+    "micro-apps/*",
+    "sdk/*",
+    "templates/*"
+  ],
   "resolutions": {
     "@types/react": "^16.9.56",
     "lodash": "^4.17.20",
     "@next-core/brick-types": "^2.15.1"
   },
-  "easyops": { "create-next-repo": "1.2.24", "dev-dependencies": "1.2.21" }
+  "easyops": {
+    "create-next-repo": "1.2.24",
+    "dev-dependencies": "1.2.21"
+  }
 }

@@ -2289,6 +2289,22 @@
     rollup-plugin-postcss "^3.1.8"
     string-hash "^1.1.3"
 
+"@next-core/sdk-scripts@^2.2.2":
+  version "2.2.2"
+  resolved "https://registry.npm.taobao.org/@next-core/sdk-scripts/download/@next-core/sdk-scripts-2.2.2.tgz#c437719d7cedc2ca3be52178ddbd736a2dcdbb73"
+  integrity sha1-xDdxnXztwso75SF43b1zai3Nu3M=
+  dependencies:
+    "@next-core/repo-config" "^0.1.1"
+    chalk "^4.1.0"
+    change-case "^4.1.2"
+    fs-extra "^9.0.1"
+    inquirer "^7.3.3"
+    js-yaml "^3.14.1"
+    klaw-sync "^6.0.0"
+    meow "^9.0.0"
+    prettier "^2.2.1"
+    semver "^7.3.4"
+
 "@next-core/webpack-config-factory@^2.5.1":
   version "2.5.1"
   resolved "https://registry.npm.taobao.org/@next-core/webpack-config-factory/download/@next-core/webpack-config-factory-2.5.1.tgz#34277966fe346938da541d360f87802c5d85c458"

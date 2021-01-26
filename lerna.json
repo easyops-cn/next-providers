@@ -1,5 +1,5 @@
 {
-  "packages": ["bricks/*", "libs/*", "micro-apps/*", "templates/*"],
+  "packages": ["bricks/*", "libs/*", "micro-apps/*", "sdk/*", "templates/*"],
   "version": "independent",
   "npmClient": "yarn",
   "stream": true,

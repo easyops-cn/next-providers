@@ -1,0 +1,21 @@
+{
+  "sdk": "@next-sdk/micro-app-sdk",
+  "providers": [
+    "InstalledMicroAppApi.getInstalledMicroApp",
+    "InstalledMicroAppApi.updateInstalledMicroApp",
+    "InstalledMicroAppApi.deleteMicroApp",
+    "InstalledMicroAppApi.listMicroApp",
+    "InstalledMicroAppApi.searchInstalledMicroApp",
+    "InstalledMicroAppApi.updateInstalledMicroAppStatus",
+    "InstalledMicroAppApi.packageUpload",
+    "InstalledMicroAppApi.updateInstalledMicroAppStoryboardJson",
+    "PermissionApi.getMicroAppList",
+    "PermissionApi.getPermissionsByAppId",
+    "DocumentApi.getDocumentsTreeByAppId",
+    "DocumentApi.exportDocumentsToFile",
+    "DocumentApi.getMicroAppList",
+    "DocumentApi.importDocuments",
+    "DocumentApi.getDocumentsDetails",
+    "PermissionApi.validatePermissions"
+  ]
+}

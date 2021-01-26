@@ -1,0 +1,84 @@
+depend_contracts:
+  - name: easyops.api.micro_app.document.ExportDocumentsToFile
+    version: ^1.0.0
+  - name: easyops.api.micro_app.document.GetDocumentsDetails
+    version: ^1.0.0
+  - name: easyops.api.micro_app.document.GetDocumentsTreeByAppId
+    version: ^1.0.0
+  - name: easyops.api.micro_app.document.ImportDocuments
+    version: ^1.0.0
+  - name: easyops.api.micro_app.installed_micro_app.Create
+    version: ^1.0.0
+  - name: easyops.api.micro_app.installed_micro_app.CreateStoryboardMenus
+    version: ^1.0.0
+  - name: easyops.api.micro_app.installed_micro_app.DeleteMicroApp
+    version: ^1.0.0
+  - name: easyops.api.micro_app.installed_micro_app.GetInstalledMicroApp
+    version: ^1.0.0
+  - name: easyops.api.micro_app.installed_micro_app.GetImagesByAppId
+    version: ^1.0.0
+  - name: easyops.api.micro_app.installed_micro_app.GetOssObjectsStat
+    version: ^1.0.0
+  - name: easyops.api.micro_app.installed_micro_app.ImportMicroApp
+    version: ^1.0.0
+  - name: easyops.api.micro_app.installed_micro_app.ListMicroApp
+    version: ^1.0.0
+  - name: easyops.api.micro_app.installed_micro_app.GetPackageReleaseList
+    version: ^1.1.0
+  - name: easyops.api.micro_app.installed_micro_app.PackageUpload
+    version: ^1.0.0
+  - name: easyops.api.micro_app.installed_micro_app.SearchInstalledMicroApp
+    version: ^1.0.0
+  - name: >-
+      easyops.api.micro_app.installed_micro_app.SearchInstalledMicroAppWithUniqKey
+    version: ^1.0.0
+  - name: easyops.api.micro_app.installed_micro_app.UpdateInstalledMicroApp
+    version: ^1.0.0
+  - name: easyops.api.micro_app.installed_micro_app.UpdateInstalledMicroAppContainer
+    version: ^1.0.0
+  - name: easyops.api.micro_app.installed_micro_app.UpdateInstalledMicroAppStatus
+    version: ^1.0.0
+  - name: >-
+      easyops.api.micro_app.installed_micro_app.UpdateInstalledMicroAppStoryboardJson
+    version: ^1.0.0
+  - name: >-
+      easyops.api.micro_app.installed_micro_app.UpdateInstalledMicroAppUserConfig
+    version: ^1.0.0
+  - name: easyops.api.micro_app.installed_micro_app.UpgradeInstalledMicroApp
+    version: ^1.0.0
+  - name: easyops.api.micro_app.installed_micro_app.UploadAppIcon
+    version: ^1.0.0
+  - name: easyops.api.micro_app.installed_micro_app.UploadImages
+    version: ^1.0.0
+  - name: easyops.api.micro_app.micro_app_container.ListMicroAppContainer
+    version: ^1.0.0
+  - name: easyops.api.micro_app.micro_app_version_log.LogAppVersion
+    version: ^1.0.0
+  - name: easyops.api.micro_app.object_micro_app.AggregateMicroApp
+    version: ^1.0.0
+  - name: easyops.api.micro_app.object_micro_app.BindObjectMicroApp
+    version: ^1.0.0
+  - name: easyops.api.micro_app.object_micro_app.GetObjectMicroAppList
+    version: ^1.0.0
+  - name: easyops.api.micro_app.object_micro_app.GetMicroAppList
+    version: ^1.0.0
+  - name: easyops.api.micro_app.object_micro_app.GetObjectByMicroApp
+    version: ^1.0.0
+  - name: easyops.api.micro_app.object_micro_app.SearchMicroAppList
+    version: ^1.0.0
+  - name: easyops.api.micro_app.orchestration.GetMicroAppApisByAppId
+    version: ^1.0.0
+  - name: easyops.api.micro_app.orchestration.ImportMicroAppApis
+    version: ^1.0.0
+  - name: easyops.api.micro_app.permission.GetMicroAppList
+    version: ^1.0.0
+  - name: easyops.api.micro_app.permission.GetPermissionsByAppId
+    version: ^1.0.0
+  - name: easyops.api.micro_app.permission.ImportPermissions
+    version: ^1.0.0
+  - name: easyops.api.micro_app.permission.ValidatePermissions
+    version: ^1.0.0
+  - name: easyops.api.micro_app.report.ReportInstalledBricksNextPackageResult
+    version: ^1.0.0
+  - name: easyops.api.micro_app.report.ReportInstalledMicroAppResult
+    version: ^1.0.0

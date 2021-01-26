@@ -1,0 +1,31 @@
+{
+  "sdk": "@next-sdk/user-service-sdk",
+  "providers": [
+    "UserAdminApi.getUserInfo",
+    "UserAdminApi.alterPassword",
+    "UserAdminApi.searchAllUsersInfo",
+    "UserAdminApi.searchAllUserGroup",
+    "UserAdminApi.listGroupsId",
+    "UserAdminApi.getUserInfoV2",
+    "UserAdminApi.updateUserInfo",
+    "UserAdminApi.alterSelfPassword",
+    "LdapApi.config",
+    "ApikeyApi.createApiKey",
+    "ApikeyApi.deleteApiKey",
+    "ApikeyApi.disableApiKey",
+    "ApikeyApi.enableApiKey",
+    "ApikeyApi.getApiKey",
+    "ApikeyApi.listApiKey",
+    "ApikeyApi.resetApiKey",
+    "UserAdminApi.listUsersInfoV2",
+    "UserAdminApi.getUserInfoV3",
+    "UserAdminApi.listGroupsIdName",
+    "LaunchpadApi.createCollection",
+    "LaunchpadApi.deleteCollection",
+    "LaunchpadApi.listCollection",
+    "LaunchpadApi.sortCollection",
+    "LaunchpadApi.updateCollection",
+    "InvitationCodeApi.getInvitationCode",
+    "InvitationCodeApi.resetInvitationCode"
+  ]
+}
