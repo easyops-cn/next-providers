@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json.schemastore.org/renovate",
+  "extends": ["config:base"],
+  "rangeStrategy": "bump",
+  "semanticCommits": "enabled",
+  "commitMessagePrefix": "chore(deps):",
+  "ignorePresets": [":ignoreModulesAndTests"],
+  "packageRules": [
+    { "depTypeList": ["devDependencies"], "automerge": true },
+    {
+      "packagePatterns": [
+        "^@bricks/",
+        "^@libs/",
+        "^@micro-apps/",
+        "^@sdk/",
+        "^@templates/",
+        "^@next-bricks/",
+        "^@next-libs/",
+        "^@next-micro-apps/",
+        "^@next-sdk/",
+        "^@next-legacy-templates/"
+      ],
+      "enabled": false,
+      "packageNames": [
+        "@ant-design/compatible",
+        "@ant-design/icons",
+        "@fortawesome/react-fontawesome",
+        "@next-core/babel-runtime-helpers",
+        "@next-core/brick-http",
+        "@next-core/brick-icons",
+        "@next-core/brick-kit",
+        "@next-core/brick-types",
+        "@next-core/brick-utils",
+        "@next-core/easyops-analytics",
+        "@next-core/fontawesome-library",
+        "@next-core/illustrations",
+        "@size-limit/file",
+        "@types/classnames",
+        "@types/d3",
+        "@types/dompurify",
+        "@types/echarts",
+        "@types/enzyme",
+        "@types/enzyme-adapter-react-16",
+        "@types/history",
+        "@types/jest",
+        "@types/js-yaml",
+        "@types/lodash",
+        "@types/lolex",
+        "@types/node",
+        "@types/react",
+        "@types/react-dom",
+        "@types/react-test-renderer",
+        "@types/react-transition-group",
+        "antd",
+        "d3-drag",
+        "d3-force",
+        "d3-hierarchy",
+        "d3-selection",
+        "d3-shape",
+        "d3-zoom",
+        "echarts",
+        "enzyme",
+        "history",
+        "i18next",
+        "js-yaml",
+        "lodash",
+        "lolex",
+        "moment",
+        "react",
+        "react-ace",
+        "react-dom",
+        "react-i18next",
+        "react-transition-group"
+      ]
+    },
+    {
+      "packagePatterns": ["^@next-core/"],
+      "automerge": false,
+      "groupName": "next-core packages",
+      "postUpgradeTasks": {
+        "commands": [
+          "yarn renew",
+          "yarn extract",
+          "./node_modules/.bin/prettier --write package.json"
+        ],
+        "fileFilters": ["**/*", ".gitlab/**/*"]
+      },
+      "major": { "enabled": false }
+    },
+    {
+      "baseBranchList": ["legacy/brick-next_1.x"],
+      "excludePackagePatterns": ["^@next-core/"],
+      "enabled": false
+    }
+  ],
+  "baseBranches": ["master", "legacy/brick-next_1.x"]
+}
