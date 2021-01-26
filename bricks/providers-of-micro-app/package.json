@@ -1,10 +1,13 @@
 {
   "name": "@next-bricks/providers-of-micro-app",
-  "version": "1.4.9",
+  "version": "1.4.10",
   "description": "> TODO: description",
   "homepage": "https://github.com/easyops-cn/next-providers/tree/master/bricks/providers-of-micro-app",
   "license": "UNLICENSED",
-  "files": ["dist", "deploy"],
+  "files": [
+    "dist",
+    "deploy"
+  ],
   "scripts": {
     "prestart": "node scripts/pre-build.js",
     "start": "cross-env NODE_ENV='development' webpack --config webpack.config.js --watch",
@@ -15,7 +18,7 @@
     "test:ci": "cross-env NODE_ENV='test' CI=true jest"
   },
   "devDependencies": {
-    "@next-sdk/micro-app-sdk": "1.0.0"
+    "@next-sdk/micro-app-sdk": "^1.0.1"
   },
   "sideEffects": true
 }
