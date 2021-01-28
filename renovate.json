@@ -86,13 +86,7 @@
         "fileFilters": ["**/*", ".gitlab/**/*"]
       },
       "major": { "enabled": false }
-    },
-    {
-      "baseBranchList": ["legacy/brick-next_1.x"],
-      "excludePackagePatterns": ["^@next-core/"],
-      "enabled": false
     }
   ],
-  "postUpdateOptions": ["yarnDedupeHighest"],
-  "baseBranches": ["master", "legacy/brick-next_1.x"]
+  "postUpdateOptions": ["yarnDedupeHighest"]
 }
