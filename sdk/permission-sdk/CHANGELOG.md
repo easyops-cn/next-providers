@@ -1,0 +1,10 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# 1.1.0 (2021-01-28)
+
+### Features
+
+- new sdk and providers: permission ([37158cf](https://github.com/easyops-cn/next-providers/commit/37158cff2ea9aadf4138bf8f2b4c4310c24d2aff))
