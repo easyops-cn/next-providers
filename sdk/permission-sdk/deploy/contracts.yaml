@@ -1,0 +1,92 @@
+depend_contracts:
+  - name: easyops.api.permission.audit.ListChangeHistory
+    version: ^1.0.0
+  - name: easyops.api.permission.audit.ListLoginTrack
+    version: ^1.0.0
+  - name: easyops.api.permission.inheritance.CreateRule
+    version: ^1.1.0
+  - name: easyops.api.permission.inheritance.DeleteRule
+    version: ^1.0.0
+  - name: easyops.api.permission.inheritance.GetInstanceAuthorizers
+    version: ^1.0.0
+  - name: easyops.api.permission.inheritance.GetInstanceAuthorizersFormat
+    version: ^1.2.0
+  - name: easyops.api.permission.inheritance.GetRule
+    version: ^1.1.0
+  - name: easyops.api.permission.inheritance.SearchInstanceAuthorizers
+    version: ^1.0.0
+  - name: easyops.api.permission.inheritance.SearchRule
+    version: ^1.1.0
+  - name: easyops.api.permission.inheritance.ToggleRule
+    version: ^1.0.0
+  - name: easyops.api.permission.inheritance.UpdateRule
+    version: ^1.1.0
+  - name: easyops.api.permission.menu.GetPermissionMenuDetail
+    version: ^1.0.0
+  - name: easyops.api.permission.menu.GetUserForbiddenMenu
+    version: ^1.0.0
+  - name: easyops.api.permission.org.OrgRegister
+    version: ^1.0.0
+  - name: easyops.api.permission.permission.BatchValidateCmdbPermission
+    version: ^1.0.0
+  - name: easyops.api.permission.permission.DeletePermission
+    version: ^1.0.0
+  - name: easyops.api.permission.permission.GetPermissionDetail
+    version: ^1.0.0
+  - name: easyops.api.permission.permission.GetPermissionDetailByAction
+    version: ^1.0.0
+  - name: easyops.api.permission.permission.GetPermissionList
+    version: ^1.1.0
+  - name: easyops.api.permission.permission.OrgRegister
+    version: ^1.0.0
+  - name: >-
+      easyops.api.permission.permission.PermissionDeniedReturnSuccessValidateCmdbPermission
+    version: ^1.0.0
+  - name: easyops.api.permission.permission.PutPermission
+    version: ^1.0.0
+  - name: easyops.api.permission.permission.SavePermission
+    version: ^1.0.0
+  - name: easyops.api.permission.permission.SetPermissionDisableStatus
+    version: ^1.0.0
+  - name: easyops.api.permission.permission.UserRegister
+    version: ^1.0.0
+  - name: easyops.api.permission.permission.ValidateArtifactPermission
+    version: ^1.0.0
+  - name: easyops.api.permission.permission.ValidateClusterPermission
+    version: ^1.0.0
+  - name: easyops.api.permission.permission.ValidateCmdbPermission
+    version: ^1.0.0
+  - name: easyops.api.permission.permission.ValidateOpsAutomationPermission
+    version: ^1.0.0
+  - name: easyops.api.permission.permission.ValidatePermissionSystemPermission
+    version: ^1.0.0
+  - name: easyops.api.permission.permission.ValidateToolPermission
+    version: ^1.0.0
+  - name: easyops.api.permission.permission_v2.PermissionChangeRoleByAction
+    version: ^1.0.0
+  - name: easyops.api.permission.role.BatchSetRoleUserAndGroup
+    version: ^1.0.0
+  - name: easyops.api.permission.role.CreateRole
+    version: ^1.0.0
+  - name: easyops.api.permission.role.DeletePermissionRole
+    version: ^1.0.0
+  - name: easyops.api.permission.role.GetMyRoles
+    version: ^1.0.0
+  - name: easyops.api.permission.role.GetPermissionRoleList
+    version: ^1.0.0
+  - name: easyops.api.permission.role.GetRoleDetail
+    version: ^1.0.0
+  - name: easyops.api.permission.role.GetUserRole
+    version: ^1.0.0
+  - name: easyops.api.permission.role.PutPermissionRole
+    version: ^1.0.0
+  - name: easyops.api.permission.role.RoleAddUser
+    version: ^1.0.0
+  - name: easyops.api.permission.role.RoleAddUserOrGroup
+    version: ^1.0.0
+  - name: easyops.api.permission.role.RoleChangePermission
+    version: ^1.0.0
+  - name: easyops.api.permission.role.RoleDeleteUserOrGroup
+    version: ^1.0.0
+  - name: easyops.api.permission.role.RoleSetUser
+    version: ^1.0.0
