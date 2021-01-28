@@ -38,18 +38,18 @@
     "@fortawesome/react-fontawesome": "^0.1.14",
     "@next-core/babel-runtime-helpers": "^1.0.4",
     "@next-core/brick-http": "^2.2.4",
-    "@next-core/brick-icons": "^2.6.5",
-    "@next-core/brick-kit": "^2.31.1",
+    "@next-core/brick-icons": "^2.7.4",
+    "@next-core/brick-kit": "^2.31.2",
     "@next-core/brick-types": "^2.16.0",
-    "@next-core/brick-utils": "^2.10.4",
-    "@next-core/dev-dependencies": "^1.2.27",
+    "@next-core/brick-utils": "^2.10.5",
+    "@next-core/dev-dependencies": "^1.2.28",
     "@next-core/easyops-analytics": "^0.1.4",
     "@next-core/fontawesome-library": "^1.1.12",
-    "@next-core/illustrations": "^0.3.2",
-    "@next-core/sdk-scripts": "^2.3.3",
+    "@next-core/illustrations": "^0.3.3",
+    "@next-core/sdk-scripts": "^2.3.4",
     "@size-limit/file": "^4.9.1",
     "@types/classnames": "^2.2.11",
-    "@types/d3": "^6.2.0",
+    "@types/d3": "^6.3.0",
     "@types/dompurify": "^2.2.1",
     "@types/echarts": "^4.9.3",
     "@types/enzyme": "^3.10.8",
@@ -57,7 +57,7 @@
     "@types/history": "^4.7.8",
     "@types/jest": "^26.0.20",
     "@types/js-yaml": "^3.12.5",
-    "@types/lodash": "^4.14.167",
+    "@types/lodash": "^4.14.168",
     "@types/lolex": "^5.1.0",
     "@types/node": "^12.12.31",
     "@types/react": "^16.9.56",
@@ -99,6 +99,6 @@
   },
   "easyops": {
     "create-next-repo": "1.2.24",
-    "dev-dependencies": "1.2.23"
+    "dev-dependencies": "1.2.28"
   }
 }
