@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/easyops-cn/next-providers/compare/@next-sdk/permission-sdk@1.1.0...@next-sdk/permission-sdk@1.1.1) (2021-01-28)
+
+**Note:** Version bump only for package @next-sdk/permission-sdk
+
 # 1.1.0 (2021-01-28)
 
 ### Features
