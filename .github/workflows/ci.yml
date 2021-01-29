@@ -32,6 +32,8 @@ jobs:
 
     - run: npm config set access public
 
+    - run: cat ${NPM_CONFIG_USERCONFIG}
+
     # - run: npm login --registry=https://registry.npmjs.org
     #   env:
     #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
