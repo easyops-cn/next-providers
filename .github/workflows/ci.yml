@@ -30,11 +30,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
         registry-url: 'https://registry.npmjs.org'
 
-    - run: npm config set access public
+    # - run: npm config set access public
 
-    - run: npm login
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    # - run: npm login --registry=https://registry.npmjs.org
+    #   env:
+    #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     - run: npm whoami --registry=https://registry.npmjs.org
       env:
