@@ -26,6 +26,14 @@
     "LaunchpadApi.sortCollection",
     "LaunchpadApi.updateCollection",
     "InvitationCodeApi.getInvitationCode",
-    "InvitationCodeApi.resetInvitationCode"
+    "InvitationCodeApi.resetInvitationCode",
+    "OrganizationApi.createOrg",
+    "OrganizationApi.disableOrg",
+    "OrganizationApi.enableOrg",
+    "OrganizationApi.getCurrentOrg",
+    "OrganizationApi.getOrgInfo",
+    "OrganizationApi.listOrg",
+    "OrganizationApi.setOrgExpiredDate",
+    "OrganizationApi.setOrgNamespaces"
   ]
 }

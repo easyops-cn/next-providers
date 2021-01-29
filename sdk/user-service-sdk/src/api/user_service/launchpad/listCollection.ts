@@ -16,9 +16,6 @@ export interface ListCollectionResponseItem {
 
   /** microApp Id, 当type为microApp时有该字段 */
   microAppId?: string;
-
-  /** customItem Id, 当type为customItem时有该字段 */
-  customItemId?: string;
 }
 
 export type ListCollectionResponseBody = ResponseListWrapper<ListCollectionResponseItem>;

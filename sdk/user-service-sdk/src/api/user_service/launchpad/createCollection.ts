@@ -8,9 +8,6 @@ export interface CreateCollectionRequestBody {
 
   /** microApp Id, 当type为microApp时必填 */
   microAppId?: string;
-
-  /** customItem Id, 当type为customItem时必填 */
-  customItemId?: string;
 }
 
 export interface CreateCollectionResponseBody {

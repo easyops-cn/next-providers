@@ -5,8 +5,8 @@ export interface ModelLaunchpadCollection {
   /** 实例ID */
   instanceId: string;
 
-  /** microApp:微应用;customItem:自定义项;link:自定义链接 */
-  type: "microApp" | "customItem" | "link";
+  /** microApp:微应用;link:自定义链接 */
+  type: "microApp" | "link";
 
   /** 标题 */
   name: string;
