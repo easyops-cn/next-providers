@@ -29,15 +29,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         registry-url: 'https://registry.npmjs.org'
-        always-auth: true
-
-    - run: npm config set access public
-
-    - run: cat ${NPM_CONFIG_USERCONFIG}
-
-    # - run: npm login --registry=https://registry.npmjs.org
-    #   env:
-    #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     - run: npm whoami --registry=https://registry.npmjs.org
       env:
