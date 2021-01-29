@@ -29,6 +29,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         registry-url: 'https://registry.npmjs.org'
+        always-auth: true
 
     - run: npm config set access public
 
