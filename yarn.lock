@@ -2133,10 +2133,10 @@
     request "^2.88.2"
     request-promise-native "^1.0.9"
 
-"@next-core/brick-types@^2.16.0", "@next-core/brick-types@^2.16.1":
-  version "2.16.0"
-  resolved "https://registry.npm.taobao.org/@next-core/brick-types/download/@next-core/brick-types-2.16.0.tgz#e5ef1393ad452a1d6d4a4b145ea9d9ea8f71aef2"
-  integrity sha1-5e8Tk61FKh1tSksUXqnZ6o9xrvI=
+"@next-core/brick-types@^2.16.1":
+  version "2.16.1"
+  resolved "https://registry.npm.taobao.org/@next-core/brick-types/download/@next-core/brick-types-2.16.1.tgz#ed8ca000b49cbfd918009b1ce62f7f6936b09968"
+  integrity sha1-7YygALScv9kYAJsc5i9/aTawmWg=
 
 "@next-core/brick-utils@^2.10.5":
   version "2.10.5"
