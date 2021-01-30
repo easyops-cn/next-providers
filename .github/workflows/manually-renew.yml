@@ -51,6 +51,11 @@ jobs:
     - run: yarn extract
     - run: npx yarn-deduplicate yarn.lock
     - run: yarn
+
+    # Build and test before pushing.
+    - run: yarn build
+    # - run: yarn test
+
     - run: git add -A
     - run: 'git commit -m "chore(): renew"'
     - run: git push
