@@ -1,0 +1,106 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Renovate renew
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  renew:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    # Only if it's a PR from renovate and about next-core packages.
+    if: >-
+      github.event.sender.login == 'renovate[bot]' &&
+      contains(github.event.pull_request.title, 'next-core')
+
+    steps:
+
+    # Only if the latest commit is by renovate itself.
+    # (Ignore if easyops-eve pushed a renew commit).
+    - uses: actions/github-script@v3
+      id: match-commit
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          const commit = (await github.git.getCommit({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            commit_sha: context.payload.pull_request.head.sha,
+          })).data;
+          return commit.author.name === 'Renovate Bot';
+
+    - uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.GH_TOKEN_EVE }}
+        fetch-depth: 0
+        ref: ${{ github.event.pull_request.head.sha }}
+      if: ${{ steps.match-commit.outputs.result }}
+
+    - run: git checkout --track origin/${{ github.event.pull_request.head.ref }}
+      if: ${{ steps.match-commit.outputs.result }}
+
+    - run: git status
+      if: ${{ steps.match-commit.outputs.result }}
+
+    - run: |
+        git config --global user.name 'easyops-eve'
+        git config --global user.email 'easyops-eve@users.noreply.github.com'
+      if: ${{ steps.match-commit.outputs.result }}
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        registry-url: 'https://registry.npmjs.org'
+      if: ${{ steps.match-commit.outputs.result }}
+
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+      if: ${{ steps.match-commit.outputs.result }}
+
+    - uses: actions/cache@v2
+      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+      with:
+        path: |
+          ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          node_modules
+          */*/node_modules
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+      if: ${{ steps.match-commit.outputs.result }}
+
+    - run: yarn install --frozen-lockfile
+      if: ${{ steps.match-commit.outputs.result }}
+    # - run: yarn renew
+    #   if: ${{ steps.match-commit.outputs.result }}
+    - run: yarn extract
+      if: ${{ steps.match-commit.outputs.result }}
+    - run: npx yarn-deduplicate yarn.lock
+      if: ${{ steps.match-commit.outputs.result }}
+    - run: yarn install
+      if: ${{ steps.match-commit.outputs.result }}
+
+    # Build and test will be covered in pull request.
+    # Build and test before pushing.
+    # - run: yarn build
+    #   if: ${{ steps.match-commit.outputs.result }}
+    # - run: yarn test
+    #   if: ${{ steps.match-commit.outputs.result }}
+
+    - run: git add -A
+      if: ${{ steps.match-commit.outputs.result }}
+    - run: 'git commit -m "chore(): yarn renew"'
+      if: ${{ steps.match-commit.outputs.result }}
+    - run: git push
+      if: ${{ steps.match-commit.outputs.result }}
