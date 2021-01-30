@@ -1,6 +1,6 @@
 {
   "name": "@next-bricks/providers-of-micro-app",
-  "version": "1.4.10",
+  "version": "1.4.11",
   "description": "> TODO: description",
   "homepage": "https://github.com/easyops-cn/next-providers/tree/master/bricks/providers-of-micro-app",
   "license": "UNLICENSED",
@@ -18,7 +18,7 @@
     "test:ci": "cross-env NODE_ENV='test' CI=true jest"
   },
   "devDependencies": {
-    "@next-sdk/micro-app-sdk": "^1.0.1"
+    "@next-sdk/micro-app-sdk": "^1.0.2"
   },
   "sideEffects": true
 }
