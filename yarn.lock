@@ -2103,7 +2103,7 @@
   resolved "https://registry.npm.taobao.org/@next-core/brick-icons/download/@next-core/brick-icons-2.7.4.tgz#787d28a2b2f8186881aec00d2fb1ef982517d09d"
   integrity sha1-eH0oorL4GGiBrsANL7HvmCUX0J0=
 
-"@next-core/brick-kit@^2.31.2", "@next-core/brick-kit@^2.32.0":
+"@next-core/brick-kit@^2.32.0":
   version "2.32.0"
   resolved "https://registry.npm.taobao.org/@next-core/brick-kit/download/@next-core/brick-kit-2.32.0.tgz#e23b4e5b569506681b4958e2a4e185440e7f3a3f"
   integrity sha1-4jtOW1aVBmgbSVjipOGFRA5/Oj8=
@@ -2133,12 +2133,12 @@
     request "^2.88.2"
     request-promise-native "^1.0.9"
 
-"@next-core/brick-types@^2.16.1", "@next-core/brick-types@^2.17.0":
-  version "2.16.1"
-  resolved "https://registry.npm.taobao.org/@next-core/brick-types/download/@next-core/brick-types-2.16.1.tgz#ed8ca000b49cbfd918009b1ce62f7f6936b09968"
-  integrity sha1-7YygALScv9kYAJsc5i9/aTawmWg=
+"@next-core/brick-types@^2.17.0":
+  version "2.17.0"
+  resolved "https://registry.npm.taobao.org/@next-core/brick-types/download/@next-core/brick-types-2.17.0.tgz#fe0ae8f3a8a4646c11d09f8b074d560276ea89a3"
+  integrity sha1-/gro86ikZGwR0J+LB01WAnbqiaM=
 
-"@next-core/brick-utils@^2.10.5", "@next-core/brick-utils@^2.10.6":
+"@next-core/brick-utils@^2.10.6":
   version "2.10.6"
   resolved "https://registry.npm.taobao.org/@next-core/brick-utils/download/@next-core/brick-utils-2.10.6.tgz#f447279b5ec7ba66af2d02f98ba9203277eb37a6"
   integrity sha1-9Ecnm17HumavLQL5i6kgMnfrN6Y=
