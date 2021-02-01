@@ -1,0 +1,11 @@
+{
+  "sdk": "@next-sdk/object-store-sdk",
+  "providers": [
+    "ObjectStoreApi.createBucket",
+    "ObjectStoreApi.getObject",
+    "ObjectStoreApi.listBuckets",
+    "ObjectStoreApi.listObjects",
+    "ObjectStoreApi.putObject",
+    "ObjectStoreApi.removeObject"
+  ]
+}

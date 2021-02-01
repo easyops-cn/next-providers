@@ -1,0 +1,15 @@
+depend_contracts:
+  - name: easyops.api.object_store.object_store.CreateBucket
+    version: ^1.0.0
+  - name: easyops.api.object_store.object_store.GetObject
+    version: ^1.0.0
+  - name: easyops.api.object_store.object_store.GetObjectsStat
+    version: ^1.0.0
+  - name: easyops.api.object_store.object_store.ListBuckets
+    version: ^1.0.0
+  - name: easyops.api.object_store.object_store.ListObjects
+    version: ^1.0.0
+  - name: easyops.api.object_store.object_store.PutObject
+    version: ^1.0.0
+  - name: easyops.api.object_store.object_store.RemoveObject
+    version: ^1.0.0
