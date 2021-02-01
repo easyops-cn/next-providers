@@ -20,4 +20,10 @@ export interface ModelObjectView {
 
   /** 属性/关系可见用户(组)，e.g:{business: {'authorizers':[user]}} */
   attr_authorizers: Record<string, any>;
+
+  /** 属性、关系分类顺序 */
+  attr_category_order: string[];
+
+  /** 关系分组顺序 */
+  relation_group_order: string[];
 }

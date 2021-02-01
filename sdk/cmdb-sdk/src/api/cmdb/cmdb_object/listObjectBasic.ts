@@ -1,8 +1,8 @@
 import { http, HttpOptions } from '@next-core/brick-http';
-import { ModelCmdbObject } from '../../../model/cmdb';
+import { ModelObjectBasicInfo } from '../../../model/cmdb';
 import { ResponseListWrapper, ResponseBodyWrapper } from '../../../wrapper';
 
-export interface ListRequestParams {
+export interface ListObjectBasicRequestParams {
   /** 页码 */
   page?: number;
 
@@ -34,21 +34,21 @@ export interface ListRequestParams {
   parentObjectId?: string;
 }
 
-export type ListResponseItem = Partial<ModelCmdbObject>;
+export type ListObjectBasicResponseItem = Partial<ModelObjectBasicInfo>;
 
-export type ListResponseBody = ResponseListWrapper<ListResponseItem>;
+export type ListObjectBasicResponseBody = ResponseListWrapper<ListObjectBasicResponseItem>;
 
 /**
- * @description 获取模型列表
- * @endpoint LIST /object
+ * @description 获取模型基本信息列表
+ * @endpoint LIST /object_basic
  */
-export const list = async (
-  params: ListRequestParams,
+export const listObjectBasic = async (
+  params: ListObjectBasicRequestParams,
   options?: HttpOptions
-): Promise<ListResponseBody> =>
+): Promise<ListObjectBasicResponseBody> =>
   (
-    await http.get<ResponseBodyWrapper<ListResponseBody>>(
-      'api/gateway/cmdb.cmdb_object.List/object',
+    await http.get<ResponseBodyWrapper<ListObjectBasicResponseBody>>(
+      'api/gateway/cmdb.cmdb_object.ListObjectBasic/object_basic',
       { ...options, params }
     )
   ).data;
