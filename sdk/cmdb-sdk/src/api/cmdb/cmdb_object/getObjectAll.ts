@@ -1,5 +1,5 @@
-import { http, HttpOptions } from '@next-core/brick-http';
-import { ModelCmdbObject } from '../../../model/cmdb';
+import { http, HttpOptions } from "@next-core/brick-http";
+import { ModelCmdbObject } from "../../../model/cmdb";
 
 export interface GetObjectAllRequestParams {
   /** 按模型Id,模型id模糊匹配 */
@@ -50,6 +50,6 @@ export const getObjectAll = (
   options?: HttpOptions
 ): Promise<GetObjectAllResponseBody> =>
   http.get<GetObjectAllResponseBody>(
-    'api/gateway/cmdb.cmdb_object.GetObjectAll/object_all',
+    "api/gateway/cmdb.cmdb_object.GetObjectAll/object_all",
     { ...options, params }
   );

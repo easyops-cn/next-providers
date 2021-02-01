@@ -1,6 +1,6 @@
-import { http, HttpOptions } from '@next-core/brick-http';
-import { ModelObjectRelation } from '../../../model/cmdb';
-import { ResponseBodyWrapper } from '../../../wrapper';
+import { http, HttpOptions } from "@next-core/brick-http";
+import { ModelObjectRelation } from "../../../model/cmdb";
+import { ResponseBodyWrapper } from "../../../wrapper";
 
 export type GetResponseBody = Partial<ModelObjectRelation>;
 

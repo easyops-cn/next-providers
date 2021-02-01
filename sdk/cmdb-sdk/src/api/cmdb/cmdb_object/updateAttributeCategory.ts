@@ -1,4 +1,4 @@
-import { http, HttpOptions } from '@next-core/brick-http';
+import { http, HttpOptions } from "@next-core/brick-http";
 
 export interface UpdateAttributeCategoryRequestBody {
   /** 新分类名称 */

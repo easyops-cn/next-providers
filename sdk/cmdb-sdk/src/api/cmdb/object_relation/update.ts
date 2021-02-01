@@ -1,6 +1,6 @@
-import { http, HttpOptions } from '@next-core/brick-http';
-import { ModelObjectRelation } from '../../../model/cmdb';
-import { ResponseBodyWrapper } from '../../../wrapper';
+import { http, HttpOptions } from "@next-core/brick-http";
+import { ModelObjectRelation } from "../../../model/cmdb";
+import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface UpdateRequestBody {
   /** 关系名称, 不是必填, 而且在引入了 left_description 和 right_description 之后这个字段几乎处于废弃状态 */
