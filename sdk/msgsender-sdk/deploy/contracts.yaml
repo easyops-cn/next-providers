@@ -1,0 +1,9 @@
+depend_contracts:
+  - name: easyops.api.msgsender.custom_sender.ListSupportInform
+    version: ^1.0.0
+  - name: easyops.api.msgsender.custom_sender.SendMessage
+    version: ^1.0.0
+  - name: easyops.api.msgsender.custom_sender.SendMessageForAlert
+    version: ^1.0.0
+  - name: easyops.api.msgsender.custom_sender.SendMessageWithAppendix
+    version: ^1.0.0

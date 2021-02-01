@@ -1,0 +1,14 @@
+{
+  "sdk": "@next-sdk/monitor-sdk",
+  "providers": [
+    "AlertApi.getNotRecoverAlertEventList",
+    "AlertApi.getAlertEventDetail",
+    "AlertRuleApi.getAlertRuleList",
+    "AlertRuleApi.detailAlertRule",
+    "AlertRuleApi.deleteAlertRule",
+    "AlertRuleApi.updateAlertRule",
+    "AlertRuleApi.disableAlertRule",
+    "AppHealthApi.getAppHealthConfigV2",
+    "InfluxdbApi.influxdbProxy"
+  ]
+}
