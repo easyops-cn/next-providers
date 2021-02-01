@@ -22,8 +22,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
@@ -54,13 +52,7 @@ jobs:
     #     github-token: ${{ secrets.github_token }}
     #     path-to-lcov: ./.coverage/lcov.info
 
-    - name: Check tags
-      id: check-tags
-      run: |
-        echo "::set-output name=with-tags::$(git tag --points-at HEAD)"
-
-    - name: Lerna Publish
-      run: npx lerna publish from-git --dist-tag latest --yes
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      if: steps.check-tags.outputs.with-tags != ''
+    - uses: easyops-cn/actions-next-publish-from-tags@v1
+      with:
+        npm-token: ${{ secrets.NPM_TOKEN }}
+      if: github.event_name == 'push'
