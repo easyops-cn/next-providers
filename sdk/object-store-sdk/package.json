@@ -1,6 +1,6 @@
 {
   "name": "@next-sdk/object-store-sdk",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "SDK for Object Store",
   "homepage": "https://github.com/easyops-cn/next-providers/tree/master/sdk/object-store-sdk",
   "license": "UNLICENSED",
