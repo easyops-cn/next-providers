@@ -11,8 +11,11 @@ export interface GetObjectBasicAllRequestParams {
   /** system */
   system?: string;
 
-  /** 分类 */
+  /** 分类,支持like操作，%xxx% */
   category?: string;
+
+  /** category是否为空，为true时会忽略参数category */
+  emptyCategory?: boolean;
 
   /** system是否为空，为true时会忽略参数system */
   emptySystem?: boolean;

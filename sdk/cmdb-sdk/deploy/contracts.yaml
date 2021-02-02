@@ -44,7 +44,7 @@ depend_contracts:
   - name: easyops.api.cmdb.cmdb_object.ImportCheck
     version: ^1.1.0
   - name: easyops.api.cmdb.cmdb_object.ImportCheckV2
-    version: ^1.1.0
+    version: ^1.2.0
   - name: easyops.api.cmdb.cmdb_object.ImportObject
     version: ^1.1.0
   - name: easyops.api.cmdb.cmdb_object.ImportV2
