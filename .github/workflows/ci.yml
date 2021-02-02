@@ -42,9 +42,9 @@ jobs:
         key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
           ${{ runner.os }}-yarn-
-    - run: yarn install
+    - run: yarn install --frozen-lockfile
     - run: yarn build
-    # - run: yarn test
+    # - run: yarn test:ci
 
     # - name: Coveralls
     #   uses: coverallsapp/github-action@master
@@ -52,7 +52,7 @@ jobs:
     #     github-token: ${{ secrets.github_token }}
     #     path-to-lcov: ./.coverage/lcov.info
 
-    - uses: easyops-cn/actions-next-publish-from-tags@v1
+    - uses: easyops-cn/actions-next-publish-from-tags@master
       with:
         npm-token: ${{ secrets.NPM_TOKEN }}
       if: github.event_name == 'push'
