@@ -1,6 +1,6 @@
 {
   "name": "@next-bricks/providers-of-cmdb",
-  "version": "1.12.23",
+  "version": "1.12.24",
   "description": "> TODO: description",
   "homepage": "https://github.com/easyops-cn/next-providers/tree/master/bricks/providers-of-cmdb",
   "license": "UNLICENSED",
@@ -18,7 +18,7 @@
     "test:ci": "cross-env NODE_ENV='test' CI=true jest"
   },
   "devDependencies": {
-    "@next-sdk/cmdb-sdk": "^1.0.3"
+    "@next-sdk/cmdb-sdk": "^1.0.4"
   },
   "sideEffects": true
 }
