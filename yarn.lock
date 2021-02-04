@@ -2104,7 +2104,7 @@
   resolved "https://registry.npm.taobao.org/@next-core/brick-icons/download/@next-core/brick-icons-2.7.4.tgz#787d28a2b2f8186881aec00d2fb1ef982517d09d"
   integrity sha1-eH0oorL4GGiBrsANL7HvmCUX0J0=
 
-"@next-core/brick-kit@^2.32.0", "@next-core/brick-kit@^2.32.1":
+"@next-core/brick-kit@^2.32.1":
   version "2.32.1"
   resolved "https://registry.npm.taobao.org/@next-core/brick-kit/download/@next-core/brick-kit-2.32.1.tgz#6160072d519ef380979440e969cebe15e66335dc"
   integrity sha1-YWAHLVGe84CXlEDpac6+FeZjNdw=
@@ -2261,7 +2261,7 @@
     "@fortawesome/free-brands-svg-icons" "^5.15.2"
     "@fortawesome/free-solid-svg-icons" "^5.15.2"
 
-"@next-core/illustrations@^0.3.3", "@next-core/illustrations@^0.3.4":
+"@next-core/illustrations@^0.3.4":
   version "0.3.4"
   resolved "https://registry.npm.taobao.org/@next-core/illustrations/download/@next-core/illustrations-0.3.4.tgz#6ae0c9a8f87c1da50add670284c3db0b9a6b80b0"
   integrity sha1-auDJqPh8HaUK3WcChMPbC5prgLA=
@@ -2564,10 +2564,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@size-limit/file@^4.9.1":
-  version "4.9.1"
-  resolved "https://registry.npm.taobao.org/@size-limit/file/download/@size-limit/file-4.9.1.tgz#ce1798b5b4c87d6d4c0caf5ddd6ce5a7638b3307"
-  integrity sha1-zheYtbTIfW1MDK9d3Wzlp2OLMwc=
+"@size-limit/file@^4.9.2":
+  version "4.9.2"
+  resolved "https://registry.npm.taobao.org/@size-limit/file/download/@size-limit/file-4.9.2.tgz#bd8553da2ce104e6f1c403e9f2a429ddb5fd9eb1"
+  integrity sha1-vYVT2izhBObxxAPp8qQp3bX9nrE=
   dependencies:
     semver "7.3.4"
 
@@ -3707,7 +3707,7 @@ ansi-styles@^4.0.0, ansi-styles@^4.1.0:
   dependencies:
     color-convert "^2.0.1"
 
-antd@^4.10.2, antd@^4.11.2:
+antd@^4.11.2:
   version "4.12.2"
   resolved "https://registry.npm.taobao.org/antd/download/antd-4.12.2.tgz?cache=0&sync_timestamp=1612411258715&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fantd%2Fdownload%2Fantd-4.12.2.tgz#3e00b21de418c94a358bf1fc064de15654a30161"
   integrity sha1-PgCyHeQYyUo1i/H8Bk3hVlSjAWE=
@@ -7825,7 +7825,7 @@ husky@^4.3.8:
     slash "^3.0.0"
     which-pm-runs "^1.0.0"
 
-i18next@^19.8.4, i18next@^19.8.6:
+i18next@^19.8.6:
   version "19.8.6"
   resolved "https://registry.npm.taobao.org/i18next/download/i18next-19.8.6.tgz#0cca8f3c30aeb6b8244906bd1822284744b4b110"
   integrity sha1-DMqPPDCutrgkSQa9GCIoR0S0sRA=
