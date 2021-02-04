@@ -78,6 +78,7 @@
     "CmdbObjectApi.listObjectBasic",
     "CmdbObjectApi.listObjectCategory",
     "CmdbObjectApi.exportObject",
-    "IndexApi.createIndex"
+    "IndexApi.createIndex",
+    "IndexApi.deleteIndex"
   ]
 }
