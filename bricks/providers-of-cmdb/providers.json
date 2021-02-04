@@ -77,6 +77,7 @@
     "BusinessInstanceApi.searchAppInSystem",
     "CmdbObjectApi.listObjectBasic",
     "CmdbObjectApi.listObjectCategory",
-    "CmdbObjectApi.exportObject"
+    "CmdbObjectApi.exportObject",
+    "IndexApi.createIndex"
   ]
 }
