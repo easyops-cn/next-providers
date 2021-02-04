@@ -25,12 +25,8 @@
     "extract": "dev-dependencies-extract"
   },
   "browserslist": {
-    "development": [
-      "extends @next-core/browserslist-config-next/development"
-    ],
-    "production": [
-      "extends @next-core/browserslist-config-next/production"
-    ]
+    "development": ["extends @next-core/browserslist-config-next/development"],
+    "production": ["extends @next-core/browserslist-config-next/production"]
   },
   "devDependencies": {
     "@ant-design/compatible": "^1.0.8",
@@ -39,15 +35,15 @@
     "@next-core/babel-runtime-helpers": "^1.0.4",
     "@next-core/brick-http": "^2.2.4",
     "@next-core/brick-icons": "^2.7.4",
-    "@next-core/brick-kit": "^2.32.0",
+    "@next-core/brick-kit": "^2.32.1",
     "@next-core/brick-types": "^2.17.0",
     "@next-core/brick-utils": "^2.10.6",
-    "@next-core/dev-dependencies": "^1.2.30",
+    "@next-core/dev-dependencies": "^1.2.32",
     "@next-core/easyops-analytics": "^0.1.4",
     "@next-core/fontawesome-library": "^1.1.12",
-    "@next-core/illustrations": "^0.3.3",
+    "@next-core/illustrations": "^0.3.4",
     "@next-core/sdk-scripts": "^2.4.1",
-    "@size-limit/file": "^4.9.1",
+    "@size-limit/file": "^4.9.2",
     "@types/classnames": "^2.2.11",
     "@types/d3": "^6.3.0",
     "@types/dompurify": "^2.2.1",
@@ -64,7 +60,7 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-test-renderer": "^17.0.0",
     "@types/react-transition-group": "^4.4.0",
-    "antd": "^4.10.2",
+    "antd": "^4.11.2",
     "d3-drag": "^2.0.0",
     "d3-force": "^2.1.1",
     "d3-hierarchy": "^2.0.0",
@@ -74,7 +70,7 @@
     "echarts": "^4.9.0",
     "enzyme": "^3.11.0",
     "history": "^4.10.1",
-    "i18next": "^19.8.4",
+    "i18next": "^19.8.6",
     "js-yaml": "^3.14.1",
     "lodash": "^4.17.20",
     "lolex": "^5.1.2",
@@ -85,20 +81,11 @@
     "react-i18next": "^11.8.5",
     "react-transition-group": "^4.4.1"
   },
-  "workspaces": [
-    "bricks/*",
-    "libs/*",
-    "micro-apps/*",
-    "sdk/*",
-    "templates/*"
-  ],
+  "workspaces": ["bricks/*", "libs/*", "micro-apps/*", "sdk/*", "templates/*"],
   "resolutions": {
     "@types/react": "^16.9.56",
     "lodash": "^4.17.20",
     "@next-core/brick-types": "^2.17.0"
   },
-  "easyops": {
-    "create-next-repo": "1.2.24",
-    "dev-dependencies": "1.2.30"
-  }
+  "easyops": { "create-next-repo": "1.2.24", "dev-dependencies": "1.2.32" }
 }
