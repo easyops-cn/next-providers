@@ -34,6 +34,16 @@
     "OrganizationApi.getOrgInfo",
     "OrganizationApi.listOrg",
     "OrganizationApi.setOrgExpiredDate",
-    "OrganizationApi.setOrgNamespaces"
+    "OrganizationApi.setOrgNamespaces",
+    "UserAdminApi.forgotPassword",
+    "UserAdminApi.getPasswordConfig",
+    "UserAdminApi.listUsersInfo",
+    "UserAdminApi.listUsersId",
+    "UserAdminApi.listUsersIdNick",
+    "UserAdminApi.listUsersInfoV3",
+    "UserAdminApi.resetPassword",
+    "UserAdminApi.userDelete",
+    "UserAdminApi.getUserLoginInfo",
+    "UserAdminApi.userRegister"
   ]
 }
