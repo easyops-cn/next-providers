@@ -79,6 +79,15 @@
     "CmdbObjectApi.listObjectCategory",
     "CmdbObjectApi.exportObject",
     "IndexApi.createIndex",
-    "IndexApi.deleteIndex"
+    "IndexApi.deleteIndex",
+    "ObjectRelationApi.create",
+    "ObjectRelationApi.createRelationGroup",
+    "ObjectRelationApi.deleteRelation",
+    "ObjectRelationApi.deleteRelationGroup",
+    "ObjectRelationApi.get",
+    "ObjectRelationApi.objectRelationSnapshot",
+    "ObjectRelationApi.getRelationsByGroupId",
+    "ObjectRelationApi.update",
+    "ObjectRelationApi.updateRelationGroup"
   ]
 }
