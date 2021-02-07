@@ -3,11 +3,8 @@
   "version": "1.12.28",
   "description": "> TODO: description",
   "homepage": "https://github.com/easyops-cn/next-providers/tree/master/bricks/providers-of-cmdb",
-  "license": "UNLICENSED",
-  "files": [
-    "dist",
-    "deploy"
-  ],
+  "license": "GPL-3.0",
+  "files": ["dist", "deploy"],
   "scripts": {
     "prestart": "node scripts/pre-build.js",
     "start": "cross-env NODE_ENV='development' webpack --config webpack.config.js --watch",
@@ -17,8 +14,6 @@
     "test": "cross-env NODE_ENV='test' jest",
     "test:ci": "cross-env NODE_ENV='test' CI=true jest"
   },
-  "devDependencies": {
-    "@next-sdk/cmdb-sdk": "^1.0.6"
-  },
+  "devDependencies": { "@next-sdk/cmdb-sdk": "^1.0.6" },
   "sideEffects": true
 }
