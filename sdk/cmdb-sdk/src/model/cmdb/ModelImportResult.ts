@@ -1,4 +1,4 @@
-import { ModelImportStatus, ModelObjectIndex } from ".";
+import { ModelImportStatus, ModelObjectIndex } from '.';
 
 /** ImportResult */
 export interface ModelImportResult {
@@ -44,6 +44,12 @@ export interface ModelImportResult {
 
   /** 是否新建模型 */
   is_create: boolean;
+
+  /** 是否是抽象模型(父模型) */
+  isAbstract: boolean;
+
+  /** 所属父模型 */
+  parentObjectId: string;
 }
 
 export interface ModelImportResult_index_list_result_item {

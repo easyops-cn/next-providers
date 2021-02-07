@@ -6,6 +6,7 @@ export * from './create';
 export * from './deleteObject';
 export * from './deleteProperty';
 export * from './exportObject';
+export * from './exportObjectV2';
 export * from './getDetail';
 export * from './getIdMapName';
 export * from './getObjectAll';

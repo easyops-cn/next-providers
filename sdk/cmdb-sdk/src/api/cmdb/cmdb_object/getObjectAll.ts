@@ -11,7 +11,7 @@ export interface GetObjectAllRequestParams {
   /** system */
   system?: string;
 
-  /** 分类,支持like操作，%xxx% */
+  /** 分类,xx:精确匹配，xx%:匹配xx或xx.*，xx.%:匹配xx\..* */
   category?: string;
 
   /** category是否为空，为true时会忽略参数category */

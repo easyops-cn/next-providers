@@ -21,6 +21,8 @@ depend_contracts:
     version: ^1.1.0
   - name: easyops.api.cmdb.cmdb_object.ExportObject
     version: ^1.1.0
+  - name: easyops.api.cmdb.cmdb_object.ExportObjectV2
+    version: ^1.1.0
   - name: easyops.api.cmdb.cmdb_object.GetDetail
     version: ^1.1.0
   - name: easyops.api.cmdb.cmdb_object.GetIdMapName

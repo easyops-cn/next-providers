@@ -1,5 +1,5 @@
-import { http, HttpOptions } from "@next-core/brick-http";
-import { ModelCmdbObject } from "../../../model/cmdb";
+import { http, HttpOptions } from '@next-core/brick-http';
+import { ModelCmdbObject } from '../../../model/cmdb';
 
 export interface ExportObjectRequestParams {
   /** 资源模型ID,用分号隔开;为空时查询所有的资源模型 */
@@ -21,7 +21,7 @@ export interface ExportObjectResponseBody {
 }
 
 /**
- * @description 获取模型详情
+ * @description 模型导出
  * @endpoint get /object_export
  */
 export const exportObject = (
@@ -29,6 +29,6 @@ export const exportObject = (
   options?: HttpOptions
 ): Promise<ExportObjectResponseBody> =>
   http.get<ExportObjectResponseBody>(
-    "api/gateway/cmdb.cmdb_object.ExportObject/object_export",
+    'api/gateway/cmdb.cmdb_object.ExportObject/object_export',
     { ...options, params }
   );
