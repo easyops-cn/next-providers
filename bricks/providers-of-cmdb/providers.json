@@ -89,6 +89,7 @@
     "ObjectRelationApi.getRelationsByGroupId",
     "ObjectRelationApi.update",
     "ObjectRelationApi.updateRelationGroup",
-    "CmdbObjectApi.exportObjectV2"
+    "CmdbObjectApi.exportObjectV2",
+    "CmdbObjectApi.UpdateAttributeCategory"
   ]
 }
