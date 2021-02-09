@@ -1,10 +1,13 @@
 {
   "name": "@next-bricks/providers-of-monitor",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "> TODO: description",
   "homepage": "https://github.com/easyops-cn/next-providers/tree/master/bricks/providers-of-monitor",
   "license": "GPL-3.0",
-  "files": ["dist", "deploy"],
+  "files": [
+    "dist",
+    "deploy"
+  ],
   "scripts": {
     "prestart": "node scripts/pre-build.js",
     "start": "cross-env NODE_ENV='development' webpack --config webpack.config.js --watch",
@@ -14,6 +17,8 @@
     "test": "cross-env NODE_ENV='test' jest",
     "test:ci": "cross-env NODE_ENV='test' CI=true jest"
   },
-  "devDependencies": { "@next-sdk/monitor-sdk": "^1.1.0" },
+  "devDependencies": {
+    "@next-sdk/monitor-sdk": "^1.1.0"
+  },
   "sideEffects": true
 }
