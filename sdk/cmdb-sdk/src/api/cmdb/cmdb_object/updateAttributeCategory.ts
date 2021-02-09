@@ -1,4 +1,4 @@
-import { http, HttpOptions } from '@next-core/brick-http';
+import { http, HttpOptions } from "@next-core/brick-http";
 
 export interface UpdateAttributeCategoryRequestBody {
   /** 新分类名称 */
@@ -10,7 +10,7 @@ export interface UpdateAttributeCategoryRequestBody {
 
 /**
  * @description 修改字段分类
- * @endpoint PUT /object/object/:objectId/attribute_category/:name
+ * @endpoint PUT /object/:objectId/attribute_category/:name
  */
 export const updateAttributeCategory = (
   objectId: string | number,
@@ -19,7 +19,7 @@ export const updateAttributeCategory = (
   options?: HttpOptions
 ): Promise<void> =>
   http.put<void>(
-    `api/gateway/cmdb.cmdb_object.UpdateAttributeCategory/object/object/${objectId}/attribute_category/${name}`,
+    `api/gateway/cmdb.cmdb_object.UpdateAttributeCategory/object/${objectId}/attribute_category/${name}`,
     data,
     options
   );

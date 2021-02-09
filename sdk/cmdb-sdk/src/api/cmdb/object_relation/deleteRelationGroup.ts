@@ -1,4 +1,4 @@
-import { http, HttpOptions } from '@next-core/brick-http';
+import { http, HttpOptions } from "@next-core/brick-http";
 
 /**
  * @description 删除模型关系分组

@@ -1,6 +1,6 @@
-import { http, HttpOptions } from '@next-core/brick-http';
-import { ModelCmdbObject, ModelImportResult } from '../../../model/cmdb';
-import { ResponseBodyWrapper } from '../../../wrapper';
+import { http, HttpOptions } from "@next-core/brick-http";
+import { ModelCmdbObject, ModelImportResult } from "../../../model/cmdb";
+import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface ImportCheckV2RequestBody {
   /** 模型列表 */
@@ -25,7 +25,7 @@ export const importCheckV2 = async (
 ): Promise<ImportCheckV2ResponseBody> =>
   (
     await http.post<ResponseBodyWrapper<ImportCheckV2ResponseBody>>(
-      'api/gateway/cmdb.cmdb_object.ImportCheckV2/v2/object_import_check',
+      "api/gateway/cmdb.cmdb_object.ImportCheckV2/v2/object_import_check",
       data,
       options
     )

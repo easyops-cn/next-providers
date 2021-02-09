@@ -1,5 +1,5 @@
-import { http, HttpOptions } from '@next-core/brick-http';
-import { ModelCmdbObject } from '../../../model/cmdb';
+import { http, HttpOptions } from "@next-core/brick-http";
+import { ModelCmdbObject } from "../../../model/cmdb";
 
 export interface ExportObjectV2RequestBody {
   /** 资源模型ID列表 */
@@ -29,7 +29,7 @@ export const exportObjectV2 = (
   options?: HttpOptions
 ): Promise<ExportObjectV2ResponseBody> =>
   http.post<ExportObjectV2ResponseBody>(
-    'api/gateway/cmdb.cmdb_object.ExportObjectV2/v2/object_export',
+    "api/gateway/cmdb.cmdb_object.ExportObjectV2/v2/object_export",
     data,
     options
   );

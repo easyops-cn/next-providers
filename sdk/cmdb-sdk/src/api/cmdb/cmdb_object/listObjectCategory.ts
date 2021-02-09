@@ -1,5 +1,5 @@
-import { http, HttpOptions } from '@next-core/brick-http';
-import { ResponseBodyWrapper } from '../../../wrapper';
+import { http, HttpOptions } from "@next-core/brick-http";
+import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface ListObjectCategoryResponseBody {
   /** 分类信息 */
@@ -15,7 +15,7 @@ export const listObjectCategory = async (
 ): Promise<ListObjectCategoryResponseBody> =>
   (
     await http.get<ResponseBodyWrapper<ListObjectCategoryResponseBody>>(
-      'api/gateway/cmdb.cmdb_object.ListObjectCategory/object_category',
+      "api/gateway/cmdb.cmdb_object.ListObjectCategory/object_category",
       options
     )
   ).data;

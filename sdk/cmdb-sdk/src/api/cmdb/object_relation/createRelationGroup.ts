@@ -1,6 +1,6 @@
-import { http, HttpOptions } from '@next-core/brick-http';
-import { ModelObjectRelationGroup } from '../../../model/cmdb';
-import { ResponseBodyWrapper } from '../../../wrapper';
+import { http, HttpOptions } from "@next-core/brick-http";
+import { ModelObjectRelationGroup } from "../../../model/cmdb";
+import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface CreateRelationGroupRequestBody {
   /** 分组ID */

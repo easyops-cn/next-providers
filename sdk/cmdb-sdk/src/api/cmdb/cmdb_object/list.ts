@@ -1,6 +1,6 @@
-import { http, HttpOptions } from '@next-core/brick-http';
-import { ModelCmdbObject } from '../../../model/cmdb';
-import { ResponseListWrapper, ResponseBodyWrapper } from '../../../wrapper';
+import { http, HttpOptions } from "@next-core/brick-http";
+import { ModelCmdbObject } from "../../../model/cmdb";
+import { ResponseListWrapper, ResponseBodyWrapper } from "../../../wrapper";
 
 export interface ListRequestParams {
   /** 页码 */
@@ -51,7 +51,7 @@ export const list = async (
 ): Promise<ListResponseBody> =>
   (
     await http.get<ResponseBodyWrapper<ListResponseBody>>(
-      'api/gateway/cmdb.cmdb_object.List/object',
+      "api/gateway/cmdb.cmdb_object.List/object",
       { ...options, params }
     )
   ).data;

@@ -1,4 +1,4 @@
-import { ModelImportStatus, ModelObjectIndex } from '.';
+import { ModelImportStatus, ModelObjectIndex } from ".";
 
 /** ImportResult */
 export interface ModelImportResult {
