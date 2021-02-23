@@ -1,41 +1,9 @@
 import { http, HttpOptions } from "@next-core/brick-http";
-import { ModelCmdbObject } from "../../../model/cmdb";
+import { ModelListObjectRequest, ModelCmdbObject } from "../../../model/cmdb";
 import { ResponseListWrapper, ResponseBodyWrapper } from "../../../wrapper";
 
-export interface ListRequestParams {
-  /** 页码 */
-  page?: number;
-
-  /** 页大小 */
-  page_size?: number;
-
-  /** 按模型Id,模型id模糊匹配 */
-  q?: string;
-
-  /** 模型Id, 使用,分隔 */
-  objectIds?: string;
-
-  /** system */
-  system?: string;
-
-  /** 分类,xx:精确匹配，xx%:匹配xx或xx.*，xx.%:匹配xx\..* */
-  category?: string;
-
-  /** category是否为空，为true时会忽略参数category */
-  emptyCategory?: boolean;
-
-  /** 忽略模型字段权限校验 */
-  ignoreAttrPermission?: boolean;
-
-  /** system是否为空，为true时会忽略参数system */
-  emptySystem?: boolean;
-
-  /** 是否是抽象模型,true/false,为空则不过滤 */
-  isAbstract?: string;
-
-  /** 按父模型过滤 */
-  parentObjectId?: string;
-}
+export type ListRequestParams = Partial<ModelListObjectRequest> &
+  ListRequestParams_2;
 
 export type ListResponseItem = Partial<ModelCmdbObject>;
 
@@ -55,3 +23,14 @@ export const list = async (
       { ...options, params }
     )
   ).data;
+
+export interface ListRequestParams_2 {
+  /** 页码 */
+  page?: number;
+
+  /** 页大小 */
+  page_size?: number;
+
+  /** 忽略模型字段权限校验 */
+  ignoreAttrPermission?: boolean;
+}

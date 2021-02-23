@@ -1,6 +1,11 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
+export interface ListObjectCategoryRequestParams {
+  /** visible:只返回可见模型，invisible:只返回不可见模型，all:返回所有模型, 默认all */
+  visible?: "visible" | "invisible" | "all";
+}
+
 export interface ListObjectCategoryResponseBody {
   /** 分类信息 */
   list?: ListObjectCategoryResponseBody_list_item[];
@@ -11,12 +16,13 @@ export interface ListObjectCategoryResponseBody {
  * @endpoint GET /object_category
  */
 export const listObjectCategory = async (
+  params: ListObjectCategoryRequestParams,
   options?: HttpOptions
 ): Promise<ListObjectCategoryResponseBody> =>
   (
     await http.get<ResponseBodyWrapper<ListObjectCategoryResponseBody>>(
       "api/gateway/cmdb.cmdb_object.ListObjectCategory/object_category",
-      options
+      { ...options, params }
     )
   ).data;
 

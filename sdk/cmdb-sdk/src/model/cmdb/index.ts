@@ -10,6 +10,7 @@ export * from "./ModelCmdbObject";
 export * from "./ModelNotifyDenied";
 export * from "./ModelWordIndexDenied";
 export * from "./ModelRelationQueryStrategyV2";
+export * from "./ModelListObjectRequest";
 export * from "./ModelStrategyPathNodeBasic";
 export * from "./ModelObjectImport";
 export * from "./ModelImportStatus";

@@ -28,11 +28,11 @@ depend_contracts:
   - name: easyops.api.cmdb.cmdb_object.GetIdMapName
     version: ^1.0.0
   - name: easyops.api.cmdb.cmdb_object.GetObjectAll
-    version: ^1.2.0
+    version: ^1.3.0
   - name: easyops.api.cmdb.cmdb_object.GetObjectAuthorizers
     version: ^1.0.0
   - name: easyops.api.cmdb.cmdb_object.GetObjectBasicAll
-    version: ^1.2.0
+    version: ^1.3.0
   - name: easyops.api.cmdb.cmdb_object.GetObjectRef
     version: ^1.1.0
   - name: easyops.api.cmdb.cmdb_object.GetObjectRelationPath
@@ -52,13 +52,13 @@ depend_contracts:
   - name: easyops.api.cmdb.cmdb_object.ImportV2
     version: ^1.1.0
   - name: easyops.api.cmdb.cmdb_object.List
-    version: ^1.2.0
+    version: ^1.3.0
   - name: easyops.api.cmdb.cmdb_object.ListChildObject
     version: ^1.1.0
   - name: easyops.api.cmdb.cmdb_object.ListObjectBasic
-    version: ^1.0.0
+    version: ^1.1.0
   - name: easyops.api.cmdb.cmdb_object.ListObjectCategory
-    version: ^1.0.0
+    version: ^1.1.0
   - name: easyops.api.cmdb.cmdb_object.ListObjectFields
     version: ^1.0.0
   - name: easyops.api.cmdb.cmdb_object.ListRelationQueryStrategyV2Request

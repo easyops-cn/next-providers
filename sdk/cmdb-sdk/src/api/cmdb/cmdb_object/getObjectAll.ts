@@ -1,34 +1,8 @@
 import { http, HttpOptions } from "@next-core/brick-http";
-import { ModelCmdbObject } from "../../../model/cmdb";
+import { ModelListObjectRequest, ModelCmdbObject } from "../../../model/cmdb";
 
-export interface GetObjectAllRequestParams {
-  /** 按模型Id,模型id模糊匹配 */
-  q?: string;
-
-  /** 模型Id, 使用,分隔 */
-  objectIds?: string;
-
-  /** system */
-  system?: string;
-
-  /** 分类,xx:精确匹配，xx%:匹配xx或xx.*，xx.%:匹配xx\..* */
-  category?: string;
-
-  /** category是否为空，为true时会忽略参数category */
-  emptyCategory?: boolean;
-
-  /** 忽略模型字段权限校验 */
-  ignoreAttrPermission?: boolean;
-
-  /** system是否为空，为true时会忽略参数system */
-  emptySystem?: boolean;
-
-  /** 是否是抽象模型,true/false,为空则不过滤 */
-  isAbstract?: string;
-
-  /** 按父模型过滤 */
-  parentObjectId?: string;
-}
+export type GetObjectAllRequestParams = Partial<ModelListObjectRequest> &
+  GetObjectAllRequestParams_2;
 
 export interface GetObjectAllResponseBody {
   /** 返回码 */
@@ -56,3 +30,8 @@ export const getObjectAll = (
     "api/gateway/cmdb.cmdb_object.GetObjectAll/object_all",
     { ...options, params }
   );
+
+export interface GetObjectAllRequestParams_2 {
+  /** 忽略模型字段权限校验 */
+  ignoreAttrPermission?: boolean;
+}
