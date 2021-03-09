@@ -92,6 +92,7 @@
     "CmdbObjectApi.exportObjectV2",
     "CmdbObjectApi.updateAttributeCategory",
     "CmdbObjectApi.getRelationQueryStrategyV2",
-    "InstancePathSearchApi.pathSearchV3"
+    "InstancePathSearchApi.pathSearchV3",
+    "InstancePathSearchApi.pathSearchExportV4"
   ]
 }
