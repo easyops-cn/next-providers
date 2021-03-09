@@ -97,6 +97,7 @@
     "InstancePathSearchApi.pathSearchExportV3",
     "CmdbObjectApi.createRelationQueryStrategyV2",
     "CmdbObjectApi.updateRelationQueryStrategyV2",
-    "CmdbObjectApi.deleteRelationQueryStrategyV2"
+    "CmdbObjectApi.deleteRelationQueryStrategyV2",
+    "InstancePathSearchApi.pathSearchV4"
   ]
 }
