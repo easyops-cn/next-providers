@@ -17,6 +17,7 @@ export * from "./getObjectRelationPath";
 export * from "./getObjectRelationRelatedKey";
 export * from "./objectSnapshot";
 export * from "./getProperty";
+export * from "./getRelationQueryStrategyV2";
 export * from "./importCheck";
 export * from "./importCheckV2";
 export * from "./importObject";

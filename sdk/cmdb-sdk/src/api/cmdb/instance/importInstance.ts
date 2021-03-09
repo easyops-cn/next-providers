@@ -8,7 +8,7 @@ export interface ImportInstanceRequestBody {
   /** 导入实例数据列表,必须包含keys里面的字段 */
   datas: Record<string, any>[];
 
-  /** 是否导入metadata字段,ctime,creator,仅在实例创建时有效 */
+  /** 是否导入metadata字段,ctime,creator,创建实例为true时将会默认填充mtime,modifier字段 */
   importMetadata?: boolean;
 }
 
