@@ -15,10 +15,14 @@ depend_contracts:
     version: ^1.0.0
   - name: easyops.api.cmdb.cmdb_object.Create
     version: ^1.0.0
+  - name: easyops.api.cmdb.cmdb_object.CreateRelationQueryStrategyV2
+    version: ^2.0.0
   - name: easyops.api.cmdb.cmdb_object.DeleteObject
     version: ^1.1.0
   - name: easyops.api.cmdb.cmdb_object.DeleteProperty
     version: ^1.1.0
+  - name: easyops.api.cmdb.cmdb_object.DeleteRelationQueryStrategyV2
+    version: ^2.0.0
   - name: easyops.api.cmdb.cmdb_object.ExportObject
     version: ^1.1.0
   - name: easyops.api.cmdb.cmdb_object.ExportObjectV2
@@ -73,6 +77,8 @@ depend_contracts:
     version: ^1.0.0
   - name: easyops.api.cmdb.cmdb_object.UpdateProperty
     version: ^1.1.0
+  - name: easyops.api.cmdb.cmdb_object.UpdateRelationQueryStrategyV2
+    version: ^2.0.0
   - name: easyops.api.cmdb.cmdb_object.UpdateV2
     version: ^1.1.0
   - name: easyops.api.cmdb.history.HistoryExportExcel
@@ -208,6 +214,8 @@ depend_contracts:
   - name: easyops.api.cmdb.instance_path_search.PathSearchExportV4
     version: ^1.0.0
   - name: easyops.api.cmdb.instance_path_search.PathSearchV3
+    version: ^1.0.0
+  - name: easyops.api.cmdb.instance_path_search.PathSearchV4
     version: ^1.0.0
   - name: easyops.api.cmdb.instance_relation.Append
     version: ^1.0.0
