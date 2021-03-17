@@ -1,4 +1,14 @@
 depend_contracts:
+  - name: easyops.api.msgsender.config.CreateConfig
+    version: ^1.0.0
+  - name: easyops.api.msgsender.config.DeleteConfig
+    version: ^1.0.0
+  - name: easyops.api.msgsender.config.GetConfig
+    version: ^1.0.0
+  - name: easyops.api.msgsender.config.ListConfig
+    version: ^1.0.0
+  - name: easyops.api.msgsender.config.UpdateConfig
+    version: ^1.0.0
   - name: easyops.api.msgsender.custom_sender.ListSupportInform
     version: ^1.0.0
   - name: easyops.api.msgsender.custom_sender.SendMessage

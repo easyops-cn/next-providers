@@ -4,6 +4,11 @@
     "CustomSenderApi.listSupportInform",
     "CustomSenderApi.sendMessage",
     "CustomSenderApi.sendMessageForAlert",
-    "CustomSenderApi.sendMessageWithAppendix"
+    "CustomSenderApi.sendMessageWithAppendix",
+    "ConfigApi.createConfig",
+    "ConfigApi.deleteConfig",
+    "ConfigApi.getConfig",
+    "ConfigApi.listConfig",
+    "ConfigApi.updateConfig"
   ]
 }

@@ -1,3 +1,4 @@
+export * from "./ModelMessageConfig";
 export * from "./ModelMessageReceiver";
 export * from "./ModelMessageData";
 export * from "./ModelSendMessageRequestData";
