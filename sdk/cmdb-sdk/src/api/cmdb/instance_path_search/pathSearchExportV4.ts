@@ -7,6 +7,9 @@ export interface PathSearchExportV4RequestBody {
 
   /** 以alias_id表示的字段排序 {"APP.name": -1} */
   alias_id_sort?: Record<string, any>;
+
+  /** 是否导出所有字段 */
+  exportAllFields?: boolean;
 }
 
 /**

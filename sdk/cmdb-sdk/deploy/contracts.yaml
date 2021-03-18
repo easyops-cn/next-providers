@@ -82,7 +82,7 @@ depend_contracts:
   - name: easyops.api.cmdb.cmdb_object.UpdateV2
     version: ^1.1.0
   - name: easyops.api.cmdb.history.HistoryExportExcel
-    version: ^1.0.0
+    version: ^1.1.0
   - name: easyops.api.cmdb.history.RollbackInstance
     version: ^1.0.0
   - name: easyops.api.cmdb.index.CreateIndex
