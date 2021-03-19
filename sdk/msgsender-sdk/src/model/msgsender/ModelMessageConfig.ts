@@ -23,4 +23,7 @@ export interface ModelMessageConfig {
 
   /** 插件服务端相关配置 */
   serverConfig: Record<string, any>;
+
+  /** 自定义类型脚本内容 */
+  scriptContent: string;
 }
