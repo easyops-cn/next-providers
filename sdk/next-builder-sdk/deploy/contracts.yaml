@@ -39,6 +39,8 @@ depend_contracts:
     version: ^1.0.0
   - name: easyops.api.next_builder.model.GetModel
     version: ^1.0.0
+  - name: easyops.api.next_builder.model.ModelCenterGenerateModelsDefinition
+    version: ^1.0.0
   - name: easyops.api.next_builder.permission.ExportPermissions
     version: ^1.0.0
   - name: easyops.api.next_builder.permission.GeneratePermissionsDefinition

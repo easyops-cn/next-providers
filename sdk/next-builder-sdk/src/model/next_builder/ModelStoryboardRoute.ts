@@ -32,6 +32,9 @@ export interface ModelStoryboardRoute {
   /** Context */
   context: any;
 
+  /** PermissionsPreCheck */
+  permissionsPreCheck: string;
+
   /** project */
   project: Partial<ModelMicroAppProject>;
 

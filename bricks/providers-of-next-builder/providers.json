@@ -31,6 +31,7 @@
     "DocumentApi.deleteDocument",
     "BuildApi.getPackageReleaseListByInstanceId",
     "DocumentApi.moveDocument",
-    "DocumentApi.sortDocuments"
+    "DocumentApi.sortDocuments",
+    "ModelApi.modelCenterGenerateModelsDefinition"
   ]
 }

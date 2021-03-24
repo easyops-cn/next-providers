@@ -26,4 +26,7 @@ export interface ModelObjectView {
 
   /** 关系分组顺序 */
   relation_group_order: string[];
+
+  /** 关系分组里关系的顺序 */
+  relation_order: string[];
 }

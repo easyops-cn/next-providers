@@ -35,4 +35,7 @@ export interface ModelStoryboardBrick {
 
   /** Exports */
   exports: any;
+
+  /** PermissionsPreCheck */
+  permissionsPreCheck: string;
 }
