@@ -3,8 +3,8 @@ export interface ModelMessageConfig {
   /** 实例id */
   instanceId: string;
 
-  /** 通知类型, 分别对应邮箱，企业微信，钉钉，自定义类型 */
-  msgType: "email" | "wework" | "dingding" | "custom";
+  /** 通知类型, 分别对应邮箱，企业微信，钉钉，钉钉机器人，自定义类型 */
+  msgType: "email" | "wework" | "dingding" | "dingding_robot" | "custom";
 
   /** 名称 */
   name: string;
