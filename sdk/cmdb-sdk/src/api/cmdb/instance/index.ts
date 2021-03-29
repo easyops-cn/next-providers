@@ -27,6 +27,7 @@ export * from "./importInstance";
 export * from "./importInstanceWithCsv";
 export * from "./importInstanceWithExcel";
 export * from "./importInstanceWithJson";
+export * from "./instancePreviousSnapshot";
 export * from "./instanceRelationsCount";
 export * from "./instanceSnapshot";
 export * from "./listInstance";

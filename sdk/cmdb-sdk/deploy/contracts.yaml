@@ -153,6 +153,8 @@ depend_contracts:
     version: ^1.0.0
   - name: easyops.api.cmdb.instance.ImportInstanceWithJson
     version: ^1.0.0
+  - name: easyops.api.cmdb.instance.InstancePreviousSnapshot
+    version: ^1.0.0
   - name: easyops.api.cmdb.instance.InstanceRelationsCount
     version: ^1.0.0
   - name: easyops.api.cmdb.instance.InstanceSnapshot
