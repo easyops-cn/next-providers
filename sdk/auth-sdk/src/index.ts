@@ -20,6 +20,10 @@ export interface LoginResponseBody {
   location?: string;
 }
 
+export interface SSOLoginResponseBody {
+  redirectUrl: string;
+}
+
 export const login = async (
   data: LoginRequestBody,
   options?: HttpOptions
@@ -32,8 +36,38 @@ export const login = async (
     )
   ).data;
 
+export const ssoLogin = async <T = Record<string, any>>(
+  protocol: string | number,
+  options?: HttpOptions
+): Promise<SSOLoginResponseBody> =>
+  (
+    await http.get<ResponseBodyWrapper<SSOLoginResponseBody>>(`api/v1/sso/login/${protocol}`, {
+      ...options,
+    })
+  ).data;
+
+export const ssoAuthorize = async <T = Record<string, any>>(
+  protocol: string | number,
+  params?: { query?: Record<string, string> },
+  options?: HttpOptions
+): Promise<T> =>
+  (
+    await http.get<ResponseBodyWrapper<T>>(`api/v1/sso/authorization/${protocol}`, {
+      ...options,
+      params,
+    })
+  ).data;
+
 export const logout = (options?: HttpOptions): Promise<void> =>
   http.post("api/auth/logout", options);
+
+export const ssoLogout = async <T = Record<string, any>>(
+  protocol: string | number,
+  options?: HttpOptions,
+): Promise<T> =>
+  (
+    await http.post<ResponseBodyWrapper<T>>(`api/v1/sso/logout/${protocol}`, options)
+  ).data;
 
 export const checkLogin = async (
   options?: HttpOptions
