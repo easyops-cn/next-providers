@@ -99,6 +99,7 @@
     "CmdbObjectApi.updateRelationQueryStrategyV2",
     "CmdbObjectApi.deleteRelationQueryStrategyV2",
     "InstancePathSearchApi.pathSearchV4",
-    "InstanceApi.instanceRelationsCount"
+    "InstanceApi.instanceRelationsCount",
+    "InstanceApi.instanceSnapshot"
   ]
 }
