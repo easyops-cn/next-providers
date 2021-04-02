@@ -33,6 +33,10 @@ depend_contracts:
     version: ^1.1.0
   - name: easyops.api.next_builder.document.SortDocuments
     version: ^1.1.0
+  - name: easyops.api.next_builder.model.CheckModel
+    version: ^1.0.0
+  - name: easyops.api.next_builder.model.CheckView
+    version: ^1.0.0
   - name: easyops.api.next_builder.model.ExportModels
     version: ^1.0.0
   - name: easyops.api.next_builder.model.GenerateModelsDefinition

@@ -32,6 +32,8 @@
     "BuildApi.getPackageReleaseListByInstanceId",
     "DocumentApi.moveDocument",
     "DocumentApi.sortDocuments",
-    "ModelApi.modelCenterGenerateModelsDefinition"
+    "ModelApi.modelCenterGenerateModelsDefinition",
+    "ModelApi.checkModel",
+    "ModelApi.checkView"
   ]
 }
