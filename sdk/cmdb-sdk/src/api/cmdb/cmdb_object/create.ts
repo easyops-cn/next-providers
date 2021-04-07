@@ -27,6 +27,9 @@ export interface CreateRequestBody {
   /** 所属父模型（废弃） */
   parentObjectId?: string;
 
+  /** 所属父模型列表 */
+  parentObjectIds?: string[];
+
   /** 当为 true 时，将会忽略生成变更记录 */
   notifyDenied?: boolean;
 
