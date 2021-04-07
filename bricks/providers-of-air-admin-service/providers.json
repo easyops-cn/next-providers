@@ -1,0 +1,12 @@
+{
+  "sdk": "@next-sdk/air-admin-service-sdk",
+  "providers": [
+    "CustomerApi.createOrgForCustomerBatch",
+    "CustomerApi.getExpiration",
+    "CustomerApi.saveApplyInfo",
+    "CustomerApi.sendApprovedEmail",
+    "CustomerApi.sendUpdatedEmail",
+    "CustomerApi.updateLicenseBatch",
+    "CustomerApi.validateParameter"
+  ]
+}

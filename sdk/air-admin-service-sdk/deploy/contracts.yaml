@@ -1,0 +1,15 @@
+depend_contracts:
+  - name: easyops.api.air_admin_service.customer.CreateOrgForCustomerBatch
+    version: ^1.0.0
+  - name: easyops.api.air_admin_service.customer.GetExpiration
+    version: ^1.0.0
+  - name: easyops.api.air_admin_service.customer.SaveApplyInfo
+    version: ^1.0.0
+  - name: easyops.api.air_admin_service.customer.SendApprovedEmail
+    version: ^1.0.0
+  - name: easyops.api.air_admin_service.customer.SendUpdatedEmail
+    version: ^1.0.0
+  - name: easyops.api.air_admin_service.customer.UpdateLicenseBatch
+    version: ^1.0.0
+  - name: easyops.api.air_admin_service.customer.ValidateParameter
+    version: ^1.0.0
