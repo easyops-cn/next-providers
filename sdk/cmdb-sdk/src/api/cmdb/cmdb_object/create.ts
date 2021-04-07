@@ -24,7 +24,7 @@ export interface CreateRequestBody {
   /** 是否是抽象模型(父模型) */
   isAbstract?: boolean;
 
-  /** 所属父模型 */
+  /** 所属父模型（废弃） */
   parentObjectId?: string;
 
   /** 当为 true 时，将会忽略生成变更记录 */

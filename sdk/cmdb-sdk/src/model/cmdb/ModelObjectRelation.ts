@@ -71,4 +71,10 @@ export interface ModelObjectRelation {
 
   /** 是否继承自父模型 */
   isInherit: boolean;
+
+  /** 关系左端的父模型ID */
+  leftInheritObjectId: string;
+
+  /** 关系右端的父模型ID */
+  rightInheritObjectId: string;
 }

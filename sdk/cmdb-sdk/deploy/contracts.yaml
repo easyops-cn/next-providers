@@ -197,6 +197,8 @@ depend_contracts:
     version: ^1.0.0
   - name: easyops.api.cmdb.instance_archive.ArchiveInstance
     version: ^1.0.0
+  - name: easyops.api.cmdb.instance_archive.BatchArchiveInstance
+    version: ^1.0.0
   - name: easyops.api.cmdb.instance_archive.BatchDeleteArchiveInstance
     version: ^1.0.0
   - name: easyops.api.cmdb.instance_archive.DeleteArchiveInstance

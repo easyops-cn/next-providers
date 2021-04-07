@@ -36,6 +36,9 @@ export interface UpdateV2RequestBody {
 
   /** 模型所属小产品，有值则会在界面隐藏该模型 */
   system?: string;
+
+  /** 所属父模型列表 */
+  parentObjectIds?: string[];
 }
 
 export type UpdateV2ResponseBody = Partial<ModelCmdbObject>;
