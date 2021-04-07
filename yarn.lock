@@ -1970,10 +1970,10 @@
   dependencies:
     "@babel/runtime" "^7.13.9"
 
-"@next-core/brick-container@^2.18.18":
-  version "2.18.18"
-  resolved "https://registry.npmjs.org/@next-core/brick-container/-/brick-container-2.18.18.tgz#597bca9701da633f5b7b986dee22262c337018b9"
-  integrity sha1-WXvKlwHaYz9be5ht7iImLDNwGLk=
+"@next-core/brick-container@^2.22.1":
+  version "2.22.1"
+  resolved "https://registry.npmjs.org/@next-core/brick-container/-/brick-container-2.22.1.tgz#eee1676a7810aa3ffa8a78b6bd5e2428e9b64c4c"
+  integrity sha512-K7Dk+OjzeZpmhINjtzPhmDYx01YI+MUr8OHKv5Fdxfz8KMaU0yL7MN5Yb3+Xe8cqVb2TJXWlnPOquxTUGRfc3w==
   dependencies:
     "@next-core/repo-config" "^0.2.1"
     body-parser "^1.19.0"
@@ -1987,19 +1987,19 @@
     meow "^9.0.0"
     ws "^7.4.3"
 
-"@next-core/brick-dll@^2.12.6":
-  version "2.12.6"
-  resolved "https://registry.npmjs.org/@next-core/brick-dll/-/brick-dll-2.12.6.tgz#9c1f0b38d8bec6678d3b43514aab1e30d3045b21"
-  integrity sha1-nB8LONi+xmeNO0NRSqseMNMEWyE=
+"@next-core/brick-dll@^2.12.19":
+  version "2.12.19"
+  resolved "https://registry.npmjs.org/@next-core/brick-dll/-/brick-dll-2.12.19.tgz#248394c76bf86730d04cf45e6c6f3a61f8cc7036"
+  integrity sha512-YGxHsehvmzv/+A8jUYYsYRLvmpqspleKndl3vuDV2T+5mW58HBDHi3g5sFmEsER8pb1FU4UytkSk9U7IpFQIww==
   dependencies:
     "@ant-design/compatible" "^1.0.8"
     "@ant-design/icons" "^4.5.0"
     "@fortawesome/react-fontawesome" "^0.1.14"
     "@next-core/babel-runtime-helpers" "^1.0.8"
     "@next-core/brick-http" "^2.2.7"
-    "@next-core/brick-icons" "^2.8.6"
-    "@next-core/brick-kit" "^2.35.3"
-    "@next-core/brick-utils" "^2.13.2"
+    "@next-core/brick-icons" "^2.10.1"
+    "@next-core/brick-kit" "^2.41.0"
+    "@next-core/brick-utils" "^2.14.3"
     "@next-core/easyops-analytics" "^0.1.8"
     "@next-core/fontawesome-library" "^1.1.13"
     "@next-core/illustrations" "^0.3.5"
@@ -2019,17 +2019,17 @@
   resolved "https://registry.npmjs.org/@next-core/brick-http/-/brick-http-2.2.7.tgz#3a036b476a1ac6a8c4b0b19a0b19815e2716ecb9"
   integrity sha1-OgNrR2oaxqjEsLGaCxmBXicW7Lk=
 
-"@next-core/brick-icons@^2.8.6":
-  version "2.8.6"
-  resolved "https://registry.npmjs.org/@next-core/brick-icons/-/brick-icons-2.8.6.tgz#ec064df1c7c6a9443580aa1eaf8e433c89dca090"
-  integrity sha1-7AZN8cfGqUQ1gKoer45DPIncoJA=
+"@next-core/brick-icons@^2.10.1":
+  version "2.10.1"
+  resolved "https://registry.npmjs.org/@next-core/brick-icons/-/brick-icons-2.10.1.tgz#ef5542c38958719ed2a223cb5742640d440de81b"
+  integrity sha512-c+Oxzbq0nULjO3gwwgf718Ne35CQcSYf1ccv8GrJCL549YVW8Z7JWWHHk02qstAv6TeTHUxUu5XEOsICJqbpFw==
 
-"@next-core/brick-kit@^2.35.3":
-  version "2.35.3"
-  resolved "https://registry.npmjs.org/@next-core/brick-kit/-/brick-kit-2.35.3.tgz#0c1db3bb4be5d617a2b38f40228052e78980648d"
-  integrity sha1-DB2zu0vl1heis49AIoBS54mAZI0=
+"@next-core/brick-kit@^2.41.0":
+  version "2.41.0"
+  resolved "https://registry.npmjs.org/@next-core/brick-kit/-/brick-kit-2.41.0.tgz#716d69d9b19e4f74a59f203cf4826fe4538d0d38"
+  integrity sha512-ddKX4oxyI2uEfwDEGNDmNyuTxqt2HbjWFQ4ybtrmZu9UXA8JXx37nx12WdWPlVzL9U0RkERXd0F8v+Ykn3HZ0g==
   dependencies:
-    "@next-core/brick-types" "^2.19.1"
+    "@next-core/brick-types" "^2.22.0"
     "@next-sdk/auth-sdk" "^1.0.0"
     "@next-sdk/cmdb-sdk" "^1.0.0"
     "@next-sdk/micro-app-sdk" "^1.0.0"
@@ -2054,19 +2054,19 @@
     request "^2.88.2"
     request-promise-native "^1.0.9"
 
-"@next-core/brick-types@^2.19.1":
-  version "2.19.1"
-  resolved "https://registry.npmjs.org/@next-core/brick-types/-/brick-types-2.19.1.tgz#d80c3b8f9d880b78f93ebf606009262f42c8c895"
-  integrity sha1-2Aw7j52IC3j5Pr9gYAkmL0LIyJU=
+"@next-core/brick-types@^2.22.0":
+  version "2.22.0"
+  resolved "https://registry.npmjs.org/@next-core/brick-types/-/brick-types-2.22.0.tgz#1001e3affd42233a855e4150849081d20975833b"
+  integrity sha512-xTGVpc1US2Wwnsf8Gz6TSePJT8ezJAJHdmDjU5VggbD47HSENXUThes1E43fDCMBwRU1eboZ/eucbiYZiu4a7A==
 
-"@next-core/brick-utils@^2.13.2":
-  version "2.13.2"
-  resolved "https://registry.npmjs.org/@next-core/brick-utils/-/brick-utils-2.13.2.tgz#fc9df711bed4b5dfccc6ebfa4fc375c82a2defec"
-  integrity sha1-/J33Eb7Utd/Mxuv6T8N1yCot7+w=
+"@next-core/brick-utils@^2.14.3":
+  version "2.14.3"
+  resolved "https://registry.npmjs.org/@next-core/brick-utils/-/brick-utils-2.14.3.tgz#62a24ba4a7f3e7355b302dc8fe51811b15019e6c"
+  integrity sha512-4QfD1uxdpEfHZ/D9Txoc+XCij5bvKZvUYRI2DRpFGLwL+rp5R5U5j2Z34p9WjLcey2txiREHFrq+1vgcI5EubQ==
   dependencies:
     "@babel/parser" "^7.13.9"
     "@easyops-cn/brick-next-pipes" "^0.3.10"
-    "@next-core/brick-types" "^2.19.1"
+    "@next-core/brick-types" "^2.22.0"
     file-saver "^2.0.5"
     path-to-regexp "^6.2.0"
 
@@ -2075,13 +2075,14 @@
   resolved "https://registry.npmjs.org/@next-core/browserslist-config-next/-/browserslist-config-next-0.1.3.tgz#7b27b997ceae457d3c3f3b1c909407c16f86df81"
   integrity sha1-eye5l86uRX08PzsckJQHwW+G34E=
 
-"@next-core/build-config-factory@^2.4.8":
-  version "2.4.8"
-  resolved "https://registry.npmjs.org/@next-core/build-config-factory/-/build-config-factory-2.4.8.tgz#a278ab75d81316cf5bd81d224e1b375a0083d1f2"
-  integrity sha1-onirddgTFs9b2B0iThs3WgCD0fI=
+"@next-core/build-config-factory@^2.5.7":
+  version "2.5.7"
+  resolved "https://registry.npmjs.org/@next-core/build-config-factory/-/build-config-factory-2.5.7.tgz#e247d99fe516681fddb9e4e7167804c0a14b573d"
+  integrity sha512-+Hh5J2tjPbVFNpEfkvhh1OX/LVsGxEMnxw9E4XujLZiImc7QR7XSEeSofWLh22mdH1dWZIqrkapS/WnZzctzLQ==
   dependencies:
-    "@next-core/brick-utils" "^2.13.2"
+    "@next-core/brick-utils" "^2.14.3"
     "@next-core/repo-config" "^0.2.1"
+    "@next-core/typedoc-plugin-filter-inherit" "^1.0.0"
     change-case "^4.1.2"
     chokidar "^3.5.1"
     fs-extra "^9.1.0"
@@ -2096,33 +2097,33 @@
     typedoc "^0.19.2"
     typedoc-plugin-no-inherit "^1.2.2"
 
-"@next-core/custom-antd-styles@^1.6.5":
-  version "1.6.5"
-  resolved "https://registry.npmjs.org/@next-core/custom-antd-styles/-/custom-antd-styles-1.6.5.tgz#6d78ab51d288f7dd7efd6d097e7c7f3358b498bb"
-  integrity sha1-bXirUdKI991+/W0Jfnx/M1i0mLs=
+"@next-core/custom-antd-styles@^1.8.1":
+  version "1.8.1"
+  resolved "https://registry.npmjs.org/@next-core/custom-antd-styles/-/custom-antd-styles-1.8.1.tgz#87761f97f6dbb18c95267b2d5f1c4418dd0050ea"
+  integrity sha512-Ojjigr1F2xQ3KpuxnQrOBsFM6D+9TRCtiqT/ZdoawRQfoAKXQ9XQTmBvZbOiYDQKztHcA2ovy7f5MUf51xWh9w==
 
-"@next-core/dev-dependencies@^1.2.59":
-  version "1.2.59"
-  resolved "https://registry.npmjs.org/@next-core/dev-dependencies/-/dev-dependencies-1.2.59.tgz#5994dce30d7cfb8176c88a624c97159786f58a8a"
-  integrity sha1-WZTc4w18+4F2yIpiTJcVl4b1ioo=
+"@next-core/dev-dependencies@^1.2.88":
+  version "1.2.88"
+  resolved "https://registry.npmjs.org/@next-core/dev-dependencies/-/dev-dependencies-1.2.88.tgz#60dd41575220f0ba8695a1944b2a64a6e42bb519"
+  integrity sha512-tfU02IvLzI9+LTweHfiqGandEY4AZETNCzf6YeK2i2CM3Y8ltgjXO23ZC9l+QayxNK3RBCi4FRxQxcEUaTcbEw==
   dependencies:
     "@babel/core" "^7.13.8"
     "@next-core/babel-preset-next" "^0.6.23"
     "@next-core/babel-preset-prismjs" "^1.0.5"
-    "@next-core/brick-container" "^2.18.18"
-    "@next-core/brick-dll" "^2.12.6"
+    "@next-core/brick-container" "^2.22.1"
+    "@next-core/brick-dll" "^2.12.19"
     "@next-core/brick-scripts" "^2.3.10"
     "@next-core/browserslist-config-next" "^0.1.3"
-    "@next-core/build-config-factory" "^2.4.8"
-    "@next-core/custom-antd-styles" "^1.6.5"
+    "@next-core/build-config-factory" "^2.5.7"
+    "@next-core/custom-antd-styles" "^1.8.1"
     "@next-core/eslint-config-next" "^1.0.16"
     "@next-core/rollup-config-factory" "^2.0.16"
     "@next-core/webpack-config-factory" "^2.6.0"
-    "@next-dll/ace" "^2.0.102"
+    "@next-dll/ace" "^2.0.115"
     "@next-dll/d3" "^2.0.20"
     "@next-dll/echarts" "^2.0.21"
-    "@next-dll/editor-bricks-helper" "^0.7.0"
-    "@next-dll/react-dnd" "^0.1.40"
+    "@next-dll/editor-bricks-helper" "^0.9.8"
+    "@next-dll/react-dnd" "^0.1.53"
     "@testing-library/jest-dom" "^5.11.9"
     "@testing-library/react" "^11.2.5"
     "@typescript-eslint/eslint-plugin" "^4.16.1"
@@ -2155,12 +2156,12 @@
   resolved "https://registry.npmjs.org/@next-core/easyops-analytics/-/easyops-analytics-0.1.8.tgz#c8cd83d184fa0cc244b3d46c3658af5e3ee194aa"
   integrity sha1-yM2D0YT6DMJEs9RsNlivXj7hlKo=
 
-"@next-core/editor-bricks-helper@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.npmjs.org/@next-core/editor-bricks-helper/-/editor-bricks-helper-0.13.0.tgz#0e1a59ff9973435b5d3aee886de32467494c77fe"
-  integrity sha1-DhpZ/5lzQ1tdOu6IbeMkZ0lMd/4=
+"@next-core/editor-bricks-helper@^0.17.4":
+  version "0.17.4"
+  resolved "https://registry.npmjs.org/@next-core/editor-bricks-helper/-/editor-bricks-helper-0.17.4.tgz#bcad4ab20f0268c481445aa5738ae69e71d0c1b5"
+  integrity sha512-tC4NCWn/CySRVu+Wtlc28zKQUoxZcuG9Yu8E124jzNieOp08jOvKAXYneR5Z9yLYBKtDhSkEcKRr9cwrn4rSsQ==
   dependencies:
-    "@next-core/brick-types" "^2.19.1"
+    "@next-core/brick-types" "^2.22.0"
     "@ungap/event-target" "^0.2.2"
     classnames "^2.2.6"
 
@@ -2191,10 +2192,10 @@
   resolved "https://registry.npmjs.org/@next-core/less-plugin-css-variables/-/less-plugin-css-variables-0.1.5.tgz#0d4d247b23f06f5e304b3b8c1f7230c7c0094516"
   integrity sha1-DU0keyPwb14wSzuMH3Iwx8AJRRY=
 
-"@next-core/public-scoped-sdk@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.npmjs.org/@next-core/public-scoped-sdk/-/public-scoped-sdk-0.2.2.tgz#ff18d347fed5ff5b3ab6069a64e8175c1850d1c3"
-  integrity sha1-/xjTR/7V/1s6tgaaZOgXXBhQ0cM=
+"@next-core/public-scoped-sdk@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.npmjs.org/@next-core/public-scoped-sdk/-/public-scoped-sdk-0.2.3.tgz#47724a1125eb3a789aed703c02960e95c91e20d1"
+  integrity sha512-/BJ8DkqsfIE5eGGY5Z88g0WM8+Y2E/Zhs1pVJLGP+RQSZdr60wvHJ+n+7HGIwhtAIxnIOeOYxzLi8O2E2lVoxQ==
 
 "@next-core/repo-config@^0.2.1":
   version "0.2.1"
@@ -2215,12 +2216,12 @@
     rollup-plugin-postcss "^3.1.8"
     string-hash "^1.1.3"
 
-"@next-core/sdk-scripts@^2.4.6":
-  version "2.4.6"
-  resolved "https://registry.npmjs.org/@next-core/sdk-scripts/-/sdk-scripts-2.4.6.tgz#b26180d8814f5a96753499f71d2e202ce543d034"
-  integrity sha1-smGA2IFPWpZ1NJn3HS4gLOVD0DQ=
+"@next-core/sdk-scripts@^2.4.7":
+  version "2.4.7"
+  resolved "https://registry.npmjs.org/@next-core/sdk-scripts/-/sdk-scripts-2.4.7.tgz#6c2ff3077c11d4f93abc78c669e9fa2e67e329a5"
+  integrity sha512-VGX2V9wLbUtPAvIgK+/JU9tWzkvYUXzKj4zgUCNcQTyN6vhOvCz545bT/qoex5dXxxg0cL3fTOUk9gvoB1nfYg==
   dependencies:
-    "@next-core/public-scoped-sdk" "^0.2.2"
+    "@next-core/public-scoped-sdk" "^0.2.3"
     "@next-core/repo-config" "^0.2.1"
     chalk "^4.1.0"
     change-case "^4.1.2"
@@ -2231,6 +2232,11 @@
     meow "^9.0.0"
     prettier "^2.2.1"
     semver "^7.3.4"
+
+"@next-core/typedoc-plugin-filter-inherit@^1.0.0":
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/@next-core/typedoc-plugin-filter-inherit/-/typedoc-plugin-filter-inherit-1.1.0.tgz#b45b58a9d979670cc0ff31bac8852a7ee4b150f6"
+  integrity sha512-AJGYiqn+Fkz9Esabs37kWbFG858GNOipRiYFQjTYWyqPa1dwHGJmkMTdvlXFsGWWsjhlpTBeLXBszPwCGWjj3g==
 
 "@next-core/webpack-config-factory@^2.6.0":
   version "2.6.0"
@@ -2264,10 +2270,10 @@
     webpack-cli "^4.5.0"
     webpack-merge "^5.7.3"
 
-"@next-dll/ace@^2.0.102":
-  version "2.0.102"
-  resolved "https://registry.npmjs.org/@next-dll/ace/-/ace-2.0.102.tgz#00098bf106085e11678c9dab7b38657ee1fc628c"
-  integrity sha1-AAmL8QYIXhFnjJ2rezhlfuH8Yow=
+"@next-dll/ace@^2.0.115":
+  version "2.0.115"
+  resolved "https://registry.npmjs.org/@next-dll/ace/-/ace-2.0.115.tgz#502cae244b68395484b45d4cb998a20fbf73eeb4"
+  integrity sha512-YwgNNyGZoY7nc2AbvzvLECx2yrD6trOEmHHjtP0O0OqBe+LCScJD1L9HQUBpHolR/MubWHRStjltPXKwxF72Ow==
   dependencies:
     react-ace "^7.0.5"
 
@@ -2290,17 +2296,17 @@
   dependencies:
     echarts "^4.9.0"
 
-"@next-dll/editor-bricks-helper@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.npmjs.org/@next-dll/editor-bricks-helper/-/editor-bricks-helper-0.7.0.tgz#0543e178157cf6ea4fa3945f1e95cec2af6c4c6e"
-  integrity sha1-BUPheBV89upPo5RfHpXOwq9sTG4=
+"@next-dll/editor-bricks-helper@^0.9.8":
+  version "0.9.8"
+  resolved "https://registry.npmjs.org/@next-dll/editor-bricks-helper/-/editor-bricks-helper-0.9.8.tgz#97a5ae4bfa31c25978c012ca05d1e9e2c09f569b"
+  integrity sha512-eR3v6B8DoqTmWn/cih/PO2zhAPMpSB/7ProCxCH1OLNVju8w/h1aUSkGFPv1qXDt9J3p4L112IrC+BUjve5V5g==
   dependencies:
-    "@next-core/editor-bricks-helper" "^0.13.0"
+    "@next-core/editor-bricks-helper" "^0.17.4"
 
-"@next-dll/react-dnd@^0.1.40":
-  version "0.1.40"
-  resolved "https://registry.npmjs.org/@next-dll/react-dnd/-/react-dnd-0.1.40.tgz#7b35df4eea60f5dcc01731a0cd44dbd12a382909"
-  integrity sha1-ezXfTupg9dzAFzGgzUTb0So4KQk=
+"@next-dll/react-dnd@^0.1.53":
+  version "0.1.53"
+  resolved "https://registry.npmjs.org/@next-dll/react-dnd/-/react-dnd-0.1.53.tgz#4d0509d300181a7ba4e147f1ed27f79eabd49732"
+  integrity sha512-zPpOAn+2BsBc15QedUWA/ofWv6Zp0BXrk0D+JEqgbkV+xMkOw9nkcstGF7IjH25Lt6gRO01bhWZKaSVnzn+V2Q==
   dependencies:
     dnd-core "^11.1.3"
     react-dnd "^11.1.3"
