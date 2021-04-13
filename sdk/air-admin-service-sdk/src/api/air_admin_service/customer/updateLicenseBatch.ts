@@ -2,13 +2,13 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface UpdateLicenseBatchRequestBody {
-  /** 需要续期的EASYOPS_AIR_CUSTOMER_ORG的实例id列表 */
-  instanceIds: string[];
+  /** 需要续期的orgId列表 */
+  orgIds: number[];
 }
 
 export interface UpdateLicenseBatchResponseBody {
-  /** 续期失败的instanceId列表 */
-  failedInstanceIds: string[];
+  /** 续期失败的orgId列表 */
+  failedOrgIds: number[];
 }
 
 /**
