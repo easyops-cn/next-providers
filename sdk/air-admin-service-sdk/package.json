@@ -1,6 +1,6 @@
 {
   "name": "@next-sdk/air-admin-service-sdk",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "SDK for Air Admin Service",
   "homepage": "https://github.com/easyops-cn/next-providers/tree/master/sdk/air-admin-service-sdk",
   "license": "GPL-3.0",
