@@ -35,7 +35,7 @@ export const searchMicroAppList = async (
   data: SearchMicroAppListRequestBody,
   options?: HttpOptions
 ): Promise<SearchMicroAppListResponseBody> =>
-  (
+  /**! @contract easyops.api.micro_app.object_micro_app.SearchMicroAppList */ (
     await http.post<ResponseBodyWrapper<SearchMicroAppListResponseBody>>(
       "api/gateway/micro_app.object_micro_app.SearchMicroAppList/api/micro_app/v1/object_micro_app/search",
       data,

@@ -25,7 +25,7 @@ export const getIdMapName = async (
   params: GetIdMapNameRequestParams,
   options?: HttpOptions
 ): Promise<GetIdMapNameResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.cmdb_object.GetIdMapName */ (
     await http.get<ResponseBodyWrapper<GetIdMapNameResponseBody>>(
       "api/gateway/cmdb.cmdb_object.GetIdMapName/object_id_map_name",
       { ...options, params }

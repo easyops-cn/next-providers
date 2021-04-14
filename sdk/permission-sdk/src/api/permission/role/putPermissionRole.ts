@@ -20,7 +20,7 @@ export const putPermissionRole = async (
   data: PutPermissionRoleRequestBody,
   options?: HttpOptions
 ): Promise<PutPermissionRoleResponseBody> =>
-  (
+  /**! @contract easyops.api.permission.role.PutPermissionRole */ (
     await http.put<ResponseBodyWrapper<PutPermissionRoleResponseBody>>(
       `api/gateway/permission.role.PutPermissionRole/api/v1/permission_role/rename_role/${id}`,
       data,

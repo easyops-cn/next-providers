@@ -36,7 +36,7 @@ export const update = async (
   data: UpdateRequestBody,
   options?: HttpOptions
 ): Promise<UpdateResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.object_relation.Update */ (
     await http.put<ResponseBodyWrapper<UpdateResponseBody>>(
       `api/gateway/cmdb.object_relation.Update/object_relation/${relation_id}`,
       data,

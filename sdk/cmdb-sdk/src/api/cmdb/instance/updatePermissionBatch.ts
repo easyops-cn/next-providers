@@ -37,7 +37,7 @@ export const updatePermissionBatch = async (
   data: UpdatePermissionBatchRequestBody,
   options?: HttpOptions
 ): Promise<UpdatePermissionBatchResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.instance.UpdatePermissionBatch */ (
     await http.put<ResponseBodyWrapper<UpdatePermissionBatchResponseBody>>(
       `api/gateway/cmdb.instance.UpdatePermissionBatch/permission/${objectId}/instances/_batch`,
       data,

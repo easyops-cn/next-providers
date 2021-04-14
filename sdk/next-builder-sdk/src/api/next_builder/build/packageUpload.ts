@@ -28,7 +28,7 @@ export const packageUpload = (
   data: PackageUploadRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.next_builder.build.PackageUpload */ http.post<void>(
     "api/gateway/next_builder.build.PackageUpload/api/v1/next-builder/package-upload",
     data,
     options

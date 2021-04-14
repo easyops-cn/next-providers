@@ -16,7 +16,7 @@ export const getInstalledMicroApp = async (
   app_id: string | number,
   options?: HttpOptions
 ): Promise<GetInstalledMicroAppResponseBody> =>
-  (
+  /**! @contract easyops.api.micro_app.installed_micro_app.GetInstalledMicroApp */ (
     await http.get<ResponseBodyWrapper<GetInstalledMicroAppResponseBody>>(
       `api/gateway/micro_app.installed_micro_app.GetInstalledMicroApp/api/micro_app/v1/installed_micro_app/${app_id}`,
       options

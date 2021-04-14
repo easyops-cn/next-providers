@@ -12,7 +12,7 @@ export type GetCurrentOrgResponseBody = Partial<ModelOrgInfo> &
 export const getCurrentOrg = async (
   options?: HttpOptions
 ): Promise<GetCurrentOrgResponseBody> =>
-  (
+  /**! @contract easyops.api.user_service.organization.GetCurrentOrg */ (
     await http.get<ResponseBodyWrapper<GetCurrentOrgResponseBody>>(
       "api/gateway/user_service.organization.GetCurrentOrg/api/v1/org/current",
       options

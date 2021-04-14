@@ -28,7 +28,7 @@ export const userValidate = async (
   data: UserValidateRequestBody,
   options?: HttpOptions
 ): Promise<UserValidateResponseBody> =>
-  (
+  /**! @contract easyops.api.user_service.auth.UserValidate */ (
     await http.post<ResponseBodyWrapper<UserValidateResponseBody>>(
       "api/gateway/user_service.auth.UserValidate/api/v1/users/validate",
       data,

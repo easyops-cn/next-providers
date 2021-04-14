@@ -21,7 +21,7 @@ export const getObjectsStat = async (
   data: GetObjectsStatRequestBody,
   options?: HttpOptions
 ): Promise<GetObjectsStatResponseBody> =>
-  (
+  /**! @contract easyops.api.object_store.object_store.GetObjectsStat */ (
     await http.post<ResponseBodyWrapper<GetObjectsStatResponseBody>>(
       `api/gateway/object_store.object_store.GetObjectsStat/api/v1/objectStore/bucket/${bucketName}/objectStat`,
       data,

@@ -33,7 +33,7 @@ export const createAutoRecoveryEvent = (
   data: CreateAutoRecoveryEventRequestBody,
   options?: HttpOptions
 ): Promise<CreateAutoRecoveryEventResponseBody> =>
-  http.post<CreateAutoRecoveryEventResponseBody>(
+  /**! @contract easyops.api.monitor.auto_recovery.CreateAutoRecoveryEvent */ http.post<CreateAutoRecoveryEventResponseBody>(
     "api/gateway/monitor.auto_recovery.CreateAutoRecoveryEvent/api/v1/auto_recovery/event",
     data,
     options

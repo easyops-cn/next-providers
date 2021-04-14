@@ -19,7 +19,7 @@ export const objectSnapshot = async (
   params: ObjectSnapshotRequestParams,
   options?: HttpOptions
 ): Promise<ObjectSnapshotResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.cmdb_object.ObjectSnapshot */ (
     await http.get<ResponseBodyWrapper<ObjectSnapshotResponseBody>>(
       `api/gateway/cmdb.cmdb_object.ObjectSnapshot/history/object/${object_id}`,
       { ...options, params }

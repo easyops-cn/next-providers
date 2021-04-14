@@ -31,7 +31,7 @@ export const permissionDeniedReturnSuccessValidateCmdbPermission = async (
   params: PermissionDeniedReturnSuccessValidateCmdbPermissionRequestParams,
   options?: HttpOptions
 ): Promise<PermissionDeniedReturnSuccessValidateCmdbPermissionResponseBody> =>
-  (
+  /**! @contract easyops.api.permission.permission.PermissionDeniedReturnSuccessValidateCmdbPermission */ (
     await http.get<
       ResponseBodyWrapper<PermissionDeniedReturnSuccessValidateCmdbPermissionResponseBody>
     >(

@@ -20,7 +20,7 @@ export const modelCenterGenerateModelsDefinition = async (
   data: ModelCenterGenerateModelsDefinitionRequestBody,
   options?: HttpOptions
 ): Promise<ModelCenterGenerateModelsDefinitionResponseBody> =>
-  (
+  /**! @contract easyops.api.next_builder.model.ModelCenterGenerateModelsDefinition */ (
     await http.post<
       ResponseBodyWrapper<ModelCenterGenerateModelsDefinitionResponseBody>
     >(

@@ -36,7 +36,7 @@ export const groupInstanceV3 = async (
   data: GroupInstanceV3RequestBody,
   options?: HttpOptions
 ): Promise<GroupInstanceV3ResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.instance.GroupInstanceV3 */ (
     await http.post<ResponseBodyWrapper<GroupInstanceV3ResponseBody>>(
       `api/gateway/cmdb.instance.GroupInstanceV3/v3/object/${object_id}/instance/group`,
       data,

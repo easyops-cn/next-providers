@@ -12,7 +12,7 @@ export const getStoryboardNode = async (
   nodeId: string | number,
   options?: HttpOptions
 ): Promise<GetStoryboardNodeResponseBody> =>
-  (
+  /**! @contract easyops.api.next_builder.storyboard.GetStoryboardNode */ (
     await http.get<ResponseBodyWrapper<GetStoryboardNodeResponseBody>>(
       `api/gateway/next_builder.storyboard.GetStoryboardNode/api/v1/nextBuilder/storyboard/${nodeId}`,
       options

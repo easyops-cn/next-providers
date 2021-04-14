@@ -13,7 +13,7 @@ export const mixDeleteInstance = (
   data: MixDeleteInstanceRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.cmdb.instance.MixDeleteInstance */ http.post<void>(
     "api/gateway/cmdb.instance.MixDeleteInstance/mix/object/instance/delete",
     data,
     options

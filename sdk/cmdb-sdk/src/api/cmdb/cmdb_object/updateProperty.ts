@@ -41,7 +41,7 @@ export const updateProperty = async (
   data: UpdatePropertyRequestBody,
   options?: HttpOptions
 ): Promise<UpdatePropertyResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.cmdb_object.UpdateProperty */ (
     await http.put<ResponseBodyWrapper<UpdatePropertyResponseBody>>(
       `api/gateway/cmdb.cmdb_object.UpdateProperty/object/${objectId}/attr/${attrId}`,
       data,

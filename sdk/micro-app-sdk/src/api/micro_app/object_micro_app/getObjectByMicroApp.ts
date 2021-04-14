@@ -12,7 +12,7 @@ export const getObjectByMicroApp = async (
   appId: string | number,
   options?: HttpOptions
 ): Promise<GetObjectByMicroAppResponseBody> =>
-  (
+  /**! @contract easyops.api.micro_app.object_micro_app.GetObjectByMicroApp */ (
     await http.get<ResponseBodyWrapper<GetObjectByMicroAppResponseBody>>(
       `api/gateway/micro_app.object_micro_app.GetObjectByMicroApp/api/micro_app/v1/object_micro_app/appId/${appId}`,
       options

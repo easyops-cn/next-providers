@@ -25,7 +25,7 @@ export const cloneBricks = (
   data: CloneBricksRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.next_builder.storyboard.CloneBricks */ http.post<void>(
     "api/gateway/next_builder.storyboard.CloneBricks/api/v1/nextBuilder/clone",
     data,
     options

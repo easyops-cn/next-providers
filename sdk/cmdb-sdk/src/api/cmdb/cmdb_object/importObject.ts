@@ -26,7 +26,7 @@ export const importObject = (
   data: ImportObjectRequestBody,
   options?: HttpOptions
 ): Promise<ImportObjectResponseBody> =>
-  http.post<ImportObjectResponseBody>(
+  /**! @contract easyops.api.cmdb.cmdb_object.ImportObject */ http.post<ImportObjectResponseBody>(
     "api/gateway/cmdb.cmdb_object.ImportObject/object_import",
     data,
     options

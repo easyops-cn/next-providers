@@ -19,7 +19,7 @@ export const create = async (
   data: CreateRequestBody,
   options?: HttpOptions
 ): Promise<CreateResponseBody> =>
-  (
+  /**! @contract easyops.api.micro_app.installed_micro_app.Create */ (
     await http.post<ResponseBodyWrapper<CreateResponseBody>>(
       "api/gateway/micro_app.installed_micro_app.Create/api/micro_app/v1/installed_micro_app",
       data,

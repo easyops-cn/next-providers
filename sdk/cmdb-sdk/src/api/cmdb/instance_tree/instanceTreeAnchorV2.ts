@@ -26,7 +26,7 @@ export const instanceTreeAnchorV2 = async (
   data: InstanceTreeAnchorV2RequestBody,
   options?: HttpOptions
 ): Promise<InstanceTreeAnchorV2ResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.instance_tree.InstanceTreeAnchorV2 */ (
     await http.post<ResponseBodyWrapper<InstanceTreeAnchorV2ResponseBody>>(
       "api/gateway/cmdb.instance_tree.InstanceTreeAnchorV2/v2/instance_tree/anchor",
       data,

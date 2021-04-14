@@ -8,7 +8,7 @@ export const deleteApiKey = (
   access_key: string | number,
   options?: HttpOptions
 ): Promise<void> =>
-  http.delete<void>(
+  /**! @contract easyops.api.user_service.apikey.DeleteApiKey */ http.delete<void>(
     `api/gateway/user_service.apikey.DeleteApiKey/api/v1/apikey/delete/${access_key}`,
     options
   );

@@ -19,7 +19,7 @@ export const updateInstalledMicroAppStoryboardJson = async (
   data: UpdateInstalledMicroAppStoryboardJsonRequestBody,
   options?: HttpOptions
 ): Promise<UpdateInstalledMicroAppStoryboardJsonResponseBody> =>
-  (
+  /**! @contract easyops.api.micro_app.installed_micro_app.UpdateInstalledMicroAppStoryboardJson */ (
     await http.put<
       ResponseBodyWrapper<UpdateInstalledMicroAppStoryboardJsonResponseBody>
     >(

@@ -37,7 +37,7 @@ export const listMetrics = (
   params: ListMetricsRequestParams,
   options?: HttpOptions
 ): Promise<ListMetricsResponseBody> =>
-  http.get<ListMetricsResponseBody>(
+  /**! @contract easyops.api.monitor.data_name.ListMetrics */ http.get<ListMetricsResponseBody>(
     "api/gateway/monitor.data_name.ListMetrics/api/v1/collector/general_config",
     { ...options, params }
   );

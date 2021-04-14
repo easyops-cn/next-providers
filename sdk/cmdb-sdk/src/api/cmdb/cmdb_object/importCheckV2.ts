@@ -23,7 +23,7 @@ export const importCheckV2 = async (
   data: ImportCheckV2RequestBody,
   options?: HttpOptions
 ): Promise<ImportCheckV2ResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.cmdb_object.ImportCheckV2 */ (
     await http.post<ResponseBodyWrapper<ImportCheckV2ResponseBody>>(
       "api/gateway/cmdb.cmdb_object.ImportCheckV2/v2/object_import_check",
       data,

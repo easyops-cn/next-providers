@@ -31,7 +31,7 @@ export const userAuth = async (
   data: UserAuthRequestBody,
   options?: HttpOptions
 ): Promise<UserAuthResponseBody> =>
-  (
+  /**! @contract easyops.api.user_service.auth.UserAuth */ (
     await http.post<ResponseBodyWrapper<UserAuthResponseBody>>(
       "api/gateway/user_service.auth.UserAuth/api/v1/users/auth",
       data,

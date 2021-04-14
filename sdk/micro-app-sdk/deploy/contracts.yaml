@@ -20,7 +20,7 @@ depend_contracts:
   - name: easyops.api.micro_app.installed_micro_app.GetOssObjectsStat
     version: ^1.0.0
   - name: easyops.api.micro_app.installed_micro_app.ImportMicroApp
-    version: ^1.0.0
+    version: ^1.1.0
   - name: easyops.api.micro_app.installed_micro_app.ListMicroApp
     version: ^1.0.0
   - name: easyops.api.micro_app.installed_micro_app.GetPackageReleaseList
@@ -81,4 +81,6 @@ depend_contracts:
   - name: easyops.api.micro_app.report.ReportInstalledBricksNextPackageResult
     version: ^1.0.0
   - name: easyops.api.micro_app.report.ReportInstalledMicroAppResult
+    version: ^1.0.0
+  - name: easyops.api.micro_app.sitemap.GetAllSiteMap
     version: ^1.0.0

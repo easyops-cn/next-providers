@@ -17,7 +17,7 @@ export const exportApis = (
   data: ExportApisRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.next_builder.apis.ExportApis */ http.post<void>(
     "api/gateway/next_builder.apis.ExportApis/api/v1/apis/export",
     data,
     options

@@ -21,7 +21,7 @@ export const getPermissionsByAppId = async (
   params: GetPermissionsByAppIdRequestParams,
   options?: HttpOptions
 ): Promise<GetPermissionsByAppIdResponseBody> =>
-  (
+  /**! @contract easyops.api.micro_app.permission.GetPermissionsByAppId */ (
     await http.get<ResponseBodyWrapper<GetPermissionsByAppIdResponseBody>>(
       `api/gateway/micro_app.permission.GetPermissionsByAppId/api/micro_app/v1/permission/${appId}`,
       { ...options, params }

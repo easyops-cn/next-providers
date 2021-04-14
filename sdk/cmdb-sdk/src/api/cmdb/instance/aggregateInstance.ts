@@ -32,7 +32,7 @@ export const aggregateInstance = async (
   data: AggregateInstanceRequestBody,
   options?: HttpOptions
 ): Promise<AggregateInstanceResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.instance.AggregateInstance */ (
     await http.post<ResponseBodyWrapper<AggregateInstanceResponseBody>>(
       `api/gateway/cmdb.instance.AggregateInstance/object/${objectId}/instance/aggregate`,
       data,

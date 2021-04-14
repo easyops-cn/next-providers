@@ -32,7 +32,7 @@ export const resetApiKey = async (
   user: string | number,
   options?: HttpOptions
 ): Promise<ResetApiKeyResponseBody> =>
-  (
+  /**! @contract easyops.api.user_service.apikey.ResetApiKey */ (
     await http.put<ResponseBodyWrapper<ResetApiKeyResponseBody>>(
       `api/gateway/user_service.apikey.ResetApiKey/api/v1/apikey/_reset/${user}`,
       undefined,

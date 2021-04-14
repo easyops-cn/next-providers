@@ -8,7 +8,7 @@ export const deleteStoryboardNode = (
   nodeId: string | number,
   options?: HttpOptions
 ): Promise<void> =>
-  http.delete<void>(
+  /**! @contract easyops.api.next_builder.storyboard.DeleteStoryboardNode */ http.delete<void>(
     `api/gateway/next_builder.storyboard.DeleteStoryboardNode/api/v1/nextBuilder/storyboard/${nodeId}`,
     options
   );

@@ -26,7 +26,7 @@ export const batchListInstanceQueryStrategy = async (
   params: BatchListInstanceQueryStrategyRequestParams,
   options?: HttpOptions
 ): Promise<BatchListInstanceQueryStrategyResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.instance.BatchListInstanceQueryStrategy */ (
     await http.get<
       ResponseBodyWrapper<BatchListInstanceQueryStrategyResponseBody>
     >(

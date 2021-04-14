@@ -14,7 +14,7 @@ export const setOrgExpiredDate = (
   data: SetOrgExpiredDateRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.put<void>(
+  /**! @contract easyops.api.user_service.organization.SetOrgExpiredDate */ http.put<void>(
     `api/gateway/user_service.organization.SetOrgExpiredDate/api/v1/org/${id}/_expired_date`,
     data,
     options

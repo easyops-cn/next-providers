@@ -40,7 +40,7 @@ export const getPermissionRoleList = (
   params: GetPermissionRoleListRequestParams,
   options?: HttpOptions
 ): Promise<GetPermissionRoleListResponseBody> =>
-  http.get<GetPermissionRoleListResponseBody>(
+  /**! @contract easyops.api.permission.role.GetPermissionRoleList */ http.get<GetPermissionRoleListResponseBody>(
     "api/gateway/permission.role.GetPermissionRoleList/api/v1/permission_role/config",
     { ...options, params }
   );

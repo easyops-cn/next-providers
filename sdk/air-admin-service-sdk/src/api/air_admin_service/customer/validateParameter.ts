@@ -22,7 +22,7 @@ export const validateParameter = async (
   params: ValidateParameterRequestParams,
   options?: HttpOptions
 ): Promise<ValidateParameterResponseBody> =>
-  (
+  /**! @contract easyops.api.air_admin_service.customer.ValidateParameter */ (
     await http.get<ResponseBodyWrapper<ValidateParameterResponseBody>>(
       "api/gateway/air_admin_service.customer.ValidateParameter/api/v1/customer/uniqueness",
       { ...options, params }

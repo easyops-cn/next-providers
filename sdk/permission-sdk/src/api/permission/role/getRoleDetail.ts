@@ -13,7 +13,7 @@ export const getRoleDetail = async (
   id: string | number,
   options?: HttpOptions
 ): Promise<GetRoleDetailResponseBody> =>
-  (
+  /**! @contract easyops.api.permission.role.GetRoleDetail */ (
     await http.get<ResponseBodyWrapper<GetRoleDetailResponseBody>>(
       `api/gateway/permission.role.GetRoleDetail/api/v1/permission_role/config/${id}`,
       options

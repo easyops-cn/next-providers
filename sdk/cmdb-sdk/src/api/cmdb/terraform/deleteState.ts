@@ -18,7 +18,7 @@ export const deleteState = (
   params: DeleteStateRequestParams,
   options?: HttpOptions
 ): Promise<void> =>
-  http.delete<void>(
+  /**! @contract easyops.api.cmdb.terraform.DeleteState */ http.delete<void>(
     `api/gateway/cmdb.terraform.DeleteState/api/terraform/v1/object/${objectId}/instance/${instanceId}/state`,
     { ...options, params }
   );

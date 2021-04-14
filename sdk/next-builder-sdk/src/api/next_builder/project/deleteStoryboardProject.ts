@@ -14,7 +14,7 @@ export const deleteStoryboardProject = (
   params: DeleteStoryboardProjectRequestParams,
   options?: HttpOptions
 ): Promise<void> =>
-  http.delete<void>(
+  /**! @contract easyops.api.next_builder.project.DeleteStoryboardProject */ http.delete<void>(
     `api/gateway/next_builder.project.DeleteStoryboardProject/api/v1/next-builder/project/${projectId}`,
     { ...options, params }
   );

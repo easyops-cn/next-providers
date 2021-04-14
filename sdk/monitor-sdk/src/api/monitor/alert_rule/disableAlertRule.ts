@@ -25,7 +25,7 @@ export const disableAlertRule = (
   data: DisableAlertRuleRequestBody,
   options?: HttpOptions
 ): Promise<DisableAlertRuleResponseBody> =>
-  http.put<DisableAlertRuleResponseBody>(
+  /**! @contract easyops.api.monitor.alert_rule.DisableAlertRule */ http.put<DisableAlertRuleResponseBody>(
     `api/gateway/monitor.alert_rule.DisableAlertRule/api/v3/alert_rule/disabled/${id}`,
     data,
     options

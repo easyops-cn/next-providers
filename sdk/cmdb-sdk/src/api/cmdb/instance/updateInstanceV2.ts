@@ -16,7 +16,7 @@ export const updateInstanceV2 = async (
   data: UpdateInstanceV2RequestBody,
   options?: HttpOptions
 ): Promise<UpdateInstanceV2ResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.instance.UpdateInstanceV2 */ (
     await http.put<ResponseBodyWrapper<UpdateInstanceV2ResponseBody>>(
       `api/gateway/cmdb.instance.UpdateInstanceV2/v2/object/${objectId}/instance/${instanceId}`,
       data,

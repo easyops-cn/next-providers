@@ -24,7 +24,7 @@ export const listObjectFields = async (
   params: ListObjectFieldsRequestParams,
   options?: HttpOptions
 ): Promise<ListObjectFieldsResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.cmdb_object.ListObjectFields */ (
     await http.get<ResponseBodyWrapper<ListObjectFieldsResponseBody>>(
       `api/gateway/cmdb.cmdb_object.ListObjectFields/object/${objectId}/fields`,
       { ...options, params }

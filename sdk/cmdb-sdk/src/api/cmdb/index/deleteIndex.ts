@@ -9,7 +9,7 @@ export const deleteIndex = (
   indexName: string | number,
   options?: HttpOptions
 ): Promise<void> =>
-  http.delete<void>(
+  /**! @contract easyops.api.cmdb.index.DeleteIndex */ http.delete<void>(
     `api/gateway/cmdb.index.DeleteIndex/object/${objectId}/index/${indexName}`,
     options
   );

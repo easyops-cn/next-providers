@@ -15,7 +15,7 @@ export const getPackageReleaseListByInstanceId = async (
   instanceId: string | number,
   options?: HttpOptions
 ): Promise<GetPackageReleaseListByInstanceIdResponseBody> =>
-  (
+  /**! @contract easyops.api.next_builder.build.GetPackageReleaseListByInstanceId */ (
     await http.get<
       ResponseBodyWrapper<GetPackageReleaseListByInstanceIdResponseBody>
     >(

@@ -15,7 +15,7 @@ export const getDocumentsTreeByAppId = async (
   appId: string | number,
   options?: HttpOptions
 ): Promise<GetDocumentsTreeByAppIdResponseBody> =>
-  (
+  /**! @contract easyops.api.micro_app.document.GetDocumentsTreeByAppId */ (
     await http.get<ResponseBodyWrapper<GetDocumentsTreeByAppIdResponseBody>>(
       `api/gateway/micro_app.document.GetDocumentsTreeByAppId/api/micro_app/v1/document/tree/${appId}`,
       options

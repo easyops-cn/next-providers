@@ -22,7 +22,7 @@ export const updateRelationGroup = async (
   data: UpdateRelationGroupRequestBody,
   options?: HttpOptions
 ): Promise<UpdateRelationGroupResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.object_relation.UpdateRelationGroup */ (
     await http.put<ResponseBodyWrapper<UpdateRelationGroupResponseBody>>(
       `api/gateway/cmdb.object_relation.UpdateRelationGroup/object/${object_id}/relation_group/${id}`,
       data,

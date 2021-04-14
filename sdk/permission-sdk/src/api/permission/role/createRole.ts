@@ -28,7 +28,7 @@ export const createRole = async (
   data: CreateRoleRequestBody,
   options?: HttpOptions
 ): Promise<CreateRoleResponseBody> =>
-  (
+  /**! @contract easyops.api.permission.role.CreateRole */ (
     await http.post<ResponseBodyWrapper<CreateRoleResponseBody>>(
       "api/gateway/permission.role.CreateRole/api/v1/permission_role/config",
       data,

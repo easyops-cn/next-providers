@@ -52,7 +52,7 @@ export const updateV2 = async (
   data: UpdateV2RequestBody,
   options?: HttpOptions
 ): Promise<UpdateV2ResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.cmdb_object.UpdateV2 */ (
     await http.put<ResponseBodyWrapper<UpdateV2ResponseBody>>(
       `api/gateway/cmdb.cmdb_object.UpdateV2/v2/object/${objectId}`,
       data,

@@ -13,7 +13,7 @@ export const set = (
   data: SetRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.cmdb.instance_relation.Set */ http.post<void>(
     `api/gateway/cmdb.instance_relation.Set/object/${objectId}/relation/${relationSideId}/set`,
     data,
     options

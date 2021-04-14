@@ -12,7 +12,7 @@ export const deleteConfig = (
   instanceId: string | number,
   options?: HttpOptions
 ): Promise<DeleteConfigResponseBody> =>
-  http.delete<DeleteConfigResponseBody>(
+  /**! @contract easyops.api.msgsender.config.DeleteConfig */ http.delete<DeleteConfigResponseBody>(
     `api/gateway/msgsender.config.DeleteConfig/api/v1/message_sender/configs/${instanceId}`,
     options
   );

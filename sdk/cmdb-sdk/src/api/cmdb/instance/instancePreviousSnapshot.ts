@@ -21,7 +21,7 @@ export const instancePreviousSnapshot = async (
   params: InstancePreviousSnapshotRequestParams,
   options?: HttpOptions
 ): Promise<InstancePreviousSnapshotResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.instance.InstancePreviousSnapshot */ (
     await http.get<ResponseBodyWrapper<InstancePreviousSnapshotResponseBody>>(
       `api/gateway/cmdb.instance.InstancePreviousSnapshot/history/object/${object_id}/instance/${instance_id}/_recent_snapshot`,
       { ...options, params }

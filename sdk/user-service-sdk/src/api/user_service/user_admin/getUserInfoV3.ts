@@ -12,7 +12,7 @@ export const getUserInfoV3 = async (
   username: string | number,
   options?: HttpOptions
 ): Promise<GetUserInfoV3ResponseBody> =>
-  (
+  /**! @contract easyops.api.user_service.user_admin.GetUserInfoV3 */ (
     await http.get<ResponseBodyWrapper<GetUserInfoV3ResponseBody>>(
       `api/gateway/user_service.user_admin.GetUserInfoV3/api/v3/users/detail/${username}`,
       options

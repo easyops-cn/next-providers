@@ -14,7 +14,7 @@ export const deleteDocument = async (
   instanceId: string | number,
   options?: HttpOptions
 ): Promise<DeleteDocumentResponseBody> =>
-  (
+  /**! @contract easyops.api.next_builder.document.DeleteDocument */ (
     await http.delete<ResponseBodyWrapper<DeleteDocumentResponseBody>>(
       `api/gateway/next_builder.document.DeleteDocument/api/v1/document/${instanceId}`,
       options

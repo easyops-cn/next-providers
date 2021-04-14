@@ -49,7 +49,7 @@ export const getObjectRelationRelatedKey = (
   params: GetObjectRelationRelatedKeyRequestParams,
   options?: HttpOptions
 ): Promise<GetObjectRelationRelatedKeyResponseBody> =>
-  http.get<GetObjectRelationRelatedKeyResponseBody>(
+  /**! @contract easyops.api.cmdb.cmdb_object.GetObjectRelationRelatedKey */ http.get<GetObjectRelationRelatedKeyResponseBody>(
     "api/gateway/cmdb.cmdb_object.GetObjectRelationRelatedKey/object_relation_related_key",
     { ...options, params }
   );

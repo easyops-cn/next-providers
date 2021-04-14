@@ -13,7 +13,7 @@ export const deleteInstanceQueryStrategy = async (
   strategyId: string | number,
   options?: HttpOptions
 ): Promise<DeleteInstanceQueryStrategyResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.instance.DeleteInstanceQueryStrategy */ (
     await http.delete<
       ResponseBodyWrapper<DeleteInstanceQueryStrategyResponseBody>
     >(

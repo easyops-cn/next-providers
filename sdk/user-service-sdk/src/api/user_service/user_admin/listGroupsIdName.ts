@@ -16,7 +16,7 @@ export const listGroupsIdName = async (
   params: ListGroupsIdNameRequestParams,
   options?: HttpOptions
 ): Promise<ListGroupsIdNameResponseBody> =>
-  (
+  /**! @contract easyops.api.user_service.user_admin.ListGroupsIdName */ (
     await http.get<ResponseBodyWrapper<ListGroupsIdNameResponseBody>>(
       "api/gateway/user_service.user_admin.ListGroupsIdName/api/v1/groups/id_map_name",
       { ...options, params }

@@ -41,7 +41,7 @@ export const updateRelationQueryStrategyV2 = async (
   data: UpdateRelationQueryStrategyV2RequestBody,
   options?: HttpOptions
 ): Promise<UpdateRelationQueryStrategyV2ResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.cmdb_object.UpdateRelationQueryStrategyV2 */ (
     await http.put<
       ResponseBodyWrapper<UpdateRelationQueryStrategyV2ResponseBody>
     >(

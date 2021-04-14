@@ -18,7 +18,7 @@ export const importStoryboardNodes = (
   data: ImportStoryboardNodesRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.next_builder.storyboard.ImportStoryboardNodes */ http.post<void>(
     "api/gateway/next_builder.storyboard.ImportStoryboardNodes/api/v1/nextBuilder/importNodes",
     data,
     options

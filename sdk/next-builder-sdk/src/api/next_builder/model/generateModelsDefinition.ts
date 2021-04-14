@@ -23,7 +23,7 @@ export const generateModelsDefinition = async (
   params: GenerateModelsDefinitionRequestParams,
   options?: HttpOptions
 ): Promise<GenerateModelsDefinitionResponseBody> =>
-  (
+  /**! @contract easyops.api.next_builder.model.GenerateModelsDefinition */ (
     await http.get<ResponseBodyWrapper<GenerateModelsDefinitionResponseBody>>(
       "api/gateway/next_builder.model.GenerateModelsDefinition/api/v1/model/generate_models_definition",
       { ...options, params }

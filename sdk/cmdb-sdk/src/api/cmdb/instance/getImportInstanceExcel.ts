@@ -8,7 +8,7 @@ export const getImportInstanceExcel = (
   object_id: string | number,
   options?: HttpOptions
 ): Promise<Blob> =>
-  http.get<Blob>(
+  /**! @contract easyops.api.cmdb.instance.GetImportInstanceExcel */ http.get<Blob>(
     `api/gateway/cmdb.instance.GetImportInstanceExcel/import/object/${object_id}/instance/excel`,
     { ...options, responseType: "blob" }
   );

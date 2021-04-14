@@ -19,7 +19,7 @@ export const permissionChangeRoleByAction = (
   data: PermissionChangeRoleByActionRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.put<void>(
+  /**! @contract easyops.api.permission.permission_v2.PermissionChangeRoleByAction */ http.put<void>(
     "api/gateway/permission.permission_v2.PermissionChangeRoleByAction/api/v1/permission-change-role-by-action",
     data,
     options

@@ -16,7 +16,7 @@ export const listUsersId = async (
   params: ListUsersIdRequestParams,
   options?: HttpOptions
 ): Promise<ListUsersIdResponseBody> =>
-  (
+  /**! @contract easyops.api.user_service.user_admin.ListUsersId */ (
     await http.get<ResponseBodyWrapper<ListUsersIdResponseBody>>(
       "api/gateway/user_service.user_admin.ListUsersId/api/v1/users/id",
       { ...options, params }

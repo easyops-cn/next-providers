@@ -22,7 +22,7 @@ export interface GetInvitationCodeResponseBody {
 export const getInvitationCode = async (
   options?: HttpOptions
 ): Promise<GetInvitationCodeResponseBody> =>
-  (
+  /**! @contract easyops.api.user_service.invitation_code.GetInvitationCode */ (
     await http.get<ResponseBodyWrapper<GetInvitationCodeResponseBody>>(
       "api/gateway/user_service.invitation_code.GetInvitationCode/api/v1/invitation/code",
       options

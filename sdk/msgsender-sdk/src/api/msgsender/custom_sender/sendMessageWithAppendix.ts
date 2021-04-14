@@ -16,7 +16,7 @@ export const sendMessageWithAppendix = (
   data: SendMessageWithAppendixRequestBody,
   options?: HttpOptions
 ): Promise<SendMessageWithAppendixResponseBody> =>
-  http.post<SendMessageWithAppendixResponseBody>(
+  /**! @contract easyops.api.msgsender.custom_sender.SendMessageWithAppendix */ http.post<SendMessageWithAppendixResponseBody>(
     "api/gateway/msgsender.custom_sender.SendMessageWithAppendix/api/v1/message_sender/mail_with_appendix",
     data,
     options

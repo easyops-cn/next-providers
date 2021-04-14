@@ -40,7 +40,7 @@ export const userRegister = async (
   data: UserRegisterRequestBody,
   options?: HttpOptions
 ): Promise<UserRegisterResponseBody> =>
-  (
+  /**! @contract easyops.api.user_service.user_admin.UserRegister */ (
     await http.post<ResponseBodyWrapper<UserRegisterResponseBody>>(
       "api/gateway/user_service.user_admin.UserRegister/api/v1/users/register",
       data,

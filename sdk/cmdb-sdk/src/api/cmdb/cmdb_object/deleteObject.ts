@@ -12,7 +12,7 @@ export const deleteObject = async (
   objectId: string | number,
   options?: HttpOptions
 ): Promise<DeleteObjectResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.cmdb_object.DeleteObject */ (
     await http.delete<ResponseBodyWrapper<DeleteObjectResponseBody>>(
       `api/gateway/cmdb.cmdb_object.DeleteObject/object/${objectId}`,
       options

@@ -26,7 +26,7 @@ export const traverseGraphCount = async (
   data: TraverseGraphCountRequestBody,
   options?: HttpOptions
 ): Promise<TraverseGraphCountResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.instance_graph.TraverseGraphCount */ (
     await http.post<ResponseBodyWrapper<TraverseGraphCountResponseBody>>(
       "api/gateway/cmdb.instance_graph.TraverseGraphCount/instance/traverse/count",
       data,

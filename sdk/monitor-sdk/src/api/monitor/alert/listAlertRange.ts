@@ -34,7 +34,7 @@ export const listAlertRange = (
   params: ListAlertRangeRequestParams,
   options?: HttpOptions
 ): Promise<ListAlertRangeResponseBody> =>
-  http.get<ListAlertRangeResponseBody>(
+  /**! @contract easyops.api.monitor.alert.ListAlertRange */ http.get<ListAlertRangeResponseBody>(
     "api/gateway/monitor.alert.ListAlertRange/api/v1/alert_range",
     { ...options, params }
   );

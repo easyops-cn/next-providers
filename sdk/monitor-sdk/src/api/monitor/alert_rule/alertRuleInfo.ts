@@ -40,7 +40,7 @@ export const alertRuleInfo = (
   params: AlertRuleInfoRequestParams,
   options?: HttpOptions
 ): Promise<AlertRuleInfoResponseBody> =>
-  http.get<AlertRuleInfoResponseBody>(
+  /**! @contract easyops.api.monitor.alert_rule.AlertRuleInfo */ http.get<AlertRuleInfoResponseBody>(
     "api/gateway/monitor.alert_rule.AlertRuleInfo/api/v3/alert_rule/info",
     { ...options, params }
   );

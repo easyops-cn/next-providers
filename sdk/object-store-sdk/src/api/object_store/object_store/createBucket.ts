@@ -14,7 +14,7 @@ export const createBucket = (
   data: CreateBucketRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.put<void>(
+  /**! @contract easyops.api.object_store.object_store.CreateBucket */ http.put<void>(
     `api/gateway/object_store.object_store.CreateBucket/api/v1/objectStore/bucket/${bucketName}`,
     data,
     options

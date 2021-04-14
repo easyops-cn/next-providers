@@ -29,7 +29,7 @@ export const listChildObject = (
   params: ListChildObjectRequestParams,
   options?: HttpOptions
 ): Promise<ListChildObjectResponseBody> =>
-  http.get<ListChildObjectResponseBody>(
+  /**! @contract easyops.api.cmdb.cmdb_object.ListChildObject */ http.get<ListChildObjectResponseBody>(
     `api/gateway/cmdb.cmdb_object.ListChildObject/object/${objectId}/child`,
     { ...options, params }
   );

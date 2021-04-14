@@ -21,7 +21,7 @@ export const alertNotifyDenied = (
   data: AlertNotifyDeniedRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.cmdb.cmdb_object.AlertNotifyDenied */ http.post<void>(
     `api/gateway/cmdb.cmdb_object.AlertNotifyDenied/object_notify_denied/${object_id}`,
     data,
     options

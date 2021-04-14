@@ -42,7 +42,7 @@ export const getAlertCount = (
   params: GetAlertCountRequestParams,
   options?: HttpOptions
 ): Promise<GetAlertCountResponseBody> =>
-  http.get<GetAlertCountResponseBody>(
+  /**! @contract easyops.api.monitor.alert.GetAlertCount */ http.get<GetAlertCountResponseBody>(
     "api/gateway/monitor.alert.GetAlertCount/api/v1/alert/count",
     { ...options, params }
   );

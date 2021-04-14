@@ -13,7 +13,7 @@ export const remove = (
   data: RemoveRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.cmdb.instance_relation.Remove */ http.post<void>(
     `api/gateway/cmdb.instance_relation.Remove/object/${objectId}/relation/${relationSideId}/remove`,
     data,
     options

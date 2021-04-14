@@ -14,7 +14,7 @@ export const batchArchiveInstance = (
   data: BatchArchiveInstanceRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.cmdb.instance_archive.BatchArchiveInstance */ http.post<void>(
     `api/gateway/cmdb.instance_archive.BatchArchiveInstance/object/${object_id}/instance_archive_instances`,
     data,
     options

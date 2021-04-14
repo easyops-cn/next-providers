@@ -18,7 +18,7 @@ export const deleteInstance = async (
   params: DeleteInstanceRequestParams,
   options?: HttpOptions
 ): Promise<DeleteInstanceResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.instance.DeleteInstance */ (
     await http.delete<ResponseBodyWrapper<DeleteInstanceResponseBody>>(
       `api/gateway/cmdb.instance.DeleteInstance/object/${objectId}/instance/${instanceId}`,
       { ...options, params }

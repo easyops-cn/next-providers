@@ -18,7 +18,7 @@ export const alertWordIndex = (
   data: AlertWordIndexRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.cmdb.cmdb_object.AlertWordIndex */ http.post<void>(
     `api/gateway/cmdb.cmdb_object.AlertWordIndex/object_word_index/${object_id}`,
     data,
     options

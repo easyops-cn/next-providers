@@ -19,7 +19,7 @@ export const buildAndPush = (
   data: BuildAndPushRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.next_builder.build.BuildAndPush */ http.post<void>(
     "api/gateway/next_builder.build.BuildAndPush/api/v1/next-builder/build-and-push",
     data,
     options

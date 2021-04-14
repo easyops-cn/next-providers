@@ -23,7 +23,7 @@ export const exportModels = async (
   data: ExportModelsRequestBody,
   options?: HttpOptions
 ): Promise<ExportModelsResponseBody> =>
-  (
+  /**! @contract easyops.api.next_builder.model.ExportModels */ (
     await http.post<ResponseBodyWrapper<ExportModelsResponseBody>>(
       "api/gateway/next_builder.model.ExportModels/api/v1/model/export",
       data,

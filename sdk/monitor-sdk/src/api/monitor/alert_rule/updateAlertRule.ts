@@ -23,7 +23,7 @@ export const updateAlertRule = (
   data: UpdateAlertRuleRequestBody,
   options?: HttpOptions
 ): Promise<UpdateAlertRuleResponseBody> =>
-  http.put<UpdateAlertRuleResponseBody>(
+  /**! @contract easyops.api.monitor.alert_rule.UpdateAlertRule */ http.put<UpdateAlertRuleResponseBody>(
     `api/gateway/monitor.alert_rule.UpdateAlertRule/api/v3/alert_rule/config/${id}`,
     data,
     options

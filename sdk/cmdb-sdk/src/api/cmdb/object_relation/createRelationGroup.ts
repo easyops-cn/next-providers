@@ -24,7 +24,7 @@ export const createRelationGroup = async (
   data: CreateRelationGroupRequestBody,
   options?: HttpOptions
 ): Promise<CreateRelationGroupResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.object_relation.CreateRelationGroup */ (
     await http.post<ResponseBodyWrapper<CreateRelationGroupResponseBody>>(
       `api/gateway/cmdb.object_relation.CreateRelationGroup/object/${object_id}/relation_group`,
       data,

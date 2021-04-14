@@ -23,7 +23,7 @@ export const createCollection = async (
   data: CreateCollectionRequestBody,
   options?: HttpOptions
 ): Promise<CreateCollectionResponseBody> =>
-  (
+  /**! @contract easyops.api.user_service.launchpad.CreateCollection */ (
     await http.post<ResponseBodyWrapper<CreateCollectionResponseBody>>(
       "api/gateway/user_service.launchpad.CreateCollection/api/v1/launchpad/collection",
       data,

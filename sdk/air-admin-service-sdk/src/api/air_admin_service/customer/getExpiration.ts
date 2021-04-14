@@ -13,7 +13,7 @@ export interface GetExpirationResponseBody {
 export const getExpiration = async (
   options?: HttpOptions
 ): Promise<GetExpirationResponseBody> =>
-  (
+  /**! @contract easyops.api.air_admin_service.customer.GetExpiration */ (
     await http.get<ResponseBodyWrapper<GetExpirationResponseBody>>(
       "api/gateway/air_admin_service.customer.GetExpiration/api/v1/customer/expiration",
       options

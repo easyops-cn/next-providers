@@ -25,6 +25,15 @@ export interface ImportMicroAppRequestBody {
   /** 安装状态， ok-成功, running-正在安装 */
   installStatus?: "ok" | "running";
 
+  /** NA程序包当前版本 */
+  currentVersion?: string;
+
+  /** 标签 */
+  tags?: string[];
+
+  /** 小产品在应用商店的版本号 */
+  appVersion?: string;
+
   /** 小产品图标url */
   icons?: Partial<ModelInstalledMicroAppIcon>;
 
@@ -69,6 +78,9 @@ export interface ImportMicroAppRequestBody {
 
   /** 可见性等级 */
   visibility?: "internal" | "public";
+
+  /** 布局类型 */
+  layoutType?: string;
 }
 
 export interface ImportMicroAppResponseBody {
@@ -85,7 +97,7 @@ export const importMicroApp = async (
   data: ImportMicroAppRequestBody,
   options?: HttpOptions
 ): Promise<ImportMicroAppResponseBody> =>
-  (
+  /**! @contract easyops.api.micro_app.installed_micro_app.ImportMicroApp */ (
     await http.post<ResponseBodyWrapper<ImportMicroAppResponseBody>>(
       `api/gateway/micro_app.installed_micro_app.ImportMicroApp/api/micro_app/v1/import_installed_micro_app/${appId}`,
       data,

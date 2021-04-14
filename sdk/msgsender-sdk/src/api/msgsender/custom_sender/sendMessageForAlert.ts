@@ -16,7 +16,7 @@ export const sendMessageForAlert = (
   data: SendMessageForAlertRequestBody,
   options?: HttpOptions
 ): Promise<SendMessageForAlertResponseBody> =>
-  http.post<SendMessageForAlertResponseBody>(
+  /**! @contract easyops.api.msgsender.custom_sender.SendMessageForAlert */ http.post<SendMessageForAlertResponseBody>(
     "api/gateway/msgsender.custom_sender.SendMessageForAlert/api/v1/alert_adapter/receive",
     data,
     options

@@ -28,7 +28,7 @@ export const getObjectBasicAll = (
   params: GetObjectBasicAllRequestParams,
   options?: HttpOptions
 ): Promise<GetObjectBasicAllResponseBody> =>
-  http.get<GetObjectBasicAllResponseBody>(
+  /**! @contract easyops.api.cmdb.cmdb_object.GetObjectBasicAll */ http.get<GetObjectBasicAllResponseBody>(
     "api/gateway/cmdb.cmdb_object.GetObjectBasicAll/object_basic_all",
     { ...options, params }
   );

@@ -47,7 +47,7 @@ export const listChangeHistory = async (
   data: ListChangeHistoryRequestBody,
   options?: HttpOptions
 ): Promise<ListChangeHistoryResponseBody> =>
-  (
+  /**! @contract easyops.api.permission.audit.ListChangeHistory */ (
     await http.post<ResponseBodyWrapper<ListChangeHistoryResponseBody>>(
       "api/gateway/permission.audit.ListChangeHistory/api/v1/audit/change_history",
       data,

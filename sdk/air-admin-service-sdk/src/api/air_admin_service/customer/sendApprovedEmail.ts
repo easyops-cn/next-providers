@@ -19,7 +19,7 @@ export const sendApprovedEmail = async (
   data: SendApprovedEmailRequestBody,
   options?: HttpOptions
 ): Promise<SendApprovedEmailResponseBody> =>
-  (
+  /**! @contract easyops.api.air_admin_service.customer.SendApprovedEmail */ (
     await http.post<ResponseBodyWrapper<SendApprovedEmailResponseBody>>(
       "api/gateway/air_admin_service.customer.SendApprovedEmail/api/v1/customer/approved_email",
       data,

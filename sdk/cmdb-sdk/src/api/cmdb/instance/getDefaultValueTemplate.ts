@@ -17,7 +17,7 @@ export const getDefaultValueTemplate = async (
   params: GetDefaultValueTemplateRequestParams,
   options?: HttpOptions
 ): Promise<GetDefaultValueTemplateResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.instance.GetDefaultValueTemplate */ (
     await http.get<ResponseBodyWrapper<GetDefaultValueTemplateResponseBody>>(
       `api/gateway/cmdb.instance.GetDefaultValueTemplate/object/${objectId}/instance_default_value_template`,
       { ...options, params }

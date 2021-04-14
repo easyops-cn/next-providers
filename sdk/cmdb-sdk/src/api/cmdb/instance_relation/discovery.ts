@@ -24,7 +24,7 @@ export const discovery = async (
   data: DiscoveryRequestBody,
   options?: HttpOptions
 ): Promise<DiscoveryResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.instance_relation.Discovery */ (
     await http.post<ResponseBodyWrapper<DiscoveryResponseBody>>(
       `api/gateway/cmdb.instance_relation.Discovery/object_relation/${relationId}/_autodiscovery/multi`,
       data,

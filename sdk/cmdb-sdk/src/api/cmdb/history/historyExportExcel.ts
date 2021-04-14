@@ -46,7 +46,7 @@ export const historyExportExcel = (
   params: HistoryExportExcelRequestParams,
   options?: HttpOptions
 ): Promise<Blob> =>
-  http.get<Blob>(
+  /**! @contract easyops.api.cmdb.history.HistoryExportExcel */ http.get<Blob>(
     "api/gateway/cmdb.history.HistoryExportExcel/history/export/excel",
     { ...options, params, responseType: "blob" }
   );

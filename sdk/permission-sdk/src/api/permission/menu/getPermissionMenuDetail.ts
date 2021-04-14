@@ -12,7 +12,7 @@ export const getPermissionMenuDetail = async (
   menu_id: string | number,
   options?: HttpOptions
 ): Promise<GetPermissionMenuDetailResponseBody> =>
-  (
+  /**! @contract easyops.api.permission.menu.GetPermissionMenuDetail */ (
     await http.get<ResponseBodyWrapper<GetPermissionMenuDetailResponseBody>>(
       `api/gateway/permission.menu.GetPermissionMenuDetail/api/v1/permission/menu/${menu_id}`,
       options

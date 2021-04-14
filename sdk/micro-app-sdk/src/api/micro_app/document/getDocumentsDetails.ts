@@ -36,7 +36,7 @@ export const getDocumentsDetails = async (
   documentId: string | number,
   options?: HttpOptions
 ): Promise<GetDocumentsDetailsResponseBody> =>
-  (
+  /**! @contract easyops.api.micro_app.document.GetDocumentsDetails */ (
     await http.get<ResponseBodyWrapper<GetDocumentsDetailsResponseBody>>(
       `api/gateway/micro_app.document.GetDocumentsDetails/api/micro_app/v1/document/details/${documentId}`,
       options

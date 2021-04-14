@@ -14,7 +14,7 @@ export const importDocuments = (
   data: ImportDocumentsRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.micro_app.document.ImportDocuments */ http.post<void>(
     "api/gateway/micro_app.document.ImportDocuments/api/micro_app/v1/document/import",
     data,
     options

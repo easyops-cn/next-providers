@@ -19,7 +19,7 @@ export const validatePermissions = async (
   data: ValidatePermissionsRequestBody,
   options?: HttpOptions
 ): Promise<ValidatePermissionsResponseBody> =>
-  (
+  /**! @contract easyops.api.micro_app.permission.ValidatePermissions */ (
     await http.post<ResponseBodyWrapper<ValidatePermissionsResponseBody>>(
       "api/gateway/micro_app.permission.ValidatePermissions/api/micro_app/v1/permission/validate",
       data,

@@ -21,7 +21,7 @@ export const getState = (
   params: GetStateRequestParams,
   options?: HttpOptions
 ): Promise<GetStateResponseBody> =>
-  http.get<GetStateResponseBody>(
+  /**! @contract easyops.api.cmdb.terraform.GetState */ http.get<GetStateResponseBody>(
     `api/gateway/cmdb.terraform.GetState/api/terraform/v1/object/${objectId}/instance/${instanceId}/state`,
     { ...options, params }
   );

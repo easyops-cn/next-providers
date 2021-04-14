@@ -22,7 +22,7 @@ export const getObjectAuthorizers = (
   objectId: string | number,
   options?: HttpOptions
 ): Promise<GetObjectAuthorizersResponseBody> =>
-  http.get<GetObjectAuthorizersResponseBody>(
+  /**! @contract easyops.api.cmdb.cmdb_object.GetObjectAuthorizers */ http.get<GetObjectAuthorizersResponseBody>(
     `api/gateway/cmdb.cmdb_object.GetObjectAuthorizers/object/${objectId}/authorizers`,
     options
   );

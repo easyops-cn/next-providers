@@ -40,4 +40,7 @@ export interface ModelObjectAttr {
 
   /** 是否继承自父模型 */
   isInherit: boolean;
+
+  /** 父模型Id */
+  inheritObjectId: string;
 }

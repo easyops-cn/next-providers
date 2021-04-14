@@ -17,7 +17,7 @@ export const checkInvitationCode = async (
   code: string | number,
   options?: HttpOptions
 ): Promise<CheckInvitationCodeResponseBody> =>
-  (
+  /**! @contract easyops.api.user_service.invitation_code.CheckInvitationCode */ (
     await http.get<ResponseBodyWrapper<CheckInvitationCodeResponseBody>>(
       `api/gateway/user_service.invitation_code.CheckInvitationCode/api/v1/invitation/code/${code}/check`,
       options

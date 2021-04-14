@@ -15,7 +15,7 @@ export const createInstance = async (
   data: CreateInstanceRequestBody,
   options?: HttpOptions
 ): Promise<CreateInstanceResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.instance.CreateInstance */ (
     await http.post<ResponseBodyWrapper<CreateInstanceResponseBody>>(
       `api/gateway/cmdb.instance.CreateInstance/v2/object/${objectId}/instance`,
       data,

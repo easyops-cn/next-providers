@@ -13,7 +13,7 @@ export const updateState = (
   data: UpdateStateRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.cmdb.terraform.UpdateState */ http.post<void>(
     `api/gateway/cmdb.terraform.UpdateState/api/terraform/v1/object/${objectId}/instance/${instanceId}/state`,
     data,
     options
