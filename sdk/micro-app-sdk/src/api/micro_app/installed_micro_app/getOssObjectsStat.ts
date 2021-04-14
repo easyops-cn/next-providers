@@ -23,7 +23,7 @@ export const getOssObjectsStat = async (
   data: GetOssObjectsStatRequestBody,
   options?: HttpOptions
 ): Promise<GetOssObjectsStatResponseBody> =>
-  (
+  /**! @contract easyops.api.micro_app.installed_micro_app.GetOssObjectsStat */ (
     await http.post<ResponseBodyWrapper<GetOssObjectsStatResponseBody>>(
       "api/gateway/micro_app.installed_micro_app.GetOssObjectsStat/api/v1/micro-app/oss/get-objects-stat",
       data,

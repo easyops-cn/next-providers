@@ -19,7 +19,7 @@ export const deleteAlertRule = (
   id: string | number,
   options?: HttpOptions
 ): Promise<DeleteAlertRuleResponseBody> =>
-  http.delete<DeleteAlertRuleResponseBody>(
+  /**! @contract easyops.api.monitor.alert_rule.DeleteAlertRule */ http.delete<DeleteAlertRuleResponseBody>(
     `api/gateway/monitor.alert_rule.DeleteAlertRule/api/v3/alert_rule/config/${id}`,
     options
   );

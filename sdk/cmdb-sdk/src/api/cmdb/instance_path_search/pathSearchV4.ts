@@ -35,7 +35,7 @@ export const pathSearchV4 = async (
   data: PathSearchV4RequestBody,
   options?: HttpOptions
 ): Promise<PathSearchV4ResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.instance_path_search.PathSearchV4 */ (
     await http.post<ResponseBodyWrapper<PathSearchV4ResponseBody>>(
       "api/gateway/cmdb.instance_path_search.PathSearchV4/v4/path/_search",
       data,

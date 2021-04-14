@@ -19,7 +19,7 @@ export const listObjectCategory = async (
   params: ListObjectCategoryRequestParams,
   options?: HttpOptions
 ): Promise<ListObjectCategoryResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.cmdb_object.ListObjectCategory */ (
     await http.get<ResponseBodyWrapper<ListObjectCategoryResponseBody>>(
       "api/gateway/cmdb.cmdb_object.ListObjectCategory/object_category",
       { ...options, params }

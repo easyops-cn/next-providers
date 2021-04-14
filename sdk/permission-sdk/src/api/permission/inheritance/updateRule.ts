@@ -19,7 +19,7 @@ export const updateRule = async (
   data: UpdateRuleRequestBody,
   options?: HttpOptions
 ): Promise<UpdateRuleResponseBody> =>
-  (
+  /**! @contract easyops.api.permission.inheritance.UpdateRule */ (
     await http.put<ResponseBodyWrapper<UpdateRuleResponseBody>>(
       `api/gateway/permission.inheritance.UpdateRule/api/v1/inherit/rule/${instanceId}`,
       data,

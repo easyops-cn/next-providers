@@ -14,7 +14,7 @@ export const unLockState = (
   data: UnLockStateRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.cmdb.terraform.UnLockState */ http.post<void>(
     `api/gateway/cmdb.terraform.UnLockState/api/terraform/v1/object/${objectId}/instance/${instanceId}/state/unlock`,
     data,
     options

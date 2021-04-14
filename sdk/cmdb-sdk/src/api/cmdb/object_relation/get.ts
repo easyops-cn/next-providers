@@ -12,7 +12,7 @@ export const get = async (
   relation_id: string | number,
   options?: HttpOptions
 ): Promise<GetResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.object_relation.Get */ (
     await http.get<ResponseBodyWrapper<GetResponseBody>>(
       `api/gateway/cmdb.object_relation.Get/object_relation/${relation_id}`,
       options

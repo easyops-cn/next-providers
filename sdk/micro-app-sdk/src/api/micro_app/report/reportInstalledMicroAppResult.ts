@@ -23,7 +23,7 @@ export const reportInstalledMicroAppResult = async (
   data: ReportInstalledMicroAppResultRequestBody,
   options?: HttpOptions
 ): Promise<ReportInstalledMicroAppResultResponseBody> =>
-  (
+  /**! @contract easyops.api.micro_app.report.ReportInstalledMicroAppResult */ (
     await http.post<
       ResponseBodyWrapper<ReportInstalledMicroAppResultResponseBody>
     >(

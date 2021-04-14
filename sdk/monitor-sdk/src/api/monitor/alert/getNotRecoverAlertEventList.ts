@@ -64,7 +64,7 @@ export const getNotRecoverAlertEventList = (
   params: GetNotRecoverAlertEventListRequestParams,
   options?: HttpOptions
 ): Promise<GetNotRecoverAlertEventListResponseBody> =>
-  http.get<GetNotRecoverAlertEventListResponseBody>(
+  /**! @contract easyops.api.monitor.alert.GetNotRecoverAlertEventList */ http.get<GetNotRecoverAlertEventListResponseBody>(
     "api/gateway/monitor.alert.GetNotRecoverAlertEventList/api/v1/alert/alert_status_not_recover",
     { ...options, params }
   );

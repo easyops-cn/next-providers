@@ -53,7 +53,7 @@ export const searchAppInSystem = async (
   data: SearchAppInSystemRequestBody,
   options?: HttpOptions
 ): Promise<SearchAppInSystemResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.business_instance.SearchAppInSystem */ (
     await http.post<ResponseBodyWrapper<SearchAppInSystemResponseBody>>(
       `api/gateway/cmdb.business_instance.SearchAppInSystem/system/${systemInstanceId}/_search_apps`,
       data,

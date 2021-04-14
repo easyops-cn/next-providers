@@ -31,7 +31,7 @@ export const validateCmdbPermission = async (
   params: ValidateCmdbPermissionRequestParams,
   options?: HttpOptions
 ): Promise<ValidateCmdbPermissionResponseBody> =>
-  (
+  /**! @contract easyops.api.permission.permission.ValidateCmdbPermission */ (
     await http.get<ResponseBodyWrapper<ValidateCmdbPermissionResponseBody>>(
       "api/gateway/permission.permission.ValidateCmdbPermission/api/v1/permission/validate",
       { ...options, params }

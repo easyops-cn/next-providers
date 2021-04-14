@@ -23,7 +23,7 @@ export const uploadImages = async (
   data: UploadImagesRequestBody,
   options?: HttpOptions
 ): Promise<UploadImagesResponseBody> =>
-  (
+  /**! @contract easyops.api.micro_app.installed_micro_app.UploadImages */ (
     await http.post<ResponseBodyWrapper<UploadImagesResponseBody>>(
       "api/gateway/micro_app.installed_micro_app.UploadImages/api/v1/micro-app/upload-app-images",
       data,

@@ -20,7 +20,7 @@ export const getApi = async (
   params: GetApiRequestParams,
   options?: HttpOptions
 ): Promise<GetApiResponseBody> =>
-  (
+  /**! @contract easyops.api.next_builder.apis.GetApi */ (
     await http.get<ResponseBodyWrapper<GetApiResponseBody>>(
       "api/gateway/next_builder.apis.GetApi/api/v1/api/get",
       { ...options, params }

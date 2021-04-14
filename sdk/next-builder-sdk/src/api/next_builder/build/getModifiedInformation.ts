@@ -23,7 +23,7 @@ export const getModifiedInformation = async (
   params: GetModifiedInformationRequestParams,
   options?: HttpOptions
 ): Promise<GetModifiedInformationResponseBody> =>
-  (
+  /**! @contract easyops.api.next_builder.build.GetModifiedInformation */ (
     await http.get<ResponseBodyWrapper<GetModifiedInformationResponseBody>>(
       `api/gateway/next_builder.build.GetModifiedInformation/api/v1/next-builder/modified-information/${projectId}`,
       { ...options, params }

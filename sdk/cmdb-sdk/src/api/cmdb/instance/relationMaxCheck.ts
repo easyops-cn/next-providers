@@ -47,7 +47,7 @@ export const relationMaxCheck = async (
   data: RelationMaxCheckRequestBody,
   options?: HttpOptions
 ): Promise<RelationMaxCheckResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.instance.RelationMaxCheck */ (
     await http.post<ResponseBodyWrapper<RelationMaxCheckResponseBody>>(
       `api/gateway/cmdb.instance.RelationMaxCheck/object/${objectId}/instance/_search_relation_max_check`,
       data,

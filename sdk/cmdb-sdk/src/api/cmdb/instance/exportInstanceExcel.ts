@@ -29,7 +29,7 @@ export const exportInstanceExcel = (
   data: ExportInstanceExcelRequestBody,
   options?: HttpOptions
 ): Promise<Blob> =>
-  http.post<Blob>(
+  /**! @contract easyops.api.cmdb.instance.ExportInstanceExcel */ http.post<Blob>(
     `api/gateway/cmdb.instance.ExportInstanceExcel/export/object/${object_id}/instance/excel`,
     data,
     { ...options, responseType: "blob" }

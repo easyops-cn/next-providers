@@ -24,7 +24,7 @@ export const listObjects = async (
   params: ListObjectsRequestParams,
   options?: HttpOptions
 ): Promise<ListObjectsResponseBody> =>
-  (
+  /**! @contract easyops.api.object_store.object_store.ListObjects */ (
     await http.get<ResponseBodyWrapper<ListObjectsResponseBody>>(
       `api/gateway/object_store.object_store.ListObjects/api/v1/objectStore/bucket/${bucketName}/object`,
       { ...options, params }

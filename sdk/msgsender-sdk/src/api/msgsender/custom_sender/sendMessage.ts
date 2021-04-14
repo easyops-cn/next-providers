@@ -15,7 +15,7 @@ export const sendMessage = (
   data: SendMessageRequestBody,
   options?: HttpOptions
 ): Promise<SendMessageResponseBody> =>
-  http.post<SendMessageResponseBody>(
+  /**! @contract easyops.api.msgsender.custom_sender.SendMessage */ http.post<SendMessageResponseBody>(
     "api/gateway/msgsender.custom_sender.SendMessage/api/v1/message_sender/send_message",
     data,
     options

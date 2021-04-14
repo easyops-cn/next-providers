@@ -13,7 +13,7 @@ export const append = (
   data: AppendRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.cmdb.instance_relation.Append */ http.post<void>(
     `api/gateway/cmdb.instance_relation.Append/object/${objectId}/relation/${relationSideId}/append`,
     data,
     options

@@ -17,7 +17,7 @@ export const getMicroAppProjectByAppId = async (
   params: GetMicroAppProjectByAppIdRequestParams,
   options?: HttpOptions
 ): Promise<GetMicroAppProjectByAppIdResponseBody> =>
-  (
+  /**! @contract easyops.api.next_builder.project.GetMicroAppProjectByAppId */ (
     await http.get<ResponseBodyWrapper<GetMicroAppProjectByAppIdResponseBody>>(
       "api/gateway/next_builder.project.GetMicroAppProjectByAppId/api/v1/next-builder/project",
       { ...options, params }

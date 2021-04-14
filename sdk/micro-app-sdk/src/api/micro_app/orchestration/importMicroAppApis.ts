@@ -17,7 +17,7 @@ export const importMicroAppApis = (
   data: ImportMicroAppApisRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.micro_app.orchestration.ImportMicroAppApis */ http.post<void>(
     "api/gateway/micro_app.orchestration.ImportMicroAppApis/api/v1/apis/import",
     data,
     options

@@ -13,7 +13,7 @@ export const getConfig = (
   instanceId: string | number,
   options?: HttpOptions
 ): Promise<GetConfigResponseBody> =>
-  http.get<GetConfigResponseBody>(
+  /**! @contract easyops.api.msgsender.config.GetConfig */ http.get<GetConfigResponseBody>(
     `api/gateway/msgsender.config.GetConfig/api/v1/message_sender/configs/${instanceId}`,
     options
   );

@@ -13,7 +13,7 @@ export const getRelationQueryStrategyV2 = async (
   id: string | number,
   options?: HttpOptions
 ): Promise<GetRelationQueryStrategyV2ResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.cmdb_object.GetRelationQueryStrategyV2 */ (
     await http.get<ResponseBodyWrapper<GetRelationQueryStrategyV2ResponseBody>>(
       `api/gateway/cmdb.cmdb_object.GetRelationQueryStrategyV2/v2/object/${object_id}/relation_query_strategy/${id}`,
       options

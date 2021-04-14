@@ -13,7 +13,7 @@ export const sortCollection = (
   data: SortCollectionRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.user_service.launchpad.SortCollection */ http.post<void>(
     "api/gateway/user_service.launchpad.SortCollection/api/v1/launchpad/sort-collection",
     data,
     options

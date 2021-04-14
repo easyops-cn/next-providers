@@ -21,7 +21,7 @@ export const updateInstalledMicroApp = async (
   data: UpdateInstalledMicroAppRequestBody,
   options?: HttpOptions
 ): Promise<UpdateInstalledMicroAppResponseBody> =>
-  (
+  /**! @contract easyops.api.micro_app.installed_micro_app.UpdateInstalledMicroApp */ (
     await http.put<ResponseBodyWrapper<UpdateInstalledMicroAppResponseBody>>(
       `api/gateway/micro_app.installed_micro_app.UpdateInstalledMicroApp/api/micro_app/v1/installed_micro_app/${app_id}`,
       data,

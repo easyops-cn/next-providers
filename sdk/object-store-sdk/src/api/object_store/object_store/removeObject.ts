@@ -9,7 +9,7 @@ export const removeObject = (
   objectName: string | number,
   options?: HttpOptions
 ): Promise<void> =>
-  http.delete<void>(
+  /**! @contract easyops.api.object_store.object_store.RemoveObject */ http.delete<void>(
     `api/gateway/object_store.object_store.RemoveObject/api/v1/objectStore/bucket/${bucketName}/object/${objectName}`,
     options
   );

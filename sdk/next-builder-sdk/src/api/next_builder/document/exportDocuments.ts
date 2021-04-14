@@ -13,7 +13,7 @@ export const exportDocuments = (
   data: ExportDocumentsRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.next_builder.document.ExportDocuments */ http.post<void>(
     "api/gateway/next_builder.document.ExportDocuments/api/v1/document/export",
     data,
     options

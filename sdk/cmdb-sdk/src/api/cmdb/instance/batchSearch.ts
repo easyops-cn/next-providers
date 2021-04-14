@@ -27,7 +27,7 @@ export const batchSearch = (
   data: BatchSearchRequestBody,
   options?: HttpOptions
 ): Promise<BatchSearchResponseBody> =>
-  http.post<BatchSearchResponseBody>(
+  /**! @contract easyops.api.cmdb.instance.BatchSearch */ http.post<BatchSearchResponseBody>(
     "api/gateway/cmdb.instance.BatchSearch/batch/object/instance/_search",
     data,
     options

@@ -9,7 +9,7 @@ export const deleteArchiveInstance = (
   instance_id: string | number,
   options?: HttpOptions
 ): Promise<void> =>
-  http.delete<void>(
+  /**! @contract easyops.api.cmdb.instance_archive.DeleteArchiveInstance */ http.delete<void>(
     `api/gateway/cmdb.instance_archive.DeleteArchiveInstance/object/${object_id}/instance_archive/${instance_id}`,
     options
   );

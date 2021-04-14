@@ -13,7 +13,7 @@ export const removeStoryboardProject = (
   params: RemoveStoryboardProjectRequestParams,
   options?: HttpOptions
 ): Promise<void> =>
-  http.delete<void>(
+  /**! @contract easyops.api.next_builder.project.RemoveStoryboardProject */ http.delete<void>(
     "api/gateway/next_builder.project.RemoveStoryboardProject/api/v1/next-builder/removeProject",
     { ...options, params }
   );

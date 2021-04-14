@@ -14,7 +14,7 @@ export const setPermissionDisableStatus = (
   data: SetPermissionDisableStatusRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.put<void>(
+  /**! @contract easyops.api.permission.permission.SetPermissionDisableStatus */ http.put<void>(
     `api/gateway/permission.permission.SetPermissionDisableStatus/api/v1/set-permission-disable-status/${action}`,
     data,
     options

@@ -49,7 +49,7 @@ export const getObjectRelationPath = (
   params: GetObjectRelationPathRequestParams,
   options?: HttpOptions
 ): Promise<GetObjectRelationPathResponseBody> =>
-  http.get<GetObjectRelationPathResponseBody>(
+  /**! @contract easyops.api.cmdb.cmdb_object.GetObjectRelationPath */ http.get<GetObjectRelationPathResponseBody>(
     "api/gateway/cmdb.cmdb_object.GetObjectRelationPath/object_relation_path",
     { ...options, params }
   );

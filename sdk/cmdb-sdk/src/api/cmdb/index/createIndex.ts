@@ -23,7 +23,7 @@ export const createIndex = async (
   data: CreateIndexRequestBody,
   options?: HttpOptions
 ): Promise<CreateIndexResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.index.CreateIndex */ (
     await http.post<ResponseBodyWrapper<CreateIndexResponseBody>>(
       `api/gateway/cmdb.index.CreateIndex/object/${objectId}/index`,
       data,

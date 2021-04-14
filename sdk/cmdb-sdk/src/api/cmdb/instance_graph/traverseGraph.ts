@@ -35,7 +35,7 @@ export const traverseGraph = async (
   data: TraverseGraphRequestBody,
   options?: HttpOptions
 ): Promise<TraverseGraphResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.instance_graph.TraverseGraph */ (
     await http.post<ResponseBodyWrapper<TraverseGraphResponseBody>>(
       "api/gateway/cmdb.instance_graph.TraverseGraph/instance/traverse",
       data,

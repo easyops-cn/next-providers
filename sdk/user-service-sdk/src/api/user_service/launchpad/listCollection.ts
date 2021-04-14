@@ -28,7 +28,7 @@ export const listCollection = async (
   params: ListCollectionRequestParams,
   options?: HttpOptions
 ): Promise<ListCollectionResponseBody> =>
-  (
+  /**! @contract easyops.api.user_service.launchpad.ListCollection */ (
     await http.get<ResponseBodyWrapper<ListCollectionResponseBody>>(
       "api/gateway/user_service.launchpad.ListCollection/api/v1/launchpad/collection",
       { ...options, params }

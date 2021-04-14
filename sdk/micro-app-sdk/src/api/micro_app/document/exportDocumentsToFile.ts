@@ -14,7 +14,7 @@ export const exportDocumentsToFile = (
   data: ExportDocumentsToFileRequestBody,
   options?: HttpOptions
 ): Promise<Blob> =>
-  http.post<Blob>(
+  /**! @contract easyops.api.micro_app.document.ExportDocumentsToFile */ http.post<Blob>(
     `api/gateway/micro_app.document.ExportDocumentsToFile/api/micro_app/v1/document/export/${appId}`,
     data,
     { ...options, responseType: "blob" }

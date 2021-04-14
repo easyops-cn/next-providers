@@ -11,4 +11,7 @@ export interface ModelIcon {
 
   /** prefix */
   prefix: string;
+
+  /** color */
+  color: string;
 }

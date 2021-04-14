@@ -23,7 +23,7 @@ export const putObject = async (
   data: PutObjectRequestBody,
   options?: HttpOptions
 ): Promise<PutObjectResponseBody> => {
-  const _formData = new FormData();
+  /**! @contract easyops.api.object_store.object_store.PutObject */ const _formData = new FormData();
   for (const [key, value] of Object.entries(data)) {
     if (Array.isArray(value)) {
       const k = `${key}[]`;

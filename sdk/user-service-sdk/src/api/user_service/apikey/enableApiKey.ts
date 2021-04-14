@@ -8,7 +8,7 @@ export const enableApiKey = (
   access_key: string | number,
   options?: HttpOptions
 ): Promise<void> =>
-  http.put<void>(
+  /**! @contract easyops.api.user_service.apikey.EnableApiKey */ http.put<void>(
     `api/gateway/user_service.apikey.EnableApiKey/api/v1/apikey/enable/${access_key}`,
     undefined,
     options

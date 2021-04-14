@@ -9,7 +9,7 @@ export const getObject = (
   objectName: string | number,
   options?: HttpOptions
 ): Promise<Blob> =>
-  http.get<Blob>(
+  /**! @contract easyops.api.object_store.object_store.GetObject */ http.get<Blob>(
     `api/gateway/object_store.object_store.GetObject/api/v1/objectStore/bucket/${bucketName}/object/${objectName}`,
     { ...options, responseType: "blob" }
   );

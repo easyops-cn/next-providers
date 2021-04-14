@@ -48,7 +48,7 @@ export const getDocumentsDetails = async (
   documentId: string | number,
   options?: HttpOptions
 ): Promise<GetDocumentsDetailsResponseBody> =>
-  (
+  /**! @contract easyops.api.next_builder.document.GetDocumentsDetails */ (
     await http.get<ResponseBodyWrapper<GetDocumentsDetailsResponseBody>>(
       `api/gateway/next_builder.document.GetDocumentsDetails/api/v1/document/details/${documentId}`,
       options

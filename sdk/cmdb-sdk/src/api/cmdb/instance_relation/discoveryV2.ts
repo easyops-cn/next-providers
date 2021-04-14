@@ -41,7 +41,7 @@ export const discoveryV2 = (
   data: DiscoveryV2RequestBody,
   options?: HttpOptions
 ): Promise<DiscoveryV2ResponseBody> =>
-  http.post<DiscoveryV2ResponseBody>(
+  /**! @contract easyops.api.cmdb.instance_relation.DiscoveryV2 */ http.post<DiscoveryV2ResponseBody>(
     `api/gateway/cmdb.instance_relation.DiscoveryV2/v2/object_relation/${relationId}/_autodiscovery/multi`,
     data,
     options

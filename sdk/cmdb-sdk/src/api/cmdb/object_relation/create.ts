@@ -59,7 +59,7 @@ export const create = async (
   data: CreateRequestBody,
   options?: HttpOptions
 ): Promise<CreateResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.object_relation.Create */ (
     await http.post<ResponseBodyWrapper<CreateResponseBody>>(
       "api/gateway/cmdb.object_relation.Create/object_relation",
       data,

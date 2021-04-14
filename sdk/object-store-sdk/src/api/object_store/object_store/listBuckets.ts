@@ -14,7 +14,7 @@ export interface ListBucketsResponseBody {
 export const listBuckets = async (
   options?: HttpOptions
 ): Promise<ListBucketsResponseBody> =>
-  (
+  /**! @contract easyops.api.object_store.object_store.ListBuckets */ (
     await http.get<ResponseBodyWrapper<ListBucketsResponseBody>>(
       "api/gateway/object_store.object_store.ListBuckets/api/v1/objectStore/bucket",
       options

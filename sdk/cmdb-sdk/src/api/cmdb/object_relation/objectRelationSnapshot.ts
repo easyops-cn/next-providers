@@ -19,7 +19,7 @@ export const objectRelationSnapshot = async (
   params: ObjectRelationSnapshotRequestParams,
   options?: HttpOptions
 ): Promise<ObjectRelationSnapshotResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.object_relation.ObjectRelationSnapshot */ (
     await http.get<ResponseBodyWrapper<ObjectRelationSnapshotResponseBody>>(
       `api/gateway/cmdb.object_relation.ObjectRelationSnapshot/history/object_relation/${relation_id}`,
       { ...options, params }

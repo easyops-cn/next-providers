@@ -59,8 +59,11 @@ export interface ModelObjectBasicInfo {
   /** 是否是抽象模型(父模型) */
   isAbstract: boolean;
 
-  /** 所属父模型 */
+  /** 所属父模型（废弃） */
   parentObjectId: string;
+
+  /** 所属父模型列表 */
+  parentObjectIds: string[];
 
   /** 当为 true 时，将会忽略该模型的实例权限点校验 */
   permissionDenied: boolean;

@@ -20,7 +20,7 @@ export interface ListOrgResponseBody {
  * @endpoint GET /api/v1/org/list
  */
 export const listOrg = (options?: HttpOptions): Promise<ListOrgResponseBody> =>
-  http.get<ListOrgResponseBody>(
+  /**! @contract easyops.api.user_service.organization.ListOrg */ http.get<ListOrgResponseBody>(
     "api/gateway/user_service.organization.ListOrg/api/v1/org/list",
     options
   );

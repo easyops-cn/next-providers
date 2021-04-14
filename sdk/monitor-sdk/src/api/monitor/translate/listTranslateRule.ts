@@ -37,7 +37,7 @@ export const listTranslateRule = (
   params: ListTranslateRuleRequestParams,
   options?: HttpOptions
 ): Promise<ListTranslateRuleResponseBody> =>
-  http.get<ListTranslateRuleResponseBody>(
+  /**! @contract easyops.api.monitor.translate.ListTranslateRule */ http.get<ListTranslateRuleResponseBody>(
     "api/gateway/monitor.translate.ListTranslateRule/api/v1/translate/rule",
     { ...options, params }
   );

@@ -14,7 +14,7 @@ export const reportInstalledBricksNextPackageResult = (
   data: ReportInstalledBricksNextPackageResultRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.micro_app.report.ReportInstalledBricksNextPackageResult */ http.post<void>(
     "api/gateway/micro_app.report.ReportInstalledBricksNextPackageResult/api/micro_app/v1/installed_bricks_next_package/report_result",
     data,
     options

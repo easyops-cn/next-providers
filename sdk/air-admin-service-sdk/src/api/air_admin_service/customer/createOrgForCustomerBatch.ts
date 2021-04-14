@@ -19,7 +19,7 @@ export const createOrgForCustomerBatch = async (
   data: CreateOrgForCustomerBatchRequestBody,
   options?: HttpOptions
 ): Promise<CreateOrgForCustomerBatchResponseBody> =>
-  (
+  /**! @contract easyops.api.air_admin_service.customer.CreateOrgForCustomerBatch */ (
     await http.post<ResponseBodyWrapper<CreateOrgForCustomerBatchResponseBody>>(
       "api/gateway/air_admin_service.customer.CreateOrgForCustomerBatch/api/v1/customer/batch_org",
       data,

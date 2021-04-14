@@ -23,7 +23,7 @@ export const getImagesByAppId = async (
   data: GetImagesByAppIdRequestBody,
   options?: HttpOptions
 ): Promise<GetImagesByAppIdResponseBody> =>
-  (
+  /**! @contract easyops.api.micro_app.installed_micro_app.GetImagesByAppId */ (
     await http.post<ResponseBodyWrapper<GetImagesByAppIdResponseBody>>(
       "api/gateway/micro_app.installed_micro_app.GetImagesByAppId/api/v1/micro-app/images",
       data,

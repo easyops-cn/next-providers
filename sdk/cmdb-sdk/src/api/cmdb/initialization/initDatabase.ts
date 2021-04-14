@@ -13,7 +13,7 @@ export const initDatabase = (
   data: InitDatabaseRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.cmdb.initialization.InitDatabase */ http.post<void>(
     "api/gateway/cmdb.initialization.InitDatabase/initialization/database",
     data,
     options

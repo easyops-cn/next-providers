@@ -37,7 +37,7 @@ export const listAlertRuleAll = (
   params: ListAlertRuleAllRequestParams,
   options?: HttpOptions
 ): Promise<ListAlertRuleAllResponseBody> =>
-  http.get<ListAlertRuleAllResponseBody>(
+  /**! @contract easyops.api.monitor.alert_rule.ListAlertRuleAll */ http.get<ListAlertRuleAllResponseBody>(
     "api/gateway/monitor.alert_rule.ListAlertRuleAll/api/v3/alert_rule/config/all",
     { ...options, params }
   );

@@ -43,7 +43,7 @@ export const logSearch = (
   data: LogSearchRequestBody,
   options?: HttpOptions
 ): Promise<LogSearchResponseBody> =>
-  http.post<LogSearchResponseBody>(
+  /**! @contract easyops.api.monitor.log_search.LogSearch */ http.post<LogSearchResponseBody>(
     "api/gateway/monitor.log_search.LogSearch/api/v1/log_search/search",
     data,
     options

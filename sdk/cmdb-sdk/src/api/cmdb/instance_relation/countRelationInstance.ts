@@ -22,7 +22,7 @@ export const countRelationInstance = (
   relationId: string | number,
   options?: HttpOptions
 ): Promise<CountRelationInstanceResponseBody> =>
-  http.get<CountRelationInstanceResponseBody>(
+  /**! @contract easyops.api.cmdb.instance_relation.CountRelationInstance */ http.get<CountRelationInstanceResponseBody>(
     `api/gateway/cmdb.instance_relation.CountRelationInstance/object_relation/${relationId}/relation_instance/_count_relation_instance`,
     options
   );

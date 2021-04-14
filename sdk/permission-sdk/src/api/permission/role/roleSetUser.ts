@@ -20,7 +20,7 @@ export const roleSetUser = async (
   data: RoleSetUserRequestBody,
   options?: HttpOptions
 ): Promise<RoleSetUserResponseBody> =>
-  (
+  /**! @contract easyops.api.permission.role.RoleSetUser */ (
     await http.put<ResponseBodyWrapper<RoleSetUserResponseBody>>(
       `api/gateway/permission.role.RoleSetUser/api/v1/permission_role/user_set_roles/${user}`,
       data,

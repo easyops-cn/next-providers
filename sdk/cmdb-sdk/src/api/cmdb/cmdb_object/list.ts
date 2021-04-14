@@ -17,7 +17,7 @@ export const list = async (
   params: ListRequestParams,
   options?: HttpOptions
 ): Promise<ListResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.cmdb_object.List */ (
     await http.get<ResponseBodyWrapper<ListResponseBody>>(
       "api/gateway/cmdb.cmdb_object.List/object",
       { ...options, params }

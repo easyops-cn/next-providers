@@ -13,7 +13,7 @@ export const bindObjectMicroApp = (
   data: BindObjectMicroAppRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.micro_app.object_micro_app.BindObjectMicroApp */ http.post<void>(
     "api/gateway/micro_app.object_micro_app.BindObjectMicroApp/api/micro_app/v1/object_micro_app/bind",
     data,
     options

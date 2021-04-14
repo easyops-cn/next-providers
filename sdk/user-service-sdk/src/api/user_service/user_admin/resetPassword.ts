@@ -22,7 +22,7 @@ export const resetPassword = (
   data: ResetPasswordRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.user_service.user_admin.ResetPassword */ http.post<void>(
     "api/gateway/user_service.user_admin.ResetPassword/api/v1/users/password/reset",
     data,
     options

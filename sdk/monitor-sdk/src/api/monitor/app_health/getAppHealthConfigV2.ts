@@ -20,7 +20,7 @@ export const getAppHealthConfigV2 = (
   app_id: string | number,
   options?: HttpOptions
 ): Promise<GetAppHealthConfigV2ResponseBody> =>
-  http.get<GetAppHealthConfigV2ResponseBody>(
+  /**! @contract easyops.api.monitor.app_health.GetAppHealthConfigV2 */ http.get<GetAppHealthConfigV2ResponseBody>(
     `api/gateway/monitor.app_health.GetAppHealthConfigV2/api/v2/app_health/config/${app_id}`,
     options
   );

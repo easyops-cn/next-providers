@@ -50,7 +50,7 @@ export const packageUpload = async (
   data: PackageUploadRequestBody,
   options?: HttpOptions
 ): Promise<PackageUploadResponseBody> =>
-  (
+  /**! @contract easyops.api.micro_app.installed_micro_app.PackageUpload */ (
     await http.post<ResponseBodyWrapper<PackageUploadResponseBody>>(
       "api/gateway/micro_app.installed_micro_app.PackageUpload/api/micro_app/v1/package-upload",
       data,

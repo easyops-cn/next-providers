@@ -14,7 +14,7 @@ export const batchDeleteArchiveInstance = (
   params: BatchDeleteArchiveInstanceRequestParams,
   options?: HttpOptions
 ): Promise<void> =>
-  http.delete<void>(
+  /**! @contract easyops.api.cmdb.instance_archive.BatchDeleteArchiveInstance */ http.delete<void>(
     `api/gateway/cmdb.instance_archive.BatchDeleteArchiveInstance/object/${object_id}/instance_archive_instances`,
     { ...options, params }
   );

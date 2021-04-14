@@ -29,7 +29,7 @@ export const listInstanceQueryStrategy = (
   params: ListInstanceQueryStrategyRequestParams,
   options?: HttpOptions
 ): Promise<ListInstanceQueryStrategyResponseBody> =>
-  http.get<ListInstanceQueryStrategyResponseBody>(
+  /**! @contract easyops.api.cmdb.instance.ListInstanceQueryStrategy */ http.get<ListInstanceQueryStrategyResponseBody>(
     `api/gateway/cmdb.instance.ListInstanceQueryStrategy/object/${object_id}/query/strategy`,
     { ...options, params }
   );

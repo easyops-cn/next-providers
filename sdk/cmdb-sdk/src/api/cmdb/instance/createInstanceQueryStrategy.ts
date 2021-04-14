@@ -27,7 +27,7 @@ export const createInstanceQueryStrategy = async (
   data: CreateInstanceQueryStrategyRequestBody,
   options?: HttpOptions
 ): Promise<CreateInstanceQueryStrategyResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.instance.CreateInstanceQueryStrategy */ (
     await http.post<
       ResponseBodyWrapper<CreateInstanceQueryStrategyResponseBody>
     >(

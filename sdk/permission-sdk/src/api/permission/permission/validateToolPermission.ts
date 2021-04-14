@@ -37,7 +37,7 @@ export const validateToolPermission = async (
   params: ValidateToolPermissionRequestParams,
   options?: HttpOptions
 ): Promise<ValidateToolPermissionResponseBody> =>
-  (
+  /**! @contract easyops.api.permission.permission.ValidateToolPermission */ (
     await http.get<ResponseBodyWrapper<ValidateToolPermissionResponseBody>>(
       "api/gateway/permission.permission.ValidateToolPermission/api/v1/permission/validate",
       { ...options, params }

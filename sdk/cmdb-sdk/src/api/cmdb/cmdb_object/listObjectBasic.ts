@@ -20,7 +20,7 @@ export const listObjectBasic = async (
   params: ListObjectBasicRequestParams,
   options?: HttpOptions
 ): Promise<ListObjectBasicResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.cmdb_object.ListObjectBasic */ (
     await http.get<ResponseBodyWrapper<ListObjectBasicResponseBody>>(
       "api/gateway/cmdb.cmdb_object.ListObjectBasic/object_basic",
       { ...options, params }

@@ -27,7 +27,7 @@ export const getReleasedLogs = async (
   params: GetReleasedLogsRequestParams,
   options?: HttpOptions
 ): Promise<GetReleasedLogsResponseBody> =>
-  (
+  /**! @contract easyops.api.next_builder.build.GetReleasedLogs */ (
     await http.get<ResponseBodyWrapper<GetReleasedLogsResponseBody>>(
       `api/gateway/next_builder.build.GetReleasedLogs/api/v1/next-builder/released-logs/${projectId}`,
       { ...options, params }

@@ -14,7 +14,7 @@ export const importPermissions = (
   data: ImportPermissionsRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.micro_app.permission.ImportPermissions */ http.post<void>(
     "api/gateway/micro_app.permission.ImportPermissions/api/micro_app/v1/permission/import",
     data,
     options

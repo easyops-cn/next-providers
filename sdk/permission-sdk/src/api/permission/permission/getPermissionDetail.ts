@@ -15,7 +15,7 @@ export const getPermissionDetail = async (
   id: string | number,
   options?: HttpOptions
 ): Promise<GetPermissionDetailResponseBody> =>
-  (
+  /**! @contract easyops.api.permission.permission.GetPermissionDetail */ (
     await http.get<ResponseBodyWrapper<GetPermissionDetailResponseBody>>(
       `api/gateway/permission.permission.GetPermissionDetail/api/v1/permission/${id}`,
       options

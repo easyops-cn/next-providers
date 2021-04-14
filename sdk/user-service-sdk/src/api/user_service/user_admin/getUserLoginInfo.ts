@@ -25,7 +25,7 @@ export const getUserLoginInfo = async (
   params: GetUserLoginInfoRequestParams,
   options?: HttpOptions
 ): Promise<GetUserLoginInfoResponseBody> =>
-  (
+  /**! @contract easyops.api.user_service.user_admin.GetUserLoginInfo */ (
     await http.get<ResponseBodyWrapper<GetUserLoginInfoResponseBody>>(
       "api/gateway/user_service.user_admin.GetUserLoginInfo/api/v1/user/login_info",
       { ...options, params }

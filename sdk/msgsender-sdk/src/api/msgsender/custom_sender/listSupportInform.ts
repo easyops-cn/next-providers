@@ -11,7 +11,7 @@ export type ListSupportInformResponseBody = Partial<ModelEasyTornadoCommonPageRe
 export const listSupportInform = (
   options?: HttpOptions
 ): Promise<ListSupportInformResponseBody> =>
-  http.get<ListSupportInformResponseBody>(
+  /**! @contract easyops.api.msgsender.custom_sender.ListSupportInform */ http.get<ListSupportInformResponseBody>(
     "api/gateway/msgsender.custom_sender.ListSupportInform/api/v1/message_sender/method",
     options
   );

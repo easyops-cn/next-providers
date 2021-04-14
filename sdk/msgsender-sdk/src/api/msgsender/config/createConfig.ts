@@ -16,7 +16,7 @@ export const createConfig = (
   data: CreateConfigRequestBody,
   options?: HttpOptions
 ): Promise<CreateConfigResponseBody> =>
-  http.post<CreateConfigResponseBody>(
+  /**! @contract easyops.api.msgsender.config.CreateConfig */ http.post<CreateConfigResponseBody>(
     "api/gateway/msgsender.config.CreateConfig/api/v1/message_sender/configs",
     data,
     options

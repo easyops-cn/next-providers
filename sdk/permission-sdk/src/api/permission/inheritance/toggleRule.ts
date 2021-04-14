@@ -14,7 +14,7 @@ export const toggleRule = (
   data: ToggleRuleRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.put<void>(
+  /**! @contract easyops.api.permission.inheritance.ToggleRule */ http.put<void>(
     `api/gateway/permission.inheritance.ToggleRule/api/v1/inherit/rule/${instanceId}/toggle`,
     data,
     options

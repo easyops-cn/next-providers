@@ -26,7 +26,7 @@ export const listMicroApp = async (
   params: ListMicroAppRequestParams,
   options?: HttpOptions
 ): Promise<ListMicroAppResponseBody> =>
-  (
+  /**! @contract easyops.api.micro_app.installed_micro_app.ListMicroApp */ (
     await http.get<ResponseBodyWrapper<ListMicroAppResponseBody>>(
       "api/gateway/micro_app.installed_micro_app.ListMicroApp/api/micro_app/v1/installed_micro_app",
       { ...options, params }

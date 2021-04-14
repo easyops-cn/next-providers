@@ -3,6 +3,7 @@ export * from "./alterSelfPassword";
 export * from "./forgotPassword";
 export * from "./getPasswordConfig";
 export * from "./getUserInfo";
+export * from "./getSimpleUserInfo";
 export * from "./getUserInfoV2";
 export * from "./getUserInfoV3";
 export * from "./listGroupsId";

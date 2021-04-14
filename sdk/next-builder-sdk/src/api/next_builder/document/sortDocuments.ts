@@ -13,7 +13,7 @@ export const sortDocuments = (
   data: SortDocumentsRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.next_builder.document.SortDocuments */ http.post<void>(
     "api/gateway/next_builder.document.SortDocuments/api/v1/document/sort",
     data,
     options

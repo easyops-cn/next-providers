@@ -25,7 +25,7 @@ export const searchAllUserGroup = async (
   data: SearchAllUserGroupRequestBody,
   options?: HttpOptions
 ): Promise<SearchAllUserGroupResponseBody> =>
-  (
+  /**! @contract easyops.api.user_service.user_admin.SearchAllUserGroup */ (
     await http.post<ResponseBodyWrapper<SearchAllUserGroupResponseBody>>(
       "api/gateway/user_service.user_admin.SearchAllUserGroup/api/v1/users/group/all",
       data,

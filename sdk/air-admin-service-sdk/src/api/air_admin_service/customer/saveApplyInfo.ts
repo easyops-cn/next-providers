@@ -58,7 +58,7 @@ export const saveApplyInfo = (
   data: SaveApplyInfoRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.air_admin_service.customer.SaveApplyInfo */ http.post<void>(
     "api/gateway/air_admin_service.customer.SaveApplyInfo/api/v1/customer/info",
     data,
     options

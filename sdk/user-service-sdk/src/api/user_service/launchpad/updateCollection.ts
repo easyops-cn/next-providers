@@ -18,7 +18,7 @@ export const updateCollection = (
   data: UpdateCollectionRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.put<void>(
+  /**! @contract easyops.api.user_service.launchpad.UpdateCollection */ http.put<void>(
     `api/gateway/user_service.launchpad.UpdateCollection/api/v1/launchpad/collection/${instanceId}`,
     data,
     options

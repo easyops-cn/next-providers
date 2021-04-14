@@ -95,4 +95,7 @@ export interface ModelInstalledMicroApp {
 
   /** 可见性等级 */
   visibility: "internal" | "public";
+
+  /** 布局类型 */
+  layoutType: string;
 }

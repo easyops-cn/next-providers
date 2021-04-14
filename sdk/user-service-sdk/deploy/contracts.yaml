@@ -69,6 +69,8 @@ depend_contracts:
     version: ^1.0.0
   - name: easyops.api.user_service.user_admin.GetUserInfo
     version: ^1.0.0
+  - name: easyops.api.user_service.user_admin.GetSimpleUserInfo
+    version: ^1.1.0
   - name: easyops.api.user_service.user_admin.GetUserInfoV2
     version: ^1.1.0
   - name: easyops.api.user_service.user_admin.GetUserInfoV3

@@ -39,7 +39,7 @@ export const validateArtifactPermission = (
   params: ValidateArtifactPermissionRequestParams,
   options?: HttpOptions
 ): Promise<ValidateArtifactPermissionResponseBody> =>
-  http.get<ValidateArtifactPermissionResponseBody>(
+  /**! @contract easyops.api.permission.permission.ValidateArtifactPermission */ http.get<ValidateArtifactPermissionResponseBody>(
     "api/gateway/permission.permission.ValidateArtifactPermission/api/v1/permission/validate",
     { ...options, params }
   );

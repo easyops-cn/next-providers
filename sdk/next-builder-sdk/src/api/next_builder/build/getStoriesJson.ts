@@ -13,7 +13,7 @@ export interface GetStoriesJsonResponseBody {
 export const getStoriesJson = async (
   options?: HttpOptions
 ): Promise<GetStoriesJsonResponseBody> =>
-  (
+  /**! @contract easyops.api.next_builder.build.GetStoriesJson */ (
     await http.get<ResponseBodyWrapper<GetStoriesJsonResponseBody>>(
       "api/gateway/next_builder.build.GetStoriesJson/api/v1/next-builder/storiesjson",
       options

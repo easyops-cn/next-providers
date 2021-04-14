@@ -22,7 +22,7 @@ export interface ResetInvitationCodeResponseBody {
 export const resetInvitationCode = async (
   options?: HttpOptions
 ): Promise<ResetInvitationCodeResponseBody> =>
-  (
+  /**! @contract easyops.api.user_service.invitation_code.ResetInvitationCode */ (
     await http.put<ResponseBodyWrapper<ResetInvitationCodeResponseBody>>(
       "api/gateway/user_service.invitation_code.ResetInvitationCode/api/v1/invitation/code/_reset",
       undefined,

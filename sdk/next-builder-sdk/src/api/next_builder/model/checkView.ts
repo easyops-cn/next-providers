@@ -22,7 +22,7 @@ export const checkView = (
   data: CheckViewRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.next_builder.model.CheckView */ http.post<void>(
     "api/gateway/next_builder.model.CheckView/api/v1/view/check",
     data,
     options

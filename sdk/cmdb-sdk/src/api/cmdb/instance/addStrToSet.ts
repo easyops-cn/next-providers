@@ -23,7 +23,7 @@ export const addStrToSet = async (
   data: AddStrToSetRequestBody,
   options?: HttpOptions
 ): Promise<AddStrToSetResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.instance.AddStrToSet */ (
     await http.post<ResponseBodyWrapper<AddStrToSetResponseBody>>(
       `api/gateway/cmdb.instance.AddStrToSet/object/${objectId}/instance/add_str_to_set`,
       data,

@@ -30,7 +30,7 @@ export const validateOpsAutomationPermission = (
   params: ValidateOpsAutomationPermissionRequestParams,
   options?: HttpOptions
 ): Promise<ValidateOpsAutomationPermissionResponseBody> =>
-  http.get<ValidateOpsAutomationPermissionResponseBody>(
+  /**! @contract easyops.api.permission.permission.ValidateOpsAutomationPermission */ http.get<ValidateOpsAutomationPermissionResponseBody>(
     "api/gateway/permission.permission.ValidateOpsAutomationPermission/api/v1/permission/validate",
     { ...options, params }
   );

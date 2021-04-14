@@ -24,7 +24,7 @@ export const deletePermission = (
   params: DeletePermissionRequestParams,
   options?: HttpOptions
 ): Promise<DeletePermissionResponseBody> =>
-  http.delete<DeletePermissionResponseBody>(
+  /**! @contract easyops.api.permission.permission.DeletePermission */ http.delete<DeletePermissionResponseBody>(
     "api/gateway/permission.permission.DeletePermission/api/v1/permission",
     { ...options, params }
   );

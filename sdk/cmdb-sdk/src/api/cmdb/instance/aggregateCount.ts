@@ -29,7 +29,7 @@ export const aggregateCount = async (
   params: AggregateCountRequestParams,
   options?: HttpOptions
 ): Promise<AggregateCountResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.instance.AggregateCount */ (
     await http.get<ResponseBodyWrapper<AggregateCountResponseBody>>(
       `api/gateway/cmdb.instance.AggregateCount/object/${objectId}/instance/aggregate/count/${attrId}`,
       { ...options, params }

@@ -28,7 +28,7 @@ export const updateInstanceQueryStrategy = async (
   data: UpdateInstanceQueryStrategyRequestBody,
   options?: HttpOptions
 ): Promise<UpdateInstanceQueryStrategyResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.instance.UpdateInstanceQueryStrategy */ (
     await http.put<
       ResponseBodyWrapper<UpdateInstanceQueryStrategyResponseBody>
     >(

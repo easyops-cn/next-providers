@@ -35,7 +35,7 @@ export const listArchiveInstance = async (
   params: ListArchiveInstanceRequestParams,
   options?: HttpOptions
 ): Promise<ListArchiveInstanceResponseBody> =>
-  (
+  /**! @contract easyops.api.cmdb.instance_archive.ListArchiveInstance */ (
     await http.get<ResponseBodyWrapper<ListArchiveInstanceResponseBody>>(
       `api/gateway/cmdb.instance_archive.ListArchiveInstance/object/${object_id}/instance_archive`,
       { ...options, params }

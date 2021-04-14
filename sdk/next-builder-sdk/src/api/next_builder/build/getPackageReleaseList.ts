@@ -14,7 +14,7 @@ export const getPackageReleaseList = async (
   projectId: string | number,
   options?: HttpOptions
 ): Promise<GetPackageReleaseListResponseBody> =>
-  (
+  /**! @contract easyops.api.next_builder.build.GetPackageReleaseList */ (
     await http.get<ResponseBodyWrapper<GetPackageReleaseListResponseBody>>(
       `api/gateway/next_builder.build.GetPackageReleaseList/api/v1/next-builder/packages/${projectId}`,
       options

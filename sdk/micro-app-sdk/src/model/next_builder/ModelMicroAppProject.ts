@@ -113,6 +113,9 @@ export interface ModelMicroAppProject_appSetting {
 
   /** 可见性等级 */
   visibility?: "internal" | "public";
+
+  /** 布局类型 */
+  layoutType?: string;
 }
 
 export interface ModelMicroAppProject_dependencies_item {

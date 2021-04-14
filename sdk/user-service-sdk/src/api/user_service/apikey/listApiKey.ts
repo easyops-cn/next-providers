@@ -45,7 +45,7 @@ export const listApiKey = async (
   params: ListApiKeyRequestParams,
   options?: HttpOptions
 ): Promise<ListApiKeyResponseBody> =>
-  (
+  /**! @contract easyops.api.user_service.apikey.ListApiKey */ (
     await http.get<ResponseBodyWrapper<ListApiKeyResponseBody>>(
       "api/gateway/user_service.apikey.ListApiKey/api/v1/apikey",
       { ...options, params }

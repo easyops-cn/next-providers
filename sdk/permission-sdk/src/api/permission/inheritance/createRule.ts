@@ -18,7 +18,7 @@ export const createRule = async (
   data: CreateRuleRequestBody,
   options?: HttpOptions
 ): Promise<CreateRuleResponseBody> =>
-  (
+  /**! @contract easyops.api.permission.inheritance.CreateRule */ (
     await http.post<ResponseBodyWrapper<CreateRuleResponseBody>>(
       "api/gateway/permission.inheritance.CreateRule/api/v1/inherit/rule",
       data,

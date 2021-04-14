@@ -5,7 +5,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
  * @endpoint GET /api/v1/users/captcha
  */
 export const getCaptcha = (options?: HttpOptions): Promise<void> =>
-  http.get<void>(
+  /**! @contract easyops.api.user_service.auth.GetCaptcha */ http.get<void>(
     "api/gateway/user_service.auth.GetCaptcha/api/v1/users/captcha",
     options
   );

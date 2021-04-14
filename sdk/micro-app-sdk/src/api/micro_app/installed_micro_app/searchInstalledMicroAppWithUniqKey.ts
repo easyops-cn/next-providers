@@ -35,7 +35,7 @@ export const searchInstalledMicroAppWithUniqKey = async (
   data: SearchInstalledMicroAppWithUniqKeyRequestBody,
   options?: HttpOptions
 ): Promise<SearchInstalledMicroAppWithUniqKeyResponseBody> =>
-  (
+  /**! @contract easyops.api.micro_app.installed_micro_app.SearchInstalledMicroAppWithUniqKey */ (
     await http.post<
       ResponseBodyWrapper<SearchInstalledMicroAppWithUniqKeyResponseBody>
     >(

@@ -16,7 +16,7 @@ export const moveDocument = (
   data: MoveDocumentRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  http.post<void>(
+  /**! @contract easyops.api.next_builder.document.MoveDocument */ http.post<void>(
     "api/gateway/next_builder.document.MoveDocument/api/v1/document/move",
     data,
     options
