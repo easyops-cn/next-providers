@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.5](https://github.com/easyops-cn/next-providers/compare/@next-sdk/msgsender-sdk@1.1.4...@next-sdk/msgsender-sdk@1.1.5) (2021-04-14)
+
+
+### Bug Fixes
+
+* add contract as comment in sdk ([4a47a99](https://github.com/easyops-cn/next-providers/commit/4a47a99b3ed7f3a366ba64121b71d9f27d07148d))
+
+
+
+
+
 ## [1.1.4](https://github.com/easyops-cn/next-providers/compare/@next-sdk/msgsender-sdk@1.1.3...@next-sdk/msgsender-sdk@1.1.4) (2021-03-25)
 
 **Note:** Version bump only for package @next-sdk/msgsender-sdk

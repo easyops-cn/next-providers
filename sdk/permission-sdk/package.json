@@ -1,6 +1,6 @@
 {
   "name": "@next-sdk/permission-sdk",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "SDK for Permission",
   "homepage": "https://github.com/easyops-cn/next-providers/tree/master/sdk/permission-sdk",
   "license": "GPL-3.0",
