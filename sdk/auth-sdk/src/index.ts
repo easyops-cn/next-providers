@@ -67,3 +67,15 @@ export const getAppStoryboard = async <T = Record<string, any>>(
       params,
     })
   ).data;
+
+export const esbLogin = async (
+  data: LoginRequestBody,
+  options?: HttpOptions
+): Promise<LoginResponseBody> =>
+  (
+    await http.post<ResponseBodyWrapper<LoginResponseBody>>(
+      "api/esb/login",
+      data,
+      options
+    )
+  ).data;
