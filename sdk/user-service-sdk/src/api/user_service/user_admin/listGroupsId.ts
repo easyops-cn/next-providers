@@ -1,11 +1,11 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface ListGroupsIdRequestParams {
+export interface UserAdminApi_ListGroupsIdRequestParams {
   /** 用户id, 传此参数返回用户所在的所有用户组, 默认返回所有用户组 */
   user_id?: string;
 }
 
-export interface ListGroupsIdResponseBody {
+export interface UserAdminApi_ListGroupsIdResponseBody {
   /** 返回码 */
   code?: number;
 
@@ -23,11 +23,11 @@ export interface ListGroupsIdResponseBody {
  * @description 获取用户组Id列表
  * @endpoint GET /api/v1/groups/id
  */
-export const listGroupsId = (
-  params: ListGroupsIdRequestParams,
+export const UserAdminApi_listGroupsId = (
+  params: UserAdminApi_ListGroupsIdRequestParams,
   options?: HttpOptions
-): Promise<ListGroupsIdResponseBody> =>
-  /**! @contract easyops.api.user_service.user_admin.ListGroupsId */ http.get<ListGroupsIdResponseBody>(
+): Promise<UserAdminApi_ListGroupsIdResponseBody> =>
+  /**! @contract easyops.api.user_service.user_admin.ListGroupsId */ http.get<UserAdminApi_ListGroupsIdResponseBody>(
     "api/gateway/user_service.user_admin.ListGroupsId/api/v1/groups/id",
     { ...options, params }
   );

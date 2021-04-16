@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface ListObjectsRequestParams {
+export interface ObjectStoreApi_ListObjectsRequestParams {
   /** 要列举的对象前缀 */
   objectPrefix?: string;
 
@@ -10,28 +10,28 @@ export interface ListObjectsRequestParams {
 }
 
 /** 返回对象 */
-export interface ListObjectsResponseBody {
+export interface ObjectStoreApi_ListObjectsResponseBody {
   /** 对象数组 */
-  objects?: ListObjectsResponseBody_objects_item[];
+  objects?: ObjectStoreApi_ListObjectsResponseBody_objects_item[];
 }
 
 /**
  * @description 列出对象存储桶中所有对象
  * @endpoint GET /api/v1/objectStore/bucket/:bucketName/object
  */
-export const listObjects = async (
+export const ObjectStoreApi_listObjects = async (
   bucketName: string | number,
-  params: ListObjectsRequestParams,
+  params: ObjectStoreApi_ListObjectsRequestParams,
   options?: HttpOptions
-): Promise<ListObjectsResponseBody> =>
+): Promise<ObjectStoreApi_ListObjectsResponseBody> =>
   /**! @contract easyops.api.object_store.object_store.ListObjects */ (
-    await http.get<ResponseBodyWrapper<ListObjectsResponseBody>>(
+    await http.get<ResponseBodyWrapper<ObjectStoreApi_ListObjectsResponseBody>>(
       `api/gateway/object_store.object_store.ListObjects/api/v1/objectStore/bucket/${bucketName}/object`,
       { ...options, params }
     )
   ).data;
 
-export interface ListObjectsResponseBody_objects_item {
+export interface ObjectStoreApi_ListObjectsResponseBody_objects_item {
   /** 对象MD5值 */
   etag?: string;
 
@@ -51,10 +51,10 @@ export interface ListObjectsResponseBody_objects_item {
   expires?: string;
 
   /** 所属用户 */
-  owner?: ListObjectsResponseBody_objects_item_owner;
+  owner?: ObjectStoreApi_ListObjectsResponseBody_objects_item_owner;
 }
 
-export interface ListObjectsResponseBody_objects_item_owner {
+export interface ObjectStoreApi_ListObjectsResponseBody_objects_item_owner {
   /** 用户名 */
   name?: string;
 

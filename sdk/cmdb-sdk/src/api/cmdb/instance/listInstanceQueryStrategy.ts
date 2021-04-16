@@ -1,12 +1,12 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelInstanceQueryStrategy } from "../../../model/cmdb";
 
-export interface ListInstanceQueryStrategyRequestParams {
+export interface InstanceApi_ListInstanceQueryStrategyRequestParams {
   /** 策略类型 */
   type?: string;
 }
 
-export interface ListInstanceQueryStrategyResponseBody {
+export interface InstanceApi_ListInstanceQueryStrategyResponseBody {
   /** 返回码 */
   code?: number;
 
@@ -24,12 +24,12 @@ export interface ListInstanceQueryStrategyResponseBody {
  * @description 获取实例查询策略列表
  * @endpoint GET /object/:object_id/query/strategy
  */
-export const listInstanceQueryStrategy = (
+export const InstanceApi_listInstanceQueryStrategy = (
   object_id: string | number,
-  params: ListInstanceQueryStrategyRequestParams,
+  params: InstanceApi_ListInstanceQueryStrategyRequestParams,
   options?: HttpOptions
-): Promise<ListInstanceQueryStrategyResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.ListInstanceQueryStrategy */ http.get<ListInstanceQueryStrategyResponseBody>(
+): Promise<InstanceApi_ListInstanceQueryStrategyResponseBody> =>
+  /**! @contract easyops.api.cmdb.instance.ListInstanceQueryStrategy */ http.get<InstanceApi_ListInstanceQueryStrategyResponseBody>(
     `api/gateway/cmdb.instance.ListInstanceQueryStrategy/object/${object_id}/query/strategy`,
     { ...options, params }
   );

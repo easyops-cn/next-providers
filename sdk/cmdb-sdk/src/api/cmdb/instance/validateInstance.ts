@@ -1,34 +1,36 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface ValidateInstanceRequestBody {
+export interface InstanceApi_ValidateInstanceRequestBody {
   /** 实例数据列表 */
   instances: Record<string, any>[];
 }
 
-export interface ValidateInstanceResponseBody {
+export interface InstanceApi_ValidateInstanceResponseBody {
   /** 校验结果 */
-  list?: ValidateInstanceResponseBody_list_item[];
+  list?: InstanceApi_ValidateInstanceResponseBody_list_item[];
 }
 
 /**
  * @description 实例校验
  * @endpoint POST /object/:objectId/instance/validate
  */
-export const validateInstance = async (
+export const InstanceApi_validateInstance = async (
   objectId: string | number,
-  data: ValidateInstanceRequestBody,
+  data: InstanceApi_ValidateInstanceRequestBody,
   options?: HttpOptions
-): Promise<ValidateInstanceResponseBody> =>
+): Promise<InstanceApi_ValidateInstanceResponseBody> =>
   /**! @contract easyops.api.cmdb.instance.ValidateInstance */ (
-    await http.post<ResponseBodyWrapper<ValidateInstanceResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<InstanceApi_ValidateInstanceResponseBody>
+    >(
       `api/gateway/cmdb.instance.ValidateInstance/object/${objectId}/instance/validate`,
       data,
       options
     )
   ).data;
 
-export interface ValidateInstanceResponseBody_list_item {
+export interface InstanceApi_ValidateInstanceResponseBody_list_item {
   /** 状态码 */
   code?: number;
 

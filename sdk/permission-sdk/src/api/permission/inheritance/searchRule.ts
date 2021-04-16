@@ -3,7 +3,7 @@ import { ModelCmdbSort } from "../../../model/cmdb";
 import { ModelInheritRule } from "../../../model/permission";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface SearchRuleRequestBody {
+export interface InheritanceApi_SearchRuleRequestBody {
   /** 页数 */
   page: number;
 
@@ -20,7 +20,7 @@ export interface SearchRuleRequestBody {
   sort?: Partial<ModelCmdbSort>[];
 }
 
-export interface SearchRuleResponseBody {
+export interface InheritanceApi_SearchRuleResponseBody {
   /** 分页大小 */
   page_size: number;
 
@@ -38,12 +38,12 @@ export interface SearchRuleResponseBody {
  * @description 搜索规则
  * @endpoint POST /api/v1/inherit/rule/_search
  */
-export const searchRule = async (
-  data: SearchRuleRequestBody,
+export const InheritanceApi_searchRule = async (
+  data: InheritanceApi_SearchRuleRequestBody,
   options?: HttpOptions
-): Promise<SearchRuleResponseBody> =>
+): Promise<InheritanceApi_SearchRuleResponseBody> =>
   /**! @contract easyops.api.permission.inheritance.SearchRule */ (
-    await http.post<ResponseBodyWrapper<SearchRuleResponseBody>>(
+    await http.post<ResponseBodyWrapper<InheritanceApi_SearchRuleResponseBody>>(
       "api/gateway/permission.inheritance.SearchRule/api/v1/inherit/rule/_search",
       data,
       options

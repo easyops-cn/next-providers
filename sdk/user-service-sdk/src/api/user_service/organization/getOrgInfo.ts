@@ -2,19 +2,19 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelOrgInfo } from "../../../model/user_service";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export type GetOrgInfoResponseBody = Partial<ModelOrgInfo> &
+export type OrganizationApi_GetOrgInfoResponseBody = Partial<ModelOrgInfo> &
   ModelOrgInfo_partial_3;
 
 /**
  * @description 获取Org信息[内部]
  * @endpoint GET /api/v1/org/info/:id
  */
-export const getOrgInfo = async (
+export const OrganizationApi_getOrgInfo = async (
   id: string | number,
   options?: HttpOptions
-): Promise<GetOrgInfoResponseBody> =>
+): Promise<OrganizationApi_GetOrgInfoResponseBody> =>
   /**! @contract easyops.api.user_service.organization.GetOrgInfo */ (
-    await http.get<ResponseBodyWrapper<GetOrgInfoResponseBody>>(
+    await http.get<ResponseBodyWrapper<OrganizationApi_GetOrgInfoResponseBody>>(
       `api/gateway/user_service.organization.GetOrgInfo/api/v1/org/info/${id}`,
       options
     )

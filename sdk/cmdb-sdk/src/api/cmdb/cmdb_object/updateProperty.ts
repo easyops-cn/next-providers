@@ -3,7 +3,7 @@ import { ModelObjectAttr } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 /** 属性信息 */
-export interface UpdatePropertyRequestBody {
+export interface CmdbObjectApi_UpdatePropertyRequestBody {
   /** 属性名称 */
   name?: string;
 
@@ -29,20 +29,22 @@ export interface UpdatePropertyRequestBody {
   tips?: string;
 }
 
-export type UpdatePropertyResponseBody = Partial<ModelObjectAttr>;
+export type CmdbObjectApi_UpdatePropertyResponseBody = Partial<ModelObjectAttr>;
 
 /**
  * @description 更新模型属性
  * @endpoint PUT /object/:objectId/attr/:attrId
  */
-export const updateProperty = async (
+export const CmdbObjectApi_updateProperty = async (
   objectId: string | number,
   attrId: string | number,
-  data: UpdatePropertyRequestBody,
+  data: CmdbObjectApi_UpdatePropertyRequestBody,
   options?: HttpOptions
-): Promise<UpdatePropertyResponseBody> =>
+): Promise<CmdbObjectApi_UpdatePropertyResponseBody> =>
   /**! @contract easyops.api.cmdb.cmdb_object.UpdateProperty */ (
-    await http.put<ResponseBodyWrapper<UpdatePropertyResponseBody>>(
+    await http.put<
+      ResponseBodyWrapper<CmdbObjectApi_UpdatePropertyResponseBody>
+    >(
       `api/gateway/cmdb.cmdb_object.UpdateProperty/object/${objectId}/attr/${attrId}`,
       data,
       options

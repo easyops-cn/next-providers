@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface ValidateArtifactPermissionRequestParams {
+export interface PermissionApi_ValidateArtifactPermissionRequestParams {
   /** 需要鉴权的用户名 */
   user: string;
 
@@ -20,7 +20,7 @@ export interface ValidateArtifactPermissionRequestParams {
   batch?: boolean;
 }
 
-export interface ValidateArtifactPermissionResponseBody {
+export interface PermissionApi_ValidateArtifactPermissionResponseBody {
   /** 返回码 */
   code?: number;
 
@@ -28,23 +28,23 @@ export interface ValidateArtifactPermissionResponseBody {
   msg?: string;
 
   /** 返回数据 */
-  data?: ValidateArtifactPermissionResponseBody_data;
+  data?: PermissionApi_ValidateArtifactPermissionResponseBody_data;
 }
 
 /**
  * @description 校验制品包系统权限
  * @endpoint GET /api/v1/permission/validate
  */
-export const validateArtifactPermission = (
-  params: ValidateArtifactPermissionRequestParams,
+export const PermissionApi_validateArtifactPermission = (
+  params: PermissionApi_ValidateArtifactPermissionRequestParams,
   options?: HttpOptions
-): Promise<ValidateArtifactPermissionResponseBody> =>
-  /**! @contract easyops.api.permission.permission.ValidateArtifactPermission */ http.get<ValidateArtifactPermissionResponseBody>(
+): Promise<PermissionApi_ValidateArtifactPermissionResponseBody> =>
+  /**! @contract easyops.api.permission.permission.ValidateArtifactPermission */ http.get<PermissionApi_ValidateArtifactPermissionResponseBody>(
     "api/gateway/permission.permission.ValidateArtifactPermission/api/v1/permission/validate",
     { ...options, params }
   );
 
-export interface ValidateArtifactPermissionResponseBody_data {
+export interface PermissionApi_ValidateArtifactPermissionResponseBody_data {
   /** 是否鉴权成功 */
   accepted?: boolean;
 }

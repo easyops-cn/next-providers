@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface PutObjectRequestBody {
+export interface ObjectStoreApi_PutObjectRequestBody {
   /** 存储桶中对象名称(如果不为空，则服务器以该参数值命名存储对象) */
   objectName?: string;
 
@@ -9,7 +9,7 @@ export interface PutObjectRequestBody {
   file: File;
 }
 
-export interface PutObjectResponseBody {
+export interface ObjectStoreApi_PutObjectResponseBody {
   /** 上传对象后，服务器返回的对象名称 */
   objectName?: string;
 }
@@ -18,11 +18,11 @@ export interface PutObjectResponseBody {
  * @description 上传对象
  * @endpoint PUT /api/v1/objectStore/bucket/:bucketName/object
  */
-export const putObject = async (
+export const ObjectStoreApi_putObject = async (
   bucketName: string | number,
-  data: PutObjectRequestBody,
+  data: ObjectStoreApi_PutObjectRequestBody,
   options?: HttpOptions
-): Promise<PutObjectResponseBody> => {
+): Promise<ObjectStoreApi_PutObjectResponseBody> => {
   /**! @contract easyops.api.object_store.object_store.PutObject */ const _formData = new FormData();
   for (const [key, value] of Object.entries(data)) {
     if (Array.isArray(value)) {
@@ -35,7 +35,7 @@ export const putObject = async (
     }
   }
   return (
-    await http.put<ResponseBodyWrapper<PutObjectResponseBody>>(
+    await http.put<ResponseBodyWrapper<ObjectStoreApi_PutObjectResponseBody>>(
       `api/gateway/object_store.object_store.PutObject/api/v1/objectStore/bucket/${bucketName}/object`,
       _formData,
       options

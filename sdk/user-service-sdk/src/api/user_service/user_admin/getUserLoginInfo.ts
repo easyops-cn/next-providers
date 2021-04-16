@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface GetUserLoginInfoRequestParams {
+export interface UserAdminApi_GetUserLoginInfoRequestParams {
   /** 登录的key字符串, 例如SSO登录时候的工号的key */
   login_key: string;
 
@@ -9,7 +9,7 @@ export interface GetUserLoginInfoRequestParams {
   login_value: string;
 }
 
-export interface GetUserLoginInfoResponseBody {
+export interface UserAdminApi_GetUserLoginInfoResponseBody {
   /** 用户name */
   name: string;
 
@@ -21,12 +21,14 @@ export interface GetUserLoginInfoResponseBody {
  * @description 查询用户登录信息
  * @endpoint GET /api/v1/user/login_info
  */
-export const getUserLoginInfo = async (
-  params: GetUserLoginInfoRequestParams,
+export const UserAdminApi_getUserLoginInfo = async (
+  params: UserAdminApi_GetUserLoginInfoRequestParams,
   options?: HttpOptions
-): Promise<GetUserLoginInfoResponseBody> =>
+): Promise<UserAdminApi_GetUserLoginInfoResponseBody> =>
   /**! @contract easyops.api.user_service.user_admin.GetUserLoginInfo */ (
-    await http.get<ResponseBodyWrapper<GetUserLoginInfoResponseBody>>(
+    await http.get<
+      ResponseBodyWrapper<UserAdminApi_GetUserLoginInfoResponseBody>
+    >(
       "api/gateway/user_service.user_admin.GetUserLoginInfo/api/v1/user/login_info",
       { ...options, params }
     )

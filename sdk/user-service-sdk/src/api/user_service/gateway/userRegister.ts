@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface UserRegisterRequestBody {
+export interface GatewayApi_UserRegisterRequestBody {
   /** 用户名 */
   name: string;
 
@@ -15,7 +15,7 @@ export interface UserRegisterRequestBody {
   invite: string;
 }
 
-export interface UserRegisterResponseBody {
+export interface GatewayApi_UserRegisterResponseBody {
   /** 用户名 */
   name: string;
 
@@ -33,12 +33,12 @@ export interface UserRegisterResponseBody {
  * @description 用户邀请注册
  * @endpoint POST /api/user_service/v1/users/register
  */
-export const userRegister = async (
-  data: UserRegisterRequestBody,
+export const GatewayApi_userRegister = async (
+  data: GatewayApi_UserRegisterRequestBody,
   options?: HttpOptions
-): Promise<UserRegisterResponseBody> =>
+): Promise<GatewayApi_UserRegisterResponseBody> =>
   /**! @contract easyops.api.user_service.gateway.UserRegister */ (
-    await http.post<ResponseBodyWrapper<UserRegisterResponseBody>>(
+    await http.post<ResponseBodyWrapper<GatewayApi_UserRegisterResponseBody>>(
       "api/gateway/user_service.gateway.UserRegister/api/user_service/v1/users/register",
       data,
       options

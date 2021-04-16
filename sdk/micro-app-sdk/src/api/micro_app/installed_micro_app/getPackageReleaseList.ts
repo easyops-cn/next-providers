@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface GetPackageReleaseListRequestParams {
+export interface InstalledMicroAppApi_GetPackageReleaseListRequestParams {
   /** 组织代码 */
   org?: number;
 
@@ -9,28 +9,30 @@ export interface GetPackageReleaseListRequestParams {
   needCount?: number;
 }
 
-export interface GetPackageReleaseListResponseBody {
+export interface InstalledMicroAppApi_GetPackageReleaseListResponseBody {
   /** 包列表 */
-  packages?: GetPackageReleaseListResponseBody_packages_item[];
+  packages?: InstalledMicroAppApi_GetPackageReleaseListResponseBody_packages_item[];
 }
 
 /**
  * @description 指定环境一键打包上传到r环境
  * @endpoint GET /api/v1/micro_app/packages/:appId
  */
-export const getPackageReleaseList = async (
+export const InstalledMicroAppApi_getPackageReleaseList = async (
   appId: string | number,
-  params: GetPackageReleaseListRequestParams,
+  params: InstalledMicroAppApi_GetPackageReleaseListRequestParams,
   options?: HttpOptions
-): Promise<GetPackageReleaseListResponseBody> =>
+): Promise<InstalledMicroAppApi_GetPackageReleaseListResponseBody> =>
   /**! @contract easyops.api.micro_app.installed_micro_app.GetPackageReleaseList */ (
-    await http.get<ResponseBodyWrapper<GetPackageReleaseListResponseBody>>(
+    await http.get<
+      ResponseBodyWrapper<InstalledMicroAppApi_GetPackageReleaseListResponseBody>
+    >(
       `api/gateway/micro_app.installed_micro_app.GetPackageReleaseList/api/v1/micro_app/packages/${appId}`,
       { ...options, params }
     )
   ).data;
 
-export interface GetPackageReleaseListResponseBody_packages_item {
+export interface InstalledMicroAppApi_GetPackageReleaseListResponseBody_packages_item {
   /** 小产品id */
   appId?: string;
 

@@ -1,12 +1,12 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface RoleSetUserRequestBody {
+export interface RoleApi_RoleSetUserRequestBody {
   /** 角色名列表 */
   roles: string[];
 }
 
-export interface RoleSetUserResponseBody {
+export interface RoleApi_RoleSetUserResponseBody {
   /** 成功设置的用户数量 */
   count?: number;
 }
@@ -15,13 +15,13 @@ export interface RoleSetUserResponseBody {
  * @description 设置用户(组)所属角色
  * @endpoint PUT /api/v1/permission_role/user_set_roles/:user
  */
-export const roleSetUser = async (
+export const RoleApi_roleSetUser = async (
   user: string | number,
-  data: RoleSetUserRequestBody,
+  data: RoleApi_RoleSetUserRequestBody,
   options?: HttpOptions
-): Promise<RoleSetUserResponseBody> =>
+): Promise<RoleApi_RoleSetUserResponseBody> =>
   /**! @contract easyops.api.permission.role.RoleSetUser */ (
-    await http.put<ResponseBodyWrapper<RoleSetUserResponseBody>>(
+    await http.put<ResponseBodyWrapper<RoleApi_RoleSetUserResponseBody>>(
       `api/gateway/permission.role.RoleSetUser/api/v1/permission_role/user_set_roles/${user}`,
       data,
       options

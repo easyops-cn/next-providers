@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface ListUsersInfoRequestParams {
+export interface UserAdminApi_ListUsersInfoRequestParams {
   /** 状态 */
   state?: string;
 
@@ -15,7 +15,7 @@ export interface ListUsersInfoRequestParams {
   pageSize?: number;
 }
 
-export interface ListUsersInfoResponseBody {
+export interface UserAdminApi_ListUsersInfoResponseBody {
   /** 页码 */
   page?: number;
 
@@ -33,12 +33,12 @@ export interface ListUsersInfoResponseBody {
  * @description 获取用户信息列表
  * @endpoint GET /api/v1/users
  */
-export const listUsersInfo = async (
-  params: ListUsersInfoRequestParams,
+export const UserAdminApi_listUsersInfo = async (
+  params: UserAdminApi_ListUsersInfoRequestParams,
   options?: HttpOptions
-): Promise<ListUsersInfoResponseBody> =>
+): Promise<UserAdminApi_ListUsersInfoResponseBody> =>
   /**! @contract easyops.api.user_service.user_admin.ListUsersInfo */ (
-    await http.get<ResponseBodyWrapper<ListUsersInfoResponseBody>>(
+    await http.get<ResponseBodyWrapper<UserAdminApi_ListUsersInfoResponseBody>>(
       "api/gateway/user_service.user_admin.ListUsersInfo/api/v1/users",
       { ...options, params }
     )

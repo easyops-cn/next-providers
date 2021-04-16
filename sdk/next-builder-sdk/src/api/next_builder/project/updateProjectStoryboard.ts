@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelMicroAppProject } from "../../../model/next_builder";
 
-export interface UpdateProjectStoryboardRequestBody {
+export interface ProjectApi_UpdateProjectStoryboardRequestBody {
   /** Storyboard Json */
   storyboardJson?: string;
 
@@ -16,9 +16,9 @@ export interface UpdateProjectStoryboardRequestBody {
  * @description 更新项目storyboardJson字段
  * @endpoint PUT /api/v1/next-builder/project/:projectId
  */
-export const updateProjectStoryboard = (
+export const ProjectApi_updateProjectStoryboard = (
   projectId: string | number,
-  data: UpdateProjectStoryboardRequestBody,
+  data: ProjectApi_UpdateProjectStoryboardRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.next_builder.project.UpdateProjectStoryboard */ http.put<void>(

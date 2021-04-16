@@ -1,9 +1,9 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
 /** 请求体 */
-export type AutoDiscoveryRequestBody = AutoDiscoveryRequestBody_item[];
+export type InstanceApi_AutoDiscoveryRequestBody = InstanceApi_AutoDiscoveryRequestBody_item[];
 
-export interface AutoDiscoveryResponseBody {
+export interface InstanceApi_AutoDiscoveryResponseBody {
   /** 返回码 */
   code: number;
 
@@ -14,25 +14,25 @@ export interface AutoDiscoveryResponseBody {
   message: string;
 
   /** data */
-  data: AutoDiscoveryResponseBody_data_item[];
+  data: InstanceApi_AutoDiscoveryResponseBody_data_item[];
 }
 
 /**
  * @description 实例自动发现的接口
  * @endpoint POST /object/:objectId/instance/_import-json
  */
-export const autoDiscovery = (
+export const InstanceApi_autoDiscovery = (
   objectId: string | number,
-  data: AutoDiscoveryRequestBody,
+  data: InstanceApi_AutoDiscoveryRequestBody,
   options?: HttpOptions
-): Promise<AutoDiscoveryResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.AutoDiscovery */ http.post<AutoDiscoveryResponseBody>(
+): Promise<InstanceApi_AutoDiscoveryResponseBody> =>
+  /**! @contract easyops.api.cmdb.instance.AutoDiscovery */ http.post<InstanceApi_AutoDiscoveryResponseBody>(
     `api/gateway/cmdb.instance.AutoDiscovery/object/${objectId}/instance/_import-json`,
     data,
     options
   );
 
-export interface AutoDiscoveryRequestBody_item {
+export interface InstanceApi_AutoDiscoveryRequestBody_item {
   /** 筛选器 */
   filter?: Record<string, any>;
 
@@ -43,7 +43,7 @@ export interface AutoDiscoveryRequestBody_item {
   upsert?: boolean;
 }
 
-export interface AutoDiscoveryResponseBody_data_item {
+export interface InstanceApi_AutoDiscoveryResponseBody_data_item {
   /** 实例Id */
   instanceId?: string;
 

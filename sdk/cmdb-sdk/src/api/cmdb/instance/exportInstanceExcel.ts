@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface ExportInstanceExcelRequestBody {
+export interface InstanceApi_ExportInstanceExcelRequestBody {
   /** e.g.: { name: { $like: '%q%' } }, { $or: [{ name: { $like: '%q%' }}] } */
   query?: Record<string, any>;
 
@@ -24,9 +24,9 @@ export interface ExportInstanceExcelRequestBody {
  * @description 实例导出excel
  * @endpoint POST /export/object/:object_id/instance/excel
  */
-export const exportInstanceExcel = (
+export const InstanceApi_exportInstanceExcel = (
   object_id: string | number,
-  data: ExportInstanceExcelRequestBody,
+  data: InstanceApi_ExportInstanceExcelRequestBody,
   options?: HttpOptions
 ): Promise<Blob> =>
   /**! @contract easyops.api.cmdb.instance.ExportInstanceExcel */ http.post<Blob>(

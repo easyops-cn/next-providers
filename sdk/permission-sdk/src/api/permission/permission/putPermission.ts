@@ -2,10 +2,10 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelPermission } from "../../../model/permission";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export type PutPermissionRequestBody = Partial<ModelPermission> &
+export type PermissionApi_PutPermissionRequestBody = Partial<ModelPermission> &
   ModelPermission_partial;
 
-export interface PutPermissionResponseBody {
+export interface PermissionApi_PutPermissionResponseBody {
   /** 修改权限点数量 */
   count?: number;
 }
@@ -14,13 +14,15 @@ export interface PutPermissionResponseBody {
  * @description 修改权限配置
  * @endpoint PUT /api/v1/permission/:id
  */
-export const putPermission = async (
+export const PermissionApi_putPermission = async (
   id: string | number,
-  data: PutPermissionRequestBody,
+  data: PermissionApi_PutPermissionRequestBody,
   options?: HttpOptions
-): Promise<PutPermissionResponseBody> =>
+): Promise<PermissionApi_PutPermissionResponseBody> =>
   /**! @contract easyops.api.permission.permission.PutPermission */ (
-    await http.put<ResponseBodyWrapper<PutPermissionResponseBody>>(
+    await http.put<
+      ResponseBodyWrapper<PermissionApi_PutPermissionResponseBody>
+    >(
       `api/gateway/permission.permission.PutPermission/api/v1/permission/${id}`,
       data,
       options

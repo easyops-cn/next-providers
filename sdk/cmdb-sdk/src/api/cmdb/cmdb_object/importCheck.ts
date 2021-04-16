@@ -2,9 +2,9 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelObjectImport } from "../../../model/cmdb";
 
 /** 模型列表 */
-export type ImportCheckRequestBody = Partial<ModelObjectImport>[];
+export type CmdbObjectApi_ImportCheckRequestBody = Partial<ModelObjectImport>[];
 
-export interface ImportCheckResponseBody {
+export interface CmdbObjectApi_ImportCheckResponseBody {
   /** 返回码 */
   code?: number;
 
@@ -22,11 +22,11 @@ export interface ImportCheckResponseBody {
  * @description import objects check (批量导入模型前校验请求的数据是否合法)
  * @endpoint POST /object_import_check
  */
-export const importCheck = (
-  data: ImportCheckRequestBody,
+export const CmdbObjectApi_importCheck = (
+  data: CmdbObjectApi_ImportCheckRequestBody,
   options?: HttpOptions
-): Promise<ImportCheckResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.ImportCheck */ http.post<ImportCheckResponseBody>(
+): Promise<CmdbObjectApi_ImportCheckResponseBody> =>
+  /**! @contract easyops.api.cmdb.cmdb_object.ImportCheck */ http.post<CmdbObjectApi_ImportCheckResponseBody>(
     "api/gateway/cmdb.cmdb_object.ImportCheck/object_import_check",
     data,
     options

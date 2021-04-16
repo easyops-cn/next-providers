@@ -4,7 +4,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
  * @description 下载对象
  * @endpoint GET /api/v1/objectStore/bucket/:bucketName/object/:objectName
  */
-export const getObject = (
+export const ObjectStoreApi_getObject = (
   bucketName: string | number,
   objectName: string | number,
   options?: HttpOptions

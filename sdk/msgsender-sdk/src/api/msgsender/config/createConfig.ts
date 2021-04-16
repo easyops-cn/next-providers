@@ -2,21 +2,21 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelEasyTornadoCommonResponse } from "../../../model/monitor";
 import { ModelMessageConfig } from "../../../model/msgsender";
 
-export type CreateConfigRequestBody = Partial<ModelMessageConfig> &
+export type ConfigApi_CreateConfigRequestBody = Partial<ModelMessageConfig> &
   ModelMessageConfig_partial;
 
-export type CreateConfigResponseBody = Partial<ModelEasyTornadoCommonResponse> &
-  CreateConfigResponseBody_2;
+export type ConfigApi_CreateConfigResponseBody = Partial<ModelEasyTornadoCommonResponse> &
+  ConfigApi_CreateConfigResponseBody_2;
 
 /**
  * @description 创建通知配置
  * @endpoint POST /api/v1/message_sender/configs
  */
-export const createConfig = (
-  data: CreateConfigRequestBody,
+export const ConfigApi_createConfig = (
+  data: ConfigApi_CreateConfigRequestBody,
   options?: HttpOptions
-): Promise<CreateConfigResponseBody> =>
-  /**! @contract easyops.api.msgsender.config.CreateConfig */ http.post<CreateConfigResponseBody>(
+): Promise<ConfigApi_CreateConfigResponseBody> =>
+  /**! @contract easyops.api.msgsender.config.CreateConfig */ http.post<ConfigApi_CreateConfigResponseBody>(
     "api/gateway/msgsender.config.CreateConfig/api/v1/message_sender/configs",
     data,
     options
@@ -33,7 +33,7 @@ export interface ModelMessageConfig_partial {
   pluginName: string;
 }
 
-export interface CreateConfigResponseBody_2 {
+export interface ConfigApi_CreateConfigResponseBody_2 {
   /** 通知配置 */
   data?: Partial<ModelMessageConfig>;
 }

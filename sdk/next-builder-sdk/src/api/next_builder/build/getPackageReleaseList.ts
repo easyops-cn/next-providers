@@ -1,27 +1,29 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface GetPackageReleaseListResponseBody {
+export interface BuildApi_GetPackageReleaseListResponseBody {
   /** 包列表 */
-  packages?: GetPackageReleaseListResponseBody_packages_item[];
+  packages?: BuildApi_GetPackageReleaseListResponseBody_packages_item[];
 }
 
 /**
  * @description 指定环境一键打包上传到r环境
  * @endpoint GET /api/v1/next-builder/packages/:projectId
  */
-export const getPackageReleaseList = async (
+export const BuildApi_getPackageReleaseList = async (
   projectId: string | number,
   options?: HttpOptions
-): Promise<GetPackageReleaseListResponseBody> =>
+): Promise<BuildApi_GetPackageReleaseListResponseBody> =>
   /**! @contract easyops.api.next_builder.build.GetPackageReleaseList */ (
-    await http.get<ResponseBodyWrapper<GetPackageReleaseListResponseBody>>(
+    await http.get<
+      ResponseBodyWrapper<BuildApi_GetPackageReleaseListResponseBody>
+    >(
       `api/gateway/next_builder.build.GetPackageReleaseList/api/v1/next-builder/packages/${projectId}`,
       options
     )
   ).data;
 
-export interface GetPackageReleaseListResponseBody_packages_item {
+export interface BuildApi_GetPackageReleaseListResponseBody_packages_item {
   /** 小产品id */
   appId?: string;
 

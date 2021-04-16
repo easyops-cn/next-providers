@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface SetOrgNamespacesRequestBody {
+export interface OrganizationApi_SetOrgNamespacesRequestBody {
   /** 模型命名空间 */
   namespaces: string[];
 }
@@ -9,9 +9,9 @@ export interface SetOrgNamespacesRequestBody {
  * @description 设置Org模型命名空间[内部]
  * @endpoint PUT /api/v1/org/:id/namespaces
  */
-export const setOrgNamespaces = (
+export const OrganizationApi_setOrgNamespaces = (
   id: string | number,
-  data: SetOrgNamespacesRequestBody,
+  data: OrganizationApi_SetOrgNamespacesRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.user_service.organization.SetOrgNamespaces */ http.put<void>(

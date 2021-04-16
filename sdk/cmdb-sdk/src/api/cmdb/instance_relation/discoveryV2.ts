@@ -1,12 +1,12 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelInstanceRelationPair } from "../../../model/cmdb";
 
-export interface DiscoveryV2RequestBody {
+export interface InstanceRelationApi_DiscoveryV2RequestBody {
   /** 发现实例的字段列表 */
-  match: DiscoveryV2RequestBody_match;
+  match: InstanceRelationApi_DiscoveryV2RequestBody_match;
 
   /** 发现实例的数据列表 */
-  data: DiscoveryV2RequestBody_data_item[];
+  data: InstanceRelationApi_DiscoveryV2RequestBody_data_item[];
 
   /** 精确匹配（true: 只允许1:1关系，false: 允许1:n关系，默认true） */
   strict?: boolean;
@@ -18,7 +18,7 @@ export interface DiscoveryV2RequestBody {
   mainSideId?: string;
 }
 
-export interface DiscoveryV2ResponseBody {
+export interface InstanceRelationApi_DiscoveryV2ResponseBody {
   /** 返回码 */
   code?: number;
 
@@ -29,25 +29,25 @@ export interface DiscoveryV2ResponseBody {
   message?: string;
 
   /** 数据 */
-  data?: DiscoveryV2ResponseBody_data_item[];
+  data?: InstanceRelationApi_DiscoveryV2ResponseBody_data_item[];
 }
 
 /**
  * @description 实例关系发现V2(支持set关系)
  * @endpoint POST /v2/object_relation/:relationId/_autodiscovery/multi
  */
-export const discoveryV2 = (
+export const InstanceRelationApi_discoveryV2 = (
   relationId: string | number,
-  data: DiscoveryV2RequestBody,
+  data: InstanceRelationApi_DiscoveryV2RequestBody,
   options?: HttpOptions
-): Promise<DiscoveryV2ResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance_relation.DiscoveryV2 */ http.post<DiscoveryV2ResponseBody>(
+): Promise<InstanceRelationApi_DiscoveryV2ResponseBody> =>
+  /**! @contract easyops.api.cmdb.instance_relation.DiscoveryV2 */ http.post<InstanceRelationApi_DiscoveryV2ResponseBody>(
     `api/gateway/cmdb.instance_relation.DiscoveryV2/v2/object_relation/${relationId}/_autodiscovery/multi`,
     data,
     options
   );
 
-export interface DiscoveryV2RequestBody_match {
+export interface InstanceRelationApi_DiscoveryV2RequestBody_match {
   /** 左侧实例匹配字段列表 */
   left_match?: string[];
 
@@ -55,7 +55,7 @@ export interface DiscoveryV2RequestBody_match {
   right_match?: string[];
 }
 
-export interface DiscoveryV2RequestBody_data_item {
+export interface InstanceRelationApi_DiscoveryV2RequestBody_data_item {
   /** 左侧匹配的实例数据 */
   left_instance?: Record<string, any>;
 
@@ -63,7 +63,7 @@ export interface DiscoveryV2RequestBody_data_item {
   right_instance?: Record<string, any>;
 }
 
-export interface DiscoveryV2ResponseBody_data_item {
+export interface InstanceRelationApi_DiscoveryV2ResponseBody_data_item {
   /** 状态码（0：成功，非0：失败） */
   code?: number;
 

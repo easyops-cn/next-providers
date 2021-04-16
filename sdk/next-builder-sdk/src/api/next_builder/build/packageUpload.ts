@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface PackageUploadRequestBody {
+export interface BuildApi_PackageUploadRequestBody {
   /** projectId */
   projectId: string;
 
@@ -17,15 +17,15 @@ export interface PackageUploadRequestBody {
   dependTemplates?: string[];
 
   /** 项目依赖的bricks */
-  dependApis?: PackageUploadRequestBody_dependApis_item[];
+  dependApis?: BuildApi_PackageUploadRequestBody_dependApis_item[];
 }
 
 /**
  * @description 指定环境一键打包上传到r环境
  * @endpoint POST /api/v1/next-builder/package-upload
  */
-export const packageUpload = (
-  data: PackageUploadRequestBody,
+export const BuildApi_packageUpload = (
+  data: BuildApi_PackageUploadRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.next_builder.build.PackageUpload */ http.post<void>(
@@ -34,7 +34,7 @@ export const packageUpload = (
     options
   );
 
-export interface PackageUploadRequestBody_dependApis_item {
+export interface BuildApi_PackageUploadRequestBody_dependApis_item {
   /** 命名空间 */
   namespace?: string;
 

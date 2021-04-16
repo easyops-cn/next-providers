@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface BatchArchiveInstanceRequestBody {
+export interface InstanceArchiveApi_BatchArchiveInstanceRequestBody {
   /** 实例Id列表 */
   instanceIds: string[];
 }
@@ -9,9 +9,9 @@ export interface BatchArchiveInstanceRequestBody {
  * @description 批量归档实例
  * @endpoint POST /object/:object_id/instance_archive_instances
  */
-export const batchArchiveInstance = (
+export const InstanceArchiveApi_batchArchiveInstance = (
   object_id: string | number,
-  data: BatchArchiveInstanceRequestBody,
+  data: InstanceArchiveApi_BatchArchiveInstanceRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.cmdb.instance_archive.BatchArchiveInstance */ http.post<void>(

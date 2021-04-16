@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface ImportInstanceRequestBody {
+export interface InstanceApi_ImportInstanceRequestBody {
   /** 联合唯一的key(只支持普通属性,不支持结构体与关系字段),以这些key与datas里的数据组装query,作为插入/更新的依据 */
   keys: string[];
 
@@ -12,7 +12,7 @@ export interface ImportInstanceRequestBody {
   importMetadata?: boolean;
 }
 
-export interface ImportInstanceResponseBody {
+export interface InstanceApi_ImportInstanceResponseBody {
   /** 成功插入数量 */
   insert_count: number;
 
@@ -23,27 +23,29 @@ export interface ImportInstanceResponseBody {
   failed_count: number;
 
   /** 失败数据 */
-  data: ImportInstanceResponseBody_data_item[];
+  data: InstanceApi_ImportInstanceResponseBody_data_item[];
 }
 
 /**
  * @description 批量编辑/新增实例
  * @endpoint POST /object/:objectId/instance/_import
  */
-export const importInstance = async (
+export const InstanceApi_importInstance = async (
   objectId: string | number,
-  data: ImportInstanceRequestBody,
+  data: InstanceApi_ImportInstanceRequestBody,
   options?: HttpOptions
-): Promise<ImportInstanceResponseBody> =>
+): Promise<InstanceApi_ImportInstanceResponseBody> =>
   /**! @contract easyops.api.cmdb.instance.ImportInstance */ (
-    await http.post<ResponseBodyWrapper<ImportInstanceResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<InstanceApi_ImportInstanceResponseBody>
+    >(
       `api/gateway/cmdb.instance.ImportInstance/object/${objectId}/instance/_import`,
       data,
       options
     )
   ).data;
 
-export interface ImportInstanceResponseBody_data_item {
+export interface InstanceApi_ImportInstanceResponseBody_data_item {
   /** 错误码 */
   code?: number;
 

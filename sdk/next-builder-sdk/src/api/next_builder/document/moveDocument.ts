@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface MoveDocumentRequestBody {
+export interface DocumentApi_MoveDocumentRequestBody {
   /** 要移动的documentId */
   sourceDocumentId: string;
 
@@ -12,8 +12,8 @@ export interface MoveDocumentRequestBody {
  * @description 小产品文档移动
  * @endpoint POST /api/v1/document/move
  */
-export const moveDocument = (
-  data: MoveDocumentRequestBody,
+export const DocumentApi_moveDocument = (
+  data: DocumentApi_MoveDocumentRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.next_builder.document.MoveDocument */ http.post<void>(

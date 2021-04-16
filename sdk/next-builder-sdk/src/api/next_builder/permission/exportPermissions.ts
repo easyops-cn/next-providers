@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface ExportPermissionsRequestBody {
+export interface PermissionApi_ExportPermissionsRequestBody {
   /** cmdb实例标识 */
   instanceId?: string;
 }
@@ -9,8 +9,8 @@ export interface ExportPermissionsRequestBody {
  * @description 同步权限点到开发环境
  * @endpoint POST /api/v1/permission/export
  */
-export const exportPermissions = (
-  data: ExportPermissionsRequestBody,
+export const PermissionApi_exportPermissions = (
+  data: PermissionApi_ExportPermissionsRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.next_builder.permission.ExportPermissions */ http.post<void>(

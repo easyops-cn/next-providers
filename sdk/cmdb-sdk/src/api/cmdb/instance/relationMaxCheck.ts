@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface RelationMaxCheckRequestBody {
+export interface InstanceApi_RelationMaxCheckRequestBody {
   /** 资源模型关系ID */
   relation_id: string;
 
@@ -24,7 +24,7 @@ export interface RelationMaxCheckRequestBody {
   page_size?: number;
 }
 
-export interface RelationMaxCheckResponseBody {
+export interface InstanceApi_RelationMaxCheckResponseBody {
   /** 总数 */
   total: number;
 
@@ -35,27 +35,29 @@ export interface RelationMaxCheckResponseBody {
   page_size: number;
 
   /** 数据列表 */
-  list: RelationMaxCheckResponseBody_list_item[];
+  list: InstanceApi_RelationMaxCheckResponseBody_list_item[];
 }
 
 /**
  * @description 搜索实例列表指定关系是否大于等于max约束 (一般用于新建实例关系时查询数据用, 会标识出实例数据是否超出关系限定的max(_relation_is_max),支持的查询操作与 [实例搜索接口] 关键字一致)
  * @endpoint POST /object/:objectId/instance/_search_relation_max_check
  */
-export const relationMaxCheck = async (
+export const InstanceApi_relationMaxCheck = async (
   objectId: string | number,
-  data: RelationMaxCheckRequestBody,
+  data: InstanceApi_RelationMaxCheckRequestBody,
   options?: HttpOptions
-): Promise<RelationMaxCheckResponseBody> =>
+): Promise<InstanceApi_RelationMaxCheckResponseBody> =>
   /**! @contract easyops.api.cmdb.instance.RelationMaxCheck */ (
-    await http.post<ResponseBodyWrapper<RelationMaxCheckResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<InstanceApi_RelationMaxCheckResponseBody>
+    >(
       `api/gateway/cmdb.instance.RelationMaxCheck/object/${objectId}/instance/_search_relation_max_check`,
       data,
       options
     )
   ).data;
 
-export interface RelationMaxCheckResponseBody_list_item {
+export interface InstanceApi_RelationMaxCheckResponseBody_list_item {
   /** 实例Id */
   instanceId?: string;
 

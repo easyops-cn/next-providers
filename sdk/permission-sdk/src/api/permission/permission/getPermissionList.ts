@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelPermission } from "../../../model/permission";
 
-export interface GetPermissionListRequestParams {
+export interface PermissionApi_GetPermissionListRequestParams {
   /** 需要鉴权的动作, 全局唯一 */
   action?: string;
 
@@ -27,7 +27,7 @@ export interface GetPermissionListRequestParams {
   XXX_RestFieldMask?: string[];
 }
 
-export interface GetPermissionListResponseBody {
+export interface PermissionApi_GetPermissionListResponseBody {
   /** 返回码 */
   code?: number;
 
@@ -48,11 +48,11 @@ export interface GetPermissionListResponseBody {
  * @description 获取权限点列表
  * @endpoint GET /api/v1/permission
  */
-export const getPermissionList = (
-  params: GetPermissionListRequestParams,
+export const PermissionApi_getPermissionList = (
+  params: PermissionApi_GetPermissionListRequestParams,
   options?: HttpOptions
-): Promise<GetPermissionListResponseBody> =>
-  /**! @contract easyops.api.permission.permission.GetPermissionList */ http.get<GetPermissionListResponseBody>(
+): Promise<PermissionApi_GetPermissionListResponseBody> =>
+  /**! @contract easyops.api.permission.permission.GetPermissionList */ http.get<PermissionApi_GetPermissionListResponseBody>(
     "api/gateway/permission.permission.GetPermissionList/api/v1/permission",
     { ...options, params }
   );

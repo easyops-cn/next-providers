@@ -1,9 +1,9 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelAlertRule } from "../../../model/monitor";
 
-export type CreateAlertRuleRequestBody = Partial<ModelAlertRule>;
+export type AlertRuleApi_CreateAlertRuleRequestBody = Partial<ModelAlertRule>;
 
-export interface CreateAlertRuleResponseBody {
+export interface AlertRuleApi_CreateAlertRuleResponseBody {
   /** code */
   code?: number;
 
@@ -11,24 +11,24 @@ export interface CreateAlertRuleResponseBody {
   msg?: string;
 
   /** data */
-  data?: CreateAlertRuleResponseBody_data;
+  data?: AlertRuleApi_CreateAlertRuleResponseBody_data;
 }
 
 /**
  * @description 创建告警规则
  * @endpoint POST /api/v3/alert_rule/config
  */
-export const createAlertRule = (
-  data: CreateAlertRuleRequestBody,
+export const AlertRuleApi_createAlertRule = (
+  data: AlertRuleApi_CreateAlertRuleRequestBody,
   options?: HttpOptions
-): Promise<CreateAlertRuleResponseBody> =>
-  /**! @contract easyops.api.monitor.alert_rule.CreateAlertRule */ http.post<CreateAlertRuleResponseBody>(
+): Promise<AlertRuleApi_CreateAlertRuleResponseBody> =>
+  /**! @contract easyops.api.monitor.alert_rule.CreateAlertRule */ http.post<AlertRuleApi_CreateAlertRuleResponseBody>(
     "api/gateway/monitor.alert_rule.CreateAlertRule/api/v3/alert_rule/config",
     data,
     options
   );
 
-export interface CreateAlertRuleResponseBody_data {
+export interface AlertRuleApi_CreateAlertRuleResponseBody_data {
   /** 告警规则id */
   id?: string;
 }

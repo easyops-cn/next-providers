@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelInstanceTreeRootNode } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface InstanceTreeSearchRequestBody {
+export interface InstanceTreeApi_InstanceTreeSearchRequestBody {
   /** 树定义 */
   tree: Partial<ModelInstanceTreeRootNode>;
 
@@ -13,18 +13,23 @@ export interface InstanceTreeSearchRequestBody {
   query: Record<string, any>;
 }
 
-export type InstanceTreeSearchResponseBody = Record<string, any>;
+export type InstanceTreeApi_InstanceTreeSearchResponseBody = Record<
+  string,
+  any
+>;
 
 /**
  * @description 整树搜索
  * @endpoint POST /instance_tree/search
  */
-export const instanceTreeSearch = async (
-  data: InstanceTreeSearchRequestBody,
+export const InstanceTreeApi_instanceTreeSearch = async (
+  data: InstanceTreeApi_InstanceTreeSearchRequestBody,
   options?: HttpOptions
-): Promise<InstanceTreeSearchResponseBody> =>
+): Promise<InstanceTreeApi_InstanceTreeSearchResponseBody> =>
   /**! @contract easyops.api.cmdb.instance_tree.InstanceTreeSearch */ (
-    await http.post<ResponseBodyWrapper<InstanceTreeSearchResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<InstanceTreeApi_InstanceTreeSearchResponseBody>
+    >(
       "api/gateway/cmdb.instance_tree.InstanceTreeSearch/instance_tree/search",
       data,
       options

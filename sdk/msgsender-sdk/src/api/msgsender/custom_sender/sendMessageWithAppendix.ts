@@ -2,21 +2,21 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelEasyTornadoCommonResponse } from "../../../model/monitor";
 import { ModelSendMessageWithAppendixRequest } from "../../../model/msgsender";
 
-export type SendMessageWithAppendixRequestBody = Partial<ModelSendMessageWithAppendixRequest> &
+export type CustomSenderApi_SendMessageWithAppendixRequestBody = Partial<ModelSendMessageWithAppendixRequest> &
   ModelSendMessageWithAppendixRequest_partial;
 
-export type SendMessageWithAppendixResponseBody = Partial<ModelEasyTornadoCommonResponse> &
-  SendMessageWithAppendixResponseBody_2;
+export type CustomSenderApi_SendMessageWithAppendixResponseBody = Partial<ModelEasyTornadoCommonResponse> &
+  CustomSenderApi_SendMessageWithAppendixResponseBody_2;
 
 /**
  * @description 处理带附件的通知消息
  * @endpoint post /api/v1/message_sender/mail_with_appendix
  */
-export const sendMessageWithAppendix = (
-  data: SendMessageWithAppendixRequestBody,
+export const CustomSenderApi_sendMessageWithAppendix = (
+  data: CustomSenderApi_SendMessageWithAppendixRequestBody,
   options?: HttpOptions
-): Promise<SendMessageWithAppendixResponseBody> =>
-  /**! @contract easyops.api.msgsender.custom_sender.SendMessageWithAppendix */ http.post<SendMessageWithAppendixResponseBody>(
+): Promise<CustomSenderApi_SendMessageWithAppendixResponseBody> =>
+  /**! @contract easyops.api.msgsender.custom_sender.SendMessageWithAppendix */ http.post<CustomSenderApi_SendMessageWithAppendixResponseBody>(
     "api/gateway/msgsender.custom_sender.SendMessageWithAppendix/api/v1/message_sender/mail_with_appendix",
     data,
     options
@@ -30,7 +30,7 @@ export interface ModelSendMessageWithAppendixRequest_partial {
   files: File;
 }
 
-export interface SendMessageWithAppendixResponseBody_2 {
+export interface CustomSenderApi_SendMessageWithAppendixResponseBody_2 {
   /** 请求结果数据 e.g.: {"email": ["test@qq.com"], "phone": ["test@qq.com"]} */
   data?: Record<string, any>;
 }

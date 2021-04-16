@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelCmdbObject, ModelImportResult } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface ObjectConflictCheckRequestBody {
+export interface CmdbObjectApi_ObjectConflictCheckRequestBody {
   /** 导入模型列表 */
   import_object_list: Partial<ModelCmdbObject>[];
 
@@ -10,7 +10,7 @@ export interface ObjectConflictCheckRequestBody {
   compare_object_list: Partial<ModelCmdbObject>[];
 }
 
-export interface ObjectConflictCheckResponseBody {
+export interface CmdbObjectApi_ObjectConflictCheckResponseBody {
   /** 检查结果列表 */
   import_result: Partial<ModelImportResult>[];
 }
@@ -19,12 +19,14 @@ export interface ObjectConflictCheckResponseBody {
  * @description 模型冲突检查
  * @endpoint POST /object_conflict_check
  */
-export const objectConflictCheck = async (
-  data: ObjectConflictCheckRequestBody,
+export const CmdbObjectApi_objectConflictCheck = async (
+  data: CmdbObjectApi_ObjectConflictCheckRequestBody,
   options?: HttpOptions
-): Promise<ObjectConflictCheckResponseBody> =>
+): Promise<CmdbObjectApi_ObjectConflictCheckResponseBody> =>
   /**! @contract easyops.api.cmdb.cmdb_object.ObjectConflictCheck */ (
-    await http.post<ResponseBodyWrapper<ObjectConflictCheckResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<CmdbObjectApi_ObjectConflictCheckResponseBody>
+    >(
       "api/gateway/cmdb.cmdb_object.ObjectConflictCheck/object_conflict_check",
       data,
       options

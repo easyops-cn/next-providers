@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface ValidateCmdbPermissionRequestParams {
+export interface PermissionApi_ValidateCmdbPermissionRequestParams {
   /** 需要鉴权的用户名 */
   user: string;
 
@@ -18,7 +18,7 @@ export interface ValidateCmdbPermissionRequestParams {
   validate_action_only?: boolean;
 }
 
-export interface ValidateCmdbPermissionResponseBody {
+export interface PermissionApi_ValidateCmdbPermissionResponseBody {
   /** 是否鉴权成功 */
   accepted?: boolean;
 }
@@ -27,12 +27,14 @@ export interface ValidateCmdbPermissionResponseBody {
  * @description 校验cmdb权限
  * @endpoint GET /api/v1/permission/validate
  */
-export const validateCmdbPermission = async (
-  params: ValidateCmdbPermissionRequestParams,
+export const PermissionApi_validateCmdbPermission = async (
+  params: PermissionApi_ValidateCmdbPermissionRequestParams,
   options?: HttpOptions
-): Promise<ValidateCmdbPermissionResponseBody> =>
+): Promise<PermissionApi_ValidateCmdbPermissionResponseBody> =>
   /**! @contract easyops.api.permission.permission.ValidateCmdbPermission */ (
-    await http.get<ResponseBodyWrapper<ValidateCmdbPermissionResponseBody>>(
+    await http.get<
+      ResponseBodyWrapper<PermissionApi_ValidateCmdbPermissionResponseBody>
+    >(
       "api/gateway/permission.permission.ValidateCmdbPermission/api/v1/permission/validate",
       { ...options, params }
     )

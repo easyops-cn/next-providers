@@ -1,9 +1,9 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelAlertRule } from "../../../model/monitor";
 
-export type UpdateAlertRuleRequestBody = Partial<ModelAlertRule>;
+export type AlertRuleApi_UpdateAlertRuleRequestBody = Partial<ModelAlertRule>;
 
-export interface UpdateAlertRuleResponseBody {
+export interface AlertRuleApi_UpdateAlertRuleResponseBody {
   /** code */
   code?: number;
 
@@ -11,25 +11,25 @@ export interface UpdateAlertRuleResponseBody {
   msg?: string;
 
   /** data */
-  data?: UpdateAlertRuleResponseBody_data;
+  data?: AlertRuleApi_UpdateAlertRuleResponseBody_data;
 }
 
 /**
  * @description 更新告警规则
  * @endpoint PUT /api/v3/alert_rule/config/:id
  */
-export const updateAlertRule = (
+export const AlertRuleApi_updateAlertRule = (
   id: string | number,
-  data: UpdateAlertRuleRequestBody,
+  data: AlertRuleApi_UpdateAlertRuleRequestBody,
   options?: HttpOptions
-): Promise<UpdateAlertRuleResponseBody> =>
-  /**! @contract easyops.api.monitor.alert_rule.UpdateAlertRule */ http.put<UpdateAlertRuleResponseBody>(
+): Promise<AlertRuleApi_UpdateAlertRuleResponseBody> =>
+  /**! @contract easyops.api.monitor.alert_rule.UpdateAlertRule */ http.put<AlertRuleApi_UpdateAlertRuleResponseBody>(
     `api/gateway/monitor.alert_rule.UpdateAlertRule/api/v3/alert_rule/config/${id}`,
     data,
     options
   );
 
-export interface UpdateAlertRuleResponseBody_data {
+export interface AlertRuleApi_UpdateAlertRuleResponseBody_data {
   /** 更新数量 */
   count?: number;
 }

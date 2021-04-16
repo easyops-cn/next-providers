@@ -1,12 +1,12 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelAlertRange } from "../../../model/monitor";
 
-export interface ListAlertRangeRequestParams {
+export interface AlertApi_ListAlertRangeRequestParams {
   /** 告警事件Id */
   key?: string;
 }
 
-export interface ListAlertRangeResponseBody {
+export interface AlertApi_ListAlertRangeResponseBody {
   /** 返回码 */
   code?: number;
 
@@ -30,11 +30,11 @@ export interface ListAlertRangeResponseBody {
  * @description 获取告警状态列表
  * @endpoint GET /api/v1/alert_range
  */
-export const listAlertRange = (
-  params: ListAlertRangeRequestParams,
+export const AlertApi_listAlertRange = (
+  params: AlertApi_ListAlertRangeRequestParams,
   options?: HttpOptions
-): Promise<ListAlertRangeResponseBody> =>
-  /**! @contract easyops.api.monitor.alert.ListAlertRange */ http.get<ListAlertRangeResponseBody>(
+): Promise<AlertApi_ListAlertRangeResponseBody> =>
+  /**! @contract easyops.api.monitor.alert.ListAlertRange */ http.get<AlertApi_ListAlertRangeResponseBody>(
     "api/gateway/monitor.alert.ListAlertRange/api/v1/alert_range",
     { ...options, params }
   );

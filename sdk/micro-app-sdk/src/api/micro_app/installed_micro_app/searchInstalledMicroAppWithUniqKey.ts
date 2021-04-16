@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelInstalledMicroApp } from "../../../model/micro_app";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface SearchInstalledMicroAppWithUniqKeyRequestBody {
+export interface InstalledMicroAppApi_SearchInstalledMicroAppWithUniqKeyRequestBody {
   /** 页码 */
   page?: number;
 
@@ -10,10 +10,10 @@ export interface SearchInstalledMicroAppWithUniqKeyRequestBody {
   page_size?: number;
 
   /** 查询条件 */
-  query?: SearchInstalledMicroAppWithUniqKeyRequestBody_query;
+  query?: InstalledMicroAppApi_SearchInstalledMicroAppWithUniqKeyRequestBody_query;
 }
 
-export interface SearchInstalledMicroAppWithUniqKeyResponseBody {
+export interface InstalledMicroAppApi_SearchInstalledMicroAppWithUniqKeyResponseBody {
   /** 返回总数 */
   total: number;
 
@@ -31,13 +31,13 @@ export interface SearchInstalledMicroAppWithUniqKeyResponseBody {
  * @description 按唯一key(name,appId,homepage)搜索小产品列表
  * @endpoint POST /api/micro_app/v1/installed_micro_app/search/uniq_key
  */
-export const searchInstalledMicroAppWithUniqKey = async (
-  data: SearchInstalledMicroAppWithUniqKeyRequestBody,
+export const InstalledMicroAppApi_searchInstalledMicroAppWithUniqKey = async (
+  data: InstalledMicroAppApi_SearchInstalledMicroAppWithUniqKeyRequestBody,
   options?: HttpOptions
-): Promise<SearchInstalledMicroAppWithUniqKeyResponseBody> =>
+): Promise<InstalledMicroAppApi_SearchInstalledMicroAppWithUniqKeyResponseBody> =>
   /**! @contract easyops.api.micro_app.installed_micro_app.SearchInstalledMicroAppWithUniqKey */ (
     await http.post<
-      ResponseBodyWrapper<SearchInstalledMicroAppWithUniqKeyResponseBody>
+      ResponseBodyWrapper<InstalledMicroAppApi_SearchInstalledMicroAppWithUniqKeyResponseBody>
     >(
       "api/gateway/micro_app.installed_micro_app.SearchInstalledMicroAppWithUniqKey/api/micro_app/v1/installed_micro_app/search/uniq_key",
       data,
@@ -45,7 +45,7 @@ export const searchInstalledMicroAppWithUniqKey = async (
     )
   ).data;
 
-export interface SearchInstalledMicroAppWithUniqKeyRequestBody_query {
+export interface InstalledMicroAppApi_SearchInstalledMicroAppWithUniqKeyRequestBody_query {
   /** app name */
   name?: string;
 

@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface CheckViewRequestBody {
+export interface ModelApi_CheckViewRequestBody {
   /** 命名空间instanceId */
   namespace: string;
 
@@ -18,8 +18,8 @@ export interface CheckViewRequestBody {
  * @description 校验领域模型
  * @endpoint POST /api/v1/view/check
  */
-export const checkView = (
-  data: CheckViewRequestBody,
+export const ModelApi_checkView = (
+  data: ModelApi_CheckViewRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.next_builder.model.CheckView */ http.post<void>(

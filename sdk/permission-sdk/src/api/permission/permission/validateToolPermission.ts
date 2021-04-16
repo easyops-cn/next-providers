@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface ValidateToolPermissionRequestParams {
+export interface PermissionApi_ValidateToolPermissionRequestParams {
   /** 需要鉴权的权限点 */
   action: string;
 
@@ -18,7 +18,7 @@ export interface ValidateToolPermissionRequestParams {
   validate_action_only?: boolean;
 }
 
-export interface ValidateToolPermissionResponseBody {
+export interface PermissionApi_ValidateToolPermissionResponseBody {
   /** 是否鉴权成功 */
   accepted?: boolean;
 
@@ -33,12 +33,14 @@ export interface ValidateToolPermissionResponseBody {
  * @description 校验用户对工具的操作权限
  * @endpoint GET /api/v1/permission/validate
  */
-export const validateToolPermission = async (
-  params: ValidateToolPermissionRequestParams,
+export const PermissionApi_validateToolPermission = async (
+  params: PermissionApi_ValidateToolPermissionRequestParams,
   options?: HttpOptions
-): Promise<ValidateToolPermissionResponseBody> =>
+): Promise<PermissionApi_ValidateToolPermissionResponseBody> =>
   /**! @contract easyops.api.permission.permission.ValidateToolPermission */ (
-    await http.get<ResponseBodyWrapper<ValidateToolPermissionResponseBody>>(
+    await http.get<
+      ResponseBodyWrapper<PermissionApi_ValidateToolPermissionResponseBody>
+    >(
       "api/gateway/permission.permission.ValidateToolPermission/api/v1/permission/validate",
       { ...options, params }
     )

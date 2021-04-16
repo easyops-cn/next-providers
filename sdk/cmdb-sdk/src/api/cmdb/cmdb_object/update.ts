@@ -3,7 +3,7 @@ import { ModelCmdbObject, ModelObjectBasicInfo } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 /** 模型信息 */
-export interface UpdateRequestBody {
+export interface CmdbObjectApi_UpdateRequestBody {
   /** 名称 */
   name?: string;
 
@@ -29,19 +29,19 @@ export interface UpdateRequestBody {
   deleteAuthorizers?: string[];
 }
 
-export type UpdateResponseBody = Partial<ModelCmdbObject>;
+export type CmdbObjectApi_UpdateResponseBody = Partial<ModelCmdbObject>;
 
 /**
  * @description 更新模型
  * @endpoint PUT /object/:objectId
  */
-export const update = async (
+export const CmdbObjectApi_update = async (
   objectId: string | number,
-  data: UpdateRequestBody,
+  data: CmdbObjectApi_UpdateRequestBody,
   options?: HttpOptions
-): Promise<UpdateResponseBody> =>
+): Promise<CmdbObjectApi_UpdateResponseBody> =>
   /**! @contract easyops.api.cmdb.cmdb_object.Update */ (
-    await http.put<ResponseBodyWrapper<UpdateResponseBody>>(
+    await http.put<ResponseBodyWrapper<CmdbObjectApi_UpdateResponseBody>>(
       `api/gateway/cmdb.cmdb_object.Update/object/${objectId}`,
       data,
       options

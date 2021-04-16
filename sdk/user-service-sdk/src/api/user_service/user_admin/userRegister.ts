@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface UserRegisterRequestBody {
+export interface UserAdminApi_UserRegisterRequestBody {
   /** 用户名 */
   name: string;
 
@@ -18,7 +18,7 @@ export interface UserRegisterRequestBody {
   isAdmin?: boolean;
 }
 
-export interface UserRegisterResponseBody {
+export interface UserAdminApi_UserRegisterResponseBody {
   /** 用户名 */
   name: string;
 
@@ -36,12 +36,12 @@ export interface UserRegisterResponseBody {
  * @description 用户注册[内部]
  * @endpoint POST /api/v1/users/register
  */
-export const userRegister = async (
-  data: UserRegisterRequestBody,
+export const UserAdminApi_userRegister = async (
+  data: UserAdminApi_UserRegisterRequestBody,
   options?: HttpOptions
-): Promise<UserRegisterResponseBody> =>
+): Promise<UserAdminApi_UserRegisterResponseBody> =>
   /**! @contract easyops.api.user_service.user_admin.UserRegister */ (
-    await http.post<ResponseBodyWrapper<UserRegisterResponseBody>>(
+    await http.post<ResponseBodyWrapper<UserAdminApi_UserRegisterResponseBody>>(
       "api/gateway/user_service.user_admin.UserRegister/api/v1/users/register",
       data,
       options

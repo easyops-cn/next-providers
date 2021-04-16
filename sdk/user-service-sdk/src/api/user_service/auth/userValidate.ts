@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface UserValidateRequestBody {
+export interface AuthApi_UserValidateRequestBody {
   /** 用户名 */
   name: string;
 
@@ -9,7 +9,7 @@ export interface UserValidateRequestBody {
   password: string;
 }
 
-export interface UserValidateResponseBody {
+export interface AuthApi_UserValidateResponseBody {
   /** 用户名 */
   name: string;
 
@@ -24,12 +24,12 @@ export interface UserValidateResponseBody {
  * @description 用户密码验证[内部]
  * @endpoint POST /api/v1/users/validate
  */
-export const userValidate = async (
-  data: UserValidateRequestBody,
+export const AuthApi_userValidate = async (
+  data: AuthApi_UserValidateRequestBody,
   options?: HttpOptions
-): Promise<UserValidateResponseBody> =>
+): Promise<AuthApi_UserValidateResponseBody> =>
   /**! @contract easyops.api.user_service.auth.UserValidate */ (
-    await http.post<ResponseBodyWrapper<UserValidateResponseBody>>(
+    await http.post<ResponseBodyWrapper<AuthApi_UserValidateResponseBody>>(
       "api/gateway/user_service.auth.UserValidate/api/v1/users/validate",
       data,
       options

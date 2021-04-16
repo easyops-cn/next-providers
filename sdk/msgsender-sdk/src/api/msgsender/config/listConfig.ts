@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelEasyTornadoCommonResponse } from "../../../model/monitor";
 import { ModelMessageConfig } from "../../../model/msgsender";
 
-export interface ListConfigRequestParams {
+export interface ConfigApi_ListConfigRequestParams {
   /** 页码 */
   page: number;
 
@@ -10,28 +10,28 @@ export interface ListConfigRequestParams {
   page_size: number;
 }
 
-export type ListConfigResponseBody = Partial<ModelEasyTornadoCommonResponse> &
-  ListConfigResponseBody_2;
+export type ConfigApi_ListConfigResponseBody = Partial<ModelEasyTornadoCommonResponse> &
+  ConfigApi_ListConfigResponseBody_2;
 
 /**
  * @description 获取通知配置列表
  * @endpoint GET /api/v1/message_sender/configs
  */
-export const listConfig = (
-  params: ListConfigRequestParams,
+export const ConfigApi_listConfig = (
+  params: ConfigApi_ListConfigRequestParams,
   options?: HttpOptions
-): Promise<ListConfigResponseBody> =>
-  /**! @contract easyops.api.msgsender.config.ListConfig */ http.get<ListConfigResponseBody>(
+): Promise<ConfigApi_ListConfigResponseBody> =>
+  /**! @contract easyops.api.msgsender.config.ListConfig */ http.get<ConfigApi_ListConfigResponseBody>(
     "api/gateway/msgsender.config.ListConfig/api/v1/message_sender/configs",
     { ...options, params }
   );
 
-export interface ListConfigResponseBody_2 {
+export interface ConfigApi_ListConfigResponseBody_2 {
   /** 通知配置 */
-  data?: ListConfigResponseBody_data;
+  data?: ConfigApi_ListConfigResponseBody_data;
 }
 
-export interface ListConfigResponseBody_data {
+export interface ConfigApi_ListConfigResponseBody_data {
   /** 配置列表 */
   list?: Partial<ModelMessageConfig>[];
 

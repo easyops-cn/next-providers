@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelStrategyPathNode } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface PathSearchV4RequestBody {
+export interface InstancePathSearchApi_PathSearchV4RequestBody {
   /** 查询路径 */
   path: Partial<ModelStrategyPathNode>[];
 
@@ -16,7 +16,7 @@ export interface PathSearchV4RequestBody {
   pageSize?: number;
 }
 
-export interface PathSearchV4ResponseBody {
+export interface InstancePathSearchApi_PathSearchV4ResponseBody {
   /** 起点个数 */
   root?: number;
 
@@ -31,12 +31,14 @@ export interface PathSearchV4ResponseBody {
  * @description 实例路径查询v4
  * @endpoint POST /v4/path/_search
  */
-export const pathSearchV4 = async (
-  data: PathSearchV4RequestBody,
+export const InstancePathSearchApi_pathSearchV4 = async (
+  data: InstancePathSearchApi_PathSearchV4RequestBody,
   options?: HttpOptions
-): Promise<PathSearchV4ResponseBody> =>
+): Promise<InstancePathSearchApi_PathSearchV4ResponseBody> =>
   /**! @contract easyops.api.cmdb.instance_path_search.PathSearchV4 */ (
-    await http.post<ResponseBodyWrapper<PathSearchV4ResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<InstancePathSearchApi_PathSearchV4ResponseBody>
+    >(
       "api/gateway/cmdb.instance_path_search.PathSearchV4/v4/path/_search",
       data,
       options

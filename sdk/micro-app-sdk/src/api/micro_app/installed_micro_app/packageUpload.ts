@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelMicroAppProject } from "../../../model/next_builder";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface PackageUploadRequestBody {
+export interface InstalledMicroAppApi_PackageUploadRequestBody {
   /** 小产品id */
   appId: string;
 
@@ -34,7 +34,7 @@ export interface PackageUploadRequestBody {
   user?: string;
 }
 
-export interface PackageUploadResponseBody {
+export interface InstalledMicroAppApi_PackageUploadResponseBody {
   /** 小产品id */
   appId?: string;
 
@@ -46,12 +46,14 @@ export interface PackageUploadResponseBody {
  * @description 小产品生成打包文件并上传到r环境
  * @endpoint POST /api/micro_app/v1/package-upload
  */
-export const packageUpload = async (
-  data: PackageUploadRequestBody,
+export const InstalledMicroAppApi_packageUpload = async (
+  data: InstalledMicroAppApi_PackageUploadRequestBody,
   options?: HttpOptions
-): Promise<PackageUploadResponseBody> =>
+): Promise<InstalledMicroAppApi_PackageUploadResponseBody> =>
   /**! @contract easyops.api.micro_app.installed_micro_app.PackageUpload */ (
-    await http.post<ResponseBodyWrapper<PackageUploadResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<InstalledMicroAppApi_PackageUploadResponseBody>
+    >(
       "api/gateway/micro_app.installed_micro_app.PackageUpload/api/micro_app/v1/package-upload",
       data,
       options

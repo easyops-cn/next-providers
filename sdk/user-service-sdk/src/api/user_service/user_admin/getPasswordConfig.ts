@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface GetPasswordConfigResponseBody {
+export interface UserAdminApi_GetPasswordConfigResponseBody {
   /** 正则 */
   regex?: string;
 
@@ -13,11 +13,13 @@ export interface GetPasswordConfigResponseBody {
  * @description 获取密码配置
  * @endpoint GET /api/v1/users/passconf
  */
-export const getPasswordConfig = async (
+export const UserAdminApi_getPasswordConfig = async (
   options?: HttpOptions
-): Promise<GetPasswordConfigResponseBody> =>
+): Promise<UserAdminApi_GetPasswordConfigResponseBody> =>
   /**! @contract easyops.api.user_service.user_admin.GetPasswordConfig */ (
-    await http.get<ResponseBodyWrapper<GetPasswordConfigResponseBody>>(
+    await http.get<
+      ResponseBodyWrapper<UserAdminApi_GetPasswordConfigResponseBody>
+    >(
       "api/gateway/user_service.user_admin.GetPasswordConfig/api/v1/users/passconf",
       options
     )

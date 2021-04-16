@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelTransalteRule } from "../../../model/monitor";
 
-export interface ListTranslateRuleRequestParams {
+export interface TranslateApi_ListTranslateRuleRequestParams {
   /** 页数 */
   page?: number;
 
@@ -9,7 +9,7 @@ export interface ListTranslateRuleRequestParams {
   page_size?: number;
 }
 
-export interface ListTranslateRuleResponseBody {
+export interface TranslateApi_ListTranslateRuleResponseBody {
   /** 返回码 */
   code: number;
 
@@ -33,11 +33,11 @@ export interface ListTranslateRuleResponseBody {
  * @description 获取翻译规则列表
  * @endpoint GET /api/v1/translate/rule
  */
-export const listTranslateRule = (
-  params: ListTranslateRuleRequestParams,
+export const TranslateApi_listTranslateRule = (
+  params: TranslateApi_ListTranslateRuleRequestParams,
   options?: HttpOptions
-): Promise<ListTranslateRuleResponseBody> =>
-  /**! @contract easyops.api.monitor.translate.ListTranslateRule */ http.get<ListTranslateRuleResponseBody>(
+): Promise<TranslateApi_ListTranslateRuleResponseBody> =>
+  /**! @contract easyops.api.monitor.translate.ListTranslateRule */ http.get<TranslateApi_ListTranslateRuleResponseBody>(
     "api/gateway/monitor.translate.ListTranslateRule/api/v1/translate/rule",
     { ...options, params }
   );

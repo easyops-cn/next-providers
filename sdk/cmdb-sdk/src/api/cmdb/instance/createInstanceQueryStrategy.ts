@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelInstanceQueryStrategy } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface CreateInstanceQueryStrategyRequestBody {
+export interface InstanceApi_CreateInstanceQueryStrategyRequestBody {
   /** 策略名称 */
   name?: string;
 
@@ -16,20 +16,20 @@ export interface CreateInstanceQueryStrategyRequestBody {
   query: Record<string, any>;
 }
 
-export type CreateInstanceQueryStrategyResponseBody = Partial<ModelInstanceQueryStrategy>;
+export type InstanceApi_CreateInstanceQueryStrategyResponseBody = Partial<ModelInstanceQueryStrategy>;
 
 /**
  * @description 创建实例查询策略
  * @endpoint POST /object/:objectId/query/strategy
  */
-export const createInstanceQueryStrategy = async (
+export const InstanceApi_createInstanceQueryStrategy = async (
   objectId: string | number,
-  data: CreateInstanceQueryStrategyRequestBody,
+  data: InstanceApi_CreateInstanceQueryStrategyRequestBody,
   options?: HttpOptions
-): Promise<CreateInstanceQueryStrategyResponseBody> =>
+): Promise<InstanceApi_CreateInstanceQueryStrategyResponseBody> =>
   /**! @contract easyops.api.cmdb.instance.CreateInstanceQueryStrategy */ (
     await http.post<
-      ResponseBodyWrapper<CreateInstanceQueryStrategyResponseBody>
+      ResponseBodyWrapper<InstanceApi_CreateInstanceQueryStrategyResponseBody>
     >(
       `api/gateway/cmdb.instance.CreateInstanceQueryStrategy/object/${objectId}/query/strategy`,
       data,

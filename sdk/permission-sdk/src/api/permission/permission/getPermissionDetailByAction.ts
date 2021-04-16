@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface GetPermissionDetailByActionResponseBody {
+export interface PermissionApi_GetPermissionDetailByActionResponseBody {
   /** 权限备注 */
   remark?: string;
 
@@ -28,13 +28,13 @@ export interface GetPermissionDetailByActionResponseBody {
  * @description 通过权限名获取权限点详情信息
  * @endpoint GET /api/v1/permission/config/:action
  */
-export const getPermissionDetailByAction = async (
+export const PermissionApi_getPermissionDetailByAction = async (
   action: string | number,
   options?: HttpOptions
-): Promise<GetPermissionDetailByActionResponseBody> =>
+): Promise<PermissionApi_GetPermissionDetailByActionResponseBody> =>
   /**! @contract easyops.api.permission.permission.GetPermissionDetailByAction */ (
     await http.get<
-      ResponseBodyWrapper<GetPermissionDetailByActionResponseBody>
+      ResponseBodyWrapper<PermissionApi_GetPermissionDetailByActionResponseBody>
     >(
       `api/gateway/permission.permission.GetPermissionDetailByAction/api/v1/permission/config/${action}`,
       options

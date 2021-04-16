@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelAlertRule } from "../../../model/monitor";
 
-export interface DetailAlertRuleResponseBody {
+export interface AlertRuleApi_DetailAlertRuleResponseBody {
   /** code */
   code?: number;
 
@@ -16,11 +16,11 @@ export interface DetailAlertRuleResponseBody {
  * @description 获取告警规则详情
  * @endpoint GET /api/v3/alert_rule/config/:id
  */
-export const detailAlertRule = (
+export const AlertRuleApi_detailAlertRule = (
   id: string | number,
   options?: HttpOptions
-): Promise<DetailAlertRuleResponseBody> =>
-  /**! @contract easyops.api.monitor.alert_rule.DetailAlertRule */ http.get<DetailAlertRuleResponseBody>(
+): Promise<AlertRuleApi_DetailAlertRuleResponseBody> =>
+  /**! @contract easyops.api.monitor.alert_rule.DetailAlertRule */ http.get<AlertRuleApi_DetailAlertRuleResponseBody>(
     `api/gateway/monitor.alert_rule.DetailAlertRule/api/v3/alert_rule/config/${id}`,
     options
   );

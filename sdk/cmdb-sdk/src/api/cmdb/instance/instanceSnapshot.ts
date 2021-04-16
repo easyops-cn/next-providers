@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface InstanceSnapshotRequestParams {
+export interface InstanceApi_InstanceSnapshotRequestParams {
   /** 版本号 */
   _version: number;
 
@@ -9,20 +9,22 @@ export interface InstanceSnapshotRequestParams {
   _ts: number;
 }
 
-export type InstanceSnapshotResponseBody = Record<string, any>;
+export type InstanceApi_InstanceSnapshotResponseBody = Record<string, any>;
 
 /**
  * @description 查询指定版本实例快照
  * @endpoint GET /history/object/:object_id/instance/:instance_id
  */
-export const instanceSnapshot = async (
+export const InstanceApi_instanceSnapshot = async (
   object_id: string | number,
   instance_id: string | number,
-  params: InstanceSnapshotRequestParams,
+  params: InstanceApi_InstanceSnapshotRequestParams,
   options?: HttpOptions
-): Promise<InstanceSnapshotResponseBody> =>
+): Promise<InstanceApi_InstanceSnapshotResponseBody> =>
   /**! @contract easyops.api.cmdb.instance.InstanceSnapshot */ (
-    await http.get<ResponseBodyWrapper<InstanceSnapshotResponseBody>>(
+    await http.get<
+      ResponseBodyWrapper<InstanceApi_InstanceSnapshotResponseBody>
+    >(
       `api/gateway/cmdb.instance.InstanceSnapshot/history/object/${object_id}/instance/${instance_id}`,
       { ...options, params }
     )

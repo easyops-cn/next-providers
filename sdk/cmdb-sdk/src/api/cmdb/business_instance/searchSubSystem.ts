@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface SearchSubSystemRequestBody {
+export interface BusinessInstanceApi_SearchSubSystemRequestBody {
   /** 页码 */
   page?: number;
 
@@ -27,7 +27,7 @@ export interface SearchSubSystemRequestBody {
   only_my_instance?: boolean;
 }
 
-export interface SearchSubSystemResponseBody {
+export interface BusinessInstanceApi_SearchSubSystemResponseBody {
   /** total */
   total: number;
 
@@ -45,13 +45,15 @@ export interface SearchSubSystemResponseBody {
  * @description 搜索系统的子系统以及，以及递归的获取子系统的子系统 (关于搜索条件的文档说明请参考[实例搜索接口]的说明)
  * @endpoint POST /system/:systemInstanceId/_search_subsystem
  */
-export const searchSubSystem = async (
+export const BusinessInstanceApi_searchSubSystem = async (
   systemInstanceId: string | number,
-  data: SearchSubSystemRequestBody,
+  data: BusinessInstanceApi_SearchSubSystemRequestBody,
   options?: HttpOptions
-): Promise<SearchSubSystemResponseBody> =>
+): Promise<BusinessInstanceApi_SearchSubSystemResponseBody> =>
   /**! @contract easyops.api.cmdb.business_instance.SearchSubSystem */ (
-    await http.post<ResponseBodyWrapper<SearchSubSystemResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<BusinessInstanceApi_SearchSubSystemResponseBody>
+    >(
       `api/gateway/cmdb.business_instance.SearchSubSystem/system/${systemInstanceId}/_search_subsystem`,
       data,
       options

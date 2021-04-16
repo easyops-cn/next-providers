@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelOrgInfo } from "../../../model/user_service";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface CreateOrgRequestBody {
+export interface OrganizationApi_CreateOrgRequestBody {
   /** org */
   id?: number;
 
@@ -22,19 +22,19 @@ export interface CreateOrgRequestBody {
   edition: string;
 }
 
-export type CreateOrgResponseBody = Partial<ModelOrgInfo> &
+export type OrganizationApi_CreateOrgResponseBody = Partial<ModelOrgInfo> &
   ModelOrgInfo_partial;
 
 /**
  * @description 创建Org[内部]
  * @endpoint POST /api/v1/org
  */
-export const createOrg = async (
-  data: CreateOrgRequestBody,
+export const OrganizationApi_createOrg = async (
+  data: OrganizationApi_CreateOrgRequestBody,
   options?: HttpOptions
-): Promise<CreateOrgResponseBody> =>
+): Promise<OrganizationApi_CreateOrgResponseBody> =>
   /**! @contract easyops.api.user_service.organization.CreateOrg */ (
-    await http.post<ResponseBodyWrapper<CreateOrgResponseBody>>(
+    await http.post<ResponseBodyWrapper<OrganizationApi_CreateOrgResponseBody>>(
       "api/gateway/user_service.organization.CreateOrg/api/v1/org",
       data,
       options

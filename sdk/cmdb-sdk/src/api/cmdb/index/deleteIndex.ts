@@ -4,7 +4,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
  * @description 删除索引
  * @endpoint DELETE /object/:objectId/index/:indexName
  */
-export const deleteIndex = (
+export const IndexApi_deleteIndex = (
   objectId: string | number,
   indexName: string | number,
   options?: HttpOptions

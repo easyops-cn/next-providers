@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelLaunchpadCollection } from "../../../model/user_service";
 import { ResponseListWrapper, ResponseBodyWrapper } from "../../../wrapper";
 
-export interface ListCollectionRequestParams {
+export interface LaunchpadApi_ListCollectionRequestParams {
   /** 页码 */
   page?: number;
 
@@ -10,7 +10,7 @@ export interface ListCollectionRequestParams {
   pageSize?: number;
 }
 
-export interface ListCollectionResponseItem {
+export interface LaunchpadApi_ListCollectionResponseItem {
   /** LaunchpadCollection */
   launchpadCollection?: Partial<ModelLaunchpadCollection>;
 
@@ -18,18 +18,20 @@ export interface ListCollectionResponseItem {
   microAppId?: string;
 }
 
-export type ListCollectionResponseBody = ResponseListWrapper<ListCollectionResponseItem>;
+export type LaunchpadApi_ListCollectionResponseBody = ResponseListWrapper<LaunchpadApi_ListCollectionResponseItem>;
 
 /**
  * @description 获取我的收藏列表
  * @endpoint LIST /api/v1/launchpad/collection
  */
-export const listCollection = async (
-  params: ListCollectionRequestParams,
+export const LaunchpadApi_listCollection = async (
+  params: LaunchpadApi_ListCollectionRequestParams,
   options?: HttpOptions
-): Promise<ListCollectionResponseBody> =>
+): Promise<LaunchpadApi_ListCollectionResponseBody> =>
   /**! @contract easyops.api.user_service.launchpad.ListCollection */ (
-    await http.get<ResponseBodyWrapper<ListCollectionResponseBody>>(
+    await http.get<
+      ResponseBodyWrapper<LaunchpadApi_ListCollectionResponseBody>
+    >(
       "api/gateway/user_service.launchpad.ListCollection/api/v1/launchpad/collection",
       { ...options, params }
     )

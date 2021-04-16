@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface SaveApplyInfoRequestBody {
+export interface CustomerApi_SaveApplyInfoRequestBody {
   /** 用户姓名 */
   userName: string;
 
@@ -48,14 +48,17 @@ export interface SaveApplyInfoRequestBody {
     | "technical-support-engineer"
     | "IT-counselor"
     | "other";
+
+  /** 验证码 */
+  verification_code: string;
 }
 
 /**
  * @description 保存用户的申请信息到cmdb
  * @endpoint POST /api/v1/customer/info
  */
-export const saveApplyInfo = (
-  data: SaveApplyInfoRequestBody,
+export const CustomerApi_saveApplyInfo = (
+  data: CustomerApi_SaveApplyInfoRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.air_admin_service.customer.SaveApplyInfo */ http.post<void>(

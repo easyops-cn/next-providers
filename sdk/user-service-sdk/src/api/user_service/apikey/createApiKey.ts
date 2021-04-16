@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface CreateApiKeyResponseBody {
+export interface ApikeyApi_CreateApiKeyResponseBody {
   /** 用户名 */
   user: string;
 
@@ -28,12 +28,12 @@ export interface CreateApiKeyResponseBody {
  * @description 创建用户ApiKey[内部]
  * @endpoint POST /api/v1/apikey/:user
  */
-export const createApiKey = async (
+export const ApikeyApi_createApiKey = async (
   user: string | number,
   options?: HttpOptions
-): Promise<CreateApiKeyResponseBody> =>
+): Promise<ApikeyApi_CreateApiKeyResponseBody> =>
   /**! @contract easyops.api.user_service.apikey.CreateApiKey */ (
-    await http.post<ResponseBodyWrapper<CreateApiKeyResponseBody>>(
+    await http.post<ResponseBodyWrapper<ApikeyApi_CreateApiKeyResponseBody>>(
       `api/gateway/user_service.apikey.CreateApiKey/api/v1/apikey/${user}`,
       undefined,
       options

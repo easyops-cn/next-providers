@@ -2,12 +2,12 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelCmdbObject } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface GenerateModelsDefinitionRequestParams {
+export interface ModelApi_GenerateModelsDefinitionRequestParams {
   /** projectId */
   projectId?: string;
 }
 
-export interface GenerateModelsDefinitionResponseBody {
+export interface ModelApi_GenerateModelsDefinitionResponseBody {
   /** projectId */
   projectId?: string;
 
@@ -19,12 +19,14 @@ export interface GenerateModelsDefinitionResponseBody {
  * @description 由模型定义生成ModelsDefinition
  * @endpoint GET /api/v1/model/generate_models_definition
  */
-export const generateModelsDefinition = async (
-  params: GenerateModelsDefinitionRequestParams,
+export const ModelApi_generateModelsDefinition = async (
+  params: ModelApi_GenerateModelsDefinitionRequestParams,
   options?: HttpOptions
-): Promise<GenerateModelsDefinitionResponseBody> =>
+): Promise<ModelApi_GenerateModelsDefinitionResponseBody> =>
   /**! @contract easyops.api.next_builder.model.GenerateModelsDefinition */ (
-    await http.get<ResponseBodyWrapper<GenerateModelsDefinitionResponseBody>>(
+    await http.get<
+      ResponseBodyWrapper<ModelApi_GenerateModelsDefinitionResponseBody>
+    >(
       "api/gateway/next_builder.model.GenerateModelsDefinition/api/v1/model/generate_models_definition",
       { ...options, params }
     )

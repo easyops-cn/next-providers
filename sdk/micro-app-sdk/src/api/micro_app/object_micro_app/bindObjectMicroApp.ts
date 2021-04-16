@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface BindObjectMicroAppRequestBody {
+export interface ObjectMicroAppApi_BindObjectMicroAppRequestBody {
   /** 小产品id */
   appId?: string;
 }
@@ -9,8 +9,8 @@ export interface BindObjectMicroAppRequestBody {
  * @description 绑定Object与MicroApp关系
  * @endpoint POST /api/micro_app/v1/object_micro_app/bind
  */
-export const bindObjectMicroApp = (
-  data: BindObjectMicroAppRequestBody,
+export const ObjectMicroAppApi_bindObjectMicroApp = (
+  data: ObjectMicroAppApi_BindObjectMicroAppRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.micro_app.object_micro_app.BindObjectMicroApp */ http.post<void>(

@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelAppHealthConfig } from "../../../model/monitor_config";
 
-export interface GetAppHealthConfigV2ResponseBody {
+export interface AppHealthApi_GetAppHealthConfigV2ResponseBody {
   /** 返回码 */
   code?: number;
 
@@ -16,11 +16,11 @@ export interface GetAppHealthConfigV2ResponseBody {
  * @description 获取应用评分配置v2
  * @endpoint get /api/v2/app_health/config/:app_id
  */
-export const getAppHealthConfigV2 = (
+export const AppHealthApi_getAppHealthConfigV2 = (
   app_id: string | number,
   options?: HttpOptions
-): Promise<GetAppHealthConfigV2ResponseBody> =>
-  /**! @contract easyops.api.monitor.app_health.GetAppHealthConfigV2 */ http.get<GetAppHealthConfigV2ResponseBody>(
+): Promise<AppHealthApi_GetAppHealthConfigV2ResponseBody> =>
+  /**! @contract easyops.api.monitor.app_health.GetAppHealthConfigV2 */ http.get<AppHealthApi_GetAppHealthConfigV2ResponseBody>(
     `api/gateway/monitor.app_health.GetAppHealthConfigV2/api/v2/app_health/config/${app_id}`,
     options
   );

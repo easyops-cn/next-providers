@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface GetMyRolesResponseBody {
+export interface RoleApi_GetMyRolesResponseBody {
   /** 角色名称列表 */
   roles?: string[];
 
@@ -12,24 +12,24 @@ export interface GetMyRolesResponseBody {
   deniedPermissions?: string[];
 
   /** 用户组列表 */
-  userGroups?: GetMyRolesResponseBody_userGroups_item[];
+  userGroups?: RoleApi_GetMyRolesResponseBody_userGroups_item[];
 }
 
 /**
  * @description 获取当前用户及当前用户所在用户组所属角色(不需要权限)
  * @endpoint GET /api/v1/permission_role/get-my-roles
  */
-export const getMyRoles = async (
+export const RoleApi_getMyRoles = async (
   options?: HttpOptions
-): Promise<GetMyRolesResponseBody> =>
+): Promise<RoleApi_GetMyRolesResponseBody> =>
   /**! @contract easyops.api.permission.role.GetMyRoles */ (
-    await http.get<ResponseBodyWrapper<GetMyRolesResponseBody>>(
+    await http.get<ResponseBodyWrapper<RoleApi_GetMyRolesResponseBody>>(
       "api/gateway/permission.role.GetMyRoles/api/v1/permission_role/get-my-roles",
       options
     )
   ).data;
 
-export interface GetMyRolesResponseBody_userGroups_item {
+export interface RoleApi_GetMyRolesResponseBody_userGroups_item {
   /** instanceId */
   instanceId?: string;
 

@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelTraverseChildNode } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface TraverseGraphCountRequestBody {
+export interface InstanceGraphApi_TraverseGraphCountRequestBody {
   /** 模型Id */
   object_id: string;
 
@@ -16,25 +16,27 @@ export interface TraverseGraphCountRequestBody {
   child: Partial<ModelTraverseChildNode>[];
 }
 
-export type TraverseGraphCountResponseBody = TraverseGraphCountResponseBody_item[];
+export type InstanceGraphApi_TraverseGraphCountResponseBody = InstanceGraphApi_TraverseGraphCountResponseBody_item[];
 
 /**
  * @description 图遍历查询叶子节点个数统计 (图遍历查询叶子节点个数统计,fields不用传)
  * @endpoint POST /instance/traverse/count
  */
-export const traverseGraphCount = async (
-  data: TraverseGraphCountRequestBody,
+export const InstanceGraphApi_traverseGraphCount = async (
+  data: InstanceGraphApi_TraverseGraphCountRequestBody,
   options?: HttpOptions
-): Promise<TraverseGraphCountResponseBody> =>
+): Promise<InstanceGraphApi_TraverseGraphCountResponseBody> =>
   /**! @contract easyops.api.cmdb.instance_graph.TraverseGraphCount */ (
-    await http.post<ResponseBodyWrapper<TraverseGraphCountResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<InstanceGraphApi_TraverseGraphCountResponseBody>
+    >(
       "api/gateway/cmdb.instance_graph.TraverseGraphCount/instance/traverse/count",
       data,
       options
     )
   ).data;
 
-export interface TraverseGraphCountResponseBody_item {
+export interface InstanceGraphApi_TraverseGraphCountResponseBody_item {
   /** 根节点模型Id */
   object_id: string;
 
@@ -42,10 +44,10 @@ export interface TraverseGraphCountResponseBody_item {
   instanceId: string;
 
   /** 叶子节点个数统计 */
-  list: TraverseGraphCountResponseBody_item_list_item[];
+  list: InstanceGraphApi_TraverseGraphCountResponseBody_item_list_item[];
 }
 
-export interface TraverseGraphCountResponseBody_item_list_item {
+export interface InstanceGraphApi_TraverseGraphCountResponseBody_item_list_item {
   /** 叶子节点模型Id */
   object_id?: string;
 

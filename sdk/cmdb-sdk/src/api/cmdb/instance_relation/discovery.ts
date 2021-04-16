@@ -2,37 +2,39 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelAutoDiscoveryInstance } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface DiscoveryRequestBody {
+export interface InstanceRelationApi_DiscoveryRequestBody {
   /** 发现实例的字段列表 */
-  match: DiscoveryRequestBody_match_item[];
+  match: InstanceRelationApi_DiscoveryRequestBody_match_item[];
 
   /** 发现实例的数据列表 */
-  data: DiscoveryRequestBody_data_item[];
+  data: InstanceRelationApi_DiscoveryRequestBody_data_item[];
 
   /** 精确匹配（true: 只允许1:1关系，false: 允许1:n关系，默认true） */
   strict?: boolean;
 }
 
-export type DiscoveryResponseBody = DiscoveryResponseBody_item[];
+export type InstanceRelationApi_DiscoveryResponseBody = InstanceRelationApi_DiscoveryResponseBody_item[];
 
 /**
  * @description 实例关系发现
  * @endpoint POST /object_relation/:relationId/_autodiscovery/multi
  */
-export const discovery = async (
+export const InstanceRelationApi_discovery = async (
   relationId: string | number,
-  data: DiscoveryRequestBody,
+  data: InstanceRelationApi_DiscoveryRequestBody,
   options?: HttpOptions
-): Promise<DiscoveryResponseBody> =>
+): Promise<InstanceRelationApi_DiscoveryResponseBody> =>
   /**! @contract easyops.api.cmdb.instance_relation.Discovery */ (
-    await http.post<ResponseBodyWrapper<DiscoveryResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<InstanceRelationApi_DiscoveryResponseBody>
+    >(
       `api/gateway/cmdb.instance_relation.Discovery/object_relation/${relationId}/_autodiscovery/multi`,
       data,
       options
     )
   ).data;
 
-export interface DiscoveryRequestBody_match_item {
+export interface InstanceRelationApi_DiscoveryRequestBody_match_item {
   /** 左侧实例匹配字段列表 */
   left_match?: string[];
 
@@ -40,7 +42,7 @@ export interface DiscoveryRequestBody_match_item {
   right_match?: string[];
 }
 
-export interface DiscoveryRequestBody_data_item {
+export interface InstanceRelationApi_DiscoveryRequestBody_data_item {
   /** 左侧匹配的实例数据 */
   left_instance?: Record<string, any>;
 
@@ -48,7 +50,7 @@ export interface DiscoveryRequestBody_data_item {
   right_instance?: Record<string, any>;
 }
 
-export interface DiscoveryResponseBody_item {
+export interface InstanceRelationApi_DiscoveryResponseBody_item {
   /** 状态码（0：成功，非0：失败） */
   code: number;
 

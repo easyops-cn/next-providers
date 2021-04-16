@@ -1,26 +1,28 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface GetMicroAppListResponseBody {
+export interface PermissionApi_GetMicroAppListResponseBody {
   /** 已安装小产品 */
-  installedMicroAppList?: GetMicroAppListResponseBody_installedMicroAppList_item[];
+  installedMicroAppList?: PermissionApi_GetMicroAppListResponseBody_installedMicroAppList_item[];
 }
 
 /**
  * @description 获取所有拥有权限的小产品
  * @endpoint GET /api/micro_app/v1/permission
  */
-export const getMicroAppList = async (
+export const PermissionApi_getMicroAppList = async (
   options?: HttpOptions
-): Promise<GetMicroAppListResponseBody> =>
+): Promise<PermissionApi_GetMicroAppListResponseBody> =>
   /**! @contract easyops.api.micro_app.permission.GetMicroAppList */ (
-    await http.get<ResponseBodyWrapper<GetMicroAppListResponseBody>>(
+    await http.get<
+      ResponseBodyWrapper<PermissionApi_GetMicroAppListResponseBody>
+    >(
       "api/gateway/micro_app.permission.GetMicroAppList/api/micro_app/v1/permission",
       options
     )
   ).data;
 
-export interface GetMicroAppListResponseBody_installedMicroAppList_item {
+export interface PermissionApi_GetMicroAppListResponseBody_installedMicroAppList_item {
   /** 小产品名称 */
   name?: string;
 

@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface BatchValidateCmdbPermissionRequestParams {
+export interface PermissionApi_BatchValidateCmdbPermissionRequestParams {
   /** 需要鉴权的用户名 */
   user: string;
 
@@ -24,7 +24,7 @@ export interface BatchValidateCmdbPermissionRequestParams {
   batch_select_fields: string;
 }
 
-export interface BatchValidateCmdbPermissionResponseBody {
+export interface PermissionApi_BatchValidateCmdbPermissionResponseBody {
   /** 是否鉴权成功 */
   accepted?: boolean;
 
@@ -38,27 +38,27 @@ export interface BatchValidateCmdbPermissionResponseBody {
   not_found_instances?: string[];
 
   /** 无权限的实例 */
-  no_permission_instances?: BatchValidateCmdbPermissionResponseBody_no_permission_instances_item[];
+  no_permission_instances?: PermissionApi_BatchValidateCmdbPermissionResponseBody_no_permission_instances_item[];
 }
 
 /**
  * @description 批量校验cmdb权限
  * @endpoint GET /api/v1/permission/validate
  */
-export const batchValidateCmdbPermission = async (
-  params: BatchValidateCmdbPermissionRequestParams,
+export const PermissionApi_batchValidateCmdbPermission = async (
+  params: PermissionApi_BatchValidateCmdbPermissionRequestParams,
   options?: HttpOptions
-): Promise<BatchValidateCmdbPermissionResponseBody> =>
+): Promise<PermissionApi_BatchValidateCmdbPermissionResponseBody> =>
   /**! @contract easyops.api.permission.permission.BatchValidateCmdbPermission */ (
     await http.get<
-      ResponseBodyWrapper<BatchValidateCmdbPermissionResponseBody>
+      ResponseBodyWrapper<PermissionApi_BatchValidateCmdbPermissionResponseBody>
     >(
       "api/gateway/permission.permission.BatchValidateCmdbPermission/api/v1/permission/validate",
       { ...options, params }
     )
   ).data;
 
-export interface BatchValidateCmdbPermissionResponseBody_no_permission_instances_item {
+export interface PermissionApi_BatchValidateCmdbPermissionResponseBody_no_permission_instances_item {
   /** 实例Id */
   instanceId?: string;
 }

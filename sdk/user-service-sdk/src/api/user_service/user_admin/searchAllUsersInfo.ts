@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface SearchAllUsersInfoRequestBody {
+export interface UserAdminApi_SearchAllUsersInfoRequestBody {
   /** e.g.: { name: { $like: '%q%' } }, { $or: [{ name: { $like: '%q%' }}] } */
   query?: Record<string, any>;
 
@@ -12,7 +12,7 @@ export interface SearchAllUsersInfoRequestBody {
   sort?: Record<string, any>;
 }
 
-export interface SearchAllUsersInfoResponseBody {
+export interface UserAdminApi_SearchAllUsersInfoResponseBody {
   /** 用户列表 */
   list?: Record<string, any>[];
 }
@@ -21,12 +21,14 @@ export interface SearchAllUsersInfoResponseBody {
  * @description 搜索所有用户信息列表
  * @endpoint POST /api/v1/users/all
  */
-export const searchAllUsersInfo = async (
-  data: SearchAllUsersInfoRequestBody,
+export const UserAdminApi_searchAllUsersInfo = async (
+  data: UserAdminApi_SearchAllUsersInfoRequestBody,
   options?: HttpOptions
-): Promise<SearchAllUsersInfoResponseBody> =>
+): Promise<UserAdminApi_SearchAllUsersInfoResponseBody> =>
   /**! @contract easyops.api.user_service.user_admin.SearchAllUsersInfo */ (
-    await http.post<ResponseBodyWrapper<SearchAllUsersInfoResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<UserAdminApi_SearchAllUsersInfoResponseBody>
+    >(
       "api/gateway/user_service.user_admin.SearchAllUsersInfo/api/v1/users/all",
       data,
       options

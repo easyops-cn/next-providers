@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface ImportInstanceWithJsonRequestBody {
+export interface InstanceApi_ImportInstanceWithJsonRequestBody {
   /** 导入实例的字段 */
   keys: string[];
 
@@ -8,7 +8,7 @@ export interface ImportInstanceWithJsonRequestBody {
   attachment: File;
 }
 
-export interface ImportInstanceWithJsonResponseBody {
+export interface InstanceApi_ImportInstanceWithJsonResponseBody {
   /** 返回码,此返回码始终为0,具体错误要去data里看 */
   code: number;
 
@@ -19,18 +19,18 @@ export interface ImportInstanceWithJsonResponseBody {
   message: string;
 
   /** data */
-  data: ImportInstanceWithJsonResponseBody_data_item[];
+  data: InstanceApi_ImportInstanceWithJsonResponseBody_data_item[];
 }
 
 /**
  * @description 使用json文件导入实例 (此接口以multipart/form-data方式提交数据)
  * @endpoint POST /import/object/:object_id/instance/json
  */
-export const importInstanceWithJson = (
+export const InstanceApi_importInstanceWithJson = (
   object_id: string | number,
-  data: ImportInstanceWithJsonRequestBody,
+  data: InstanceApi_ImportInstanceWithJsonRequestBody,
   options?: HttpOptions
-): Promise<ImportInstanceWithJsonResponseBody> => {
+): Promise<InstanceApi_ImportInstanceWithJsonResponseBody> => {
   /**! @contract easyops.api.cmdb.instance.ImportInstanceWithJson */ const _formData = new FormData();
   for (const [key, value] of Object.entries(data)) {
     if (Array.isArray(value)) {
@@ -42,14 +42,14 @@ export const importInstanceWithJson = (
       _formData.append(key, value);
     }
   }
-  return http.post<ImportInstanceWithJsonResponseBody>(
+  return http.post<InstanceApi_ImportInstanceWithJsonResponseBody>(
     `api/gateway/cmdb.instance.ImportInstanceWithJson/import/object/${object_id}/instance/json`,
     _formData,
     options
   );
 };
 
-export interface ImportInstanceWithJsonResponseBody_data_item {
+export interface InstanceApi_ImportInstanceWithJsonResponseBody_data_item {
   /** 实例Id */
   instanceId?: string;
 

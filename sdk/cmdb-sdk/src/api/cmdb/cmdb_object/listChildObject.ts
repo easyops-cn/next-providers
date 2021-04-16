@@ -1,12 +1,12 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelCmdbObject } from "../../../model/cmdb";
 
-export interface ListChildObjectRequestParams {
+export interface CmdbObjectApi_ListChildObjectRequestParams {
   /** 忽略模型字段权限校验 */
   ignoreAttrPermission?: boolean;
 }
 
-export interface ListChildObjectResponseBody {
+export interface CmdbObjectApi_ListChildObjectResponseBody {
   /** 返回码 */
   code: number;
 
@@ -24,12 +24,12 @@ export interface ListChildObjectResponseBody {
  * @description 获取某个模型所有关联子模型
  * @endpoint get /object/:objectId/child
  */
-export const listChildObject = (
+export const CmdbObjectApi_listChildObject = (
   objectId: string | number,
-  params: ListChildObjectRequestParams,
+  params: CmdbObjectApi_ListChildObjectRequestParams,
   options?: HttpOptions
-): Promise<ListChildObjectResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.ListChildObject */ http.get<ListChildObjectResponseBody>(
+): Promise<CmdbObjectApi_ListChildObjectResponseBody> =>
+  /**! @contract easyops.api.cmdb.cmdb_object.ListChildObject */ http.get<CmdbObjectApi_ListChildObjectResponseBody>(
     `api/gateway/cmdb.cmdb_object.ListChildObject/object/${objectId}/child`,
     { ...options, params }
   );

@@ -6,40 +6,42 @@ import {
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 /** 小产品id */
-export type UpdateInstalledMicroAppRequestBody = Partial<ModelInstalledMicroApp> &
-  UpdateInstalledMicroAppRequestBody_2;
+export type InstalledMicroAppApi_UpdateInstalledMicroAppRequestBody = Partial<ModelInstalledMicroApp> &
+  InstalledMicroAppApi_UpdateInstalledMicroAppRequestBody_2;
 
-export type UpdateInstalledMicroAppResponseBody = ModelInstalledMicroApp &
-  UpdateInstalledMicroAppResponseBody_2;
+export type InstalledMicroAppApi_UpdateInstalledMicroAppResponseBody = ModelInstalledMicroApp &
+  InstalledMicroAppApi_UpdateInstalledMicroAppResponseBody_2;
 
 /**
  * @description 更新小产品信息
  * @endpoint PUT /api/micro_app/v1/installed_micro_app/:app_id
  */
-export const updateInstalledMicroApp = async (
+export const InstalledMicroAppApi_updateInstalledMicroApp = async (
   app_id: string | number,
-  data: UpdateInstalledMicroAppRequestBody,
+  data: InstalledMicroAppApi_UpdateInstalledMicroAppRequestBody,
   options?: HttpOptions
-): Promise<UpdateInstalledMicroAppResponseBody> =>
+): Promise<InstalledMicroAppApi_UpdateInstalledMicroAppResponseBody> =>
   /**! @contract easyops.api.micro_app.installed_micro_app.UpdateInstalledMicroApp */ (
-    await http.put<ResponseBodyWrapper<UpdateInstalledMicroAppResponseBody>>(
+    await http.put<
+      ResponseBodyWrapper<InstalledMicroAppApi_UpdateInstalledMicroAppResponseBody>
+    >(
       `api/gateway/micro_app.installed_micro_app.UpdateInstalledMicroApp/api/micro_app/v1/installed_micro_app/${app_id}`,
       data,
       options
     )
   ).data;
 
-export interface UpdateInstalledMicroAppRequestBody_2 {
+export interface InstalledMicroAppApi_UpdateInstalledMicroAppRequestBody_2 {
   /** 小产品所属桌面 */
-  container?: UpdateInstalledMicroAppRequestBody_container;
+  container?: InstalledMicroAppApi_UpdateInstalledMicroAppRequestBody_container;
 }
 
-export interface UpdateInstalledMicroAppResponseBody_2 {
+export interface InstalledMicroAppApi_UpdateInstalledMicroAppResponseBody_2 {
   /** 小产品关联的桌面信息 */
   container?: Partial<ModelMicroAppContainer>;
 }
 
-export interface UpdateInstalledMicroAppRequestBody_container {
+export interface InstalledMicroAppApi_UpdateInstalledMicroAppRequestBody_container {
   /** 桌面的id */
   id?: string;
 }

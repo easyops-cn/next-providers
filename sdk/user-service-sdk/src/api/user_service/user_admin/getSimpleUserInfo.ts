@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface GetSimpleUserInfoResponseBody {
+export interface UserAdminApi_GetSimpleUserInfoResponseBody {
   /** 用户name */
   name?: string;
 
@@ -13,12 +13,14 @@ export interface GetSimpleUserInfoResponseBody {
  * @description 获取简单用户信息 (返回结构化信息,方便使用--无需登录即可获取用户信息)
  * @endpoint GET /api/v1/users/simple_detail/:username
  */
-export const getSimpleUserInfo = async (
+export const UserAdminApi_getSimpleUserInfo = async (
   username: string | number,
   options?: HttpOptions
-): Promise<GetSimpleUserInfoResponseBody> =>
+): Promise<UserAdminApi_GetSimpleUserInfoResponseBody> =>
   /**! @contract easyops.api.user_service.user_admin.GetSimpleUserInfo */ (
-    await http.get<ResponseBodyWrapper<GetSimpleUserInfoResponseBody>>(
+    await http.get<
+      ResponseBodyWrapper<UserAdminApi_GetSimpleUserInfoResponseBody>
+    >(
       `api/gateway/user_service.user_admin.GetSimpleUserInfo/api/v1/users/simple_detail/${username}`,
       options
     )

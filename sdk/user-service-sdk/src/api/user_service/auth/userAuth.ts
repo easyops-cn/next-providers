@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface UserAuthRequestBody {
+export interface AuthApi_UserAuthRequestBody {
   /** 用户名 */
   name: string;
 
@@ -12,7 +12,7 @@ export interface UserAuthRequestBody {
   phrase?: string;
 }
 
-export interface UserAuthResponseBody {
+export interface AuthApi_UserAuthResponseBody {
   /** 用户名 */
   name: string;
 
@@ -27,12 +27,12 @@ export interface UserAuthResponseBody {
  * @description 登录认证[内部]
  * @endpoint POST /api/v1/users/auth
  */
-export const userAuth = async (
-  data: UserAuthRequestBody,
+export const AuthApi_userAuth = async (
+  data: AuthApi_UserAuthRequestBody,
   options?: HttpOptions
-): Promise<UserAuthResponseBody> =>
+): Promise<AuthApi_UserAuthResponseBody> =>
   /**! @contract easyops.api.user_service.auth.UserAuth */ (
-    await http.post<ResponseBodyWrapper<UserAuthResponseBody>>(
+    await http.post<ResponseBodyWrapper<AuthApi_UserAuthResponseBody>>(
       "api/gateway/user_service.auth.UserAuth/api/v1/users/auth",
       data,
       options

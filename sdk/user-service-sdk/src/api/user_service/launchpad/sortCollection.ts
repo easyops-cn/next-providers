@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface SortCollectionRequestBody {
+export interface LaunchpadApi_SortCollectionRequestBody {
   /** launchpad instanceId列表 */
   list?: string[];
 }
@@ -9,8 +9,8 @@ export interface SortCollectionRequestBody {
  * @description 我的收藏排序
  * @endpoint POST /api/v1/launchpad/sort-collection
  */
-export const sortCollection = (
-  data: SortCollectionRequestBody,
+export const LaunchpadApi_sortCollection = (
+  data: LaunchpadApi_SortCollectionRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.user_service.launchpad.SortCollection */ http.post<void>(

@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface SortStoryboardNodesRequestBody {
+export interface StoryboardApi_SortStoryboardNodesRequestBody {
   /** storyboard nodeId array */
   nodeIds: string[];
 }
@@ -9,8 +9,8 @@ export interface SortStoryboardNodesRequestBody {
  * @description storyboard节点排序
  * @endpoint POST /api/v1/nextBuilder/sortNodes
  */
-export const sortStoryboardNodes = (
-  data: SortStoryboardNodesRequestBody,
+export const StoryboardApi_sortStoryboardNodes = (
+  data: StoryboardApi_SortStoryboardNodesRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.next_builder.storyboard.SortStoryboardNodes */ http.post<void>(

@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelObjectRelation } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface UpdateRequestBody {
+export interface ObjectRelationApi_UpdateRequestBody {
   /** 关系名称, 不是必填, 而且在引入了 left_description 和 right_description 之后这个字段几乎处于废弃状态 */
   name: string;
 
@@ -25,19 +25,19 @@ export interface UpdateRequestBody {
   right_tags: string[];
 }
 
-export type UpdateResponseBody = Partial<ModelObjectRelation>;
+export type ObjectRelationApi_UpdateResponseBody = Partial<ModelObjectRelation>;
 
 /**
  * @description 更新模型关系定义
  * @endpoint PUT /object_relation/:relation_id
  */
-export const update = async (
+export const ObjectRelationApi_update = async (
   relation_id: string | number,
-  data: UpdateRequestBody,
+  data: ObjectRelationApi_UpdateRequestBody,
   options?: HttpOptions
-): Promise<UpdateResponseBody> =>
+): Promise<ObjectRelationApi_UpdateResponseBody> =>
   /**! @contract easyops.api.cmdb.object_relation.Update */ (
-    await http.put<ResponseBodyWrapper<UpdateResponseBody>>(
+    await http.put<ResponseBodyWrapper<ObjectRelationApi_UpdateResponseBody>>(
       `api/gateway/cmdb.object_relation.Update/object_relation/${relation_id}`,
       data,
       options

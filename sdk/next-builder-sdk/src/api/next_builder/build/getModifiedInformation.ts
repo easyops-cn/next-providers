@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface GetModifiedInformationRequestParams {
+export interface BuildApi_GetModifiedInformationRequestParams {
   /** 开始版本 */
   startVersion?: string;
 
@@ -9,28 +9,30 @@ export interface GetModifiedInformationRequestParams {
   endVersion?: string;
 }
 
-export interface GetModifiedInformationResponseBody {
+export interface BuildApi_GetModifiedInformationResponseBody {
   /** 修改日志 */
-  modifiedLogs?: GetModifiedInformationResponseBody_modifiedLogs_item[];
+  modifiedLogs?: BuildApi_GetModifiedInformationResponseBody_modifiedLogs_item[];
 }
 
 /**
  * @description 获取两个版本之间的修改信息
  * @endpoint GET /api/v1/next-builder/modified-information/:projectId
  */
-export const getModifiedInformation = async (
+export const BuildApi_getModifiedInformation = async (
   projectId: string | number,
-  params: GetModifiedInformationRequestParams,
+  params: BuildApi_GetModifiedInformationRequestParams,
   options?: HttpOptions
-): Promise<GetModifiedInformationResponseBody> =>
+): Promise<BuildApi_GetModifiedInformationResponseBody> =>
   /**! @contract easyops.api.next_builder.build.GetModifiedInformation */ (
-    await http.get<ResponseBodyWrapper<GetModifiedInformationResponseBody>>(
+    await http.get<
+      ResponseBodyWrapper<BuildApi_GetModifiedInformationResponseBody>
+    >(
       `api/gateway/next_builder.build.GetModifiedInformation/api/v1/next-builder/modified-information/${projectId}`,
       { ...options, params }
     )
   ).data;
 
-export interface GetModifiedInformationResponseBody_modifiedLogs_item {
+export interface BuildApi_GetModifiedInformationResponseBody_modifiedLogs_item {
   /** modifiedUser */
   modifiedUser?: string;
 

@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface ExportDocumentsToFileRequestBody {
+export interface DocumentApi_ExportDocumentsToFileRequestBody {
   /** 导出文件类型 */
   exportFileType: "pdf" | "markdown";
 }
@@ -9,9 +9,9 @@ export interface ExportDocumentsToFileRequestBody {
  * @description 导出已安装小产品文档（导出为文件）
  * @endpoint POST /api/micro_app/v1/document/export/:appId
  */
-export const exportDocumentsToFile = (
+export const DocumentApi_exportDocumentsToFile = (
   appId: string | number,
-  data: ExportDocumentsToFileRequestBody,
+  data: DocumentApi_ExportDocumentsToFileRequestBody,
   options?: HttpOptions
 ): Promise<Blob> =>
   /**! @contract easyops.api.micro_app.document.ExportDocumentsToFile */ http.post<Blob>(

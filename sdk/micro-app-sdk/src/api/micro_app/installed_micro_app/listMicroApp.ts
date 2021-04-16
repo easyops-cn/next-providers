@@ -5,7 +5,7 @@ import {
 } from "../../../model/micro_app";
 import { ResponseListWrapper, ResponseBodyWrapper } from "../../../wrapper";
 
-export interface ListMicroAppRequestParams {
+export interface InstalledMicroAppApi_ListMicroAppRequestParams {
   /** 页码 */
   page?: number;
 
@@ -13,27 +13,29 @@ export interface ListMicroAppRequestParams {
   page_size?: number;
 }
 
-export type ListMicroAppResponseItem = ModelInstalledMicroApp &
-  ListMicroAppResponseItem_2;
+export type InstalledMicroAppApi_ListMicroAppResponseItem = ModelInstalledMicroApp &
+  InstalledMicroAppApi_ListMicroAppResponseItem_2;
 
-export type ListMicroAppResponseBody = ResponseListWrapper<ListMicroAppResponseItem>;
+export type InstalledMicroAppApi_ListMicroAppResponseBody = ResponseListWrapper<InstalledMicroAppApi_ListMicroAppResponseItem>;
 
 /**
  * @description 获取已安装小产品列表
  * @endpoint LIST /api/micro_app/v1/installed_micro_app
  */
-export const listMicroApp = async (
-  params: ListMicroAppRequestParams,
+export const InstalledMicroAppApi_listMicroApp = async (
+  params: InstalledMicroAppApi_ListMicroAppRequestParams,
   options?: HttpOptions
-): Promise<ListMicroAppResponseBody> =>
+): Promise<InstalledMicroAppApi_ListMicroAppResponseBody> =>
   /**! @contract easyops.api.micro_app.installed_micro_app.ListMicroApp */ (
-    await http.get<ResponseBodyWrapper<ListMicroAppResponseBody>>(
+    await http.get<
+      ResponseBodyWrapper<InstalledMicroAppApi_ListMicroAppResponseBody>
+    >(
       "api/gateway/micro_app.installed_micro_app.ListMicroApp/api/micro_app/v1/installed_micro_app",
       { ...options, params }
     )
   ).data;
 
-export interface ListMicroAppResponseItem_2 {
+export interface InstalledMicroAppApi_ListMicroAppResponseItem_2 {
   /** 小产品关联的桌面信息 */
   container?: Partial<ModelMicroAppContainer>;
 }

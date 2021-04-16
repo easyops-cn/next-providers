@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface AggregateInstanceRequestBody {
+export interface InstanceApi_AggregateInstanceRequestBody {
   /** 查询条件,与[实例搜索接口]的query字段一致 */
   query?: Record<string, any>;
 
@@ -18,29 +18,31 @@ export interface AggregateInstanceRequestBody {
   aggregate_key: string;
 }
 
-export interface AggregateInstanceResponseBody {
+export interface InstanceApi_AggregateInstanceResponseBody {
   /** 聚合结果 */
-  list: AggregateInstanceResponseBody_list_item[];
+  list: InstanceApi_AggregateInstanceResponseBody_list_item[];
 }
 
 /**
  * @description 实例字段聚合接口 (根据实例某个字段聚合)
  * @endpoint POST /object/:objectId/instance/aggregate
  */
-export const aggregateInstance = async (
+export const InstanceApi_aggregateInstance = async (
   objectId: string | number,
-  data: AggregateInstanceRequestBody,
+  data: InstanceApi_AggregateInstanceRequestBody,
   options?: HttpOptions
-): Promise<AggregateInstanceResponseBody> =>
+): Promise<InstanceApi_AggregateInstanceResponseBody> =>
   /**! @contract easyops.api.cmdb.instance.AggregateInstance */ (
-    await http.post<ResponseBodyWrapper<AggregateInstanceResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<InstanceApi_AggregateInstanceResponseBody>
+    >(
       `api/gateway/cmdb.instance.AggregateInstance/object/${objectId}/instance/aggregate`,
       data,
       options
     )
   ).data;
 
-export interface AggregateInstanceResponseBody_list_item {
+export interface InstanceApi_AggregateInstanceResponseBody_list_item {
   /** 聚合值 */
   aggregate_value?: string;
 

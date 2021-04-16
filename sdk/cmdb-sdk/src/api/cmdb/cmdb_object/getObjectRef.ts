@@ -1,12 +1,12 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelCmdbObject } from "../../../model/cmdb";
 
-export interface GetObjectRefRequestParams {
+export interface CmdbObjectApi_GetObjectRefRequestParams {
   /** 关联模型id，多个用逗号分隔 */
   ref_object: string;
 }
 
-export interface GetObjectRefResponseBody {
+export interface CmdbObjectApi_GetObjectRefResponseBody {
   /** 返回码 */
   code: number;
 
@@ -24,11 +24,11 @@ export interface GetObjectRefResponseBody {
  * @description 查出与指定模型有直接关联的模型
  * @endpoint GET /object_ref
  */
-export const getObjectRef = (
-  params: GetObjectRefRequestParams,
+export const CmdbObjectApi_getObjectRef = (
+  params: CmdbObjectApi_GetObjectRefRequestParams,
   options?: HttpOptions
-): Promise<GetObjectRefResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.GetObjectRef */ http.get<GetObjectRefResponseBody>(
+): Promise<CmdbObjectApi_GetObjectRefResponseBody> =>
+  /**! @contract easyops.api.cmdb.cmdb_object.GetObjectRef */ http.get<CmdbObjectApi_GetObjectRefResponseBody>(
     "api/gateway/cmdb.cmdb_object.GetObjectRef/object_ref",
     { ...options, params }
   );

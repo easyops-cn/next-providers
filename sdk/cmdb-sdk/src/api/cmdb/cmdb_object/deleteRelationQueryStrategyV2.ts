@@ -4,7 +4,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
  * @description 删除查询策略v2
  * @endpoint DELETE /v2/object/:object_id/relation_query_strategy/:id
  */
-export const deleteRelationQueryStrategyV2 = (
+export const CmdbObjectApi_deleteRelationQueryStrategyV2 = (
   object_id: string | number,
   id: string | number,
   options?: HttpOptions

@@ -4,7 +4,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
  * @description 启用Org[内部]
  * @endpoint PUT /api/v1/org/:id/enable
  */
-export const enableOrg = (
+export const OrganizationApi_enableOrg = (
   id: string | number,
   options?: HttpOptions
 ): Promise<void> =>

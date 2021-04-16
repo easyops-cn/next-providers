@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelObjectRelationGroup } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface CreateRelationGroupRequestBody {
+export interface ObjectRelationApi_CreateRelationGroupRequestBody {
   /** 分组ID */
   id: string;
 
@@ -10,29 +10,31 @@ export interface CreateRelationGroupRequestBody {
   name: string;
 
   /** 分组中的关系 */
-  relations?: CreateRelationGroupRequestBody_relations_item[];
+  relations?: ObjectRelationApi_CreateRelationGroupRequestBody_relations_item[];
 }
 
-export type CreateRelationGroupResponseBody = Partial<ModelObjectRelationGroup>;
+export type ObjectRelationApi_CreateRelationGroupResponseBody = Partial<ModelObjectRelationGroup>;
 
 /**
  * @description 创建模型关系分组
  * @endpoint POST /object/:object_id/relation_group
  */
-export const createRelationGroup = async (
+export const ObjectRelationApi_createRelationGroup = async (
   object_id: string | number,
-  data: CreateRelationGroupRequestBody,
+  data: ObjectRelationApi_CreateRelationGroupRequestBody,
   options?: HttpOptions
-): Promise<CreateRelationGroupResponseBody> =>
+): Promise<ObjectRelationApi_CreateRelationGroupResponseBody> =>
   /**! @contract easyops.api.cmdb.object_relation.CreateRelationGroup */ (
-    await http.post<ResponseBodyWrapper<CreateRelationGroupResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<ObjectRelationApi_CreateRelationGroupResponseBody>
+    >(
       `api/gateway/cmdb.object_relation.CreateRelationGroup/object/${object_id}/relation_group`,
       data,
       options
     )
   ).data;
 
-export interface CreateRelationGroupRequestBody_relations_item {
+export interface ObjectRelationApi_CreateRelationGroupRequestBody_relations_item {
   /** 表示关系的left_id或者right_id的值, 用于表示分组的关系是关系的哪一端 */
   relation_side_id?: string;
 }

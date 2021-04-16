@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface InitDatabaseRequestBody {
+export interface InitializationApi_InitDatabaseRequestBody {
   /** org */
   org: number;
 }
@@ -9,8 +9,8 @@ export interface InitDatabaseRequestBody {
  * @description 初始化DB[内部]
  * @endpoint POST /initialization/database
  */
-export const initDatabase = (
-  data: InitDatabaseRequestBody,
+export const InitializationApi_initDatabase = (
+  data: InitializationApi_InitDatabaseRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.cmdb.initialization.InitDatabase */ http.post<void>(

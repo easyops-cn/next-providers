@@ -5,25 +5,27 @@ import {
 } from "../../../model/micro_app";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export type GetInstalledMicroAppResponseBody = ModelInstalledMicroApp &
-  GetInstalledMicroAppResponseBody_2;
+export type InstalledMicroAppApi_GetInstalledMicroAppResponseBody = ModelInstalledMicroApp &
+  InstalledMicroAppApi_GetInstalledMicroAppResponseBody_2;
 
 /**
  * @description 获取已安装小产品信息
  * @endpoint GET /api/micro_app/v1/installed_micro_app/:app_id
  */
-export const getInstalledMicroApp = async (
+export const InstalledMicroAppApi_getInstalledMicroApp = async (
   app_id: string | number,
   options?: HttpOptions
-): Promise<GetInstalledMicroAppResponseBody> =>
+): Promise<InstalledMicroAppApi_GetInstalledMicroAppResponseBody> =>
   /**! @contract easyops.api.micro_app.installed_micro_app.GetInstalledMicroApp */ (
-    await http.get<ResponseBodyWrapper<GetInstalledMicroAppResponseBody>>(
+    await http.get<
+      ResponseBodyWrapper<InstalledMicroAppApi_GetInstalledMicroAppResponseBody>
+    >(
       `api/gateway/micro_app.installed_micro_app.GetInstalledMicroApp/api/micro_app/v1/installed_micro_app/${app_id}`,
       options
     )
   ).data;
 
-export interface GetInstalledMicroAppResponseBody_2 {
+export interface InstalledMicroAppApi_GetInstalledMicroAppResponseBody_2 {
   /** 小产品关联的桌面信息 */
   container?: Partial<ModelMicroAppContainer>;
 }

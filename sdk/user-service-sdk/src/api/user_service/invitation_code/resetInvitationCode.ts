@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface ResetInvitationCodeResponseBody {
+export interface InvitationCodeApi_ResetInvitationCodeResponseBody {
   /** 邀请码 */
   code: string;
 
@@ -19,11 +19,13 @@ export interface ResetInvitationCodeResponseBody {
  * @description 重置邀请码[内部]
  * @endpoint PUT /api/v1/invitation/code/_reset
  */
-export const resetInvitationCode = async (
+export const InvitationCodeApi_resetInvitationCode = async (
   options?: HttpOptions
-): Promise<ResetInvitationCodeResponseBody> =>
+): Promise<InvitationCodeApi_ResetInvitationCodeResponseBody> =>
   /**! @contract easyops.api.user_service.invitation_code.ResetInvitationCode */ (
-    await http.put<ResponseBodyWrapper<ResetInvitationCodeResponseBody>>(
+    await http.put<
+      ResponseBodyWrapper<InvitationCodeApi_ResetInvitationCodeResponseBody>
+    >(
       "api/gateway/user_service.invitation_code.ResetInvitationCode/api/v1/invitation/code/_reset",
       undefined,
       options

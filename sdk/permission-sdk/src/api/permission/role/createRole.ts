@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface CreateRoleRequestBody {
+export interface RoleApi_CreateRoleRequestBody {
   /** 角色名称 */
   role?: string;
 
@@ -15,7 +15,7 @@ export interface CreateRoleRequestBody {
   forbidden_menu: string[];
 }
 
-export interface CreateRoleResponseBody {
+export interface RoleApi_CreateRoleResponseBody {
   /** 角色id */
   id?: string;
 }
@@ -24,12 +24,12 @@ export interface CreateRoleResponseBody {
  * @description 新增角色权限配置
  * @endpoint POST /api/v1/permission_role/config
  */
-export const createRole = async (
-  data: CreateRoleRequestBody,
+export const RoleApi_createRole = async (
+  data: RoleApi_CreateRoleRequestBody,
   options?: HttpOptions
-): Promise<CreateRoleResponseBody> =>
+): Promise<RoleApi_CreateRoleResponseBody> =>
   /**! @contract easyops.api.permission.role.CreateRole */ (
-    await http.post<ResponseBodyWrapper<CreateRoleResponseBody>>(
+    await http.post<ResponseBodyWrapper<RoleApi_CreateRoleResponseBody>>(
       "api/gateway/permission.role.CreateRole/api/v1/permission_role/config",
       data,
       options

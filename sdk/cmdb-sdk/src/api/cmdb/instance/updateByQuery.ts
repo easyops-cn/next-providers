@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelUpdateByQueryResult } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface UpdateByQueryRequestBody {
+export interface InstanceApi_UpdateByQueryRequestBody {
   /** e.g.: { name: { $like: '%q%' } }, { $or: [{ name: { $like: '%q%' }}] } */
   query?: Record<string, any>;
 
@@ -10,7 +10,7 @@ export interface UpdateByQueryRequestBody {
   data?: Record<string, any>;
 }
 
-export interface UpdateByQueryResponseBody {
+export interface InstanceApi_UpdateByQueryResponseBody {
   /** 实例更新成功结果 */
   successResult?: Partial<ModelUpdateByQueryResult>[];
 
@@ -31,13 +31,13 @@ export interface UpdateByQueryResponseBody {
  * @description 根据查询条件更新实例
  * @endpoint POST /object/:object_id/instance/update_by_query
  */
-export const updateByQuery = async (
+export const InstanceApi_updateByQuery = async (
   object_id: string | number,
-  data: UpdateByQueryRequestBody,
+  data: InstanceApi_UpdateByQueryRequestBody,
   options?: HttpOptions
-): Promise<UpdateByQueryResponseBody> =>
+): Promise<InstanceApi_UpdateByQueryResponseBody> =>
   /**! @contract easyops.api.cmdb.instance.UpdateByQuery */ (
-    await http.post<ResponseBodyWrapper<UpdateByQueryResponseBody>>(
+    await http.post<ResponseBodyWrapper<InstanceApi_UpdateByQueryResponseBody>>(
       `api/gateway/cmdb.instance.UpdateByQuery/object/${object_id}/instance/update_by_query`,
       data,
       options

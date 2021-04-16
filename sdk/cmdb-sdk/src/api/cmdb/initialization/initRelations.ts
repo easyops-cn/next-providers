@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface InitRelationsRequestBody {
+export interface InitializationApi_InitRelationsRequestBody {
   /** org */
   org: number;
 }
@@ -9,8 +9,8 @@ export interface InitRelationsRequestBody {
  * @description 初始化核心模型关系[内部]
  * @endpoint POST /initialization/relations
  */
-export const initRelations = (
-  data: InitRelationsRequestBody,
+export const InitializationApi_initRelations = (
+  data: InitializationApi_InitRelationsRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.cmdb.initialization.InitRelations */ http.post<void>(

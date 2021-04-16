@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelInstanceTreeRootNode } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface InstanceTreeExpandRequestBody {
+export interface InstanceTreeApi_InstanceTreeExpandRequestBody {
   /** 树定义 */
   tree: Partial<ModelInstanceTreeRootNode>;
 
@@ -16,18 +16,23 @@ export interface InstanceTreeExpandRequestBody {
   instanceId?: string;
 }
 
-export type InstanceTreeExpandResponseBody = Record<string, any>;
+export type InstanceTreeApi_InstanceTreeExpandResponseBody = Record<
+  string,
+  any
+>;
 
 /**
  * @description 展开实例树某一级
  * @endpoint POST /instance_tree/expand
  */
-export const instanceTreeExpand = async (
-  data: InstanceTreeExpandRequestBody,
+export const InstanceTreeApi_instanceTreeExpand = async (
+  data: InstanceTreeApi_InstanceTreeExpandRequestBody,
   options?: HttpOptions
-): Promise<InstanceTreeExpandResponseBody> =>
+): Promise<InstanceTreeApi_InstanceTreeExpandResponseBody> =>
   /**! @contract easyops.api.cmdb.instance_tree.InstanceTreeExpand */ (
-    await http.post<ResponseBodyWrapper<InstanceTreeExpandResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<InstanceTreeApi_InstanceTreeExpandResponseBody>
+    >(
       "api/gateway/cmdb.instance_tree.InstanceTreeExpand/instance_tree/expand",
       data,
       options

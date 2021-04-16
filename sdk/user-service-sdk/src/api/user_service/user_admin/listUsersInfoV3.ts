@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelUserInfo } from "../../../model/user_service";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface ListUsersInfoV3RequestParams {
+export interface UserAdminApi_ListUsersInfoV3RequestParams {
   /** 状态 */
   state?: string;
 
@@ -16,7 +16,7 @@ export interface ListUsersInfoV3RequestParams {
   pageSize?: number;
 }
 
-export interface ListUsersInfoV3ResponseBody {
+export interface UserAdminApi_ListUsersInfoV3ResponseBody {
   /** 页码 */
   page?: number;
 
@@ -34,13 +34,15 @@ export interface ListUsersInfoV3ResponseBody {
  * @description 获取用户信息列表v3 (返回结构化信息,方便使用)
  * @endpoint GET /api/v3/users
  */
-export const listUsersInfoV3 = async (
-  params: ListUsersInfoV3RequestParams,
+export const UserAdminApi_listUsersInfoV3 = async (
+  params: UserAdminApi_ListUsersInfoV3RequestParams,
   options?: HttpOptions
-): Promise<ListUsersInfoV3ResponseBody> =>
+): Promise<UserAdminApi_ListUsersInfoV3ResponseBody> =>
   /**! @contract easyops.api.user_service.user_admin.ListUsersInfoV3 */ (
-    await http.get<ResponseBodyWrapper<ListUsersInfoV3ResponseBody>>(
-      "api/gateway/user_service.user_admin.ListUsersInfoV3/api/v3/users",
-      { ...options, params }
-    )
+    await http.get<
+      ResponseBodyWrapper<UserAdminApi_ListUsersInfoV3ResponseBody>
+    >("api/gateway/user_service.user_admin.ListUsersInfoV3/api/v3/users", {
+      ...options,
+      params,
+    })
   ).data;

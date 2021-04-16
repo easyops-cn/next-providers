@@ -1,17 +1,17 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface InstanceRelationSnapshotRequestParams {
+export interface InstanceRelationApi_InstanceRelationSnapshotRequestParams {
   /** 操作时间 */
   _ts: number;
 }
 
-export interface InstanceRelationSnapshotResponseBody {
+export interface InstanceRelationApi_InstanceRelationSnapshotResponseBody {
   /** 快照ID */
   _id?: string;
 
   /** 左端实例数据 */
-  _left_instance?: InstanceRelationSnapshotResponseBody__left_instance;
+  _left_instance?: InstanceRelationApi_InstanceRelationSnapshotResponseBody__left_instance;
 
   /** 操作类型 */
   _operation?: string;
@@ -23,7 +23,7 @@ export interface InstanceRelationSnapshotResponseBody {
   _relation_id?: string;
 
   /** 右端实例数据 */
-  _right_instance?: InstanceRelationSnapshotResponseBody__right_instance;
+  _right_instance?: InstanceRelationApi_InstanceRelationSnapshotResponseBody__right_instance;
 
   /** 操作时间 */
   _ts?: number;
@@ -45,20 +45,22 @@ export interface InstanceRelationSnapshotResponseBody {
  * @description 查询历史实例关系快照
  * @endpoint GET /history/object_relation/:relation_id/relation_instance/:relation_instance_id
  */
-export const instanceRelationSnapshot = async (
+export const InstanceRelationApi_instanceRelationSnapshot = async (
   relation_id: string | number,
   relation_instance_id: string | number,
-  params: InstanceRelationSnapshotRequestParams,
+  params: InstanceRelationApi_InstanceRelationSnapshotRequestParams,
   options?: HttpOptions
-): Promise<InstanceRelationSnapshotResponseBody> =>
+): Promise<InstanceRelationApi_InstanceRelationSnapshotResponseBody> =>
   /**! @contract easyops.api.cmdb.instance_relation.InstanceRelationSnapshot */ (
-    await http.get<ResponseBodyWrapper<InstanceRelationSnapshotResponseBody>>(
+    await http.get<
+      ResponseBodyWrapper<InstanceRelationApi_InstanceRelationSnapshotResponseBody>
+    >(
       `api/gateway/cmdb.instance_relation.InstanceRelationSnapshot/history/object_relation/${relation_id}/relation_instance/${relation_instance_id}`,
       { ...options, params }
     )
   ).data;
 
-export interface InstanceRelationSnapshotResponseBody__left_instance {
+export interface InstanceRelationApi_InstanceRelationSnapshotResponseBody__left_instance {
   /** 实例ID */
   instanceId?: string;
 
@@ -75,7 +77,7 @@ export interface InstanceRelationSnapshotResponseBody__left_instance {
   _version?: number;
 }
 
-export interface InstanceRelationSnapshotResponseBody__right_instance {
+export interface InstanceRelationApi_InstanceRelationSnapshotResponseBody__right_instance {
   /** 实例ID */
   instanceId?: string;
 

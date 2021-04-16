@@ -2,23 +2,25 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelMicroAppProject } from "../../../model/next_builder";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface GetMicroAppProjectByAppIdRequestParams {
+export interface ProjectApi_GetMicroAppProjectByAppIdRequestParams {
   /** appId */
   appId?: string;
 }
 
-export type GetMicroAppProjectByAppIdResponseBody = Partial<ModelMicroAppProject>;
+export type ProjectApi_GetMicroAppProjectByAppIdResponseBody = Partial<ModelMicroAppProject>;
 
 /**
  * @description 获取MicroApp项目 by appId
  * @endpoint GET /api/v1/next-builder/project
  */
-export const getMicroAppProjectByAppId = async (
-  params: GetMicroAppProjectByAppIdRequestParams,
+export const ProjectApi_getMicroAppProjectByAppId = async (
+  params: ProjectApi_GetMicroAppProjectByAppIdRequestParams,
   options?: HttpOptions
-): Promise<GetMicroAppProjectByAppIdResponseBody> =>
+): Promise<ProjectApi_GetMicroAppProjectByAppIdResponseBody> =>
   /**! @contract easyops.api.next_builder.project.GetMicroAppProjectByAppId */ (
-    await http.get<ResponseBodyWrapper<GetMicroAppProjectByAppIdResponseBody>>(
+    await http.get<
+      ResponseBodyWrapper<ProjectApi_GetMicroAppProjectByAppIdResponseBody>
+    >(
       "api/gateway/next_builder.project.GetMicroAppProjectByAppId/api/v1/next-builder/project",
       { ...options, params }
     )

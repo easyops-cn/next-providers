@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelImage } from "../../../model/micro_app";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface UploadImagesRequestBody {
+export interface InstalledMicroAppApi_UploadImagesRequestBody {
   /** 小产品id */
   appId?: string;
 
@@ -10,7 +10,7 @@ export interface UploadImagesRequestBody {
   images?: Partial<ModelImage>[];
 }
 
-export interface UploadImagesResponseBody {
+export interface InstalledMicroAppApi_UploadImagesResponseBody {
   /** 图片 */
   images?: Partial<ModelImage>[];
 }
@@ -19,12 +19,14 @@ export interface UploadImagesResponseBody {
  * @description 上传app图片库
  * @endpoint POST /api/v1/micro-app/upload-app-images
  */
-export const uploadImages = async (
-  data: UploadImagesRequestBody,
+export const InstalledMicroAppApi_uploadImages = async (
+  data: InstalledMicroAppApi_UploadImagesRequestBody,
   options?: HttpOptions
-): Promise<UploadImagesResponseBody> =>
+): Promise<InstalledMicroAppApi_UploadImagesResponseBody> =>
   /**! @contract easyops.api.micro_app.installed_micro_app.UploadImages */ (
-    await http.post<ResponseBodyWrapper<UploadImagesResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<InstalledMicroAppApi_UploadImagesResponseBody>
+    >(
       "api/gateway/micro_app.installed_micro_app.UploadImages/api/v1/micro-app/upload-app-images",
       data,
       options

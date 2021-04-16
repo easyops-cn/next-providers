@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface AuthRequestBody {
+export interface LdapApi_AuthRequestBody {
   /** 用户名 */
   login_id: string;
 
@@ -12,7 +12,7 @@ export interface AuthRequestBody {
   ldapServer?: string;
 }
 
-export interface AuthResponseBody {
+export interface LdapApi_AuthResponseBody {
   /** 用户名 */
   username: string;
 
@@ -30,12 +30,12 @@ export interface AuthResponseBody {
  * @description LDAP认证
  * @endpoint POST /api/v1/users/ldap_auth
  */
-export const auth = async (
-  data: AuthRequestBody,
+export const LdapApi_auth = async (
+  data: LdapApi_AuthRequestBody,
   options?: HttpOptions
-): Promise<AuthResponseBody> =>
+): Promise<LdapApi_AuthResponseBody> =>
   /**! @contract easyops.api.user_service.ldap.Auth */ (
-    await http.post<ResponseBodyWrapper<AuthResponseBody>>(
+    await http.post<ResponseBodyWrapper<LdapApi_AuthResponseBody>>(
       "api/gateway/user_service.ldap.Auth/api/v1/users/ldap_auth",
       data,
       options
