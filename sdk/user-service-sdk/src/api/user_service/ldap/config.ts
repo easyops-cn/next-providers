@@ -1,19 +1,19 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface ConfigRequestBody {
+export interface LdapApi_ConfigRequestBody {
   /** key */
   key: string;
 
   /** 配置 */
-  conf: ConfigRequestBody_conf;
+  conf: LdapApi_ConfigRequestBody_conf;
 }
 
 /**
  * @description LDAP配置
  * @endpoint POST /api/v1/users/ldap_conf
  */
-export const config = (
-  data: ConfigRequestBody,
+export const LdapApi_config = (
+  data: LdapApi_ConfigRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.user_service.ldap.Config */ http.post<void>(
@@ -22,7 +22,7 @@ export const config = (
     options
   );
 
-export interface ConfigRequestBody_conf {
+export interface LdapApi_ConfigRequestBody_conf {
   /** name */
   name?: string;
 

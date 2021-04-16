@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelLogSearchData } from "../../../model/log_search";
 
-export interface LogSearchRequestBody {
+export interface LogSearchApi_LogSearchRequestBody {
   /** 日志路径 */
   log_file_name: string;
 
@@ -24,7 +24,7 @@ export interface LogSearchRequestBody {
   agents: string[];
 }
 
-export interface LogSearchResponseBody {
+export interface LogSearchApi_LogSearchResponseBody {
   /** code */
   code?: number;
 
@@ -39,11 +39,11 @@ export interface LogSearchResponseBody {
  * @description 日志搜索
  * @endpoint POST /api/v1/log_search/search
  */
-export const logSearch = (
-  data: LogSearchRequestBody,
+export const LogSearchApi_logSearch = (
+  data: LogSearchApi_LogSearchRequestBody,
   options?: HttpOptions
-): Promise<LogSearchResponseBody> =>
-  /**! @contract easyops.api.monitor.log_search.LogSearch */ http.post<LogSearchResponseBody>(
+): Promise<LogSearchApi_LogSearchResponseBody> =>
+  /**! @contract easyops.api.monitor.log_search.LogSearch */ http.post<LogSearchApi_LogSearchResponseBody>(
     "api/gateway/monitor.log_search.LogSearch/api/v1/log_search/search",
     data,
     options

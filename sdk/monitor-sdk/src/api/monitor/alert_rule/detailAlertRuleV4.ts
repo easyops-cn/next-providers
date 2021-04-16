@@ -1,12 +1,12 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelAlertRule } from "../../../model/monitor";
 
-export interface DetailAlertRuleV4RequestParams {
+export interface AlertRuleApi_DetailAlertRuleV4RequestParams {
   /** 告警规则版本 */
   version?: number;
 }
 
-export interface DetailAlertRuleV4ResponseBody {
+export interface AlertRuleApi_DetailAlertRuleV4ResponseBody {
   /** code */
   code?: number;
 
@@ -21,12 +21,12 @@ export interface DetailAlertRuleV4ResponseBody {
  * @description 获取告警规则详情(支持按历史版本搜索)
  * @endpoint GET /api/v4/alert_rule/config/:id
  */
-export const detailAlertRuleV4 = (
+export const AlertRuleApi_detailAlertRuleV4 = (
   id: string | number,
-  params: DetailAlertRuleV4RequestParams,
+  params: AlertRuleApi_DetailAlertRuleV4RequestParams,
   options?: HttpOptions
-): Promise<DetailAlertRuleV4ResponseBody> =>
-  /**! @contract easyops.api.monitor.alert_rule.DetailAlertRuleV4 */ http.get<DetailAlertRuleV4ResponseBody>(
+): Promise<AlertRuleApi_DetailAlertRuleV4ResponseBody> =>
+  /**! @contract easyops.api.monitor.alert_rule.DetailAlertRuleV4 */ http.get<AlertRuleApi_DetailAlertRuleV4ResponseBody>(
     `api/gateway/monitor.alert_rule.DetailAlertRuleV4/api/v4/alert_rule/config/${id}`,
     { ...options, params }
   );

@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelRelationQueryStrategyV2 } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface BatchListRelationQueryStrategyV2RequestRequestParams {
+export interface CmdbObjectApi_BatchListRelationQueryStrategyV2RequestRequestParams {
   /** 多个模型ID，以逗号分隔 */
   object_ids?: string;
 
@@ -13,29 +13,29 @@ export interface BatchListRelationQueryStrategyV2RequestRequestParams {
   name?: string;
 }
 
-export interface BatchListRelationQueryStrategyV2RequestResponseBody {
+export interface CmdbObjectApi_BatchListRelationQueryStrategyV2RequestResponseBody {
   /** 各模型策略数据 */
-  strategy_data?: BatchListRelationQueryStrategyV2RequestResponseBody_strategy_data_item[];
+  strategy_data?: CmdbObjectApi_BatchListRelationQueryStrategyV2RequestResponseBody_strategy_data_item[];
 }
 
 /**
  * @description 批量获取模型查询策略v2
  * @endpoint GET /v2/batch/object/relation_query_strategy
  */
-export const batchListRelationQueryStrategyV2Request = async (
-  params: BatchListRelationQueryStrategyV2RequestRequestParams,
+export const CmdbObjectApi_batchListRelationQueryStrategyV2Request = async (
+  params: CmdbObjectApi_BatchListRelationQueryStrategyV2RequestRequestParams,
   options?: HttpOptions
-): Promise<BatchListRelationQueryStrategyV2RequestResponseBody> =>
+): Promise<CmdbObjectApi_BatchListRelationQueryStrategyV2RequestResponseBody> =>
   /**! @contract easyops.api.cmdb.cmdb_object.BatchListRelationQueryStrategyV2Request */ (
     await http.get<
-      ResponseBodyWrapper<BatchListRelationQueryStrategyV2RequestResponseBody>
+      ResponseBodyWrapper<CmdbObjectApi_BatchListRelationQueryStrategyV2RequestResponseBody>
     >(
       "api/gateway/cmdb.cmdb_object.BatchListRelationQueryStrategyV2Request/v2/batch/object/relation_query_strategy",
       { ...options, params }
     )
   ).data;
 
-export interface BatchListRelationQueryStrategyV2RequestResponseBody_strategy_data_item {
+export interface CmdbObjectApi_BatchListRelationQueryStrategyV2RequestResponseBody_strategy_data_item {
   /** 模型ID */
   object_id?: string;
 

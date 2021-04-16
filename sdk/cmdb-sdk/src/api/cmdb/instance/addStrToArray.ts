@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface AddStrToArrayRequestBody {
+export interface InstanceApi_AddStrToArrayRequestBody {
   /** 属性key(仅支持arr类型属性) */
   attr_id: string;
 
@@ -12,26 +12,26 @@ export interface AddStrToArrayRequestBody {
   values: string[];
 }
 
-export type AddStrToArrayResponseBody = AddStrToArrayResponseBody_item[];
+export type InstanceApi_AddStrToArrayResponseBody = InstanceApi_AddStrToArrayResponseBody_item[];
 
 /**
  * @description append数据到实例arr属性内 (append数据到实例arr属性内)
  * @endpoint POST /object/:objectId/instance/add_str_to_array
  */
-export const addStrToArray = async (
+export const InstanceApi_addStrToArray = async (
   objectId: string | number,
-  data: AddStrToArrayRequestBody,
+  data: InstanceApi_AddStrToArrayRequestBody,
   options?: HttpOptions
-): Promise<AddStrToArrayResponseBody> =>
+): Promise<InstanceApi_AddStrToArrayResponseBody> =>
   /**! @contract easyops.api.cmdb.instance.AddStrToArray */ (
-    await http.post<ResponseBodyWrapper<AddStrToArrayResponseBody>>(
+    await http.post<ResponseBodyWrapper<InstanceApi_AddStrToArrayResponseBody>>(
       `api/gateway/cmdb.instance.AddStrToArray/object/${objectId}/instance/add_str_to_array`,
       data,
       options
     )
   ).data;
 
-export interface AddStrToArrayResponseBody_item {
+export interface InstanceApi_AddStrToArrayResponseBody_item {
   /** 实例Id */
   instanceId: string;
 

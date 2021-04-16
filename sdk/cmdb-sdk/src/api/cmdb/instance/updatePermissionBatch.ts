@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface UpdatePermissionBatchRequestBody {
+export interface InstanceApi_UpdatePermissionBatchRequestBody {
   /** 实例ID列表 */
   ids: string[];
 
@@ -23,7 +23,7 @@ export interface UpdatePermissionBatchRequestBody {
   list: string[];
 }
 
-export interface UpdatePermissionBatchResponseBody {
+export interface InstanceApi_UpdatePermissionBatchResponseBody {
   /** 没有权限更新的实例列表 */
   noAuthorizedList?: Record<string, any>[];
 }
@@ -32,13 +32,15 @@ export interface UpdatePermissionBatchResponseBody {
  * @description 批量修改实例权限
  * @endpoint PUT /permission/:objectId/instances/_batch
  */
-export const updatePermissionBatch = async (
+export const InstanceApi_updatePermissionBatch = async (
   objectId: string | number,
-  data: UpdatePermissionBatchRequestBody,
+  data: InstanceApi_UpdatePermissionBatchRequestBody,
   options?: HttpOptions
-): Promise<UpdatePermissionBatchResponseBody> =>
+): Promise<InstanceApi_UpdatePermissionBatchResponseBody> =>
   /**! @contract easyops.api.cmdb.instance.UpdatePermissionBatch */ (
-    await http.put<ResponseBodyWrapper<UpdatePermissionBatchResponseBody>>(
+    await http.put<
+      ResponseBodyWrapper<InstanceApi_UpdatePermissionBatchResponseBody>
+    >(
       `api/gateway/cmdb.instance.UpdatePermissionBatch/permission/${objectId}/instances/_batch`,
       data,
       options

@@ -2,18 +2,18 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelInheritRule } from "../../../model/permission";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export type GetRuleResponseBody = Partial<ModelInheritRule>;
+export type InheritanceApi_GetRuleResponseBody = Partial<ModelInheritRule>;
 
 /**
  * @description 获取规则
  * @endpoint GET /api/v1/inherit/rule/:instanceId
  */
-export const getRule = async (
+export const InheritanceApi_getRule = async (
   instanceId: string | number,
   options?: HttpOptions
-): Promise<GetRuleResponseBody> =>
+): Promise<InheritanceApi_GetRuleResponseBody> =>
   /**! @contract easyops.api.permission.inheritance.GetRule */ (
-    await http.get<ResponseBodyWrapper<GetRuleResponseBody>>(
+    await http.get<ResponseBodyWrapper<InheritanceApi_GetRuleResponseBody>>(
       `api/gateway/permission.inheritance.GetRule/api/v1/inherit/rule/${instanceId}`,
       options
     )

@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseListWrapper, ResponseBodyWrapper } from "../../../wrapper";
 
-export interface ListApiKeyRequestParams {
+export interface GatewayApi_ListApiKeyRequestParams {
   /** 页码 */
   page: number;
 
@@ -9,7 +9,7 @@ export interface ListApiKeyRequestParams {
   page_size: number;
 }
 
-export interface ListApiKeyResponseItem {
+export interface GatewayApi_ListApiKeyResponseItem {
   /** 用户名 */
   user: string;
 
@@ -32,18 +32,18 @@ export interface ListApiKeyResponseItem {
   ts: number;
 }
 
-export type ListApiKeyResponseBody = ResponseListWrapper<ListApiKeyResponseItem>;
+export type GatewayApi_ListApiKeyResponseBody = ResponseListWrapper<GatewayApi_ListApiKeyResponseItem>;
 
 /**
  * @description 获取用户ApiKey
  * @endpoint LIST /api/user_service/v1/apikey
  */
-export const listApiKey = async (
-  params: ListApiKeyRequestParams,
+export const GatewayApi_listApiKey = async (
+  params: GatewayApi_ListApiKeyRequestParams,
   options?: HttpOptions
-): Promise<ListApiKeyResponseBody> =>
+): Promise<GatewayApi_ListApiKeyResponseBody> =>
   /**! @contract easyops.api.user_service.gateway.ListApiKey */ (
-    await http.get<ResponseBodyWrapper<ListApiKeyResponseBody>>(
+    await http.get<ResponseBodyWrapper<GatewayApi_ListApiKeyResponseBody>>(
       "api/gateway/user_service.gateway.ListApiKey/api/user_service/v1/apikey",
       { ...options, params }
     )

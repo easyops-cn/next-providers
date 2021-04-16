@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelObjectRelation } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface CreateRequestBody {
+export interface ObjectRelationApi_CreateRequestBody {
   /** 关系名称, 不是必填, 而且在引入了 left_description 和 right_description 之后这个字段几乎处于废弃状态 */
   name: string;
 
@@ -49,18 +49,18 @@ export interface CreateRequestBody {
   right_tags?: string[];
 }
 
-export type CreateResponseBody = Partial<ModelObjectRelation>;
+export type ObjectRelationApi_CreateResponseBody = Partial<ModelObjectRelation>;
 
 /**
  * @description 创建模型关系定义
  * @endpoint POST /object_relation
  */
-export const create = async (
-  data: CreateRequestBody,
+export const ObjectRelationApi_create = async (
+  data: ObjectRelationApi_CreateRequestBody,
   options?: HttpOptions
-): Promise<CreateResponseBody> =>
+): Promise<ObjectRelationApi_CreateResponseBody> =>
   /**! @contract easyops.api.cmdb.object_relation.Create */ (
-    await http.post<ResponseBodyWrapper<CreateResponseBody>>(
+    await http.post<ResponseBodyWrapper<ObjectRelationApi_CreateResponseBody>>(
       "api/gateway/cmdb.object_relation.Create/object_relation",
       data,
       options

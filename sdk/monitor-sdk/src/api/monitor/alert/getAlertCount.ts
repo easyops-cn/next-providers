@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface GetAlertCountRequestParams {
+export interface AlertApi_GetAlertCountRequestParams {
   /** 开始时间 */
   st: number;
 
@@ -23,7 +23,7 @@ export interface GetAlertCountRequestParams {
   objectId?: string;
 }
 
-export interface GetAlertCountResponseBody {
+export interface AlertApi_GetAlertCountResponseBody {
   /** 返回码 */
   code?: number;
 
@@ -31,23 +31,23 @@ export interface GetAlertCountResponseBody {
   msg?: string;
 
   /** 统计结果列表 */
-  data?: GetAlertCountResponseBody_data_item[];
+  data?: AlertApi_GetAlertCountResponseBody_data_item[];
 }
 
 /**
  * @description 获取目标范围内的告警数量统计
  * @endpoint GET /api/v1/alert/count
  */
-export const getAlertCount = (
-  params: GetAlertCountRequestParams,
+export const AlertApi_getAlertCount = (
+  params: AlertApi_GetAlertCountRequestParams,
   options?: HttpOptions
-): Promise<GetAlertCountResponseBody> =>
-  /**! @contract easyops.api.monitor.alert.GetAlertCount */ http.get<GetAlertCountResponseBody>(
+): Promise<AlertApi_GetAlertCountResponseBody> =>
+  /**! @contract easyops.api.monitor.alert.GetAlertCount */ http.get<AlertApi_GetAlertCountResponseBody>(
     "api/gateway/monitor.alert.GetAlertCount/api/v1/alert/count",
     { ...options, params }
   );
 
-export interface GetAlertCountResponseBody_data_item {
+export interface AlertApi_GetAlertCountResponseBody_data_item {
   /** 聚合周期告警数 */
   count?: number;
 

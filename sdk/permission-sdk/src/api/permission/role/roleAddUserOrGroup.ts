@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface RoleAddUserOrGroupRequestBody {
+export interface RoleApi_RoleAddUserOrGroupRequestBody {
   /** 用户名列表 */
   operate_user?: string[];
 
@@ -9,7 +9,7 @@ export interface RoleAddUserOrGroupRequestBody {
   operate_user_group?: string[];
 }
 
-export interface RoleAddUserOrGroupResponseBody {
+export interface RoleApi_RoleAddUserOrGroupResponseBody {
   /** 新加用户(组)数量 */
   count?: number;
 }
@@ -18,13 +18,13 @@ export interface RoleAddUserOrGroupResponseBody {
  * @description 角色添加用户(组)
  * @endpoint PUT /api/v1/permission_role/role_add_user_or_group/:id
  */
-export const roleAddUserOrGroup = async (
+export const RoleApi_roleAddUserOrGroup = async (
   id: string | number,
-  data: RoleAddUserOrGroupRequestBody,
+  data: RoleApi_RoleAddUserOrGroupRequestBody,
   options?: HttpOptions
-): Promise<RoleAddUserOrGroupResponseBody> =>
+): Promise<RoleApi_RoleAddUserOrGroupResponseBody> =>
   /**! @contract easyops.api.permission.role.RoleAddUserOrGroup */ (
-    await http.put<ResponseBodyWrapper<RoleAddUserOrGroupResponseBody>>(
+    await http.put<ResponseBodyWrapper<RoleApi_RoleAddUserOrGroupResponseBody>>(
       `api/gateway/permission.role.RoleAddUserOrGroup/api/v1/permission_role/role_add_user_or_group/${id}`,
       data,
       options

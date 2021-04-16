@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelGroupInstanceFunc } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface GroupInstanceRequestBody {
+export interface InstanceApi_GroupInstanceRequestBody {
   /** 查询条件,与[实例搜索接口]的query字段说明一致 */
   query?: Record<string, any>;
 
@@ -19,29 +19,29 @@ export interface GroupInstanceRequestBody {
   funcs: Partial<ModelGroupInstanceFunc>[];
 }
 
-export interface GroupInstanceResponseBody {
+export interface InstanceApi_GroupInstanceResponseBody {
   /** list */
-  list: GroupInstanceResponseBody_list_item[];
+  list: InstanceApi_GroupInstanceResponseBody_list_item[];
 }
 
 /**
  * @description 实例聚合接口 (包括sum, max, min, avg)
  * @endpoint POST /object/:object_id/instance/group
  */
-export const groupInstance = async (
+export const InstanceApi_groupInstance = async (
   object_id: string | number,
-  data: GroupInstanceRequestBody,
+  data: InstanceApi_GroupInstanceRequestBody,
   options?: HttpOptions
-): Promise<GroupInstanceResponseBody> =>
+): Promise<InstanceApi_GroupInstanceResponseBody> =>
   /**! @contract easyops.api.cmdb.instance.GroupInstance */ (
-    await http.post<ResponseBodyWrapper<GroupInstanceResponseBody>>(
+    await http.post<ResponseBodyWrapper<InstanceApi_GroupInstanceResponseBody>>(
       `api/gateway/cmdb.instance.GroupInstance/object/${object_id}/instance/group`,
       data,
       options
     )
   ).data;
 
-export interface GroupInstanceResponseBody_list_item {
+export interface InstanceApi_GroupInstanceResponseBody_list_item {
   /** 聚合字段的key */
   group_field?: string;
 
@@ -49,10 +49,10 @@ export interface GroupInstanceResponseBody_list_item {
   group_value?: any;
 
   /** 操作结果 */
-  func_values?: GroupInstanceResponseBody_list_item_func_values_item[];
+  func_values?: InstanceApi_GroupInstanceResponseBody_list_item_func_values_item[];
 }
 
-export interface GroupInstanceResponseBody_list_item_func_values_item {
+export interface InstanceApi_GroupInstanceResponseBody_list_item_func_values_item {
   /** 字段别名 */
   alias?: string;
 

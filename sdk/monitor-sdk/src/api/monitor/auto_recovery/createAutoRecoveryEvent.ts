@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface CreateAutoRecoveryEventRequestBody {
+export interface AutoRecoveryApi_CreateAutoRecoveryEventRequestBody {
   /** 告警自愈事件源 */
   source?: string;
 
@@ -14,7 +14,7 @@ export interface CreateAutoRecoveryEventRequestBody {
   event?: Record<string, any>;
 }
 
-export interface CreateAutoRecoveryEventResponseBody {
+export interface AutoRecoveryApi_CreateAutoRecoveryEventResponseBody {
   /** code */
   code?: number;
 
@@ -22,24 +22,24 @@ export interface CreateAutoRecoveryEventResponseBody {
   msg?: string;
 
   /** data */
-  data?: CreateAutoRecoveryEventResponseBody_data;
+  data?: AutoRecoveryApi_CreateAutoRecoveryEventResponseBody_data;
 }
 
 /**
  * @description 创建告警自愈事件
  * @endpoint POST /api/v1/auto_recovery/event
  */
-export const createAutoRecoveryEvent = (
-  data: CreateAutoRecoveryEventRequestBody,
+export const AutoRecoveryApi_createAutoRecoveryEvent = (
+  data: AutoRecoveryApi_CreateAutoRecoveryEventRequestBody,
   options?: HttpOptions
-): Promise<CreateAutoRecoveryEventResponseBody> =>
-  /**! @contract easyops.api.monitor.auto_recovery.CreateAutoRecoveryEvent */ http.post<CreateAutoRecoveryEventResponseBody>(
+): Promise<AutoRecoveryApi_CreateAutoRecoveryEventResponseBody> =>
+  /**! @contract easyops.api.monitor.auto_recovery.CreateAutoRecoveryEvent */ http.post<AutoRecoveryApi_CreateAutoRecoveryEventResponseBody>(
     "api/gateway/monitor.auto_recovery.CreateAutoRecoveryEvent/api/v1/auto_recovery/event",
     data,
     options
   );
 
-export interface CreateAutoRecoveryEventResponseBody_data {
+export interface AutoRecoveryApi_CreateAutoRecoveryEventResponseBody_data {
   /** 告警自愈历史id列表 */
   id?: string[];
 }

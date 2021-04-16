@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface GetInvitationCodeResponseBody {
+export interface InvitationCodeApi_GetInvitationCodeResponseBody {
   /** 邀请码 */
   code: string;
 
@@ -19,11 +19,13 @@ export interface GetInvitationCodeResponseBody {
  * @description 邀请码获取[内部]
  * @endpoint GET /api/v1/invitation/code
  */
-export const getInvitationCode = async (
+export const InvitationCodeApi_getInvitationCode = async (
   options?: HttpOptions
-): Promise<GetInvitationCodeResponseBody> =>
+): Promise<InvitationCodeApi_GetInvitationCodeResponseBody> =>
   /**! @contract easyops.api.user_service.invitation_code.GetInvitationCode */ (
-    await http.get<ResponseBodyWrapper<GetInvitationCodeResponseBody>>(
+    await http.get<
+      ResponseBodyWrapper<InvitationCodeApi_GetInvitationCodeResponseBody>
+    >(
       "api/gateway/user_service.invitation_code.GetInvitationCode/api/v1/invitation/code",
       options
     )

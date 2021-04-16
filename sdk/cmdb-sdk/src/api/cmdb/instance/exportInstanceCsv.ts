@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface ExportInstanceCsvRequestBody {
+export interface InstanceApi_ExportInstanceCsvRequestBody {
   /** 请求参数json序列化 */
   json?: string;
 }
@@ -9,9 +9,9 @@ export interface ExportInstanceCsvRequestBody {
  * @description 实例导出csv
  * @endpoint POST /object/:object_id/instance/export
  */
-export const exportInstanceCsv = (
+export const InstanceApi_exportInstanceCsv = (
   object_id: string | number,
-  data: ExportInstanceCsvRequestBody,
+  data: InstanceApi_ExportInstanceCsvRequestBody,
   options?: HttpOptions
 ): Promise<Blob> =>
   /**! @contract easyops.api.cmdb.instance.ExportInstanceCsv */ http.post<Blob>(

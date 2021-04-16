@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface ForgotPasswordRequestBody {
+export interface UserAdminApi_ForgotPasswordRequestBody {
   /** 邮箱 */
   email: string;
 
@@ -12,8 +12,8 @@ export interface ForgotPasswordRequestBody {
  * @description 用户忘记密码
  * @endpoint POST /api/v1/users/password/forgot
  */
-export const forgotPassword = (
-  data: ForgotPasswordRequestBody,
+export const UserAdminApi_forgotPassword = (
+  data: UserAdminApi_ForgotPasswordRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.user_service.user_admin.ForgotPassword */ http.post<void>(

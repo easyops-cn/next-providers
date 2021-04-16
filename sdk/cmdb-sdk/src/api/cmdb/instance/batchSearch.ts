@@ -1,11 +1,11 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface BatchSearchRequestBody {
+export interface InstanceApi_BatchSearchRequestBody {
   /** body */
-  data?: BatchSearchRequestBody_data_item[];
+  data?: InstanceApi_BatchSearchRequestBody_data_item[];
 }
 
-export interface BatchSearchResponseBody {
+export interface InstanceApi_BatchSearchResponseBody {
   /** 返回码 */
   code: number;
 
@@ -16,32 +16,32 @@ export interface BatchSearchResponseBody {
   message: string;
 
   /** 实例总数 */
-  data: BatchSearchResponseBody_data_item[];
+  data: InstanceApi_BatchSearchResponseBody_data_item[];
 }
 
 /**
  * @description 多模型批量搜索实例
  * @endpoint POST /batch/object/instance/_search
  */
-export const batchSearch = (
-  data: BatchSearchRequestBody,
+export const InstanceApi_batchSearch = (
+  data: InstanceApi_BatchSearchRequestBody,
   options?: HttpOptions
-): Promise<BatchSearchResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.BatchSearch */ http.post<BatchSearchResponseBody>(
+): Promise<InstanceApi_BatchSearchResponseBody> =>
+  /**! @contract easyops.api.cmdb.instance.BatchSearch */ http.post<InstanceApi_BatchSearchResponseBody>(
     "api/gateway/cmdb.instance.BatchSearch/batch/object/instance/_search",
     data,
     options
   );
 
-export interface BatchSearchRequestBody_data_item {
+export interface InstanceApi_BatchSearchRequestBody_data_item {
   /** 模型对象ID */
   object_id?: string;
 
   /** 搜索条件 */
-  search?: BatchSearchRequestBody_data_item_search;
+  search?: InstanceApi_BatchSearchRequestBody_data_item_search;
 }
 
-export interface BatchSearchResponseBody_data_item {
+export interface InstanceApi_BatchSearchResponseBody_data_item {
   /** instance list */
   list?: Record<string, any>[];
 
@@ -55,7 +55,7 @@ export interface BatchSearchResponseBody_data_item {
   page_size?: number;
 }
 
-export interface BatchSearchRequestBody_data_item_search {
+export interface InstanceApi_BatchSearchRequestBody_data_item_search {
   /** e.g.: { name: { $like: '%q%' } }, { $or: [{ name: { $like: '%q%' }}] } */
   query?: Record<string, any>;
 

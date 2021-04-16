@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelAlertEvent } from "../../../model/monitor";
 
-export interface GetAlertEventDetailRequestParams {
+export interface AlertApi_GetAlertEventDetailRequestParams {
   /** 告警 ID */
   _id?: string;
 
@@ -12,7 +12,7 @@ export interface GetAlertEventDetailRequestParams {
   et?: string;
 }
 
-export interface GetAlertEventDetailResponseBody {
+export interface AlertApi_GetAlertEventDetailResponseBody {
   /** 返回码 */
   code?: number;
 
@@ -36,11 +36,11 @@ export interface GetAlertEventDetailResponseBody {
  * @description 获取告警事件详情
  * @endpoint GET /api/v1/alert
  */
-export const getAlertEventDetail = (
-  params: GetAlertEventDetailRequestParams,
+export const AlertApi_getAlertEventDetail = (
+  params: AlertApi_GetAlertEventDetailRequestParams,
   options?: HttpOptions
-): Promise<GetAlertEventDetailResponseBody> =>
-  /**! @contract easyops.api.monitor.alert.GetAlertEventDetail */ http.get<GetAlertEventDetailResponseBody>(
+): Promise<AlertApi_GetAlertEventDetailResponseBody> =>
+  /**! @contract easyops.api.monitor.alert.GetAlertEventDetail */ http.get<AlertApi_GetAlertEventDetailResponseBody>(
     "api/gateway/monitor.alert.GetAlertEventDetail/api/v1/alert",
     { ...options, params }
   );

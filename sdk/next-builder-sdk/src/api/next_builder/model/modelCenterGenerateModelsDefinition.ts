@@ -2,12 +2,12 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelCmdbObject } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface ModelCenterGenerateModelsDefinitionRequestBody {
+export interface ModelApi_ModelCenterGenerateModelsDefinitionRequestBody {
   /** 模型instanceId */
   instanceIds: string[];
 }
 
-export interface ModelCenterGenerateModelsDefinitionResponseBody {
+export interface ModelApi_ModelCenterGenerateModelsDefinitionResponseBody {
   /** 模型列表 */
   objectList?: Partial<ModelCmdbObject>[];
 }
@@ -16,13 +16,13 @@ export interface ModelCenterGenerateModelsDefinitionResponseBody {
  * @description ModelCenter由模型定义生成ModelsDefinition
  * @endpoint POST /api/v1/model-center/generate-models-definition
  */
-export const modelCenterGenerateModelsDefinition = async (
-  data: ModelCenterGenerateModelsDefinitionRequestBody,
+export const ModelApi_modelCenterGenerateModelsDefinition = async (
+  data: ModelApi_ModelCenterGenerateModelsDefinitionRequestBody,
   options?: HttpOptions
-): Promise<ModelCenterGenerateModelsDefinitionResponseBody> =>
+): Promise<ModelApi_ModelCenterGenerateModelsDefinitionResponseBody> =>
   /**! @contract easyops.api.next_builder.model.ModelCenterGenerateModelsDefinition */ (
     await http.post<
-      ResponseBodyWrapper<ModelCenterGenerateModelsDefinitionResponseBody>
+      ResponseBodyWrapper<ModelApi_ModelCenterGenerateModelsDefinitionResponseBody>
     >(
       "api/gateway/next_builder.model.ModelCenterGenerateModelsDefinition/api/v1/model-center/generate-models-definition",
       data,

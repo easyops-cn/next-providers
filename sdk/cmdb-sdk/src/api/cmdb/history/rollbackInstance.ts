@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface RollbackInstanceRequestBody {
+export interface HistoryApi_RollbackInstanceRequestBody {
   /** 实例版本号 */
   _version: number;
 
@@ -9,20 +9,22 @@ export interface RollbackInstanceRequestBody {
   _ts: any;
 }
 
-export type RollbackInstanceResponseBody = Record<string, any>;
+export type HistoryApi_RollbackInstanceResponseBody = Record<string, any>;
 
 /**
  * @description 实例回滚
  * @endpoint PUT /object/:objectId/instance/:instanceId/_rollback
  */
-export const rollbackInstance = async (
+export const HistoryApi_rollbackInstance = async (
   objectId: string | number,
   instanceId: string | number,
-  data: RollbackInstanceRequestBody,
+  data: HistoryApi_RollbackInstanceRequestBody,
   options?: HttpOptions
-): Promise<RollbackInstanceResponseBody> =>
+): Promise<HistoryApi_RollbackInstanceResponseBody> =>
   /**! @contract easyops.api.cmdb.history.RollbackInstance */ (
-    await http.put<ResponseBodyWrapper<RollbackInstanceResponseBody>>(
+    await http.put<
+      ResponseBodyWrapper<HistoryApi_RollbackInstanceResponseBody>
+    >(
       `api/gateway/cmdb.history.RollbackInstance/object/${objectId}/instance/${instanceId}/_rollback`,
       data,
       options

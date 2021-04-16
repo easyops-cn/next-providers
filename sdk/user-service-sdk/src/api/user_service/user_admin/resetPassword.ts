@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface ResetPasswordRequestBody {
+export interface UserAdminApi_ResetPasswordRequestBody {
   /** 用户名 */
   username: string;
 
@@ -18,8 +18,8 @@ export interface ResetPasswordRequestBody {
  * @description 用户重置密码
  * @endpoint POST /api/v1/users/password/reset
  */
-export const resetPassword = (
-  data: ResetPasswordRequestBody,
+export const UserAdminApi_resetPassword = (
+  data: UserAdminApi_ResetPasswordRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.user_service.user_admin.ResetPassword */ http.post<void>(

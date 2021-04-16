@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelPermission } from "../../../model/permission";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface GeneratePermissionsDefinitionResponseBody {
+export interface PermissionApi_GeneratePermissionsDefinitionResponseBody {
   /** 权限点列表 */
   permissionList?: Partial<ModelPermission>[];
 }
@@ -11,13 +11,13 @@ export interface GeneratePermissionsDefinitionResponseBody {
  * @description 由模型定义生成PermissionsDefinition
  * @endpoint GET /api/v1/permissions/generate_permissions_definition/:instanceId
  */
-export const generatePermissionsDefinition = async (
+export const PermissionApi_generatePermissionsDefinition = async (
   instanceId: string | number,
   options?: HttpOptions
-): Promise<GeneratePermissionsDefinitionResponseBody> =>
+): Promise<PermissionApi_GeneratePermissionsDefinitionResponseBody> =>
   /**! @contract easyops.api.next_builder.permission.GeneratePermissionsDefinition */ (
     await http.get<
-      ResponseBodyWrapper<GeneratePermissionsDefinitionResponseBody>
+      ResponseBodyWrapper<PermissionApi_GeneratePermissionsDefinitionResponseBody>
     >(
       `api/gateway/next_builder.permission.GeneratePermissionsDefinition/api/v1/permissions/generate_permissions_definition/${instanceId}`,
       options

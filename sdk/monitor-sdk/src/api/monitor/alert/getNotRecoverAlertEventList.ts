@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelAlertEvent } from "../../../model/monitor";
 
-export interface GetNotRecoverAlertEventListRequestParams {
+export interface AlertApi_GetNotRecoverAlertEventListRequestParams {
   /** 开始时间, e.g.: -1h 过去1小时, -1d 过去1天, -30m 过去30分钟, 1490967693 unix 时间戳 */
   st?: string;
 
@@ -36,7 +36,7 @@ export interface GetNotRecoverAlertEventListRequestParams {
   __sortby__?: string;
 }
 
-export interface GetNotRecoverAlertEventListResponseBody {
+export interface AlertApi_GetNotRecoverAlertEventListResponseBody {
   /** 返回码 */
   code?: number;
 
@@ -60,11 +60,11 @@ export interface GetNotRecoverAlertEventListResponseBody {
  * @description 获取未恢复告警事件列表
  * @endpoint GET /api/v1/alert/alert_status_not_recover
  */
-export const getNotRecoverAlertEventList = (
-  params: GetNotRecoverAlertEventListRequestParams,
+export const AlertApi_getNotRecoverAlertEventList = (
+  params: AlertApi_GetNotRecoverAlertEventListRequestParams,
   options?: HttpOptions
-): Promise<GetNotRecoverAlertEventListResponseBody> =>
-  /**! @contract easyops.api.monitor.alert.GetNotRecoverAlertEventList */ http.get<GetNotRecoverAlertEventListResponseBody>(
+): Promise<AlertApi_GetNotRecoverAlertEventListResponseBody> =>
+  /**! @contract easyops.api.monitor.alert.GetNotRecoverAlertEventList */ http.get<AlertApi_GetNotRecoverAlertEventListResponseBody>(
     "api/gateway/monitor.alert.GetNotRecoverAlertEventList/api/v1/alert/alert_status_not_recover",
     { ...options, params }
   );

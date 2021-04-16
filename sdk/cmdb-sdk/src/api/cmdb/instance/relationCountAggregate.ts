@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface RelationCountAggregateRequestBody {
+export interface InstanceApi_RelationCountAggregateRequestBody {
   /** e.g.: { name: { $like: '%q%' } }, { $or: [{ name: { $like: '%q%' }}] } */
   query: Record<string, any>;
 
@@ -11,7 +11,7 @@ export interface RelationCountAggregateRequestBody {
   only_my_instance: boolean;
 }
 
-export interface RelationCountAggregateResponseBody {
+export interface InstanceApi_RelationCountAggregateResponseBody {
   /** 返回码 */
   code: number;
 
@@ -22,25 +22,25 @@ export interface RelationCountAggregateResponseBody {
   message: string;
 
   /** 关系数量统计结果 */
-  data: RelationCountAggregateResponseBody_data_item[];
+  data: InstanceApi_RelationCountAggregateResponseBody_data_item[];
 }
 
 /**
  * @description 实例关系数量统计
  * @endpoint POST /object/:objectId/instance/_relation_count_aggregate
  */
-export const relationCountAggregate = (
+export const InstanceApi_relationCountAggregate = (
   objectId: string | number,
-  data: RelationCountAggregateRequestBody,
+  data: InstanceApi_RelationCountAggregateRequestBody,
   options?: HttpOptions
-): Promise<RelationCountAggregateResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.RelationCountAggregate */ http.post<RelationCountAggregateResponseBody>(
+): Promise<InstanceApi_RelationCountAggregateResponseBody> =>
+  /**! @contract easyops.api.cmdb.instance.RelationCountAggregate */ http.post<InstanceApi_RelationCountAggregateResponseBody>(
     `api/gateway/cmdb.instance.RelationCountAggregate/object/${objectId}/instance/_relation_count_aggregate`,
     data,
     options
   );
 
-export interface RelationCountAggregateResponseBody_data_item {
+export interface InstanceApi_RelationCountAggregateResponseBody_data_item {
   /** 关系sideId */
   key?: string;
 

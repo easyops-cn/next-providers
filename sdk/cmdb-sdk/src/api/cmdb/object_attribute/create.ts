@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelObjectAttr } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface CreateRequestBody {
+export interface ObjectAttributeApi_CreateRequestBody {
   /** 属性ID */
   id: string;
 
@@ -31,19 +31,19 @@ export interface CreateRequestBody {
   value: ModelObjectAttr["value"];
 }
 
-export type CreateResponseBody = Partial<ModelObjectAttr>;
+export type ObjectAttributeApi_CreateResponseBody = Partial<ModelObjectAttr>;
 
 /**
  * @description 创建模型属性定义
  * @endpoint POST /object/:objectId/attr
  */
-export const create = async (
+export const ObjectAttributeApi_create = async (
   objectId: string | number,
-  data: CreateRequestBody,
+  data: ObjectAttributeApi_CreateRequestBody,
   options?: HttpOptions
-): Promise<CreateResponseBody> =>
+): Promise<ObjectAttributeApi_CreateResponseBody> =>
   /**! @contract easyops.api.cmdb.object_attribute.Create */ (
-    await http.post<ResponseBodyWrapper<CreateResponseBody>>(
+    await http.post<ResponseBodyWrapper<ObjectAttributeApi_CreateResponseBody>>(
       `api/gateway/cmdb.object_attribute.Create/object/${objectId}/attr`,
       data,
       options

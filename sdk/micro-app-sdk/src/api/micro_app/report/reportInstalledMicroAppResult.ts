@@ -5,12 +5,12 @@ import {
 } from "../../../model/micro_app";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface ReportInstalledMicroAppResultRequestBody {
+export interface ReportApi_ReportInstalledMicroAppResultRequestBody {
   /** 已安装的小产品 */
-  installedApps?: ReportInstalledMicroAppResultRequestBody_installedApps_item[];
+  installedApps?: ReportApi_ReportInstalledMicroAppResultRequestBody_installedApps_item[];
 }
 
-export interface ReportInstalledMicroAppResultResponseBody {
+export interface ReportApi_ReportInstalledMicroAppResultResponseBody {
   /** 数据列表 */
   list?: Partial<ModelInstalledMicroApp>[];
 }
@@ -19,13 +19,13 @@ export interface ReportInstalledMicroAppResultResponseBody {
  * @description 上报小产品安装或更新结果
  * @endpoint POST /api/micro_app/v1/installed_micro_app/report_result
  */
-export const reportInstalledMicroAppResult = async (
-  data: ReportInstalledMicroAppResultRequestBody,
+export const ReportApi_reportInstalledMicroAppResult = async (
+  data: ReportApi_ReportInstalledMicroAppResultRequestBody,
   options?: HttpOptions
-): Promise<ReportInstalledMicroAppResultResponseBody> =>
+): Promise<ReportApi_ReportInstalledMicroAppResultResponseBody> =>
   /**! @contract easyops.api.micro_app.report.ReportInstalledMicroAppResult */ (
     await http.post<
-      ResponseBodyWrapper<ReportInstalledMicroAppResultResponseBody>
+      ResponseBodyWrapper<ReportApi_ReportInstalledMicroAppResultResponseBody>
     >(
       "api/gateway/micro_app.report.ReportInstalledMicroAppResult/api/micro_app/v1/installed_micro_app/report_result",
       data,
@@ -33,7 +33,7 @@ export const reportInstalledMicroAppResult = async (
     )
   ).data;
 
-export interface ReportInstalledMicroAppResultRequestBody_installedApps_item {
+export interface ReportApi_ReportInstalledMicroAppResultRequestBody_installedApps_item {
   /** 已安装的小产品id */
   microApp?: Partial<ModelInstalledMicroApp>;
 

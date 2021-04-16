@@ -6,7 +6,7 @@ import {
 } from "../../../model/micro_app";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface ImportMicroAppRequestBody {
+export interface InstalledMicroAppApi_ImportMicroAppRequestBody {
   /** cmdb唯一标识, 业务逻辑请使用appId作为唯一标识 */
   instanceId?: string;
 
@@ -83,7 +83,7 @@ export interface ImportMicroAppRequestBody {
   layoutType?: string;
 }
 
-export interface ImportMicroAppResponseBody {
+export interface InstalledMicroAppApi_ImportMicroAppResponseBody {
   /** cmdb唯一标识, 业务逻辑请使用appId作为唯一标识 */
   instanceId?: string;
 }
@@ -92,13 +92,15 @@ export interface ImportMicroAppResponseBody {
  * @description 导入小产品（存在更新，不存在创建）
  * @endpoint POST /api/micro_app/v1/import_installed_micro_app/:appId
  */
-export const importMicroApp = async (
+export const InstalledMicroAppApi_importMicroApp = async (
   appId: string | number,
-  data: ImportMicroAppRequestBody,
+  data: InstalledMicroAppApi_ImportMicroAppRequestBody,
   options?: HttpOptions
-): Promise<ImportMicroAppResponseBody> =>
+): Promise<InstalledMicroAppApi_ImportMicroAppResponseBody> =>
   /**! @contract easyops.api.micro_app.installed_micro_app.ImportMicroApp */ (
-    await http.post<ResponseBodyWrapper<ImportMicroAppResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<InstalledMicroAppApi_ImportMicroAppResponseBody>
+    >(
       `api/gateway/micro_app.installed_micro_app.ImportMicroApp/api/micro_app/v1/import_installed_micro_app/${appId}`,
       data,
       options

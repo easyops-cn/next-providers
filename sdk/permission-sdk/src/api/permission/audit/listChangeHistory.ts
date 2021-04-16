@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelChangeHistory } from "../../../model/permission";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface ListChangeHistoryRequestBody {
+export interface AuditApi_ListChangeHistoryRequestBody {
   /** 页码 */
   page: number;
 
@@ -25,7 +25,7 @@ export interface ListChangeHistoryRequestBody {
   to?: string;
 }
 
-export interface ListChangeHistoryResponseBody {
+export interface AuditApi_ListChangeHistoryResponseBody {
   /** 页码 */
   page: number;
 
@@ -43,12 +43,14 @@ export interface ListChangeHistoryResponseBody {
  * @description 获取变更历史
  * @endpoint POST /api/v1/audit/change_history
  */
-export const listChangeHistory = async (
-  data: ListChangeHistoryRequestBody,
+export const AuditApi_listChangeHistory = async (
+  data: AuditApi_ListChangeHistoryRequestBody,
   options?: HttpOptions
-): Promise<ListChangeHistoryResponseBody> =>
+): Promise<AuditApi_ListChangeHistoryResponseBody> =>
   /**! @contract easyops.api.permission.audit.ListChangeHistory */ (
-    await http.post<ResponseBodyWrapper<ListChangeHistoryResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<AuditApi_ListChangeHistoryResponseBody>
+    >(
       "api/gateway/permission.audit.ListChangeHistory/api/v1/audit/change_history",
       data,
       options

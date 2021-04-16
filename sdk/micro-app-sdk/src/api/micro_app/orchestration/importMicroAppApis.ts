@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelMicroappapiorchestration } from "../../../model/micro_app";
 
-export interface ImportMicroAppApisRequestBody {
+export interface OrchestrationApi_ImportMicroAppApisRequestBody {
   /** micro_app id */
   appId: string;
 
@@ -13,8 +13,8 @@ export interface ImportMicroAppApisRequestBody {
  * @description 导入api编排
  * @endpoint POST /api/v1/apis/import
  */
-export const importMicroAppApis = (
-  data: ImportMicroAppApisRequestBody,
+export const OrchestrationApi_importMicroAppApis = (
+  data: OrchestrationApi_ImportMicroAppApisRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.micro_app.orchestration.ImportMicroAppApis */ http.post<void>(

@@ -1,40 +1,42 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface GetObjectsStatRequestBody {
+export interface ObjectStoreApi_GetObjectsStatRequestBody {
   /** 存储桶中对象 */
-  objects: GetObjectsStatRequestBody_objects_item[];
+  objects: ObjectStoreApi_GetObjectsStatRequestBody_objects_item[];
 }
 
 /** 对象信息 */
-export interface GetObjectsStatResponseBody {
+export interface ObjectStoreApi_GetObjectsStatResponseBody {
   /** 存储桶中对象 */
-  objects?: GetObjectsStatResponseBody_objects_item[];
+  objects?: ObjectStoreApi_GetObjectsStatResponseBody_objects_item[];
 }
 
 /**
  * @description 获取对象信息
  * @endpoint POST /api/v1/objectStore/bucket/:bucketName/objectStat
  */
-export const getObjectsStat = async (
+export const ObjectStoreApi_getObjectsStat = async (
   bucketName: string | number,
-  data: GetObjectsStatRequestBody,
+  data: ObjectStoreApi_GetObjectsStatRequestBody,
   options?: HttpOptions
-): Promise<GetObjectsStatResponseBody> =>
+): Promise<ObjectStoreApi_GetObjectsStatResponseBody> =>
   /**! @contract easyops.api.object_store.object_store.GetObjectsStat */ (
-    await http.post<ResponseBodyWrapper<GetObjectsStatResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<ObjectStoreApi_GetObjectsStatResponseBody>
+    >(
       `api/gateway/object_store.object_store.GetObjectsStat/api/v1/objectStore/bucket/${bucketName}/objectStat`,
       data,
       options
     )
   ).data;
 
-export interface GetObjectsStatRequestBody_objects_item {
+export interface ObjectStoreApi_GetObjectsStatRequestBody_objects_item {
   /** 对象名称 */
   objectName?: string;
 }
 
-export interface GetObjectsStatResponseBody_objects_item {
+export interface ObjectStoreApi_GetObjectsStatResponseBody_objects_item {
   /** 对象名称 */
   objectName?: string;
 

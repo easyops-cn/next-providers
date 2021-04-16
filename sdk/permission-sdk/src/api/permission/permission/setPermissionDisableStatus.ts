@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface SetPermissionDisableStatusRequestBody {
+export interface PermissionApi_SetPermissionDisableStatusRequestBody {
   /** 是否禁用, 默认为false */
   disable?: boolean;
 }
@@ -9,9 +9,9 @@ export interface SetPermissionDisableStatusRequestBody {
  * @description 启用/禁用权限点
  * @endpoint PUT /api/v1/set-permission-disable-status/:action
  */
-export const setPermissionDisableStatus = (
+export const PermissionApi_setPermissionDisableStatus = (
   action: string | number,
-  data: SetPermissionDisableStatusRequestBody,
+  data: PermissionApi_SetPermissionDisableStatusRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.permission.permission.SetPermissionDisableStatus */ http.put<void>(

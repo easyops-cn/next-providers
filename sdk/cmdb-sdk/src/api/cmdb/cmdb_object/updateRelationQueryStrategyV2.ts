@@ -3,7 +3,7 @@ import { ModelRelationQueryStrategyV2 } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 /** 策略数据 */
-export interface UpdateRelationQueryStrategyV2RequestBody {
+export interface CmdbObjectApi_UpdateRelationQueryStrategyV2RequestBody {
   /** 策略ID(可以自定义, 不给定后台会默认生成) */
   id?: string;
 
@@ -29,21 +29,21 @@ export interface UpdateRelationQueryStrategyV2RequestBody {
   deleteAuthorizers?: string[];
 }
 
-export type UpdateRelationQueryStrategyV2ResponseBody = Partial<ModelRelationQueryStrategyV2>;
+export type CmdbObjectApi_UpdateRelationQueryStrategyV2ResponseBody = Partial<ModelRelationQueryStrategyV2>;
 
 /**
  * @description 更新查询策略v2
  * @endpoint PUT /v2/object/:object_id/relation_query_strategy/:id
  */
-export const updateRelationQueryStrategyV2 = async (
+export const CmdbObjectApi_updateRelationQueryStrategyV2 = async (
   object_id: string | number,
   id: string | number,
-  data: UpdateRelationQueryStrategyV2RequestBody,
+  data: CmdbObjectApi_UpdateRelationQueryStrategyV2RequestBody,
   options?: HttpOptions
-): Promise<UpdateRelationQueryStrategyV2ResponseBody> =>
+): Promise<CmdbObjectApi_UpdateRelationQueryStrategyV2ResponseBody> =>
   /**! @contract easyops.api.cmdb.cmdb_object.UpdateRelationQueryStrategyV2 */ (
     await http.put<
-      ResponseBodyWrapper<UpdateRelationQueryStrategyV2ResponseBody>
+      ResponseBodyWrapper<CmdbObjectApi_UpdateRelationQueryStrategyV2ResponseBody>
     >(
       `api/gateway/cmdb.cmdb_object.UpdateRelationQueryStrategyV2/v2/object/${object_id}/relation_query_strategy/${id}`,
       data,

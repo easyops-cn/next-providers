@@ -2,10 +2,10 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelInheritRule } from "../../../model/permission";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export type UpdateRuleRequestBody = Partial<ModelInheritRule> &
+export type InheritanceApi_UpdateRuleRequestBody = Partial<ModelInheritRule> &
   ModelInheritRule_partial_2;
 
-export interface UpdateRuleResponseBody {
+export interface InheritanceApi_UpdateRuleResponseBody {
   /** 规则id */
   instanceId?: string;
 }
@@ -14,13 +14,13 @@ export interface UpdateRuleResponseBody {
  * @description 编辑规则
  * @endpoint PUT /api/v1/inherit/rule/:instanceId
  */
-export const updateRule = async (
+export const InheritanceApi_updateRule = async (
   instanceId: string | number,
-  data: UpdateRuleRequestBody,
+  data: InheritanceApi_UpdateRuleRequestBody,
   options?: HttpOptions
-): Promise<UpdateRuleResponseBody> =>
+): Promise<InheritanceApi_UpdateRuleResponseBody> =>
   /**! @contract easyops.api.permission.inheritance.UpdateRule */ (
-    await http.put<ResponseBodyWrapper<UpdateRuleResponseBody>>(
+    await http.put<ResponseBodyWrapper<InheritanceApi_UpdateRuleResponseBody>>(
       `api/gateway/permission.inheritance.UpdateRule/api/v1/inherit/rule/${instanceId}`,
       data,
       options

@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelLaunchpadCollection } from "../../../model/user_service";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface CreateCollectionRequestBody {
+export interface LaunchpadApi_CreateCollectionRequestBody {
   /** LaunchpadCollection */
   launchpadCollection?: Partial<ModelLaunchpadCollection>;
 
@@ -10,7 +10,7 @@ export interface CreateCollectionRequestBody {
   microAppId?: string;
 }
 
-export interface CreateCollectionResponseBody {
+export interface LaunchpadApi_CreateCollectionResponseBody {
   /** LaunchpadCollection instanceId */
   launchpadInstanceId: string;
 }
@@ -19,12 +19,14 @@ export interface CreateCollectionResponseBody {
  * @description 新增我的收藏
  * @endpoint POST /api/v1/launchpad/collection
  */
-export const createCollection = async (
-  data: CreateCollectionRequestBody,
+export const LaunchpadApi_createCollection = async (
+  data: LaunchpadApi_CreateCollectionRequestBody,
   options?: HttpOptions
-): Promise<CreateCollectionResponseBody> =>
+): Promise<LaunchpadApi_CreateCollectionResponseBody> =>
   /**! @contract easyops.api.user_service.launchpad.CreateCollection */ (
-    await http.post<ResponseBodyWrapper<CreateCollectionResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<LaunchpadApi_CreateCollectionResponseBody>
+    >(
       "api/gateway/user_service.launchpad.CreateCollection/api/v1/launchpad/collection",
       data,
       options

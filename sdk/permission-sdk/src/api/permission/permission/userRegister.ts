@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface UserRegisterRequestBody {
+export interface PermissionApi_UserRegisterRequestBody {
   /** name */
   name: string;
 
@@ -8,7 +8,7 @@ export interface UserRegisterRequestBody {
   is_admin?: boolean;
 }
 
-export interface UserRegisterResponseBody {
+export interface PermissionApi_UserRegisterResponseBody {
   /** 返回码 */
   code?: number;
 
@@ -20,11 +20,11 @@ export interface UserRegisterResponseBody {
  * @description user注册接口
  * @endpoint POST /api/v2/permission/register_user
  */
-export const userRegister = (
-  data: UserRegisterRequestBody,
+export const PermissionApi_userRegister = (
+  data: PermissionApi_UserRegisterRequestBody,
   options?: HttpOptions
-): Promise<UserRegisterResponseBody> =>
-  /**! @contract easyops.api.permission.permission.UserRegister */ http.post<UserRegisterResponseBody>(
+): Promise<PermissionApi_UserRegisterResponseBody> =>
+  /**! @contract easyops.api.permission.permission.UserRegister */ http.post<PermissionApi_UserRegisterResponseBody>(
     "api/gateway/permission.permission.UserRegister/api/v2/permission/register_user",
     data,
     options

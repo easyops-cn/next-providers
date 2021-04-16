@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface InfluxdbProxyRequestParams {
+export interface InfluxdbApi_InfluxdbProxyRequestParams {
   /** 数据库 */
   db: string;
 
@@ -11,27 +11,27 @@ export interface InfluxdbProxyRequestParams {
   epoch: "w" | "d" | "h" | "m" | "s" | "ms" | "u" | "ns";
 }
 
-export interface InfluxdbProxyResponseBody {
+export interface InfluxdbApi_InfluxdbProxyResponseBody {
   /** 返回的数据 */
-  results?: InfluxdbProxyResponseBody_results_item[];
+  results?: InfluxdbApi_InfluxdbProxyResponseBody_results_item[];
 }
 
 /**
  * @description influxdb数据获取
  * @endpoint GET /api/v1/influxdb/proxy/query
  */
-export const influxdbProxy = (
-  params: InfluxdbProxyRequestParams,
+export const InfluxdbApi_influxdbProxy = (
+  params: InfluxdbApi_InfluxdbProxyRequestParams,
   options?: HttpOptions
-): Promise<InfluxdbProxyResponseBody> =>
-  /**! @contract easyops.api.monitor.influxdb.InfluxdbProxy */ http.get<InfluxdbProxyResponseBody>(
+): Promise<InfluxdbApi_InfluxdbProxyResponseBody> =>
+  /**! @contract easyops.api.monitor.influxdb.InfluxdbProxy */ http.get<InfluxdbApi_InfluxdbProxyResponseBody>(
     "api/gateway/monitor.influxdb.InfluxdbProxy/api/v1/influxdb/proxy/query",
     { ...options, params }
   );
 
-export interface InfluxdbProxyResponseBody_results_item {
+export interface InfluxdbApi_InfluxdbProxyResponseBody_results_item {
   /** series */
-  series?: InfluxdbProxyResponseBody_results_item_series_item[];
+  series?: InfluxdbApi_InfluxdbProxyResponseBody_results_item_series_item[];
 
   /** error */
   error?: string;
@@ -40,7 +40,7 @@ export interface InfluxdbProxyResponseBody_results_item {
   statement_id?: number;
 }
 
-export interface InfluxdbProxyResponseBody_results_item_series_item {
+export interface InfluxdbApi_InfluxdbProxyResponseBody_results_item_series_item {
   /** 指标值（是一个二维表），根据sql不同而不同，他的列在columns标明 */
   values?: any;
 

@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 /** 详细文档，不返回parent和children */
-export interface GetDocumentsDetailsResponseBody {
+export interface DocumentApi_GetDocumentsDetailsResponseBody {
   /** 实例Id */
   instanceId?: string;
 
@@ -32,12 +32,14 @@ export interface GetDocumentsDetailsResponseBody {
  * @description 获取已安装小产品的文档详情
  * @endpoint GET /api/micro_app/v1/document/details/:documentId
  */
-export const getDocumentsDetails = async (
+export const DocumentApi_getDocumentsDetails = async (
   documentId: string | number,
   options?: HttpOptions
-): Promise<GetDocumentsDetailsResponseBody> =>
+): Promise<DocumentApi_GetDocumentsDetailsResponseBody> =>
   /**! @contract easyops.api.micro_app.document.GetDocumentsDetails */ (
-    await http.get<ResponseBodyWrapper<GetDocumentsDetailsResponseBody>>(
+    await http.get<
+      ResponseBodyWrapper<DocumentApi_GetDocumentsDetailsResponseBody>
+    >(
       `api/gateway/micro_app.document.GetDocumentsDetails/api/micro_app/v1/document/details/${documentId}`,
       options
     )

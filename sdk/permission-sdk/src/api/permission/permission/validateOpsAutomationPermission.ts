@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface ValidateOpsAutomationPermissionRequestParams {
+export interface PermissionApi_ValidateOpsAutomationPermissionRequestParams {
   /** 需要鉴权的用户名 */
   user: string;
 
@@ -11,7 +11,7 @@ export interface ValidateOpsAutomationPermissionRequestParams {
   validate_action_only?: boolean;
 }
 
-export interface ValidateOpsAutomationPermissionResponseBody {
+export interface PermissionApi_ValidateOpsAutomationPermissionResponseBody {
   /** api返回码 */
   code?: number;
 
@@ -19,23 +19,23 @@ export interface ValidateOpsAutomationPermissionResponseBody {
   msg?: string;
 
   /** 返回数据 */
-  data?: ValidateOpsAutomationPermissionResponseBody_data;
+  data?: PermissionApi_ValidateOpsAutomationPermissionResponseBody_data;
 }
 
 /**
  * @description 校验运维自动化系统权限
  * @endpoint GET /api/v1/permission/validate
  */
-export const validateOpsAutomationPermission = (
-  params: ValidateOpsAutomationPermissionRequestParams,
+export const PermissionApi_validateOpsAutomationPermission = (
+  params: PermissionApi_ValidateOpsAutomationPermissionRequestParams,
   options?: HttpOptions
-): Promise<ValidateOpsAutomationPermissionResponseBody> =>
-  /**! @contract easyops.api.permission.permission.ValidateOpsAutomationPermission */ http.get<ValidateOpsAutomationPermissionResponseBody>(
+): Promise<PermissionApi_ValidateOpsAutomationPermissionResponseBody> =>
+  /**! @contract easyops.api.permission.permission.ValidateOpsAutomationPermission */ http.get<PermissionApi_ValidateOpsAutomationPermissionResponseBody>(
     "api/gateway/permission.permission.ValidateOpsAutomationPermission/api/v1/permission/validate",
     { ...options, params }
   );
 
-export interface ValidateOpsAutomationPermissionResponseBody_data {
+export interface PermissionApi_ValidateOpsAutomationPermissionResponseBody_data {
   /** 是否鉴权成功 */
   accepted?: boolean;
 

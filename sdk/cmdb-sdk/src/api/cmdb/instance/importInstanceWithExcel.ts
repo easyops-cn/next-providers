@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface ImportInstanceWithExcelRequestBody {
+export interface InstanceApi_ImportInstanceWithExcelRequestBody {
   /** 导入实例的字段,作为更新/创建依据 */
   keys: string[];
 
@@ -12,7 +12,7 @@ export interface ImportInstanceWithExcelRequestBody {
   relation_operation?: "set" | "append";
 }
 
-export interface ImportInstanceWithExcelResponseBody {
+export interface InstanceApi_ImportInstanceWithExcelResponseBody {
   /** 成功插入数量 */
   insert_count: number;
 
@@ -23,18 +23,18 @@ export interface ImportInstanceWithExcelResponseBody {
   failed_count: number;
 
   /** 失败数据 */
-  data: ImportInstanceWithExcelResponseBody_data_item[];
+  data: InstanceApi_ImportInstanceWithExcelResponseBody_data_item[];
 }
 
 /**
  * @description 使用excel文件导入实例 (此接口以multipart/form-data方式提交数据)
  * @endpoint POST /import/object/:object_id/instance/excel
  */
-export const importInstanceWithExcel = async (
+export const InstanceApi_importInstanceWithExcel = async (
   object_id: string | number,
-  data: ImportInstanceWithExcelRequestBody,
+  data: InstanceApi_ImportInstanceWithExcelRequestBody,
   options?: HttpOptions
-): Promise<ImportInstanceWithExcelResponseBody> => {
+): Promise<InstanceApi_ImportInstanceWithExcelResponseBody> => {
   /**! @contract easyops.api.cmdb.instance.ImportInstanceWithExcel */ const _formData = new FormData();
   for (const [key, value] of Object.entries(data)) {
     if (Array.isArray(value)) {
@@ -47,7 +47,9 @@ export const importInstanceWithExcel = async (
     }
   }
   return (
-    await http.post<ResponseBodyWrapper<ImportInstanceWithExcelResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<InstanceApi_ImportInstanceWithExcelResponseBody>
+    >(
       `api/gateway/cmdb.instance.ImportInstanceWithExcel/import/object/${object_id}/instance/excel`,
       _formData,
       options
@@ -55,7 +57,7 @@ export const importInstanceWithExcel = async (
   ).data;
 };
 
-export interface ImportInstanceWithExcelResponseBody_data_item {
+export interface InstanceApi_ImportInstanceWithExcelResponseBody_data_item {
   /** 错误码 */
   code?: number;
 

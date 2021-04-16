@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelMetrics } from "../../../model/monitor";
 
-export interface ListMetricsRequestParams {
+export interface DataNameApi_ListMetricsRequestParams {
   /** 页数 */
   page?: number;
 
@@ -9,7 +9,7 @@ export interface ListMetricsRequestParams {
   page_size?: number;
 }
 
-export interface ListMetricsResponseBody {
+export interface DataNameApi_ListMetricsResponseBody {
   /** 返回码 */
   code: number;
 
@@ -33,11 +33,11 @@ export interface ListMetricsResponseBody {
  * @description 获取指标表列表
  * @endpoint GET /api/v1/collector/general_config
  */
-export const listMetrics = (
-  params: ListMetricsRequestParams,
+export const DataNameApi_listMetrics = (
+  params: DataNameApi_ListMetricsRequestParams,
   options?: HttpOptions
-): Promise<ListMetricsResponseBody> =>
-  /**! @contract easyops.api.monitor.data_name.ListMetrics */ http.get<ListMetricsResponseBody>(
+): Promise<DataNameApi_ListMetricsResponseBody> =>
+  /**! @contract easyops.api.monitor.data_name.ListMetrics */ http.get<DataNameApi_ListMetricsResponseBody>(
     "api/gateway/monitor.data_name.ListMetrics/api/v1/collector/general_config",
     { ...options, params }
   );

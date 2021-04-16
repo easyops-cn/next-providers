@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface PermissionDeniedReturnSuccessValidateCmdbPermissionRequestParams {
+export interface PermissionApi_PermissionDeniedReturnSuccessValidateCmdbPermissionRequestParams {
   /** 需要鉴权的用户名 */
   user: string;
 
@@ -18,7 +18,7 @@ export interface PermissionDeniedReturnSuccessValidateCmdbPermissionRequestParam
   validate_action_only?: boolean;
 }
 
-export interface PermissionDeniedReturnSuccessValidateCmdbPermissionResponseBody {
+export interface PermissionApi_PermissionDeniedReturnSuccessValidateCmdbPermissionResponseBody {
   /** 鉴权返回码. 0 - 有权限, 901 - 权限角色不满足, 902 - 权限依赖资源不满足 */
   validate_code?: 0 | 901 | 902;
 }
@@ -27,13 +27,13 @@ export interface PermissionDeniedReturnSuccessValidateCmdbPermissionResponseBody
  * @description 校验cmdb权限(注意：如果用户没有权限，这个接口也会返回成功，不会返回403)
  * @endpoint GET /api/v1/permission/permission-denied-return-success-validate
  */
-export const permissionDeniedReturnSuccessValidateCmdbPermission = async (
-  params: PermissionDeniedReturnSuccessValidateCmdbPermissionRequestParams,
+export const PermissionApi_permissionDeniedReturnSuccessValidateCmdbPermission = async (
+  params: PermissionApi_PermissionDeniedReturnSuccessValidateCmdbPermissionRequestParams,
   options?: HttpOptions
-): Promise<PermissionDeniedReturnSuccessValidateCmdbPermissionResponseBody> =>
+): Promise<PermissionApi_PermissionDeniedReturnSuccessValidateCmdbPermissionResponseBody> =>
   /**! @contract easyops.api.permission.permission.PermissionDeniedReturnSuccessValidateCmdbPermission */ (
     await http.get<
-      ResponseBodyWrapper<PermissionDeniedReturnSuccessValidateCmdbPermissionResponseBody>
+      ResponseBodyWrapper<PermissionApi_PermissionDeniedReturnSuccessValidateCmdbPermissionResponseBody>
     >(
       "api/gateway/permission.permission.PermissionDeniedReturnSuccessValidateCmdbPermission/api/v1/permission/permission-denied-return-success-validate",
       { ...options, params }

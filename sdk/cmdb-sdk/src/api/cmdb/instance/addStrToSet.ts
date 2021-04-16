@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface AddStrToSetRequestBody {
+export interface InstanceApi_AddStrToSetRequestBody {
   /** 属性key(仅支持arr类型属性) */
   attr_id: string;
 
@@ -12,26 +12,26 @@ export interface AddStrToSetRequestBody {
   values: string[];
 }
 
-export type AddStrToSetResponseBody = AddStrToSetResponseBody_item[];
+export type InstanceApi_AddStrToSetResponseBody = InstanceApi_AddStrToSetResponseBody_item[];
 
 /**
  * @description append数据到实例arr属性内(set) (append数据到实例arr属性内,数组中已存在此值的话,不会被append进去)
  * @endpoint POST /object/:objectId/instance/add_str_to_set
  */
-export const addStrToSet = async (
+export const InstanceApi_addStrToSet = async (
   objectId: string | number,
-  data: AddStrToSetRequestBody,
+  data: InstanceApi_AddStrToSetRequestBody,
   options?: HttpOptions
-): Promise<AddStrToSetResponseBody> =>
+): Promise<InstanceApi_AddStrToSetResponseBody> =>
   /**! @contract easyops.api.cmdb.instance.AddStrToSet */ (
-    await http.post<ResponseBodyWrapper<AddStrToSetResponseBody>>(
+    await http.post<ResponseBodyWrapper<InstanceApi_AddStrToSetResponseBody>>(
       `api/gateway/cmdb.instance.AddStrToSet/object/${objectId}/instance/add_str_to_set`,
       data,
       options
     )
   ).data;
 
-export interface AddStrToSetResponseBody_item {
+export interface InstanceApi_AddStrToSetResponseBody_item {
   /** 实例Id */
   instanceId: string;
 

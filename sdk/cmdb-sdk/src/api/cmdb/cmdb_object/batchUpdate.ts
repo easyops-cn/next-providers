@@ -1,12 +1,12 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelObjectBasicInfo } from "../../../model/cmdb";
 
-export interface BatchUpdateRequestBody {
+export interface CmdbObjectApi_BatchUpdateRequestBody {
   /** body */
-  data?: BatchUpdateRequestBody_data_item[];
+  data?: CmdbObjectApi_BatchUpdateRequestBody_data_item[];
 }
 
-export interface BatchUpdateResponseBody {
+export interface CmdbObjectApi_BatchUpdateResponseBody {
   /** 返回码 */
   code?: number;
 
@@ -17,32 +17,32 @@ export interface BatchUpdateResponseBody {
   message?: string;
 
   /** 返回数据 */
-  data?: BatchUpdateResponseBody_data_item[];
+  data?: CmdbObjectApi_BatchUpdateResponseBody_data_item[];
 }
 
 /**
  * @description 批量更新模型
  * @endpoint PUT /batch/object
  */
-export const batchUpdate = (
-  data: BatchUpdateRequestBody,
+export const CmdbObjectApi_batchUpdate = (
+  data: CmdbObjectApi_BatchUpdateRequestBody,
   options?: HttpOptions
-): Promise<BatchUpdateResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.BatchUpdate */ http.put<BatchUpdateResponseBody>(
+): Promise<CmdbObjectApi_BatchUpdateResponseBody> =>
+  /**! @contract easyops.api.cmdb.cmdb_object.BatchUpdate */ http.put<CmdbObjectApi_BatchUpdateResponseBody>(
     "api/gateway/cmdb.cmdb_object.BatchUpdate/batch/object",
     data,
     options
   );
 
-export interface BatchUpdateRequestBody_data_item {
+export interface CmdbObjectApi_BatchUpdateRequestBody_data_item {
   /** 资源模型ID */
   objectId?: string;
 
   /** 模型信息 */
-  info?: BatchUpdateRequestBody_data_item_info;
+  info?: CmdbObjectApi_BatchUpdateRequestBody_data_item_info;
 }
 
-export interface BatchUpdateResponseBody_data_item {
+export interface CmdbObjectApi_BatchUpdateResponseBody_data_item {
   /** 模型Id */
   objectId?: string;
 
@@ -53,7 +53,7 @@ export interface BatchUpdateResponseBody_data_item {
   message?: string;
 }
 
-export interface BatchUpdateRequestBody_data_item_info {
+export interface CmdbObjectApi_BatchUpdateRequestBody_data_item_info {
   /** 名称 */
   name?: string;
 

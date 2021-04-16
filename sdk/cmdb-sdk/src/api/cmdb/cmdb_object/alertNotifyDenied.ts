@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelNotifyDenied } from "../../../model/cmdb";
 
-export interface AlertNotifyDeniedRequestBody {
+export interface CmdbObjectApi_AlertNotifyDeniedRequestBody {
   /** 当为 true 时，将会忽略生成变更记录 */
   notifyDenied: boolean;
 
@@ -16,9 +16,9 @@ export interface AlertNotifyDeniedRequestBody {
  * @description 模型,属性及关系变更记录配置
  * @endpoint post /object_notify_denied/:object_id
  */
-export const alertNotifyDenied = (
+export const CmdbObjectApi_alertNotifyDenied = (
   object_id: string | number,
-  data: AlertNotifyDeniedRequestBody,
+  data: CmdbObjectApi_AlertNotifyDeniedRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.cmdb.cmdb_object.AlertNotifyDenied */ http.post<void>(

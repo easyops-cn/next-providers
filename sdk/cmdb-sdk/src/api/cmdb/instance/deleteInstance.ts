@@ -1,25 +1,27 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface DeleteInstanceRequestParams {
+export interface InstanceApi_DeleteInstanceRequestParams {
   /** 是否只返回实例id */
   only_instance_id?: boolean;
 }
 
-export type DeleteInstanceResponseBody = Record<string, any>;
+export type InstanceApi_DeleteInstanceResponseBody = Record<string, any>;
 
 /**
  * @description 删除实例
  * @endpoint DELETE /object/:objectId/instance/:instanceId
  */
-export const deleteInstance = async (
+export const InstanceApi_deleteInstance = async (
   objectId: string | number,
   instanceId: string | number,
-  params: DeleteInstanceRequestParams,
+  params: InstanceApi_DeleteInstanceRequestParams,
   options?: HttpOptions
-): Promise<DeleteInstanceResponseBody> =>
+): Promise<InstanceApi_DeleteInstanceResponseBody> =>
   /**! @contract easyops.api.cmdb.instance.DeleteInstance */ (
-    await http.delete<ResponseBodyWrapper<DeleteInstanceResponseBody>>(
+    await http.delete<
+      ResponseBodyWrapper<InstanceApi_DeleteInstanceResponseBody>
+    >(
       `api/gateway/cmdb.instance.DeleteInstance/object/${objectId}/instance/${instanceId}`,
       { ...options, params }
     )

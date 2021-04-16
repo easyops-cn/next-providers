@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface BatchDeleteArchiveInstanceRequestParams {
+export interface InstanceArchiveApi_BatchDeleteArchiveInstanceRequestParams {
   /** 实例Id,使用逗号分隔 */
   instanceIds: string;
 }
@@ -9,9 +9,9 @@ export interface BatchDeleteArchiveInstanceRequestParams {
  * @description 批量删除归档实例
  * @endpoint DELETE /object/:object_id/instance_archive_instances
  */
-export const batchDeleteArchiveInstance = (
+export const InstanceArchiveApi_batchDeleteArchiveInstance = (
   object_id: string | number,
-  params: BatchDeleteArchiveInstanceRequestParams,
+  params: InstanceArchiveApi_BatchDeleteArchiveInstanceRequestParams,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.cmdb.instance_archive.BatchDeleteArchiveInstance */ http.delete<void>(

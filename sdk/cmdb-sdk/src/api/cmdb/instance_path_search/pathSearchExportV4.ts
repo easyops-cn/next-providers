@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelStrategyPathNode } from "../../../model/cmdb";
 
-export interface PathSearchExportV4RequestBody {
+export interface InstancePathSearchApi_PathSearchExportV4RequestBody {
   /** 查询路径 */
   path: Partial<ModelStrategyPathNode>[];
 
@@ -16,8 +16,8 @@ export interface PathSearchExportV4RequestBody {
  * @description 实例路径查询v4导出excel
  * @endpoint POST /v4/path/_search/export/excel
  */
-export const pathSearchExportV4 = (
-  data: PathSearchExportV4RequestBody,
+export const InstancePathSearchApi_pathSearchExportV4 = (
+  data: InstancePathSearchApi_PathSearchExportV4RequestBody,
   options?: HttpOptions
 ): Promise<Blob> =>
   /**! @contract easyops.api.cmdb.instance_path_search.PathSearchExportV4 */ http.post<Blob>(

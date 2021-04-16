@@ -6,7 +6,7 @@ import {
 } from "../../../model/cmdb";
 
 /** 模型 */
-export interface CheckModelRequestBody {
+export interface ModelApi_CheckModelRequestBody {
   /** model instanceId */
   instanceId?: string;
 
@@ -17,26 +17,27 @@ export interface CheckModelRequestBody {
   objectId?: string;
 
   /** attrList */
-  attrList?: (Partial<ModelObjectAttr> & CheckModelRequestBody_attrList_item)[];
+  attrList?: (Partial<ModelObjectAttr> &
+    ModelApi_CheckModelRequestBody_attrList_item)[];
 
   /** relation_list */
   relation_list?: (Partial<ModelObjectRelation> &
-    CheckModelRequestBody_relation_list_item)[];
+    ModelApi_CheckModelRequestBody_relation_list_item)[];
 
   /** indexList */
   indexList?: (Partial<ModelObjectIndex> &
-    CheckModelRequestBody_indexList_item)[];
+    ModelApi_CheckModelRequestBody_indexList_item)[];
 
   /** 命名空间 */
-  space?: CheckModelRequestBody_space;
+  space?: ModelApi_CheckModelRequestBody_space;
 }
 
 /**
  * @description 校验模型
  * @endpoint POST /api/v1/model/check
  */
-export const checkModel = (
-  data: CheckModelRequestBody,
+export const ModelApi_checkModel = (
+  data: ModelApi_CheckModelRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.next_builder.model.CheckModel */ http.post<void>(
@@ -45,22 +46,22 @@ export const checkModel = (
     options
   );
 
-export interface CheckModelRequestBody_attrList_item {
+export interface ModelApi_CheckModelRequestBody_attrList_item {
   /** attr instanceId */
   instanceId?: string;
 }
 
-export interface CheckModelRequestBody_relation_list_item {
+export interface ModelApi_CheckModelRequestBody_relation_list_item {
   /** relation instanceId */
   instanceId?: string;
 }
 
-export interface CheckModelRequestBody_indexList_item {
+export interface ModelApi_CheckModelRequestBody_indexList_item {
   /** index instanceId */
   instanceId?: string;
 }
 
-export interface CheckModelRequestBody_space {
+export interface ModelApi_CheckModelRequestBody_space {
   /** 命名空间instanceId */
   instanceId?: string;
 }

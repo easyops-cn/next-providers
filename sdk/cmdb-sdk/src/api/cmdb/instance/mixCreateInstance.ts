@@ -1,12 +1,12 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface MixCreateInstanceRequestBody {
+export interface InstanceApi_MixCreateInstanceRequestBody {
   /** 实例列表,实例数据里需要有_object_id字段 */
   data: Record<string, any>[];
 }
 
-export interface MixCreateInstanceResponseBody {
+export interface InstanceApi_MixCreateInstanceResponseBody {
   /** 实例Id列表,与请求的顺序一致 */
   list: string[];
 }
@@ -15,12 +15,14 @@ export interface MixCreateInstanceResponseBody {
  * @description 批量创建实例 (提供多模型实例混合创建接口,不支持关系创建(此接口是保证事务的))
  * @endpoint POST /mix/object/instance/create
  */
-export const mixCreateInstance = async (
-  data: MixCreateInstanceRequestBody,
+export const InstanceApi_mixCreateInstance = async (
+  data: InstanceApi_MixCreateInstanceRequestBody,
   options?: HttpOptions
-): Promise<MixCreateInstanceResponseBody> =>
+): Promise<InstanceApi_MixCreateInstanceResponseBody> =>
   /**! @contract easyops.api.cmdb.instance.MixCreateInstance */ (
-    await http.post<ResponseBodyWrapper<MixCreateInstanceResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<InstanceApi_MixCreateInstanceResponseBody>
+    >(
       "api/gateway/cmdb.instance.MixCreateInstance/mix/object/instance/create",
       data,
       options

@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface GetInstanceAuthorizersFormatRequestParams {
+export interface InheritanceApi_GetInstanceAuthorizersFormatRequestParams {
   /** 白名单名称，多个用,分隔 */
   authorizersKeys: string;
 
@@ -9,9 +9,9 @@ export interface GetInstanceAuthorizersFormatRequestParams {
   fields?: string;
 }
 
-export interface GetInstanceAuthorizersFormatResponseBody {
+export interface InheritanceApi_GetInstanceAuthorizersFormatResponseBody {
   /** 实例白名单 */
-  authorizers?: GetInstanceAuthorizersFormatResponseBody_authorizers_item[];
+  authorizers?: InheritanceApi_GetInstanceAuthorizersFormatResponseBody_authorizers_item[];
 
   /** 实例数据 */
   instanceData?: Record<string, any>;
@@ -21,22 +21,22 @@ export interface GetInstanceAuthorizersFormatResponseBody {
  * @description 获取实例的白名单,返回数据结构化
  * @endpoint GET /object/:objectId/instance/:instanceId/authorizers_format
  */
-export const getInstanceAuthorizersFormat = async (
+export const InheritanceApi_getInstanceAuthorizersFormat = async (
   objectId: string | number,
   instanceId: string | number,
-  params: GetInstanceAuthorizersFormatRequestParams,
+  params: InheritanceApi_GetInstanceAuthorizersFormatRequestParams,
   options?: HttpOptions
-): Promise<GetInstanceAuthorizersFormatResponseBody> =>
+): Promise<InheritanceApi_GetInstanceAuthorizersFormatResponseBody> =>
   /**! @contract easyops.api.permission.inheritance.GetInstanceAuthorizersFormat */ (
     await http.get<
-      ResponseBodyWrapper<GetInstanceAuthorizersFormatResponseBody>
+      ResponseBodyWrapper<InheritanceApi_GetInstanceAuthorizersFormatResponseBody>
     >(
       `api/gateway/permission.inheritance.GetInstanceAuthorizersFormat/object/${objectId}/instance/${instanceId}/authorizers_format`,
       { ...options, params }
     )
   ).data;
 
-export interface GetInstanceAuthorizersFormatResponseBody_authorizers_item {
+export interface InheritanceApi_GetInstanceAuthorizersFormatResponseBody_authorizers_item {
   /** 白名单名称 */
   authorizersKey?: string;
 

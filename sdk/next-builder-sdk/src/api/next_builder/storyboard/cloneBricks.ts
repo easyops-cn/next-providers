@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface CloneBricksRequestBody {
+export interface StoryboardApi_CloneBricksRequestBody {
   /** 源构件id */
   sourceBrickId: string;
 
@@ -21,8 +21,8 @@ export interface CloneBricksRequestBody {
  * @description 拷贝构件 (拷贝构件)
  * @endpoint POST /api/v1/nextBuilder/clone
  */
-export const cloneBricks = (
-  data: CloneBricksRequestBody,
+export const StoryboardApi_cloneBricks = (
+  data: StoryboardApi_CloneBricksRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.next_builder.storyboard.CloneBricks */ http.post<void>(

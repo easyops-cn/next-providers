@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface DeleteAlertRuleResponseBody {
+export interface AlertRuleApi_DeleteAlertRuleResponseBody {
   /** code */
   code?: number;
 
@@ -15,11 +15,11 @@ export interface DeleteAlertRuleResponseBody {
  * @description 删除告警规则
  * @endpoint DELETE /api/v3/alert_rule/config/:id
  */
-export const deleteAlertRule = (
+export const AlertRuleApi_deleteAlertRule = (
   id: string | number,
   options?: HttpOptions
-): Promise<DeleteAlertRuleResponseBody> =>
-  /**! @contract easyops.api.monitor.alert_rule.DeleteAlertRule */ http.delete<DeleteAlertRuleResponseBody>(
+): Promise<AlertRuleApi_DeleteAlertRuleResponseBody> =>
+  /**! @contract easyops.api.monitor.alert_rule.DeleteAlertRule */ http.delete<AlertRuleApi_DeleteAlertRuleResponseBody>(
     `api/gateway/monitor.alert_rule.DeleteAlertRule/api/v3/alert_rule/config/${id}`,
     options
   );

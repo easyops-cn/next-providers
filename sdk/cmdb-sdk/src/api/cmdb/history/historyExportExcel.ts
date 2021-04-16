@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface HistoryExportExcelRequestParams {
+export interface HistoryApi_HistoryExportExcelRequestParams {
   /** 模型Id */
   object_id?: string;
 
@@ -42,8 +42,8 @@ export interface HistoryExportExcelRequestParams {
  * @description 变更记录导出excel接口
  * @endpoint GET /history/export/excel
  */
-export const historyExportExcel = (
-  params: HistoryExportExcelRequestParams,
+export const HistoryApi_historyExportExcel = (
+  params: HistoryApi_HistoryExportExcelRequestParams,
   options?: HttpOptions
 ): Promise<Blob> =>
   /**! @contract easyops.api.cmdb.history.HistoryExportExcel */ http.get<Blob>(

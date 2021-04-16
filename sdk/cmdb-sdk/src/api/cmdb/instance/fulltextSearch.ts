@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface FulltextSearchRequestParams {
+export interface InstanceApi_FulltextSearchRequestParams {
   /** 页码 */
   page?: number;
 
@@ -18,7 +18,7 @@ export interface FulltextSearchRequestParams {
   prefixSearch?: "true" | "false";
 }
 
-export interface FulltextSearchResponseBody {
+export interface InstanceApi_FulltextSearchResponseBody {
   /** 实例数据 */
   list: Record<string, any>[];
 
@@ -39,12 +39,12 @@ export interface FulltextSearchResponseBody {
  * @description 全文搜索
  * @endpoint GET /fulltext/_search
  */
-export const fulltextSearch = async (
-  params: FulltextSearchRequestParams,
+export const InstanceApi_fulltextSearch = async (
+  params: InstanceApi_FulltextSearchRequestParams,
   options?: HttpOptions
-): Promise<FulltextSearchResponseBody> =>
+): Promise<InstanceApi_FulltextSearchResponseBody> =>
   /**! @contract easyops.api.cmdb.instance.FulltextSearch */ (
-    await http.get<ResponseBodyWrapper<FulltextSearchResponseBody>>(
+    await http.get<ResponseBodyWrapper<InstanceApi_FulltextSearchResponseBody>>(
       "api/gateway/cmdb.instance.FulltextSearch/fulltext/_search",
       { ...options, params }
     )

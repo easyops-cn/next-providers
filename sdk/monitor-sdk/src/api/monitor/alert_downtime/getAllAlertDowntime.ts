@@ -1,12 +1,12 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelAlertDowntime } from "../../../model/monitor";
 
-export interface GetAllAlertDowntimeRequestParams {
+export interface AlertDowntimeApi_GetAllAlertDowntimeRequestParams {
   /** 规则id, 多个用逗号分隔符 */
   alert_rule_id__in?: string;
 }
 
-export interface GetAllAlertDowntimeResponseBody {
+export interface AlertDowntimeApi_GetAllAlertDowntimeResponseBody {
   /** code */
   code?: number;
 
@@ -30,11 +30,11 @@ export interface GetAllAlertDowntimeResponseBody {
  * @description 获取告警屏蔽规则列表
  * @endpoint GET /api/v1/alert_downtime/config
  */
-export const getAllAlertDowntime = (
-  params: GetAllAlertDowntimeRequestParams,
+export const AlertDowntimeApi_getAllAlertDowntime = (
+  params: AlertDowntimeApi_GetAllAlertDowntimeRequestParams,
   options?: HttpOptions
-): Promise<GetAllAlertDowntimeResponseBody> =>
-  /**! @contract easyops.api.monitor.alert_downtime.GetAllAlertDowntime */ http.get<GetAllAlertDowntimeResponseBody>(
+): Promise<AlertDowntimeApi_GetAllAlertDowntimeResponseBody> =>
+  /**! @contract easyops.api.monitor.alert_downtime.GetAllAlertDowntime */ http.get<AlertDowntimeApi_GetAllAlertDowntimeResponseBody>(
     "api/gateway/monitor.alert_downtime.GetAllAlertDowntime/api/v1/alert_downtime/config",
     { ...options, params }
   );

@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelMicroappapiorchestration } from "../../../model/micro_app";
 
-export interface ExportApisRequestBody {
+export interface ApisApi_ExportApisRequestBody {
   /** cmdb实例标识 */
   instanceId?: string;
 
@@ -13,8 +13,8 @@ export interface ExportApisRequestBody {
  * @description 同步api编排到开发环境
  * @endpoint POST /api/v1/apis/export
  */
-export const exportApis = (
-  data: ExportApisRequestBody,
+export const ApisApi_exportApis = (
+  data: ApisApi_ExportApisRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.next_builder.apis.ExportApis */ http.post<void>(

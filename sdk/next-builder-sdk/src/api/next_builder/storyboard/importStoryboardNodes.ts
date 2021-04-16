@@ -2,20 +2,20 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelInstalledMicroApp } from "../../../model/micro_app";
 import { ModelStoryboardNode } from "../../../model/next_builder";
 
-export interface ImportStoryboardNodesRequestBody {
+export interface StoryboardApi_ImportStoryboardNodesRequestBody {
   /** Project */
-  project?: ImportStoryboardNodesRequestBody_project;
+  project?: StoryboardApi_ImportStoryboardNodesRequestBody_project;
 
   /** 节点列表 */
-  nodes: ImportStoryboardNodesRequestBody_nodes_item[];
+  nodes: StoryboardApi_ImportStoryboardNodesRequestBody_nodes_item[];
 }
 
 /**
  * @description 批量导入storyboard节点
  * @endpoint POST /api/v1/nextBuilder/importNodes
  */
-export const importStoryboardNodes = (
-  data: ImportStoryboardNodesRequestBody,
+export const StoryboardApi_importStoryboardNodes = (
+  data: StoryboardApi_ImportStoryboardNodesRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.next_builder.storyboard.ImportStoryboardNodes */ http.post<void>(
@@ -24,7 +24,7 @@ export const importStoryboardNodes = (
     options
   );
 
-export interface ImportStoryboardNodesRequestBody_project {
+export interface StoryboardApi_ImportStoryboardNodesRequestBody_project {
   /** projectId */
   projectId?: string;
 
@@ -32,10 +32,10 @@ export interface ImportStoryboardNodesRequestBody_project {
   dependsAll?: boolean;
 
   /** 节点列表 */
-  app?: ImportStoryboardNodesRequestBody_project_app;
+  app?: StoryboardApi_ImportStoryboardNodesRequestBody_project_app;
 }
 
-export interface ImportStoryboardNodesRequestBody_nodes_item {
+export interface StoryboardApi_ImportStoryboardNodesRequestBody_nodes_item {
   /** 节点标识 */
   id?: string;
 
@@ -71,7 +71,7 @@ export interface ImportStoryboardNodesRequestBody_nodes_item {
   parentId?: string;
 }
 
-export interface ImportStoryboardNodesRequestBody_project_app {
+export interface StoryboardApi_ImportStoryboardNodesRequestBody_project_app {
   /** 菜单中显示的图标 */
   menuIcon?: ModelInstalledMicroApp["menuIcon"];
 

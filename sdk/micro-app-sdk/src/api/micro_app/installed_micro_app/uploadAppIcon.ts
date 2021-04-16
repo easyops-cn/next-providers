@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface UploadAppIconRequestBody {
+export interface InstalledMicroAppApi_UploadAppIconRequestBody {
   /** 小产品id */
   appId?: string;
 
@@ -12,8 +12,8 @@ export interface UploadAppIconRequestBody {
  * @description 上传app图标
  * @endpoint POST /api/v1/micro-app/upload-app-icon
  */
-export const uploadAppIcon = (
-  data: UploadAppIconRequestBody,
+export const InstalledMicroAppApi_uploadAppIcon = (
+  data: InstalledMicroAppApi_UploadAppIconRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.micro_app.installed_micro_app.UploadAppIcon */ http.post<void>(

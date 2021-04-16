@@ -1,6 +1,6 @@
 {
   "name": "@next-sdk/micro-app-sdk",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "SDK for Micro App",
   "homepage": "https://github.com/easyops-cn/next-providers/tree/master/sdk/micro-app-sdk",
   "license": "GPL-3.0",

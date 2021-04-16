@@ -1,32 +1,15 @@
-import * as BusinessInstanceApi from "./api/cmdb/business_instance";
-import * as CmdbObjectApi from "./api/cmdb/cmdb_object";
-import * as HistoryApi from "./api/cmdb/history";
-import * as IndexApi from "./api/cmdb/index";
-import * as InitializationApi from "./api/cmdb/initialization";
-import * as InstanceApi from "./api/cmdb/instance";
-import * as InstanceArchiveApi from "./api/cmdb/instance_archive";
-import * as InstanceGraphApi from "./api/cmdb/instance_graph";
-import * as InstancePathSearchApi from "./api/cmdb/instance_path_search";
-import * as InstanceRelationApi from "./api/cmdb/instance_relation";
-import * as InstanceTreeApi from "./api/cmdb/instance_tree";
-import * as ObjectAttributeApi from "./api/cmdb/object_attribute";
-import * as ObjectRelationApi from "./api/cmdb/object_relation";
-import * as TerraformApi from "./api/cmdb/terraform";
-import * as CmdbModels from "./model/cmdb";
-export {
-  BusinessInstanceApi,
-  CmdbObjectApi,
-  HistoryApi,
-  IndexApi,
-  InitializationApi,
-  InstanceApi,
-  InstanceArchiveApi,
-  InstanceGraphApi,
-  InstancePathSearchApi,
-  InstanceRelationApi,
-  InstanceTreeApi,
-  ObjectAttributeApi,
-  ObjectRelationApi,
-  TerraformApi,
-  CmdbModels,
-};
+export * from "./api/cmdb/business_instance";
+export * from "./api/cmdb/cmdb_object";
+export * from "./api/cmdb/history";
+export * from "./api/cmdb/index";
+export * from "./api/cmdb/initialization";
+export * from "./api/cmdb/instance";
+export * from "./api/cmdb/instance_archive";
+export * from "./api/cmdb/instance_graph";
+export * from "./api/cmdb/instance_path_search";
+export * from "./api/cmdb/instance_relation";
+export * from "./api/cmdb/instance_tree";
+export * from "./api/cmdb/object_attribute";
+export * from "./api/cmdb/object_relation";
+export * from "./api/cmdb/terraform";
+export * as CmdbModels from "./model/cmdb";

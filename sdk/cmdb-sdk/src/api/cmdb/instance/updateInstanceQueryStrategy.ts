@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelInstanceQueryStrategy } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface UpdateInstanceQueryStrategyRequestBody {
+export interface InstanceApi_UpdateInstanceQueryStrategyRequestBody {
   /** 策略名称 */
   name: string;
 
@@ -16,21 +16,21 @@ export interface UpdateInstanceQueryStrategyRequestBody {
   query?: Record<string, any>;
 }
 
-export type UpdateInstanceQueryStrategyResponseBody = Partial<ModelInstanceQueryStrategy>;
+export type InstanceApi_UpdateInstanceQueryStrategyResponseBody = Partial<ModelInstanceQueryStrategy>;
 
 /**
  * @description 更新实例查询策略
  * @endpoint PUT /object/:objectId/query/strategy/:strategyId
  */
-export const updateInstanceQueryStrategy = async (
+export const InstanceApi_updateInstanceQueryStrategy = async (
   objectId: string | number,
   strategyId: string | number,
-  data: UpdateInstanceQueryStrategyRequestBody,
+  data: InstanceApi_UpdateInstanceQueryStrategyRequestBody,
   options?: HttpOptions
-): Promise<UpdateInstanceQueryStrategyResponseBody> =>
+): Promise<InstanceApi_UpdateInstanceQueryStrategyResponseBody> =>
   /**! @contract easyops.api.cmdb.instance.UpdateInstanceQueryStrategy */ (
     await http.put<
-      ResponseBodyWrapper<UpdateInstanceQueryStrategyResponseBody>
+      ResponseBodyWrapper<InstanceApi_UpdateInstanceQueryStrategyResponseBody>
     >(
       `api/gateway/cmdb.instance.UpdateInstanceQueryStrategy/object/${objectId}/query/strategy/${strategyId}`,
       data,

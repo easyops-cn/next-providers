@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelAlertRule } from "../../../model/monitor";
 
-export interface GetAlertRuleListRequestParams {
+export interface AlertRuleApi_GetAlertRuleListRequestParams {
   /** 页数 */
   page?: number;
 
@@ -21,7 +21,7 @@ export interface GetAlertRuleListRequestParams {
   XXX_RestFieldMask?: string[];
 }
 
-export interface GetAlertRuleListResponseBody {
+export interface AlertRuleApi_GetAlertRuleListResponseBody {
   /** code */
   code?: number;
 
@@ -45,11 +45,11 @@ export interface GetAlertRuleListResponseBody {
  * @description 获取告警规则列表
  * @endpoint GET /api/v3/alert_rule/config
  */
-export const getAlertRuleList = (
-  params: GetAlertRuleListRequestParams,
+export const AlertRuleApi_getAlertRuleList = (
+  params: AlertRuleApi_GetAlertRuleListRequestParams,
   options?: HttpOptions
-): Promise<GetAlertRuleListResponseBody> =>
-  /**! @contract easyops.api.monitor.alert_rule.GetAlertRuleList */ http.get<GetAlertRuleListResponseBody>(
+): Promise<AlertRuleApi_GetAlertRuleListResponseBody> =>
+  /**! @contract easyops.api.monitor.alert_rule.GetAlertRuleList */ http.get<AlertRuleApi_GetAlertRuleListResponseBody>(
     "api/gateway/monitor.alert_rule.GetAlertRuleList/api/v3/alert_rule/config",
     { ...options, params }
   );

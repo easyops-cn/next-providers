@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelRole } from "../../../model/permission";
 
-export interface GetPermissionRoleListRequestParams {
+export interface RoleApi_GetPermissionRoleListRequestParams {
   /** 用户名 */
   user?: string;
 
@@ -18,7 +18,7 @@ export interface GetPermissionRoleListRequestParams {
   XXX_RestFieldMask?: string[];
 }
 
-export interface GetPermissionRoleListResponseBody {
+export interface RoleApi_GetPermissionRoleListResponseBody {
   /** 返回码 */
   code?: number;
 
@@ -29,23 +29,24 @@ export interface GetPermissionRoleListResponseBody {
   page_size?: number;
 
   /** 角色列表 */
-  data?: (Partial<ModelRole> & GetPermissionRoleListResponseBody_data_item)[];
+  data?: (Partial<ModelRole> &
+    RoleApi_GetPermissionRoleListResponseBody_data_item)[];
 }
 
 /**
  * @description 获取角色权限配置列表
  * @endpoint GET /api/v1/permission_role/config
  */
-export const getPermissionRoleList = (
-  params: GetPermissionRoleListRequestParams,
+export const RoleApi_getPermissionRoleList = (
+  params: RoleApi_GetPermissionRoleListRequestParams,
   options?: HttpOptions
-): Promise<GetPermissionRoleListResponseBody> =>
-  /**! @contract easyops.api.permission.role.GetPermissionRoleList */ http.get<GetPermissionRoleListResponseBody>(
+): Promise<RoleApi_GetPermissionRoleListResponseBody> =>
+  /**! @contract easyops.api.permission.role.GetPermissionRoleList */ http.get<RoleApi_GetPermissionRoleListResponseBody>(
     "api/gateway/permission.role.GetPermissionRoleList/api/v1/permission_role/config",
     { ...options, params }
   );
 
-export interface GetPermissionRoleListResponseBody_data_item {
+export interface RoleApi_GetPermissionRoleListResponseBody_data_item {
   /** 角色禁用菜单列表 */
   forbidden_menu?: string[];
 }

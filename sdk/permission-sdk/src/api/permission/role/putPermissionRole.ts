@@ -1,12 +1,12 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface PutPermissionRoleRequestBody {
+export interface RoleApi_PutPermissionRoleRequestBody {
   /** 角色名 */
   role: string;
 }
 
-export interface PutPermissionRoleResponseBody {
+export interface RoleApi_PutPermissionRoleResponseBody {
   /** 修改用户数量 */
   count?: number;
 }
@@ -15,13 +15,13 @@ export interface PutPermissionRoleResponseBody {
  * @description 修改角色名
  * @endpoint PUT /api/v1/permission_role/rename_role/:id
  */
-export const putPermissionRole = async (
+export const RoleApi_putPermissionRole = async (
   id: string | number,
-  data: PutPermissionRoleRequestBody,
+  data: RoleApi_PutPermissionRoleRequestBody,
   options?: HttpOptions
-): Promise<PutPermissionRoleResponseBody> =>
+): Promise<RoleApi_PutPermissionRoleResponseBody> =>
   /**! @contract easyops.api.permission.role.PutPermissionRole */ (
-    await http.put<ResponseBodyWrapper<PutPermissionRoleResponseBody>>(
+    await http.put<ResponseBodyWrapper<RoleApi_PutPermissionRoleResponseBody>>(
       `api/gateway/permission.role.PutPermissionRole/api/v1/permission_role/rename_role/${id}`,
       data,
       options

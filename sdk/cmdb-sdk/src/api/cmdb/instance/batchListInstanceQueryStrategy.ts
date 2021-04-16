@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelInstanceQueryStrategy } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface BatchListInstanceQueryStrategyRequestParams {
+export interface InstanceApi_BatchListInstanceQueryStrategyRequestParams {
   /** 多个模型ID，以逗号分隔 */
   object_ids?: string;
 
@@ -13,29 +13,29 @@ export interface BatchListInstanceQueryStrategyRequestParams {
   name?: string;
 }
 
-export interface BatchListInstanceQueryStrategyResponseBody {
+export interface InstanceApi_BatchListInstanceQueryStrategyResponseBody {
   /** 各模型的实例查询策略数据 */
-  strategy_data?: BatchListInstanceQueryStrategyResponseBody_strategy_data_item[];
+  strategy_data?: InstanceApi_BatchListInstanceQueryStrategyResponseBody_strategy_data_item[];
 }
 
 /**
  * @description 批量获取实例查询策略列表
  * @endpoint GET /batch/object/query/strategy
  */
-export const batchListInstanceQueryStrategy = async (
-  params: BatchListInstanceQueryStrategyRequestParams,
+export const InstanceApi_batchListInstanceQueryStrategy = async (
+  params: InstanceApi_BatchListInstanceQueryStrategyRequestParams,
   options?: HttpOptions
-): Promise<BatchListInstanceQueryStrategyResponseBody> =>
+): Promise<InstanceApi_BatchListInstanceQueryStrategyResponseBody> =>
   /**! @contract easyops.api.cmdb.instance.BatchListInstanceQueryStrategy */ (
     await http.get<
-      ResponseBodyWrapper<BatchListInstanceQueryStrategyResponseBody>
+      ResponseBodyWrapper<InstanceApi_BatchListInstanceQueryStrategyResponseBody>
     >(
       "api/gateway/cmdb.instance.BatchListInstanceQueryStrategy/batch/object/query/strategy",
       { ...options, params }
     )
   ).data;
 
-export interface BatchListInstanceQueryStrategyResponseBody_strategy_data_item {
+export interface InstanceApi_BatchListInstanceQueryStrategyResponseBody_strategy_data_item {
   /** 模型ID */
   object_id?: string;
 

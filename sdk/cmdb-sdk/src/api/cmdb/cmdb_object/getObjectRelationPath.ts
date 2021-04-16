@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelStrategyPathNodeBasic } from "../../../model/cmdb";
 
-export interface GetObjectRelationPathRequestParams {
+export interface CmdbObjectApi_GetObjectRelationPathRequestParams {
   /** 路径起始资源模型ID */
   src_object_id: string;
 
@@ -27,7 +27,7 @@ export interface GetObjectRelationPathRequestParams {
   show_inherit_node?: boolean;
 }
 
-export interface GetObjectRelationPathResponseBody {
+export interface CmdbObjectApi_GetObjectRelationPathResponseBody {
   /** 返回码 */
   code: number;
 
@@ -38,23 +38,23 @@ export interface GetObjectRelationPathResponseBody {
   message: string;
 
   /** 路径列表 */
-  data: GetObjectRelationPathResponseBody_data_item[];
+  data: CmdbObjectApi_GetObjectRelationPathResponseBody_data_item[];
 }
 
 /**
  * @description 获取资源模型路径列表
  * @endpoint GET /object_relation_path
  */
-export const getObjectRelationPath = (
-  params: GetObjectRelationPathRequestParams,
+export const CmdbObjectApi_getObjectRelationPath = (
+  params: CmdbObjectApi_GetObjectRelationPathRequestParams,
   options?: HttpOptions
-): Promise<GetObjectRelationPathResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.GetObjectRelationPath */ http.get<GetObjectRelationPathResponseBody>(
+): Promise<CmdbObjectApi_GetObjectRelationPathResponseBody> =>
+  /**! @contract easyops.api.cmdb.cmdb_object.GetObjectRelationPath */ http.get<CmdbObjectApi_GetObjectRelationPathResponseBody>(
     "api/gateway/cmdb.cmdb_object.GetObjectRelationPath/object_relation_path",
     { ...options, params }
   );
 
-export interface GetObjectRelationPathResponseBody_data_item {
+export interface CmdbObjectApi_GetObjectRelationPathResponseBody_data_item {
   /** 自动生成哈希id */
   id?: string;
 

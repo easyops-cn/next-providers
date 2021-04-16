@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelCmdbObject, ModelObjectBasicInfo } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface CreateRequestBody {
+export interface CmdbObjectApi_CreateRequestBody {
   /** objectId */
   objectId: string;
 
@@ -52,18 +52,18 @@ export interface CreateRequestBody {
   deleteAuthorizers?: string[];
 }
 
-export type CreateResponseBody = Partial<ModelCmdbObject>;
+export type CmdbObjectApi_CreateResponseBody = Partial<ModelCmdbObject>;
 
 /**
  * @description 创建模型
  * @endpoint POST /object
  */
-export const create = async (
-  data: CreateRequestBody,
+export const CmdbObjectApi_create = async (
+  data: CmdbObjectApi_CreateRequestBody,
   options?: HttpOptions
-): Promise<CreateResponseBody> =>
+): Promise<CmdbObjectApi_CreateResponseBody> =>
   /**! @contract easyops.api.cmdb.cmdb_object.Create */ (
-    await http.post<ResponseBodyWrapper<CreateResponseBody>>(
+    await http.post<ResponseBodyWrapper<CmdbObjectApi_CreateResponseBody>>(
       "api/gateway/cmdb.cmdb_object.Create/object",
       data,
       options

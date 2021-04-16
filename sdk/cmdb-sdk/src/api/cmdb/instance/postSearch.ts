@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface PostSearchRequestBody {
+export interface InstanceApi_PostSearchRequestBody {
   /** e.g.: { name: { $like: '%q%' } }, { $or: [{ name: { $like: '%q%' }}] } */
   query?: Record<string, any>;
 
@@ -30,10 +30,10 @@ export interface PostSearchRequestBody {
   relation_limit?: number;
 
   /** 单独指定关系的limit与sort */
-  limitations?: PostSearchRequestBody_limitations_item[];
+  limitations?: InstanceApi_PostSearchRequestBody_limitations_item[];
 }
 
-export interface PostSearchResponseBody {
+export interface InstanceApi_PostSearchResponseBody {
   /** instance list */
   list?: Record<string, any>[];
 
@@ -51,20 +51,20 @@ export interface PostSearchResponseBody {
  * @description 搜索实例
  * @endpoint POST /object/:objectId/instance/_search
  */
-export const postSearch = async (
+export const InstanceApi_postSearch = async (
   objectId: string | number,
-  data: PostSearchRequestBody,
+  data: InstanceApi_PostSearchRequestBody,
   options?: HttpOptions
-): Promise<PostSearchResponseBody> =>
+): Promise<InstanceApi_PostSearchResponseBody> =>
   /**! @contract easyops.api.cmdb.instance.PostSearch */ (
-    await http.post<ResponseBodyWrapper<PostSearchResponseBody>>(
+    await http.post<ResponseBodyWrapper<InstanceApi_PostSearchResponseBody>>(
       `api/gateway/cmdb.instance.PostSearch/object/${objectId}/instance/_search`,
       data,
       options
     )
   ).data;
 
-export interface PostSearchRequestBody_limitations_item {
+export interface InstanceApi_PostSearchRequestBody_limitations_item {
   /** 关系id， 支持多级关系， 如owner， owner.app */
   field?: string;
 
@@ -72,10 +72,10 @@ export interface PostSearchRequestBody_limitations_item {
   limit?: number;
 
   /** 关系排序 */
-  sort?: PostSearchRequestBody_limitations_item_sort_item[];
+  sort?: InstanceApi_PostSearchRequestBody_limitations_item_sort_item[];
 }
 
-export interface PostSearchRequestBody_limitations_item_sort_item {
+export interface InstanceApi_PostSearchRequestBody_limitations_item_sort_item {
   /** 属性id */
   key?: string;
 

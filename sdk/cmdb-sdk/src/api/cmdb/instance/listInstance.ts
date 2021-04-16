@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface ListInstanceRequestParams {
+export interface InstanceApi_ListInstanceRequestParams {
   /** 页码 */
   page?: number;
 
@@ -18,7 +18,7 @@ export interface ListInstanceRequestParams {
   relation_limit?: number;
 }
 
-export interface ListInstanceResponseBody {
+export interface InstanceApi_ListInstanceResponseBody {
   /** instance list */
   list: Record<string, any>[];
 
@@ -36,13 +36,13 @@ export interface ListInstanceResponseBody {
  * @description 实例分页列表查询
  * @endpoint GET /object/:object_id/instance
  */
-export const listInstance = async (
+export const InstanceApi_listInstance = async (
   object_id: string | number,
-  params: ListInstanceRequestParams,
+  params: InstanceApi_ListInstanceRequestParams,
   options?: HttpOptions
-): Promise<ListInstanceResponseBody> =>
+): Promise<InstanceApi_ListInstanceResponseBody> =>
   /**! @contract easyops.api.cmdb.instance.ListInstance */ (
-    await http.get<ResponseBodyWrapper<ListInstanceResponseBody>>(
+    await http.get<ResponseBodyWrapper<InstanceApi_ListInstanceResponseBody>>(
       `api/gateway/cmdb.instance.ListInstance/object/${object_id}/instance`,
       { ...options, params }
     )

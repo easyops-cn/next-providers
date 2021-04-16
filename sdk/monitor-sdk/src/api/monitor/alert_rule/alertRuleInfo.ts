@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelAlertRule } from "../../../model/monitor";
 
-export interface AlertRuleInfoRequestParams {
+export interface AlertRuleApi_AlertRuleInfoRequestParams {
   /** 告警类型 */
   alert_type_id: string;
 
@@ -12,7 +12,7 @@ export interface AlertRuleInfoRequestParams {
   alert_sub_type_id: string;
 }
 
-export interface AlertRuleInfoResponseBody {
+export interface AlertRuleApi_AlertRuleInfoResponseBody {
   /** code */
   code?: number;
 
@@ -29,46 +29,46 @@ export interface AlertRuleInfoResponseBody {
   msg?: string;
 
   /** data */
-  data?: AlertRuleInfoResponseBody_data;
+  data?: AlertRuleApi_AlertRuleInfoResponseBody_data;
 }
 
 /**
  * @description 根据告警类型，表名获取相关信息
  * @endpoint GET /api/v3/alert_rule/info
  */
-export const alertRuleInfo = (
-  params: AlertRuleInfoRequestParams,
+export const AlertRuleApi_alertRuleInfo = (
+  params: AlertRuleApi_AlertRuleInfoRequestParams,
   options?: HttpOptions
-): Promise<AlertRuleInfoResponseBody> =>
-  /**! @contract easyops.api.monitor.alert_rule.AlertRuleInfo */ http.get<AlertRuleInfoResponseBody>(
+): Promise<AlertRuleApi_AlertRuleInfoResponseBody> =>
+  /**! @contract easyops.api.monitor.alert_rule.AlertRuleInfo */ http.get<AlertRuleApi_AlertRuleInfoResponseBody>(
     "api/gateway/monitor.alert_rule.AlertRuleInfo/api/v3/alert_rule/info",
     { ...options, params }
   );
 
-export interface AlertRuleInfoResponseBody_data {
+export interface AlertRuleApi_AlertRuleInfoResponseBody_data {
   /** 告警通知模板 */
   templates?: ModelAlertRule["templates"];
 
   /** 内置变量 */
-  macros?: AlertRuleInfoResponseBody_data_macros_item[];
+  macros?: AlertRuleApi_AlertRuleInfoResponseBody_data_macros_item[];
 
   /** 关联指标列表 */
-  metrics?: AlertRuleInfoResponseBody_data_metrics_item[];
+  metrics?: AlertRuleApi_AlertRuleInfoResponseBody_data_metrics_item[];
 
   /** 关联维度列表 */
-  dims?: AlertRuleInfoResponseBody_data_dims_item[];
+  dims?: AlertRuleApi_AlertRuleInfoResponseBody_data_dims_item[];
 
   /** 通知用户组列表 */
-  receiver_owner_groups?: AlertRuleInfoResponseBody_data_receiver_owner_groups_item[];
+  receiver_owner_groups?: AlertRuleApi_AlertRuleInfoResponseBody_data_receiver_owner_groups_item[];
 
   /** 自定义变量列表 */
-  custom_fields?: AlertRuleInfoResponseBody_data_custom_fields_item[];
+  custom_fields?: AlertRuleApi_AlertRuleInfoResponseBody_data_custom_fields_item[];
 
   /** 比较器列表 */
   comparators?: string[];
 }
 
-export interface AlertRuleInfoResponseBody_data_macros_item {
+export interface AlertRuleApi_AlertRuleInfoResponseBody_data_macros_item {
   /** 变量名称 */
   name?: string;
 
@@ -76,7 +76,7 @@ export interface AlertRuleInfoResponseBody_data_macros_item {
   description?: string;
 }
 
-export interface AlertRuleInfoResponseBody_data_metrics_item {
+export interface AlertRuleApi_AlertRuleInfoResponseBody_data_metrics_item {
   /** 指标类型 */
   value_type?: string;
 
@@ -90,7 +90,7 @@ export interface AlertRuleInfoResponseBody_data_metrics_item {
   description?: string;
 }
 
-export interface AlertRuleInfoResponseBody_data_dims_item {
+export interface AlertRuleApi_AlertRuleInfoResponseBody_data_dims_item {
   /** 模型字段名称 */
   object_key?: string;
 
@@ -104,7 +104,7 @@ export interface AlertRuleInfoResponseBody_data_dims_item {
   description?: string;
 }
 
-export interface AlertRuleInfoResponseBody_data_receiver_owner_groups_item {
+export interface AlertRuleApi_AlertRuleInfoResponseBody_data_receiver_owner_groups_item {
   /** 说明 */
   translate?: string;
 
@@ -115,7 +115,7 @@ export interface AlertRuleInfoResponseBody_data_receiver_owner_groups_item {
   object_id?: string;
 }
 
-export interface AlertRuleInfoResponseBody_data_custom_fields_item {
+export interface AlertRuleApi_AlertRuleInfoResponseBody_data_custom_fields_item {
   /** 变量名称 */
   name?: string;
 

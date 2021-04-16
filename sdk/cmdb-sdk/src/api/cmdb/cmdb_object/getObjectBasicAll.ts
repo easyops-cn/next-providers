@@ -4,9 +4,9 @@ import {
   ModelObjectBasicInfo,
 } from "../../../model/cmdb";
 
-export type GetObjectBasicAllRequestParams = Partial<ModelListObjectRequest>;
+export type CmdbObjectApi_GetObjectBasicAllRequestParams = Partial<ModelListObjectRequest>;
 
-export interface GetObjectBasicAllResponseBody {
+export interface CmdbObjectApi_GetObjectBasicAllResponseBody {
   /** 返回码 */
   code: number;
 
@@ -24,11 +24,11 @@ export interface GetObjectBasicAllResponseBody {
  * @description 获取所有模型基本信息
  * @endpoint GET /object_basic_all
  */
-export const getObjectBasicAll = (
-  params: GetObjectBasicAllRequestParams,
+export const CmdbObjectApi_getObjectBasicAll = (
+  params: CmdbObjectApi_GetObjectBasicAllRequestParams,
   options?: HttpOptions
-): Promise<GetObjectBasicAllResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.GetObjectBasicAll */ http.get<GetObjectBasicAllResponseBody>(
+): Promise<CmdbObjectApi_GetObjectBasicAllResponseBody> =>
+  /**! @contract easyops.api.cmdb.cmdb_object.GetObjectBasicAll */ http.get<CmdbObjectApi_GetObjectBasicAllResponseBody>(
     "api/gateway/cmdb.cmdb_object.GetObjectBasicAll/object_basic_all",
     { ...options, params }
   );

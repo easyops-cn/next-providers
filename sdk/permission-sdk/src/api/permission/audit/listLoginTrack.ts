@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelLoginTrack } from "../../../model/permission";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface ListLoginTrackRequestBody {
+export interface AuditApi_ListLoginTrackRequestBody {
   /** 页码 */
   page: number;
 
@@ -25,7 +25,7 @@ export interface ListLoginTrackRequestBody {
   to?: string;
 }
 
-export interface ListLoginTrackResponseBody {
+export interface AuditApi_ListLoginTrackResponseBody {
   /** 页码 */
   page: number;
 
@@ -43,12 +43,12 @@ export interface ListLoginTrackResponseBody {
  * @description 获取登录轨迹
  * @endpoint POST /api/v1/audit/login_track
  */
-export const listLoginTrack = async (
-  data: ListLoginTrackRequestBody,
+export const AuditApi_listLoginTrack = async (
+  data: AuditApi_ListLoginTrackRequestBody,
   options?: HttpOptions
-): Promise<ListLoginTrackResponseBody> =>
+): Promise<AuditApi_ListLoginTrackResponseBody> =>
   /**! @contract easyops.api.permission.audit.ListLoginTrack */ (
-    await http.post<ResponseBodyWrapper<ListLoginTrackResponseBody>>(
+    await http.post<ResponseBodyWrapper<AuditApi_ListLoginTrackResponseBody>>(
       "api/gateway/permission.audit.ListLoginTrack/api/v1/audit/login_track",
       data,
       options

@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface GetObjectAuthorizersResponseBody {
+export interface CmdbObjectApi_GetObjectAuthorizersResponseBody {
   /** 返回码 */
   code: number;
 
@@ -11,23 +11,23 @@ export interface GetObjectAuthorizersResponseBody {
   message: string;
 
   /** 列表 */
-  data: GetObjectAuthorizersResponseBody_data_item[];
+  data: CmdbObjectApi_GetObjectAuthorizersResponseBody_data_item[];
 }
 
 /**
  * @description 获取模型的白名单属性
  * @endpoint GET /object/:objectId/authorizers
  */
-export const getObjectAuthorizers = (
+export const CmdbObjectApi_getObjectAuthorizers = (
   objectId: string | number,
   options?: HttpOptions
-): Promise<GetObjectAuthorizersResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.GetObjectAuthorizers */ http.get<GetObjectAuthorizersResponseBody>(
+): Promise<CmdbObjectApi_GetObjectAuthorizersResponseBody> =>
+  /**! @contract easyops.api.cmdb.cmdb_object.GetObjectAuthorizers */ http.get<CmdbObjectApi_GetObjectAuthorizersResponseBody>(
     `api/gateway/cmdb.cmdb_object.GetObjectAuthorizers/object/${objectId}/authorizers`,
     options
   );
 
-export interface GetObjectAuthorizersResponseBody_data_item {
+export interface CmdbObjectApi_GetObjectAuthorizersResponseBody_data_item {
   /** 白名单key */
   authorizersKey?: string;
 

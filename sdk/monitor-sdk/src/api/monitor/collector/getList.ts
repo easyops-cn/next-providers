@@ -19,7 +19,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
   8. 支持或查询，如
       /collector/list/host?ip__like|disabled__eq=1.1.1.,0&page=1&page_size=10000#ip为1.1.1.0/24网段或者disabled等于0
  */
-export interface GetListRequestParams {
+export interface CollectorApi_GetListRequestParams {
   /** 指定查询的指标名 */
   __select__?: string[];
 
@@ -42,7 +42,7 @@ export interface GetListRequestParams {
   page_size?: number;
 }
 
-export interface GetListResponseBody {
+export interface CollectorApi_GetListResponseBody {
   /** 返回码 */
   code: number;
 
@@ -66,12 +66,12 @@ export interface GetListResponseBody {
  * @description 获取指标数据
  * @endpoint GET /api/v1/collector/list/:table
  */
-export const getList = (
+export const CollectorApi_getList = (
   table: string | number,
-  params: GetListRequestParams,
+  params: CollectorApi_GetListRequestParams,
   options?: HttpOptions
-): Promise<GetListResponseBody> =>
-  /**! @contract easyops.api.monitor.collector.GetList */ http.get<GetListResponseBody>(
+): Promise<CollectorApi_GetListResponseBody> =>
+  /**! @contract easyops.api.monitor.collector.GetList */ http.get<CollectorApi_GetListResponseBody>(
     `api/gateway/monitor.collector.GetList/api/v1/collector/list/${table}`,
     { ...options, params }
   );

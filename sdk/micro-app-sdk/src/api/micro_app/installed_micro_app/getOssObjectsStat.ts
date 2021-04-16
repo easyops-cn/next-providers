@@ -1,42 +1,44 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface GetOssObjectsStatRequestBody {
+export interface InstalledMicroAppApi_GetOssObjectsStatRequestBody {
   /** 存储桶名称 */
   bucketName: string;
 
   /** 存储桶中对象 */
-  objects: GetOssObjectsStatRequestBody_objects_item[];
+  objects: InstalledMicroAppApi_GetOssObjectsStatRequestBody_objects_item[];
 }
 
 /** 对象信息 */
-export interface GetOssObjectsStatResponseBody {
+export interface InstalledMicroAppApi_GetOssObjectsStatResponseBody {
   /** 存储桶中对象 */
-  objects?: GetOssObjectsStatResponseBody_objects_item[];
+  objects?: InstalledMicroAppApi_GetOssObjectsStatResponseBody_objects_item[];
 }
 
 /**
  * @description 获取对象信息
  * @endpoint POST /api/v1/micro-app/oss/get-objects-stat
  */
-export const getOssObjectsStat = async (
-  data: GetOssObjectsStatRequestBody,
+export const InstalledMicroAppApi_getOssObjectsStat = async (
+  data: InstalledMicroAppApi_GetOssObjectsStatRequestBody,
   options?: HttpOptions
-): Promise<GetOssObjectsStatResponseBody> =>
+): Promise<InstalledMicroAppApi_GetOssObjectsStatResponseBody> =>
   /**! @contract easyops.api.micro_app.installed_micro_app.GetOssObjectsStat */ (
-    await http.post<ResponseBodyWrapper<GetOssObjectsStatResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<InstalledMicroAppApi_GetOssObjectsStatResponseBody>
+    >(
       "api/gateway/micro_app.installed_micro_app.GetOssObjectsStat/api/v1/micro-app/oss/get-objects-stat",
       data,
       options
     )
   ).data;
 
-export interface GetOssObjectsStatRequestBody_objects_item {
+export interface InstalledMicroAppApi_GetOssObjectsStatRequestBody_objects_item {
   /** 对象名称 */
   objectName?: string;
 }
 
-export interface GetOssObjectsStatResponseBody_objects_item {
+export interface InstalledMicroAppApi_GetOssObjectsStatResponseBody_objects_item {
   /** 对象名称 */
   objectName?: string;
 

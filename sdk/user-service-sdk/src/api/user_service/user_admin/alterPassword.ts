@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface AlterPasswordRequestBody {
+export interface UserAdminApi_AlterPasswordRequestBody {
   /** 用户名 */
   name: string;
 
@@ -12,8 +12,8 @@ export interface AlterPasswordRequestBody {
  * @description 修改密码[内部]
  * @endpoint POST /api/v1/users/alter_password
  */
-export const alterPassword = (
-  data: AlterPasswordRequestBody,
+export const UserAdminApi_alterPassword = (
+  data: UserAdminApi_AlterPasswordRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.user_service.user_admin.AlterPassword */ http.post<void>(

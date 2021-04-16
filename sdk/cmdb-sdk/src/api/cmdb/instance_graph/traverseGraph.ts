@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelTraverseChildNode } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface TraverseGraphRequestBody {
+export interface InstanceGraphApi_TraverseGraphRequestBody {
   /** 模型Id */
   object_id: string;
 
@@ -16,7 +16,7 @@ export interface TraverseGraphRequestBody {
   child: Partial<ModelTraverseChildNode>[];
 }
 
-export interface TraverseGraphResponseBody {
+export interface InstanceGraphApi_TraverseGraphResponseBody {
   /** 根节点实例列表 */
   topic_vertices: Record<string, any>[];
 
@@ -24,26 +24,28 @@ export interface TraverseGraphResponseBody {
   vertices: Record<string, any>[];
 
   /** 关系列表 */
-  edges: TraverseGraphResponseBody_edges_item[];
+  edges: InstanceGraphApi_TraverseGraphResponseBody_edges_item[];
 }
 
 /**
  * @description 图遍历查询
  * @endpoint POST /instance/traverse
  */
-export const traverseGraph = async (
-  data: TraverseGraphRequestBody,
+export const InstanceGraphApi_traverseGraph = async (
+  data: InstanceGraphApi_TraverseGraphRequestBody,
   options?: HttpOptions
-): Promise<TraverseGraphResponseBody> =>
+): Promise<InstanceGraphApi_TraverseGraphResponseBody> =>
   /**! @contract easyops.api.cmdb.instance_graph.TraverseGraph */ (
-    await http.post<ResponseBodyWrapper<TraverseGraphResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<InstanceGraphApi_TraverseGraphResponseBody>
+    >(
       "api/gateway/cmdb.instance_graph.TraverseGraph/instance/traverse",
       data,
       options
     )
   ).data;
 
-export interface TraverseGraphResponseBody_edges_item {
+export interface InstanceGraphApi_TraverseGraphResponseBody_edges_item {
   /** 关系Id */
   relation_id?: string;
 

@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelGroupInstanceFunc } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface GroupInstanceV3RequestBody {
+export interface InstanceApi_GroupInstanceV3RequestBody {
   /** 查询条件,与[实例搜索接口]的query字段说明一致 */
   query?: Record<string, any>;
 
@@ -19,7 +19,7 @@ export interface GroupInstanceV3RequestBody {
   funcs: Partial<ModelGroupInstanceFunc>[];
 }
 
-export interface GroupInstanceV3ResponseBody {
+export interface InstanceApi_GroupInstanceV3ResponseBody {
   /** 数据列表，将group_field和funcs.alias的值作为key，group_value和funcs.value的值作为value */
   list: Record<string, any>[];
 
@@ -31,13 +31,15 @@ export interface GroupInstanceV3ResponseBody {
  * @description 实例聚合接口v3 (支持聚合多字段，支持聚合单个关系，聚合函数包括sum, max, min, avg， 返回平铺的实例列表)
  * @endpoint POST /v3/object/:object_id/instance/group
  */
-export const groupInstanceV3 = async (
+export const InstanceApi_groupInstanceV3 = async (
   object_id: string | number,
-  data: GroupInstanceV3RequestBody,
+  data: InstanceApi_GroupInstanceV3RequestBody,
   options?: HttpOptions
-): Promise<GroupInstanceV3ResponseBody> =>
+): Promise<InstanceApi_GroupInstanceV3ResponseBody> =>
   /**! @contract easyops.api.cmdb.instance.GroupInstanceV3 */ (
-    await http.post<ResponseBodyWrapper<GroupInstanceV3ResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<InstanceApi_GroupInstanceV3ResponseBody>
+    >(
       `api/gateway/cmdb.instance.GroupInstanceV3/v3/object/${object_id}/instance/group`,
       data,
       options

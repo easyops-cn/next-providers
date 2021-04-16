@@ -4,7 +4,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
  * @description 删除对象
  * @endpoint DELETE /api/v1/objectStore/bucket/:bucketName/object/:objectName
  */
-export const removeObject = (
+export const ObjectStoreApi_removeObject = (
   bucketName: string | number,
   objectName: string | number,
   options?: HttpOptions

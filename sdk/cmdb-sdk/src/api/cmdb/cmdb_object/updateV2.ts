@@ -3,7 +3,7 @@ import { ModelCmdbObject, ModelObjectBasicInfo } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 /** 模型信息 */
-export interface UpdateV2RequestBody {
+export interface CmdbObjectApi_UpdateV2RequestBody {
   /** 名称 */
   name?: string;
 
@@ -41,19 +41,19 @@ export interface UpdateV2RequestBody {
   parentObjectIds?: string[];
 }
 
-export type UpdateV2ResponseBody = Partial<ModelCmdbObject>;
+export type CmdbObjectApi_UpdateV2ResponseBody = Partial<ModelCmdbObject>;
 
 /**
  * @description 更新模型
  * @endpoint PUT /v2/object/:objectId
  */
-export const updateV2 = async (
+export const CmdbObjectApi_updateV2 = async (
   objectId: string | number,
-  data: UpdateV2RequestBody,
+  data: CmdbObjectApi_UpdateV2RequestBody,
   options?: HttpOptions
-): Promise<UpdateV2ResponseBody> =>
+): Promise<CmdbObjectApi_UpdateV2ResponseBody> =>
   /**! @contract easyops.api.cmdb.cmdb_object.UpdateV2 */ (
-    await http.put<ResponseBodyWrapper<UpdateV2ResponseBody>>(
+    await http.put<ResponseBodyWrapper<CmdbObjectApi_UpdateV2ResponseBody>>(
       `api/gateway/cmdb.cmdb_object.UpdateV2/v2/object/${objectId}`,
       data,
       options

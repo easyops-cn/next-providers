@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface ImportInstanceWithCsvRequestBody {
+export interface InstanceApi_ImportInstanceWithCsvRequestBody {
   /** 导入实例的字段 */
   keys: string[];
 
@@ -9,7 +9,7 @@ export interface ImportInstanceWithCsvRequestBody {
   attachment: File;
 }
 
-export interface ImportInstanceWithCsvResponseBody {
+export interface InstanceApi_ImportInstanceWithCsvResponseBody {
   /** 成功插入数量 */
   insert_count: number;
 
@@ -20,18 +20,18 @@ export interface ImportInstanceWithCsvResponseBody {
   failed_count: number;
 
   /** 失败数据 */
-  data: ImportInstanceWithCsvResponseBody_data_item[];
+  data: InstanceApi_ImportInstanceWithCsvResponseBody_data_item[];
 }
 
 /**
  * @description 使用csv文件导入实例 (此接口以multipart/form-data方式提交数据)
  * @endpoint POST /import/object/:object_id/instance/csv
  */
-export const importInstanceWithCsv = async (
+export const InstanceApi_importInstanceWithCsv = async (
   object_id: string | number,
-  data: ImportInstanceWithCsvRequestBody,
+  data: InstanceApi_ImportInstanceWithCsvRequestBody,
   options?: HttpOptions
-): Promise<ImportInstanceWithCsvResponseBody> => {
+): Promise<InstanceApi_ImportInstanceWithCsvResponseBody> => {
   /**! @contract easyops.api.cmdb.instance.ImportInstanceWithCsv */ const _formData = new FormData();
   for (const [key, value] of Object.entries(data)) {
     if (Array.isArray(value)) {
@@ -44,7 +44,9 @@ export const importInstanceWithCsv = async (
     }
   }
   return (
-    await http.post<ResponseBodyWrapper<ImportInstanceWithCsvResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<InstanceApi_ImportInstanceWithCsvResponseBody>
+    >(
       `api/gateway/cmdb.instance.ImportInstanceWithCsv/import/object/${object_id}/instance/csv`,
       _formData,
       options
@@ -52,7 +54,7 @@ export const importInstanceWithCsv = async (
   ).data;
 };
 
-export interface ImportInstanceWithCsvResponseBody_data_item {
+export interface InstanceApi_ImportInstanceWithCsvResponseBody_data_item {
   /** 错误码 */
   code?: number;
 

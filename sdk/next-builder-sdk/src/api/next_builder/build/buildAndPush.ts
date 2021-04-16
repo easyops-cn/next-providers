@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface BuildAndPushRequestBody {
+export interface BuildApi_BuildAndPushRequestBody {
   /** projectId */
   projectId?: string;
 
@@ -15,8 +15,8 @@ export interface BuildAndPushRequestBody {
  * @description 构建推送app
  * @endpoint POST /api/v1/next-builder/build-and-push
  */
-export const buildAndPush = (
-  data: BuildAndPushRequestBody,
+export const BuildApi_buildAndPush = (
+  data: BuildApi_BuildAndPushRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.next_builder.build.BuildAndPush */ http.post<void>(

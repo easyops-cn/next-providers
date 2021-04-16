@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface SearchInstanceAuthorizersRequestBody {
+export interface InheritanceApi_SearchInstanceAuthorizersRequestBody {
   /** 查询条件 */
   query: Record<string, any>;
 
@@ -15,7 +15,7 @@ export interface SearchInstanceAuthorizersRequestBody {
   page_size?: number;
 }
 
-export interface SearchInstanceAuthorizersResponseBody {
+export interface InheritanceApi_SearchInstanceAuthorizersResponseBody {
   /** instance list */
   list?: Record<string, any>[];
 
@@ -33,13 +33,15 @@ export interface SearchInstanceAuthorizersResponseBody {
  * @description 搜索实例的白名单
  * @endpoint POST /object/:objectId/instance/search/authorizers
  */
-export const searchInstanceAuthorizers = async (
+export const InheritanceApi_searchInstanceAuthorizers = async (
   objectId: string | number,
-  data: SearchInstanceAuthorizersRequestBody,
+  data: InheritanceApi_SearchInstanceAuthorizersRequestBody,
   options?: HttpOptions
-): Promise<SearchInstanceAuthorizersResponseBody> =>
+): Promise<InheritanceApi_SearchInstanceAuthorizersResponseBody> =>
   /**! @contract easyops.api.permission.inheritance.SearchInstanceAuthorizers */ (
-    await http.post<ResponseBodyWrapper<SearchInstanceAuthorizersResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<InheritanceApi_SearchInstanceAuthorizersResponseBody>
+    >(
       `api/gateway/permission.inheritance.SearchInstanceAuthorizers/object/${objectId}/instance/search/authorizers`,
       data,
       options

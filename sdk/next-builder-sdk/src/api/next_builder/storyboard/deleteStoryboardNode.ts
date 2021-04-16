@@ -4,7 +4,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
  * @description storyboard节点删除
  * @endpoint DELETE /api/v1/nextBuilder/storyboard/:nodeId
  */
-export const deleteStoryboardNode = (
+export const StoryboardApi_deleteStoryboardNode = (
   nodeId: string | number,
   options?: HttpOptions
 ): Promise<void> =>

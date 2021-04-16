@@ -1,12 +1,12 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface BatchSetRoleUserAndGroupRequestBody {
+export interface RoleApi_BatchSetRoleUserAndGroupRequestBody {
   /** 数据列表 */
-  list: BatchSetRoleUserAndGroupRequestBody_list_item[];
+  list: RoleApi_BatchSetRoleUserAndGroupRequestBody_list_item[];
 }
 
-export interface BatchSetRoleUserAndGroupResponseBody {
+export interface RoleApi_BatchSetRoleUserAndGroupResponseBody {
   /** 更新的角色数量 */
   count?: number;
 }
@@ -15,19 +15,21 @@ export interface BatchSetRoleUserAndGroupResponseBody {
  * @description 批量设置角色添加用户&用户组
  * @endpoint PUT /api/v1/permission_role/batch_set_role_user_and_group
  */
-export const batchSetRoleUserAndGroup = async (
-  data: BatchSetRoleUserAndGroupRequestBody,
+export const RoleApi_batchSetRoleUserAndGroup = async (
+  data: RoleApi_BatchSetRoleUserAndGroupRequestBody,
   options?: HttpOptions
-): Promise<BatchSetRoleUserAndGroupResponseBody> =>
+): Promise<RoleApi_BatchSetRoleUserAndGroupResponseBody> =>
   /**! @contract easyops.api.permission.role.BatchSetRoleUserAndGroup */ (
-    await http.put<ResponseBodyWrapper<BatchSetRoleUserAndGroupResponseBody>>(
+    await http.put<
+      ResponseBodyWrapper<RoleApi_BatchSetRoleUserAndGroupResponseBody>
+    >(
       "api/gateway/permission.role.BatchSetRoleUserAndGroup/api/v1/permission_role/batch_set_role_user_and_group",
       data,
       options
     )
   ).data;
 
-export interface BatchSetRoleUserAndGroupRequestBody_list_item {
+export interface RoleApi_BatchSetRoleUserAndGroupRequestBody_list_item {
   /** 角色id */
   id?: string;
 

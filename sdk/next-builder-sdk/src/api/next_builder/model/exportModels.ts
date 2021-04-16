@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelCmdbObject } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface ExportModelsRequestBody {
+export interface ModelApi_ExportModelsRequestBody {
   /** projectId */
   projectId?: string;
 
@@ -10,7 +10,7 @@ export interface ExportModelsRequestBody {
   objectList?: Partial<ModelCmdbObject>[];
 }
 
-export interface ExportModelsResponseBody {
+export interface ModelApi_ExportModelsResponseBody {
   /** projectId */
   projectId?: string;
 }
@@ -19,12 +19,12 @@ export interface ExportModelsResponseBody {
  * @description 同步模型到开发环境
  * @endpoint POST /api/v1/model/export
  */
-export const exportModels = async (
-  data: ExportModelsRequestBody,
+export const ModelApi_exportModels = async (
+  data: ModelApi_ExportModelsRequestBody,
   options?: HttpOptions
-): Promise<ExportModelsResponseBody> =>
+): Promise<ModelApi_ExportModelsResponseBody> =>
   /**! @contract easyops.api.next_builder.model.ExportModels */ (
-    await http.post<ResponseBodyWrapper<ExportModelsResponseBody>>(
+    await http.post<ResponseBodyWrapper<ModelApi_ExportModelsResponseBody>>(
       "api/gateway/next_builder.model.ExportModels/api/v1/model/export",
       data,
       options

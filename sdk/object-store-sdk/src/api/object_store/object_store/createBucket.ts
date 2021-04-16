@@ -1,6 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
-export interface CreateBucketRequestBody {
+export interface ObjectStoreApi_CreateBucketRequestBody {
   /** 存储桶被创建的region(地区) */
   location?: string;
 }
@@ -9,9 +9,9 @@ export interface CreateBucketRequestBody {
  * @description 创建对象存储桶
  * @endpoint PUT /api/v1/objectStore/bucket/:bucketName
  */
-export const createBucket = (
+export const ObjectStoreApi_createBucket = (
   bucketName: string | number,
-  data: CreateBucketRequestBody,
+  data: ObjectStoreApi_CreateBucketRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.object_store.object_store.CreateBucket */ http.put<void>(

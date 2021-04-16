@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface SearchAllUserGroupRequestBody {
+export interface UserAdminApi_SearchAllUserGroupRequestBody {
   /** e.g.: { name: { $like: '%q%' } }, { $or: [{ name: { $like: '%q%' }}] } */
   query?: Record<string, any>;
 
@@ -12,7 +12,7 @@ export interface SearchAllUserGroupRequestBody {
   sort?: Record<string, any>;
 }
 
-export interface SearchAllUserGroupResponseBody {
+export interface UserAdminApi_SearchAllUserGroupResponseBody {
   /** 用户组列表 */
   list?: Record<string, any>[];
 }
@@ -21,12 +21,14 @@ export interface SearchAllUserGroupResponseBody {
  * @description 搜索所有用户组列表
  * @endpoint POST /api/v1/users/group/all
  */
-export const searchAllUserGroup = async (
-  data: SearchAllUserGroupRequestBody,
+export const UserAdminApi_searchAllUserGroup = async (
+  data: UserAdminApi_SearchAllUserGroupRequestBody,
   options?: HttpOptions
-): Promise<SearchAllUserGroupResponseBody> =>
+): Promise<UserAdminApi_SearchAllUserGroupResponseBody> =>
   /**! @contract easyops.api.user_service.user_admin.SearchAllUserGroup */ (
-    await http.post<ResponseBodyWrapper<SearchAllUserGroupResponseBody>>(
+    await http.post<
+      ResponseBodyWrapper<UserAdminApi_SearchAllUserGroupResponseBody>
+    >(
       "api/gateway/user_service.user_admin.SearchAllUserGroup/api/v1/users/group/all",
       data,
       options
