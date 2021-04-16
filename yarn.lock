@@ -2216,10 +2216,10 @@
     rollup-plugin-postcss "^3.1.8"
     string-hash "^1.1.3"
 
-"@next-core/sdk-scripts@^2.6.1":
-  version "2.6.1"
-  resolved "https://registry.npmjs.org/@next-core/sdk-scripts/-/sdk-scripts-2.6.1.tgz#084dc5b38245c7388e4f55adb973cbcdf7b42f75"
-  integrity sha512-+01bqjfx31WCqSiyQUtUYbPw8ooeVzcVuME9rppNOiQZXdy0JnoosJbl9hwhTLPog0IjiNlmj2GRoHzydAUprg==
+"@next-core/sdk-scripts@^2.6.2":
+  version "2.6.2"
+  resolved "https://registry.npmjs.org/@next-core/sdk-scripts/-/sdk-scripts-2.6.2.tgz#23248b50b032e2d66c41aa331143a533274a04e0"
+  integrity sha512-Bb1pNaf5grVEUSphSulZt4dCfoElUhb8XJuX3ZjF2cVWqBI7nmFc/utEXFCZXqDxzv4JzvqXsqHVHueyGQuJJw==
   dependencies:
     "@next-core/public-scoped-sdk" "^0.2.3"
     "@next-core/repo-config" "^0.2.1"
