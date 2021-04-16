@@ -7,6 +7,8 @@
     "CustomerApi.sendApprovedEmail",
     "CustomerApi.sendUpdatedEmail",
     "CustomerApi.updateLicenseBatch",
-    "CustomerApi.validateParameter"
+    "CustomerApi.validateParameter",
+    "CustomerApi.listOrgInfo",
+    "CustomerApi.sendApplicationVerificationCode"
   ]
 }
