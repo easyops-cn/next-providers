@@ -2075,10 +2075,10 @@
   resolved "https://registry.npmjs.org/@next-core/browserslist-config-next/-/browserslist-config-next-0.1.3.tgz#7b27b997ceae457d3c3f3b1c909407c16f86df81"
   integrity sha1-eye5l86uRX08PzsckJQHwW+G34E=
 
-"@next-core/build-config-factory@^2.7.0":
-  version "2.7.0"
-  resolved "https://registry.npmjs.org/@next-core/build-config-factory/-/build-config-factory-2.7.0.tgz#d781d98c0bffba1dd9d69f752e273bcd2ba41e79"
-  integrity sha512-+J0yxC4V1ehm2ao1r8mjZP/dBX16Kb+9FyJF58wdBJ+rLZO1HR2GJUxmZnkltid0cUsJ5B/B3LbMnw4HraLy1g==
+"@next-core/build-config-factory@^2.8.0":
+  version "2.8.0"
+  resolved "https://registry.npmjs.org/@next-core/build-config-factory/-/build-config-factory-2.8.0.tgz#37fc0285a3a4d0c3c35e0ea6418ca802bd475bd0"
+  integrity sha512-Quvd4EnnxmKXNSC8a1hoge1O69Rf+9Ce2+fHcV1pF/IzGgnvMbxxHdx8gUonvZ7RNRmv2weXkTuj5w0gdNTVPg==
   dependencies:
     "@next-core/brick-utils" "^2.14.3"
     "@next-core/contract-analysis" "^0.2.0"
@@ -2116,10 +2116,10 @@
   resolved "https://registry.npmjs.org/@next-core/custom-antd-styles/-/custom-antd-styles-1.8.1.tgz#87761f97f6dbb18c95267b2d5f1c4418dd0050ea"
   integrity sha512-Ojjigr1F2xQ3KpuxnQrOBsFM6D+9TRCtiqT/ZdoawRQfoAKXQ9XQTmBvZbOiYDQKztHcA2ovy7f5MUf51xWh9w==
 
-"@next-core/dev-dependencies@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.npmjs.org/@next-core/dev-dependencies/-/dev-dependencies-1.3.0.tgz#d2ed5a20a09d68a4e95bb76979e2980bb5a19fdc"
-  integrity sha512-XzTUjCCcp9E1inbzpZxojRmk/C82ueAlwKtjIMzSKd5uUVJMH/8fxICira96LClmxhe06duDId1KLzheapB8UQ==
+"@next-core/dev-dependencies@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.npmjs.org/@next-core/dev-dependencies/-/dev-dependencies-1.5.0.tgz#fe4f9f1906d04c2f1c96a099b417a19fa96ffc6b"
+  integrity sha512-VOXPkAwwJOq5ZkjHZdxjDJbpG3eJMFCpT8YUrCXk5+fQxzGnz4DWzXexI5OljxvLY/XZctrsXvYwub2g9/d1vw==
   dependencies:
     "@babel/core" "^7.13.8"
     "@next-core/babel-preset-next" "^0.6.23"
@@ -2128,7 +2128,7 @@
     "@next-core/brick-dll" "^2.12.22"
     "@next-core/brick-scripts" "^2.4.0"
     "@next-core/browserslist-config-next" "^0.1.3"
-    "@next-core/build-config-factory" "^2.7.0"
+    "@next-core/build-config-factory" "^2.8.0"
     "@next-core/custom-antd-styles" "^1.8.1"
     "@next-core/eslint-config-next" "^1.0.16"
     "@next-core/rollup-config-factory" "^2.0.16"
@@ -2230,10 +2230,10 @@
     rollup-plugin-postcss "^3.1.8"
     string-hash "^1.1.3"
 
-"@next-core/sdk-scripts@^2.5.0":
-  version "2.5.0"
-  resolved "https://registry.npmjs.org/@next-core/sdk-scripts/-/sdk-scripts-2.5.0.tgz#58c2e5f4427cb3b1eb17a785e808b453464228a6"
-  integrity sha512-0JVaK6LDOKGLx03gbTfFU4FK0u1CZsW2GqGA5gFHq/2UwJaoEJFLtYOqhla6hWAtA2KN4b/Tc4fEIsARGx5a1g==
+"@next-core/sdk-scripts@^2.6.1":
+  version "2.6.1"
+  resolved "https://registry.npmjs.org/@next-core/sdk-scripts/-/sdk-scripts-2.6.1.tgz#084dc5b38245c7388e4f55adb973cbcdf7b42f75"
+  integrity sha512-+01bqjfx31WCqSiyQUtUYbPw8ooeVzcVuME9rppNOiQZXdy0JnoosJbl9hwhTLPog0IjiNlmj2GRoHzydAUprg==
   dependencies:
     "@next-core/public-scoped-sdk" "^0.2.3"
     "@next-core/repo-config" "^0.2.1"
