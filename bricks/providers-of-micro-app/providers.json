@@ -13,7 +13,6 @@
     "PermissionApi.getPermissionsByAppId",
     "DocumentApi.getDocumentsTreeByAppId",
     "DocumentApi.exportDocumentsToFile",
-    "DocumentApi.getMicroAppList",
     "DocumentApi.importDocuments",
     "DocumentApi.getDocumentsDetails",
     "PermissionApi.validatePermissions"
