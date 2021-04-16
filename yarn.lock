@@ -2075,13 +2075,12 @@
   resolved "https://registry.npmjs.org/@next-core/browserslist-config-next/-/browserslist-config-next-0.1.3.tgz#7b27b997ceae457d3c3f3b1c909407c16f86df81"
   integrity sha1-eye5l86uRX08PzsckJQHwW+G34E=
 
-"@next-core/build-config-factory@^2.8.0":
-  version "2.8.0"
-  resolved "https://registry.npmjs.org/@next-core/build-config-factory/-/build-config-factory-2.8.0.tgz#37fc0285a3a4d0c3c35e0ea6418ca802bd475bd0"
-  integrity sha512-Quvd4EnnxmKXNSC8a1hoge1O69Rf+9Ce2+fHcV1pF/IzGgnvMbxxHdx8gUonvZ7RNRmv2weXkTuj5w0gdNTVPg==
+"@next-core/build-config-factory@^2.8.1":
+  version "2.8.1"
+  resolved "https://registry.npmjs.org/@next-core/build-config-factory/-/build-config-factory-2.8.1.tgz#c23708e61819376a32788516eb75bfa8569f2128"
+  integrity sha512-xSnA5evDmXmTxL9RiE8g4ZD54JINJVVPHNL6qjtjcIREHnA8bSwhJIHDY1Pkgg4mrcsi2uyZ9O+dUHcidqwP/g==
   dependencies:
     "@next-core/brick-utils" "^2.14.3"
-    "@next-core/contract-analysis" "^0.2.0"
     "@next-core/repo-config" "^0.2.1"
     "@next-core/typedoc-plugin-filter-inherit" "^1.0.0"
     change-case "^4.1.2"
@@ -2098,28 +2097,15 @@
     typedoc "^0.19.2"
     typedoc-plugin-no-inherit "^1.2.2"
 
-"@next-core/contract-analysis@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.npmjs.org/@next-core/contract-analysis/-/contract-analysis-0.2.0.tgz#bc7f47fe7bff8a4511f5751d633822a474eb6d84"
-  integrity sha512-q47VAlF2l/luA6xvjZUIVK/KrKmiPD33J4gi0yQBBdrYUUtjYHNBdBfFfZqV2qdryQikCZQciOUvOBVA8bkIVQ==
-  dependencies:
-    "@babel/parser" "^7.13.9"
-    "@babel/traverse" "^7.13.0"
-    "@babel/types" "^7.13.0"
-    chalk "^4.1.0"
-    change-case "^4.1.2"
-    fs-extra "^9.1.0"
-    resolve "^1.20.0"
-
 "@next-core/custom-antd-styles@^1.8.1":
   version "1.8.1"
   resolved "https://registry.npmjs.org/@next-core/custom-antd-styles/-/custom-antd-styles-1.8.1.tgz#87761f97f6dbb18c95267b2d5f1c4418dd0050ea"
   integrity sha512-Ojjigr1F2xQ3KpuxnQrOBsFM6D+9TRCtiqT/ZdoawRQfoAKXQ9XQTmBvZbOiYDQKztHcA2ovy7f5MUf51xWh9w==
 
-"@next-core/dev-dependencies@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.npmjs.org/@next-core/dev-dependencies/-/dev-dependencies-1.5.0.tgz#fe4f9f1906d04c2f1c96a099b417a19fa96ffc6b"
-  integrity sha512-VOXPkAwwJOq5ZkjHZdxjDJbpG3eJMFCpT8YUrCXk5+fQxzGnz4DWzXexI5OljxvLY/XZctrsXvYwub2g9/d1vw==
+"@next-core/dev-dependencies@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.npmjs.org/@next-core/dev-dependencies/-/dev-dependencies-1.5.1.tgz#0326dc82eaa4583fd53efeddf0a3c9c876cd5709"
+  integrity sha512-w5+xlXaF8DOBv9E5TFoRKm07+/lSAwHMWEfhGY+V7VtQxxEeCiGLePLYONr3sGpCuqrLkLlatu8zOCwICVOXrQ==
   dependencies:
     "@babel/core" "^7.13.8"
     "@next-core/babel-preset-next" "^0.6.23"
@@ -2128,7 +2114,7 @@
     "@next-core/brick-dll" "^2.12.22"
     "@next-core/brick-scripts" "^2.4.0"
     "@next-core/browserslist-config-next" "^0.1.3"
-    "@next-core/build-config-factory" "^2.8.0"
+    "@next-core/build-config-factory" "^2.8.1"
     "@next-core/custom-antd-styles" "^1.8.1"
     "@next-core/eslint-config-next" "^1.0.16"
     "@next-core/rollup-config-factory" "^2.0.16"
@@ -2230,10 +2216,10 @@
     rollup-plugin-postcss "^3.1.8"
     string-hash "^1.1.3"
 
-"@next-core/sdk-scripts@^2.6.1":
-  version "2.6.1"
-  resolved "https://registry.npmjs.org/@next-core/sdk-scripts/-/sdk-scripts-2.6.1.tgz#084dc5b38245c7388e4f55adb973cbcdf7b42f75"
-  integrity sha512-+01bqjfx31WCqSiyQUtUYbPw8ooeVzcVuME9rppNOiQZXdy0JnoosJbl9hwhTLPog0IjiNlmj2GRoHzydAUprg==
+"@next-core/sdk-scripts@^2.6.2":
+  version "2.6.2"
+  resolved "https://registry.npmjs.org/@next-core/sdk-scripts/-/sdk-scripts-2.6.2.tgz#23248b50b032e2d66c41aa331143a533274a04e0"
+  integrity sha512-Bb1pNaf5grVEUSphSulZt4dCfoElUhb8XJuX3ZjF2cVWqBI7nmFc/utEXFCZXqDxzv4JzvqXsqHVHueyGQuJJw==
   dependencies:
     "@next-core/public-scoped-sdk" "^0.2.3"
     "@next-core/repo-config" "^0.2.1"
@@ -12749,7 +12735,7 @@ resolve-url@^0.2.1:
   resolved "https://registry.npmjs.org/resolve-url/-/resolve-url-0.2.1.tgz#2c637fe77c893afd2a663fe21aa9080068e2052a"
   integrity sha1-LGN/53yJOv0qZj/iGqkIAGjiBSo=
 
-resolve@^1.1.6, resolve@^1.10.0, resolve@^1.11.0, resolve@^1.11.1, resolve@^1.14.2, resolve@^1.16.1, resolve@^1.17.0, resolve@^1.18.1, resolve@^1.20.0, resolve@^1.9.0:
+resolve@^1.1.6, resolve@^1.10.0, resolve@^1.11.0, resolve@^1.11.1, resolve@^1.14.2, resolve@^1.16.1, resolve@^1.17.0, resolve@^1.18.1, resolve@^1.9.0:
   version "1.20.0"
   resolved "https://registry.npmjs.org/resolve/-/resolve-1.20.0.tgz#629a013fb3f70755d6f0b7935cc1c2c5378b1975"
   integrity sha1-YpoBP7P3B1XW8LeTXMHCxTeLGXU=
