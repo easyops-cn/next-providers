@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.5](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-user-service@1.2.4...@next-bricks/providers-of-user-service@1.2.5) (2021-04-16)
+
+
+### Bug Fixes
+
+* update dependencies of providers ([3134a71](https://github.com/easyops-cn/next-providers/commit/3134a71758f1ec4e9a0b5423e3f78d39e46bb196))
+
+
+
+
+
 ## [1.2.4](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-user-service@1.2.3...@next-bricks/providers-of-user-service@1.2.4) (2021-04-14)
 
 **Note:** Version bump only for package @next-bricks/providers-of-user-service
