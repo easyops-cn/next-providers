@@ -25,12 +25,8 @@
     "extract": "dev-dependencies-extract"
   },
   "browserslist": {
-    "development": [
-      "extends @next-core/browserslist-config-next/development"
-    ],
-    "production": [
-      "extends @next-core/browserslist-config-next/production"
-    ]
+    "development": ["extends @next-core/browserslist-config-next/development"],
+    "production": ["extends @next-core/browserslist-config-next/production"]
   },
   "devDependencies": {
     "@ant-design/compatible": "^1.0.8",
@@ -89,20 +85,11 @@
     "react-i18next": "^11.8.8",
     "react-transition-group": "^4.4.1"
   },
-  "workspaces": [
-    "bricks/*",
-    "libs/*",
-    "micro-apps/*",
-    "sdk/*",
-    "templates/*"
-  ],
+  "workspaces": ["bricks/*", "libs/*", "micro-apps/*", "sdk/*", "templates/*"],
   "resolutions": {
     "@types/react": "^16.14.4",
     "lodash": "^4.17.20",
     "@next-core/brick-types": "^2.22.0"
   },
-  "easyops": {
-    "create-next-repo": "1.2.24",
-    "dev-dependencies": "1.3.0"
-  }
+  "easyops": { "create-next-repo": "1.2.24", "dev-dependencies": "1.5.0" }
 }
