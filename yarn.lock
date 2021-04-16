@@ -2326,6 +2326,21 @@
     react-dnd "^11.1.3"
     react-dnd-html5-backend "^11.1.3"
 
+"@next-sdk/cmdb-sdk@^1.0.0":
+  version "1.0.15"
+  resolved "https://registry.npmjs.org/@next-sdk/cmdb-sdk/-/cmdb-sdk-1.0.15.tgz#4d60539d19eaa474dea935032f52581491c74347"
+  integrity sha512-CdnjHDSueRbzpDsSvAkDoISNHesuDgEogiDHpEPSRcOCz0l395i8bFI4PaJ7+jXSkiSvw5MGI1CF2LSAq9pTLw==
+
+"@next-sdk/micro-app-sdk@^1.0.0":
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/@next-sdk/micro-app-sdk/-/micro-app-sdk-1.1.1.tgz#2b8113fe2ea61dddc65b2d1212166f4e0d67b763"
+  integrity sha512-gu+YW546wWDoKzHEvutsaxPXnvJt+LL9O0/73JC7gvjYLlq0fO9vzsaFThBR4gnvw+RiCE1zK7AdbFr5avCL4Q==
+
+"@next-sdk/user-service-sdk@^1.0.0":
+  version "1.2.1"
+  resolved "https://registry.npmjs.org/@next-sdk/user-service-sdk/-/user-service-sdk-1.2.1.tgz#3f1ee7f64186101ddd35bb2dba47445d4ce5c539"
+  integrity sha512-lKWupbL8gRtOLi0TDW6vKB5Geo+Q0D1x5v9y7N0GUgEXd4IpC+duIOcEj77IBas459o8dX8pKy3xMkr758zyDg==
+
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
   resolved "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.4.tgz#d4b3549a5db5de2683e0c1071ab4f140904bbf69"

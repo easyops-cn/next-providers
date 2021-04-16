@@ -18,7 +18,7 @@
     "test:ci": "cross-env NODE_ENV='test' CI=true jest"
   },
   "devDependencies": {
-    "@next-sdk/cmdb-sdk": "^1.0.15"
+    "@next-sdk/cmdb-sdk": "^2.1.0"
   },
   "sideEffects": true
 }

@@ -18,7 +18,7 @@
     "test:ci": "cross-env NODE_ENV='test' CI=true jest"
   },
   "devDependencies": {
-    "@next-sdk/permission-sdk": "^1.1.3"
+    "@next-sdk/permission-sdk": "^2.1.0"
   },
   "sideEffects": true
 }
