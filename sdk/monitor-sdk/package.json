@@ -1,6 +1,6 @@
 {
   "name": "@next-sdk/monitor-sdk",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "SDK for Monitor",
   "homepage": "https://github.com/easyops-cn/next-providers/tree/master/sdk/monitor-sdk",
   "license": "GPL-3.0",

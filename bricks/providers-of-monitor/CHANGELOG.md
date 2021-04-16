@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.5](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-monitor@1.6.4...@next-bricks/providers-of-monitor@1.6.5) (2021-04-16)
+
+**Note:** Version bump only for package @next-bricks/providers-of-monitor
+
+
+
+
+
 ## [1.6.4](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-monitor@1.6.3...@next-bricks/providers-of-monitor@1.6.4) (2021-04-16)
 
 
