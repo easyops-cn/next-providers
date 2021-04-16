@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/micro-app-sdk@1.1.1...@next-sdk/micro-app-sdk@2.1.0) (2021-04-16)
+
+
+### Features
+
+* refactor sdk exports to make tree-shaking possible ([7dcb63b](https://github.com/easyops-cn/next-providers/commit/7dcb63bad6a7e6357c1c14ce9cf3ff9152c0c632))
+
+
+
+
+
 ## [1.1.1](https://github.com/easyops-cn/next-providers/compare/@next-sdk/micro-app-sdk@1.1.0...@next-sdk/micro-app-sdk@1.1.1) (2021-04-14)
 
 

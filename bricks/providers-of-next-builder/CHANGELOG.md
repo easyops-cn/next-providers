@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.5](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-next-builder@1.12.4...@next-bricks/providers-of-next-builder@1.12.5) (2021-04-16)
+
+
+### Bug Fixes
+
+* remove not-existed providers ([ff27d29](https://github.com/easyops-cn/next-providers/commit/ff27d29da3ac8036c5bd51b5d60f95a882af0604))
+
+
+
+
+
 ## [1.12.4](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-next-builder@1.12.3...@next-bricks/providers-of-next-builder@1.12.4) (2021-04-14)
 
 **Note:** Version bump only for package @next-bricks/providers-of-next-builder
