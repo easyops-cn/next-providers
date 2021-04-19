@@ -9,6 +9,10 @@
     "CustomerApi.updateLicenseBatch",
     "CustomerApi.validateParameter",
     "CustomerApi.listOrgInfo",
-    "CustomerApi.sendApplicationVerificationCode"
+    "CustomerApi.sendApplicationVerificationCode",
+    "CustomerApi.setOrgDisapproved",
+    "CustomerApi.setOrgUpdating",
+    "CustomerApi.validateEmail",
+    "CustomerApi.validateUser"
   ]
 }

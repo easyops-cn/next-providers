@@ -49,6 +49,9 @@ export interface CustomerApi_SaveApplyInfoRequestBody {
     | "IT-counselor"
     | "other";
 
+  /** 发送的申请验证码消息 ID */
+  message_id: string;
+
   /** 验证码 */
   verification_code: string;
 }
