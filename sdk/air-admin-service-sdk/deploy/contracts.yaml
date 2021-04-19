@@ -13,7 +13,7 @@ depend_contracts:
     version: ^1.0.0
   - name: easyops.api.air_admin_service.customer.SendUpdatedEmail
     version: ^1.0.0
-  - name: easyops.api.air_admin_service.customer.SetOrgDisapproved
+  - name: easyops.api.air_admin_service.customer.SetApplyDisapproved
     version: ^1.0.0
   - name: easyops.api.air_admin_service.customer.SetOrgUpdating
     version: ^1.0.0

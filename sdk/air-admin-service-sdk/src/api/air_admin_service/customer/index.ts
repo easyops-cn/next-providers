@@ -5,7 +5,7 @@ export * from "./saveApplyInfo";
 export * from "./sendApplicationVerificationCode";
 export * from "./sendApprovedEmail";
 export * from "./sendUpdatedEmail";
-export * from "./setOrgDisapproved";
+export * from "./setApplyDisapproved";
 export * from "./setOrgUpdating";
 export * from "./updateLicenseBatch";
 export * from "./validateEmail";
