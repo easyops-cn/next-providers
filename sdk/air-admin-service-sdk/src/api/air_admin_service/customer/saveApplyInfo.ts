@@ -20,7 +20,7 @@ export interface CustomerApi_SaveApplyInfoRequestBody {
   company: string;
 
   /** 企业网址 */
-  website: string;
+  website?: string;
 
   /** 所属行业 */
   industry:

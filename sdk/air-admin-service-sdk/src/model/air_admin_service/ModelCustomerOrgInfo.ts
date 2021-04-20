@@ -17,4 +17,22 @@ export interface ModelCustomerOrgInfo {
 
   /** org使用状态: 已过期，正常，延期中，即将过期 */
   state: "expired" | "normal" | "updating" | "willExpired";
+
+  /** 客户申请信息的实例Id */
+  applyInfoInstanceId: string;
+
+  /** org实例Id */
+  orgInfoInstanceId: string;
+
+  /** 平台用户名 */
+  userId: string;
+
+  /** 所在行业 */
+  industry: string;
+
+  /** 审核时间 */
+  auditTime: number;
+
+  /** 审核者 */
+  auditor: string;
 }
