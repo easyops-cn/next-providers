@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.10](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-air-admin-service@1.1.9...@next-bricks/providers-of-air-admin-service@1.1.10) (2021-04-22)
+
+**Note:** Version bump only for package @next-bricks/providers-of-air-admin-service
+
 ## [1.1.9](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-air-admin-service@1.1.8...@next-bricks/providers-of-air-admin-service@1.1.9) (2021-04-20)
 
 **Note:** Version bump only for package @next-bricks/providers-of-air-admin-service
