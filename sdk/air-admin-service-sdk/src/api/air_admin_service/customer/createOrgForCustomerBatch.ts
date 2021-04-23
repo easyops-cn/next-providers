@@ -7,8 +7,8 @@ export interface CustomerApi_CreateOrgForCustomerBatchRequestBody {
 }
 
 export interface CustomerApi_CreateOrgForCustomerBatchResponseBody {
-  /** 创建失败的实例id列表 */
-  failedInstanceIds: string[];
+  /** 创建成功的实例id列表 */
+  successIds: CustomerApi_CreateOrgForCustomerBatchResponseBody_successIds_item[];
 }
 
 /**
@@ -28,3 +28,11 @@ export const CustomerApi_createOrgForCustomerBatch = async (
       options
     )
   ).data;
+
+export interface CustomerApi_CreateOrgForCustomerBatchResponseBody_successIds_item {
+  /** 申请信息的instanceId */
+  applyInfoId?: string;
+
+  /** Org信息的instanceId */
+  orgInfoId?: string;
+}

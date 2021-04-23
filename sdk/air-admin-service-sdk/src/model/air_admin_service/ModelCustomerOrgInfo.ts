@@ -31,7 +31,7 @@ export interface ModelCustomerOrgInfo {
   industry: string;
 
   /** 审核时间 */
-  auditTime: number;
+  auditTime: string;
 
   /** 审核者 */
   auditor: string;
