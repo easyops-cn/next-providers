@@ -6,9 +6,14 @@
   "commitMessagePrefix": "chore(deps):",
   "ignorePresets": [":ignoreModulesAndTests"],
   "packageRules": [
-    { "depTypeList": ["devDependencies"], "automerge": true },
     {
-      "packagePatterns": [
+      "automerge": true,
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
+      "enabled": false,
+      "matchPackagePatterns": [
         "^@bricks/",
         "^@libs/",
         "^@micro-apps/",
@@ -20,8 +25,7 @@
         "^@next-sdk/",
         "^@next-legacy-templates/"
       ],
-      "enabled": false,
-      "packageNames": [
+      "matchPackageNames": [
         "@ant-design/compatible",
         "@ant-design/icons",
         "@fortawesome/react-fontawesome",
@@ -78,7 +82,6 @@
       ]
     },
     {
-      "packagePatterns": ["^@next-core/"],
       "automerge": false,
       "groupName": "next-core packages",
       "postUpgradeTasks": {
@@ -89,7 +92,8 @@
         ],
         "fileFilters": ["**/*", ".gitlab/**/*"]
       },
-      "major": { "enabled": false }
+      "major": { "enabled": false },
+      "matchPackagePatterns": ["^@next-core/"]
     }
   ],
   "postUpdateOptions": ["yarnDedupeHighest"]
