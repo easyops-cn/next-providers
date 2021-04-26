@@ -7,8 +7,8 @@ export interface CustomerApi_UpdateLicenseBatchRequestBody {
 }
 
 export interface CustomerApi_UpdateLicenseBatchResponseBody {
-  /** 续期失败的orgId列表 */
-  failedOrgIds: number[];
+  /** 延期成功的Org列表 */
+  successOrgs: CustomerApi_UpdateLicenseBatchResponseBody_successOrgs_item[];
 }
 
 /**
@@ -28,3 +28,11 @@ export const CustomerApi_updateLicenseBatch = async (
       options
     )
   ).data;
+
+export interface CustomerApi_UpdateLicenseBatchResponseBody_successOrgs_item {
+  /** 延期成功的org */
+  orgId?: number;
+
+  /** 延期成功的Org信息的instanceId */
+  orgInfoId?: string;
+}

@@ -4,6 +4,9 @@ import { ResponseBodyWrapper } from "../../../wrapper";
 export interface CustomerApi_GetExpirationResponseBody {
   /** 过期时间戳 */
   expires: number;
+
+  /** org是否已经是延期中状态 */
+  updating: boolean;
 }
 
 /**
