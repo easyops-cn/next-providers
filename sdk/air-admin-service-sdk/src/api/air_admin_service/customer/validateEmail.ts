@@ -2,13 +2,13 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface CustomerApi_ValidateEmailRequestParams {
-  /** 邮箱 */
+  /** 邮箱字符串 */
   email: string;
 }
 
 export interface CustomerApi_ValidateEmailResponseBody {
   /** 校验结果 */
-  validateInfo?: "OK" | "duplicated_email";
+  validateInfo?: "OK" | "duplicated_email" | "invalid_email";
 }
 
 /**

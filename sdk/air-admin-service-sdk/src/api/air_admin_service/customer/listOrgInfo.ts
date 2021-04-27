@@ -14,6 +14,9 @@ export interface CustomerApi_ListOrgInfoRequestBody {
 
   /** 页码 */
   page_size?: number;
+
+  /** 按字段排序, 留空默认按照实例ID降序排序(1表示升序, -1表示降序) */
+  sort?: Record<string, any>;
 }
 
 export interface CustomerApi_ListOrgInfoResponseBody {

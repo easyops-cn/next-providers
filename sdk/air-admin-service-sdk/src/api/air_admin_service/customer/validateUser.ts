@@ -2,13 +2,13 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface CustomerApi_ValidateUserRequestParams {
-  /** 注册成功后的easyops平台的用户名 */
+  /** 用户Id字符串, 用于申请平台用户 */
   userId: string;
 }
 
 export interface CustomerApi_ValidateUserResponseBody {
   /** 校验结果 */
-  validateInfo?: "OK" | "duplicated_user";
+  validateInfo?: "OK" | "duplicated_user" | "invalid_user";
 }
 
 /**
