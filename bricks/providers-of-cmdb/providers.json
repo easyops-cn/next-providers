@@ -102,6 +102,7 @@
     "InstanceApi.instanceRelationsCount",
     "InstanceApi.instanceSnapshot",
     "InstanceApi.instancePreviousSnapshot",
-    "InstanceApi.mixCreateInstance"
+    "InstanceApi.mixCreateInstance",
+    "InstanceApi.mixUpdateInstance"
   ]
 }
