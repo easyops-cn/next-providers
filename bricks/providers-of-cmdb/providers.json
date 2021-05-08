@@ -101,6 +101,7 @@
     "InstancePathSearchApi.pathSearchV4",
     "InstanceApi.instanceRelationsCount",
     "InstanceApi.instanceSnapshot",
-    "InstanceApi.instancePreviousSnapshot"
+    "InstanceApi.instancePreviousSnapshot",
+    "InstanceApi.mixCreateInstance"
   ]
 }
