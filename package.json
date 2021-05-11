@@ -4,7 +4,7 @@
   "license": "GPL-3.0",
   "homepage": "https://github.com/easyops-cn/next-providers",
   "scripts": {
-    "prepare": "lerna bootstrap",
+    "prepare": "lerna bootstrap && husky install",
     "start": "lerna run start",
     "build": "npm run build:sdk && npm run build:libs && npm run build:bricks && npm run build:templates && npm run build:micro-apps",
     "build:libs": "if [ -d libs ]; then lerna run build --scope \"@next-libs/*\"; else echo \"no libs\"; fi",
@@ -22,42 +22,46 @@
     "yo-sdk": "sdk-scripts",
     "yo-sdk-debug": "node --inspect-brk ./node_modules/@next-core/sdk-scripts/dist/index.js",
     "renew": "dev-dependencies-renew",
-    "extract": "dev-dependencies-extract"
+    "extract": "dev-dependencies-extract",
+    "lint-staged": "lint-staged"
   },
   "browserslist": {
-    "development": ["extends @next-core/browserslist-config-next/development"],
-    "production": ["extends @next-core/browserslist-config-next/production"]
+    "development": [
+      "extends @next-core/browserslist-config-next/development"
+    ],
+    "production": [
+      "extends @next-core/browserslist-config-next/production"
+    ]
   },
   "devDependencies": {
     "@ant-design/compatible": "^1.0.8",
     "@ant-design/icons": "^4.5.0",
     "@fortawesome/react-fontawesome": "^0.1.14",
-    "@next-core/babel-runtime-helpers": "^1.0.8",
+    "@next-core/babel-runtime-helpers": "^1.0.10",
     "@next-core/brick-http": "^2.2.7",
-    "@next-core/brick-icons": "^2.13.0",
-    "@next-core/brick-kit": "^2.41.3",
-    "@next-core/brick-types": "^2.22.0",
-    "@next-core/brick-utils": "^2.14.3",
+    "@next-core/brick-icons": "^2.15.3",
+    "@next-core/brick-kit": "^2.44.2",
+    "@next-core/brick-types": "^2.25.1",
+    "@next-core/brick-utils": "^2.15.1",
     "@next-core/dev-dependencies": "^1.8.5",
     "@next-core/easyops-analytics": "^0.1.8",
-    "@next-core/editor-bricks-helper": "^0.17.7",
-    "@next-core/fontawesome-library": "^1.1.13",
-    "@next-core/illustrations": "^0.3.5",
+    "@next-core/editor-bricks-helper": "^0.19.2",
+    "@next-core/fontawesome-library": "^1.1.15",
+    "@next-core/illustrations": "^0.3.6",
     "@next-core/sdk-scripts": "^2.6.5",
-    "@size-limit/file": "^4.9.2",
-    "@types/classnames": "^2.2.11",
+    "@size-limit/file": "^4.10.2",
     "@types/d3": "^6.3.0",
-    "@types/dompurify": "^2.2.1",
-    "@types/echarts": "^4.9.4",
+    "@types/dompurify": "^2.2.2",
+    "@types/echarts": "^4.9.7",
     "@types/enzyme": "^3.10.8",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/history": "^4.7.8",
-    "@types/jest": "^26.0.20",
+    "@types/jest": "^26.0.23",
     "@types/js-yaml": "^3.12.6",
     "@types/lodash": "^4.14.168",
     "@types/lolex": "^5.1.0",
-    "@types/node": "^12.20.4",
-    "@types/react": "^16.14.4",
+    "@types/node": "^12.20.12",
+    "@types/react": "^16.14.6",
     "@types/react-dom": "^17.0.0",
     "@types/react-test-renderer": "^17.0.1",
     "@types/react-transition-group": "^4.4.1",
@@ -66,15 +70,15 @@
     "d3-force": "^2.1.1",
     "d3-hierarchy": "^2.0.0",
     "d3-selection": "^2.0.0",
-    "d3-shape": "^2.0.0",
+    "d3-shape": "^2.1.0",
     "d3-zoom": "^2.0.0",
     "dnd-core": "^11.1.3",
     "echarts": "^4.9.0",
     "enzyme": "^3.11.0",
     "history": "^4.10.1",
-    "i18next": "^19.9.1",
+    "i18next": "^20.2.2",
     "js-yaml": "^3.14.1",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "lolex": "^5.1.2",
     "moment": "^2.29.1",
     "react": "^16.14.0",
@@ -82,14 +86,24 @@
     "react-dnd": "^11.1.3",
     "react-dnd-html5-backend": "^11.1.3",
     "react-dom": "^16.14.0",
-    "react-i18next": "^11.8.8",
-    "react-transition-group": "^4.4.1"
+    "react-i18next": "^11.8.15",
+    "react-transition-group": "^4.4.1",
+    "husky": "^6.0.0"
   },
-  "workspaces": ["bricks/*", "libs/*", "micro-apps/*", "sdk/*", "templates/*"],
+  "workspaces": [
+    "bricks/*",
+    "libs/*",
+    "micro-apps/*",
+    "sdk/*",
+    "templates/*"
+  ],
   "resolutions": {
-    "@types/react": "^16.14.4",
-    "lodash": "^4.17.20",
-    "@next-core/brick-types": "^2.22.0"
+    "@types/react": "^16.14.6",
+    "lodash": "^4.17.21",
+    "@next-core/brick-types": "^2.25.1"
   },
-  "easyops": { "create-next-repo": "1.2.24", "dev-dependencies": "1.7.1" }
+  "easyops": {
+    "create-next-repo": "1.2.24",
+    "dev-dependencies": "1.8.5"
+  }
 }

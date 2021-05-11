@@ -90,7 +90,13 @@
           "yarn extract",
           "./node_modules/.bin/prettier --write package.json"
         ],
-        "fileFilters": ["**/*", ".gitlab/**/*"]
+        "fileFilters": [
+          "**/*",
+          ".gitlab/**/*",
+          ".huskyrc",
+          ".husky/.gitignore",
+          ".husky/**/*"
+        ]
       },
       "major": { "enabled": false },
       "matchPackagePatterns": ["^@next-core/"]
