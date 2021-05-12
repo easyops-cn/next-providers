@@ -1,0 +1,11 @@
+import { http, HttpOptions } from "@next-core/brick-http";
+
+/**
+ * @description Oauth注销
+ * @endpoint GET /api/auth/oauth/logout
+ */
+export const OauthApi_oauthLogout = (options?: HttpOptions): Promise<void> =>
+  /**! @contract easyops.api.api_gateway.oauth.OauthLogout */ http.get<void>(
+    "api/auth/oauth/logout",
+    options
+  );
