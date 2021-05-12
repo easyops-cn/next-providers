@@ -1,0 +1,31 @@
+{
+  "name": "@next-sdk/api-gateway-sdk",
+  "version": "2.0.2",
+  "description": "SDK for Api Gateway",
+  "homepage": "https://github.com/easyops-cn/next-providers/tree/master/sdk/api-gateway-sdk",
+  "license": "GPL-3.0",
+  "main": "dist/index.bundle.js",
+  "module": "dist/index.esm.js",
+  "typings": "dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "deploy"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "prestart": "npm run clean",
+    "start": "concurrently -k -n tsc,build \"npm run start:types\" \"npm run start:rollup\"",
+    "start:rollup": "rollup --watch --config rollup.config.js",
+    "start:types": "tsc --watch --emitDeclarationOnly --declaration --declarationDir dist/types",
+    "prebuild": "npm run clean",
+    "build": "npm run build:types && npm run build:rollup",
+    "build:rollup": "rollup --config rollup.config.js",
+    "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types",
+    "test": "cross-env NODE_ENV='test' jest",
+    "test:ci": "cross-env NODE_ENV='test' CI=true jest"
+  },
+  "sideEffects": false,
+  "peerDependencies": {
+    "@next-core/brick-http": "*"
+  }
+}

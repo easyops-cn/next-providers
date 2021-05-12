@@ -1,0 +1,12 @@
+{
+  "sdk": "@next-sdk/api-gateway-sdk",
+  "providers": [
+    "SsoApi.ssoAuthorization",
+    "SsoApi.ssoLogin",
+    "SsoApi.ssoLogout",
+    "AuthApi.checkLogin",
+    "MfaApi.generateRandomTotpSecret",
+    "MfaApi.updateUserTotpSecret",
+    "MfaApi.verifyTotpCode"
+  ]
+}
