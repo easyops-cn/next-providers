@@ -15,6 +15,7 @@
     "CustomerApi.validateEmail",
     "CustomerApi.validateUser",
     "CustomerApi.setApplyDisapproved",
-    "CustomerApi.setApplyDisapprovedBatch"
+    "CustomerApi.setApplyDisapprovedBatch",
+    "CustomerApi.saveCustomerPublicKey"
   ]
 }

@@ -35,4 +35,7 @@ export interface ModelCustomerOrgInfo {
 
   /** 审核者 */
   auditor: string;
+
+  /** 所在城市 */
+  city: string;
 }

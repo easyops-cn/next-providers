@@ -50,4 +50,7 @@ export interface ModelCustomerApplyInfo {
 
   /** 审批状态 */
   state: "approved" | "on-going" | "pending" | "disapproved";
+
+  /** 所在城市 */
+  city: string;
 }
