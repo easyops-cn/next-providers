@@ -7,6 +7,7 @@
     "AuthApi.checkLogin",
     "MfaApi.generateRandomTotpSecret",
     "MfaApi.updateUserTotpSecret",
-    "MfaApi.verifyTotpCode"
+    "MfaApi.verifyTotpCode",
+    "AuthApi.loginV2"
   ]
 }
