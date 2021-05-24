@@ -32,6 +32,8 @@
     "InheritanceApi.searchInstanceAuthorizers",
     "PermissionV2Api.permissionChangeRoleByAction",
     "PermissionApi.validateArtifactPermission",
-    "PermissionApi.getPermissionDetailByAction"
+    "PermissionApi.getPermissionDetailByAction",
+    "PermissionApi.validateOpsAutomationPermission",
+    "PermissionApi.validateToolPermission"
   ]
 }
