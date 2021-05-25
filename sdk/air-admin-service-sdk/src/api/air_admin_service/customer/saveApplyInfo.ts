@@ -19,8 +19,38 @@ export interface CustomerApi_SaveApplyInfoRequestBody {
   /** 企业名称 */
   company: string;
 
+  /** 企业网址 */
+  website?: string;
+
+  /** 所属行业 */
+  industry?:
+    | "internet"
+    | "opeators"
+    | "banking"
+    | "electircity"
+    | "logistics"
+    | "finance"
+    | "government"
+    | "enterprise_service"
+    | "system_integration"
+    | "other";
+
+  /** 公司规模 */
+  scale?: "below_50" | "below_100" | "below_200" | "above_200";
+
+  /** 所在职位 */
+  position?:
+    | "maintenance-engineer"
+    | "RD"
+    | "CEO"
+    | "CIO"
+    | "CTO"
+    | "technical-support-engineer"
+    | "IT-counselor"
+    | "other";
+
   /** 所在城市 */
-  city: string;
+  city?: string;
 
   /** 发送的申请验证码消息 ID */
   message_id: string;
