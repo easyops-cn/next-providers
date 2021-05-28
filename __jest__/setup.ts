@@ -1,3 +1,4 @@
+import { setImmediate as flushMicroTasks } from "timers";
 import { configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import { act } from "react-dom/test-utils";
@@ -6,7 +7,7 @@ configure({ adapter: new Adapter() });
 
 // Ref https://github.com/facebook/jest/issues/2157#issuecomment-279171856
 (global as any).flushPromises = () =>
-  act(() => new Promise((resolve) => setImmediate(resolve)));
+  act(() => new Promise((resolve) => flushMicroTasks(resolve)));
 
 Element.prototype.scrollIntoView = jest.fn();
 document.execCommand = jest.fn(() => true);
