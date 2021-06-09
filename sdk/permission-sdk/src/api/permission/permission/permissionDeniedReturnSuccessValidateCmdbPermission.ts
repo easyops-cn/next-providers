@@ -27,15 +27,16 @@ export interface PermissionApi_PermissionDeniedReturnSuccessValidateCmdbPermissi
  * @description 校验cmdb权限(注意：如果用户没有权限，这个接口也会返回成功，不会返回403)
  * @endpoint GET /api/v1/permission/permission-denied-return-success-validate
  */
-export const PermissionApi_permissionDeniedReturnSuccessValidateCmdbPermission = async (
-  params: PermissionApi_PermissionDeniedReturnSuccessValidateCmdbPermissionRequestParams,
-  options?: HttpOptions
-): Promise<PermissionApi_PermissionDeniedReturnSuccessValidateCmdbPermissionResponseBody> =>
-  /**! @contract easyops.api.permission.permission.PermissionDeniedReturnSuccessValidateCmdbPermission */ (
-    await http.get<
-      ResponseBodyWrapper<PermissionApi_PermissionDeniedReturnSuccessValidateCmdbPermissionResponseBody>
-    >(
-      "api/gateway/permission.permission.PermissionDeniedReturnSuccessValidateCmdbPermission/api/v1/permission/permission-denied-return-success-validate",
-      { ...options, params }
-    )
-  ).data;
+export const PermissionApi_permissionDeniedReturnSuccessValidateCmdbPermission =
+  async (
+    params: PermissionApi_PermissionDeniedReturnSuccessValidateCmdbPermissionRequestParams,
+    options?: HttpOptions
+  ): Promise<PermissionApi_PermissionDeniedReturnSuccessValidateCmdbPermissionResponseBody> =>
+    /**! @contract easyops.api.permission.permission.PermissionDeniedReturnSuccessValidateCmdbPermission */ (
+      await http.get<
+        ResponseBodyWrapper<PermissionApi_PermissionDeniedReturnSuccessValidateCmdbPermissionResponseBody>
+      >(
+        "api/gateway/permission.permission.PermissionDeniedReturnSuccessValidateCmdbPermission/api/v1/permission/permission-denied-return-success-validate",
+        { ...options, params }
+      )
+    ).data;

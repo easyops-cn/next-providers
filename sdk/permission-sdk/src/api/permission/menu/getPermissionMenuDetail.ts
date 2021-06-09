@@ -2,7 +2,8 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelPermissionMenu } from "../../../model/permission";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export type MenuApi_GetPermissionMenuDetailResponseBody = Partial<ModelPermissionMenu>;
+export type MenuApi_GetPermissionMenuDetailResponseBody =
+  Partial<ModelPermissionMenu>;
 
 /**
  * @description 获取菜单详情
