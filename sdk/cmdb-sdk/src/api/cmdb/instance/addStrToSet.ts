@@ -12,7 +12,8 @@ export interface InstanceApi_AddStrToSetRequestBody {
   values: string[];
 }
 
-export type InstanceApi_AddStrToSetResponseBody = InstanceApi_AddStrToSetResponseBody_item[];
+export type InstanceApi_AddStrToSetResponseBody =
+  InstanceApi_AddStrToSetResponseBody_item[];
 
 /**
  * @description append数据到实例arr属性内(set) (append数据到实例arr属性内,数组中已存在此值的话,不会被append进去)

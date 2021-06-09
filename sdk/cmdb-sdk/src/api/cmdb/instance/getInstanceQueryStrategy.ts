@@ -2,7 +2,8 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelInstanceQueryStrategy } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export type InstanceApi_GetInstanceQueryStrategyResponseBody = Partial<ModelInstanceQueryStrategy>;
+export type InstanceApi_GetInstanceQueryStrategyResponseBody =
+  Partial<ModelInstanceQueryStrategy>;
 
 /**
  * @description 获取实例查询策略

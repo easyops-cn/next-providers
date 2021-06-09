@@ -2,7 +2,8 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelRelationQueryStrategyV2 } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export type CmdbObjectApi_GetRelationQueryStrategyV2ResponseBody = Partial<ModelRelationQueryStrategyV2>;
+export type CmdbObjectApi_GetRelationQueryStrategyV2ResponseBody =
+  Partial<ModelRelationQueryStrategyV2>;
 
 /**
  * @description 获取单个查询策略v2

@@ -5,12 +5,15 @@ import {
 } from "../../../model/cmdb";
 import { ResponseListWrapper, ResponseBodyWrapper } from "../../../wrapper";
 
-export type CmdbObjectApi_ListObjectBasicRequestParams = Partial<ModelListObjectRequest> &
-  CmdbObjectApi_ListObjectBasicRequestParams_2;
+export type CmdbObjectApi_ListObjectBasicRequestParams =
+  Partial<ModelListObjectRequest> &
+    CmdbObjectApi_ListObjectBasicRequestParams_2;
 
-export type CmdbObjectApi_ListObjectBasicResponseItem = Partial<ModelObjectBasicInfo>;
+export type CmdbObjectApi_ListObjectBasicResponseItem =
+  Partial<ModelObjectBasicInfo>;
 
-export type CmdbObjectApi_ListObjectBasicResponseBody = ResponseListWrapper<CmdbObjectApi_ListObjectBasicResponseItem>;
+export type CmdbObjectApi_ListObjectBasicResponseBody =
+  ResponseListWrapper<CmdbObjectApi_ListObjectBasicResponseItem>;
 
 /**
  * @description 获取模型基本信息列表

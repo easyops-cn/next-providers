@@ -1,8 +1,8 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelListObjectRequest, ModelCmdbObject } from "../../../model/cmdb";
 
-export type CmdbObjectApi_GetObjectAllRequestParams = Partial<ModelListObjectRequest> &
-  CmdbObjectApi_GetObjectAllRequestParams_2;
+export type CmdbObjectApi_GetObjectAllRequestParams =
+  Partial<ModelListObjectRequest> & CmdbObjectApi_GetObjectAllRequestParams_2;
 
 export interface CmdbObjectApi_GetObjectAllResponseBody {
   /** 返回码 */

@@ -6,7 +6,8 @@ export interface BusinessInstanceApi_GetBusinessTreeListRequestParams {
   ids: string;
 }
 
-export type BusinessInstanceApi_GetBusinessTreeListResponseBody = BusinessInstanceApi_GetBusinessTreeListResponseBody_item[];
+export type BusinessInstanceApi_GetBusinessTreeListResponseBody =
+  BusinessInstanceApi_GetBusinessTreeListResponseBody_item[];
 
 /**
  * @description 批量获取业务业务树全路径

@@ -16,7 +16,8 @@ export interface InstanceApi_UpdateInstanceQueryStrategyRequestBody {
   query?: Record<string, any>;
 }
 
-export type InstanceApi_UpdateInstanceQueryStrategyResponseBody = Partial<ModelInstanceQueryStrategy>;
+export type InstanceApi_UpdateInstanceQueryStrategyResponseBody =
+  Partial<ModelInstanceQueryStrategy>;
 
 /**
  * @description 更新实例查询策略

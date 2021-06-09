@@ -13,7 +13,8 @@ export interface InstanceRelationApi_DiscoveryRequestBody {
   strict?: boolean;
 }
 
-export type InstanceRelationApi_DiscoveryResponseBody = InstanceRelationApi_DiscoveryResponseBody_item[];
+export type InstanceRelationApi_DiscoveryResponseBody =
+  InstanceRelationApi_DiscoveryResponseBody_item[];
 
 /**
  * @description 实例关系发现

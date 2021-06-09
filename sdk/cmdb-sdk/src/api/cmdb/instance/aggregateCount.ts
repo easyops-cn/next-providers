@@ -17,7 +17,8 @@ export interface InstanceApi_AggregateCountResponseItem {
   attr: Record<string, any>;
 }
 
-export type InstanceApi_AggregateCountResponseBody = ResponseListWrapper<InstanceApi_AggregateCountResponseItem>;
+export type InstanceApi_AggregateCountResponseBody =
+  ResponseListWrapper<InstanceApi_AggregateCountResponseItem>;
 
 /**
  * @description 实例计数统计

@@ -103,6 +103,11 @@
     "InstanceApi.instanceSnapshot",
     "InstanceApi.instancePreviousSnapshot",
     "InstanceApi.mixCreateInstance",
-    "InstanceApi.mixUpdateInstance"
+    "InstanceApi.mixUpdateInstance",
+    "InstanceTreeApi.instanceTree",
+    "InstanceTreeApi.instanceTreeAnchor",
+    "InstanceTreeApi.instanceTreeAnchorV2",
+    "InstanceTreeApi.instanceTreeExpand",
+    "InstanceTreeApi.instanceTreeSearch"
   ]
 }

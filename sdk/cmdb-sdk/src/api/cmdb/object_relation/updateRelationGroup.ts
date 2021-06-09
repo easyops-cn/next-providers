@@ -10,7 +10,8 @@ export interface ObjectRelationApi_UpdateRelationGroupRequestBody {
   relations?: ObjectRelationApi_UpdateRelationGroupRequestBody_relations_item[];
 }
 
-export type ObjectRelationApi_UpdateRelationGroupResponseBody = Partial<ModelObjectRelationGroup>;
+export type ObjectRelationApi_UpdateRelationGroupResponseBody =
+  Partial<ModelObjectRelationGroup>;
 
 /**
  * @description 更新模型关系分组

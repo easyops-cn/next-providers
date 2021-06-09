@@ -7,8 +7,8 @@ export interface CmdbObjectApi_ObjectSnapshotRequestParams {
   _version: number;
 }
 
-export type CmdbObjectApi_ObjectSnapshotResponseBody = Partial<ModelCmdbObject> &
-  CmdbObjectApi_ObjectSnapshotResponseBody_2;
+export type CmdbObjectApi_ObjectSnapshotResponseBody =
+  Partial<ModelCmdbObject> & CmdbObjectApi_ObjectSnapshotResponseBody_2;
 
 /**
  * @description 查询指定版本模型快照

@@ -16,7 +16,8 @@ export interface InstanceGraphApi_TraverseGraphCountRequestBody {
   child: Partial<ModelTraverseChildNode>[];
 }
 
-export type InstanceGraphApi_TraverseGraphCountResponseBody = InstanceGraphApi_TraverseGraphCountResponseBody_item[];
+export type InstanceGraphApi_TraverseGraphCountResponseBody =
+  InstanceGraphApi_TraverseGraphCountResponseBody_item[];
 
 /**
  * @description 图遍历查询叶子节点个数统计 (图遍历查询叶子节点个数统计,fields不用传)

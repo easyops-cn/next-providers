@@ -2,7 +2,8 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelInstanceQueryStrategy } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export type InstanceApi_DeleteInstanceQueryStrategyResponseBody = Partial<ModelInstanceQueryStrategy>;
+export type InstanceApi_DeleteInstanceQueryStrategyResponseBody =
+  Partial<ModelInstanceQueryStrategy>;
 
 /**
  * @description 删除实例查询策略

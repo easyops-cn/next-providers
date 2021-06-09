@@ -1,7 +1,8 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
 /** 请求体 */
-export type InstanceApi_AutoDiscoveryRequestBody = InstanceApi_AutoDiscoveryRequestBody_item[];
+export type InstanceApi_AutoDiscoveryRequestBody =
+  InstanceApi_AutoDiscoveryRequestBody_item[];
 
 export interface InstanceApi_AutoDiscoveryResponseBody {
   /** 返回码 */

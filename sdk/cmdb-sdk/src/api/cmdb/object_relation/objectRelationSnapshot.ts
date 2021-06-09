@@ -7,8 +7,9 @@ export interface ObjectRelationApi_ObjectRelationSnapshotRequestParams {
   _version: number;
 }
 
-export type ObjectRelationApi_ObjectRelationSnapshotResponseBody = Partial<ModelObjectRelation> &
-  ObjectRelationApi_ObjectRelationSnapshotResponseBody_2;
+export type ObjectRelationApi_ObjectRelationSnapshotResponseBody =
+  Partial<ModelObjectRelation> &
+    ObjectRelationApi_ObjectRelationSnapshotResponseBody_2;
 
 /**
  * @description 查询指定版本模型关系快照

@@ -2,7 +2,8 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelObjectImport } from "../../../model/cmdb";
 
 /** 模型列表 */
-export type CmdbObjectApi_ImportObjectRequestBody = Partial<ModelObjectImport>[];
+export type CmdbObjectApi_ImportObjectRequestBody =
+  Partial<ModelObjectImport>[];
 
 export interface CmdbObjectApi_ImportObjectResponseBody {
   /** 返回码 */

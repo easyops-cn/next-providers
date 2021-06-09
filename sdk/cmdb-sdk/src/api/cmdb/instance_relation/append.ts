@@ -1,7 +1,8 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelInstanceRelationRequest } from "../../../model/cmdb";
 
-export type InstanceRelationApi_AppendRequestBody = Partial<ModelInstanceRelationRequest>;
+export type InstanceRelationApi_AppendRequestBody =
+  Partial<ModelInstanceRelationRequest>;
 
 /**
  * @description 批量添加关系

@@ -12,7 +12,8 @@ export interface InstanceApi_AddStrToArrayRequestBody {
   values: string[];
 }
 
-export type InstanceApi_AddStrToArrayResponseBody = InstanceApi_AddStrToArrayResponseBody_item[];
+export type InstanceApi_AddStrToArrayResponseBody =
+  InstanceApi_AddStrToArrayResponseBody_item[];
 
 /**
  * @description append数据到实例arr属性内 (append数据到实例arr属性内)

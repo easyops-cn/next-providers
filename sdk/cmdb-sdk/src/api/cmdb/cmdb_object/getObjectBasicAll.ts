@@ -4,7 +4,8 @@ import {
   ModelObjectBasicInfo,
 } from "../../../model/cmdb";
 
-export type CmdbObjectApi_GetObjectBasicAllRequestParams = Partial<ModelListObjectRequest>;
+export type CmdbObjectApi_GetObjectBasicAllRequestParams =
+  Partial<ModelListObjectRequest>;
 
 export interface CmdbObjectApi_GetObjectBasicAllResponseBody {
   /** 返回码 */

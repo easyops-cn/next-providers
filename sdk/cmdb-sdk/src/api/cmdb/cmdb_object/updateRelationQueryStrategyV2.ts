@@ -29,7 +29,8 @@ export interface CmdbObjectApi_UpdateRelationQueryStrategyV2RequestBody {
   deleteAuthorizers?: string[];
 }
 
-export type CmdbObjectApi_UpdateRelationQueryStrategyV2ResponseBody = Partial<ModelRelationQueryStrategyV2>;
+export type CmdbObjectApi_UpdateRelationQueryStrategyV2ResponseBody =
+  Partial<ModelRelationQueryStrategyV2>;
 
 /**
  * @description 更新查询策略v2

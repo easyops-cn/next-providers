@@ -7,7 +7,8 @@ export type CmdbObjectApi_ListRequestParams = Partial<ModelListObjectRequest> &
 
 export type CmdbObjectApi_ListResponseItem = Partial<ModelCmdbObject>;
 
-export type CmdbObjectApi_ListResponseBody = ResponseListWrapper<CmdbObjectApi_ListResponseItem>;
+export type CmdbObjectApi_ListResponseBody =
+  ResponseListWrapper<CmdbObjectApi_ListResponseItem>;
 
 /**
  * @description 获取模型列表

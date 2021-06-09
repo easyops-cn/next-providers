@@ -6,7 +6,8 @@ export interface InstanceApi_AggregateCountV2RequestParams {
   top?: number;
 }
 
-export type InstanceApi_AggregateCountV2ResponseBody = InstanceApi_AggregateCountV2ResponseBody_item[];
+export type InstanceApi_AggregateCountV2ResponseBody =
+  InstanceApi_AggregateCountV2ResponseBody_item[];
 
 /**
  * @description 实例计数统计接口v2 (实例计数统计,不分页)

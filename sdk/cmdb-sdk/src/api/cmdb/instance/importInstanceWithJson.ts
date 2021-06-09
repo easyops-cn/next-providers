@@ -31,7 +31,8 @@ export const InstanceApi_importInstanceWithJson = (
   data: InstanceApi_ImportInstanceWithJsonRequestBody,
   options?: HttpOptions
 ): Promise<InstanceApi_ImportInstanceWithJsonResponseBody> => {
-  /**! @contract easyops.api.cmdb.instance.ImportInstanceWithJson */ const _formData = new FormData();
+  /**! @contract easyops.api.cmdb.instance.ImportInstanceWithJson */ const _formData =
+    new FormData();
   for (const [key, value] of Object.entries(data)) {
     if (Array.isArray(value)) {
       const k = `${key}[]`;

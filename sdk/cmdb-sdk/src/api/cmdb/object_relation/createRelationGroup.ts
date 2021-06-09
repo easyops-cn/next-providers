@@ -13,7 +13,8 @@ export interface ObjectRelationApi_CreateRelationGroupRequestBody {
   relations?: ObjectRelationApi_CreateRelationGroupRequestBody_relations_item[];
 }
 
-export type ObjectRelationApi_CreateRelationGroupResponseBody = Partial<ModelObjectRelationGroup>;
+export type ObjectRelationApi_CreateRelationGroupResponseBody =
+  Partial<ModelObjectRelationGroup>;
 
 /**
  * @description 创建模型关系分组
