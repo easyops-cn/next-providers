@@ -9,6 +9,7 @@
     "MfaApi.updateUserTotpSecret",
     "MfaApi.verifyTotpCode",
     "AuthApi.loginV2",
-    "MfaApi.verifyUserIsSetRule"
+    "MfaApi.verifyUserIsSetRule",
+    "AuthApi.logout"
   ]
 }

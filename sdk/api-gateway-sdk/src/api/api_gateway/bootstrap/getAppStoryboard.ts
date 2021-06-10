@@ -7,7 +7,8 @@ export interface BootstrapApi_GetAppStoryboardRequestParams {
   check_login?: boolean;
 }
 
-export type BootstrapApi_GetAppStoryboardResponseBody = Partial<ModelStoryBoard>;
+export type BootstrapApi_GetAppStoryboardResponseBody =
+  Partial<ModelStoryBoard>;
 
 /**
  * @description 获取app storyboard初始化信息
