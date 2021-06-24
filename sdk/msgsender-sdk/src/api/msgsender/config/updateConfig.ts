@@ -5,8 +5,9 @@ import { ModelMessageConfig } from "../../../model/msgsender";
 /** 要更新的实例 */
 export type ConfigApi_UpdateConfigRequestBody = Partial<ModelMessageConfig>;
 
-export type ConfigApi_UpdateConfigResponseBody = Partial<ModelEasyTornadoCommonResponse> &
-  ConfigApi_UpdateConfigResponseBody_2;
+export type ConfigApi_UpdateConfigResponseBody =
+  Partial<ModelEasyTornadoCommonResponse> &
+    ConfigApi_UpdateConfigResponseBody_2;
 
 /**
  * @description 更新通知配置

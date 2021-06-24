@@ -5,8 +5,9 @@ import { ModelMessageConfig } from "../../../model/msgsender";
 export type ConfigApi_CreateConfigRequestBody = Partial<ModelMessageConfig> &
   ModelMessageConfig_partial;
 
-export type ConfigApi_CreateConfigResponseBody = Partial<ModelEasyTornadoCommonResponse> &
-  ConfigApi_CreateConfigResponseBody_2;
+export type ConfigApi_CreateConfigResponseBody =
+  Partial<ModelEasyTornadoCommonResponse> &
+    ConfigApi_CreateConfigResponseBody_2;
 
 /**
  * @description 创建通知配置

@@ -2,10 +2,12 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelEasyTornadoCommonResponse } from "../../../model/monitor";
 import { ModelSendMessageRequest } from "../../../model/msgsender";
 
-export type CustomSenderApi_SendMessageRequestBody = Partial<ModelSendMessageRequest>;
+export type CustomSenderApi_SendMessageRequestBody =
+  Partial<ModelSendMessageRequest>;
 
-export type CustomSenderApi_SendMessageResponseBody = Partial<ModelEasyTornadoCommonResponse> &
-  CustomSenderApi_SendMessageResponseBody_2;
+export type CustomSenderApi_SendMessageResponseBody =
+  Partial<ModelEasyTornadoCommonResponse> &
+    CustomSenderApi_SendMessageResponseBody_2;
 
 /**
  * @description 发送通知消息

@@ -1,8 +1,9 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelEasyTornadoCommonPageResponse } from "../../../model/monitor";
 
-export type CustomSenderApi_ListSupportInformResponseBody = Partial<ModelEasyTornadoCommonPageResponse> &
-  CustomSenderApi_ListSupportInformResponseBody_2;
+export type CustomSenderApi_ListSupportInformResponseBody =
+  Partial<ModelEasyTornadoCommonPageResponse> &
+    CustomSenderApi_ListSupportInformResponseBody_2;
 
 /**
  * @description 获取消息通道目前支持的通知方式

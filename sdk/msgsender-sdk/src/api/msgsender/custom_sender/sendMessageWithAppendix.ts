@@ -2,11 +2,13 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelEasyTornadoCommonResponse } from "../../../model/monitor";
 import { ModelSendMessageWithAppendixRequest } from "../../../model/msgsender";
 
-export type CustomSenderApi_SendMessageWithAppendixRequestBody = Partial<ModelSendMessageWithAppendixRequest> &
-  ModelSendMessageWithAppendixRequest_partial;
+export type CustomSenderApi_SendMessageWithAppendixRequestBody =
+  Partial<ModelSendMessageWithAppendixRequest> &
+    ModelSendMessageWithAppendixRequest_partial;
 
-export type CustomSenderApi_SendMessageWithAppendixResponseBody = Partial<ModelEasyTornadoCommonResponse> &
-  CustomSenderApi_SendMessageWithAppendixResponseBody_2;
+export type CustomSenderApi_SendMessageWithAppendixResponseBody =
+  Partial<ModelEasyTornadoCommonResponse> &
+    CustomSenderApi_SendMessageWithAppendixResponseBody_2;
 
 /**
  * @description 处理带附件的通知消息
@@ -15,12 +17,25 @@ export type CustomSenderApi_SendMessageWithAppendixResponseBody = Partial<ModelE
 export const CustomSenderApi_sendMessageWithAppendix = (
   data: CustomSenderApi_SendMessageWithAppendixRequestBody,
   options?: HttpOptions
-): Promise<CustomSenderApi_SendMessageWithAppendixResponseBody> =>
-  /**! @contract easyops.api.msgsender.custom_sender.SendMessageWithAppendix */ http.post<CustomSenderApi_SendMessageWithAppendixResponseBody>(
+): Promise<CustomSenderApi_SendMessageWithAppendixResponseBody> => {
+  /**! @contract easyops.api.msgsender.custom_sender.SendMessageWithAppendix */ const _formData =
+    new FormData();
+  for (const [key, value] of Object.entries(data)) {
+    if (Array.isArray(value)) {
+      const k = `${key}[]`;
+      value.forEach((v) => {
+        _formData.append(k, v);
+      });
+    } else {
+      _formData.append(key, value);
+    }
+  }
+  return http.post<CustomSenderApi_SendMessageWithAppendixResponseBody>(
     "api/gateway/msgsender.custom_sender.SendMessageWithAppendix/api/v1/message_sender/mail_with_appendix",
-    data,
+    _formData,
     options
   );
+};
 
 export interface ModelSendMessageWithAppendixRequest_partial {
   /** 发送通知的请求数据 */

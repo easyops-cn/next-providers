@@ -10,8 +10,8 @@ export interface ConfigApi_ListConfigRequestParams {
   page_size: number;
 }
 
-export type ConfigApi_ListConfigResponseBody = Partial<ModelEasyTornadoCommonResponse> &
-  ConfigApi_ListConfigResponseBody_2;
+export type ConfigApi_ListConfigResponseBody =
+  Partial<ModelEasyTornadoCommonResponse> & ConfigApi_ListConfigResponseBody_2;
 
 /**
  * @description 获取通知配置列表

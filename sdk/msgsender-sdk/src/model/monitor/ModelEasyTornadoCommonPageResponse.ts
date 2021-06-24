@@ -1,8 +1,8 @@
 import { ModelEasyTornadoCommonResponse } from ".";
 
 /** easy_tornado 返回通用页码字段 */
-export type ModelEasyTornadoCommonPageResponse = ModelEasyTornadoCommonResponse &
-  ModelEasyTornadoCommonPageResponse_2;
+export type ModelEasyTornadoCommonPageResponse =
+  ModelEasyTornadoCommonResponse & ModelEasyTornadoCommonPageResponse_2;
 
 export interface ModelEasyTornadoCommonPageResponse_2 {
   /** 页码 */

@@ -1,8 +1,9 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelEasyTornadoCommonResponse } from "../../../model/monitor";
 
-export type ConfigApi_DeleteConfigResponseBody = Partial<ModelEasyTornadoCommonResponse> &
-  ConfigApi_DeleteConfigResponseBody_2;
+export type ConfigApi_DeleteConfigResponseBody =
+  Partial<ModelEasyTornadoCommonResponse> &
+    ConfigApi_DeleteConfigResponseBody_2;
 
 /**
  * @description 删除通知配置

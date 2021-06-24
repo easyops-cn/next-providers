@@ -2,8 +2,8 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelEasyTornadoCommonResponse } from "../../../model/monitor";
 import { ModelMessageConfig } from "../../../model/msgsender";
 
-export type ConfigApi_GetConfigResponseBody = Partial<ModelEasyTornadoCommonResponse> &
-  ConfigApi_GetConfigResponseBody_2;
+export type ConfigApi_GetConfigResponseBody =
+  Partial<ModelEasyTornadoCommonResponse> & ConfigApi_GetConfigResponseBody_2;
 
 /**
  * @description 获取通知配置
