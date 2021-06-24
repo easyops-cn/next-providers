@@ -2205,7 +2205,7 @@
   resolved "https://registry.npmjs.org/@next-core/easyops-analytics/-/easyops-analytics-0.1.9.tgz#aeb400211a7e34357dd9ea08e4e27cbd61c90c06"
   integrity sha512-uEbkuGrLqP5RNDVDh6Zg87gxa+Ubx8KL9qE1Brq2ixuw7VcUtHvObUh75c75gWUlO8ArQzuc5+5L68Upiaz97A==
 
-"@next-core/editor-bricks-helper@^0.25.5", "@next-core/editor-bricks-helper@^0.25.6":
+"@next-core/editor-bricks-helper@^0.25.6":
   version "0.25.6"
   resolved "https://registry.npmjs.org/@next-core/editor-bricks-helper/-/editor-bricks-helper-0.25.6.tgz#48ef986d6891a78311c9158d55dc958d5cd3dadf"
   integrity sha512-IIKDR4SVEDWEKh+iK3Gs02eoPxDNGmgmxrd9Etc7cZ0ibr3GEOQKY7n2hejCBm+9Ba6RVTtMa5rvGDtRka7kYg==
