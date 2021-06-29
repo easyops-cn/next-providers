@@ -1,4 +1,5 @@
 import { http, HttpOptions } from "@next-core/brick-http";
+import { ModelSearchSort } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface InstanceApi_PostSearchV3RequestBody {
@@ -31,6 +32,12 @@ export interface InstanceApi_PostSearchV3RequestBody {
 
   /** 单独指定关系的limit与sort */
   limitations?: InstanceApi_PostSearchV3RequestBody_limitations_item[];
+
+  /** 是否忽略fields有不存在的字段的报错 */
+  ignore_missing_field_error?: boolean;
+
+  /** 指标数据查询 */
+  metrics_filter?: InstanceApi_PostSearchV3RequestBody_metrics_filter;
 }
 
 export interface InstanceApi_PostSearchV3ResponseBody {
@@ -83,10 +90,40 @@ export interface InstanceApi_PostSearchV3RequestBody_limitations_item {
   sort?: InstanceApi_PostSearchV3RequestBody_limitations_item_sort_item[];
 }
 
+export interface InstanceApi_PostSearchV3RequestBody_metrics_filter {
+  /** 指标查询时间范围 */
+  time_range?: InstanceApi_PostSearchV3RequestBody_metrics_filter_time_range;
+
+  /** 指标维度查询 */
+  tags_filter?: Record<string, any>;
+
+  /** 指标数据limit，sort */
+  limitations?: InstanceApi_PostSearchV3RequestBody_metrics_filter_limitations_item[];
+}
+
 export interface InstanceApi_PostSearchV3RequestBody_limitations_item_sort_item {
   /** 属性id */
   key?: string;
 
   /** 1表示升序， -1表示降序, 2表示自然升序， -2表示自然降序 */
   order?: -1 | 1 | -2 | 2;
+}
+
+export interface InstanceApi_PostSearchV3RequestBody_metrics_filter_time_range {
+  /** 起始时间，秒 */
+  start_time?: number;
+
+  /** 终止时间，秒 */
+  end_time?: number;
+}
+
+export interface InstanceApi_PostSearchV3RequestBody_metrics_filter_limitations_item {
+  /** 指标名 */
+  metric?: string;
+
+  /** 指标数据limit */
+  limit?: number;
+
+  /** 指标数据sort */
+  sort?: Partial<ModelSearchSort>[];
 }

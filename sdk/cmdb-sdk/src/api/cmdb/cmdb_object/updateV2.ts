@@ -1,5 +1,5 @@
 import { http, HttpOptions } from "@next-core/brick-http";
-import { ModelCmdbObject, ModelObjectBasicInfo } from "../../../model/cmdb";
+import { ModelObjectBasicInfo, ModelCmdbObject } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 /** 模型信息 */

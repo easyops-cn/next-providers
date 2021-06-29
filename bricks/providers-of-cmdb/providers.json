@@ -109,6 +109,7 @@
     "InstanceTreeApi.instanceTreeAnchorV2",
     "InstanceTreeApi.instanceTreeExpand",
     "InstanceTreeApi.instanceTreeSearch",
-    "InstanceArchiveApi.batchArchiveInstance"
+    "InstanceArchiveApi.batchArchiveInstance",
+    "InstanceApi.importInstanceWithJson"
   ]
 }

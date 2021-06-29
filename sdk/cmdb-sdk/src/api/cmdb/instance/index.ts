@@ -6,6 +6,7 @@ export * from "./aggregateCountV2";
 export * from "./autoDiscovery";
 export * from "./batchListInstanceQueryStrategy";
 export * from "./batchSearch";
+export * from "./countAll";
 export * from "./createInstance";
 export * from "./createInstanceQueryStrategy";
 export * from "./deleteInstance";
