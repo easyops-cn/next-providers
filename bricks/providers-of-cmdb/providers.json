@@ -110,6 +110,21 @@
     "InstanceTreeApi.instanceTreeExpand",
     "InstanceTreeApi.instanceTreeSearch",
     "InstanceArchiveApi.batchArchiveInstance",
-    "InstanceApi.importInstanceWithJson"
+    "InstanceApi.importInstanceWithJson",
+    "InstanceApi.addStrToArray",
+    "InstanceApi.addStrToSet",
+    "InstanceApi.batchListInstanceQueryStrategy",
+    "InstanceApi.countAll",
+    "InstanceApi.exportInstance",
+    "InstanceApi.exportInstanceCsv",
+    "InstanceApi.getImportInstanceCsv",
+    "InstanceApi.getImportInstanceExcel",
+    "InstanceApi.importInstanceWithCsv",
+    "InstanceApi.importInstanceWithExcel",
+    "InstanceApi.mixDeleteInstance",
+    "InstanceApi.postSearchV2",
+    "InstanceApi.relationCountAggregate",
+    "InstanceApi.relationMaxCheck",
+    "InstanceApi.validateInstance"
   ]
 }
