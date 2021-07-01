@@ -100,7 +100,7 @@
     "@types/react": "^16.14.8",
     "lodash": "^4.17.21",
     "@next-core/brick-types": "^2.32.2",
-    "@testing-library/dom": "^7.31.2"
+    "@testing-library/dom": "^8.1.0"
   },
   "easyops": {
     "create-next-repo": "1.2.24",
