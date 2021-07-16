@@ -1,6 +1,6 @@
 {
   "name": "@next-sdk/cmdb-sdk",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "description": "SDK for Cmdb",
   "homepage": "https://github.com/easyops-cn/next-providers/tree/master/sdk/cmdb-sdk",
   "license": "GPL-3.0",
