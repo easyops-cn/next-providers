@@ -125,6 +125,7 @@
     "InstanceApi.postSearchV2",
     "InstanceApi.relationCountAggregate",
     "InstanceApi.relationMaxCheck",
-    "InstanceApi.validateInstance"
+    "InstanceApi.validateInstance",
+    "BusinessInstanceApi.getBusinessGraph"
   ]
 }
