@@ -126,6 +126,7 @@
     "InstanceApi.relationCountAggregate",
     "InstanceApi.relationMaxCheck",
     "InstanceApi.validateInstance",
-    "BusinessInstanceApi.getBusinessGraph"
+    "BusinessInstanceApi.getBusinessGraph",
+    "BusinessInstanceApi.getBusinessTreeList"
   ]
 }
