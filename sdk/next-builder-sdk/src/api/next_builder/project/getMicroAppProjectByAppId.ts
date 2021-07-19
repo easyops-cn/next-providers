@@ -7,7 +7,8 @@ export interface ProjectApi_GetMicroAppProjectByAppIdRequestParams {
   appId?: string;
 }
 
-export type ProjectApi_GetMicroAppProjectByAppIdResponseBody = Partial<ModelMicroAppProject>;
+export type ProjectApi_GetMicroAppProjectByAppIdResponseBody =
+  Partial<ModelMicroAppProject>;
 
 /**
  * @description 获取MicroApp项目 by appId

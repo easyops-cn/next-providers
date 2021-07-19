@@ -2,7 +2,8 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelMicroAppProject } from "../../../model/next_builder";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export type ProjectApi_GetMicroAppProjectResponseBody = Partial<ModelMicroAppProject>;
+export type ProjectApi_GetMicroAppProjectResponseBody =
+  Partial<ModelMicroAppProject>;
 
 /**
  * @description 获取MicroApp项目

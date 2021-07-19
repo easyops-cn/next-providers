@@ -9,6 +9,9 @@ export interface BuildApi_BuildAndPushRequestBody {
 
   /** app图标的base64 */
   appIconBase64?: string;
+
+  /** 忽略push的资源 */
+  ignoredResources?: BuildApi_BuildAndPushRequestBody_ignoredResources;
 }
 
 /**
@@ -24,3 +27,11 @@ export const BuildApi_buildAndPush = (
     data,
     options
   );
+
+export interface BuildApi_BuildAndPushRequestBody_ignoredResources {
+  /** 图片 */
+  image?: boolean;
+
+  /** 目录 */
+  menus?: boolean;
+}

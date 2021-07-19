@@ -32,7 +32,8 @@ export interface DocumentApi_SaveDocumentRequestBody {
 }
 
 /** 保存后的文档，不返回parent和children */
-export type DocumentApi_SaveDocumentResponseBody = Partial<ModelMicroAppDocument>;
+export type DocumentApi_SaveDocumentResponseBody =
+  Partial<ModelMicroAppDocument>;
 
 /**
  * @description 保存文档(已存在文档则更新,根据documentId来判断是否是旧文档)

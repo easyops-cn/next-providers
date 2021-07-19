@@ -2,7 +2,8 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelStoryboardNode } from "../../../model/next_builder";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export type StoryboardApi_GetStoryboardNodeResponseBody = Partial<ModelStoryboardNode>;
+export type StoryboardApi_GetStoryboardNodeResponseBody =
+  Partial<ModelStoryboardNode>;
 
 /**
  * @description 获取storyboard节点的子节点
