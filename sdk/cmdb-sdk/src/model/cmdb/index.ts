@@ -19,6 +19,7 @@ export * from "./ModelObjectField";
 export * from "./ModelInstanceQueryStrategy";
 export * from "./ModelFailInstance";
 export * from "./ModelGroupInstanceFunc";
+export * from "./ModelHoneycombGroup";
 export * from "./ModelSearchSort";
 export * from "./ModelUpdateByQueryResult";
 export * from "./ModelTraverseChildNode";

@@ -1,4 +1,5 @@
 import { http, HttpOptions } from "@next-core/brick-http";
+import { ModelHoneycombGroup } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface InstanceApi_GroupInstanceForHoneycombRequestBody {
@@ -12,7 +13,7 @@ export interface InstanceApi_GroupInstanceForHoneycombRequestBody {
   onlyMyInstance?: boolean;
 
   /** 分组属性id（支持多字段，包括属性和单个关系） */
-  groupFields: string[];
+  groupFields?: string[];
 
   /** 用来填充颜色的指标 */
   fillByMetric: InstanceApi_GroupInstanceForHoneycombRequestBody_fillByMetric;
@@ -23,7 +24,7 @@ export interface InstanceApi_GroupInstanceForHoneycombRequestBody {
 
 export interface InstanceApi_GroupInstanceForHoneycombResponseBody {
   /** 分组列表 */
-  list: InstanceApi_GroupInstanceForHoneycombResponseBody_list_item[];
+  list: Partial<ModelHoneycombGroup>[];
 }
 
 /**
@@ -53,26 +54,4 @@ export interface InstanceApi_GroupInstanceForHoneycombRequestBody_fillByMetric {
 export interface InstanceApi_GroupInstanceForHoneycombRequestBody_sizeByMetric {
   /** 指标名 */
   metricName?: string;
-}
-
-export interface InstanceApi_GroupInstanceForHoneycombResponseBody_list_item {
-  /** 实例Id */
-  groupValues?: string[];
-
-  /** 实例列表 */
-  list?: InstanceApi_GroupInstanceForHoneycombResponseBody_list_item_list_item[];
-}
-
-export interface InstanceApi_GroupInstanceForHoneycombResponseBody_list_item_list_item {
-  /** 实例Id */
-  instanceId?: string;
-
-  /** 实例showKey */
-  showKey?: string[];
-
-  /** 用于填充颜色的指标值 */
-  fillByMetric?: number;
-
-  /** 用于设置颜色的指标值 */
-  sizeByMetric?: number;
 }
