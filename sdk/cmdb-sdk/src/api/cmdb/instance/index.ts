@@ -22,6 +22,7 @@ export * from "./getImportInstanceCsv";
 export * from "./getImportInstanceExcel";
 export * from "./getInstanceQueryStrategy";
 export * from "./groupInstance";
+export * from "./groupInstanceForHoneycomb";
 export * from "./groupInstanceV2";
 export * from "./groupInstanceV3";
 export * from "./importInstance";

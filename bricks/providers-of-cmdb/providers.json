@@ -129,6 +129,7 @@
     "BusinessInstanceApi.getBusinessGraph",
     "BusinessInstanceApi.getBusinessTreeList",
     "InstancePathSearchApi.flattenSearchPath",
-    "InstancePathSearchApi.groupSearchPath"
+    "InstancePathSearchApi.groupSearchPath",
+    "InstanceApi.groupInstanceForHoneycomb"
   ]
 }
