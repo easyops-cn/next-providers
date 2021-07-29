@@ -3,6 +3,9 @@ export interface ModelHoneycombGroup {
   /** 分组字段值 */
   label: string;
 
+  /** 分组字段描述 */
+  labelDesc: string;
+
   /** 实例列表 */
   data: ModelHoneycombGroup_data_item[];
 

@@ -12,8 +12,11 @@ export interface InstanceApi_GroupInstanceForHoneycombRequestBody {
   /** 是否只获取与自己有关的那部分数据, 默认为false */
   onlyMyInstance?: boolean;
 
-  /** 分组属性id（支持多字段，包括属性和单个关系） */
+  /** 分组字段（name，owner.#showKey） */
   groupFields?: string[];
+
+  /** 分组字段描述 */
+  groupFieldsDesc?: string[];
 
   /** 用来填充颜色的指标 */
   fillByMetric: InstanceApi_GroupInstanceForHoneycombRequestBody_fillByMetric;
