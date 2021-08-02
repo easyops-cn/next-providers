@@ -13,6 +13,7 @@ report.*.json
 /mock-micro-apps
 
 /bricks/*/deploy/*
+/bricks/*/src/lazy-bricks
 /bricks/*/.pkgbuild/
 /bricks/*/version.ini
 /bricks/*/*.tgz
