@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.11](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-permission@1.10.10...@next-bricks/providers-of-permission@1.10.11) (2021-08-02)
+
+**Note:** Version bump only for package @next-bricks/providers-of-permission
+
 ## [1.10.10](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-permission@1.10.9...@next-bricks/providers-of-permission@1.10.10) (2021-06-09)
 
 **Note:** Version bump only for package @next-bricks/providers-of-permission
