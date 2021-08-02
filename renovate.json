@@ -28,6 +28,7 @@
       "matchPackageNames": [
         "@ant-design/compatible",
         "@ant-design/icons",
+        "@babel/runtime",
         "@fortawesome/react-fontawesome",
         "@next-core/babel-runtime-helpers",
         "@next-core/brick-http",
