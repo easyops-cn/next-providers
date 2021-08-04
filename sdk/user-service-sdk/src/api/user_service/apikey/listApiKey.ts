@@ -35,7 +35,8 @@ export interface ApikeyApi_ListApiKeyResponseItem {
   ts: number;
 }
 
-export type ApikeyApi_ListApiKeyResponseBody = ResponseListWrapper<ApikeyApi_ListApiKeyResponseItem>;
+export type ApikeyApi_ListApiKeyResponseBody =
+  ResponseListWrapper<ApikeyApi_ListApiKeyResponseItem>;
 
 /**
  * @description 获取用户ApiKey[内部]

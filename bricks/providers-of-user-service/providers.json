@@ -44,6 +44,7 @@
     "UserAdminApi.resetPassword",
     "UserAdminApi.userDelete",
     "UserAdminApi.getUserLoginInfo",
-    "UserAdminApi.userRegister"
+    "UserAdminApi.userRegister",
+    "AuthApi.getCaptcha"
   ]
 }

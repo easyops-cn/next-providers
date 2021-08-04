@@ -32,7 +32,8 @@ export interface GatewayApi_ListApiKeyResponseItem {
   ts: number;
 }
 
-export type GatewayApi_ListApiKeyResponseBody = ResponseListWrapper<GatewayApi_ListApiKeyResponseItem>;
+export type GatewayApi_ListApiKeyResponseBody =
+  ResponseListWrapper<GatewayApi_ListApiKeyResponseItem>;
 
 /**
  * @description 获取用户ApiKey

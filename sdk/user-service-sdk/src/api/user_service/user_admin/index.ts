@@ -1,5 +1,6 @@
 export * from "./alterPassword";
 export * from "./alterSelfPassword";
+export * from "./checkUserExist";
 export * from "./forgotPassword";
 export * from "./getPasswordConfig";
 export * from "./getUserInfo";

@@ -18,7 +18,8 @@ export interface LaunchpadApi_ListCollectionResponseItem {
   microAppId?: string;
 }
 
-export type LaunchpadApi_ListCollectionResponseBody = ResponseListWrapper<LaunchpadApi_ListCollectionResponseItem>;
+export type LaunchpadApi_ListCollectionResponseBody =
+  ResponseListWrapper<LaunchpadApi_ListCollectionResponseItem>;
 
 /**
  * @description 获取我的收藏列表
