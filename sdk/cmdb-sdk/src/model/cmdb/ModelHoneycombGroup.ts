@@ -11,6 +11,9 @@ export interface ModelHoneycombGroup {
 
   /** 子节点列表 */
   children: Partial<ModelHoneycombGroup>[];
+
+  /** 实例总数，包含子节点实例数 */
+  total: number;
 }
 
 export interface ModelHoneycombGroup_data_item {
@@ -20,9 +23,9 @@ export interface ModelHoneycombGroup_data_item {
   /** 实例showKey */
   showKey?: string[];
 
-  /** 用于填充颜色的指标值 */
-  fillByMetric?: number;
+  /** 用于填充颜色的指标值,如果无数据的话为null */
+  fillByMetric?: any;
 
-  /** 用于设置颜色的指标值 */
-  sizeByMetric?: number;
+  /** 用于设置尺寸的指标值,如果无数据的话为null */
+  sizeByMetric?: any;
 }

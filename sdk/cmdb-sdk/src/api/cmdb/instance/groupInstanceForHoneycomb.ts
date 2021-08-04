@@ -28,6 +28,21 @@ export interface InstanceApi_GroupInstanceForHoneycombRequestBody {
 export interface InstanceApi_GroupInstanceForHoneycombResponseBody {
   /** 分组列表 */
   list: Partial<ModelHoneycombGroup>[];
+
+  /** 用于填充颜色的指标值最小值 */
+  fillByMetricMin: number;
+
+  /** 用于填充颜色的指标值最大值 */
+  fillByMetricMax: number;
+
+  /** 用于设置尺寸的指标值最小值 */
+  sizeByMetricMin: number;
+
+  /** 用于设置尺寸的指标值最大值 */
+  sizeByMetricMax: number;
+
+  /** 实例总数 */
+  total: number;
 }
 
 /**

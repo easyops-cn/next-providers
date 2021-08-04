@@ -20,7 +20,7 @@ export interface InstanceApi_PostSearchV2RequestBody {
   /** 页大小 */
   page_size?: number;
 
-  /** 按字段排序， 留空默认按照实例ID降序排序(1表示升序， -1表示降序, 2表示自然升序， -2表示自然降序) e.g.: { instanceId: 1 } */
+  /** 按字段排序， 留空默认按照实例ID降序排序(1表示升序， -1表示降序, 2表示自然升序， -2表示自然降序) e.g.: [{ key: instanceId, order: 1}] */
   sort?: InstanceApi_PostSearchV2RequestBody_sort_item[];
 
   /** 按照权限过滤(通用实例都有 read， update， delete 权限控制， 主机实例在通用实例权限基础上有额外的 operate 权限， 应用实例在通用实例权限基础上有额外的 developClusterOperate， testClusterOperate， prereleaseClusterOperate， productionClusterOperate 权限) e.g.: [ "operate", "update" ] */
