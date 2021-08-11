@@ -9,6 +9,12 @@ export interface ModelChangeHistory {
   /** 变更摘要 */
   detail: string;
 
+  /** 来源ip */
+  remote_addr: string;
+
+  /** 操作是否成功 */
+  status: "success" | "fail";
+
   /** 操作时间 */
   time: number;
 }

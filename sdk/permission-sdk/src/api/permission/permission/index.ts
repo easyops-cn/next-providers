@@ -14,4 +14,5 @@ export * from "./validateClusterPermission";
 export * from "./validateCmdbPermission";
 export * from "./validateOpsAutomationPermission";
 export * from "./validatePermissionSystemPermission";
+export * from "./validateSchedulerPermission";
 export * from "./validateToolPermission";

@@ -10,6 +10,9 @@ export interface PermissionApi_ValidateClusterPermissionRequestParams {
 
   /** 应用的实例ID */
   app_id: string;
+
+  /** 只校验权限点，不进行白名单校验 */
+  validate_action_only?: boolean;
 }
 
 export interface PermissionApi_ValidateClusterPermissionResponseBody {
