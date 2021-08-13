@@ -23,6 +23,9 @@ export interface AuditApi_ListLoginTrackRequestBody {
 
   /** 终止时间，支持时间戳和now-1d语义 */
   to?: string;
+
+  /** 操作结果 */
+  status?: "success" | "fail";
 }
 
 export interface AuditApi_ListLoginTrackResponseBody {
