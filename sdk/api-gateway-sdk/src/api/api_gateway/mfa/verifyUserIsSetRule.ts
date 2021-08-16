@@ -7,6 +7,9 @@ export interface MfaApi_VerifyUserIsSetRuleRequestParams {
 
   /** 用户的org */
   org: number;
+
+  /** 登陆方式，目前支持["easyops", "ldap", "custom"] */
+  loginBy: string;
 }
 
 export interface MfaApi_VerifyUserIsSetRuleResponseBody {
