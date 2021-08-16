@@ -10,6 +10,7 @@
     "MfaApi.verifyTotpCode",
     "AuthApi.loginV2",
     "MfaApi.verifyUserIsSetRule",
-    "AuthApi.logout"
+    "AuthApi.logout",
+    "AuthApi.getCaptcha"
   ]
 }
