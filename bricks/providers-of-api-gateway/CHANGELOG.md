@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.16](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-api-gateway@1.0.15...@next-bricks/providers-of-api-gateway@1.0.16) (2021-08-16)
+
+**Note:** Version bump only for package @next-bricks/providers-of-api-gateway
+
 ## [1.0.15](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-api-gateway@1.0.14...@next-bricks/providers-of-api-gateway@1.0.15) (2021-08-16)
 
 **Note:** Version bump only for package @next-bricks/providers-of-api-gateway
