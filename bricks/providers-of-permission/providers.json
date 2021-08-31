@@ -38,6 +38,12 @@
     "RoleApi.createRole",
     "RoleApi.getMyRoles",
     "RoleApi.roleAddUser",
-    "RoleApi.roleChangePermission"
+    "RoleApi.roleChangePermission",
+    "PermissionApi.deletePermission",
+    "PermissionApi.orgRegister",
+    "PermissionApi.setPermissionDisableStatus",
+    "PermissionApi.validateClusterPermission",
+    "PermissionApi.validateEasyhubServerPermission",
+    "PermissionApi.validateSchedulerPermission"
   ]
 }
