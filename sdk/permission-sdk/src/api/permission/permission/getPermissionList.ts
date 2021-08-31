@@ -11,6 +11,9 @@ export interface PermissionApi_GetPermissionListRequestParams {
   /** action名称过滤, 填写关键字 */
   action__like?: string;
 
+  /** remark名称过滤, 填写关键字 */
+  remark__like?: string;
+
   /** 启用/禁用状态过滤, 空为不过滤 */
   status?: "enable" | "disable";
 
