@@ -33,6 +33,7 @@
     "DocumentApi.sortDocuments",
     "ModelApi.modelCenterGenerateModelsDefinition",
     "ModelApi.checkModel",
-    "ModelApi.checkView"
+    "ModelApi.checkView",
+    "BuildApi.snippetPackageUpload"
   ]
 }

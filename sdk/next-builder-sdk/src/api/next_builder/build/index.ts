@@ -6,3 +6,4 @@ export * from "./imageUpload";
 export * from "./getPackageReleaseList";
 export * from "./getPackageReleaseListByInstanceId";
 export * from "./packageUpload";
+export * from "./snippetPackageUpload";
