@@ -6,6 +6,9 @@ export interface ModelApi_ExportModelsRequestBody {
   /** projectId */
   projectId?: string;
 
+  /** 模型定义来源 */
+  isModelCenter?: boolean;
+
   /** 模型列表 */
   objectList?: Partial<ModelCmdbObject>[];
 }
