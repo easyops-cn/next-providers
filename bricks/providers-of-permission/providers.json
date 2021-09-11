@@ -44,6 +44,7 @@
     "PermissionApi.setPermissionDisableStatus",
     "PermissionApi.validateClusterPermission",
     "PermissionApi.validateEasyhubServerPermission",
-    "PermissionApi.validateSchedulerPermission"
+    "PermissionApi.validateSchedulerPermission",
+    "MenuApi.listLegacyModule"
   ]
 }
