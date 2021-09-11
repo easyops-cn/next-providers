@@ -30,6 +30,9 @@ export interface AuthApi_LdapLoginResponseBody {
 
   /** 用户来源 */
   loginFrom?: string;
+
+  /** 用户平台 */
+  loginRegion?: string;
 }
 
 /**

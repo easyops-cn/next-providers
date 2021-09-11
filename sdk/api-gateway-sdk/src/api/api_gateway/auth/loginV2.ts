@@ -30,6 +30,12 @@ export interface AuthApi_LoginV2ResponseBody {
 
   /** 用户 id */
   userInstanceId?: string;
+
+  /** 用户来源 */
+  loginFrom?: string;
+
+  /** 用户平台 */
+  loginRegion?: string;
 }
 
 /**
