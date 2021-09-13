@@ -2,8 +2,8 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface MenuApi_ListLegacyModuleRequestParams {
-  /** 用户使用的平台(例如cmdb,ops), CheckLogin 会返回此字段 */
-  loginRegion?: string;
+  /** 访问规则(例如按照平台区分 cmdb,ops), CheckLogin 会返回此字段 */
+  accessRule?: string;
 }
 
 export interface MenuApi_ListLegacyModuleResponseBody {
