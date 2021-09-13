@@ -31,8 +31,8 @@ export interface AuthApi_LdapLoginResponseBody {
   /** 用户来源 */
   loginFrom?: string;
 
-  /** 用户平台 */
-  loginRegion?: string;
+  /** 访问规则(例如按照平台区分 cmdb,ops) */
+  accessRule?: string;
 }
 
 /**
