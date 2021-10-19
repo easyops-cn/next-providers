@@ -18,6 +18,9 @@ export interface BuildApi_SnippetPackageUploadRequestBody {
 
   /** 文件路径和内容 */
   files?: BuildApi_SnippetPackageUploadRequestBody_files_item[];
+
+  /** 图片dir和oss路径 */
+  images?: BuildApi_SnippetPackageUploadRequestBody_images;
 }
 
 /**
@@ -40,4 +43,20 @@ export interface BuildApi_SnippetPackageUploadRequestBody_files_item {
 
   /** 文件内容 */
   content?: string;
+}
+
+export interface BuildApi_SnippetPackageUploadRequestBody_images {
+  /** 图片oss路径和nb包中新的文件名 */
+  imagesPath?: BuildApi_SnippetPackageUploadRequestBody_images_imagesPath_item[];
+
+  /** 写到nb包的图片目录 */
+  imagesDir?: string;
+}
+
+export interface BuildApi_SnippetPackageUploadRequestBody_images_imagesPath_item {
+  /** 图片新名字 */
+  fileName?: string;
+
+  /** 图片的oss路径 */
+  imageOssPath?: string;
 }
