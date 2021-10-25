@@ -5,8 +5,8 @@ export interface ContractApi_SearchSingleContractRequestBody {
   /** 契约名字 */
   name: string;
 
-  /** 契约命名空间 */
-  namespace: string;
+  /** 契约命名空间名称 */
+  namespaceName: string;
 
   /** 契约版本 */
   version: string;
@@ -14,7 +14,7 @@ export interface ContractApi_SearchSingleContractRequestBody {
 
 export interface ContractApi_SearchSingleContractResponseBody {
   /** contract instance */
-  list?: Record<string, any>;
+  contractData?: Record<string, any>;
 }
 
 /**
