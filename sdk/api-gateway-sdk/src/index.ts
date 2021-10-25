@@ -1,5 +1,6 @@
 export * from "./api/api_gateway/auth";
 export * from "./api/api_gateway/bootstrap";
+export * from "./api/api_gateway/contract";
 export * from "./api/api_gateway/esb";
 export * from "./api/api_gateway/mfa";
 export * from "./api/api_gateway/oauth";

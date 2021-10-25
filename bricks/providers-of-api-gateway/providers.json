@@ -12,6 +12,7 @@
     "MfaApi.verifyUserIsSetRule",
     "AuthApi.logout",
     "AuthApi.getCaptcha",
-    "AuthApi.ldapLogin"
+    "AuthApi.ldapLogin",
+    "ContractApi.searchSingleContract"
   ]
 }
