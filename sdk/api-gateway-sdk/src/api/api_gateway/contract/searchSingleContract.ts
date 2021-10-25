@@ -19,7 +19,7 @@ export interface ContractApi_SearchSingleContractResponseBody {
 
 /**
  * @description 通过defaultOrg查找单个契约信息
- * @endpoint POST /contract/single_search
+ * @endpoint POST /api/contract/single_search
  */
 export const ContractApi_searchSingleContract = async (
   data: ContractApi_SearchSingleContractRequestBody,
@@ -28,5 +28,5 @@ export const ContractApi_searchSingleContract = async (
   /**! @contract easyops.api.api_gateway.contract.SearchSingleContract */ (
     await http.post<
       ResponseBodyWrapper<ContractApi_SearchSingleContractResponseBody>
-    >("contract/single_search", data, options)
+    >("api/contract/single_search", data, options)
   ).data;
