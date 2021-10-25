@@ -12,6 +12,9 @@ export interface ModelPermission {
   /** 权限备注 */
   remark: string;
 
+  /** remark英文翻译 */
+  remark_translation: string;
+
   /** 权限角色 */
   roles: string[];
 
