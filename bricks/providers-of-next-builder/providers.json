@@ -34,6 +34,7 @@
     "ModelApi.modelCenterGenerateModelsDefinition",
     "ModelApi.checkModel",
     "ModelApi.checkView",
-    "BuildApi.snippetPackageUpload"
+    "BuildApi.snippetPackageUpload",
+    "BuildApi.getStoriesJsonV2"
   ]
 }
