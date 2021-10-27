@@ -2,11 +2,8 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface ContractApi_SearchSingleContractRequestBody {
-  /** 契约名字 */
-  name: string;
-
-  /** 契约命名空间名称 */
-  namespaceName: string;
+  /** 契约全名 */
+  contractName: string;
 
   /** 契约版本 */
   version: string;
