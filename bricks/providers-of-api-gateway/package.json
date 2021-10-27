@@ -1,6 +1,6 @@
 {
   "name": "@next-bricks/providers-of-api-gateway",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "description": "> TODO: description",
   "homepage": "https://github.com/easyops-cn/next-providers/tree/master/bricks/providers-of-api-gateway",
   "license": "GPL-3.0",
@@ -18,7 +18,7 @@
     "test:ci": "cross-env NODE_ENV='test' CI=true jest"
   },
   "devDependencies": {
-    "@next-sdk/api-gateway-sdk": "^2.0.13"
+    "@next-sdk/api-gateway-sdk": "^2.0.14"
   },
   "sideEffects": true
 }
