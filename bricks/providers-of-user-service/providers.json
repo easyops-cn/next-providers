@@ -45,6 +45,7 @@
     "UserAdminApi.userDelete",
     "UserAdminApi.getUserLoginInfo",
     "UserAdminApi.userRegister",
-    "AuthApi.getCaptcha"
+    "AuthApi.getCaptcha",
+    "UserAdminApi.invitedUserRegister"
   ]
 }

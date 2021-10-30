@@ -16,6 +16,9 @@ export interface UserAdminApi_UserRegisterRequestBody {
 
   /** isAdmin */
   isAdmin?: boolean;
+
+  /** 昵称 */
+  nickname?: string;
 }
 
 export interface UserAdminApi_UserRegisterResponseBody {

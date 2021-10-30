@@ -7,6 +7,7 @@ export * from "./getUserInfo";
 export * from "./getSimpleUserInfo";
 export * from "./getUserInfoV2";
 export * from "./getUserInfoV3";
+export * from "./invitedUserRegister";
 export * from "./listGroupsId";
 export * from "./listGroupsIdName";
 export * from "./listUsersInfo";

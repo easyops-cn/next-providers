@@ -5,4 +5,5 @@ export * from "./getCurrentOrg";
 export * from "./getOrgInfo";
 export * from "./listOrg";
 export * from "./setOrgExpiredDate";
+export * from "./setOrgName";
 export * from "./setOrgNamespaces";
