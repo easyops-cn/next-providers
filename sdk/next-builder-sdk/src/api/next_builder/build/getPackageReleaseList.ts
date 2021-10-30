@@ -1,4 +1,5 @@
 import { http, HttpOptions } from "@next-core/brick-http";
+import { ModelMicroAppReleasedLog } from "../../../model/next_builder";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface BuildApi_GetPackageReleaseListResponseBody {
@@ -41,4 +42,7 @@ export interface BuildApi_GetPackageReleaseListResponseBody_packages_item {
 
   /** 创建时间 */
   ctime?: string;
+
+  /** 制品包信息 */
+  packageInfo?: ModelMicroAppReleasedLog["packageInfo"];
 }

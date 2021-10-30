@@ -23,4 +23,27 @@ export interface ModelMicroAppReleasedLog {
 
   /** 权限点资源Json */
   permissionsJson: string;
+
+  /** 小产品id */
+  appId: string;
+
+  /** 打包状态 */
+  packageStatus: string;
+
+  /** 制品包信息 */
+  packageInfo: ModelMicroAppReleasedLog_packageInfo;
+}
+
+export interface ModelMicroAppReleasedLog_packageInfo {
+  /** naPackageId */
+  naPackageId?: string;
+
+  /** naVersionId */
+  naVersionId?: string;
+
+  /** rPackageId */
+  rPackageId?: string;
+
+  /** rVersionId */
+  rVersionId?: string;
 }

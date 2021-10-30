@@ -1,7 +1,6 @@
 export * from "./ModelMicroAppProject";
 export * from "./ModelMicroAppModifiedLog";
 export * from "./ModelMicroAppReleasedLog";
-export * from "./ModelMicroAppReleasedPackage";
 export * from "./ModelMicroAppDocument";
 export * from "./ModelMicroAppDocumentTreeNode";
 export * from "./ModelStoryboardBrick";

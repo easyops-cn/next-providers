@@ -1,10 +1,10 @@
 import { http, HttpOptions } from "@next-core/brick-http";
-import { ModelMicroAppReleasedPackage } from "../../../model/next_builder";
+import { ModelMicroAppReleasedLog } from "../../../model/next_builder";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface BuildApi_GetPackageReleaseListByInstanceIdResponseBody {
   /** 包列表 */
-  packages?: Partial<ModelMicroAppReleasedPackage>[];
+  packages?: Partial<ModelMicroAppReleasedLog>[];
 }
 
 /**
