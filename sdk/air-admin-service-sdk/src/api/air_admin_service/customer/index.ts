@@ -9,6 +9,7 @@ export * from "./sendApprovedEmail";
 export * from "./sendUpdatedEmail";
 export * from "./setApplyDisapprovedBatch";
 export * from "./setOrgUpdating";
+export * from "./signup";
 export * from "./updateLicenseBatch";
 export * from "./validateEmail";
 export * from "./validateUser";
