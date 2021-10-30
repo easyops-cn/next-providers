@@ -14,6 +14,10 @@
     "AuthApi.getCaptcha",
     "AuthApi.ldapLogin",
     "ContractApi.searchSingleContract",
-    "OrgApi.saaSOrgRegister"
+    "OrgApi.saaSOrgRegister",
+    "AuthApi.refreshToken",
+    "AuthApi.register",
+    "AuthApi.tokenLdapLogin",
+    "AuthApi.tokenLogin"
   ]
 }
