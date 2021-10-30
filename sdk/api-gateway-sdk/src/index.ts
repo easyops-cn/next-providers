@@ -4,6 +4,7 @@ export * from "./api/api_gateway/contract";
 export * from "./api/api_gateway/esb";
 export * from "./api/api_gateway/mfa";
 export * from "./api/api_gateway/oauth";
+export * from "./api/api_gateway/org";
 export * from "./api/api_gateway/sso";
 export * from "./api/api_gateway/walmart";
 export * from "./api/api_gateway/wechat";

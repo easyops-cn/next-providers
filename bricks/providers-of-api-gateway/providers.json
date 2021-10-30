@@ -13,6 +13,7 @@
     "AuthApi.logout",
     "AuthApi.getCaptcha",
     "AuthApi.ldapLogin",
-    "ContractApi.searchSingleContract"
+    "ContractApi.searchSingleContract",
+    "OrgApi.saaSOrgRegister"
   ]
 }
