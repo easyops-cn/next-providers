@@ -7,6 +7,15 @@ export interface ObjectStoreApi_PutObjectRequestBody {
 
   /** 上传文件流。 */
   file: File;
+
+  /** 压缩质量, 不传表示100，不压缩 */
+  quality?: number;
+
+  /** 图片压缩最大宽度, 为0表示不按宽度等比例压缩 */
+  width?: number;
+
+  /** 图片压缩最大高度, 为0表示不按高度等比例压缩 */
+  height?: number;
 }
 
 export interface ObjectStoreApi_PutObjectResponseBody {
@@ -23,7 +32,8 @@ export const ObjectStoreApi_putObject = async (
   data: ObjectStoreApi_PutObjectRequestBody,
   options?: HttpOptions
 ): Promise<ObjectStoreApi_PutObjectResponseBody> => {
-  /**! @contract easyops.api.object_store.object_store.PutObject */ const _formData = new FormData();
+  /**! @contract easyops.api.object_store.object_store.PutObject */ const _formData =
+    new FormData();
   for (const [key, value] of Object.entries(data)) {
     if (Array.isArray(value)) {
       const k = `${key}[]`;
