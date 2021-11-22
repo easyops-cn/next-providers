@@ -31,7 +31,7 @@ export interface AuthApi_CheckLoginResponseBody {
 export const AuthApi_checkLogin = async (
   options?: HttpOptions
 ): Promise<AuthApi_CheckLoginResponseBody> =>
-  /**! @contract easyops.api.api_gateway.auth.CheckLogin */ (
+  /**! @contract easyops.api.api_gateway.auth.CheckLogin@1.0.0 */ (
     await http.get<ResponseBodyWrapper<AuthApi_CheckLoginResponseBody>>(
       "api/auth/login",
       options

@@ -6,15 +6,21 @@ import {
 } from "../../../model/api_gateway";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface BootstrapApi_BootstrapRequestParams {
+export interface BootstrapV2Api_BootstrapV2RequestBody {
   /** 是否需要检查登录态 */
   check_login?: boolean;
 
-  /** 是否只拉取app信息，如果为true， routes等信息不被返回 */
-  brief?: boolean;
+  /** storyboard下的app指定， 不指定的话默认全部返回 */
+  appFields?: string[];
+
+  /** brick数据需要忽略的字段 */
+  ignoreBrickFields?: string[];
+
+  /** template数据需要忽略的字段 */
+  ignoreTemplateFields?: string[];
 }
 
-export interface BootstrapApi_BootstrapResponseBody {
+export interface BootstrapV2Api_BootstrapV2ResponseBody {
   /** ${BRICK_NEXT}/packages/brick-container/conf/navbar.json 的内容 */
   navbar?: Record<string, any>;
 
@@ -34,25 +40,24 @@ export interface BootstrapApi_BootstrapResponseBody {
   desktops?: Partial<ModelDesktop>[];
 
   /** 系统地图 */
-  siteSort?: BootstrapApi_BootstrapResponseBody_siteSort_item[];
+  siteSort?: BootstrapV2Api_BootstrapV2ResponseBody_siteSort_item[];
 }
 
 /**
  * @description 获取系统初始化信息
- * @endpoint GET /api/auth/bootstrap
+ * @endpoint POST /api/auth/v2/bootstrap
  */
-export const BootstrapApi_bootstrap = async (
-  params: BootstrapApi_BootstrapRequestParams,
+export const BootstrapV2Api_bootstrapV2 = async (
+  data: BootstrapV2Api_BootstrapV2RequestBody,
   options?: HttpOptions
-): Promise<BootstrapApi_BootstrapResponseBody> =>
-  /**! @contract easyops.api.api_gateway.bootstrap.Bootstrap@1.0.0 */ (
-    await http.get<ResponseBodyWrapper<BootstrapApi_BootstrapResponseBody>>(
-      "api/auth/bootstrap",
-      { ...options, params }
-    )
+): Promise<BootstrapV2Api_BootstrapV2ResponseBody> =>
+  /**! @contract easyops.api.api_gateway.bootstrap_v2.BootstrapV2@1.0.0 */ (
+    await http.post<
+      ResponseBodyWrapper<BootstrapV2Api_BootstrapV2ResponseBody>
+    >("api/auth/v2/bootstrap", data, options)
   ).data;
 
-export interface BootstrapApi_BootstrapResponseBody_siteSort_item {
+export interface BootstrapV2Api_BootstrapV2ResponseBody_siteSort_item {
   /** 分类ID */
   id?: string;
 
@@ -63,10 +68,10 @@ export interface BootstrapApi_BootstrapResponseBody_siteSort_item {
   order?: number;
 
   /** 微应用列表 */
-  apps?: BootstrapApi_BootstrapResponseBody_siteSort_item_apps_item[];
+  apps?: BootstrapV2Api_BootstrapV2ResponseBody_siteSort_item_apps_item[];
 }
 
-export interface BootstrapApi_BootstrapResponseBody_siteSort_item_apps_item {
+export interface BootstrapV2Api_BootstrapV2ResponseBody_siteSort_item_apps_item {
   /** 微应用id */
   id?: string;
 

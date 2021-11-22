@@ -98,4 +98,13 @@ export interface ModelInstalledMicroApp {
 
   /** 布局类型 */
   layoutType: string;
+
+  /** 是否来自buildPsh方式 */
+  isBuildPush: boolean;
+
+  /** 免登录 */
+  noAuthGuard: boolean;
+
+  /** 默认面包屑配置 */
+  breadcrumb: string;
 }

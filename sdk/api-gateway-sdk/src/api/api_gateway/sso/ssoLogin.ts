@@ -14,7 +14,7 @@ export const SsoApi_ssoLogin = async (
   protocol: string | number,
   options?: HttpOptions
 ): Promise<SsoApi_SsoLoginResponseBody> =>
-  /**! @contract easyops.api.api_gateway.sso.SSOLogin */ (
+  /**! @contract easyops.api.api_gateway.sso.SSOLogin@1.0.0 */ (
     await http.get<ResponseBodyWrapper<SsoApi_SsoLoginResponseBody>>(
       `api/v1/sso/login/${protocol}`,
       options

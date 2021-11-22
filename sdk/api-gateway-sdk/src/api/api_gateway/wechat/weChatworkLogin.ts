@@ -13,7 +13,7 @@ export interface WechatApi_WeChatworkLoginResponseBody {
 export const WechatApi_weChatworkLogin = async (
   options?: HttpOptions
 ): Promise<WechatApi_WeChatworkLoginResponseBody> =>
-  /**! @contract easyops.api.api_gateway.wechat.WeChatworkLogin */ (
+  /**! @contract easyops.api.api_gateway.wechat.WeChatworkLogin@1.0.0 */ (
     await http.get<ResponseBodyWrapper<WechatApi_WeChatworkLoginResponseBody>>(
       "api/api_gateway/v1/wechatwork/login",
       options

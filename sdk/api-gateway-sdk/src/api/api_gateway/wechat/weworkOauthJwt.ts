@@ -22,7 +22,7 @@ export const WechatApi_weworkOauthJwt = async (
   params: WechatApi_WeworkOauthJwtRequestParams,
   options?: HttpOptions
 ): Promise<WechatApi_WeworkOauthJwtResponseBody> =>
-  /**! @contract easyops.api.api_gateway.wechat.WeworkOauthJwt */ (
+  /**! @contract easyops.api.api_gateway.wechat.WeworkOauthJwt@1.0.0 */ (
     await http.get<ResponseBodyWrapper<WechatApi_WeworkOauthJwtResponseBody>>(
       "api/api_gateway/v1/wechatwork/login/withcode",
       { ...options, params }

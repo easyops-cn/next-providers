@@ -68,6 +68,9 @@ export interface ModelInstalledMicroAppBootstrap {
   /** 布局类型 */
   layoutType: string;
 
+  /** 是否来自buildPsh方式 */
+  isBuildPush: boolean;
+
   /** 小产品id */
   id: string;
 

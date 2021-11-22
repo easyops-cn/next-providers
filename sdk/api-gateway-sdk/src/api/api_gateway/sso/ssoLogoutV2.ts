@@ -14,7 +14,7 @@ export const SsoApi_ssoLogoutV2 = async (
   protocol: string | number,
   options?: HttpOptions
 ): Promise<SsoApi_SsoLogoutV2ResponseBody> =>
-  /**! @contract easyops.api.api_gateway.sso.SSOLogoutV2 */ (
+  /**! @contract easyops.api.api_gateway.sso.SSOLogoutV2@1.0.0 */ (
     await http.post<ResponseBodyWrapper<SsoApi_SsoLogoutV2ResponseBody>>(
       `api/v2/sso/logout/${protocol}`,
       undefined,

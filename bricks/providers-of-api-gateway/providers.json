@@ -18,6 +18,7 @@
     "AuthApi.refreshToken",
     "AuthApi.register",
     "AuthApi.tokenLdapLogin",
-    "AuthApi.tokenLogin"
+    "AuthApi.tokenLogin",
+    "BootstrapV2Api.bootstrapV2"
   ]
 }

@@ -13,7 +13,7 @@ export const OauthApi_oauthLogin = (
   params: OauthApi_OauthLoginRequestParams,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.api_gateway.oauth.OauthLogin */ http.get<void>(
+  /**! @contract easyops.api.api_gateway.oauth.OauthLogin@1.0.0 */ http.get<void>(
     "api/auth/oauth/login",
     { ...options, params }
   );

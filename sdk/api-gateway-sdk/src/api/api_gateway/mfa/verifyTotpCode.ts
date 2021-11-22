@@ -43,7 +43,7 @@ export const MfaApi_verifyTotpCode = async (
   data: MfaApi_VerifyTotpCodeRequestBody,
   options?: HttpOptions
 ): Promise<MfaApi_VerifyTotpCodeResponseBody> =>
-  /**! @contract easyops.api.api_gateway.mfa.VerifyTotpCode */ (
+  /**! @contract easyops.api.api_gateway.mfa.VerifyTotpCode@1.0.0 */ (
     await http.post<ResponseBodyWrapper<MfaApi_VerifyTotpCodeResponseBody>>(
       "api/v1/mfa/totp/verification",
       data,

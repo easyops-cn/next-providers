@@ -16,7 +16,7 @@ export interface AuthApi_RefreshTokenResponseBody {
 export const AuthApi_refreshToken = async (
   options?: HttpOptions
 ): Promise<AuthApi_RefreshTokenResponseBody> =>
-  /**! @contract easyops.api.api_gateway.auth.RefreshToken */ (
+  /**! @contract easyops.api.api_gateway.auth.RefreshToken@1.0.0 */ (
     await http.post<ResponseBodyWrapper<AuthApi_RefreshTokenResponseBody>>(
       "api/auth/token/refresh",
       undefined,

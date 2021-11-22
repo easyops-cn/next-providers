@@ -17,7 +17,7 @@ export const OauthApi_oauthAuthorizate = (
   params: OauthApi_OauthAuthorizateRequestParams,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.api_gateway.oauth.OauthAuthorizate */ http.get<void>(
+  /**! @contract easyops.api.api_gateway.oauth.OauthAuthorizate@1.0.0 */ http.get<void>(
     `api/auth/oauth/authorizate/${provider}`,
     { ...options, params }
   );

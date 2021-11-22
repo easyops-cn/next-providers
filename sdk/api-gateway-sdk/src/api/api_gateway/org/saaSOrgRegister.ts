@@ -55,7 +55,7 @@ export const OrgApi_saaSOrgRegister = async (
   data: OrgApi_SaaSOrgRegisterRequestBody,
   options?: HttpOptions
 ): Promise<OrgApi_SaaSOrgRegisterResponseBody> =>
-  /**! @contract easyops.api.api_gateway.org.SaaSOrgRegister */ (
+  /**! @contract easyops.api.api_gateway.org.SaaSOrgRegister@1.0.0 */ (
     await http.post<ResponseBodyWrapper<OrgApi_SaaSOrgRegisterResponseBody>>(
       "api/org/saas-org-register",
       data,

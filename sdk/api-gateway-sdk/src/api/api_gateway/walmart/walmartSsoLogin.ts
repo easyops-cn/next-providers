@@ -34,7 +34,7 @@ export const WalmartApi_walmartSsoLogin = async (
   data: WalmartApi_WalmartSsoLoginRequestBody,
   options?: HttpOptions
 ): Promise<WalmartApi_WalmartSsoLoginResponseBody> =>
-  /**! @contract easyops.api.api_gateway.walmart.WalmartSSOLogin */ (
+  /**! @contract easyops.api.api_gateway.walmart.WalmartSSOLogin@1.0.2 */ (
     await http.post<
       ResponseBodyWrapper<WalmartApi_WalmartSsoLoginResponseBody>
     >("api/walmart/sso/login", data, options)

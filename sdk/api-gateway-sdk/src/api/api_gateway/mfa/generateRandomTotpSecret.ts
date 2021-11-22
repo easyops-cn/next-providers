@@ -22,7 +22,7 @@ export const MfaApi_generateRandomTotpSecret = async (
   data: MfaApi_GenerateRandomTotpSecretRequestBody,
   options?: HttpOptions
 ): Promise<MfaApi_GenerateRandomTotpSecretResponseBody> =>
-  /**! @contract easyops.api.api_gateway.mfa.GenerateRandomTotpSecret */ (
+  /**! @contract easyops.api.api_gateway.mfa.GenerateRandomTotpSecret@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<MfaApi_GenerateRandomTotpSecretResponseBody>
     >("api/v1/mfa/totp/secret", data, options)

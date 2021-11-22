@@ -19,7 +19,7 @@ export const SsoApi_samlLogout = (
   params: SsoApi_SamlLogoutRequestParams,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.api_gateway.sso.SAMLLogout */ http.get<void>(
+  /**! @contract easyops.api.api_gateway.sso.SAMLLogout@1.0.0 */ http.get<void>(
     "api/v1/sso/saml/logout",
     { ...options, params }
   );

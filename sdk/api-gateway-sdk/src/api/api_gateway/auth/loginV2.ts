@@ -49,7 +49,7 @@ export const AuthApi_loginV2 = async (
   data: AuthApi_LoginV2RequestBody,
   options?: HttpOptions
 ): Promise<AuthApi_LoginV2ResponseBody> =>
-  /**! @contract easyops.api.api_gateway.auth.LoginV2 */ (
+  /**! @contract easyops.api.api_gateway.auth.LoginV2@1.0.0 */ (
     await http.post<ResponseBodyWrapper<AuthApi_LoginV2ResponseBody>>(
       "api/auth/login/v2",
       data,

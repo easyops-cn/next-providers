@@ -12,7 +12,7 @@ export const SsoApi_ssoAuthorization = (
   params: SsoApi_SsoAuthorizationRequestParams,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.api_gateway.sso.SSOAuthorization */ http.get<void>(
+  /**! @contract easyops.api.api_gateway.sso.SSOAuthorization@1.0.0 */ http.get<void>(
     `api/v1/sso/authorization/${protocol}`,
     { ...options, params }
   );

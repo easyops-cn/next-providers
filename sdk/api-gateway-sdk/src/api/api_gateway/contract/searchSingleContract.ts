@@ -22,7 +22,7 @@ export const ContractApi_searchSingleContract = async (
   data: ContractApi_SearchSingleContractRequestBody,
   options?: HttpOptions
 ): Promise<ContractApi_SearchSingleContractResponseBody> =>
-  /**! @contract easyops.api.api_gateway.contract.SearchSingleContract */ (
+  /**! @contract easyops.api.api_gateway.contract.SearchSingleContract@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<ContractApi_SearchSingleContractResponseBody>
     >("api/contract/single_search", data, options)

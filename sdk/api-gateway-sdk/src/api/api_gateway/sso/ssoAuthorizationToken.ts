@@ -29,7 +29,7 @@ export const SsoApi_ssoAuthorizationToken = async (
   data: SsoApi_SsoAuthorizationTokenRequestBody,
   options?: HttpOptions
 ): Promise<SsoApi_SsoAuthorizationTokenResponseBody> =>
-  /**! @contract easyops.api.api_gateway.sso.SSOAuthorizationToken */ (
+  /**! @contract easyops.api.api_gateway.sso.SSOAuthorizationToken@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<SsoApi_SsoAuthorizationTokenResponseBody>
     >(`api/v1/sso/authorization/${protocol}/token`, data, options)

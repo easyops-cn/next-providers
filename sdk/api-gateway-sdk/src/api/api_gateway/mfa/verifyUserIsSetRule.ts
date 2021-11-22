@@ -25,7 +25,7 @@ export const MfaApi_verifyUserIsSetRule = async (
   params: MfaApi_VerifyUserIsSetRuleRequestParams,
   options?: HttpOptions
 ): Promise<MfaApi_VerifyUserIsSetRuleResponseBody> =>
-  /**! @contract easyops.api.api_gateway.mfa.VerifyUserIsSetRule */ (
+  /**! @contract easyops.api.api_gateway.mfa.VerifyUserIsSetRule@1.1.0 */ (
     await http.get<ResponseBodyWrapper<MfaApi_VerifyUserIsSetRuleResponseBody>>(
       "api/v1/mfa/totp/user/rule/verification",
       { ...options, params }

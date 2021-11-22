@@ -19,7 +19,7 @@ export const BootstrapApi_getAppStoryboard = async (
   params: BootstrapApi_GetAppStoryboardRequestParams,
   options?: HttpOptions
 ): Promise<BootstrapApi_GetAppStoryboardResponseBody> =>
-  /**! @contract easyops.api.api_gateway.bootstrap.GetAppStoryboard */ (
+  /**! @contract easyops.api.api_gateway.bootstrap.GetAppStoryboard@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<BootstrapApi_GetAppStoryboardResponseBody>
     >(`api/auth/bootstrap/${appId}`, { ...options, params })

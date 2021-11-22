@@ -55,7 +55,7 @@ export const AuthApi_register = async (
   data: AuthApi_RegisterRequestBody,
   options?: HttpOptions
 ): Promise<AuthApi_RegisterResponseBody> =>
-  /**! @contract easyops.api.api_gateway.auth.Register */ (
+  /**! @contract easyops.api.api_gateway.auth.Register@1.0.0 */ (
     await http.post<ResponseBodyWrapper<AuthApi_RegisterResponseBody>>(
       "api/auth/register",
       data,

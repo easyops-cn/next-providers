@@ -37,7 +37,7 @@ export const EsbApi_esbLogin = async (
   data: EsbApi_EsbLoginRequestBody,
   options?: HttpOptions
 ): Promise<EsbApi_EsbLoginResponseBody> =>
-  /**! @contract easyops.api.api_gateway.esb.EsbLogin */ (
+  /**! @contract easyops.api.api_gateway.esb.EsbLogin@1.0.0 */ (
     await http.post<ResponseBodyWrapper<EsbApi_EsbLoginResponseBody>>(
       "api/esb/login",
       data,

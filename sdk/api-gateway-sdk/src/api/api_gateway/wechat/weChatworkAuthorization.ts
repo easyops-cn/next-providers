@@ -16,7 +16,7 @@ export const WechatApi_weChatworkAuthorization = (
   params: WechatApi_WeChatworkAuthorizationRequestParams,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.api_gateway.wechat.WeChatworkAuthorization */ http.get<void>(
+  /**! @contract easyops.api.api_gateway.wechat.WeChatworkAuthorization@1.0.0 */ http.get<void>(
     "api/api_gateway/v1/wechatwork/authorization",
     { ...options, params }
   );

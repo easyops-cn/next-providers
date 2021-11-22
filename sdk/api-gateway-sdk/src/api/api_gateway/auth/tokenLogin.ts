@@ -43,7 +43,7 @@ export const AuthApi_tokenLogin = async (
   data: AuthApi_TokenLoginRequestBody,
   options?: HttpOptions
 ): Promise<AuthApi_TokenLoginResponseBody> =>
-  /**! @contract easyops.api.api_gateway.auth.TokenLogin */ (
+  /**! @contract easyops.api.api_gateway.auth.TokenLogin@1.0.0 */ (
     await http.post<ResponseBodyWrapper<AuthApi_TokenLoginResponseBody>>(
       "api/auth/token/login",
       data,

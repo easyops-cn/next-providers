@@ -13,7 +13,7 @@ export interface WechatApi_WeChatGetCodeUriResponseBody {
 export const WechatApi_weChatGetCodeUri = async (
   options?: HttpOptions
 ): Promise<WechatApi_WeChatGetCodeUriResponseBody> =>
-  /**! @contract easyops.api.api_gateway.wechat.WeChatGetCodeUri */ (
+  /**! @contract easyops.api.api_gateway.wechat.WeChatGetCodeUri@1.0.0 */ (
     await http.get<ResponseBodyWrapper<WechatApi_WeChatGetCodeUriResponseBody>>(
       "api/api_gateway/v1/wechatwork/login/getcodeuri",
       options
