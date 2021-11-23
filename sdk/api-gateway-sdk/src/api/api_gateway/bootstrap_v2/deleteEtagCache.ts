@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
 /**
- * @description 更新bootstrapV2的etag缓存
+ * @description 删除bootstrapV2的etag缓存
  * @endpoint DELETE /api/delete_bootstrap_etag
  */
 export const BootstrapV2Api_deleteEtagCache = (

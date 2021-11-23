@@ -6,18 +6,18 @@ import {
 } from "../../../model/api_gateway";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface BootstrapV2Api_BootstrapV2RequestBody {
+export interface BootstrapV2Api_BootstrapV2RequestParams {
   /** 是否需要检查登录态 */
   check_login?: boolean;
 
-  /** storyboard下的app指定， 不指定的话默认全部返回 */
-  appFields?: string[];
+  /** storyboard下的app指定，不指定的话默认全部返回,多个字段用逗号分割 */
+  appFields?: string;
 
-  /** brick数据需要忽略的字段 */
-  ignoreBrickFields?: string[];
+  /** brick数据需要忽略的字段，多个字段用逗号分开 */
+  ignoreBrickFields?: string;
 
-  /** template数据需要忽略的字段 */
-  ignoreTemplateFields?: string[];
+  /** template数据需要忽略的字段，多个字段用逗号分开 */
+  ignoreTemplateFields?: string;
 }
 
 export interface BootstrapV2Api_BootstrapV2ResponseBody {
@@ -45,16 +45,17 @@ export interface BootstrapV2Api_BootstrapV2ResponseBody {
 
 /**
  * @description 获取系统初始化信息
- * @endpoint POST /api/auth/v2/bootstrap
+ * @endpoint GET /api/auth/v2/bootstrap
  */
 export const BootstrapV2Api_bootstrapV2 = async (
-  data: BootstrapV2Api_BootstrapV2RequestBody,
+  params: BootstrapV2Api_BootstrapV2RequestParams,
   options?: HttpOptions
 ): Promise<BootstrapV2Api_BootstrapV2ResponseBody> =>
   /**! @contract easyops.api.api_gateway.bootstrap_v2.BootstrapV2@1.0.0 */ (
-    await http.post<
-      ResponseBodyWrapper<BootstrapV2Api_BootstrapV2ResponseBody>
-    >("api/auth/v2/bootstrap", data, options)
+    await http.get<ResponseBodyWrapper<BootstrapV2Api_BootstrapV2ResponseBody>>(
+      "api/auth/v2/bootstrap",
+      { ...options, params }
+    )
   ).data;
 
 export interface BootstrapV2Api_BootstrapV2ResponseBody_siteSort_item {
