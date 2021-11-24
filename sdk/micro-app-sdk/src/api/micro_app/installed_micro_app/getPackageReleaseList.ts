@@ -23,7 +23,7 @@ export const InstalledMicroAppApi_getPackageReleaseList = async (
   params: InstalledMicroAppApi_GetPackageReleaseListRequestParams,
   options?: HttpOptions
 ): Promise<InstalledMicroAppApi_GetPackageReleaseListResponseBody> =>
-  /**! @contract easyops.api.micro_app.installed_micro_app.GetPackageReleaseList */ (
+  /**! @contract easyops.api.micro_app.installed_micro_app.GetPackageReleaseList@1.1.0 */ (
     await http.get<
       ResponseBodyWrapper<InstalledMicroAppApi_GetPackageReleaseListResponseBody>
     >(

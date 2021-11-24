@@ -13,10 +13,11 @@ export interface InstalledMicroAppApi_ListMicroAppRequestParams {
   page_size?: number;
 }
 
-export type InstalledMicroAppApi_ListMicroAppResponseItem = ModelInstalledMicroApp &
-  InstalledMicroAppApi_ListMicroAppResponseItem_2;
+export type InstalledMicroAppApi_ListMicroAppResponseItem =
+  ModelInstalledMicroApp & InstalledMicroAppApi_ListMicroAppResponseItem_2;
 
-export type InstalledMicroAppApi_ListMicroAppResponseBody = ResponseListWrapper<InstalledMicroAppApi_ListMicroAppResponseItem>;
+export type InstalledMicroAppApi_ListMicroAppResponseBody =
+  ResponseListWrapper<InstalledMicroAppApi_ListMicroAppResponseItem>;
 
 /**
  * @description 获取已安装小产品列表
@@ -26,7 +27,7 @@ export const InstalledMicroAppApi_listMicroApp = async (
   params: InstalledMicroAppApi_ListMicroAppRequestParams,
   options?: HttpOptions
 ): Promise<InstalledMicroAppApi_ListMicroAppResponseBody> =>
-  /**! @contract easyops.api.micro_app.installed_micro_app.ListMicroApp */ (
+  /**! @contract easyops.api.micro_app.installed_micro_app.ListMicroApp@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<InstalledMicroAppApi_ListMicroAppResponseBody>
     >(

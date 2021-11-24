@@ -6,11 +6,13 @@ import {
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 /** 小产品id */
-export type InstalledMicroAppApi_UpdateInstalledMicroAppRequestBody = Partial<ModelInstalledMicroApp> &
-  InstalledMicroAppApi_UpdateInstalledMicroAppRequestBody_2;
+export type InstalledMicroAppApi_UpdateInstalledMicroAppRequestBody =
+  Partial<ModelInstalledMicroApp> &
+    InstalledMicroAppApi_UpdateInstalledMicroAppRequestBody_2;
 
-export type InstalledMicroAppApi_UpdateInstalledMicroAppResponseBody = ModelInstalledMicroApp &
-  InstalledMicroAppApi_UpdateInstalledMicroAppResponseBody_2;
+export type InstalledMicroAppApi_UpdateInstalledMicroAppResponseBody =
+  ModelInstalledMicroApp &
+    InstalledMicroAppApi_UpdateInstalledMicroAppResponseBody_2;
 
 /**
  * @description 更新小产品信息
@@ -21,7 +23,7 @@ export const InstalledMicroAppApi_updateInstalledMicroApp = async (
   data: InstalledMicroAppApi_UpdateInstalledMicroAppRequestBody,
   options?: HttpOptions
 ): Promise<InstalledMicroAppApi_UpdateInstalledMicroAppResponseBody> =>
-  /**! @contract easyops.api.micro_app.installed_micro_app.UpdateInstalledMicroApp */ (
+  /**! @contract easyops.api.micro_app.installed_micro_app.UpdateInstalledMicroApp@1.0.0 */ (
     await http.put<
       ResponseBodyWrapper<InstalledMicroAppApi_UpdateInstalledMicroAppResponseBody>
     >(

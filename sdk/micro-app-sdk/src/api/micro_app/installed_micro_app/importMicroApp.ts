@@ -81,6 +81,15 @@ export interface InstalledMicroAppApi_ImportMicroAppRequestBody {
 
   /** 布局类型 */
   layoutType?: string;
+
+  /** 是否来自buildPsh方式 */
+  isBuildPush?: boolean;
+
+  /** 免登录 */
+  noAuthGuard?: boolean;
+
+  /** 默认面包屑配置 */
+  breadcrumb?: string;
 }
 
 export interface InstalledMicroAppApi_ImportMicroAppResponseBody {
@@ -97,7 +106,7 @@ export const InstalledMicroAppApi_importMicroApp = async (
   data: InstalledMicroAppApi_ImportMicroAppRequestBody,
   options?: HttpOptions
 ): Promise<InstalledMicroAppApi_ImportMicroAppResponseBody> =>
-  /**! @contract easyops.api.micro_app.installed_micro_app.ImportMicroApp */ (
+  /**! @contract easyops.api.micro_app.installed_micro_app.ImportMicroApp@1.1.0 */ (
     await http.post<
       ResponseBodyWrapper<InstalledMicroAppApi_ImportMicroAppResponseBody>
     >(

@@ -21,7 +21,7 @@ export const MicroAppVersionLogApi_logAppVersion = (
   data: MicroAppVersionLogApi_LogAppVersionRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.micro_app.micro_app_version_log.LogAppVersion */ http.post<void>(
+  /**! @contract easyops.api.micro_app.micro_app_version_log.LogAppVersion@1.0.0 */ http.post<void>(
     `api/gateway/micro_app.micro_app_version_log.LogAppVersion/api/micro_app/v1/log_micro_app_version/${packageOrg}/${packageId}`,
     data,
     options

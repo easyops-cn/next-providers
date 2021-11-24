@@ -1,3 +1,5 @@
+import { ModelIcon } from "../common";
+
 /** 模型视图设置 */
 export interface ModelObjectView {
   /** 是否可见 */
@@ -29,4 +31,7 @@ export interface ModelObjectView {
 
   /** 关系分组里关系的顺序 */
   relation_order: string[];
+
+  /** icon */
+  icon: Partial<ModelIcon>;
 }

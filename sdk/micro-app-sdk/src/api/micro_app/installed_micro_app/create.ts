@@ -5,9 +5,10 @@ import {
 } from "../../../model/micro_app";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export type InstalledMicroAppApi_CreateRequestBody = Partial<ModelInstalledMicroApp> &
-  ModelInstalledMicroApp_partial &
-  InstalledMicroAppApi_CreateRequestBody_2;
+export type InstalledMicroAppApi_CreateRequestBody =
+  Partial<ModelInstalledMicroApp> &
+    ModelInstalledMicroApp_partial &
+    InstalledMicroAppApi_CreateRequestBody_2;
 
 export type InstalledMicroAppApi_CreateResponseBody = ModelInstalledMicroApp &
   InstalledMicroAppApi_CreateResponseBody_2;
@@ -20,7 +21,7 @@ export const InstalledMicroAppApi_create = async (
   data: InstalledMicroAppApi_CreateRequestBody,
   options?: HttpOptions
 ): Promise<InstalledMicroAppApi_CreateResponseBody> =>
-  /**! @contract easyops.api.micro_app.installed_micro_app.Create */ (
+  /**! @contract easyops.api.micro_app.installed_micro_app.Create@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<InstalledMicroAppApi_CreateResponseBody>
     >(

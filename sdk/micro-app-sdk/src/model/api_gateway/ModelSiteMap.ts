@@ -10,15 +10,15 @@ export interface ModelSiteMap {
   order: string;
 
   /** 微应用列表 */
-  apps: ModelSiteMap_apps_item[];
+  appSort: ModelSiteMap_appSort_item[];
 
   /** 微应用客户自定义排序 */
   customAppSort: ModelSiteMap_customAppSort_item[];
 }
 
-export interface ModelSiteMap_apps_item {
+export interface ModelSiteMap_appSort_item {
   /** 微应用id */
-  id?: string;
+  appId?: string;
 
   /** 微应用排序 */
   sort?: string;
@@ -26,7 +26,7 @@ export interface ModelSiteMap_apps_item {
 
 export interface ModelSiteMap_customAppSort_item {
   /** 微应用id */
-  id?: string;
+  appId?: string;
 
   /** 微应用排序 */
   sort?: string;

@@ -5,8 +5,9 @@ import {
 } from "../../../model/micro_app";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export type InstalledMicroAppApi_GetInstalledMicroAppResponseBody = ModelInstalledMicroApp &
-  InstalledMicroAppApi_GetInstalledMicroAppResponseBody_2;
+export type InstalledMicroAppApi_GetInstalledMicroAppResponseBody =
+  ModelInstalledMicroApp &
+    InstalledMicroAppApi_GetInstalledMicroAppResponseBody_2;
 
 /**
  * @description 获取已安装小产品信息
@@ -16,7 +17,7 @@ export const InstalledMicroAppApi_getInstalledMicroApp = async (
   app_id: string | number,
   options?: HttpOptions
 ): Promise<InstalledMicroAppApi_GetInstalledMicroAppResponseBody> =>
-  /**! @contract easyops.api.micro_app.installed_micro_app.GetInstalledMicroApp */ (
+  /**! @contract easyops.api.micro_app.installed_micro_app.GetInstalledMicroApp@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<InstalledMicroAppApi_GetInstalledMicroAppResponseBody>
     >(

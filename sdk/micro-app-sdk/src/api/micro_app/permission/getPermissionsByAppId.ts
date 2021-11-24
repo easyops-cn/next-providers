@@ -21,7 +21,7 @@ export const PermissionApi_getPermissionsByAppId = async (
   params: PermissionApi_GetPermissionsByAppIdRequestParams,
   options?: HttpOptions
 ): Promise<PermissionApi_GetPermissionsByAppIdResponseBody> =>
-  /**! @contract easyops.api.micro_app.permission.GetPermissionsByAppId */ (
+  /**! @contract easyops.api.micro_app.permission.GetPermissionsByAppId@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<PermissionApi_GetPermissionsByAppIdResponseBody>
     >(

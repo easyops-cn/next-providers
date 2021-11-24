@@ -23,7 +23,7 @@ export const InstalledMicroAppApi_getImagesByAppId = async (
   data: InstalledMicroAppApi_GetImagesByAppIdRequestBody,
   options?: HttpOptions
 ): Promise<InstalledMicroAppApi_GetImagesByAppIdResponseBody> =>
-  /**! @contract easyops.api.micro_app.installed_micro_app.GetImagesByAppId */ (
+  /**! @contract easyops.api.micro_app.installed_micro_app.GetImagesByAppId@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<InstalledMicroAppApi_GetImagesByAppIdResponseBody>
     >(

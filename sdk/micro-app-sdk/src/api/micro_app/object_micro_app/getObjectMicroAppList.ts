@@ -2,9 +2,11 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelObjectMicroApp } from "../../../model/micro_app";
 import { ResponseListWrapper, ResponseBodyWrapper } from "../../../wrapper";
 
-export type ObjectMicroAppApi_GetObjectMicroAppListResponseItem = ModelObjectMicroApp;
+export type ObjectMicroAppApi_GetObjectMicroAppListResponseItem =
+  ModelObjectMicroApp;
 
-export type ObjectMicroAppApi_GetObjectMicroAppListResponseBody = ResponseListWrapper<ObjectMicroAppApi_GetObjectMicroAppListResponseItem>;
+export type ObjectMicroAppApi_GetObjectMicroAppListResponseBody =
+  ResponseListWrapper<ObjectMicroAppApi_GetObjectMicroAppListResponseItem>;
 
 /**
  * @description 查询模型关联小产品列表
@@ -13,7 +15,7 @@ export type ObjectMicroAppApi_GetObjectMicroAppListResponseBody = ResponseListWr
 export const ObjectMicroAppApi_getObjectMicroAppList = async (
   options?: HttpOptions
 ): Promise<ObjectMicroAppApi_GetObjectMicroAppListResponseBody> =>
-  /**! @contract easyops.api.micro_app.object_micro_app.GetObjectMicroAppList */ (
+  /**! @contract easyops.api.micro_app.object_micro_app.GetObjectMicroAppList@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<ObjectMicroAppApi_GetObjectMicroAppListResponseBody>
     >(

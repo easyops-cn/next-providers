@@ -116,6 +116,12 @@ export interface ModelMicroAppProject_appSetting {
 
   /** 布局类型 */
   layoutType?: string;
+
+  /** 免登录 */
+  noAuthGuard?: boolean;
+
+  /** 默认面包屑配置 */
+  breadcrumb?: string;
 }
 
 export interface ModelMicroAppProject_dependencies_item {

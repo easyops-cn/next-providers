@@ -35,7 +35,7 @@ export const InstalledMicroAppApi_searchInstalledMicroApp = async (
   data: InstalledMicroAppApi_SearchInstalledMicroAppRequestBody,
   options?: HttpOptions
 ): Promise<InstalledMicroAppApi_SearchInstalledMicroAppResponseBody> =>
-  /**! @contract easyops.api.micro_app.installed_micro_app.SearchInstalledMicroApp */ (
+  /**! @contract easyops.api.micro_app.installed_micro_app.SearchInstalledMicroApp@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<InstalledMicroAppApi_SearchInstalledMicroAppResponseBody>
     >(

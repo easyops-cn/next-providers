@@ -15,7 +15,7 @@ export const InstalledMicroAppApi_updateInstalledMicroAppUserConfig = (
   data: InstalledMicroAppApi_UpdateInstalledMicroAppUserConfigRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.micro_app.installed_micro_app.UpdateInstalledMicroAppUserConfig */ http.put<void>(
+  /**! @contract easyops.api.micro_app.installed_micro_app.UpdateInstalledMicroAppUserConfig@1.0.0 */ http.put<void>(
     `api/gateway/micro_app.installed_micro_app.UpdateInstalledMicroAppUserConfig/api/micro_app/v1/installed_micro_app/${app_id}/userConfig`,
     data,
     options

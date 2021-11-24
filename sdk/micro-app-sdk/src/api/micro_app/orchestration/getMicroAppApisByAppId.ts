@@ -15,7 +15,7 @@ export const OrchestrationApi_getMicroAppApisByAppId = async (
   appId: string | number,
   options?: HttpOptions
 ): Promise<OrchestrationApi_GetMicroAppApisByAppIdResponseBody> =>
-  /**! @contract easyops.api.micro_app.orchestration.GetMicroAppApisByAppId */ (
+  /**! @contract easyops.api.micro_app.orchestration.GetMicroAppApisByAppId@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<OrchestrationApi_GetMicroAppApisByAppIdResponseBody>
     >(

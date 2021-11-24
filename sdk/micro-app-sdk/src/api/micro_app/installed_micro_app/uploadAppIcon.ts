@@ -16,7 +16,7 @@ export const InstalledMicroAppApi_uploadAppIcon = (
   data: InstalledMicroAppApi_UploadAppIconRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.micro_app.installed_micro_app.UploadAppIcon */ http.post<void>(
+  /**! @contract easyops.api.micro_app.installed_micro_app.UploadAppIcon@1.0.0 */ http.post<void>(
     "api/gateway/micro_app.installed_micro_app.UploadAppIcon/api/v1/micro-app/upload-app-icon",
     data,
     options

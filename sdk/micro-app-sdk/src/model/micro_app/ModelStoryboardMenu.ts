@@ -31,6 +31,12 @@ export interface ModelStoryboardMenu {
 
   /** 菜单项 */
   items: Partial<ModelStoryboardMenuItem>[];
+
+  /** Inject menu group ID */
+  injectMenuGroupId: string;
+
+  /** Default Collapsed Breakpoint */
+  defaultCollapsedBreakpoint: number;
 }
 
 export interface ModelStoryboardMenu_titleDataSource {

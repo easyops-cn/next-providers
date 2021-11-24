@@ -13,7 +13,7 @@ export interface PermissionApi_GetMicroAppListResponseBody {
 export const PermissionApi_getMicroAppList = async (
   options?: HttpOptions
 ): Promise<PermissionApi_GetMicroAppListResponseBody> =>
-  /**! @contract easyops.api.micro_app.permission.GetMicroAppList */ (
+  /**! @contract easyops.api.micro_app.permission.GetMicroAppList@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<PermissionApi_GetMicroAppListResponseBody>
     >(

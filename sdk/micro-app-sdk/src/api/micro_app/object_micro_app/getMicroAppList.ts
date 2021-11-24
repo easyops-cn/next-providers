@@ -4,7 +4,8 @@ import { ResponseListWrapper, ResponseBodyWrapper } from "../../../wrapper";
 
 export type ObjectMicroAppApi_GetMicroAppListResponseItem = ModelObjectMicroApp;
 
-export type ObjectMicroAppApi_GetMicroAppListResponseBody = ResponseListWrapper<ObjectMicroAppApi_GetMicroAppListResponseItem>;
+export type ObjectMicroAppApi_GetMicroAppListResponseBody =
+  ResponseListWrapper<ObjectMicroAppApi_GetMicroAppListResponseItem>;
 
 /**
  * @description 根据模型查询关联小产品列表
@@ -14,7 +15,7 @@ export const ObjectMicroAppApi_getMicroAppList = async (
   object_id: string | number,
   options?: HttpOptions
 ): Promise<ObjectMicroAppApi_GetMicroAppListResponseBody> =>
-  /**! @contract easyops.api.micro_app.object_micro_app.GetMicroAppList */ (
+  /**! @contract easyops.api.micro_app.object_micro_app.GetMicroAppList@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<ObjectMicroAppApi_GetMicroAppListResponseBody>
     >(

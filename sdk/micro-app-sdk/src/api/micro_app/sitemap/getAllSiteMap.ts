@@ -14,7 +14,7 @@ export interface SitemapApi_GetAllSiteMapResponseBody {
 export const SitemapApi_getAllSiteMap = async (
   options?: HttpOptions
 ): Promise<SitemapApi_GetAllSiteMapResponseBody> =>
-  /**! @contract easyops.api.micro_app.sitemap.GetAllSiteMap */ (
+  /**! @contract easyops.api.micro_app.sitemap.GetAllSiteMap@1.0.0 */ (
     await http.get<ResponseBodyWrapper<SitemapApi_GetAllSiteMapResponseBody>>(
       "api/gateway/micro_app.sitemap.GetAllSiteMap/api/v1/micro-app/get_all_site_map",
       options

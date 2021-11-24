@@ -8,7 +8,8 @@ export interface InstalledMicroAppApi_UpdateInstalledMicroAppStatusRequestBody {
   status?: "enabled" | "disabled" | "developing";
 }
 
-export type InstalledMicroAppApi_UpdateInstalledMicroAppStatusResponseBody = ModelInstalledMicroApp;
+export type InstalledMicroAppApi_UpdateInstalledMicroAppStatusResponseBody =
+  ModelInstalledMicroApp;
 
 /**
  * @description 更新小产品信息
@@ -19,7 +20,7 @@ export const InstalledMicroAppApi_updateInstalledMicroAppStatus = async (
   data: InstalledMicroAppApi_UpdateInstalledMicroAppStatusRequestBody,
   options?: HttpOptions
 ): Promise<InstalledMicroAppApi_UpdateInstalledMicroAppStatusResponseBody> =>
-  /**! @contract easyops.api.micro_app.installed_micro_app.UpdateInstalledMicroAppStatus */ (
+  /**! @contract easyops.api.micro_app.installed_micro_app.UpdateInstalledMicroAppStatus@1.0.0 */ (
     await http.put<
       ResponseBodyWrapper<InstalledMicroAppApi_UpdateInstalledMicroAppStatusResponseBody>
     >(

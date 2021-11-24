@@ -20,7 +20,7 @@ export const ObjectMicroAppApi_aggregateMicroApp = async (
   data: ObjectMicroAppApi_AggregateMicroAppRequestBody,
   options?: HttpOptions
 ): Promise<ObjectMicroAppApi_AggregateMicroAppResponseBody> =>
-  /**! @contract easyops.api.micro_app.object_micro_app.AggregateMicroApp */ (
+  /**! @contract easyops.api.micro_app.object_micro_app.AggregateMicroApp@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<ObjectMicroAppApi_AggregateMicroAppResponseBody>
     >(

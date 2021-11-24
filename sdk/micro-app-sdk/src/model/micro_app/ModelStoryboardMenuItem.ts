@@ -44,4 +44,7 @@ export interface ModelStoryboardMenuItem {
 
   /** target */
   target: string;
+
+  /** Group ID */
+  groupId: string;
 }

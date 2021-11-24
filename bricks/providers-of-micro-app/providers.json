@@ -15,6 +15,7 @@
     "DocumentApi.exportDocumentsToFile",
     "DocumentApi.importDocuments",
     "DocumentApi.getDocumentsDetails",
-    "PermissionApi.validatePermissions"
+    "PermissionApi.validatePermissions",
+    "InstalledMicroAppApi.updateInstalledMicroAppUserConfig"
   ]
 }

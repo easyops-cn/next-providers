@@ -50,7 +50,7 @@ export const InstalledMicroAppApi_packageUpload = async (
   data: InstalledMicroAppApi_PackageUploadRequestBody,
   options?: HttpOptions
 ): Promise<InstalledMicroAppApi_PackageUploadResponseBody> =>
-  /**! @contract easyops.api.micro_app.installed_micro_app.PackageUpload */ (
+  /**! @contract easyops.api.micro_app.installed_micro_app.PackageUpload@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<InstalledMicroAppApi_PackageUploadResponseBody>
     >(
