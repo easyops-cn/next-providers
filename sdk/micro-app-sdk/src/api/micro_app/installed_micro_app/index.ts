@@ -1,6 +1,7 @@
 export * from "./create";
 export * from "./createStoryboardMenus";
 export * from "./deleteMicroApp";
+export * from "./deleteInstalledMicroAppContainer";
 export * from "./getInstalledMicroApp";
 export * from "./getImagesByAppId";
 export * from "./getOssObjectsStat";

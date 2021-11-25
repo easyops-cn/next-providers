@@ -17,6 +17,7 @@
     "DocumentApi.getDocumentsDetails",
     "PermissionApi.validatePermissions",
     "InstalledMicroAppApi.updateInstalledMicroAppUserConfig",
-    "InstalledMicroAppApi.updateInstalledMicroAppContainer"
+    "InstalledMicroAppApi.updateInstalledMicroAppContainer",
+    "InstalledMicroAppApi.deleteInstalledMicroAppContainer"
   ]
 }
