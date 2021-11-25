@@ -20,6 +20,7 @@
     "AuthApi.tokenLdapLogin",
     "AuthApi.tokenLogin",
     "BootstrapV2Api.bootstrapV2",
-    "BootstrapV2Api.brickPackageInfo"
+    "BootstrapV2Api.brickPackageInfo",
+    "BootstrapV2Api.getAppStoryboardV2"
   ]
 }
