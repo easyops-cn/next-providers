@@ -18,6 +18,7 @@
     "PermissionApi.validatePermissions",
     "InstalledMicroAppApi.updateInstalledMicroAppUserConfig",
     "InstalledMicroAppApi.updateInstalledMicroAppContainer",
-    "InstalledMicroAppApi.deleteInstalledMicroAppContainer"
+    "InstalledMicroAppApi.deleteInstalledMicroAppContainer",
+    "MicroAppContainerApi.addMicroAppToContainer"
   ]
 }
