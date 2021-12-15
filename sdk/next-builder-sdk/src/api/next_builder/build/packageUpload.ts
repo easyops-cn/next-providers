@@ -18,6 +18,9 @@ export interface BuildApi_PackageUploadRequestBody {
 
   /** 项目依赖的bricks */
   dependApis?: BuildApi_PackageUploadRequestBody_dependApis_item[];
+
+  /** 契约内容 */
+  contractData?: string;
 }
 
 /**
@@ -28,7 +31,7 @@ export const BuildApi_packageUpload = (
   data: BuildApi_PackageUploadRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.next_builder.build.PackageUpload */ http.post<void>(
+  /**! @contract easyops.api.next_builder.build.PackageUpload@1.1.0 */ http.post<void>(
     "api/gateway/next_builder.build.PackageUpload/api/v1/next-builder/package-upload",
     data,
     options

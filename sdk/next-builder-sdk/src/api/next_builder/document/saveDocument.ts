@@ -43,7 +43,7 @@ export const DocumentApi_saveDocument = async (
   data: DocumentApi_SaveDocumentRequestBody,
   options?: HttpOptions
 ): Promise<DocumentApi_SaveDocumentResponseBody> =>
-  /**! @contract easyops.api.next_builder.document.SaveDocument */ (
+  /**! @contract easyops.api.next_builder.document.SaveDocument@1.1.0 */ (
     await http.put<ResponseBodyWrapper<DocumentApi_SaveDocumentResponseBody>>(
       "api/gateway/next_builder.document.SaveDocument/api/v1/document/save",
       data,

@@ -13,7 +13,7 @@ export const ProjectApi_getMicroAppProject = async (
   projectId: string | number,
   options?: HttpOptions
 ): Promise<ProjectApi_GetMicroAppProjectResponseBody> =>
-  /**! @contract easyops.api.next_builder.project.GetMicroAppProject */ (
+  /**! @contract easyops.api.next_builder.project.GetMicroAppProject@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<ProjectApi_GetMicroAppProjectResponseBody>
     >(

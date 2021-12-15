@@ -13,7 +13,7 @@ export const StoryboardApi_sortStoryboardNodes = (
   data: StoryboardApi_SortStoryboardNodesRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.next_builder.storyboard.SortStoryboardNodes */ http.post<void>(
+  /**! @contract easyops.api.next_builder.storyboard.SortStoryboardNodes@1.0.0 */ http.post<void>(
     "api/gateway/next_builder.storyboard.SortStoryboardNodes/api/v1/nextBuilder/sortNodes",
     data,
     options

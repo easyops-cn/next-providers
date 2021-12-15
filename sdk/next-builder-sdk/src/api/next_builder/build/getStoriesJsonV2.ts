@@ -22,7 +22,7 @@ export const BuildApi_getStoriesJsonV2 = async (
   data: BuildApi_GetStoriesJsonV2RequestBody,
   options?: HttpOptions
 ): Promise<BuildApi_GetStoriesJsonV2ResponseBody> =>
-  /**! @contract easyops.api.next_builder.build.GetStoriesJsonV2 */ (
+  /**! @contract easyops.api.next_builder.build.GetStoriesJsonV2@1.0.0 */ (
     await http.post<ResponseBodyWrapper<BuildApi_GetStoriesJsonV2ResponseBody>>(
       "api/gateway/next_builder.build.GetStoriesJsonV2/api/v2/next-builder/storiesjson",
       data,

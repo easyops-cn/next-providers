@@ -23,7 +23,7 @@ export const ModelApi_generateModelsDefinition = async (
   params: ModelApi_GenerateModelsDefinitionRequestParams,
   options?: HttpOptions
 ): Promise<ModelApi_GenerateModelsDefinitionResponseBody> =>
-  /**! @contract easyops.api.next_builder.model.GenerateModelsDefinition */ (
+  /**! @contract easyops.api.next_builder.model.GenerateModelsDefinition@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<ModelApi_GenerateModelsDefinitionResponseBody>
     >(

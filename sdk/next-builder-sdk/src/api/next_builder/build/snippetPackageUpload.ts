@@ -31,7 +31,7 @@ export const BuildApi_snippetPackageUpload = (
   data: BuildApi_SnippetPackageUploadRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.next_builder.build.SnippetPackageUpload */ http.post<void>(
+  /**! @contract easyops.api.next_builder.build.SnippetPackageUpload@1.1.0 */ http.post<void>(
     "api/gateway/next_builder.build.SnippetPackageUpload/api/v1/next-builder/snippet-package-upload",
     data,
     options

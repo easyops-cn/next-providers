@@ -21,7 +21,7 @@ export const ProjectApi_updateProjectStoryboard = (
   data: ProjectApi_UpdateProjectStoryboardRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.next_builder.project.UpdateProjectStoryboard */ http.put<void>(
+  /**! @contract easyops.api.next_builder.project.UpdateProjectStoryboard@1.0.0 */ http.put<void>(
     `api/gateway/next_builder.project.UpdateProjectStoryboard/api/v1/next-builder/project/${projectId}`,
     data,
     options

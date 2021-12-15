@@ -13,7 +13,7 @@ export const StoryboardApi_getStoryboardNode = async (
   nodeId: string | number,
   options?: HttpOptions
 ): Promise<StoryboardApi_GetStoryboardNodeResponseBody> =>
-  /**! @contract easyops.api.next_builder.storyboard.GetStoryboardNode */ (
+  /**! @contract easyops.api.next_builder.storyboard.GetStoryboardNode@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<StoryboardApi_GetStoryboardNodeResponseBody>
     >(

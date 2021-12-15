@@ -20,7 +20,7 @@ export const ModelApi_getModel = async (
   params: ModelApi_GetModelRequestParams,
   options?: HttpOptions
 ): Promise<ModelApi_GetModelResponseBody> =>
-  /**! @contract easyops.api.next_builder.model.GetModel */ (
+  /**! @contract easyops.api.next_builder.model.GetModel@1.0.0 */ (
     await http.get<ResponseBodyWrapper<ModelApi_GetModelResponseBody>>(
       "api/gateway/next_builder.model.GetModel/api/v1/model/get",
       { ...options, params }

@@ -15,7 +15,7 @@ export const PermissionApi_generatePermissionsDefinition = async (
   instanceId: string | number,
   options?: HttpOptions
 ): Promise<PermissionApi_GeneratePermissionsDefinitionResponseBody> =>
-  /**! @contract easyops.api.next_builder.permission.GeneratePermissionsDefinition */ (
+  /**! @contract easyops.api.next_builder.permission.GeneratePermissionsDefinition@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<PermissionApi_GeneratePermissionsDefinitionResponseBody>
     >(

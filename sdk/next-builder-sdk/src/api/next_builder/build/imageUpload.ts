@@ -22,7 +22,7 @@ export const BuildApi_imageUpload = async (
   data: BuildApi_ImageUploadRequestBody,
   options?: HttpOptions
 ): Promise<BuildApi_ImageUploadResponseBody> => {
-  /**! @contract easyops.api.next_builder.build.ImageUpload */ const _formData =
+  /**! @contract easyops.api.next_builder.build.ImageUpload@1.0.0 */ const _formData =
     new FormData();
   for (const [key, value] of Object.entries(data)) {
     if (Array.isArray(value)) {

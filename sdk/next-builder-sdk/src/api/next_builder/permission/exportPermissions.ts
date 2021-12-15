@@ -13,7 +13,7 @@ export const PermissionApi_exportPermissions = (
   data: PermissionApi_ExportPermissionsRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.next_builder.permission.ExportPermissions */ http.post<void>(
+  /**! @contract easyops.api.next_builder.permission.ExportPermissions@1.0.0 */ http.post<void>(
     "api/gateway/next_builder.permission.ExportPermissions/api/v1/permission/export",
     data,
     options

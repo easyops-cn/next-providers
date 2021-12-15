@@ -40,7 +40,7 @@ export const ModelApi_checkModel = (
   data: ModelApi_CheckModelRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.next_builder.model.CheckModel */ http.post<void>(
+  /**! @contract easyops.api.next_builder.model.CheckModel@1.0.0 */ http.post<void>(
     "api/gateway/next_builder.model.CheckModel/api/v1/model/check",
     data,
     options

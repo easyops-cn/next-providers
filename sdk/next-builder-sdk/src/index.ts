@@ -7,5 +7,6 @@ export * from "./api/next_builder/project";
 export * from "./api/next_builder/storyboard";
 export * as MicroAppModels from "./model/micro_app";
 export * as CmdbModels from "./model/cmdb";
+export * as CommonModels from "./model/common";
 export * as NextBuilderModels from "./model/next_builder";
 export * as PermissionModels from "./model/permission";
