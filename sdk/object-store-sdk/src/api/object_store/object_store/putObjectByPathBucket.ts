@@ -28,7 +28,7 @@ export const ObjectStoreApi_putObjectByPathBucket = async (
   data: ObjectStoreApi_PutObjectByPathBucketRequestBody,
   options?: HttpOptions
 ): Promise<ObjectStoreApi_PutObjectByPathBucketResponseBody> => {
-  /**! @contract easyops.api.object_store.object_store.PutObjectByPathBucket */ const _formData =
+  /**! @contract easyops.api.object_store.object_store.PutObjectByPathBucket@1.0.0 */ const _formData =
     new FormData();
   for (const [key, value] of Object.entries(data)) {
     if (Array.isArray(value)) {

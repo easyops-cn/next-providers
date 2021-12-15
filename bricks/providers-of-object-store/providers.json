@@ -6,6 +6,7 @@
     "ObjectStoreApi.listBuckets",
     "ObjectStoreApi.listObjects",
     "ObjectStoreApi.putObject",
-    "ObjectStoreApi.removeObject"
+    "ObjectStoreApi.removeObject",
+    "ObjectStoreApi.removeObjects"
   ]
 }

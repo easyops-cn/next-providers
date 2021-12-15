@@ -9,7 +9,7 @@ export const ObjectStoreApi_getStaticObject = (
   objectName: string | number,
   options?: HttpOptions
 ): Promise<Blob> =>
-  /**! @contract easyops.api.object_store.object_store.GetStaticObject */ http.get<Blob>(
+  /**! @contract easyops.api.object_store.object_store.GetStaticObject@1.0.0 */ http.get<Blob>(
     `api/gateway/object_store.object_store.GetStaticObject/api/v1/objectStore/bucket/${bucketName}/static_object/${objectName}`,
     { ...options, responseType: "blob" }
   );

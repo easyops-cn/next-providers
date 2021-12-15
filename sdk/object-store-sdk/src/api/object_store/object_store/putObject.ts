@@ -32,7 +32,7 @@ export const ObjectStoreApi_putObject = async (
   data: ObjectStoreApi_PutObjectRequestBody,
   options?: HttpOptions
 ): Promise<ObjectStoreApi_PutObjectResponseBody> => {
-  /**! @contract easyops.api.object_store.object_store.PutObject */ const _formData =
+  /**! @contract easyops.api.object_store.object_store.PutObject@1.0.0 */ const _formData =
     new FormData();
   for (const [key, value] of Object.entries(data)) {
     if (Array.isArray(value)) {

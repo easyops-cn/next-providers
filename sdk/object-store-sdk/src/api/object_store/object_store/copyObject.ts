@@ -22,7 +22,7 @@ export const ObjectStoreApi_copyObject = async (
   data: ObjectStoreApi_CopyObjectRequestBody,
   options?: HttpOptions
 ): Promise<ObjectStoreApi_CopyObjectResponseBody> =>
-  /**! @contract easyops.api.object_store.object_store.CopyObject */ (
+  /**! @contract easyops.api.object_store.object_store.CopyObject@1.0.0 */ (
     await http.post<ResponseBodyWrapper<ObjectStoreApi_CopyObjectResponseBody>>(
       "api/gateway/object_store.object_store.CopyObject/api/v1/objectStore/objectCopy",
       data,

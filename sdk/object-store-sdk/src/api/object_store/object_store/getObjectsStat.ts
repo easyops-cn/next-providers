@@ -21,7 +21,7 @@ export const ObjectStoreApi_getObjectsStat = async (
   data: ObjectStoreApi_GetObjectsStatRequestBody,
   options?: HttpOptions
 ): Promise<ObjectStoreApi_GetObjectsStatResponseBody> =>
-  /**! @contract easyops.api.object_store.object_store.GetObjectsStat */ (
+  /**! @contract easyops.api.object_store.object_store.GetObjectsStat@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<ObjectStoreApi_GetObjectsStatResponseBody>
     >(

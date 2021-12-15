@@ -1,0 +1,513 @@
+{
+  "name": "object_store",
+  "contracts": [
+    {
+      "contract": "object_store.object_store.CopyObject",
+      "name": "CopyObject",
+      "version": "1.0.0",
+      "description": "复制对象",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/objectStore/objectCopy"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "type": "object",
+            "description": "源对象",
+            "name": "src",
+            "fields": [
+              {
+                "name": "bucketName",
+                "type": "bucket_name",
+                "description": "存储桶名称"
+              },
+              {
+                "name": "objectName",
+                "type": "string",
+                "description": "存储桶中对象名称"
+              }
+            ]
+          },
+          {
+            "type": "object",
+            "description": "目标对象",
+            "name": "dst",
+            "fields": [
+              {
+                "name": "bucketName",
+                "type": "bucket_name",
+                "description": "存储桶名称"
+              },
+              {
+                "name": "objectName",
+                "type": "string",
+                "description": "存储桶中对象名称"
+              }
+            ]
+          }
+        ],
+        "required": [
+          "src.bucketName",
+          "src.objectName",
+          "dst.bucketName",
+          "dst.objectName"
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "objectName",
+            "type": "string",
+            "description": "复制对象后，服务器返回的对象名称"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "object_store.object_store.CreateBucket",
+      "name": "CreateBucket",
+      "version": "1.0.0",
+      "description": "创建对象存储桶",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/objectStore/bucket/:bucketName"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "bucketName",
+            "type": "bucket_name",
+            "description": "存储桶名称"
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "description": "存储桶被创建的region(地区)"
+          }
+        ],
+        "required": ["bucketName"]
+      },
+      "response": null
+    },
+    {
+      "contract": "object_store.object_store.GetObject",
+      "name": "GetObject",
+      "version": "1.0.0",
+      "description": "下载对象",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/objectStore/bucket/:bucketName/object/:objectName"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "bucketName",
+            "type": "bucket_name",
+            "description": "存储桶名称"
+          },
+          {
+            "name": "objectName",
+            "type": "string",
+            "description": "存储桶中对象名称"
+          }
+        ],
+        "required": ["bucketName", "objectName"]
+      },
+      "response": {
+        "type": "file"
+      }
+    },
+    {
+      "contract": "object_store.object_store.GetObjectsStat",
+      "name": "GetObjectsStat",
+      "version": "1.0.0",
+      "description": "获取对象信息",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/objectStore/bucket/:bucketName/objectStat"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "bucketName",
+            "type": "bucket_name",
+            "description": "存储桶名称"
+          },
+          {
+            "name": "objects",
+            "type": "object[]",
+            "description": "存储桶中对象",
+            "fields": [
+              {
+                "name": "objectName",
+                "type": "string",
+                "description": "对象名称"
+              }
+            ]
+          }
+        ],
+        "required": ["bucketName", "objects"]
+      },
+      "response": {
+        "type": "object",
+        "description": "对象信息",
+        "fields": [
+          {
+            "name": "objects",
+            "type": "object[]",
+            "description": "存储桶中对象",
+            "fields": [
+              {
+                "name": "objectName",
+                "type": "string",
+                "description": "对象名称"
+              },
+              {
+                "name": "md5",
+                "type": "string",
+                "description": "对象md5"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "object_store.object_store.GetStaticObject",
+      "name": "GetStaticObject",
+      "version": "1.0.0",
+      "description": "下载静态的存储对象; 无租户校验",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/objectStore/bucket/:bucketName/static_object/:objectName"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "bucketName",
+            "type": "bucket_name",
+            "description": "存储桶名称"
+          },
+          {
+            "name": "objectName",
+            "type": "string",
+            "description": "存储桶中对象名称"
+          }
+        ],
+        "required": ["bucketName", "objectName"]
+      },
+      "response": {
+        "type": "file"
+      }
+    },
+    {
+      "contract": "object_store.object_store.ListBuckets",
+      "name": "ListBuckets",
+      "version": "1.0.0",
+      "description": "列出所有对象存储桶",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/objectStore/bucket"
+      },
+      "request": null,
+      "response": {
+        "type": "object",
+        "description": "对象存储桶",
+        "fields": [
+          {
+            "name": "buckets",
+            "type": "object[]",
+            "description": "对象存储桶列表",
+            "fields": [
+              {
+                "name": "bucketName",
+                "type": "string",
+                "description": "对象存储桶名称"
+              },
+              {
+                "name": "creationDate",
+                "type": "datetime",
+                "description": "创建时间"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "object_store.object_store.ListObjects",
+      "name": "ListObjects",
+      "version": "1.0.0",
+      "description": "列出对象存储桶中所有对象",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/objectStore/bucket/:bucketName/object"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "bucketName",
+            "type": "bucket_name",
+            "description": "存储桶名称"
+          },
+          {
+            "name": "objectPrefix",
+            "type": "string",
+            "description": "要列举的对象前缀"
+          },
+          {
+            "name": "recursive",
+            "type": "bool",
+            "description": "true代表递归查找，false代表类似文件夹查找，以'/'分隔，不查子文件夹。"
+          }
+        ],
+        "required": ["bucketName"]
+      },
+      "response": {
+        "type": "object",
+        "description": "返回对象",
+        "fields": [
+          {
+            "name": "objects",
+            "type": "object[]",
+            "description": "对象数组",
+            "fields": [
+              {
+                "name": "etag",
+                "type": "string",
+                "description": "对象MD5值"
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "description": "对象名称"
+              },
+              {
+                "name": "lastModified",
+                "type": "datetime",
+                "description": "最后修改时间"
+              },
+              {
+                "name": "size",
+                "type": "int",
+                "description": "对象大小"
+              },
+              {
+                "name": "contentType",
+                "type": "string",
+                "description": "标准MIME类型，描述对象数据格式"
+              },
+              {
+                "name": "expires",
+                "type": "datetime",
+                "description": "过期时间(超过将不再缓存)"
+              },
+              {
+                "name": "owner",
+                "type": "object",
+                "description": "所属用户",
+                "fields": [
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "description": "用户名"
+                  },
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "description": "用户ID"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "object_store.object_store.PutObject",
+      "name": "PutObject",
+      "version": "1.0.0",
+      "description": "上传对象",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/objectStore/bucket/:bucketName/object"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "bucketName",
+            "type": "bucket_name",
+            "description": "存储桶名称"
+          },
+          {
+            "name": "objectName",
+            "type": "string",
+            "description": "存储桶中对象名称(如果不为空，则服务器以该参数值命名存储对象)"
+          },
+          {
+            "name": "file",
+            "type": "file",
+            "description": "上传文件流。"
+          },
+          {
+            "name": "quality",
+            "type": "int",
+            "description": "压缩质量, 不传表示100，不压缩"
+          },
+          {
+            "name": "width",
+            "type": "int",
+            "description": "图片压缩最大宽度, 为0表示不按宽度等比例压缩"
+          },
+          {
+            "name": "height",
+            "type": "int",
+            "description": "图片压缩最大高度, 为0表示不按高度等比例压缩"
+          }
+        ],
+        "required": ["bucketName", "file"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "objectName",
+            "type": "string",
+            "description": "上传对象后，服务器返回的对象名称"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "object_store.object_store.PutObjectByPathBucket",
+      "name": "PutObjectByPathBucket",
+      "version": "1.0.0",
+      "description": "上传对象",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/objectStore/object"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "bucketName",
+            "type": "string",
+            "description": "存储桶名称"
+          },
+          {
+            "name": "objectName",
+            "type": "string",
+            "description": "存储桶中对象名称(如果不为空，则服务器以该参数值命名存储对象)"
+          },
+          {
+            "name": "file",
+            "type": "file",
+            "description": "上传文件流。"
+          },
+          {
+            "name": "quality",
+            "type": "int",
+            "description": "压缩质量, 为0或100，标识不压缩"
+          }
+        ],
+        "required": ["bucketName", "file"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "objectName",
+            "type": "string",
+            "description": "上传对象后，服务器返回的对象名称"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "object_store.object_store.RemoveObject",
+      "name": "RemoveObject",
+      "version": "1.0.0",
+      "description": "删除对象",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/objectStore/bucket/:bucketName/object/:objectName"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "bucketName",
+            "type": "bucket_name",
+            "description": "存储桶名称"
+          },
+          {
+            "name": "objectName",
+            "type": "string",
+            "description": "存储桶中对象名称"
+          }
+        ],
+        "required": ["bucketName", "objectName"]
+      },
+      "response": null
+    },
+    {
+      "contract": "object_store.object_store.RemoveObjects",
+      "name": "RemoveObjects",
+      "version": "1.0.0",
+      "description": "删除对象列表",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/objectStore/bucket/:bucketName/deletion"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "bucketName",
+            "type": "bucket_name",
+            "description": "存储桶名称"
+          },
+          {
+            "name": "objectNames",
+            "type": "string[]",
+            "description": "存储桶中对象名称列表"
+          }
+        ],
+        "required": ["bucketName", "objectNames"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "errResult",
+            "type": "object[]",
+            "description": "删除失败的对象列表",
+            "fields": [
+              {
+                "name": "objectName",
+                "type": "string",
+                "description": "对象名称"
+              },
+              {
+                "name": "errMsg",
+                "type": "string",
+                "description": "错误信息"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

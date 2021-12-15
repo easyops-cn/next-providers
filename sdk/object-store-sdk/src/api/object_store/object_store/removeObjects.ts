@@ -20,7 +20,7 @@ export const ObjectStoreApi_removeObjects = async (
   data: ObjectStoreApi_RemoveObjectsRequestBody,
   options?: HttpOptions
 ): Promise<ObjectStoreApi_RemoveObjectsResponseBody> =>
-  /**! @contract easyops.api.object_store.object_store.RemoveObjects */ (
+  /**! @contract easyops.api.object_store.object_store.RemoveObjects@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<ObjectStoreApi_RemoveObjectsResponseBody>
     >(
