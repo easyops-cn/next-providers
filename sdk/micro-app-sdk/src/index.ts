@@ -1,5 +1,6 @@
 export * from "./api/micro_app/archive";
 export * from "./api/micro_app/brick";
+export * from "./api/micro_app/contract";
 export * from "./api/micro_app/document";
 export * from "./api/micro_app/installed_micro_app";
 export * from "./api/micro_app/micro_app_container";
@@ -11,6 +12,7 @@ export * from "./api/micro_app/permission";
 export * from "./api/micro_app/report";
 export * from "./api/micro_app/resource";
 export * from "./api/micro_app/sitemap";
+export * from "./api/micro_app/template";
 export * as MicroAppModels from "./model/micro_app";
 export * as CmdbModels from "./model/cmdb";
 export * as CommonModels from "./model/common";

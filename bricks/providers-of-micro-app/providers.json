@@ -19,6 +19,7 @@
     "InstalledMicroAppApi.updateInstalledMicroAppUserConfig",
     "InstalledMicroAppApi.updateInstalledMicroAppContainer",
     "InstalledMicroAppApi.deleteInstalledMicroAppContainer",
-    "MicroAppContainerApi.addMicroAppToContainer"
+    "MicroAppContainerApi.addMicroAppToContainer",
+    "ContractApi.getAllContract"
   ]
 }
