@@ -26,7 +26,7 @@ export const InstancePathSearchApi_flattenSearchPath = async (
   data: InstancePathSearchApi_FlattenSearchPathRequestBody,
   options?: HttpOptions
 ): Promise<InstancePathSearchApi_FlattenSearchPathResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance_path_search.FlattenSearchPath */ (
+  /**! @contract easyops.api.cmdb.instance_path_search.FlattenSearchPath@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<InstancePathSearchApi_FlattenSearchPathResponseBody>
     >(

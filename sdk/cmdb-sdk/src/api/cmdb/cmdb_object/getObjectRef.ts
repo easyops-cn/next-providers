@@ -28,7 +28,7 @@ export const CmdbObjectApi_getObjectRef = (
   params: CmdbObjectApi_GetObjectRefRequestParams,
   options?: HttpOptions
 ): Promise<CmdbObjectApi_GetObjectRefResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.GetObjectRef */ http.get<CmdbObjectApi_GetObjectRefResponseBody>(
+  /**! @contract easyops.api.cmdb.cmdb_object.GetObjectRef@1.1.0 */ http.get<CmdbObjectApi_GetObjectRefResponseBody>(
     "api/gateway/cmdb.cmdb_object.GetObjectRef/object_ref",
     { ...options, params }
   );

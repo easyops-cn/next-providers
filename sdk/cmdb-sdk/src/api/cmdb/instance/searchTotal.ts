@@ -34,7 +34,7 @@ export const InstanceApi_searchTotal = (
   data: InstanceApi_SearchTotalRequestBody,
   options?: HttpOptions
 ): Promise<InstanceApi_SearchTotalResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.SearchTotal */ http.post<InstanceApi_SearchTotalResponseBody>(
+  /**! @contract easyops.api.cmdb.instance.SearchTotal@1.0.0 */ http.post<InstanceApi_SearchTotalResponseBody>(
     `api/gateway/cmdb.instance.SearchTotal/object/${objectId}/instance/_search_total`,
     data,
     options

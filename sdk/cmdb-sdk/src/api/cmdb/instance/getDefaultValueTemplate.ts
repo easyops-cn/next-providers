@@ -20,7 +20,7 @@ export const InstanceApi_getDefaultValueTemplate = async (
   params: InstanceApi_GetDefaultValueTemplateRequestParams,
   options?: HttpOptions
 ): Promise<InstanceApi_GetDefaultValueTemplateResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.GetDefaultValueTemplate */ (
+  /**! @contract easyops.api.cmdb.instance.GetDefaultValueTemplate@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<InstanceApi_GetDefaultValueTemplateResponseBody>
     >(

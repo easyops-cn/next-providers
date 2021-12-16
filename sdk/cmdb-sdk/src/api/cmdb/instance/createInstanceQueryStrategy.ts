@@ -14,6 +14,9 @@ export interface InstanceApi_CreateInstanceQueryStrategyRequestBody {
 
   /** 策略内容(包含查询条件和返回的字段,供前端使用，后台逻辑暂时不做校验) */
   query: Record<string, any>;
+
+  /** 显示字段 */
+  fields?: string[];
 }
 
 export type InstanceApi_CreateInstanceQueryStrategyResponseBody =
@@ -28,7 +31,7 @@ export const InstanceApi_createInstanceQueryStrategy = async (
   data: InstanceApi_CreateInstanceQueryStrategyRequestBody,
   options?: HttpOptions
 ): Promise<InstanceApi_CreateInstanceQueryStrategyResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.CreateInstanceQueryStrategy */ (
+  /**! @contract easyops.api.cmdb.instance.CreateInstanceQueryStrategy@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<InstanceApi_CreateInstanceQueryStrategyResponseBody>
     >(

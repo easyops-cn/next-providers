@@ -9,7 +9,7 @@ export const InstanceArchiveApi_archiveInstance = (
   instance_id: string | number,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.cmdb.instance_archive.ArchiveInstance */ http.post<void>(
+  /**! @contract easyops.api.cmdb.instance_archive.ArchiveInstance@1.0.0 */ http.post<void>(
     `api/gateway/cmdb.instance_archive.ArchiveInstance/object/${object_id}/instance_archive/${instance_id}`,
     undefined,
     options

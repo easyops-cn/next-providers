@@ -25,7 +25,7 @@ export const InstanceRelationApi_discovery = async (
   data: InstanceRelationApi_DiscoveryRequestBody,
   options?: HttpOptions
 ): Promise<InstanceRelationApi_DiscoveryResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance_relation.Discovery */ (
+  /**! @contract easyops.api.cmdb.instance_relation.Discovery@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<InstanceRelationApi_DiscoveryResponseBody>
     >(

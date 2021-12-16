@@ -29,7 +29,7 @@ export const CmdbObjectApi_listRelationQueryStrategyV2Request = (
   params: CmdbObjectApi_ListRelationQueryStrategyV2RequestRequestParams,
   options?: HttpOptions
 ): Promise<CmdbObjectApi_ListRelationQueryStrategyV2RequestResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.ListRelationQueryStrategyV2Request */ http.get<CmdbObjectApi_ListRelationQueryStrategyV2RequestResponseBody>(
+  /**! @contract easyops.api.cmdb.cmdb_object.ListRelationQueryStrategyV2Request@2.0.0 */ http.get<CmdbObjectApi_ListRelationQueryStrategyV2RequestResponseBody>(
     `api/gateway/cmdb.cmdb_object.ListRelationQueryStrategyV2Request/v2/object/${object_id}/relation_query_strategy`,
     { ...options, params }
   );

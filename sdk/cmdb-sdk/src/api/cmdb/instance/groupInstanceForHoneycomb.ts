@@ -15,6 +15,9 @@ export interface InstanceApi_GroupInstanceForHoneycombRequestBody {
   /** 分组字段（name，owner.#showKey） */
   groupFields?: string[];
 
+  /** 额外实例字段 */
+  extFields?: string[];
+
   /** 分组字段描述 */
   groupFieldsDesc?: string[];
 
@@ -54,7 +57,7 @@ export const InstanceApi_groupInstanceForHoneycomb = async (
   data: InstanceApi_GroupInstanceForHoneycombRequestBody,
   options?: HttpOptions
 ): Promise<InstanceApi_GroupInstanceForHoneycombResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.GroupInstanceForHoneycomb */ (
+  /**! @contract easyops.api.cmdb.instance.GroupInstanceForHoneycomb@1.2.0 */ (
     await http.post<
       ResponseBodyWrapper<InstanceApi_GroupInstanceForHoneycombResponseBody>
     >(

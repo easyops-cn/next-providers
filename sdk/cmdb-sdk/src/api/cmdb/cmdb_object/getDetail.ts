@@ -18,7 +18,7 @@ export const CmdbObjectApi_getDetail = async (
   params: CmdbObjectApi_GetDetailRequestParams,
   options?: HttpOptions
 ): Promise<CmdbObjectApi_GetDetailResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.GetDetail */ (
+  /**! @contract easyops.api.cmdb.cmdb_object.GetDetail@1.1.0 */ (
     await http.get<ResponseBodyWrapper<CmdbObjectApi_GetDetailResponseBody>>(
       `api/gateway/cmdb.cmdb_object.GetDetail/object/${objectId}`,
       { ...options, params }

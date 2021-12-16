@@ -41,7 +41,7 @@ export const InstanceApi_listInstance = async (
   params: InstanceApi_ListInstanceRequestParams,
   options?: HttpOptions
 ): Promise<InstanceApi_ListInstanceResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.ListInstance */ (
+  /**! @contract easyops.api.cmdb.instance.ListInstance@1.0.0 */ (
     await http.get<ResponseBodyWrapper<InstanceApi_ListInstanceResponseBody>>(
       `api/gateway/cmdb.instance.ListInstance/object/${object_id}/instance`,
       { ...options, params }

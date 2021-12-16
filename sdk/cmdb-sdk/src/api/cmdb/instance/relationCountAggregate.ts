@@ -34,7 +34,7 @@ export const InstanceApi_relationCountAggregate = (
   data: InstanceApi_RelationCountAggregateRequestBody,
   options?: HttpOptions
 ): Promise<InstanceApi_RelationCountAggregateResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.RelationCountAggregate */ http.post<InstanceApi_RelationCountAggregateResponseBody>(
+  /**! @contract easyops.api.cmdb.instance.RelationCountAggregate@1.0.0 */ http.post<InstanceApi_RelationCountAggregateResponseBody>(
     `api/gateway/cmdb.instance.RelationCountAggregate/object/${objectId}/instance/_relation_count_aggregate`,
     data,
     options

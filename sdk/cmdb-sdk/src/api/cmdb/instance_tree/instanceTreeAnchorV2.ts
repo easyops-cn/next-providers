@@ -29,7 +29,7 @@ export const InstanceTreeApi_instanceTreeAnchorV2 = async (
   data: InstanceTreeApi_InstanceTreeAnchorV2RequestBody,
   options?: HttpOptions
 ): Promise<InstanceTreeApi_InstanceTreeAnchorV2ResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance_tree.InstanceTreeAnchorV2 */ (
+  /**! @contract easyops.api.cmdb.instance_tree.InstanceTreeAnchorV2@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<InstanceTreeApi_InstanceTreeAnchorV2ResponseBody>
     >(

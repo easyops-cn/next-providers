@@ -14,7 +14,7 @@ export const TerraformApi_lockState = (
   data: TerraformApi_LockStateRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.cmdb.terraform.LockState */ http.post<void>(
+  /**! @contract easyops.api.cmdb.terraform.LockState@1.0.0 */ http.post<void>(
     `api/gateway/cmdb.terraform.LockState/api/terraform/v1/object/${objectId}/instance/${instanceId}/state/lock`,
     data,
     options

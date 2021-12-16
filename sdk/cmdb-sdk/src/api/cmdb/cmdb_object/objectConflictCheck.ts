@@ -23,7 +23,7 @@ export const CmdbObjectApi_objectConflictCheck = async (
   data: CmdbObjectApi_ObjectConflictCheckRequestBody,
   options?: HttpOptions
 ): Promise<CmdbObjectApi_ObjectConflictCheckResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.ObjectConflictCheck */ (
+  /**! @contract easyops.api.cmdb.cmdb_object.ObjectConflictCheck@1.1.0 */ (
     await http.post<
       ResponseBodyWrapper<CmdbObjectApi_ObjectConflictCheckResponseBody>
     >(

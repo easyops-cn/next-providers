@@ -35,7 +35,7 @@ export const InstanceApi_importInstanceWithExcel = async (
   data: InstanceApi_ImportInstanceWithExcelRequestBody,
   options?: HttpOptions
 ): Promise<InstanceApi_ImportInstanceWithExcelResponseBody> => {
-  /**! @contract easyops.api.cmdb.instance.ImportInstanceWithExcel */ const _formData =
+  /**! @contract easyops.api.cmdb.instance.ImportInstanceWithExcel@1.0.0 */ const _formData =
     new FormData();
   for (const [key, value] of Object.entries(data)) {
     if (Array.isArray(value)) {

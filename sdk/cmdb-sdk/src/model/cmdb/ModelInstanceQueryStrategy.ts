@@ -18,6 +18,9 @@ export interface ModelInstanceQueryStrategy {
   /** 策略内容(包含查询条件和返回的字段,供前端使用，后台逻辑暂时不做校验) */
   query: Record<string, any>;
 
+  /** 显示字段 */
+  fields: string[];
+
   /** 创建时间 */
   ctime: string;
 

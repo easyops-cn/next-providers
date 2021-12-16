@@ -25,7 +25,7 @@ export const ObjectRelationApi_createRelationGroup = async (
   data: ObjectRelationApi_CreateRelationGroupRequestBody,
   options?: HttpOptions
 ): Promise<ObjectRelationApi_CreateRelationGroupResponseBody> =>
-  /**! @contract easyops.api.cmdb.object_relation.CreateRelationGroup */ (
+  /**! @contract easyops.api.cmdb.object_relation.CreateRelationGroup@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<ObjectRelationApi_CreateRelationGroupResponseBody>
     >(

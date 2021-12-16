@@ -24,7 +24,7 @@ export const ObjectRelationApi_getRelationsByGroupId = (
   group_id: string | number,
   options?: HttpOptions
 ): Promise<ObjectRelationApi_GetRelationsByGroupIdResponseBody> =>
-  /**! @contract easyops.api.cmdb.object_relation.GetRelationsByGroupId */ http.get<ObjectRelationApi_GetRelationsByGroupIdResponseBody>(
+  /**! @contract easyops.api.cmdb.object_relation.GetRelationsByGroupId@1.0.0 */ http.get<ObjectRelationApi_GetRelationsByGroupIdResponseBody>(
     `api/gateway/cmdb.object_relation.GetRelationsByGroupId/object_relation/object/${object_id}/relation_group/${group_id}`,
     options
   );

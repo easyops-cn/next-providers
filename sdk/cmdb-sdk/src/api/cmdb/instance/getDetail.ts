@@ -21,7 +21,7 @@ export const InstanceApi_getDetail = async (
   params: InstanceApi_GetDetailRequestParams,
   options?: HttpOptions
 ): Promise<InstanceApi_GetDetailResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.GetDetail */ (
+  /**! @contract easyops.api.cmdb.instance.GetDetail@1.0.0 */ (
     await http.get<ResponseBodyWrapper<InstanceApi_GetDetailResponseBody>>(
       `api/gateway/cmdb.instance.GetDetail/object/${objectId}/instance/${instanceId}`,
       { ...options, params }

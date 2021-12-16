@@ -20,7 +20,7 @@ export const InstanceTreeApi_instanceTree = async (
   data: InstanceTreeApi_InstanceTreeRequestBody,
   options?: HttpOptions
 ): Promise<InstanceTreeApi_InstanceTreeResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance_tree.InstanceTree */ (
+  /**! @contract easyops.api.cmdb.instance_tree.InstanceTree@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<InstanceTreeApi_InstanceTreeResponseBody>
     >(

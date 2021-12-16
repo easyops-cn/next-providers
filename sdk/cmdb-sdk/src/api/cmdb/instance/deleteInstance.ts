@@ -18,7 +18,7 @@ export const InstanceApi_deleteInstance = async (
   params: InstanceApi_DeleteInstanceRequestParams,
   options?: HttpOptions
 ): Promise<InstanceApi_DeleteInstanceResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.DeleteInstance */ (
+  /**! @contract easyops.api.cmdb.instance.DeleteInstance@1.0.0 */ (
     await http.delete<
       ResponseBodyWrapper<InstanceApi_DeleteInstanceResponseBody>
     >(

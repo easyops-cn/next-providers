@@ -28,7 +28,7 @@ export const CmdbObjectApi_batchUpdate = (
   data: CmdbObjectApi_BatchUpdateRequestBody,
   options?: HttpOptions
 ): Promise<CmdbObjectApi_BatchUpdateResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.BatchUpdate */ http.put<CmdbObjectApi_BatchUpdateResponseBody>(
+  /**! @contract easyops.api.cmdb.cmdb_object.BatchUpdate@1.0.0 */ http.put<CmdbObjectApi_BatchUpdateResponseBody>(
     "api/gateway/cmdb.cmdb_object.BatchUpdate/batch/object",
     data,
     options

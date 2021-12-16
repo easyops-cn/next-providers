@@ -13,7 +13,7 @@ export const CmdbObjectApi_getProperty = async (
   attrId: string | number,
   options?: HttpOptions
 ): Promise<CmdbObjectApi_GetPropertyResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.GetProperty */ (
+  /**! @contract easyops.api.cmdb.cmdb_object.GetProperty@1.1.0 */ (
     await http.get<ResponseBodyWrapper<CmdbObjectApi_GetPropertyResponseBody>>(
       `api/gateway/cmdb.cmdb_object.GetProperty/object/${objectId}/attr/${attrId}`,
       options

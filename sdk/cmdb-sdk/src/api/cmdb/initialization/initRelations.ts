@@ -13,7 +13,7 @@ export const InitializationApi_initRelations = (
   data: InitializationApi_InitRelationsRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.cmdb.initialization.InitRelations */ http.post<void>(
+  /**! @contract easyops.api.cmdb.initialization.InitRelations@1.0.0 */ http.post<void>(
     "api/gateway/cmdb.initialization.InitRelations/initialization/relations",
     data,
     options

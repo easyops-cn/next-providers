@@ -18,7 +18,7 @@ export const CmdbObjectApi_alertWordIndex = (
   data: CmdbObjectApi_AlertWordIndexRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.AlertWordIndex */ http.post<void>(
+  /**! @contract easyops.api.cmdb.cmdb_object.AlertWordIndex@1.0.0 */ http.post<void>(
     `api/gateway/cmdb.cmdb_object.AlertWordIndex/object_word_index/${object_id}`,
     data,
     options

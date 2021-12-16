@@ -36,7 +36,7 @@ export const ObjectRelationApi_update = async (
   data: ObjectRelationApi_UpdateRequestBody,
   options?: HttpOptions
 ): Promise<ObjectRelationApi_UpdateResponseBody> =>
-  /**! @contract easyops.api.cmdb.object_relation.Update */ (
+  /**! @contract easyops.api.cmdb.object_relation.Update@1.0.0 */ (
     await http.put<ResponseBodyWrapper<ObjectRelationApi_UpdateResponseBody>>(
       `api/gateway/cmdb.object_relation.Update/object_relation/${relation_id}`,
       data,

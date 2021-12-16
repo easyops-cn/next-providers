@@ -35,7 +35,7 @@ export const InstanceArchiveApi_listArchiveInstance = async (
   params: InstanceArchiveApi_ListArchiveInstanceRequestParams,
   options?: HttpOptions
 ): Promise<InstanceArchiveApi_ListArchiveInstanceResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance_archive.ListArchiveInstance */ (
+  /**! @contract easyops.api.cmdb.instance_archive.ListArchiveInstance@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<InstanceArchiveApi_ListArchiveInstanceResponseBody>
     >(

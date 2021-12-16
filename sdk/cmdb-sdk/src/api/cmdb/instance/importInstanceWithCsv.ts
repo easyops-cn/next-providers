@@ -32,7 +32,7 @@ export const InstanceApi_importInstanceWithCsv = async (
   data: InstanceApi_ImportInstanceWithCsvRequestBody,
   options?: HttpOptions
 ): Promise<InstanceApi_ImportInstanceWithCsvResponseBody> => {
-  /**! @contract easyops.api.cmdb.instance.ImportInstanceWithCsv */ const _formData =
+  /**! @contract easyops.api.cmdb.instance.ImportInstanceWithCsv@1.0.0 */ const _formData =
     new FormData();
   for (const [key, value] of Object.entries(data)) {
     if (Array.isArray(value)) {

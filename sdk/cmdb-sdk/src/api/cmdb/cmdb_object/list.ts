@@ -18,7 +18,7 @@ export const CmdbObjectApi_list = async (
   params: CmdbObjectApi_ListRequestParams,
   options?: HttpOptions
 ): Promise<CmdbObjectApi_ListResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.List */ (
+  /**! @contract easyops.api.cmdb.cmdb_object.List@1.3.0 */ (
     await http.get<ResponseBodyWrapper<CmdbObjectApi_ListResponseBody>>(
       "api/gateway/cmdb.cmdb_object.List/object",
       { ...options, params }

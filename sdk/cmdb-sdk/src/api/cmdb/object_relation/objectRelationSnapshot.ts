@@ -20,7 +20,7 @@ export const ObjectRelationApi_objectRelationSnapshot = async (
   params: ObjectRelationApi_ObjectRelationSnapshotRequestParams,
   options?: HttpOptions
 ): Promise<ObjectRelationApi_ObjectRelationSnapshotResponseBody> =>
-  /**! @contract easyops.api.cmdb.object_relation.ObjectRelationSnapshot */ (
+  /**! @contract easyops.api.cmdb.object_relation.ObjectRelationSnapshot@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<ObjectRelationApi_ObjectRelationSnapshotResponseBody>
     >(

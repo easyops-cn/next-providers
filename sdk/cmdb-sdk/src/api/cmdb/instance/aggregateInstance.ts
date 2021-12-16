@@ -35,7 +35,7 @@ export const InstanceApi_aggregateInstance = async (
   data: InstanceApi_AggregateInstanceRequestBody,
   options?: HttpOptions
 ): Promise<InstanceApi_AggregateInstanceResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.AggregateInstance */ (
+  /**! @contract easyops.api.cmdb.instance.AggregateInstance@1.1.0 */ (
     await http.post<
       ResponseBodyWrapper<InstanceApi_AggregateInstanceResponseBody>
     >(

@@ -20,7 +20,7 @@ export const InstancePathSearchApi_pathSearchExportV4 = (
   data: InstancePathSearchApi_PathSearchExportV4RequestBody,
   options?: HttpOptions
 ): Promise<Blob> =>
-  /**! @contract easyops.api.cmdb.instance_path_search.PathSearchExportV4 */ http.post<Blob>(
+  /**! @contract easyops.api.cmdb.instance_path_search.PathSearchExportV4@1.0.0 */ http.post<Blob>(
     "api/gateway/cmdb.instance_path_search.PathSearchExportV4/v4/path/_search/export/excel",
     data,
     { ...options, responseType: "blob" }

@@ -13,7 +13,7 @@ export const InstanceApi_mixDeleteInstance = (
   data: InstanceApi_MixDeleteInstanceRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.cmdb.instance.MixDeleteInstance */ http.post<void>(
+  /**! @contract easyops.api.cmdb.instance.MixDeleteInstance@1.0.0 */ http.post<void>(
     "api/gateway/cmdb.instance.MixDeleteInstance/mix/object/instance/delete",
     data,
     options

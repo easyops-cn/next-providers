@@ -14,7 +14,7 @@ export const InstanceApi_exportInstance = (
   data: InstanceApi_ExportInstanceRequestBody,
   options?: HttpOptions
 ): Promise<Blob> =>
-  /**! @contract easyops.api.cmdb.instance.ExportInstance */ http.post<Blob>(
+  /**! @contract easyops.api.cmdb.instance.ExportInstance@1.0.0 */ http.post<Blob>(
     `api/gateway/cmdb.instance.ExportInstance/object/${object_id}/instance/export`,
     data,
     { ...options, responseType: "blob" }

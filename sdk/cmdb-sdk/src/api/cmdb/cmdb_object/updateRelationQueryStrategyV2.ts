@@ -42,7 +42,7 @@ export const CmdbObjectApi_updateRelationQueryStrategyV2 = async (
   data: CmdbObjectApi_UpdateRelationQueryStrategyV2RequestBody,
   options?: HttpOptions
 ): Promise<CmdbObjectApi_UpdateRelationQueryStrategyV2ResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.UpdateRelationQueryStrategyV2 */ (
+  /**! @contract easyops.api.cmdb.cmdb_object.UpdateRelationQueryStrategyV2@2.0.0 */ (
     await http.put<
       ResponseBodyWrapper<CmdbObjectApi_UpdateRelationQueryStrategyV2ResponseBody>
     >(

@@ -26,7 +26,7 @@ export const CmdbObjectApi_getObjectAll = (
   params: CmdbObjectApi_GetObjectAllRequestParams,
   options?: HttpOptions
 ): Promise<CmdbObjectApi_GetObjectAllResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.GetObjectAll */ http.get<CmdbObjectApi_GetObjectAllResponseBody>(
+  /**! @contract easyops.api.cmdb.cmdb_object.GetObjectAll@1.3.0 */ http.get<CmdbObjectApi_GetObjectAllResponseBody>(
     "api/gateway/cmdb.cmdb_object.GetObjectAll/object_all",
     { ...options, params }
   );

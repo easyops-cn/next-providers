@@ -26,7 +26,7 @@ export const InstancePathSearchApi_groupSearchPath = async (
   data: InstancePathSearchApi_GroupSearchPathRequestBody,
   options?: HttpOptions
 ): Promise<InstancePathSearchApi_GroupSearchPathResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance_path_search.GroupSearchPath */ (
+  /**! @contract easyops.api.cmdb.instance_path_search.GroupSearchPath@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<InstancePathSearchApi_GroupSearchPathResponseBody>
     >(

@@ -24,7 +24,7 @@ export const InstanceApi_addStrToArray = async (
   data: InstanceApi_AddStrToArrayRequestBody,
   options?: HttpOptions
 ): Promise<InstanceApi_AddStrToArrayResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.AddStrToArray */ (
+  /**! @contract easyops.api.cmdb.instance.AddStrToArray@1.0.0 */ (
     await http.post<ResponseBodyWrapper<InstanceApi_AddStrToArrayResponseBody>>(
       `api/gateway/cmdb.instance.AddStrToArray/object/${objectId}/instance/add_str_to_array`,
       data,

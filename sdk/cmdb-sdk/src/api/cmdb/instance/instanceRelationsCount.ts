@@ -15,7 +15,7 @@ export const InstanceApi_instanceRelationsCount = async (
   instance_id: string | number,
   options?: HttpOptions
 ): Promise<InstanceApi_InstanceRelationsCountResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.InstanceRelationsCount */ (
+  /**! @contract easyops.api.cmdb.instance.InstanceRelationsCount@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<InstanceApi_InstanceRelationsCountResponseBody>
     >(

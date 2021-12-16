@@ -28,7 +28,7 @@ export const CmdbObjectApi_exportObject = (
   params: CmdbObjectApi_ExportObjectRequestParams,
   options?: HttpOptions
 ): Promise<CmdbObjectApi_ExportObjectResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.ExportObject */ http.get<CmdbObjectApi_ExportObjectResponseBody>(
+  /**! @contract easyops.api.cmdb.cmdb_object.ExportObject@1.1.0 */ http.get<CmdbObjectApi_ExportObjectResponseBody>(
     "api/gateway/cmdb.cmdb_object.ExportObject/object_export",
     { ...options, params }
   );

@@ -50,7 +50,7 @@ export const BusinessInstanceApi_searchSubSystem = async (
   data: BusinessInstanceApi_SearchSubSystemRequestBody,
   options?: HttpOptions
 ): Promise<BusinessInstanceApi_SearchSubSystemResponseBody> =>
-  /**! @contract easyops.api.cmdb.business_instance.SearchSubSystem */ (
+  /**! @contract easyops.api.cmdb.business_instance.SearchSubSystem@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<BusinessInstanceApi_SearchSubSystemResponseBody>
     >(

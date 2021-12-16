@@ -13,7 +13,7 @@ export const InstanceApi_mixUpdateInstance = (
   data: InstanceApi_MixUpdateInstanceRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.cmdb.instance.MixUpdateInstance */ http.post<void>(
+  /**! @contract easyops.api.cmdb.instance.MixUpdateInstance@1.0.0 */ http.post<void>(
     "api/gateway/cmdb.instance.MixUpdateInstance/mix/object/instance/update",
     data,
     options

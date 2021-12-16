@@ -18,7 +18,7 @@ export const CmdbObjectApi_updateAttributeCategory = (
   data: CmdbObjectApi_UpdateAttributeCategoryRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.UpdateAttributeCategory */ http.put<void>(
+  /**! @contract easyops.api.cmdb.cmdb_object.UpdateAttributeCategory@1.0.0 */ http.put<void>(
     `api/gateway/cmdb.cmdb_object.UpdateAttributeCategory/object/${objectId}/attribute_category/${name}`,
     data,
     options

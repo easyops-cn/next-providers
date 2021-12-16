@@ -35,7 +35,7 @@ export const InstanceApi_importInstance = async (
   data: InstanceApi_ImportInstanceRequestBody,
   options?: HttpOptions
 ): Promise<InstanceApi_ImportInstanceResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.ImportInstance */ (
+  /**! @contract easyops.api.cmdb.instance.ImportInstance@1.1.0 */ (
     await http.post<
       ResponseBodyWrapper<InstanceApi_ImportInstanceResponseBody>
     >(

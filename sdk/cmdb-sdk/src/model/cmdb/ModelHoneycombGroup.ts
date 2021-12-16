@@ -28,4 +28,7 @@ export interface ModelHoneycombGroup_data_item {
 
   /** 用于设置尺寸的指标值,如果无数据的话为null */
   sizeByMetric?: any;
+
+  /** 额外字段 */
+  extFields?: Record<string, any>;
 }

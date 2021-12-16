@@ -14,7 +14,7 @@ export const InstanceApi_getInstanceQueryStrategy = async (
   strategyId: string | number,
   options?: HttpOptions
 ): Promise<InstanceApi_GetInstanceQueryStrategyResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.GetInstanceQueryStrategy */ (
+  /**! @contract easyops.api.cmdb.instance.GetInstanceQueryStrategy@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<InstanceApi_GetInstanceQueryStrategyResponseBody>
     >(

@@ -26,7 +26,7 @@ export const CmdbObjectApi_importCheck = (
   data: CmdbObjectApi_ImportCheckRequestBody,
   options?: HttpOptions
 ): Promise<CmdbObjectApi_ImportCheckResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.ImportCheck */ http.post<CmdbObjectApi_ImportCheckResponseBody>(
+  /**! @contract easyops.api.cmdb.cmdb_object.ImportCheck@1.1.0 */ http.post<CmdbObjectApi_ImportCheckResponseBody>(
     "api/gateway/cmdb.cmdb_object.ImportCheck/object_import_check",
     data,
     options

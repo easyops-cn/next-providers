@@ -19,7 +19,7 @@ export interface BusinessInstanceApi_GetBusinessGraphResponseBody {
 export const BusinessInstanceApi_getBusinessGraph = async (
   options?: HttpOptions
 ): Promise<BusinessInstanceApi_GetBusinessGraphResponseBody> =>
-  /**! @contract easyops.api.cmdb.business_instance.GetBusinessGraph */ (
+  /**! @contract easyops.api.cmdb.business_instance.GetBusinessGraph@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<BusinessInstanceApi_GetBusinessGraphResponseBody>
     >(

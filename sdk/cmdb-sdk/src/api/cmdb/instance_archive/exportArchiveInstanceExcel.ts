@@ -20,7 +20,7 @@ export const InstanceArchiveApi_exportArchiveInstanceExcel = (
   data: InstanceArchiveApi_ExportArchiveInstanceExcelRequestBody,
   options?: HttpOptions
 ): Promise<Blob> =>
-  /**! @contract easyops.api.cmdb.instance_archive.ExportArchiveInstanceExcel */ http.post<Blob>(
+  /**! @contract easyops.api.cmdb.instance_archive.ExportArchiveInstanceExcel@1.0.0 */ http.post<Blob>(
     `api/gateway/cmdb.instance_archive.ExportArchiveInstanceExcel/export/object/${object_id}/instance_archive/excel`,
     data,
     { ...options, responseType: "blob" }

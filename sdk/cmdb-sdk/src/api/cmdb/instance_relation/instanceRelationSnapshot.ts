@@ -51,7 +51,7 @@ export const InstanceRelationApi_instanceRelationSnapshot = async (
   params: InstanceRelationApi_InstanceRelationSnapshotRequestParams,
   options?: HttpOptions
 ): Promise<InstanceRelationApi_InstanceRelationSnapshotResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance_relation.InstanceRelationSnapshot */ (
+  /**! @contract easyops.api.cmdb.instance_relation.InstanceRelationSnapshot@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<InstanceRelationApi_InstanceRelationSnapshotResponseBody>
     >(

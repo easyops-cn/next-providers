@@ -13,7 +13,7 @@ export const CmdbObjectApi_deleteProperty = async (
   attrId: string | number,
   options?: HttpOptions
 ): Promise<CmdbObjectApi_DeletePropertyResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.DeleteProperty */ (
+  /**! @contract easyops.api.cmdb.cmdb_object.DeleteProperty@1.1.0 */ (
     await http.delete<
       ResponseBodyWrapper<CmdbObjectApi_DeletePropertyResponseBody>
     >(

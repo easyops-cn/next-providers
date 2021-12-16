@@ -13,3 +13,4 @@ export * from "./api/cmdb/object_attribute";
 export * from "./api/cmdb/object_relation";
 export * from "./api/cmdb/terraform";
 export * as CmdbModels from "./model/cmdb";
+export * as CommonModels from "./model/common";

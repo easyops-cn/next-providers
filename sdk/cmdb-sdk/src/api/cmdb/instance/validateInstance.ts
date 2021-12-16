@@ -20,7 +20,7 @@ export const InstanceApi_validateInstance = async (
   data: InstanceApi_ValidateInstanceRequestBody,
   options?: HttpOptions
 ): Promise<InstanceApi_ValidateInstanceResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.ValidateInstance */ (
+  /**! @contract easyops.api.cmdb.instance.ValidateInstance@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<InstanceApi_ValidateInstanceResponseBody>
     >(

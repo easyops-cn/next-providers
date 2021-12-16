@@ -43,7 +43,7 @@ export const InstanceApi_fulltextSearch = async (
   params: InstanceApi_FulltextSearchRequestParams,
   options?: HttpOptions
 ): Promise<InstanceApi_FulltextSearchResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.FulltextSearch */ (
+  /**! @contract easyops.api.cmdb.instance.FulltextSearch@1.0.0 */ (
     await http.get<ResponseBodyWrapper<InstanceApi_FulltextSearchResponseBody>>(
       "api/gateway/cmdb.instance.FulltextSearch/fulltext/_search",
       { ...options, params }

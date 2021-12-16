@@ -26,7 +26,7 @@ export const CmdbObjectApi_batchListRelationQueryStrategyV2Request = async (
   params: CmdbObjectApi_BatchListRelationQueryStrategyV2RequestRequestParams,
   options?: HttpOptions
 ): Promise<CmdbObjectApi_BatchListRelationQueryStrategyV2RequestResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.BatchListRelationQueryStrategyV2Request */ (
+  /**! @contract easyops.api.cmdb.cmdb_object.BatchListRelationQueryStrategyV2Request@2.0.0 */ (
     await http.get<
       ResponseBodyWrapper<CmdbObjectApi_BatchListRelationQueryStrategyV2RequestResponseBody>
     >(

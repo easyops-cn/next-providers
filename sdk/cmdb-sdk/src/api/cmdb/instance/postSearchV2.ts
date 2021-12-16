@@ -56,7 +56,7 @@ export const InstanceApi_postSearchV2 = async (
   data: InstanceApi_PostSearchV2RequestBody,
   options?: HttpOptions
 ): Promise<InstanceApi_PostSearchV2ResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.PostSearchV2 */ (
+  /**! @contract easyops.api.cmdb.instance.PostSearchV2@1.1.0 */ (
     await http.post<ResponseBodyWrapper<InstanceApi_PostSearchV2ResponseBody>>(
       `api/gateway/cmdb.instance.PostSearchV2/v2/object/${objectId}/instance/_search`,
       data,

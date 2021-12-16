@@ -9,7 +9,7 @@ export const ObjectRelationApi_deleteRelationGroup = (
   id: string | number,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.cmdb.object_relation.DeleteRelationGroup */ http.delete<void>(
+  /**! @contract easyops.api.cmdb.object_relation.DeleteRelationGroup@1.0.0 */ http.delete<void>(
     `api/gateway/cmdb.object_relation.DeleteRelationGroup/object/${object_id}/relation_group/${id}`,
     options
   );

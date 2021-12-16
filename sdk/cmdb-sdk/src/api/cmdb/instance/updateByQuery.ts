@@ -36,7 +36,7 @@ export const InstanceApi_updateByQuery = async (
   data: InstanceApi_UpdateByQueryRequestBody,
   options?: HttpOptions
 ): Promise<InstanceApi_UpdateByQueryResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.UpdateByQuery */ (
+  /**! @contract easyops.api.cmdb.instance.UpdateByQuery@1.0.0 */ (
     await http.post<ResponseBodyWrapper<InstanceApi_UpdateByQueryResponseBody>>(
       `api/gateway/cmdb.instance.UpdateByQuery/object/${object_id}/instance/update_by_query`,
       data,

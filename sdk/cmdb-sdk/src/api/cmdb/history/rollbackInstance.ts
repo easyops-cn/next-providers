@@ -21,7 +21,7 @@ export const HistoryApi_rollbackInstance = async (
   data: HistoryApi_RollbackInstanceRequestBody,
   options?: HttpOptions
 ): Promise<HistoryApi_RollbackInstanceResponseBody> =>
-  /**! @contract easyops.api.cmdb.history.RollbackInstance */ (
+  /**! @contract easyops.api.cmdb.history.RollbackInstance@1.0.0 */ (
     await http.put<
       ResponseBodyWrapper<HistoryApi_RollbackInstanceResponseBody>
     >(

@@ -17,7 +17,7 @@ export const BusinessInstanceApi_getBusinessTreeList = async (
   params: BusinessInstanceApi_GetBusinessTreeListRequestParams,
   options?: HttpOptions
 ): Promise<BusinessInstanceApi_GetBusinessTreeListResponseBody> =>
-  /**! @contract easyops.api.cmdb.business_instance.GetBusinessTreeList */ (
+  /**! @contract easyops.api.cmdb.business_instance.GetBusinessTreeList@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<BusinessInstanceApi_GetBusinessTreeListResponseBody>
     >(

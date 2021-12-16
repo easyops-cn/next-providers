@@ -35,7 +35,7 @@ export const InstancePathSearchApi_pathSearchV4 = async (
   data: InstancePathSearchApi_PathSearchV4RequestBody,
   options?: HttpOptions
 ): Promise<InstancePathSearchApi_PathSearchV4ResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance_path_search.PathSearchV4 */ (
+  /**! @contract easyops.api.cmdb.instance_path_search.PathSearchV4@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<InstancePathSearchApi_PathSearchV4ResponseBody>
     >(

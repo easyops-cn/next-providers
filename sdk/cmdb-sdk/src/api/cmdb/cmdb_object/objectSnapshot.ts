@@ -19,7 +19,7 @@ export const CmdbObjectApi_objectSnapshot = async (
   params: CmdbObjectApi_ObjectSnapshotRequestParams,
   options?: HttpOptions
 ): Promise<CmdbObjectApi_ObjectSnapshotResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.ObjectSnapshot */ (
+  /**! @contract easyops.api.cmdb.cmdb_object.ObjectSnapshot@1.1.0 */ (
     await http.get<
       ResponseBodyWrapper<CmdbObjectApi_ObjectSnapshotResponseBody>
     >(

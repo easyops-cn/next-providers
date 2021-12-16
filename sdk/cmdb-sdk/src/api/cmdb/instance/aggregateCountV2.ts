@@ -19,7 +19,7 @@ export const InstanceApi_aggregateCountV2 = async (
   params: InstanceApi_AggregateCountV2RequestParams,
   options?: HttpOptions
 ): Promise<InstanceApi_AggregateCountV2ResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.AggregateCountV2 */ (
+  /**! @contract easyops.api.cmdb.instance.AggregateCountV2@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<InstanceApi_AggregateCountV2ResponseBody>
     >(

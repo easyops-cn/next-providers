@@ -16,7 +16,7 @@ export const InstanceApi_countAll = async (
   params: InstanceApi_CountAllRequestParams,
   options?: HttpOptions
 ): Promise<InstanceApi_CountAllResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.CountAll */ (
+  /**! @contract easyops.api.cmdb.instance.CountAll@1.0.0 */ (
     await http.get<ResponseBodyWrapper<InstanceApi_CountAllResponseBody>>(
       "api/gateway/cmdb.instance.CountAll/object_count_all",
       { ...options, params }

@@ -23,7 +23,7 @@ export const CmdbObjectApi_listObjectBasic = async (
   params: CmdbObjectApi_ListObjectBasicRequestParams,
   options?: HttpOptions
 ): Promise<CmdbObjectApi_ListObjectBasicResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.ListObjectBasic */ (
+  /**! @contract easyops.api.cmdb.cmdb_object.ListObjectBasic@1.1.0 */ (
     await http.get<
       ResponseBodyWrapper<CmdbObjectApi_ListObjectBasicResponseBody>
     >("api/gateway/cmdb.cmdb_object.ListObjectBasic/object_basic", {

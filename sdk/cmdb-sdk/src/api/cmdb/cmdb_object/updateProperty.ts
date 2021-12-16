@@ -41,7 +41,7 @@ export const CmdbObjectApi_updateProperty = async (
   data: CmdbObjectApi_UpdatePropertyRequestBody,
   options?: HttpOptions
 ): Promise<CmdbObjectApi_UpdatePropertyResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.UpdateProperty */ (
+  /**! @contract easyops.api.cmdb.cmdb_object.UpdateProperty@1.1.0 */ (
     await http.put<
       ResponseBodyWrapper<CmdbObjectApi_UpdatePropertyResponseBody>
     >(

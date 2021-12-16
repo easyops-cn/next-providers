@@ -23,7 +23,7 @@ export const CmdbObjectApi_importV2 = async (
   data: CmdbObjectApi_ImportV2RequestBody,
   options?: HttpOptions
 ): Promise<CmdbObjectApi_ImportV2ResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.ImportV2 */ (
+  /**! @contract easyops.api.cmdb.cmdb_object.ImportV2@1.1.0 */ (
     await http.post<ResponseBodyWrapper<CmdbObjectApi_ImportV2ResponseBody>>(
       "api/gateway/cmdb.cmdb_object.ImportV2/v2/object_import",
       data,

@@ -19,7 +19,7 @@ export const InstanceApi_mixCreateInstance = async (
   data: InstanceApi_MixCreateInstanceRequestBody,
   options?: HttpOptions
 ): Promise<InstanceApi_MixCreateInstanceResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.MixCreateInstance */ (
+  /**! @contract easyops.api.cmdb.instance.MixCreateInstance@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<InstanceApi_MixCreateInstanceResponseBody>
     >(

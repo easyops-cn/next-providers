@@ -13,7 +13,7 @@ export const InitializationApi_initObjects = (
   data: InitializationApi_InitObjectsRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.cmdb.initialization.InitObjects */ http.post<void>(
+  /**! @contract easyops.api.cmdb.initialization.InitObjects@1.0.0 */ http.post<void>(
     "api/gateway/cmdb.initialization.InitObjects/initialization/objects",
     data,
     options

@@ -33,7 +33,7 @@ export const InstanceApi_groupInstance = async (
   data: InstanceApi_GroupInstanceRequestBody,
   options?: HttpOptions
 ): Promise<InstanceApi_GroupInstanceResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.GroupInstance */ (
+  /**! @contract easyops.api.cmdb.instance.GroupInstance@1.1.0 */ (
     await http.post<ResponseBodyWrapper<InstanceApi_GroupInstanceResponseBody>>(
       `api/gateway/cmdb.instance.GroupInstance/object/${object_id}/instance/group`,
       data,

@@ -21,7 +21,7 @@ export const InstanceApi_deleteInstanceBatch = async (
   params: InstanceApi_DeleteInstanceBatchRequestParams,
   options?: HttpOptions
 ): Promise<InstanceApi_DeleteInstanceBatchResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.DeleteInstanceBatch */ (
+  /**! @contract easyops.api.cmdb.instance.DeleteInstanceBatch@1.0.0 */ (
     await http.delete<
       ResponseBodyWrapper<InstanceApi_DeleteInstanceBatchResponseBody>
     >(

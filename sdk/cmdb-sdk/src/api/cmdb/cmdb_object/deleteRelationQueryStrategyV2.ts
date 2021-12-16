@@ -9,7 +9,7 @@ export const CmdbObjectApi_deleteRelationQueryStrategyV2 = (
   id: string | number,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.DeleteRelationQueryStrategyV2 */ http.delete<void>(
+  /**! @contract easyops.api.cmdb.cmdb_object.DeleteRelationQueryStrategyV2@2.0.0 */ http.delete<void>(
     `api/gateway/cmdb.cmdb_object.DeleteRelationQueryStrategyV2/v2/object/${object_id}/relation_query_strategy/${id}`,
     options
   );
