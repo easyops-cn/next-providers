@@ -256,7 +256,25 @@
             "description": "所有stories.json整合后的数组"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Basic",
+            "zh": "基础请求"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "/api/v1/next-builder/storiesjson"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"data\": {\n    \"list\": [\n      {\n        \"author\": \"momo\",\n        \"category\": \"description\",\n        \"description\": {\n          \"zh\": \"折叠容器，只折叠单个内容，支持slot\"\n        },\n        \"doc\": {\n          \"author\": \"momo\",\n          \"description\": \"折叠容器，只折叠单个内容，支持slot\",\n          \"dockind\": \"brick\",\n          \"editor\": null,\n          \"editorProps\": null,\n          \"events\": null,\n          \"history\": [\n            {\n              \"change\": \"新增属性 `isShowFoldIcon`, `type`\",\n              \"version\": \"1.87.0\"\n            },\n            {\n              \"change\": \"新增属性 `showDivider`,`dividerOrientation`,`dividerDashed`,`show`\",\n              \"version\": \"1.64.0\"\n            },\n            {\n              \"change\": \"新增构件 `basic-bricks.fold-brick-v2`\",\n              \"version\": \"1.56.0\"\n            }\n          ],\n          \"id\": \"basic-bricks.fold-brick-v2\",\n          \"interface\": [\n\n          ],\n          \"memo\": \"\",\n          \"methods\": null,\n          \"name\": \"basic-bricks.fold-brick-v2\",\n          \"properties\": [\n            {\n              \"default\": \"-\",\n              \"description\": \"折叠展示名称\",\n              \"name\": \"foldName\",\n              \"required\": \"true\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"true\",\n              \"description\": \"是否显示展开图标\",\n              \"name\": \"isShowFoldIcon\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"是否默认展开\",\n              \"name\": \"defaultShow\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"是否展开\",\n              \"name\": \"showDivider\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"\\\"normal\\\"\",\n              \"description\": \"折叠面板类型\",\n              \"name\": \"type\",\n              \"required\": \"false\",\n              \"type\": \"\\\"normal\\\" | \\\"primary\\\"\"\n            },\n            {\n              \"default\": \"center\",\n              \"description\": \"分割线标题的位置\",\n              \"group\": \"advanced\",\n              \"name\": \"dividerOrientation\",\n              \"required\": \"false\",\n              \"type\": \"\\\"left\\\"|\\\"right\\\"\"\n            },\n            {\n              \"default\": \"false\",\n              \"description\": \"是否虚线\",\n              \"group\": \"advanced\",\n              \"name\": \"dividerDashed\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"折叠展示的样式编写\",\n              \"group\": \"advanced\",\n              \"name\": \"foldStyle\",\n              \"required\": \"false\",\n              \"type\": \"object\"\n            },\n            {\n              \"name\": \"show\",\n              \"type\": \"boolean\"\n            }\n          ],\n          \"slots\": [\n            {\n              \"description\": \"内容插槽\",\n              \"name\": \"content\"\n            }\n          ]\n        },\n        \"examples\": [\n          {\n            \"brick\": \"basic-bricks.fold-brick-v2\",\n            \"description\": {\n              \"message\": \"\",\n              \"title\": \"基本\"\n            },\n            \"properties\": {\n              \"foldName\": \"查看\"\n            },\n            \"slots\": {\n              \"content\": {\n                \"bricks\": [\n                  {\n                    \"brick\": \"div\",\n                    \"properties\": {\n                      \"textContent\": \"123\"\n                    }\n                  }\n                ],\n                \"type\": \"bricks\"\n              }\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.fold-brick-v2\",\n            \"description\": {\n              \"message\": \"\",\n              \"title\": \"type为primary\"\n            },\n            \"properties\": {\n              \"foldName\": \"查看\",\n              \"type\": \"primary\"\n            },\n            \"slots\": {\n              \"content\": {\n                \"bricks\": [\n                  {\n                    \"brick\": \"div\",\n                    \"properties\": {\n                      \"textContent\": \"123\"\n                    }\n                  }\n                ],\n                \"type\": \"bricks\"\n              }\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.fold-brick-v2\",\n            \"description\": {\n              \"message\": \"\",\n              \"title\": \"isShowFoldIcon为false\"\n            },\n            \"properties\": {\n              \"foldName\": \"查看\",\n              \"isShowFoldIcon\": false,\n              \"type\": \"primary\"\n            },\n            \"slots\": {\n              \"content\": {\n                \"bricks\": [\n                  {\n                    \"brick\": \"div\",\n                    \"properties\": {\n                      \"textContent\": \"123\"\n                    }\n                  }\n                ],\n                \"type\": \"bricks\"\n              }\n            }\n          }\n        ],\n        \"icon\": {\n          \"icon\": \"chevron-down\",\n          \"lib\": \"fa\"\n        },\n        \"id\": \"basic-bricks.fold-brick-v2\",\n        \"text\": {\n          \"en\": \"fold brick\",\n          \"zh\": \"折叠容器V2\"\n        },\n        \"type\": \"brick\"\n      },\n      {\n        \"author\": \"jo\",\n        \"category\": \"other\",\n        \"description\": {\n          \"en\": \"General button\",\n          \"zh\": \"可发送点击事件、可配置按钮名称、按钮跳转链接等\"\n        },\n        \"doc\": {\n          \"author\": \"jo\",\n          \"description\": \"可发送点击事件、可配置按钮名称、按钮跳转链接等\",\n          \"dockind\": \"brick\",\n          \"editor\": null,\n          \"editorProps\": null,\n          \"events\": [\n            {\n              \"description\": \"按钮被点击时触发, detail 为 dataSource 数据\",\n              \"detail\": \"`any`\",\n              \"type\": \"general.button.click\"\n            }\n          ],\n          \"history\": [\n            {\n              \"change\": \"新增属性 `buttonHref`\",\n              \"version\": \"1.54.0\"\n            },\n            {\n              \"change\": \"使用 `dataSource` 替代 `detail`\",\n              \"version\": \"1.55.1\"\n            },\n            {\n              \"change\": \"新增属性 `disableAfterClick`\",\n              \"version\": \"1.59.0\"\n            },\n            {\n              \"change\": \"新增属性 `fadedText`\",\n              \"version\": \"1.97.0\"\n            }\n          ],\n          \"id\": \"basic-bricks.general-button\",\n          \"interface\": [\n            {\n              \"children\": [\n                {\n                  \"description\": \"箭头是否指向目标元素中心\",\n                  \"name\": \"arrowPointAtCenter\",\n                  \"required\": false,\n                  \"type\": \"boolean\"\n                },\n                {\n                  \"description\": \"气泡框位置，可选 `top` `left` `right` `bottom` `topLeft` `topRight` `bottomLeft` `bottomRight` `leftTop` `leftBottom` `rightTop` `rightBottom`\",\n                  \"name\": \"placement\",\n                  \"required\": false,\n                  \"type\": \"TooltipPlacement\"\n                }\n              ],\n              \"kind\": \"interface\",\n              \"name\": \"TooltipConfig\"\n            },\n            {\n              \"description\": \"\",\n              \"kind\": \"type\",\n              \"name\": \"TooltipPlacement\",\n              \"type\": \"\\\"top\\\" | \\\"left\\\" | \\\"right\\\" | \\\"bottom\\\" | \\\"topLeft\\\" | \\\"topRight\\\" | \\\"bottomLeft\\\" | \\\"bottomRight\\\" | \\\"leftTop\\\" | \\\"leftBottom\\\" | \\\"rightTop\\\" | \\\"rightBottom\\\"\"\n            }\n          ],\n          \"memo\": \"注意，因为按钮是有 margin 的，在`type=link` 时候也一样会有，所以在表格里面放置点击链接的时候，请选用[链接](developers/brick-book/brick/presentational-bricks.brick-link)\",\n          \"methods\": null,\n          \"name\": \"basic-bricks.general-button\",\n          \"properties\": [\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮名称\",\n              \"group\": \"basic\",\n              \"name\": \"buttonName\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮 icon，支持[icon 图标库](developers/icon)，可直接复制图标图标的配置（antd、fa 及 easyops 三种库都支持），也可只取 icon 字段的值（仅支持 antd 库）。配置{ \\\"lib\\\": \\\"antd\\\", \\\"icon\\\": \\\"edit\\\" }与 \\\"edit\\\"等价\",\n              \"group\": \"basic\",\n              \"name\": \"buttonIcon\",\n              \"required\": \"false\",\n              \"type\": \"MenuIcon\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"点击按钮跳转的 url\",\n              \"group\": \"basic\",\n              \"name\": \"buttonUrl\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"是否使用原生 <a> 标签，通常用于外链的跳转\",\n              \"group\": \"basic\",\n              \"name\": \"buttonHref\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"跳转的 target，例如可以设置为\\\"\\\\_blank\\\"\",\n              \"group\": \"basic\",\n              \"name\": \"target\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"`{}`\",\n              \"description\": \"替代之前 detail 属性，用法相同。暂存的数据在事件传出时使用\",\n              \"group\": \"basic\",\n              \"name\": \"dataSource\",\n              \"required\": \"false\",\n              \"type\": \"any\"\n            },\n            {\n              \"default\": \"`false`\",\n              \"description\": \"是否禁用按钮\",\n              \"group\": \"basic\",\n              \"name\": \"disabled\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"`false`\",\n              \"description\": \"按钮加载动画\",\n              \"name\": \"loading\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮类型  ButtonType(`\\\"link\\\" | \\\"default\\\" | \\\"primary\\\" | \\\"ghost\\\" | \\\"dashed\\\" | \\\"danger\\\" | \\\"icon\\\"|\\\"text\\\"`)\",\n              \"group\": \"basic\",\n              \"name\": \"buttonType\",\n              \"required\": \"false\",\n              \"type\": \"ButtonType\"\n            },\n            {\n              \"default\": \"`false`\",\n              \"description\": \"设置危险按钮\",\n              \"group\": \"basic\",\n              \"name\": \"buttonDanger\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮形状，支持圆形、椭圆形，不设置为默认方形\",\n              \"group\": \"basic\",\n              \"name\": \"buttonShape\",\n              \"required\": \"false\",\n              \"type\": \"\\\"circle\\\" | \\\"round\\\"\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮大小，支持大、小，不设置为默认中\",\n              \"group\": \"basic\",\n              \"name\": \"buttonSize\",\n              \"required\": \"false\",\n              \"type\": \"small | large\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮的 tooltip\",\n              \"group\": \"basic\",\n              \"name\": \"tooltip\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"禁用按钮的 tooltip\",\n              \"group\": \"basic\",\n              \"name\": \"disabledTooltip\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"tooltip的配置,配置属性见TooltipConfig\",\n              \"group\": \"basic\",\n              \"name\": \"tooltipConfig\",\n              \"required\": \"false\",\n              \"type\": \"TooltipConfig\"\n            },\n            {\n              \"default\": \"`false`\",\n              \"description\": \"淡化按钮文字，按钮类型为 text 时可以设置。默认 `false` 文字按钮颜色和平台的字体颜色一样，在一些希望弱化文字颜色的场景下可以设置为 `true`。\",\n              \"group\": \"advanced\",\n              \"name\": \"fadedText\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"`false`\",\n              \"description\": \"点击按钮后自动禁用\",\n              \"group\": \"advanced\",\n              \"name\": \"disableAfterClick\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"完全透传给 antd 的 Button 属性\",\n              \"group\": \"advanced\",\n              \"name\": \"buttonProps\",\n              \"required\": \"-\",\n              \"type\": \"ButtonProps\"\n            },\n            {\n              \"default\": \"{}\",\n              \"deprecated\": true,\n              \"description\": \"[已废弃]按钮点击事件传出的内容。当用于列表类构件，例如 `brick-table` 中，可通过传入传入 `detail` 来识别不通的行进行操作处理。\",\n              \"group\": \"advanced\",\n              \"name\": \"detail\",\n              \"required\": \"false\",\n              \"type\": \"any\"\n            }\n          ],\n          \"slots\": null\n        },\n        \"examples\": [\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonIcon\": {\n                \"icon\": \"edit\",\n                \"lib\": \"fa\",\n                \"prefix\": \"fas\"\n              },\n              \"buttonName\": \"新建\",\n              \"dataset\": {\n                \"testid\": \"basic-usage-demo\"\n              },\n              \"tooltip\": \"新建实例\"\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonName\": \"新建\",\n              \"disabled\": true,\n              \"disabledTooltip\": \"无权限\",\n              \"tooltip\": \"新建实例\"\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonIcon\": \"search\",\n              \"buttonName\": \"搜索\",\n              \"buttonShape\": \"round\",\n              \"buttonType\": \"primary\",\n              \"buttonUrl\": \"/\",\n              \"target\": \"_blank\"\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonIcon\": \"search\",\n              \"buttonShape\": \"circle\",\n              \"buttonType\": \"icon\",\n              \"buttonUrl\": \"/\",\n              \"target\": \"_blank\"\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"description\": {\n              \"message\": \"默认和平台文字颜色一致\",\n              \"title\": \"文字按钮\"\n            },\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonName\": \"更多\",\n              \"buttonType\": \"text\",\n              \"buttonUrl\": \"/\",\n              \"target\": \"_blank\"\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"description\": {\n              \"message\": \"可以设置 `fadedText` 为 `true` 以淡化文字颜色。适用场景：用于卡片中或和其他按钮搭配使用。\",\n              \"title\": \"淡化文字按钮\"\n            },\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonName\": \"了解更多\",\n              \"buttonType\": \"text\",\n              \"buttonUrl\": \"/\",\n              \"fadedText\": true,\n              \"target\": \"_blank\"\n            }\n          }\n        ],\n        \"icon\": {\n          \"icon\": \"pencil-alt\",\n          \"lib\": \"fa\"\n        },\n        \"id\": \"basic-bricks.general-button\",\n        \"text\": {\n          \"en\": \"General button\",\n          \"zh\": \"通用按钮\"\n        },\n        \"type\": \"brick\"\n      }\n    ]\n  }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "next_builder.build.GetStoriesJsonV2",
@@ -298,7 +316,10 @@
       },
       "examples": [
         {
-          "description": "基础请求",
+          "description": {
+            "en": "Basic",
+            "zh": "基础请求"
+          },
           "request": {
             "method": "POST",
             "uri": "/api/v2/next-builder/storiesjson",
@@ -307,584 +328,30 @@
             }
           },
           "response": {
-            "code": 0,
-            "codeExplain": "",
-            "error": "",
-            "data": {
-              "list": [
-                {
-                  "author": "momo",
-                  "category": "description",
-                  "description": {
-                    "zh": "折叠容器，只折叠单个内容，支持slot"
-                  },
-                  "doc": {
-                    "author": "momo",
-                    "description": "折叠容器，只折叠单个内容，支持slot",
-                    "dockind": "brick",
-                    "editor": null,
-                    "editorProps": null,
-                    "events": null,
-                    "history": [
-                      {
-                        "change": "新增属性 `isShowFoldIcon`, `type`",
-                        "version": "1.87.0"
-                      },
-                      {
-                        "change": "新增属性 `showDivider`,`dividerOrientation`,`dividerDashed`,`show`",
-                        "version": "1.64.0"
-                      },
-                      {
-                        "change": "新增构件 `basic-bricks.fold-brick-v2`",
-                        "version": "1.56.0"
-                      }
-                    ],
-                    "id": "basic-bricks.fold-brick-v2",
-                    "interface": [],
-                    "memo": "",
-                    "methods": null,
-                    "name": "basic-bricks.fold-brick-v2",
-                    "properties": [
-                      {
-                        "default": "-",
-                        "description": "折叠展示名称",
-                        "name": "foldName",
-                        "required": "true",
-                        "type": "string"
-                      },
-                      {
-                        "default": "true",
-                        "description": "是否显示展开图标",
-                        "name": "isShowFoldIcon",
-                        "required": "false",
-                        "type": "boolean"
-                      },
-                      {
-                        "default": "-",
-                        "description": "是否默认展开",
-                        "name": "defaultShow",
-                        "required": "false",
-                        "type": "boolean"
-                      },
-                      {
-                        "default": "-",
-                        "description": "是否展开",
-                        "name": "showDivider",
-                        "required": "false",
-                        "type": "boolean"
-                      },
-                      {
-                        "default": "\"normal\"",
-                        "description": "折叠面板类型",
-                        "name": "type",
-                        "required": "false",
-                        "type": "\"normal\" | \"primary\""
-                      },
-                      {
-                        "default": "center",
-                        "description": "分割线标题的位置",
-                        "group": "advanced",
-                        "name": "dividerOrientation",
-                        "required": "false",
-                        "type": "\"left\"|\"right\""
-                      },
-                      {
-                        "default": "false",
-                        "description": "是否虚线",
-                        "group": "advanced",
-                        "name": "dividerDashed",
-                        "required": "false",
-                        "type": "boolean"
-                      },
-                      {
-                        "default": "-",
-                        "description": "折叠展示的样式编写",
-                        "group": "advanced",
-                        "name": "foldStyle",
-                        "required": "false",
-                        "type": "object"
-                      },
-                      {
-                        "name": "show",
-                        "type": "boolean"
-                      }
-                    ],
-                    "slots": [
-                      {
-                        "description": "内容插槽",
-                        "name": "content"
-                      }
-                    ]
-                  },
-                  "examples": [
-                    {
-                      "brick": "basic-bricks.fold-brick-v2",
-                      "description": {
-                        "message": "",
-                        "title": "基本"
-                      },
-                      "properties": {
-                        "foldName": "查看"
-                      },
-                      "slots": {
-                        "content": {
-                          "bricks": [
-                            {
-                              "brick": "div",
-                              "properties": {
-                                "textContent": "123"
-                              }
-                            }
-                          ],
-                          "type": "bricks"
-                        }
-                      }
-                    },
-                    {
-                      "brick": "basic-bricks.fold-brick-v2",
-                      "description": {
-                        "message": "",
-                        "title": "type为primary"
-                      },
-                      "properties": {
-                        "foldName": "查看",
-                        "type": "primary"
-                      },
-                      "slots": {
-                        "content": {
-                          "bricks": [
-                            {
-                              "brick": "div",
-                              "properties": {
-                                "textContent": "123"
-                              }
-                            }
-                          ],
-                          "type": "bricks"
-                        }
-                      }
-                    },
-                    {
-                      "brick": "basic-bricks.fold-brick-v2",
-                      "description": {
-                        "message": "",
-                        "title": "isShowFoldIcon为false"
-                      },
-                      "properties": {
-                        "foldName": "查看",
-                        "isShowFoldIcon": false,
-                        "type": "primary"
-                      },
-                      "slots": {
-                        "content": {
-                          "bricks": [
-                            {
-                              "brick": "div",
-                              "properties": {
-                                "textContent": "123"
-                              }
-                            }
-                          ],
-                          "type": "bricks"
-                        }
-                      }
-                    }
-                  ],
-                  "icon": {
-                    "icon": "chevron-down",
-                    "lib": "fa"
-                  },
-                  "id": "basic-bricks.fold-brick-v2",
-                  "text": {
-                    "en": "fold brick",
-                    "zh": "折叠容器V2"
-                  },
-                  "type": "brick"
-                },
-                {
-                  "author": "jo",
-                  "category": "other",
-                  "description": {
-                    "en": "General button",
-                    "zh": "可发送点击事件、可配置按钮名称、按钮跳转链接等"
-                  },
-                  "doc": {
-                    "author": "jo",
-                    "description": "可发送点击事件、可配置按钮名称、按钮跳转链接等",
-                    "dockind": "brick",
-                    "editor": null,
-                    "editorProps": null,
-                    "events": [
-                      {
-                        "description": "按钮被点击时触发, detail 为 dataSource 数据",
-                        "detail": "`any`",
-                        "type": "general.button.click"
-                      }
-                    ],
-                    "history": [
-                      {
-                        "change": "新增属性 `buttonHref`",
-                        "version": "1.54.0"
-                      },
-                      {
-                        "change": "使用 `dataSource` 替代 `detail`",
-                        "version": "1.55.1"
-                      },
-                      {
-                        "change": "新增属性 `disableAfterClick`",
-                        "version": "1.59.0"
-                      },
-                      {
-                        "change": "新增属性 `fadedText`",
-                        "version": "1.97.0"
-                      }
-                    ],
-                    "id": "basic-bricks.general-button",
-                    "interface": [
-                      {
-                        "children": [
-                          {
-                            "description": "箭头是否指向目标元素中心",
-                            "name": "arrowPointAtCenter",
-                            "required": false,
-                            "type": "boolean"
-                          },
-                          {
-                            "description": "气泡框位置，可选 `top` `left` `right` `bottom` `topLeft` `topRight` `bottomLeft` `bottomRight` `leftTop` `leftBottom` `rightTop` `rightBottom`",
-                            "name": "placement",
-                            "required": false,
-                            "type": "TooltipPlacement"
-                          }
-                        ],
-                        "kind": "interface",
-                        "name": "TooltipConfig"
-                      },
-                      {
-                        "description": "",
-                        "kind": "type",
-                        "name": "TooltipPlacement",
-                        "type": "\"top\" | \"left\" | \"right\" | \"bottom\" | \"topLeft\" | \"topRight\" | \"bottomLeft\" | \"bottomRight\" | \"leftTop\" | \"leftBottom\" | \"rightTop\" | \"rightBottom\""
-                      }
-                    ],
-                    "memo": "注意，因为按钮是有 margin 的，在`type=link` 时候也一样会有，所以在表格里面放置点击链接的时候，请选用[链接](developers/brick-book/brick/presentational-bricks.brick-link)",
-                    "methods": null,
-                    "name": "basic-bricks.general-button",
-                    "properties": [
-                      {
-                        "default": "-",
-                        "description": "按钮名称",
-                        "group": "basic",
-                        "name": "buttonName",
-                        "required": "false",
-                        "type": "string"
-                      },
-                      {
-                        "default": "-",
-                        "description": "按钮 icon，支持[icon 图标库](developers/icon)，可直接复制图标图标的配置（antd、fa 及 easyops 三种库都支持），也可只取 icon 字段的值（仅支持 antd 库）。配置{ \"lib\": \"antd\", \"icon\": \"edit\" }与 \"edit\"等价",
-                        "group": "basic",
-                        "name": "buttonIcon",
-                        "required": "false",
-                        "type": "MenuIcon"
-                      },
-                      {
-                        "default": "-",
-                        "description": "点击按钮跳转的 url",
-                        "group": "basic",
-                        "name": "buttonUrl",
-                        "required": "false",
-                        "type": "string"
-                      },
-                      {
-                        "default": "-",
-                        "description": "是否使用原生 <a> 标签，通常用于外链的跳转",
-                        "group": "basic",
-                        "name": "buttonHref",
-                        "required": "false",
-                        "type": "string"
-                      },
-                      {
-                        "default": "-",
-                        "description": "跳转的 target，例如可以设置为\"\\_blank\"",
-                        "group": "basic",
-                        "name": "target",
-                        "required": "false",
-                        "type": "string"
-                      },
-                      {
-                        "default": "`{}`",
-                        "description": "替代之前 detail 属性，用法相同。暂存的数据在事件传出时使用",
-                        "group": "basic",
-                        "name": "dataSource",
-                        "required": "false",
-                        "type": "any"
-                      },
-                      {
-                        "default": "`false`",
-                        "description": "是否禁用按钮",
-                        "group": "basic",
-                        "name": "disabled",
-                        "required": "false",
-                        "type": "boolean"
-                      },
-                      {
-                        "default": "`false`",
-                        "description": "按钮加载动画",
-                        "name": "loading",
-                        "required": "false",
-                        "type": "boolean"
-                      },
-                      {
-                        "default": "-",
-                        "description": "按钮类型  ButtonType(`\"link\" | \"default\" | \"primary\" | \"ghost\" | \"dashed\" | \"danger\" | \"icon\"|\"text\"`)",
-                        "group": "basic",
-                        "name": "buttonType",
-                        "required": "false",
-                        "type": "ButtonType"
-                      },
-                      {
-                        "default": "`false`",
-                        "description": "设置危险按钮",
-                        "group": "basic",
-                        "name": "buttonDanger",
-                        "required": "false",
-                        "type": "boolean"
-                      },
-                      {
-                        "default": "-",
-                        "description": "按钮形状，支持圆形、椭圆形，不设置为默认方形",
-                        "group": "basic",
-                        "name": "buttonShape",
-                        "required": "false",
-                        "type": "\"circle\" | \"round\""
-                      },
-                      {
-                        "default": "-",
-                        "description": "按钮大小，支持大、小，不设置为默认中",
-                        "group": "basic",
-                        "name": "buttonSize",
-                        "required": "false",
-                        "type": "small | large"
-                      },
-                      {
-                        "default": "-",
-                        "description": "按钮的 tooltip",
-                        "group": "basic",
-                        "name": "tooltip",
-                        "required": "false",
-                        "type": "string"
-                      },
-                      {
-                        "default": "-",
-                        "description": "禁用按钮的 tooltip",
-                        "group": "basic",
-                        "name": "disabledTooltip",
-                        "required": "false",
-                        "type": "string"
-                      },
-                      {
-                        "default": "-",
-                        "description": "tooltip的配置,配置属性见TooltipConfig",
-                        "group": "basic",
-                        "name": "tooltipConfig",
-                        "required": "false",
-                        "type": "TooltipConfig"
-                      },
-                      {
-                        "default": "`false`",
-                        "description": "淡化按钮文字，按钮类型为 text 时可以设置。默认 `false` 文字按钮颜色和平台的字体颜色一样，在一些希望弱化文字颜色的场景下可以设置为 `true`。",
-                        "group": "advanced",
-                        "name": "fadedText",
-                        "required": "false",
-                        "type": "boolean"
-                      },
-                      {
-                        "default": "`false`",
-                        "description": "点击按钮后自动禁用",
-                        "group": "advanced",
-                        "name": "disableAfterClick",
-                        "required": "false",
-                        "type": "boolean"
-                      },
-                      {
-                        "default": "-",
-                        "description": "完全透传给 antd 的 Button 属性",
-                        "group": "advanced",
-                        "name": "buttonProps",
-                        "required": "-",
-                        "type": "ButtonProps"
-                      },
-                      {
-                        "default": "{}",
-                        "deprecated": true,
-                        "description": "[已废弃]按钮点击事件传出的内容。当用于列表类构件，例如 `brick-table` 中，可通过传入传入 `detail` 来识别不通的行进行操作处理。",
-                        "group": "advanced",
-                        "name": "detail",
-                        "required": "false",
-                        "type": "any"
-                      }
-                    ],
-                    "slots": null
-                  },
-                  "examples": [
-                    {
-                      "brick": "basic-bricks.general-button",
-                      "events": {
-                        "general.button.click": [
-                          {
-                            "action": "console.log"
-                          }
-                        ]
-                      },
-                      "properties": {
-                        "buttonIcon": {
-                          "icon": "edit",
-                          "lib": "fa",
-                          "prefix": "fas"
-                        },
-                        "buttonName": "新建",
-                        "dataset": {
-                          "testid": "basic-usage-demo"
-                        },
-                        "tooltip": "新建实例"
-                      }
-                    },
-                    {
-                      "brick": "basic-bricks.general-button",
-                      "events": {
-                        "general.button.click": [
-                          {
-                            "action": "console.log"
-                          }
-                        ]
-                      },
-                      "properties": {
-                        "buttonName": "新建",
-                        "disabled": true,
-                        "disabledTooltip": "无权限",
-                        "tooltip": "新建实例"
-                      }
-                    },
-                    {
-                      "brick": "basic-bricks.general-button",
-                      "events": {
-                        "general.button.click": [
-                          {
-                            "action": "console.log"
-                          }
-                        ]
-                      },
-                      "properties": {
-                        "buttonIcon": "search",
-                        "buttonName": "搜索",
-                        "buttonShape": "round",
-                        "buttonType": "primary",
-                        "buttonUrl": "/",
-                        "target": "_blank"
-                      }
-                    },
-                    {
-                      "brick": "basic-bricks.general-button",
-                      "events": {
-                        "general.button.click": [
-                          {
-                            "action": "console.log"
-                          }
-                        ]
-                      },
-                      "properties": {
-                        "buttonIcon": "search",
-                        "buttonShape": "circle",
-                        "buttonType": "icon",
-                        "buttonUrl": "/",
-                        "target": "_blank"
-                      }
-                    },
-                    {
-                      "brick": "basic-bricks.general-button",
-                      "description": {
-                        "message": "默认和平台文字颜色一致",
-                        "title": "文字按钮"
-                      },
-                      "events": {
-                        "general.button.click": [
-                          {
-                            "action": "console.log"
-                          }
-                        ]
-                      },
-                      "properties": {
-                        "buttonName": "更多",
-                        "buttonType": "text",
-                        "buttonUrl": "/",
-                        "target": "_blank"
-                      }
-                    },
-                    {
-                      "brick": "basic-bricks.general-button",
-                      "description": {
-                        "message": "可以设置 `fadedText` 为 `true` 以淡化文字颜色。适用场景：用于卡片中或和其他按钮搭配使用。",
-                        "title": "淡化文字按钮"
-                      },
-                      "events": {
-                        "general.button.click": [
-                          {
-                            "action": "console.log"
-                          }
-                        ]
-                      },
-                      "properties": {
-                        "buttonName": "了解更多",
-                        "buttonType": "text",
-                        "buttonUrl": "/",
-                        "fadedText": true,
-                        "target": "_blank"
-                      }
-                    }
-                  ],
-                  "icon": {
-                    "icon": "pencil-alt",
-                    "lib": "fa"
-                  },
-                  "id": "basic-bricks.general-button",
-                  "text": {
-                    "en": "General button",
-                    "zh": "通用按钮"
-                  },
-                  "type": "brick"
-                }
-              ]
-            }
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"data\": {\n    \"list\": [\n      {\n        \"author\": \"momo\",\n        \"category\": \"description\",\n        \"description\": {\n          \"zh\": \"折叠容器，只折叠单个内容，支持slot\"\n        },\n        \"doc\": {\n          \"author\": \"momo\",\n          \"description\": \"折叠容器，只折叠单个内容，支持slot\",\n          \"dockind\": \"brick\",\n          \"editor\": null,\n          \"editorProps\": null,\n          \"events\": null,\n          \"history\": [\n            {\n              \"change\": \"新增属性 `isShowFoldIcon`, `type`\",\n              \"version\": \"1.87.0\"\n            },\n            {\n              \"change\": \"新增属性 `showDivider`,`dividerOrientation`,`dividerDashed`,`show`\",\n              \"version\": \"1.64.0\"\n            },\n            {\n              \"change\": \"新增构件 `basic-bricks.fold-brick-v2`\",\n              \"version\": \"1.56.0\"\n            }\n          ],\n          \"id\": \"basic-bricks.fold-brick-v2\",\n          \"interface\": [\n\n          ],\n          \"memo\": \"\",\n          \"methods\": null,\n          \"name\": \"basic-bricks.fold-brick-v2\",\n          \"properties\": [\n            {\n              \"default\": \"-\",\n              \"description\": \"折叠展示名称\",\n              \"name\": \"foldName\",\n              \"required\": \"true\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"true\",\n              \"description\": \"是否显示展开图标\",\n              \"name\": \"isShowFoldIcon\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"是否默认展开\",\n              \"name\": \"defaultShow\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"是否展开\",\n              \"name\": \"showDivider\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"\\\"normal\\\"\",\n              \"description\": \"折叠面板类型\",\n              \"name\": \"type\",\n              \"required\": \"false\",\n              \"type\": \"\\\"normal\\\" | \\\"primary\\\"\"\n            },\n            {\n              \"default\": \"center\",\n              \"description\": \"分割线标题的位置\",\n              \"group\": \"advanced\",\n              \"name\": \"dividerOrientation\",\n              \"required\": \"false\",\n              \"type\": \"\\\"left\\\"|\\\"right\\\"\"\n            },\n            {\n              \"default\": \"false\",\n              \"description\": \"是否虚线\",\n              \"group\": \"advanced\",\n              \"name\": \"dividerDashed\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"折叠展示的样式编写\",\n              \"group\": \"advanced\",\n              \"name\": \"foldStyle\",\n              \"required\": \"false\",\n              \"type\": \"object\"\n            },\n            {\n              \"name\": \"show\",\n              \"type\": \"boolean\"\n            }\n          ],\n          \"slots\": [\n            {\n              \"description\": \"内容插槽\",\n              \"name\": \"content\"\n            }\n          ]\n        },\n        \"examples\": [\n          {\n            \"brick\": \"basic-bricks.fold-brick-v2\",\n            \"description\": {\n              \"message\": \"\",\n              \"title\": \"基本\"\n            },\n            \"properties\": {\n              \"foldName\": \"查看\"\n            },\n            \"slots\": {\n              \"content\": {\n                \"bricks\": [\n                  {\n                    \"brick\": \"div\",\n                    \"properties\": {\n                      \"textContent\": \"123\"\n                    }\n                  }\n                ],\n                \"type\": \"bricks\"\n              }\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.fold-brick-v2\",\n            \"description\": {\n              \"message\": \"\",\n              \"title\": \"type为primary\"\n            },\n            \"properties\": {\n              \"foldName\": \"查看\",\n              \"type\": \"primary\"\n            },\n            \"slots\": {\n              \"content\": {\n                \"bricks\": [\n                  {\n                    \"brick\": \"div\",\n                    \"properties\": {\n                      \"textContent\": \"123\"\n                    }\n                  }\n                ],\n                \"type\": \"bricks\"\n              }\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.fold-brick-v2\",\n            \"description\": {\n              \"message\": \"\",\n              \"title\": \"isShowFoldIcon为false\"\n            },\n            \"properties\": {\n              \"foldName\": \"查看\",\n              \"isShowFoldIcon\": false,\n              \"type\": \"primary\"\n            },\n            \"slots\": {\n              \"content\": {\n                \"bricks\": [\n                  {\n                    \"brick\": \"div\",\n                    \"properties\": {\n                      \"textContent\": \"123\"\n                    }\n                  }\n                ],\n                \"type\": \"bricks\"\n              }\n            }\n          }\n        ],\n        \"icon\": {\n          \"icon\": \"chevron-down\",\n          \"lib\": \"fa\"\n        },\n        \"id\": \"basic-bricks.fold-brick-v2\",\n        \"text\": {\n          \"en\": \"fold brick\",\n          \"zh\": \"折叠容器V2\"\n        },\n        \"type\": \"brick\"\n      },\n      {\n        \"author\": \"jo\",\n        \"category\": \"other\",\n        \"description\": {\n          \"en\": \"General button\",\n          \"zh\": \"可发送点击事件、可配置按钮名称、按钮跳转链接等\"\n        },\n        \"doc\": {\n          \"author\": \"jo\",\n          \"description\": \"可发送点击事件、可配置按钮名称、按钮跳转链接等\",\n          \"dockind\": \"brick\",\n          \"editor\": null,\n          \"editorProps\": null,\n          \"events\": [\n            {\n              \"description\": \"按钮被点击时触发, detail 为 dataSource 数据\",\n              \"detail\": \"`any`\",\n              \"type\": \"general.button.click\"\n            }\n          ],\n          \"history\": [\n            {\n              \"change\": \"新增属性 `buttonHref`\",\n              \"version\": \"1.54.0\"\n            },\n            {\n              \"change\": \"使用 `dataSource` 替代 `detail`\",\n              \"version\": \"1.55.1\"\n            },\n            {\n              \"change\": \"新增属性 `disableAfterClick`\",\n              \"version\": \"1.59.0\"\n            },\n            {\n              \"change\": \"新增属性 `fadedText`\",\n              \"version\": \"1.97.0\"\n            }\n          ],\n          \"id\": \"basic-bricks.general-button\",\n          \"interface\": [\n            {\n              \"children\": [\n                {\n                  \"description\": \"箭头是否指向目标元素中心\",\n                  \"name\": \"arrowPointAtCenter\",\n                  \"required\": false,\n                  \"type\": \"boolean\"\n                },\n                {\n                  \"description\": \"气泡框位置，可选 `top` `left` `right` `bottom` `topLeft` `topRight` `bottomLeft` `bottomRight` `leftTop` `leftBottom` `rightTop` `rightBottom`\",\n                  \"name\": \"placement\",\n                  \"required\": false,\n                  \"type\": \"TooltipPlacement\"\n                }\n              ],\n              \"kind\": \"interface\",\n              \"name\": \"TooltipConfig\"\n            },\n            {\n              \"description\": \"\",\n              \"kind\": \"type\",\n              \"name\": \"TooltipPlacement\",\n              \"type\": \"\\\"top\\\" | \\\"left\\\" | \\\"right\\\" | \\\"bottom\\\" | \\\"topLeft\\\" | \\\"topRight\\\" | \\\"bottomLeft\\\" | \\\"bottomRight\\\" | \\\"leftTop\\\" | \\\"leftBottom\\\" | \\\"rightTop\\\" | \\\"rightBottom\\\"\"\n            }\n          ],\n          \"memo\": \"注意，因为按钮是有 margin 的，在`type=link` 时候也一样会有，所以在表格里面放置点击链接的时候，请选用[链接](developers/brick-book/brick/presentational-bricks.brick-link)\",\n          \"methods\": null,\n          \"name\": \"basic-bricks.general-button\",\n          \"properties\": [\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮名称\",\n              \"group\": \"basic\",\n              \"name\": \"buttonName\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮 icon，支持[icon 图标库](developers/icon)，可直接复制图标图标的配置（antd、fa 及 easyops 三种库都支持），也可只取 icon 字段的值（仅支持 antd 库）。配置{ \\\"lib\\\": \\\"antd\\\", \\\"icon\\\": \\\"edit\\\" }与 \\\"edit\\\"等价\",\n              \"group\": \"basic\",\n              \"name\": \"buttonIcon\",\n              \"required\": \"false\",\n              \"type\": \"MenuIcon\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"点击按钮跳转的 url\",\n              \"group\": \"basic\",\n              \"name\": \"buttonUrl\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"是否使用原生 <a> 标签，通常用于外链的跳转\",\n              \"group\": \"basic\",\n              \"name\": \"buttonHref\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"跳转的 target，例如可以设置为\\\"\\\\_blank\\\"\",\n              \"group\": \"basic\",\n              \"name\": \"target\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"`{}`\",\n              \"description\": \"替代之前 detail 属性，用法相同。暂存的数据在事件传出时使用\",\n              \"group\": \"basic\",\n              \"name\": \"dataSource\",\n              \"required\": \"false\",\n              \"type\": \"any\"\n            },\n            {\n              \"default\": \"`false`\",\n              \"description\": \"是否禁用按钮\",\n              \"group\": \"basic\",\n              \"name\": \"disabled\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"`false`\",\n              \"description\": \"按钮加载动画\",\n              \"name\": \"loading\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮类型  ButtonType(`\\\"link\\\" | \\\"default\\\" | \\\"primary\\\" | \\\"ghost\\\" | \\\"dashed\\\" | \\\"danger\\\" | \\\"icon\\\"|\\\"text\\\"`)\",\n              \"group\": \"basic\",\n              \"name\": \"buttonType\",\n              \"required\": \"false\",\n              \"type\": \"ButtonType\"\n            },\n            {\n              \"default\": \"`false`\",\n              \"description\": \"设置危险按钮\",\n              \"group\": \"basic\",\n              \"name\": \"buttonDanger\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮形状，支持圆形、椭圆形，不设置为默认方形\",\n              \"group\": \"basic\",\n              \"name\": \"buttonShape\",\n              \"required\": \"false\",\n              \"type\": \"\\\"circle\\\" | \\\"round\\\"\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮大小，支持大、小，不设置为默认中\",\n              \"group\": \"basic\",\n              \"name\": \"buttonSize\",\n              \"required\": \"false\",\n              \"type\": \"small | large\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮的 tooltip\",\n              \"group\": \"basic\",\n              \"name\": \"tooltip\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"禁用按钮的 tooltip\",\n              \"group\": \"basic\",\n              \"name\": \"disabledTooltip\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"tooltip的配置,配置属性见TooltipConfig\",\n              \"group\": \"basic\",\n              \"name\": \"tooltipConfig\",\n              \"required\": \"false\",\n              \"type\": \"TooltipConfig\"\n            },\n            {\n              \"default\": \"`false`\",\n              \"description\": \"淡化按钮文字，按钮类型为 text 时可以设置。默认 `false` 文字按钮颜色和平台的字体颜色一样，在一些希望弱化文字颜色的场景下可以设置为 `true`。\",\n              \"group\": \"advanced\",\n              \"name\": \"fadedText\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"`false`\",\n              \"description\": \"点击按钮后自动禁用\",\n              \"group\": \"advanced\",\n              \"name\": \"disableAfterClick\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"完全透传给 antd 的 Button 属性\",\n              \"group\": \"advanced\",\n              \"name\": \"buttonProps\",\n              \"required\": \"-\",\n              \"type\": \"ButtonProps\"\n            },\n            {\n              \"default\": \"{}\",\n              \"deprecated\": true,\n              \"description\": \"[已废弃]按钮点击事件传出的内容。当用于列表类构件，例如 `brick-table` 中，可通过传入传入 `detail` 来识别不通的行进行操作处理。\",\n              \"group\": \"advanced\",\n              \"name\": \"detail\",\n              \"required\": \"false\",\n              \"type\": \"any\"\n            }\n          ],\n          \"slots\": null\n        },\n        \"examples\": [\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonIcon\": {\n                \"icon\": \"edit\",\n                \"lib\": \"fa\",\n                \"prefix\": \"fas\"\n              },\n              \"buttonName\": \"新建\",\n              \"dataset\": {\n                \"testid\": \"basic-usage-demo\"\n              },\n              \"tooltip\": \"新建实例\"\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonName\": \"新建\",\n              \"disabled\": true,\n              \"disabledTooltip\": \"无权限\",\n              \"tooltip\": \"新建实例\"\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonIcon\": \"search\",\n              \"buttonName\": \"搜索\",\n              \"buttonShape\": \"round\",\n              \"buttonType\": \"primary\",\n              \"buttonUrl\": \"/\",\n              \"target\": \"_blank\"\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonIcon\": \"search\",\n              \"buttonShape\": \"circle\",\n              \"buttonType\": \"icon\",\n              \"buttonUrl\": \"/\",\n              \"target\": \"_blank\"\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"description\": {\n              \"message\": \"默认和平台文字颜色一致\",\n              \"title\": \"文字按钮\"\n            },\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonName\": \"更多\",\n              \"buttonType\": \"text\",\n              \"buttonUrl\": \"/\",\n              \"target\": \"_blank\"\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"description\": {\n              \"message\": \"可以设置 `fadedText` 为 `true` 以淡化文字颜色。适用场景：用于卡片中或和其他按钮搭配使用。\",\n              \"title\": \"淡化文字按钮\"\n            },\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonName\": \"了解更多\",\n              \"buttonType\": \"text\",\n              \"buttonUrl\": \"/\",\n              \"fadedText\": true,\n              \"target\": \"_blank\"\n            }\n          }\n        ],\n        \"icon\": {\n          \"icon\": \"pencil-alt\",\n          \"lib\": \"fa\"\n        },\n        \"id\": \"basic-bricks.general-button\",\n        \"text\": {\n          \"en\": \"General button\",\n          \"zh\": \"通用按钮\"\n        },\n        \"type\": \"brick\"\n      }\n    ]\n  }\n}"
           }
         },
         {
-          "description": "带查询条件",
+          "description": {
+            "en": "With Query",
+            "zh": "带查询条件"
+          },
           "request": {
             "method": "POST",
             "uri": "/api/v2/next-builder/storiesjson",
             "headers": {
               "Content-Type": "application/json"
             },
-            "body": {
-              "storyIds": ["basic-bricks.general-button"],
-              "fields": ["id", "author", "description"]
-            }
+            "body": "{\n  \"storyIds\": [\n    \"basic-bricks.general-button\"\n  ],\n  \"fields\": [\n    \"id\",\n    \"author\",\n    \"description\"\n  ]\n}"
           },
           "response": {
-            "code": 0,
-            "codeExplain": "",
-            "error": "",
-            "data": {
-              "list": [
-                {
-                  "author": "jo",
-                  "description": {
-                    "en": "General button",
-                    "zh": "可发送点击事件、可配置按钮名称、按钮跳转链接等"
-                  },
-                  "id": "basic-bricks.general-button"
-                }
-              ]
-            }
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"data\": {\n    \"list\": [\n      {\n        \"author\": \"jo\",\n        \"description\": {\n          \"en\": \"General button\",\n          \"zh\": \"可发送点击事件、可配置按钮名称、按钮跳转链接等\"\n        },\n        \"id\": \"basic-bricks.general-button\"\n      }\n    ]\n  }\n}"
           }
         }
       ]
@@ -927,7 +394,29 @@
             "description": "上传图片后，服务器返回的图片地址"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Basic",
+            "zh": "基础请求"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "/api/v1/next-builder/image-upload",
+            "headers": {
+              "Content-Type": "multipart/form-data; boundary=abcdefg1234567"
+            },
+            "body": "--abcdefg1234567 Content-Disposition: form-data; name=\"objectName\"\nbootstrap.png --abcdefg1234567 Content-Disposition: form-data; name=\"file\"; filename=\"bootstrap.png\" Content-Type: image/png\n<File Content> --abcdefg1234567"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n      \"url\": \"/next/api/gateway/object_store.object_store.GetObject/api/v1/objectStore/bucket/next-builder/object/bootstrap.png\"\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "next_builder.build.GetPackageReleaseList",
@@ -1191,6 +680,51 @@
           }
         ],
         "required": ["MicroAppProject.projectId", "version", "description"]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.clone.CloneMicroApp",
+      "category": {
+        "en": "Build",
+        "zh": "构建"
+      },
+      "name": "CloneMicroApp",
+      "version": "1.0.0",
+      "description": "克隆微应用",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/clone_micro_app/:originAppInstanceId"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "newAppId",
+            "type": "string",
+            "description": "appId"
+          },
+          {
+            "name": "newAppName",
+            "type": "string",
+            "description": "appName"
+          },
+          {
+            "name": "newAppIcon",
+            "type": "string",
+            "description": "appIcon"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "app描述信息"
+          },
+          {
+            "name": "originAppInstanceId",
+            "type": "string",
+            "description": "要克隆的当前app的instanceId"
+          }
+        ]
       },
       "response": null
     },
@@ -1918,7 +1452,25 @@
       },
       "response": {
         "type": "MicroAppProject"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Basic",
+            "zh": "基础请求"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "/api/v1/next-builder/project?appId=my-micro-app"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"message\": \"success\",\n  \"data\": {\n    \"appId\": \"my-micro-app\",\n    \"appSetting\": {\n      \"appIconUrl\": \"api/gateway/object_store.object_store.GetObject/api/v1/objectStore/bucket/next-builder/object/image16080390648879824081636614785510056761.png\",\n      \"breadcrumb\": null,\n      \"defaultConfig\": null,\n      \"env\": null,\n      \"homepage\": \"/my-micro-app\",\n      \"icon\": \"{\\n  \\\"lib\\\": \\\"fa\\\",\\n  \\\"icon\\\": \\\"ambulance\\\",\\n  \\\"prefix\\\": \\\"fas\\\"\\n}\",\n      \"iconBackground\": null,\n      \"internal\": false,\n      \"layoutType\": null,\n      \"legacy\": null,\n      \"locales\": null,\n      \"name\": \"我的微应用\",\n      \"noAuthGuard\": null,\n      \"private\": false,\n      \"visibility\": null\n    },\n    \"dependencies\": [\n\n    ],\n    \"dependsAll\": false,\n    \"developmentEnv\": {\n      \"accessKey\": \"ee6e5c3a615bd2c2cbbeed1c\",\n      \"openApiIP\": \"192.168.100.210\",\n      \"openApiPort\": 30109,\n      \"protocol\": \"http\",\n      \"secretKey\": \"496d4a69657045757248436145694f467551574c55425652735345685a6a726f\"\n    },\n    \"images\": [\n\n    ],\n    \"instanceId\": \"5cf34702be413\",\n    \"lastExportedDocuments\": \"[{\\\"instanceId\\\":\\\"\\\",\\\"documentId\\\":\\\"my-micro-app_YPLv8kZJToew8TA2W9vl_w\\\",\\\"author\\\":\\\"sdfsdf\\\",\\\"name\\\":\\\"sdfsdf\\\",\\\"content\\\":\\\"this is document\\\",\\\"relatedMicroAppId\\\":\\\"my-micro-app\\\",\\\"relatedRouteAliases\\\":null,\\\"sort\\\":1,\\\"children\\\":null,\\\"parent\\\":null}]\",\n    \"lastExportedModelsDefinition\": null,\n    \"lastExportedPermissions\": null,\n    \"lastReleasedModelsDefinition\": null,\n    \"modelObjects\": [\n\n    ],\n    \"models\": [\n\n    ],\n    \"modelsDefinition\": [\n\n    ],\n    \"name\": \"我的微应用\",\n    \"permissions\": [\n\n    ],\n    \"projectId\": \"P-1300007\",\n    \"storyboardJson\": \"{\\\"app\\\":{\\\"id\\\":\\\"my-micro-app\\\",\\\"internal\\\":false,\\\"private\\\":false,\\\"legacy\\\":\\\"\\\",\\\"name\\\":\\\"我的微应用\\\",\\\"icons\\\":null,\\\"storyboardJson\\\":\\\"\\\",\\\"tags\\\":[],\\\"currentVersion\\\":\\\"\\\",\\\"installStatus\\\":\\\"\\\",\\\"homepage\\\":\\\"/my-micro-app\\\",\\\"clonedFrom\\\":null,\\\"owner\\\":\\\"\\\",\\\"readme\\\":\\\"\\\",\\\"status\\\":\\\"\\\",\\\"ctime\\\":\\\"\\\",\\\"mtime\\\":\\\"\\\",\\\"pkgName\\\":\\\"\\\",\\\"menuIcon\\\":{\\\"lib\\\":\\\"fa\\\",\\\"type\\\":\\\"\\\",\\\"theme\\\":\\\"\\\",\\\"icon\\\":\\\"ambulance\\\",\\\"prefix\\\":\\\"fas\\\",\\\"category\\\":\\\"\\\"},\\\"iconBackground\\\":\\\"\\\",\\\"defaultConfig\\\":null,\\\"env\\\":null,\\\"locales\\\":null,\\\"layoutType\\\":\\\"\\\",\\\"noAuthGuard\\\":false,\\\"breadcrumb\\\":null},\\\"dependsAll\\\":false,\\\"routes\\\":[{\\\"alias\\\":\\\"首页\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.micro-view\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"pageTitle\\\":\\\"Hello world\\\"},\\\"slots\\\":{\\\"content\\\":{\\\"bricks\\\":[{\\\"brick\\\":\\\"presentational-bricks.brick-result\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"customTitle\\\":\\\"Today is Tuesday\\\",\\\"status\\\":\\\"info\\\",\\\"subTitle\\\":\\\"2019/10/29 21:35\\\"}}],\\\"type\\\":\\\"bricks\\\"},\\\"toolbar\\\":{\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.general-button\\\",\\\"events\\\":{\\\"general.button.click\\\":[{\\\"action\\\":\\\"message.success\\\",\\\"args\\\":[\\\"点击操作按钮\\\"]}]},\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"buttonName\\\":\\\"按钮\\\"}}],\\\"type\\\":\\\"bricks\\\"}}}],\\\"exact\\\":true,\\\"hybrid\\\":false,\\\"path\\\":\\\"${APP.homepage}\\\",\\\"public\\\":false,\\\"type\\\":\\\"bricks\\\"},{\\\"alias\\\":\\\"用户列表\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.micro-view\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"pageTitle\\\":\\\"用户列表\\\"}}],\\\"exact\\\":true,\\\"hybrid\\\":false,\\\"path\\\":\\\"${APP.homepage}/users\\\",\\\"public\\\":false,\\\"type\\\":\\\"bricks\\\"}],\\\"meta\\\":{\\\"customTemplates\\\":[],\\\"functions\\\":[],\\\"i18n\\\":{\\\"en\\\":{},\\\"zh\\\":{}},\\\"menus\\\":[]}}\",\n    \"type\": \"storyboard\"\n  }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "next_builder.project.GetMicroAppProjectByInstanceId",
