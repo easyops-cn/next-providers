@@ -1,0 +1,1669 @@
+{
+  "name": "api_gateway",
+  "contracts": [
+    {
+      "contract": "api_gateway.auth.CheckLogin",
+      "name": "CheckLogin",
+      "version": "1.0.0",
+      "description": "判断用户是否登录",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/auth/login"
+      },
+      "import": [],
+      "request": null,
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "loggedIn",
+            "type": "bool",
+            "description": "是否已经登录"
+          },
+          {
+            "name": "username",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "org",
+            "type": "org",
+            "description": "客户id"
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "description": "用户地理位置"
+          },
+          {
+            "name": "userInstanceId",
+            "type": "instance_id",
+            "description": "用户 id"
+          },
+          {
+            "name": "loginFrom",
+            "type": "string",
+            "description": "用户来源"
+          },
+          {
+            "name": "accessRule",
+            "type": "string",
+            "description": "访问规则(例如按照平台区分 cmdb,ops)"
+          },
+          {
+            "name": "isAdmin",
+            "type": "bool",
+            "description": "判断当前登录用户是否是系统管理员"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "api_gateway.auth.GetCaptcha",
+      "name": "GetCaptcha",
+      "version": "1.0.0",
+      "description": "获取登录验证码",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/auth/login/get_captcha"
+      },
+      "request": null,
+      "response": {
+        "type": "file"
+      }
+    },
+    {
+      "contract": "api_gateway.auth.LDAPLogin",
+      "name": "LDAPLogin",
+      "version": "1.0.0",
+      "description": "ldap 登录",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/auth/ldap_login"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "loginId",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "description": "密码"
+          },
+          {
+            "name": "ldapServer",
+            "type": "string",
+            "description": "指定 ldapServer"
+          }
+        ],
+        "required": ["loginId", "password"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "loggedIn",
+            "type": "bool",
+            "description": "是否已经登录"
+          },
+          {
+            "name": "username",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "org",
+            "type": "org",
+            "description": "客户id"
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "description": "用户地理位置"
+          },
+          {
+            "name": "userInstanceId",
+            "type": "instance_id",
+            "description": "用户 id"
+          },
+          {
+            "name": "loginFrom",
+            "type": "string",
+            "description": "用户来源"
+          },
+          {
+            "name": "accessRule",
+            "type": "string",
+            "description": "访问规则(例如按照平台区分 cmdb,ops)"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "api_gateway.auth.LoginV2",
+      "name": "LoginV2",
+      "version": "1.0.0",
+      "description": "根据指定方式校验密码登录",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/auth/login/v2"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "username",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "description": "客户id"
+          },
+          {
+            "name": "phrase",
+            "type": "string",
+            "description": "验证码"
+          },
+          {
+            "name": "loginBy",
+            "type": "string",
+            "description": "校验密码的方式 easyops: 校验 easyops 的账号密码 custom:  通过客户自定义方式校验, 这种方式需要在 sso-adapter 实现和客户对接的逻辑 ldap:    通过 ldap 校验密码"
+          }
+        ],
+        "required": ["username", "password"],
+        "default": {
+          "loginBy": "easyops"
+        }
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "loggedIn",
+            "type": "bool",
+            "description": "是否已经登录"
+          },
+          {
+            "name": "username",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "org",
+            "type": "org",
+            "description": "客户id"
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "description": "用户地理位置"
+          },
+          {
+            "name": "userInstanceId",
+            "type": "instance_id",
+            "description": "用户 id"
+          },
+          {
+            "name": "loginFrom",
+            "type": "string",
+            "description": "用户来源"
+          },
+          {
+            "name": "accessRule",
+            "type": "string",
+            "description": "访问规则(例如按照平台区分 cmdb,ops)"
+          },
+          {
+            "name": "isAdmin",
+            "type": "bool",
+            "description": "判断当前登录用户是否是系统管理员"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "api_gateway.auth.Logout",
+      "name": "Logout",
+      "version": "1.0.0",
+      "description": "退出登录",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/auth/logout"
+      },
+      "request": null,
+      "response": null
+    },
+    {
+      "contract": "api_gateway.auth.RefreshToken",
+      "name": "RefreshToken",
+      "version": "1.0.0",
+      "description": "更新 token",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/auth/token/refresh"
+      },
+      "import": [],
+      "request": null,
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "token",
+            "type": "string",
+            "description": "认证 token, 需要在后续请求的 header 附带 Authorization: Bear token"
+          },
+          {
+            "name": "refreshToken",
+            "type": "string",
+            "description": "更新 token, 只能用来进行更新 token, 在 header 附带 Authorization: Bearer refreshToken"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "api_gateway.auth.Register",
+      "name": "Register",
+      "version": "1.0.0",
+      "description": "注册",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/auth/register"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "description": "密码"
+          },
+          {
+            "name": "email",
+            "type": "string",
+            "description": "邮箱"
+          },
+          {
+            "name": "invite",
+            "type": "string",
+            "description": "邀请码"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "email",
+            "type": "string",
+            "description": "邮箱"
+          },
+          {
+            "name": "org",
+            "type": "int",
+            "description": "org"
+          },
+          {
+            "name": "loggedIn",
+            "type": "bool",
+            "description": "是否已经登录"
+          },
+          {
+            "name": "username",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "description": "用户地理位置"
+          },
+          {
+            "name": "userInstanceId",
+            "type": "instance_id",
+            "description": "用户 id"
+          },
+          {
+            "name": "loginFrom",
+            "type": "string",
+            "description": "用户来源"
+          },
+          {
+            "name": "accessRule",
+            "type": "string",
+            "description": "访问规则(例如按照平台区分 cmdb,ops)"
+          },
+          {
+            "name": "isAdmin",
+            "type": "bool",
+            "description": "判断当前登录用户是否是系统管理员"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "api_gateway.auth.TokenLDAPLogin",
+      "name": "TokenLDAPLogin",
+      "version": "1.0.0",
+      "description": "ldap 登录成功后，返回 token",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/auth/token/ldap_login"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "loginId",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "description": "密码"
+          },
+          {
+            "name": "ldapServer",
+            "type": "string",
+            "description": "指定 ldapServer"
+          }
+        ],
+        "required": ["loginId", "password"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "loggedIn",
+            "type": "bool",
+            "description": "是否已经登录"
+          },
+          {
+            "name": "username",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "org",
+            "type": "org",
+            "description": "客户id"
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "description": "用户地理位置"
+          },
+          {
+            "name": "userInstanceId",
+            "type": "instance_id",
+            "description": "用户 id"
+          },
+          {
+            "name": "loginFrom",
+            "type": "string",
+            "description": "用户来源"
+          },
+          {
+            "name": "token",
+            "type": "string",
+            "description": "认证 token, 需要在后续请求的 header 附带 Authorization: token"
+          },
+          {
+            "name": "refreshToken",
+            "type": "string",
+            "description": "更新 token, 只能用来进行更新 token, 在 header 附带 Authorization: Bearer refreshToken"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "api_gateway.auth.TokenLogin",
+      "name": "TokenLogin",
+      "version": "1.0.0",
+      "description": "登录成功后，返回 token",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/auth/token/login"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "username",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "description": "密码"
+          }
+        ],
+        "required": ["username", "password"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "loggedIn",
+            "type": "bool",
+            "description": "是否已经登录"
+          },
+          {
+            "name": "username",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "org",
+            "type": "org",
+            "description": "客户id"
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "description": "用户地理位置"
+          },
+          {
+            "name": "userInstanceId",
+            "type": "instance_id",
+            "description": "用户 id"
+          },
+          {
+            "name": "loginFrom",
+            "type": "string",
+            "description": "用户来源"
+          },
+          {
+            "name": "token",
+            "type": "string",
+            "description": "认证 token, 需要在后续请求的 header 附带 Authorization: token"
+          },
+          {
+            "name": "refreshToken",
+            "type": "string",
+            "description": "更新 token, 只能用来进行更新 token, 在 header 附带 Authorization: Bearer refreshToken"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "api_gateway.bootstrap.Bootstrap",
+      "name": "Bootstrap",
+      "version": "1.0.0",
+      "description": "获取系统初始化信息",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/auth/bootstrap"
+      },
+      "import": [
+        "easyops/model/api_gateway/settings",
+        "easyops/model/api_gateway/storyboard",
+        "easyops/model/api_gateway/desktop",
+        "easyops/model/api_gateway/sitemap"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "check_login",
+            "type": "bool",
+            "description": "是否需要检查登录态"
+          },
+          {
+            "name": "brief",
+            "type": "bool",
+            "description": "是否只拉取app信息，如果为true， routes等信息不被返回"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "navbar",
+            "type": "map",
+            "description": "${BRICK_NEXT}/packages/brick-container/conf/navbar.json 的内容"
+          },
+          {
+            "name": "storyboards",
+            "type": "StoryBoard[]",
+            "description": "${BRICK_NEXT}/packages/brick-container/conf/storyboards/ *.json 的内容列表"
+          },
+          {
+            "name": "brickPackages",
+            "type": "map[]",
+            "description": "${BRICK_NEXT}/bricks/ * /dist/ 的内容"
+          },
+          {
+            "name": "templatePackages",
+            "type": "map[]",
+            "description": "${BRICK_NEXT}/templates/ * /dist/ 的内容"
+          },
+          {
+            "name": "settings",
+            "type": "Settings",
+            "description": "console特性配置"
+          },
+          {
+            "name": "desktops",
+            "type": "Desktop[]",
+            "description": "桌面列表"
+          },
+          {
+            "name": "siteSort",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "id",
+                "type": "string",
+                "description": "分类ID"
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "description": "分类名称"
+              },
+              {
+                "name": "order",
+                "type": "int",
+                "description": "分类顺序"
+              },
+              {
+                "name": "apps",
+                "type": "object[]",
+                "description": "微应用列表",
+                "fields": [
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "description": "微应用id"
+                  },
+                  {
+                    "name": "sort",
+                    "type": "int",
+                    "description": "微应用排序"
+                  }
+                ]
+              }
+            ],
+            "description": "系统地图"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "api_gateway.bootstrap.GetAppStoryboard",
+      "name": "GetAppStoryboard",
+      "version": "1.0.0",
+      "description": "获取app storyboard初始化信息",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/auth/bootstrap/:appId"
+      },
+      "import": ["easyops/model/api_gateway/storyboard"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "小产品id"
+          },
+          {
+            "name": "check_login",
+            "type": "bool",
+            "description": "是否需要检查登录态"
+          }
+        ]
+      },
+      "response": {
+        "type": "StoryBoard"
+      }
+    },
+    {
+      "contract": "api_gateway.bootstrap_v2.BootstrapV2",
+      "name": "BootstrapV2",
+      "version": "1.0.0",
+      "description": "获取系统初始化信息",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/auth/v2/bootstrap"
+      },
+      "import": [
+        "easyops/model/api_gateway/settings",
+        "easyops/model/api_gateway/storyboard",
+        "easyops/model/api_gateway/desktop",
+        "easyops/model/api_gateway/sitemap"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "check_login",
+            "type": "bool",
+            "description": "是否需要检查登录态"
+          },
+          {
+            "name": "appFields",
+            "type": "string",
+            "description": "storyboard下的app指定，不指定的话默认全部返回,多个字段用逗号分割"
+          },
+          {
+            "name": "ignoreBrickFields",
+            "type": "string",
+            "description": "brick数据需要忽略的字段，多个字段用逗号分开"
+          },
+          {
+            "name": "ignoreTemplateFields",
+            "type": "string",
+            "description": "template数据需要忽略的字段，多个字段用逗号分开"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "navbar",
+            "type": "map",
+            "description": "${BRICK_NEXT}/packages/brick-container/conf/navbar.json 的内容"
+          },
+          {
+            "name": "storyboards",
+            "type": "StoryBoard[]",
+            "description": "${BRICK_NEXT}/packages/brick-container/conf/storyboards/ *.json 的内容列表"
+          },
+          {
+            "name": "brickPackages",
+            "type": "map[]",
+            "description": "${BRICK_NEXT}/bricks/ * /dist/ 的内容"
+          },
+          {
+            "name": "templatePackages",
+            "type": "map[]",
+            "description": "${BRICK_NEXT}/templates/ * /dist/ 的内容"
+          },
+          {
+            "name": "settings",
+            "type": "Settings",
+            "description": "console特性配置"
+          },
+          {
+            "name": "desktops",
+            "type": "Desktop[]",
+            "description": "桌面列表"
+          },
+          {
+            "name": "siteSort",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "id",
+                "type": "string",
+                "description": "分类ID"
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "description": "分类名称"
+              },
+              {
+                "name": "order",
+                "type": "int",
+                "description": "分类顺序"
+              },
+              {
+                "name": "apps",
+                "type": "object[]",
+                "description": "微应用列表",
+                "fields": [
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "description": "微应用id"
+                  },
+                  {
+                    "name": "sort",
+                    "type": "int",
+                    "description": "微应用排序"
+                  }
+                ]
+              }
+            ],
+            "description": "系统地图"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "api_gateway.bootstrap_v2.BrickPackageInfo",
+      "name": "BrickPackageInfo",
+      "version": "1.0.0",
+      "description": "获取构件包信息，包括brick、templates、providers、processors（从bootstrap中分离出来）",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/auth/brick_package_info"
+      },
+      "request": null,
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "bricks",
+            "type": "string[]",
+            "description": "所有bricks的id，包括custom-templates和契约生成的providers，不包括自定义providers"
+          },
+          {
+            "name": "templates",
+            "type": "string[]",
+            "description": "所有legacy-templates的id（不是custom-templates）"
+          },
+          {
+            "name": "providers",
+            "type": "string[]",
+            "description": "所有providers的id（包括自定义providers和契约生成的providers）"
+          },
+          {
+            "name": "processors",
+            "type": "string[]",
+            "description": "所有processors的id"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "api_gateway.bootstrap_v2.DeleteEtagCache",
+      "name": "DeleteEtagCache",
+      "version": "1.0.0",
+      "description": "删除bootstrapV2的etag缓存",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/delete_bootstrap_etag"
+      },
+      "request": null,
+      "response": null
+    },
+    {
+      "contract": "api_gateway.bootstrap_v2.DeleteAppEtagCache",
+      "name": "DeleteAppEtagCache",
+      "version": "1.0.0",
+      "description": "删除具体bootstrapV2的etag缓存",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/delete_app_bootstrap_etag"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appIds",
+            "type": "string",
+            "description": "小产品id，多个用逗号分割"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "api_gateway.bootstrap_v2.GetAppStoryboardV2",
+      "name": "GetAppStoryboardV2",
+      "version": "1.0.0",
+      "description": "获取app storyboard初始化信息",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/auth/v2/bootstrap/:appId"
+      },
+      "import": ["easyops/model/api_gateway/storyboard"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "小产品id"
+          },
+          {
+            "name": "appFields",
+            "type": "string",
+            "description": "需要返回的字段，多个字段用逗号分割"
+          },
+          {
+            "name": "check_login",
+            "type": "bool",
+            "description": "是否需要检查登录态"
+          }
+        ]
+      },
+      "response": {
+        "type": "StoryBoard"
+      }
+    },
+    {
+      "contract": "api_gateway.contract.SearchSingleContract",
+      "name": "SearchSingleContract",
+      "version": "1.0.0",
+      "description": "通过defaultOrg查找单个契约信息",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/contract/single_search"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "contractName",
+            "type": "string",
+            "description": "契约全名"
+          },
+          {
+            "name": "version",
+            "type": "string",
+            "description": "契约版本"
+          }
+        ],
+        "required": ["contractName", "version"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "contractData",
+            "type": "map",
+            "description": "contract instance"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "api_gateway.esb.EsbLogin",
+      "name": "EsbLogin",
+      "version": "1.0.0",
+      "description": "esb 登录 -【定制化需求】台州银行esb统一认证",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/esb/login"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "username",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "description": "密码"
+          }
+        ],
+        "required": ["username", "password"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "loggedIn",
+            "type": "bool",
+            "description": "是否已经登录"
+          },
+          {
+            "name": "username",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "org",
+            "type": "org",
+            "description": "客户id"
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "description": "用户地理位置"
+          },
+          {
+            "name": "userInstanceId",
+            "type": "instance_id",
+            "description": "用户 id"
+          },
+          {
+            "name": "loginFrom",
+            "type": "string",
+            "description": "用户来源"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "api_gateway.mfa.GenerateRandomTotpSecret",
+      "name": "GenerateRandomTotpSecret",
+      "version": "1.0.0",
+      "description": "随机生成totp secret",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/mfa/totp/secret"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "username",
+            "type": "string",
+            "description": "用户名"
+          }
+        ],
+        "required": ["username"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "totpSecret",
+            "type": "string",
+            "description": "totp的字符串"
+          },
+          {
+            "name": "secret",
+            "type": "string",
+            "description": "密钥"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "api_gateway.mfa.UpdateUserTotpSecret",
+      "name": "UpdateUserTotpSecret",
+      "version": "1.1.0",
+      "description": "创建totp的密钥到数据库",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/mfa/totp/user/secret"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "username",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "secret",
+            "type": "string",
+            "description": "密钥"
+          }
+        ],
+        "required": ["username", "secret"]
+      },
+      "response": null
+    },
+    {
+      "contract": "api_gateway.mfa.VerifyTotpCode",
+      "name": "VerifyTotpCode",
+      "version": "1.0.0",
+      "description": "验证动态码",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/mfa/totp/verification"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "username",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "userInstanceId",
+            "type": "string",
+            "description": "用户instanceId"
+          },
+          {
+            "name": "org",
+            "type": "int",
+            "description": "用户org"
+          },
+          {
+            "name": "verifyCode",
+            "type": "string",
+            "description": "动态码"
+          }
+        ],
+        "required": ["username", "verifyCode", "userInstanceId", "org"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "loggedIn",
+            "type": "bool",
+            "description": "是否已经登录"
+          },
+          {
+            "name": "username",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "org",
+            "type": "org",
+            "description": "客户id"
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "description": "用户地理位置"
+          },
+          {
+            "name": "userInstanceId",
+            "type": "instance_id",
+            "description": "用户 id"
+          },
+          {
+            "name": "loginFrom",
+            "type": "string",
+            "description": "用户来源"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "api_gateway.mfa.VerifyUserIsSetRule",
+      "name": "VerifyUserIsSetRule",
+      "version": "1.1.0",
+      "description": "验证用户是否设置了totp的规则",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/mfa/totp/user/rule/verification"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "username",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "org",
+            "type": "org",
+            "description": "用户的org"
+          },
+          {
+            "name": "loginBy",
+            "type": "string",
+            "description": "登陆方式，目前支持[\"easyops\", \"ldap\", \"custom\"]"
+          }
+        ],
+        "required": ["username", "org", "loginBy"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "isSet",
+            "type": "bool",
+            "description": "该用户是否设置了双因子规则"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "api_gateway.oauth.OauthAuthorizate",
+      "name": "OauthAuthorizate",
+      "version": "1.0.0",
+      "description": "Oauth认证；在Oauth Server中登录成功后，会携带 authorization_code 重定向到该接口，根据配置文件选择Oauth的实现，通过Oauth Server返回的认证信息向 Oauth Server获取用户信息、服务访问权限等信息",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/auth/oauth/authorizate/:provider"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "provider",
+            "type": "string",
+            "description": "OauthServer app name, such as: aliyun"
+          },
+          {
+            "name": "code",
+            "type": "string",
+            "description": "access token"
+          },
+          {
+            "name": "state",
+            "type": "string",
+            "description": "state"
+          }
+        ],
+        "required": ["code"]
+      },
+      "response": null
+    },
+    {
+      "contract": "api_gateway.oauth.OauthLogin",
+      "name": "OauthLogin",
+      "version": "1.0.0",
+      "description": "Oauth登录；根据配置文件选择Oauth的实现；将请求重定向到指定的Oauth Server中",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/auth/oauth/login"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "service",
+            "type": "string",
+            "description": "service"
+          }
+        ],
+        "required": ["service"]
+      },
+      "response": null
+    },
+    {
+      "contract": "api_gateway.oauth.OauthLogout",
+      "name": "OauthLogout",
+      "version": "1.0.0",
+      "description": "Oauth注销",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/auth/oauth/logout"
+      },
+      "request": null,
+      "response": null
+    },
+    {
+      "contract": "api_gateway.org.SaaSOrgRegister",
+      "name": "SaaSOrgRegister",
+      "version": "1.0.0",
+      "description": "saas注册org",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/org/saas-org-register"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "username",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "email",
+            "type": "email",
+            "description": "邮箱字符串"
+          },
+          {
+            "name": "password",
+            "type": "password",
+            "description": "密码"
+          },
+          {
+            "name": "phone",
+            "type": "phone_number",
+            "description": "手机号码"
+          },
+          {
+            "name": "verification_code",
+            "type": "verification_code",
+            "description": "验证码"
+          },
+          {
+            "name": "message_id",
+            "type": "string",
+            "description": "验证码消息 ID"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "loggedIn",
+            "type": "bool",
+            "description": "是否已经登录"
+          },
+          {
+            "name": "username",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "org",
+            "type": "org",
+            "description": "客户id"
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "description": "用户地理位置"
+          },
+          {
+            "name": "userInstanceId",
+            "type": "instance_id",
+            "description": "用户 id"
+          },
+          {
+            "name": "loginFrom",
+            "type": "string",
+            "description": "用户来源"
+          },
+          {
+            "name": "accessRule",
+            "type": "string",
+            "description": "访问规则(例如按照平台区分 cmdb,ops)"
+          },
+          {
+            "name": "isAdmin",
+            "type": "bool",
+            "description": "判断当前登录用户是否是系统管理员"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "api_gateway.sso.SAMLAuthorization",
+      "name": "SAMLAuthorization",
+      "version": "1.0.0",
+      "description": "saml 登录 post 回调接口",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/sso/saml/authorization",
+        "ext_fields": [
+          {
+            "name": "query",
+            "source": "query"
+          }
+        ]
+      },
+      "request": null,
+      "response": null
+    },
+    {
+      "contract": "api_gateway.sso.SAMLLogout",
+      "name": "SAMLLogout",
+      "version": "1.0.0",
+      "description": "saml slo 接口",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/sso/saml/logout"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "SAMLResponse",
+            "type": "string",
+            "description": "saml xml 返回"
+          },
+          {
+            "name": "Signature",
+            "type": "string",
+            "description": "签名"
+          },
+          {
+            "name": "SigAlg",
+            "type": "string",
+            "description": "签名算法"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "api_gateway.sso.SSOAuthorization",
+      "name": "SSOAuthorization",
+      "version": "1.0.0",
+      "description": "SSO访问令牌认证; SSO身份认证成功后认证服务将会携带 登录凭证 重定向至该接口",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/sso/authorization/:protocol",
+        "ext_fields": [
+          {
+            "name": "query",
+            "source": "query"
+          }
+        ]
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "protocol",
+            "type": "string",
+            "description": "身份认证协议类型, 如OAuth2、cas等"
+          },
+          {
+            "name": "query",
+            "type": "map",
+            "description": "HTTP GET query"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "api_gateway.sso.SSOAuthorizationToken",
+      "name": "SSOAuthorizationToken",
+      "version": "1.0.0",
+      "description": "通过登录凭证换取 jwt token, 会转发请求到 sso_adapter",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/sso/authorization/:protocol/token"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "protocol",
+            "type": "string",
+            "description": "身份认证协议类型, 如OAuth2、cas等"
+          },
+          {
+            "name": "data",
+            "type": "map",
+            "description": "自定义参数键值对"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "accessToken",
+            "type": "string",
+            "description": "jwt access token"
+          },
+          {
+            "name": "refreshToken",
+            "type": "string",
+            "description": "jwt refresh token"
+          },
+          {
+            "name": "username",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "org",
+            "type": "org",
+            "description": "客户id"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "api_gateway.sso.SSOLogin",
+      "name": "SSOLogin",
+      "version": "1.0.0",
+      "description": "SSO登录; 将请求重定向到指定的身份认证服务中",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/sso/login/:protocol"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "protocol",
+            "type": "string",
+            "description": "身份认证协议类型, 如OAuth2、cas等"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "redirectURL",
+            "type": "string",
+            "description": "重定向的地址, 该接口的控制层会根据这个url返回重定向响应, 而不是直接返回这个数据"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "api_gateway.sso.SSOLogout",
+      "name": "SSOLogout",
+      "version": "1.0.0",
+      "description": "SSO注销",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/sso/logout/:protocol"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "protocol",
+            "type": "string",
+            "description": "身份认证协议类型, 如OAuth2、cas等"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "api_gateway.sso.SSOLogoutV2",
+      "name": "SSOLogoutV2",
+      "version": "1.0.0",
+      "description": "SSO注销",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v2/sso/logout/:protocol"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "protocol",
+            "type": "string",
+            "description": "身份认证协议类型, 如OAuth2、cas等"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "logoutCallbackUrl",
+            "type": "string",
+            "description": "登出后回调地址"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "api_gateway.walmart.WalmartSSOLogin",
+      "name": "WalmartSSOLogin",
+      "version": "1.0.2",
+      "description": "沃尔玛sso登录 -【定制化】",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/walmart/sso/login"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "string",
+            "description": "前端得到的code，用于后端解密成token"
+          }
+        ],
+        "required": ["code"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "loggedIn",
+            "type": "bool",
+            "description": "是否已经登录"
+          },
+          {
+            "name": "username",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "org",
+            "type": "org",
+            "description": "客户id"
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "description": "用户地理位置"
+          },
+          {
+            "name": "userInstanceId",
+            "type": "instance_id",
+            "description": "用户 id"
+          },
+          {
+            "name": "loginFrom",
+            "type": "string",
+            "description": "用户来源"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "api_gateway.wechat.WeChatworkAuthorization",
+      "name": "WeChatworkAuthorization",
+      "version": "1.0.0",
+      "description": "企业微信认证；扫码登录成功后，会携带code和appid重定向到该接口，获取用户信息UserId",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/api_gateway/v1/wechatwork/authorization"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "string",
+            "description": "扫码授权获取到的code"
+          },
+          {
+            "name": "appid",
+            "type": "string",
+            "description": "扫码授权获取到的appid"
+          }
+        ],
+        "required": ["code", "appid"]
+      },
+      "response": null
+    },
+    {
+      "contract": "api_gateway.wechat.WeChatGetCodeUri",
+      "name": "WeChatGetCodeUri",
+      "version": "1.0.0",
+      "description": "企业微信登录；根据配置文件构造扫码登录链接",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/api_gateway/v1/wechatwork/login/getcodeuri"
+      },
+      "request": null,
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "url",
+            "type": "url",
+            "description": "生成的链接"
+          }
+        ],
+        "required": ["url"]
+      }
+    },
+    {
+      "contract": "api_gateway.wechat.WeChatworkLogin",
+      "name": "WeChatworkLogin",
+      "version": "1.0.0",
+      "description": "企业微信登录；根据配置文件构造扫码登录链接",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/api_gateway/v1/wechatwork/login"
+      },
+      "request": null,
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "url",
+            "type": "url",
+            "description": "生成的链接"
+          }
+        ],
+        "required": ["url"]
+      }
+    },
+    {
+      "contract": "api_gateway.wechat.WeworkOauthJwt",
+      "name": "WeworkOauthJwt",
+      "version": "1.0.0",
+      "description": "通过企业微信重定向携带的 code 获取用户 jwt",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/api_gateway/v1/wechatwork/login/withcode"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "string",
+            "description": "通过成员授权获取到的code"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "accessToken",
+            "type": "string",
+            "description": "jwt refreshToken"
+          },
+          {
+            "name": "refreshToken",
+            "type": "string",
+            "description": "jwt refreshToken"
+          }
+        ],
+        "required": ["accessToken", "refreshToken"]
+      }
+    }
+  ]
+}

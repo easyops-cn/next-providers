@@ -22,6 +22,9 @@ export interface AuthApi_CheckLoginResponseBody {
 
   /** 访问规则(例如按照平台区分 cmdb,ops) */
   accessRule?: string;
+
+  /** 判断当前登录用户是否是系统管理员 */
+  isAdmin?: boolean;
 }
 
 /**
