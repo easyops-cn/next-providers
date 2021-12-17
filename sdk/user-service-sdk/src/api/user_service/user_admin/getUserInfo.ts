@@ -11,7 +11,7 @@ export const UserAdminApi_getUserInfo = async (
   username: string | number,
   options?: HttpOptions
 ): Promise<UserAdminApi_GetUserInfoResponseBody> =>
-  /**! @contract easyops.api.user_service.user_admin.GetUserInfo */ (
+  /**! @contract easyops.api.user_service.user_admin.GetUserInfo@1.0.0 */ (
     await http.get<ResponseBodyWrapper<UserAdminApi_GetUserInfoResponseBody>>(
       `api/gateway/user_service.user_admin.GetUserInfo/api/v1/users/detail/${username}`,
       options

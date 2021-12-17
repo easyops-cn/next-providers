@@ -25,7 +25,7 @@ export const UserAdminApi_searchAllUsersInfo = async (
   data: UserAdminApi_SearchAllUsersInfoRequestBody,
   options?: HttpOptions
 ): Promise<UserAdminApi_SearchAllUsersInfoResponseBody> =>
-  /**! @contract easyops.api.user_service.user_admin.SearchAllUsersInfo */ (
+  /**! @contract easyops.api.user_service.user_admin.SearchAllUsersInfo@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<UserAdminApi_SearchAllUsersInfoResponseBody>
     >(

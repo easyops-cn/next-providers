@@ -16,7 +16,7 @@ export const UserAdminApi_listGroupsIdName = async (
   params: UserAdminApi_ListGroupsIdNameRequestParams,
   options?: HttpOptions
 ): Promise<UserAdminApi_ListGroupsIdNameResponseBody> =>
-  /**! @contract easyops.api.user_service.user_admin.ListGroupsIdName */ (
+  /**! @contract easyops.api.user_service.user_admin.ListGroupsIdName@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<UserAdminApi_ListGroupsIdNameResponseBody>
     >(

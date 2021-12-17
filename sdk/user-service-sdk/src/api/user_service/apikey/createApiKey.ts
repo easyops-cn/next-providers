@@ -32,7 +32,7 @@ export const ApikeyApi_createApiKey = async (
   user: string | number,
   options?: HttpOptions
 ): Promise<ApikeyApi_CreateApiKeyResponseBody> =>
-  /**! @contract easyops.api.user_service.apikey.CreateApiKey */ (
+  /**! @contract easyops.api.user_service.apikey.CreateApiKey@1.0.0 */ (
     await http.post<ResponseBodyWrapper<ApikeyApi_CreateApiKeyResponseBody>>(
       `api/gateway/user_service.apikey.CreateApiKey/api/v1/apikey/${user}`,
       undefined,

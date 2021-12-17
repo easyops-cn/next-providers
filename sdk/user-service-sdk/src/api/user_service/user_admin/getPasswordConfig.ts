@@ -16,7 +16,7 @@ export interface UserAdminApi_GetPasswordConfigResponseBody {
 export const UserAdminApi_getPasswordConfig = async (
   options?: HttpOptions
 ): Promise<UserAdminApi_GetPasswordConfigResponseBody> =>
-  /**! @contract easyops.api.user_service.user_admin.GetPasswordConfig */ (
+  /**! @contract easyops.api.user_service.user_admin.GetPasswordConfig@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<UserAdminApi_GetPasswordConfigResponseBody>
     >(

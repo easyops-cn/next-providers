@@ -38,7 +38,7 @@ export const UserAdminApi_listUsersInfoV3 = async (
   params: UserAdminApi_ListUsersInfoV3RequestParams,
   options?: HttpOptions
 ): Promise<UserAdminApi_ListUsersInfoV3ResponseBody> =>
-  /**! @contract easyops.api.user_service.user_admin.ListUsersInfoV3 */ (
+  /**! @contract easyops.api.user_service.user_admin.ListUsersInfoV3@1.1.0 */ (
     await http.get<
       ResponseBodyWrapper<UserAdminApi_ListUsersInfoV3ResponseBody>
     >("api/gateway/user_service.user_admin.ListUsersInfoV3/api/v3/users", {

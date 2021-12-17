@@ -29,7 +29,7 @@ export const LaunchpadApi_listCollection = async (
   params: LaunchpadApi_ListCollectionRequestParams,
   options?: HttpOptions
 ): Promise<LaunchpadApi_ListCollectionResponseBody> =>
-  /**! @contract easyops.api.user_service.launchpad.ListCollection */ (
+  /**! @contract easyops.api.user_service.launchpad.ListCollection@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<LaunchpadApi_ListCollectionResponseBody>
     >(

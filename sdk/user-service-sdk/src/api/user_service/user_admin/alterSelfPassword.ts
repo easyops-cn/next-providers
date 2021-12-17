@@ -16,7 +16,7 @@ export const UserAdminApi_alterSelfPassword = (
   data: UserAdminApi_AlterSelfPasswordRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.user_service.user_admin.AlterSelfPassword */ http.post<void>(
+  /**! @contract easyops.api.user_service.user_admin.AlterSelfPassword@1.0.0 */ http.post<void>(
     "api/gateway/user_service.user_admin.AlterSelfPassword/api/v1/users/password",
     data,
     options

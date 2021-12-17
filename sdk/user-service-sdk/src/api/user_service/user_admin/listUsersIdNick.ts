@@ -16,7 +16,7 @@ export const UserAdminApi_listUsersIdNick = async (
   params: UserAdminApi_ListUsersIdNickRequestParams,
   options?: HttpOptions
 ): Promise<UserAdminApi_ListUsersIdNickResponseBody> =>
-  /**! @contract easyops.api.user_service.user_admin.ListUsersIdNick */ (
+  /**! @contract easyops.api.user_service.user_admin.ListUsersIdNick@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<UserAdminApi_ListUsersIdNickResponseBody>
     >(

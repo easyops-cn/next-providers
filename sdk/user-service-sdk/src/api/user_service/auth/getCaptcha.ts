@@ -5,7 +5,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
  * @endpoint GET /api/v1/users/captcha
  */
 export const AuthApi_getCaptcha = (options?: HttpOptions): Promise<Blob> =>
-  /**! @contract easyops.api.user_service.auth.GetCaptcha */ http.get<Blob>(
+  /**! @contract easyops.api.user_service.auth.GetCaptcha@1.0.0 */ http.get<Blob>(
     "api/gateway/user_service.auth.GetCaptcha/api/v1/users/captcha",
     { ...options, responseType: "blob" }
   );

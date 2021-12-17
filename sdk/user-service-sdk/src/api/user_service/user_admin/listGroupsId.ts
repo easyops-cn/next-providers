@@ -27,7 +27,7 @@ export const UserAdminApi_listGroupsId = (
   params: UserAdminApi_ListGroupsIdRequestParams,
   options?: HttpOptions
 ): Promise<UserAdminApi_ListGroupsIdResponseBody> =>
-  /**! @contract easyops.api.user_service.user_admin.ListGroupsId */ http.get<UserAdminApi_ListGroupsIdResponseBody>(
+  /**! @contract easyops.api.user_service.user_admin.ListGroupsId@1.0.0 */ http.get<UserAdminApi_ListGroupsIdResponseBody>(
     "api/gateway/user_service.user_admin.ListGroupsId/api/v1/groups/id",
     { ...options, params }
   );

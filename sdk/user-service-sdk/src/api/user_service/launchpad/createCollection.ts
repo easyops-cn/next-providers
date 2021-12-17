@@ -23,7 +23,7 @@ export const LaunchpadApi_createCollection = async (
   data: LaunchpadApi_CreateCollectionRequestBody,
   options?: HttpOptions
 ): Promise<LaunchpadApi_CreateCollectionResponseBody> =>
-  /**! @contract easyops.api.user_service.launchpad.CreateCollection */ (
+  /**! @contract easyops.api.user_service.launchpad.CreateCollection@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<LaunchpadApi_CreateCollectionResponseBody>
     >(

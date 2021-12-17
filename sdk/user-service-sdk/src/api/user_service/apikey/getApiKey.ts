@@ -31,7 +31,7 @@ export interface ApikeyApi_GetApiKeyResponseBody {
 export const ApikeyApi_getApiKey = async (
   options?: HttpOptions
 ): Promise<ApikeyApi_GetApiKeyResponseBody> =>
-  /**! @contract easyops.api.user_service.apikey.GetApiKey */ (
+  /**! @contract easyops.api.user_service.apikey.GetApiKey@1.0.0 */ (
     await http.get<ResponseBodyWrapper<ApikeyApi_GetApiKeyResponseBody>>(
       "api/gateway/user_service.apikey.GetApiKey/profile/apikey",
       options

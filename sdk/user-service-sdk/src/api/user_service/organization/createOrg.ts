@@ -33,7 +33,7 @@ export const OrganizationApi_createOrg = async (
   data: OrganizationApi_CreateOrgRequestBody,
   options?: HttpOptions
 ): Promise<OrganizationApi_CreateOrgResponseBody> =>
-  /**! @contract easyops.api.user_service.organization.CreateOrg */ (
+  /**! @contract easyops.api.user_service.organization.CreateOrg@1.0.0 */ (
     await http.post<ResponseBodyWrapper<OrganizationApi_CreateOrgResponseBody>>(
       "api/gateway/user_service.organization.CreateOrg/api/v1/org",
       data,

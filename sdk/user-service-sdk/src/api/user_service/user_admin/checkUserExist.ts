@@ -16,7 +16,7 @@ export const UserAdminApi_checkUserExist = (
   params: UserAdminApi_CheckUserExistRequestParams,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.user_service.user_admin.CheckUserExist */ http.get<void>(
+  /**! @contract easyops.api.user_service.user_admin.CheckUserExist@1.0.0 */ http.get<void>(
     "api/gateway/user_service.user_admin.CheckUserExist/api/v1/users/user_exist",
     { ...options, params }
   );

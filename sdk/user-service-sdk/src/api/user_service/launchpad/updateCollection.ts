@@ -18,7 +18,7 @@ export const LaunchpadApi_updateCollection = (
   data: LaunchpadApi_UpdateCollectionRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.user_service.launchpad.UpdateCollection */ http.put<void>(
+  /**! @contract easyops.api.user_service.launchpad.UpdateCollection@1.0.0 */ http.put<void>(
     `api/gateway/user_service.launchpad.UpdateCollection/api/v1/launchpad/collection/${instanceId}`,
     data,
     options

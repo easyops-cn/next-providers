@@ -14,7 +14,7 @@ export const OrganizationApi_setOrgNamespaces = (
   data: OrganizationApi_SetOrgNamespacesRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.user_service.organization.SetOrgNamespaces */ http.put<void>(
+  /**! @contract easyops.api.user_service.organization.SetOrgNamespaces@1.0.0 */ http.put<void>(
     `api/gateway/user_service.organization.SetOrgNamespaces/api/v1/org/${id}/namespaces`,
     data,
     options

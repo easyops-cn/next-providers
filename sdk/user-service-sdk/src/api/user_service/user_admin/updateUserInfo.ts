@@ -12,7 +12,7 @@ export const UserAdminApi_updateUserInfo = (
   data: UserAdminApi_UpdateUserInfoRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.user_service.user_admin.UpdateUserInfo */ http.put<void>(
+  /**! @contract easyops.api.user_service.user_admin.UpdateUserInfo@1.1.0 */ http.put<void>(
     `api/gateway/user_service.user_admin.UpdateUserInfo/api/v1/users/info/${instanceId}`,
     data,
     options

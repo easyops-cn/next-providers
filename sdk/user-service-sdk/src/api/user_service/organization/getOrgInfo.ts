@@ -13,7 +13,7 @@ export const OrganizationApi_getOrgInfo = async (
   id: string | number,
   options?: HttpOptions
 ): Promise<OrganizationApi_GetOrgInfoResponseBody> =>
-  /**! @contract easyops.api.user_service.organization.GetOrgInfo */ (
+  /**! @contract easyops.api.user_service.organization.GetOrgInfo@1.0.0 */ (
     await http.get<ResponseBodyWrapper<OrganizationApi_GetOrgInfoResponseBody>>(
       `api/gateway/user_service.organization.GetOrgInfo/api/v1/org/info/${id}`,
       options

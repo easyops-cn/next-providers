@@ -17,7 +17,7 @@ export const UserAdminApi_getSimpleUserInfo = async (
   username: string | number,
   options?: HttpOptions
 ): Promise<UserAdminApi_GetSimpleUserInfoResponseBody> =>
-  /**! @contract easyops.api.user_service.user_admin.GetSimpleUserInfo */ (
+  /**! @contract easyops.api.user_service.user_admin.GetSimpleUserInfo@1.1.0 */ (
     await http.get<
       ResponseBodyWrapper<UserAdminApi_GetSimpleUserInfoResponseBody>
     >(

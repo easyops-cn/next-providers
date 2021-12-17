@@ -22,7 +22,7 @@ export interface OrganizationApi_ListOrgResponseBody {
 export const OrganizationApi_listOrg = (
   options?: HttpOptions
 ): Promise<OrganizationApi_ListOrgResponseBody> =>
-  /**! @contract easyops.api.user_service.organization.ListOrg */ http.get<OrganizationApi_ListOrgResponseBody>(
+  /**! @contract easyops.api.user_service.organization.ListOrg@1.0.0 */ http.get<OrganizationApi_ListOrgResponseBody>(
     "api/gateway/user_service.organization.ListOrg/api/v1/org/list",
     options
   );

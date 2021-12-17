@@ -16,7 +16,7 @@ export const UserAdminApi_forgotPassword = (
   data: UserAdminApi_ForgotPasswordRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.user_service.user_admin.ForgotPassword */ http.post<void>(
+  /**! @contract easyops.api.user_service.user_admin.ForgotPassword@1.0.0 */ http.post<void>(
     "api/gateway/user_service.user_admin.ForgotPassword/api/v1/users/password/forgot",
     data,
     options
