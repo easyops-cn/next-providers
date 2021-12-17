@@ -41,7 +41,7 @@ export const CustomerApi_listOrgInfo = async (
   data: CustomerApi_ListOrgInfoRequestBody,
   options?: HttpOptions
 ): Promise<CustomerApi_ListOrgInfoResponseBody> =>
-  /**! @contract easyops.api.air_admin_service.customer.ListOrgInfo */ (
+  /**! @contract easyops.api.air_admin_service.customer.ListOrgInfo@1.0.0 */ (
     await http.post<ResponseBodyWrapper<CustomerApi_ListOrgInfoResponseBody>>(
       "api/gateway/air_admin_service.customer.ListOrgInfo/api/v1/customer/org/list",
       data,

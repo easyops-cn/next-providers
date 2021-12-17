@@ -19,7 +19,7 @@ export const CustomerApi_setApplyDisapprovedBatch = async (
   data: CustomerApi_SetApplyDisapprovedBatchRequestBody,
   options?: HttpOptions
 ): Promise<CustomerApi_SetApplyDisapprovedBatchResponseBody> =>
-  /**! @contract easyops.api.air_admin_service.customer.SetApplyDisapprovedBatch */ (
+  /**! @contract easyops.api.air_admin_service.customer.SetApplyDisapprovedBatch@1.0.0 */ (
     await http.put<
       ResponseBodyWrapper<CustomerApi_SetApplyDisapprovedBatchResponseBody>
     >(

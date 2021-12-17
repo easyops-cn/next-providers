@@ -13,7 +13,7 @@ export const CustomerApi_setOrgUpdating = (
   data: CustomerApi_SetOrgUpdatingRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.air_admin_service.customer.SetOrgUpdating */ http.put<void>(
+  /**! @contract easyops.api.air_admin_service.customer.SetOrgUpdating@1.0.0 */ http.put<void>(
     "api/gateway/air_admin_service.customer.SetOrgUpdating/api/v1/customer/updating_org",
     data,
     options

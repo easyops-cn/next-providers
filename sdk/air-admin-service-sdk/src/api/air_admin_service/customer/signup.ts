@@ -1,4 +1,5 @@
 import { http, HttpOptions } from "@next-core/brick-http";
+import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface CustomerApi_SignupRequestBody {
   /** 用户名 */
@@ -20,16 +21,26 @@ export interface CustomerApi_SignupRequestBody {
   message_id: string;
 }
 
+export interface CustomerApi_SignupResponseBody {
+  /** ORG */
+  org?: number;
+
+  /** 用户 id */
+  userInstanceId?: string;
+}
+
 /**
  * @description SaaS平台用户注册
  * @endpoint POST /api/v1/customer/signup
  */
-export const CustomerApi_signup = (
+export const CustomerApi_signup = async (
   data: CustomerApi_SignupRequestBody,
   options?: HttpOptions
-): Promise<void> =>
-  /**! @contract easyops.api.air_admin_service.customer.Signup */ http.post<void>(
-    "api/gateway/air_admin_service.customer.Signup/api/v1/customer/signup",
-    data,
-    options
-  );
+): Promise<CustomerApi_SignupResponseBody> =>
+  /**! @contract easyops.api.air_admin_service.customer.Signup@1.0.0 */ (
+    await http.post<ResponseBodyWrapper<CustomerApi_SignupResponseBody>>(
+      "api/gateway/air_admin_service.customer.Signup/api/v1/customer/signup",
+      data,
+      options
+    )
+  ).data;

@@ -22,7 +22,7 @@ export const CustomerApi_saveCustomerPublicKey = (
   data: CustomerApi_SaveCustomerPublicKeyRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.air_admin_service.customer.SaveCustomerPublicKey */ http.post<void>(
+  /**! @contract easyops.api.air_admin_service.customer.SaveCustomerPublicKey@1.0.0 */ http.post<void>(
     "api/gateway/air_admin_service.customer.SaveCustomerPublicKey/api/air_admin_service/customer/v1/publickey",
     data,
     options

@@ -19,7 +19,7 @@ export const CustomerApi_sendUpdatedEmail = async (
   data: CustomerApi_SendUpdatedEmailRequestBody,
   options?: HttpOptions
 ): Promise<CustomerApi_SendUpdatedEmailResponseBody> =>
-  /**! @contract easyops.api.air_admin_service.customer.SendUpdatedEmail */ (
+  /**! @contract easyops.api.air_admin_service.customer.SendUpdatedEmail@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<CustomerApi_SendUpdatedEmailResponseBody>
     >(

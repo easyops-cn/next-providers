@@ -19,7 +19,7 @@ export const CustomerApi_updateLicenseBatch = async (
   data: CustomerApi_UpdateLicenseBatchRequestBody,
   options?: HttpOptions
 ): Promise<CustomerApi_UpdateLicenseBatchResponseBody> =>
-  /**! @contract easyops.api.air_admin_service.customer.UpdateLicenseBatch */ (
+  /**! @contract easyops.api.air_admin_service.customer.UpdateLicenseBatch@1.0.0 */ (
     await http.put<
       ResponseBodyWrapper<CustomerApi_UpdateLicenseBatchResponseBody>
     >(

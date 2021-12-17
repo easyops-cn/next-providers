@@ -19,7 +19,7 @@ export const CustomerApi_sendApplicationVerificationCode = async (
   data: CustomerApi_SendApplicationVerificationCodeRequestBody,
   options?: HttpOptions
 ): Promise<CustomerApi_SendApplicationVerificationCodeResponseBody> =>
-  /**! @contract easyops.api.air_admin_service.customer.SendApplicationVerificationCode */ (
+  /**! @contract easyops.api.air_admin_service.customer.SendApplicationVerificationCode@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<CustomerApi_SendApplicationVerificationCodeResponseBody>
     >(

@@ -19,7 +19,7 @@ export const CustomerApi_validateEmail = async (
   params: CustomerApi_ValidateEmailRequestParams,
   options?: HttpOptions
 ): Promise<CustomerApi_ValidateEmailResponseBody> =>
-  /**! @contract easyops.api.air_admin_service.customer.ValidateEmail */ (
+  /**! @contract easyops.api.air_admin_service.customer.ValidateEmail@1.0.0 */ (
     await http.get<ResponseBodyWrapper<CustomerApi_ValidateEmailResponseBody>>(
       "api/gateway/air_admin_service.customer.ValidateEmail/api/v1/customer/email_uniqueness",
       { ...options, params }

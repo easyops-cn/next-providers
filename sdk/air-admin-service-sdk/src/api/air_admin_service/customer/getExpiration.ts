@@ -16,7 +16,7 @@ export interface CustomerApi_GetExpirationResponseBody {
 export const CustomerApi_getExpiration = async (
   options?: HttpOptions
 ): Promise<CustomerApi_GetExpirationResponseBody> =>
-  /**! @contract easyops.api.air_admin_service.customer.GetExpiration */ (
+  /**! @contract easyops.api.air_admin_service.customer.GetExpiration@1.0.0 */ (
     await http.get<ResponseBodyWrapper<CustomerApi_GetExpirationResponseBody>>(
       "api/gateway/air_admin_service.customer.GetExpiration/api/v1/customer/expiration",
       options

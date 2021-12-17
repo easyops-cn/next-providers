@@ -19,7 +19,7 @@ export const CustomerApi_validateUser = async (
   params: CustomerApi_ValidateUserRequestParams,
   options?: HttpOptions
 ): Promise<CustomerApi_ValidateUserResponseBody> =>
-  /**! @contract easyops.api.air_admin_service.customer.ValidateUser */ (
+  /**! @contract easyops.api.air_admin_service.customer.ValidateUser@1.0.0 */ (
     await http.get<ResponseBodyWrapper<CustomerApi_ValidateUserResponseBody>>(
       "api/gateway/air_admin_service.customer.ValidateUser/api/v1/customer/user_uniqueness",
       { ...options, params }
