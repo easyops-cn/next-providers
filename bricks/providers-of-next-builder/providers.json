@@ -36,6 +36,7 @@
     "ModelApi.checkView",
     "BuildApi.snippetPackageUpload",
     "BuildApi.getStoriesJsonV2",
-    "ApisApi.getApi"
+    "ApisApi.getApi",
+    "CloneApi.cloneMicroApp"
   ]
 }
