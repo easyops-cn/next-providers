@@ -9,6 +9,7 @@
     "AlertRuleApi.updateAlertRule",
     "AlertRuleApi.disableAlertRule",
     "AppHealthApi.getAppHealthConfigV2",
-    "InfluxdbApi.influxdbProxy"
+    "InfluxdbApi.influxdbProxy",
+    "AlertDowntimeApi.getAllAlertDowntime"
   ]
 }

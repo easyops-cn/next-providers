@@ -49,7 +49,7 @@ export const AlertRuleApi_getAlertRuleList = (
   params: AlertRuleApi_GetAlertRuleListRequestParams,
   options?: HttpOptions
 ): Promise<AlertRuleApi_GetAlertRuleListResponseBody> =>
-  /**! @contract easyops.api.monitor.alert_rule.GetAlertRuleList */ http.get<AlertRuleApi_GetAlertRuleListResponseBody>(
+  /**! @contract easyops.api.monitor.alert_rule.GetAlertRuleList@1.0.0 */ http.get<AlertRuleApi_GetAlertRuleListResponseBody>(
     "api/gateway/monitor.alert_rule.GetAlertRuleList/api/v3/alert_rule/config",
     { ...options, params }
   );

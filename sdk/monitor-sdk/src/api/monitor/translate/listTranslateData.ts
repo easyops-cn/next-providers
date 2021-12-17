@@ -33,7 +33,7 @@ export const TranslateApi_listTranslateData = (
   params: TranslateApi_ListTranslateDataRequestParams,
   options?: HttpOptions
 ): Promise<TranslateApi_ListTranslateDataResponseBody> =>
-  /**! @contract easyops.api.monitor.translate.ListTranslateData */ http.get<TranslateApi_ListTranslateDataResponseBody>(
+  /**! @contract easyops.api.monitor.translate.ListTranslateData@1.0.0 */ http.get<TranslateApi_ListTranslateDataResponseBody>(
     "api/gateway/monitor.translate.ListTranslateData/api/v2/translate/storm/data",
     { ...options, params }
   );

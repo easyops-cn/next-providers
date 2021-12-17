@@ -20,7 +20,7 @@ export const AlertRuleApi_detailAlertRule = (
   id: string | number,
   options?: HttpOptions
 ): Promise<AlertRuleApi_DetailAlertRuleResponseBody> =>
-  /**! @contract easyops.api.monitor.alert_rule.DetailAlertRule */ http.get<AlertRuleApi_DetailAlertRuleResponseBody>(
+  /**! @contract easyops.api.monitor.alert_rule.DetailAlertRule@1.0.0 */ http.get<AlertRuleApi_DetailAlertRuleResponseBody>(
     `api/gateway/monitor.alert_rule.DetailAlertRule/api/v3/alert_rule/config/${id}`,
     options
   );

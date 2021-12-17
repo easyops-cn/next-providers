@@ -22,7 +22,7 @@ export const DataNameApi_createMetrics = (
   data: DataNameApi_CreateMetricsRequestBody,
   options?: HttpOptions
 ): Promise<DataNameApi_CreateMetricsResponseBody> =>
-  /**! @contract easyops.api.monitor.data_name.CreateMetrics */ http.post<DataNameApi_CreateMetricsResponseBody>(
+  /**! @contract easyops.api.monitor.data_name.CreateMetrics@1.0.0 */ http.post<DataNameApi_CreateMetricsResponseBody>(
     "api/gateway/monitor.data_name.CreateMetrics/api/v1/collector/general_config",
     data,
     options

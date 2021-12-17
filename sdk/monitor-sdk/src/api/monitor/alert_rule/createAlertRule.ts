@@ -22,7 +22,7 @@ export const AlertRuleApi_createAlertRule = (
   data: AlertRuleApi_CreateAlertRuleRequestBody,
   options?: HttpOptions
 ): Promise<AlertRuleApi_CreateAlertRuleResponseBody> =>
-  /**! @contract easyops.api.monitor.alert_rule.CreateAlertRule */ http.post<AlertRuleApi_CreateAlertRuleResponseBody>(
+  /**! @contract easyops.api.monitor.alert_rule.CreateAlertRule@1.0.0 */ http.post<AlertRuleApi_CreateAlertRuleResponseBody>(
     "api/gateway/monitor.alert_rule.CreateAlertRule/api/v3/alert_rule/config",
     data,
     options

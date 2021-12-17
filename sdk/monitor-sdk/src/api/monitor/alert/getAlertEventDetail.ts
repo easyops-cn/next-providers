@@ -40,7 +40,7 @@ export const AlertApi_getAlertEventDetail = (
   params: AlertApi_GetAlertEventDetailRequestParams,
   options?: HttpOptions
 ): Promise<AlertApi_GetAlertEventDetailResponseBody> =>
-  /**! @contract easyops.api.monitor.alert.GetAlertEventDetail */ http.get<AlertApi_GetAlertEventDetailResponseBody>(
+  /**! @contract easyops.api.monitor.alert.GetAlertEventDetail@1.0.0 */ http.get<AlertApi_GetAlertEventDetailResponseBody>(
     "api/gateway/monitor.alert.GetAlertEventDetail/api/v1/alert",
     { ...options, params }
   );

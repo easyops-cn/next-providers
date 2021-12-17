@@ -34,7 +34,7 @@ export const AlertDowntimeApi_getAllAlertDowntime = (
   params: AlertDowntimeApi_GetAllAlertDowntimeRequestParams,
   options?: HttpOptions
 ): Promise<AlertDowntimeApi_GetAllAlertDowntimeResponseBody> =>
-  /**! @contract easyops.api.monitor.alert_downtime.GetAllAlertDowntime */ http.get<AlertDowntimeApi_GetAllAlertDowntimeResponseBody>(
+  /**! @contract easyops.api.monitor.alert_downtime.GetAllAlertDowntime@1.0.0 */ http.get<AlertDowntimeApi_GetAllAlertDowntimeResponseBody>(
     "api/gateway/monitor.alert_downtime.GetAllAlertDowntime/api/v1/alert_downtime/config",
     { ...options, params }
   );

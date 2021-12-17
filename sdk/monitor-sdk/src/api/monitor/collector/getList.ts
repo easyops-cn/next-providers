@@ -71,7 +71,7 @@ export const CollectorApi_getList = (
   params: CollectorApi_GetListRequestParams,
   options?: HttpOptions
 ): Promise<CollectorApi_GetListResponseBody> =>
-  /**! @contract easyops.api.monitor.collector.GetList */ http.get<CollectorApi_GetListResponseBody>(
+  /**! @contract easyops.api.monitor.collector.GetList@1.0.0 */ http.get<CollectorApi_GetListResponseBody>(
     `api/gateway/monitor.collector.GetList/api/v1/collector/list/${table}`,
     { ...options, params }
   );
