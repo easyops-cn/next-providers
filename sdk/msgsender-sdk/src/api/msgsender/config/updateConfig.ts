@@ -18,7 +18,7 @@ export const ConfigApi_updateConfig = (
   data: ConfigApi_UpdateConfigRequestBody,
   options?: HttpOptions
 ): Promise<ConfigApi_UpdateConfigResponseBody> =>
-  /**! @contract easyops.api.msgsender.config.UpdateConfig */ http.put<ConfigApi_UpdateConfigResponseBody>(
+  /**! @contract easyops.api.msgsender.config.UpdateConfig@1.0.0 */ http.put<ConfigApi_UpdateConfigResponseBody>(
     `api/gateway/msgsender.config.UpdateConfig/api/v1/message_sender/configs/${instanceId}`,
     data,
     options

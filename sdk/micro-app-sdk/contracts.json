@@ -2140,47 +2140,6 @@
           }
         ]
       }
-    },
-    {
-      "contract": "micro_app.template.CloneMicroApp",
-      "name": "CloneMicroApp",
-      "version": "1.0.0",
-      "description": "克隆微应用",
-      "endpoint": {
-        "method": "POST",
-        "uri": "/api/v1/clone_micro_app/:originAppInstanceId"
-      },
-      "request": {
-        "type": "object",
-        "fields": [
-          {
-            "name": "newAppId",
-            "type": "string",
-            "description": "appId"
-          },
-          {
-            "name": "newAppName",
-            "type": "string",
-            "description": "appName"
-          },
-          {
-            "name": "newAppIcon",
-            "type": "string",
-            "description": "appIcon"
-          },
-          {
-            "name": "description",
-            "type": "string",
-            "description": "app描述信息"
-          },
-          {
-            "name": "originAppInstanceId",
-            "type": "string",
-            "description": "要克隆的当前app的instanceId"
-          }
-        ]
-      },
-      "response": null
     }
   ]
 }

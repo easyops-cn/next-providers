@@ -12,7 +12,6 @@ export * from "./api/micro_app/permission";
 export * from "./api/micro_app/report";
 export * from "./api/micro_app/resource";
 export * from "./api/micro_app/sitemap";
-export * from "./api/micro_app/template";
 export * as MicroAppModels from "./model/micro_app";
 export * as CmdbModels from "./model/cmdb";
 export * as CommonModels from "./model/common";

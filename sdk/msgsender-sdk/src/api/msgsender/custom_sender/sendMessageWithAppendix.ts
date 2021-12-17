@@ -18,7 +18,7 @@ export const CustomSenderApi_sendMessageWithAppendix = (
   data: CustomSenderApi_SendMessageWithAppendixRequestBody,
   options?: HttpOptions
 ): Promise<CustomSenderApi_SendMessageWithAppendixResponseBody> => {
-  /**! @contract easyops.api.msgsender.custom_sender.SendMessageWithAppendix */ const _formData =
+  /**! @contract easyops.api.msgsender.custom_sender.SendMessageWithAppendix@1.0.0 */ const _formData =
     new FormData();
   for (const [key, value] of Object.entries(data)) {
     if (Array.isArray(value)) {

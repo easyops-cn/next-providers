@@ -4,7 +4,7 @@ export default rollupFactory({
   umdName: "ObjectStoreSdk",
   copyFiles: [
     {
-      src: "contract.json",
+      src: "contracts.json",
       dest: "dist",
     },
   ],

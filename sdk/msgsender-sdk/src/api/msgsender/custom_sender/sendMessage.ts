@@ -17,7 +17,7 @@ export const CustomSenderApi_sendMessage = (
   data: CustomSenderApi_SendMessageRequestBody,
   options?: HttpOptions
 ): Promise<CustomSenderApi_SendMessageResponseBody> =>
-  /**! @contract easyops.api.msgsender.custom_sender.SendMessage */ http.post<CustomSenderApi_SendMessageResponseBody>(
+  /**! @contract easyops.api.msgsender.custom_sender.SendMessage@1.0.0 */ http.post<CustomSenderApi_SendMessageResponseBody>(
     "api/gateway/msgsender.custom_sender.SendMessage/api/v1/message_sender/send_message",
     data,
     options
