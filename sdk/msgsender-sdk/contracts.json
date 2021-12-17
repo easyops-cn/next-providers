@@ -1,0 +1,378 @@
+{
+  "name": "msgsender",
+  "contracts": [
+    {
+      "contract": "msgsender.config.CreateConfig",
+      "name": "CreateConfig",
+      "version": "1.0.0",
+      "description": "创建通知配置",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/message_sender/configs"
+      },
+      "import": [
+        "easyops/model/monitor/easy_tornado_response",
+        "easyops/model/msgsender/message_config"
+      ],
+      "request": {
+        "type": "MessageConfig",
+        "required": [
+          "MessageConfig.name",
+          "MessageConfig.cmdbUserObjectColName",
+          "MessageConfig.pluginName"
+        ]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "ref": "EasyTornadoCommonResponse.*"
+          },
+          {
+            "name": "data",
+            "type": "MessageConfig",
+            "description": "通知配置"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "msgsender.config.DeleteConfig",
+      "name": "DeleteConfig",
+      "version": "1.0.0",
+      "description": "删除通知配置",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/message_sender/configs/:instanceId"
+      },
+      "import": [
+        "easyops/model/monitor/easy_tornado_response",
+        "easyops/model/msgsender/message_config"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MessageConfig.instanceId"
+          }
+        ]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "ref": "EasyTornadoCommonResponse.*"
+          },
+          {
+            "name": "data",
+            "type": "map",
+            "description": "data"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "msgsender.config.GetConfig",
+      "name": "GetConfig",
+      "version": "1.0.0",
+      "description": "获取通知配置",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/message_sender/configs/:instanceId"
+      },
+      "import": [
+        "easyops/model/monitor/easy_tornado_response",
+        "easyops/model/msgsender/message_config"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MessageConfig.instanceId"
+          }
+        ],
+        "required": ["instanceId"]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "ref": "EasyTornadoCommonResponse.*"
+          },
+          {
+            "name": "data",
+            "type": "MessageConfig",
+            "description": "通知配置"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "msgsender.config.ListConfig",
+      "name": "ListConfig",
+      "version": "1.0.0",
+      "description": "获取通知配置列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/message_sender/configs"
+      },
+      "import": [
+        "easyops/model/monitor/easy_tornado_response",
+        "easyops/model/msgsender/message_config"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "每页大小"
+          }
+        ],
+        "required": ["page", "page_size"]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "ref": "EasyTornadoCommonResponse.*"
+          },
+          {
+            "name": "data",
+            "type": "object",
+            "description": "通知配置",
+            "fields": [
+              {
+                "name": "list",
+                "type": "MessageConfig[]",
+                "description": "配置列表"
+              },
+              {
+                "name": "total",
+                "type": "int",
+                "description": "总数"
+              },
+              {
+                "name": "page",
+                "type": "page",
+                "description": "页码"
+              },
+              {
+                "name": "pageSize",
+                "type": "page_size",
+                "description": "页大小"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "msgsender.config.UpdateConfig",
+      "name": "UpdateConfig",
+      "version": "1.0.0",
+      "description": "更新通知配置",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/message_sender/configs/:instanceId",
+        "ext_fields": [
+          {
+            "name": "instance",
+            "source": "body"
+          }
+        ]
+      },
+      "import": [
+        "easyops/model/monitor/easy_tornado_response",
+        "easyops/model/msgsender/message_config"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MessageConfig.instanceId"
+          },
+          {
+            "name": "instance",
+            "type": "MessageConfig",
+            "description": "要更新的实例"
+          }
+        ]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "ref": "EasyTornadoCommonResponse.*"
+          },
+          {
+            "name": "data",
+            "type": "MessageConfig",
+            "description": "通知配置"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "msgsender.custom_sender.ListSupportInform",
+      "name": "ListSupportInform",
+      "version": "1.0.0",
+      "description": "获取消息通道目前支持的通知方式",
+      "endpoint": {
+        "method": "get",
+        "uri": "/api/v1/message_sender/method"
+      },
+      "import": ["easyops/model/monitor/easy_tornado_page_response"],
+      "request": null,
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "ref": "EasyTornadoCommonPageResponse.*"
+          },
+          {
+            "name": "data",
+            "description": "数据内容",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "col_of_cmdb_user_object",
+                "type": "string",
+                "description": "关联的cmdb用户对象字段"
+              },
+              {
+                "name": "enable",
+                "type": "bool",
+                "description": "是否启用"
+              },
+              {
+                "name": "plugin_name",
+                "type": "string",
+                "description": "通知插件名称"
+              },
+              {
+                "name": "description",
+                "type": "string",
+                "description": "通知方式描述"
+              },
+              {
+                "name": "inform_type",
+                "type": "string",
+                "description": "通知方式名称"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "msgsender.custom_sender.SendMessage",
+      "name": "SendMessage",
+      "version": "1.0.0",
+      "description": "发送通知消息",
+      "endpoint": {
+        "method": "post",
+        "uri": "/api/v1/message_sender/send_message"
+      },
+      "import": [
+        "easyops/model/msgsender/send_message_request",
+        "easyops/model/monitor/easy_tornado_response"
+      ],
+      "request": {
+        "type": "SendMessageRequest"
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "ref": "EasyTornadoCommonResponse.*"
+          },
+          {
+            "name": "data",
+            "type": "map",
+            "description": "请求结果数据 e.g.: {\"email\": [\"test@qq.com\"], \"phone\": [\"test@qq.com\"]}"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "msgsender.custom_sender.SendMessageForAlert",
+      "name": "SendMessageForAlert",
+      "version": "1.0.0",
+      "description": "处理告警通知消息",
+      "endpoint": {
+        "method": "post",
+        "uri": "/api/v1/alert_adapter/receive"
+      },
+      "import": [
+        "easyops/model/msgsender/send_message_for_alert_request",
+        "easyops/model/monitor/easy_tornado_response"
+      ],
+      "request": {
+        "type": "SendMessageForAlertRequest",
+        "required": ["SendMessageForAlertRequest.data"]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "ref": "EasyTornadoCommonResponse.*"
+          },
+          {
+            "name": "data",
+            "type": "map",
+            "description": "请求结果数据 e.g.: {\"email\": [\"test@qq.com\"], \"phone\": [\"test@qq.com\"]}"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "msgsender.custom_sender.SendMessageWithAppendix",
+      "name": "SendMessageWithAppendix",
+      "version": "1.0.0",
+      "description": "处理带附件的通知消息",
+      "endpoint": {
+        "method": "post",
+        "uri": "/api/v1/message_sender/mail_with_appendix"
+      },
+      "import": [
+        "easyops/model/msgsender/send_message_with_appendix_request",
+        "easyops/model/monitor/easy_tornado_response"
+      ],
+      "request": {
+        "type": "SendMessageWithAppendixRequest",
+        "required": [
+          "SendMessageWithAppendixRequest.data",
+          "SendMessageWithAppendixRequest.files"
+        ]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "ref": "EasyTornadoCommonResponse.*"
+          },
+          {
+            "name": "data",
+            "type": "map",
+            "description": "请求结果数据 e.g.: {\"email\": [\"test@qq.com\"], \"phone\": [\"test@qq.com\"]}"
+          }
+        ]
+      }
+    }
+  ]
+}

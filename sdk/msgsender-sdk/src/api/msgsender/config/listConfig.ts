@@ -21,7 +21,7 @@ export const ConfigApi_listConfig = (
   params: ConfigApi_ListConfigRequestParams,
   options?: HttpOptions
 ): Promise<ConfigApi_ListConfigResponseBody> =>
-  /**! @contract easyops.api.msgsender.config.ListConfig */ http.get<ConfigApi_ListConfigResponseBody>(
+  /**! @contract easyops.api.msgsender.config.ListConfig@1.0.0 */ http.get<ConfigApi_ListConfigResponseBody>(
     "api/gateway/msgsender.config.ListConfig/api/v1/message_sender/configs",
     { ...options, params }
   );
