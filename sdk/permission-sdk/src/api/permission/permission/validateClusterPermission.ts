@@ -28,7 +28,7 @@ export const PermissionApi_validateClusterPermission = async (
   params: PermissionApi_ValidateClusterPermissionRequestParams,
   options?: HttpOptions
 ): Promise<PermissionApi_ValidateClusterPermissionResponseBody> =>
-  /**! @contract easyops.api.permission.permission.ValidateClusterPermission */ (
+  /**! @contract easyops.api.permission.permission.ValidateClusterPermission@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<PermissionApi_ValidateClusterPermissionResponseBody>
     >(

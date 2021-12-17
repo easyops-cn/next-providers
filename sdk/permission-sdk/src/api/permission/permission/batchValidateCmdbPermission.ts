@@ -49,7 +49,7 @@ export const PermissionApi_batchValidateCmdbPermission = async (
   params: PermissionApi_BatchValidateCmdbPermissionRequestParams,
   options?: HttpOptions
 ): Promise<PermissionApi_BatchValidateCmdbPermissionResponseBody> =>
-  /**! @contract easyops.api.permission.permission.BatchValidateCmdbPermission */ (
+  /**! @contract easyops.api.permission.permission.BatchValidateCmdbPermission@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<PermissionApi_BatchValidateCmdbPermissionResponseBody>
     >(

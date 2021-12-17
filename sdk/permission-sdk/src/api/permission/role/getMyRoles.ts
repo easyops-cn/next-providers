@@ -22,7 +22,7 @@ export interface RoleApi_GetMyRolesResponseBody {
 export const RoleApi_getMyRoles = async (
   options?: HttpOptions
 ): Promise<RoleApi_GetMyRolesResponseBody> =>
-  /**! @contract easyops.api.permission.role.GetMyRoles */ (
+  /**! @contract easyops.api.permission.role.GetMyRoles@1.0.0 */ (
     await http.get<ResponseBodyWrapper<RoleApi_GetMyRolesResponseBody>>(
       "api/gateway/permission.role.GetMyRoles/api/v1/permission_role/get-my-roles",
       options

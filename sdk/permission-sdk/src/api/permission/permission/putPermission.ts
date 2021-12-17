@@ -19,7 +19,7 @@ export const PermissionApi_putPermission = async (
   data: PermissionApi_PutPermissionRequestBody,
   options?: HttpOptions
 ): Promise<PermissionApi_PutPermissionResponseBody> =>
-  /**! @contract easyops.api.permission.permission.PutPermission */ (
+  /**! @contract easyops.api.permission.permission.PutPermission@1.0.0 */ (
     await http.put<
       ResponseBodyWrapper<PermissionApi_PutPermissionResponseBody>
     >(

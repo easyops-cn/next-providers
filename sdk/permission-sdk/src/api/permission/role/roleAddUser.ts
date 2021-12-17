@@ -20,7 +20,7 @@ export const RoleApi_roleAddUser = async (
   data: RoleApi_RoleAddUserRequestBody,
   options?: HttpOptions
 ): Promise<RoleApi_RoleAddUserResponseBody> =>
-  /**! @contract easyops.api.permission.role.RoleAddUser */ (
+  /**! @contract easyops.api.permission.role.RoleAddUser@1.0.0 */ (
     await http.put<ResponseBodyWrapper<RoleApi_RoleAddUserResponseBody>>(
       `api/gateway/permission.role.RoleAddUser/api/v1/permission_role/role_add_user/${id}`,
       data,

@@ -23,7 +23,7 @@ export const RoleApi_roleChangePermission = async (
   data: RoleApi_RoleChangePermissionRequestBody,
   options?: HttpOptions
 ): Promise<RoleApi_RoleChangePermissionResponseBody> =>
-  /**! @contract easyops.api.permission.role.RoleChangePermission */ (
+  /**! @contract easyops.api.permission.role.RoleChangePermission@1.0.0 */ (
     await http.put<
       ResponseBodyWrapper<RoleApi_RoleChangePermissionResponseBody>
     >(

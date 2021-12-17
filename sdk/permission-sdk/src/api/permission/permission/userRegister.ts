@@ -24,7 +24,7 @@ export const PermissionApi_userRegister = (
   data: PermissionApi_UserRegisterRequestBody,
   options?: HttpOptions
 ): Promise<PermissionApi_UserRegisterResponseBody> =>
-  /**! @contract easyops.api.permission.permission.UserRegister */ http.post<PermissionApi_UserRegisterResponseBody>(
+  /**! @contract easyops.api.permission.permission.UserRegister@1.0.0 */ http.post<PermissionApi_UserRegisterResponseBody>(
     "api/gateway/permission.permission.UserRegister/api/v2/permission/register_user",
     data,
     options

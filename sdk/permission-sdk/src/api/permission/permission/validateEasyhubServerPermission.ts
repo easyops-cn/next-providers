@@ -25,7 +25,7 @@ export const PermissionApi_validateEasyhubServerPermission = async (
   params: PermissionApi_ValidateEasyhubServerPermissionRequestParams,
   options?: HttpOptions
 ): Promise<PermissionApi_ValidateEasyhubServerPermissionResponseBody> =>
-  /**! @contract easyops.api.permission.permission.ValidateEasyhubServerPermission */ (
+  /**! @contract easyops.api.permission.permission.ValidateEasyhubServerPermission@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<PermissionApi_ValidateEasyhubServerPermissionResponseBody>
     >(

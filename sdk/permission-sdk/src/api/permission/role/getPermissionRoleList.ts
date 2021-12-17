@@ -44,7 +44,7 @@ export const RoleApi_getPermissionRoleList = (
   params: RoleApi_GetPermissionRoleListRequestParams,
   options?: HttpOptions
 ): Promise<RoleApi_GetPermissionRoleListResponseBody> =>
-  /**! @contract easyops.api.permission.role.GetPermissionRoleList */ http.get<RoleApi_GetPermissionRoleListResponseBody>(
+  /**! @contract easyops.api.permission.role.GetPermissionRoleList@1.0.0 */ http.get<RoleApi_GetPermissionRoleListResponseBody>(
     "api/gateway/permission.role.GetPermissionRoleList/api/v1/permission_role/config",
     { ...options, params }
   );

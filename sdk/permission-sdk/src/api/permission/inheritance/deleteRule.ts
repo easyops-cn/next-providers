@@ -14,7 +14,7 @@ export const InheritanceApi_deleteRule = async (
   instanceId: string | number,
   options?: HttpOptions
 ): Promise<InheritanceApi_DeleteRuleResponseBody> =>
-  /**! @contract easyops.api.permission.inheritance.DeleteRule */ (
+  /**! @contract easyops.api.permission.inheritance.DeleteRule@1.0.0 */ (
     await http.delete<
       ResponseBodyWrapper<InheritanceApi_DeleteRuleResponseBody>
     >(

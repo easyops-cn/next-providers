@@ -14,7 +14,7 @@ export const MenuApi_getUserForbiddenMenu = async (
   username: string | number,
   options?: HttpOptions
 ): Promise<MenuApi_GetUserForbiddenMenuResponseBody> =>
-  /**! @contract easyops.api.permission.menu.GetUserForbiddenMenu */ (
+  /**! @contract easyops.api.permission.menu.GetUserForbiddenMenu@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<MenuApi_GetUserForbiddenMenuResponseBody>
     >(

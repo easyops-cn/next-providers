@@ -23,7 +23,7 @@ export const PermissionApi_savePermission = (
   data: PermissionApi_SavePermissionRequestBody,
   options?: HttpOptions
 ): Promise<PermissionApi_SavePermissionResponseBody> =>
-  /**! @contract easyops.api.permission.permission.SavePermission */ http.post<PermissionApi_SavePermissionResponseBody>(
+  /**! @contract easyops.api.permission.permission.SavePermission@1.0.0 */ http.post<PermissionApi_SavePermissionResponseBody>(
     "api/gateway/permission.permission.SavePermission/api/v1/permission/save",
     data,
     options

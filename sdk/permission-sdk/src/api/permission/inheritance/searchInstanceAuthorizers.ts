@@ -38,7 +38,7 @@ export const InheritanceApi_searchInstanceAuthorizers = async (
   data: InheritanceApi_SearchInstanceAuthorizersRequestBody,
   options?: HttpOptions
 ): Promise<InheritanceApi_SearchInstanceAuthorizersResponseBody> =>
-  /**! @contract easyops.api.permission.inheritance.SearchInstanceAuthorizers */ (
+  /**! @contract easyops.api.permission.inheritance.SearchInstanceAuthorizers@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<InheritanceApi_SearchInstanceAuthorizersResponseBody>
     >(

@@ -32,7 +32,7 @@ export const PermissionApi_permissionDeniedReturnSuccessValidateCmdbPermission =
     params: PermissionApi_PermissionDeniedReturnSuccessValidateCmdbPermissionRequestParams,
     options?: HttpOptions
   ): Promise<PermissionApi_PermissionDeniedReturnSuccessValidateCmdbPermissionResponseBody> =>
-    /**! @contract easyops.api.permission.permission.PermissionDeniedReturnSuccessValidateCmdbPermission */ (
+    /**! @contract easyops.api.permission.permission.PermissionDeniedReturnSuccessValidateCmdbPermission@1.0.0 */ (
       await http.get<
         ResponseBodyWrapper<PermissionApi_PermissionDeniedReturnSuccessValidateCmdbPermissionResponseBody>
       >(

@@ -50,7 +50,7 @@ export const AuditApi_listChangeHistory = async (
   data: AuditApi_ListChangeHistoryRequestBody,
   options?: HttpOptions
 ): Promise<AuditApi_ListChangeHistoryResponseBody> =>
-  /**! @contract easyops.api.permission.audit.ListChangeHistory */ (
+  /**! @contract easyops.api.permission.audit.ListChangeHistory@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<AuditApi_ListChangeHistoryResponseBody>
     >(

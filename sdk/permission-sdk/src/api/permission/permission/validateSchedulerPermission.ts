@@ -34,7 +34,7 @@ export const PermissionApi_validateSchedulerPermission = async (
   params: PermissionApi_ValidateSchedulerPermissionRequestParams,
   options?: HttpOptions
 ): Promise<PermissionApi_ValidateSchedulerPermissionResponseBody> =>
-  /**! @contract easyops.api.permission.permission.ValidateSchedulerPermission */ (
+  /**! @contract easyops.api.permission.permission.ValidateSchedulerPermission@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<PermissionApi_ValidateSchedulerPermissionResponseBody>
     >(

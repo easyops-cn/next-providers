@@ -42,7 +42,7 @@ export const InheritanceApi_searchRule = async (
   data: InheritanceApi_SearchRuleRequestBody,
   options?: HttpOptions
 ): Promise<InheritanceApi_SearchRuleResponseBody> =>
-  /**! @contract easyops.api.permission.inheritance.SearchRule */ (
+  /**! @contract easyops.api.permission.inheritance.SearchRule@1.1.0 */ (
     await http.post<ResponseBodyWrapper<InheritanceApi_SearchRuleResponseBody>>(
       "api/gateway/permission.inheritance.SearchRule/api/v1/inherit/rule/_search",
       data,

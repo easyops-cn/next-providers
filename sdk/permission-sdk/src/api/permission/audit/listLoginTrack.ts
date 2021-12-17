@@ -50,7 +50,7 @@ export const AuditApi_listLoginTrack = async (
   data: AuditApi_ListLoginTrackRequestBody,
   options?: HttpOptions
 ): Promise<AuditApi_ListLoginTrackResponseBody> =>
-  /**! @contract easyops.api.permission.audit.ListLoginTrack */ (
+  /**! @contract easyops.api.permission.audit.ListLoginTrack@1.0.0 */ (
     await http.post<ResponseBodyWrapper<AuditApi_ListLoginTrackResponseBody>>(
       "api/gateway/permission.audit.ListLoginTrack/api/v1/audit/login_track",
       data,

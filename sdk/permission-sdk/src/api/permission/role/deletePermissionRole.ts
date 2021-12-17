@@ -8,7 +8,7 @@ export const RoleApi_deletePermissionRole = (
   id: string | number,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.permission.role.DeletePermissionRole */ http.delete<void>(
+  /**! @contract easyops.api.permission.role.DeletePermissionRole@1.0.0 */ http.delete<void>(
     `api/gateway/permission.role.DeletePermissionRole/api/v1/permission_role/config/${id}`,
     options
   );

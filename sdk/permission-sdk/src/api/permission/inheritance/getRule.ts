@@ -12,7 +12,7 @@ export const InheritanceApi_getRule = async (
   instanceId: string | number,
   options?: HttpOptions
 ): Promise<InheritanceApi_GetRuleResponseBody> =>
-  /**! @contract easyops.api.permission.inheritance.GetRule */ (
+  /**! @contract easyops.api.permission.inheritance.GetRule@1.1.0 */ (
     await http.get<ResponseBodyWrapper<InheritanceApi_GetRuleResponseBody>>(
       `api/gateway/permission.inheritance.GetRule/api/v1/inherit/rule/${instanceId}`,
       options

@@ -23,7 +23,7 @@ export const RoleApi_roleAddUserOrGroup = async (
   data: RoleApi_RoleAddUserOrGroupRequestBody,
   options?: HttpOptions
 ): Promise<RoleApi_RoleAddUserOrGroupResponseBody> =>
-  /**! @contract easyops.api.permission.role.RoleAddUserOrGroup */ (
+  /**! @contract easyops.api.permission.role.RoleAddUserOrGroup@1.0.0 */ (
     await http.put<ResponseBodyWrapper<RoleApi_RoleAddUserOrGroupResponseBody>>(
       `api/gateway/permission.role.RoleAddUserOrGroup/api/v1/permission_role/role_add_user_or_group/${id}`,
       data,

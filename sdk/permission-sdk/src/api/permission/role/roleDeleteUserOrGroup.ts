@@ -23,7 +23,7 @@ export const RoleApi_roleDeleteUserOrGroup = async (
   data: RoleApi_RoleDeleteUserOrGroupRequestBody,
   options?: HttpOptions
 ): Promise<RoleApi_RoleDeleteUserOrGroupResponseBody> =>
-  /**! @contract easyops.api.permission.role.RoleDeleteUserOrGroup */ (
+  /**! @contract easyops.api.permission.role.RoleDeleteUserOrGroup@1.0.0 */ (
     await http.put<
       ResponseBodyWrapper<RoleApi_RoleDeleteUserOrGroupResponseBody>
     >(

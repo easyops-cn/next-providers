@@ -30,7 +30,7 @@ export const PermissionApi_validatePermissionSystemPermission = (
   params: PermissionApi_ValidatePermissionSystemPermissionRequestParams,
   options?: HttpOptions
 ): Promise<PermissionApi_ValidatePermissionSystemPermissionResponseBody> =>
-  /**! @contract easyops.api.permission.permission.ValidatePermissionSystemPermission */ http.get<PermissionApi_ValidatePermissionSystemPermissionResponseBody>(
+  /**! @contract easyops.api.permission.permission.ValidatePermissionSystemPermission@1.0.0 */ http.get<PermissionApi_ValidatePermissionSystemPermissionResponseBody>(
     "api/gateway/permission.permission.ValidatePermissionSystemPermission/api/v1/permission/validate",
     { ...options, params }
   );

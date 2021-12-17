@@ -30,7 +30,7 @@ export const MenuApi_listLegacyModule = async (
   params: MenuApi_ListLegacyModuleRequestParams,
   options?: HttpOptions
 ): Promise<MenuApi_ListLegacyModuleResponseBody> =>
-  /**! @contract easyops.api.permission.menu.ListLegacyModule */ (
+  /**! @contract easyops.api.permission.menu.ListLegacyModule@1.0.0 */ (
     await http.get<ResponseBodyWrapper<MenuApi_ListLegacyModuleResponseBody>>(
       "api/gateway/permission.menu.ListLegacyModule/api/v1/permission/module/legacy",
       { ...options, params }

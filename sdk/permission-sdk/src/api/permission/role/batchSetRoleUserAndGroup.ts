@@ -19,7 +19,7 @@ export const RoleApi_batchSetRoleUserAndGroup = async (
   data: RoleApi_BatchSetRoleUserAndGroupRequestBody,
   options?: HttpOptions
 ): Promise<RoleApi_BatchSetRoleUserAndGroupResponseBody> =>
-  /**! @contract easyops.api.permission.role.BatchSetRoleUserAndGroup */ (
+  /**! @contract easyops.api.permission.role.BatchSetRoleUserAndGroup@1.0.0 */ (
     await http.put<
       ResponseBodyWrapper<RoleApi_BatchSetRoleUserAndGroupResponseBody>
     >(

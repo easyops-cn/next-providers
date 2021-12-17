@@ -55,7 +55,7 @@ export const PermissionApi_getPermissionList = (
   params: PermissionApi_GetPermissionListRequestParams,
   options?: HttpOptions
 ): Promise<PermissionApi_GetPermissionListResponseBody> =>
-  /**! @contract easyops.api.permission.permission.GetPermissionList */ http.get<PermissionApi_GetPermissionListResponseBody>(
+  /**! @contract easyops.api.permission.permission.GetPermissionList@1.1.0 */ http.get<PermissionApi_GetPermissionListResponseBody>(
     "api/gateway/permission.permission.GetPermissionList/api/v1/permission",
     { ...options, params }
   );

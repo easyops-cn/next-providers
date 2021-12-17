@@ -27,7 +27,7 @@ export const InheritanceApi_getInstanceAuthorizersFormat = async (
   params: InheritanceApi_GetInstanceAuthorizersFormatRequestParams,
   options?: HttpOptions
 ): Promise<InheritanceApi_GetInstanceAuthorizersFormatResponseBody> =>
-  /**! @contract easyops.api.permission.inheritance.GetInstanceAuthorizersFormat */ (
+  /**! @contract easyops.api.permission.inheritance.GetInstanceAuthorizersFormat@1.2.0 */ (
     await http.get<
       ResponseBodyWrapper<InheritanceApi_GetInstanceAuthorizersFormatResponseBody>
     >(
