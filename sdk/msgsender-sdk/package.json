@@ -1,6 +1,6 @@
 {
   "name": "@next-sdk/msgsender-sdk",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "description": "SDK for Msgsender",
   "homepage": "https://github.com/easyops-cn/next-providers/tree/master/sdk/msgsender-sdk",
   "license": "GPL-3.0",
