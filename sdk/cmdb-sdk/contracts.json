@@ -3149,10 +3149,6 @@
     },
     {
       "contract": "cmdb.history.HistoryExportExcel",
-      "category": {
-        "en": "CMDB Object",
-        "zh": "CMDB 模型"
-      },
       "name": "HistoryExportExcel",
       "version": "1.1.0",
       "description": "变更记录导出excel接口",
@@ -3231,10 +3227,6 @@
     },
     {
       "contract": "cmdb.history.RollbackInstance",
-      "category": {
-        "en": "CMDB Object",
-        "zh": "CMDB 模型"
-      },
       "name": "RollbackInstance",
       "version": "1.0.0",
       "description": "实例回滚",
@@ -3274,10 +3266,6 @@
     },
     {
       "contract": "cmdb.index.CreateIndex",
-      "category": {
-        "en": "CMDB Object",
-        "zh": "CMDB 模型"
-      },
       "name": "CreateIndex",
       "version": "1.0.0",
       "description": "创建索引",
@@ -3319,10 +3307,6 @@
     },
     {
       "contract": "cmdb.index.DeleteIndex",
-      "category": {
-        "en": "CMDB Object",
-        "zh": "CMDB 模型"
-      },
       "name": "DeleteIndex",
       "version": "1.0.0",
       "description": "删除索引",
@@ -3350,10 +3334,6 @@
     },
     {
       "contract": "cmdb.initialization.InitDatabase",
-      "category": {
-        "en": "CMDB Object",
-        "zh": "CMDB 模型"
-      },
       "name": "InitDatabase",
       "version": "1.0.0",
       "description": "初始化DB[内部]",
@@ -3376,10 +3356,6 @@
     },
     {
       "contract": "cmdb.initialization.InitObjects",
-      "category": {
-        "en": "CMDB Object",
-        "zh": "CMDB 模型"
-      },
       "name": "InitObjects",
       "version": "1.0.0",
       "description": "初始化核心模型[内部]",
@@ -3402,10 +3378,6 @@
     },
     {
       "contract": "cmdb.initialization.InitRelations",
-      "category": {
-        "en": "CMDB Object",
-        "zh": "CMDB 模型"
-      },
       "name": "InitRelations",
       "version": "1.0.0",
       "description": "初始化核心模型关系[内部]",
@@ -6824,10 +6796,6 @@
     },
     {
       "contract": "cmdb.instance_archive.ActiveInstance",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "ActiveInstance",
       "version": "1.0.0",
       "description": "激活归档实例",
@@ -6855,10 +6823,6 @@
     },
     {
       "contract": "cmdb.instance_archive.ArchiveInstance",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "ArchiveInstance",
       "version": "1.0.0",
       "description": "归档实例",
@@ -6886,10 +6850,6 @@
     },
     {
       "contract": "cmdb.instance_archive.BatchArchiveInstance",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "BatchArchiveInstance",
       "version": "1.0.0",
       "description": "批量归档实例",
@@ -6917,10 +6877,6 @@
     },
     {
       "contract": "cmdb.instance_archive.BatchDeleteArchiveInstance",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "BatchDeleteArchiveInstance",
       "version": "1.0.0",
       "description": "批量删除归档实例",
@@ -6948,10 +6904,6 @@
     },
     {
       "contract": "cmdb.instance_archive.DeleteArchiveInstance",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "DeleteArchiveInstance",
       "version": "1.0.0",
       "description": "删除归档实例",
@@ -6979,10 +6931,6 @@
     },
     {
       "contract": "cmdb.instance_archive.ExportArchiveInstanceExcel",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "ExportArchiveInstanceExcel",
       "version": "1.0.0",
       "description": "归档实例导出excel",
@@ -7022,10 +6970,6 @@
     },
     {
       "contract": "cmdb.instance_archive.ListArchiveInstance",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "ListArchiveInstance",
       "version": "1.0.0",
       "description": "归档实例分页列表查询",
@@ -7092,10 +7036,6 @@
     },
     {
       "contract": "cmdb.instance_graph.TraverseGraph",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "TraverseGraph",
       "version": "1.0.0",
       "description": "图遍历查询",
@@ -7176,10 +7116,6 @@
     },
     {
       "contract": "cmdb.instance_graph.TraverseGraphCount",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "TraverseGraphCount",
       "version": "1.0.0",
       "description": "图遍历查询叶子节点个数统计",
@@ -7256,10 +7192,6 @@
     },
     {
       "contract": "cmdb.instance_graph.TraverseGraphV2",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "TraverseGraphV2",
       "version": "1.0.0",
       "description": "图遍历查询v2,",
@@ -7340,10 +7272,6 @@
     },
     {
       "contract": "cmdb.instance_path_search.FlattenSearchPath",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "FlattenSearchPath",
       "version": "1.0.0",
       "description": "平铺的关系查询[废弃]",
@@ -7403,10 +7331,6 @@
     },
     {
       "contract": "cmdb.instance_path_search.GroupSearchPath",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "GroupSearchPath",
       "version": "1.0.0",
       "description": "聚合的关系查询[废弃]",
@@ -7466,10 +7390,6 @@
     },
     {
       "contract": "cmdb.instance_path_search.PathSearchExportV3",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "PathSearchExportV3",
       "version": "1.0.0",
       "description": "实例路径查询v3导出excel",
@@ -7505,10 +7425,6 @@
     },
     {
       "contract": "cmdb.instance_path_search.PathSearchExportV4",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "PathSearchExportV4",
       "version": "1.0.0",
       "description": "实例路径查询v4导出excel",
@@ -7544,10 +7460,6 @@
     },
     {
       "contract": "cmdb.instance_path_search.PathSearchV3",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "PathSearchV3",
       "version": "1.0.0",
       "description": "实例路径查询v3",
@@ -7610,10 +7522,6 @@
     },
     {
       "contract": "cmdb.instance_path_search.PathSearchV4",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "PathSearchV4",
       "version": "1.0.0",
       "description": "实例路径查询v4",
@@ -7671,10 +7579,6 @@
     },
     {
       "contract": "cmdb.instance_relation.Append",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "Append",
       "version": "1.0.0",
       "description": "批量添加关系",
@@ -7706,10 +7610,6 @@
     },
     {
       "contract": "cmdb.instance_relation.CountRelationInstance",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "CountRelationInstance",
       "version": "1.0.0",
       "description": "统计关系实例数量",
@@ -7758,10 +7658,6 @@
     },
     {
       "contract": "cmdb.instance_relation.Discovery",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "Discovery",
       "version": "1.0.0",
       "description": "实例关系发现",
@@ -7852,10 +7748,6 @@
     },
     {
       "contract": "cmdb.instance_relation.DiscoveryV2",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "DiscoveryV2",
       "version": "1.0.0",
       "description": "实例关系发现V2(支持set关系)",
@@ -7999,10 +7891,6 @@
     },
     {
       "contract": "cmdb.instance_relation.InstanceRelationSnapshot",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "InstanceRelationSnapshot",
       "version": "1.0.0",
       "description": "查询历史实例关系快照",
@@ -8149,10 +8037,6 @@
     },
     {
       "contract": "cmdb.instance_relation.Remove",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "Remove",
       "version": "1.0.0",
       "description": "批量移除关系",
@@ -8184,10 +8068,6 @@
     },
     {
       "contract": "cmdb.instance_relation.Set",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "Set",
       "version": "1.0.0",
       "description": "批量设置关系",
@@ -8219,10 +8099,6 @@
     },
     {
       "contract": "cmdb.instance_tree.InstanceTree",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "InstanceTree",
       "version": "1.0.0",
       "description": "获取实例树完整数据",
@@ -8256,10 +8132,6 @@
     },
     {
       "contract": "cmdb.instance_tree.InstanceTreeAnchor",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "InstanceTreeAnchor",
       "version": "1.0.0",
       "description": "实例树定位",
@@ -8303,10 +8175,6 @@
     },
     {
       "contract": "cmdb.instance_tree.InstanceTreeAnchorV2",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "InstanceTreeAnchorV2",
       "version": "1.0.0",
       "description": "实例树定位V2",
@@ -8350,10 +8218,6 @@
     },
     {
       "contract": "cmdb.instance_tree.InstanceTreeExpand",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "InstanceTreeExpand",
       "version": "1.0.0",
       "description": "展开实例树某一级",
@@ -8397,10 +8261,6 @@
     },
     {
       "contract": "cmdb.instance_tree.InstanceTreeSearch",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "InstanceTreeSearch",
       "version": "1.0.0",
       "description": "整树搜索",
@@ -8439,10 +8299,6 @@
     },
     {
       "contract": "cmdb.object_attribute.Create",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "Create",
       "version": "1.0.0",
       "description": "创建模型属性定义",
@@ -8500,10 +8356,6 @@
     },
     {
       "contract": "cmdb.object_relation.Create",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "Create",
       "version": "1.0.0",
       "description": "创建模型关系定义",
@@ -8577,10 +8429,6 @@
     },
     {
       "contract": "cmdb.object_relation.CreateRelationGroup",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "CreateRelationGroup",
       "version": "1.0.0",
       "description": "创建模型关系分组",
@@ -8628,10 +8476,6 @@
     },
     {
       "contract": "cmdb.object_relation.DeleteRelation",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "DeleteRelation",
       "version": "1.0.0",
       "description": "删除模型关系定义",
@@ -8655,10 +8499,6 @@
     },
     {
       "contract": "cmdb.object_relation.DeleteRelationGroup",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "DeleteRelationGroup",
       "version": "1.0.0",
       "description": "删除模型关系分组",
@@ -8687,10 +8527,6 @@
     },
     {
       "contract": "cmdb.object_relation.Get",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "Get",
       "version": "1.0.0",
       "description": "获取单个模型关系",
@@ -8716,10 +8552,6 @@
     },
     {
       "contract": "cmdb.object_relation.ObjectRelationSnapshot",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "ObjectRelationSnapshot",
       "version": "1.0.0",
       "description": "查询指定版本模型关系快照",
@@ -8760,10 +8592,6 @@
     },
     {
       "contract": "cmdb.object_relation.GetRelationsByGroupId",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "GetRelationsByGroupId",
       "version": "1.0.0",
       "description": "根据关系分组查询关系列表",
@@ -8817,10 +8645,6 @@
     },
     {
       "contract": "cmdb.object_relation.Update",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "Update",
       "version": "1.0.0",
       "description": "更新模型关系定义",
@@ -8875,10 +8699,6 @@
     },
     {
       "contract": "cmdb.object_relation.UpdateRelationGroup",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "UpdateRelationGroup",
       "version": "1.0.0",
       "description": "更新模型关系分组",
@@ -8926,10 +8746,6 @@
     },
     {
       "contract": "cmdb.terraform.DeleteState",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "DeleteState",
       "version": "1.0.0",
       "description": "删除state",
@@ -8970,10 +8786,6 @@
     },
     {
       "contract": "cmdb.terraform.GetState",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "GetState",
       "version": "1.0.0",
       "description": "获取state",
@@ -9018,10 +8830,6 @@
     },
     {
       "contract": "cmdb.terraform.LockState",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "LockState",
       "version": "1.0.0",
       "description": "锁定工作区",
@@ -9074,10 +8882,6 @@
     },
     {
       "contract": "cmdb.terraform.UnLockState",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "UnLockState",
       "version": "1.0.0",
       "description": "解锁工作区",
@@ -9130,10 +8934,6 @@
     },
     {
       "contract": "cmdb.terraform.UpdateState",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
       "name": "UpdateState",
       "version": "1.0.0",
       "description": "更新state",
