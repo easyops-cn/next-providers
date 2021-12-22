@@ -18,6 +18,7 @@
     "CustomerApi.setApplyDisapprovedBatch",
     "CustomerApi.saveCustomerPublicKey",
     "CustomerApi.saveApplyInfoV2",
-    "CustomerApi.signup"
+    "CustomerApi.signup",
+    "CustomerApi.saveConsultInfo"
   ]
 }

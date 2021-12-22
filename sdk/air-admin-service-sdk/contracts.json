@@ -258,6 +258,41 @@
       "response": null
     },
     {
+      "contract": "air_admin_service.customer.SaveConsultInfo",
+      "name": "SaveConsultInfo",
+      "version": "1.0.0",
+      "description": "保存用户预约咨询信息",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/consult/info"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "phone",
+            "type": "phone_number",
+            "description": "手机号码"
+          },
+          {
+            "name": "verification_code",
+            "type": "verification_code",
+            "description": "验证码"
+          },
+          {
+            "name": "username",
+            "type": "string",
+            "description": "用户名",
+            "validate": {
+              "pattern": "^[^/#$%^&?]{2,30}$"
+            }
+          }
+        ],
+        "required": ["phone", "verification_code", "username"]
+      },
+      "response": null
+    },
+    {
       "contract": "air_admin_service.customer.SaveCustomerPublicKey",
       "name": "SaveCustomerPublicKey",
       "version": "1.0.0",
@@ -391,6 +426,28 @@
         ],
         "required": ["failedInstanceIds"]
       }
+    },
+    {
+      "contract": "air_admin_service.customer.SendVerificationCode",
+      "name": "SendVerificationCode",
+      "version": "1.0.0",
+      "description": "获取验证码",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/customer/verification-code"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "phone_number",
+            "type": "phone_number",
+            "description": "接收申请验证码的手机号码"
+          }
+        ],
+        "required": ["phone_number"]
+      },
+      "response": null
     },
     {
       "contract": "air_admin_service.customer.SetApplyDisapprovedBatch",
