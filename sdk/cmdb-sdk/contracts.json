@@ -3149,6 +3149,10 @@
     },
     {
       "contract": "cmdb.history.HistoryExportExcel",
+      "category": {
+        "en": "History",
+        "zh": "历史"
+      },
       "name": "HistoryExportExcel",
       "version": "1.1.0",
       "description": "变更记录导出excel接口",
@@ -3223,10 +3227,31 @@
       },
       "response": {
         "type": "file"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Change record export excel interface",
+            "zh": "变更记录导出excel接口"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "/history/export/excel?range=today&exclude_event=event.instance.auto_discovery%2Cevent.instance_relation.auto_discovery&with_children=true&st=1575388800&is_next=false"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            }
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.history.RollbackInstance",
+      "category": {
+        "en": "History",
+        "zh": "历史"
+      },
       "name": "RollbackInstance",
       "version": "1.0.0",
       "description": "实例回滚",
@@ -3262,7 +3287,26 @@
       },
       "response": {
         "type": "map"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Rollback instance",
+            "zh": "实例回滚"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "/object/PARK/instance/5d234ee4acecd/_rollback",
+            "body": "{\n    \"_version\": 2,\n    \"_ts\": \"2021-12-20 12:16:58\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"ID\": 1,\n        \"_object_id\": \"PARK\",\n        \"_object_version\": 33,\n        \"_pre_ts\": 1638499661,\n        \"_tf_lineage\": null,\n        \"_tfstate\": null,\n        \"_ts\": 1639973818,\n        \"_version\": 2,\n        \"address\": -1,\n        \"age\": -1,\n        \"creator\": \"easyops\",\n        \"ctime\": \"2021-12-03 10:47:41\",\n        \"deleteAuthorizers\": null,\n        \"instanceId\": \"5d234ee4acecd\",\n        \"key\": 2,\n        \"modifier\": \"easyops\",\n        \"mtime\": \"2021-12-20 12:16:58\",\n        \"name\": 2,\n        \"org\": 2988466,\n        \"readAuthorizers\": null,\n        \"updateAuthorizers\": null\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.index.CreateIndex",
@@ -3602,7 +3646,29 @@
           }
         ],
         "required": ["list"]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Instance field aggregation interface",
+            "zh": "实例字段聚合接口"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/object/:objectId/instance/aggregate",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"aggregate_key\": \"abc\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"list\": [\n            {\n                \"aggregate_value\": \"\",\n                \"data_list\": [\n                    {\n                        \"_object_id\": \"PARK\",\n                        \"abc\": null,\n                        \"instanceId\": \"5d234ee4acecd\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.AggregateCount",
@@ -3662,7 +3728,25 @@
           }
         ],
         "required": ["count", "attr"]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Instance count statistics interface",
+            "zh": "实例计数统计接口"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "/object/PARK/instance/aggregate/count/abc?page=1&page_size=1"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"total\": 1,\n        \"page\": 1,\n        \"page_size\": 1,\n        \"list\": [\n            {\n                \"count\": 1,\n                \"attr\": {\n                    \"abc\": null\n                }\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.AggregateCountV2",
@@ -3717,7 +3801,25 @@
           }
         ],
         "required": ["count", "attr"]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Instance count statistics interface v2",
+            "zh": "实例计数统计接口v2"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "/v2/object/PARK/instance_aggregate/count/abc"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"count\": 1,\n            \"attr\": {\n                \"abc\": null\n            }\n        }\n    ]\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.AutoDiscovery",
@@ -3824,7 +3926,29 @@
           }
         ],
         "required": ["code", "error", "message", "data"]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Interface for instance auto-discovery",
+            "zh": "实例自动发现的接口"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/object/TEST123/instance/_import-json",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "[\n    {\n        \"filter\": {\n            \"name\": \"name\"\n        },\n        \"update\": {\n            \"name\": \"foo\",\n            \"fans\": \"bar\"\n        },\n        \"upsert\": true\n    }\n]"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"instanceId\": \"5d38ef407b4a4\",\n            \"code\": 0,\n            \"matched\": true,\n            \"effected\": false,\n            \"message\": \"\"\n        }\n    ]\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.BatchListInstanceQueryStrategy",
@@ -4015,7 +4139,29 @@
           }
         ],
         "required": ["code", "error", "message", "data"]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Multi-model batch search instance",
+            "zh": "多模型批量搜索实例"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/batch/object/instance/_search",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"data\": [\n        {\n            \"object_id\": \"PARK\",\n            \"search\": {\n                \"page\": 1,\n                \"page_size\": 1\n            }\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"total\": 1,\n            \"page\": 1,\n            \"page_size\": 1,\n            \"list\": [\n                {\n                    \"ID\": 1,\n                    \"_object_id\": \"PARK\",\n                    \"_object_version\": 34,\n                    \"_pre_ts\": 1639973818,\n                    \"_ts\": 1639980802,\n                    \"_version\": 3,\n                    \"address\": -1,\n                    \"age\": -1,\n                    \"creator\": \"easyops\",\n                    \"ctime\": \"2021-12-03 10:47:41\",\n                    \"instanceId\": \"5d234ee4acecd\",\n                    \"key\": 2,\n                    \"modifier\": \"easyops\",\n                    \"mtime\": \"2021-12-20 14:13:22\",\n                    \"name\": 1,\n                    \"org\": 2988466,\n                    \"p_k\": [],\n                    \"p_m\": [],\n                    \"p_n\": []\n                }\n            ]\n        }\n    ]\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.CountAll",
@@ -4042,7 +4188,25 @@
       },
       "response": {
         "type": "map"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get the number of all model instances",
+            "zh": "获取所有模型实例数量"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "/object_count_all?objectIds=PARK,dataCenter@FINTECHDATA"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"PARK\": 1,\n        \"dataCenter@FINTECHDATA\": 2\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.CreateInstance",
@@ -4095,7 +4259,29 @@
       },
       "response": {
         "type": "map"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Create instance",
+            "zh": "创建实例"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/v2/object/PARK/instance",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"ID\": 2,\n    \"name\": \"test\",\n    \"address\": \"address\",\n    \"age\": 18\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"ID\": 2,\n        \"_object_id\": \"PARK\",\n        \"_object_version\": 41,\n        \"_ts\": 1639988769,\n        \"_version\": 1,\n        \"address\": \"address\",\n        \"age\": 18,\n        \"creator\": \"easyops\",\n        \"ctime\": \"2021-12-20 16:26:09\",\n        \"instanceId\": \"5d38fa40c9a19\",\n        \"name\": \"test\",\n        \"org\": 2988466\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.CreateInstanceQueryStrategy",
@@ -4139,7 +4325,29 @@
       },
       "response": {
         "type": "InstanceQueryStrategy"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Create an instance query strategy",
+            "zh": "创建实例查询策略"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/object/PARK/query/strategy",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"name\": \"query\",\n    \"query\": {\n        \"filters\": {\n            \"conditions\": [\n                {\n                    \"operator\": \"equal\",\n                    \"value\": [\n                        {\n                            \"value\": \"test\"\n                        }\n                    ],\n                    \"field\": \"name\"\n                }\n            ]\n        },\n        \"orders\": {\n            \"asc\": false\n        },\n        \"pagination\": {\n            \"page\": 1,\n            \"pageSize\": 20\n        }\n    }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"id\": \"2ee3a28bf4ed49848ab670e0a0c18f24\",\n        \"name\": \"query\",\n        \"objectId\": \"PARK\",\n        \"type\": \"org\",\n        \"instance_type\": \"\",\n        \"query\": {\n            \"filters\": {\n                \"conditions\": [\n                    {\n                        \"field\": \"name\",\n                        \"operator\": \"equal\",\n                        \"value\": [\n                            {\n                                \"value\": \"test\"\n                            }\n                        ]\n                    }\n                ]\n            },\n            \"orders\": {\n                \"asc\": false\n            },\n            \"pagination\": {\n                \"page\": 1,\n                \"pageSize\": 20\n            }\n        },\n        \"ctime\": \"2021-12-20 17:47:20\",\n        \"creator\": \"easyops\"\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.DeleteInstance",
@@ -4180,7 +4388,25 @@
       },
       "response": {
         "type": "map"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Delete instance",
+            "zh": "删除实例"
+          },
+          "request": {
+            "method": "DELETE",
+            "uri": "/object/PARK/instance/5d38fa40c9a19"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"ID\": 2,\n        \"_object_id\": \"PARK\",\n        \"_object_version\": 41,\n        \"_ts\": 1639988769,\n        \"_version\": 1,\n        \"address\": \"address\",\n        \"age\": 18,\n        \"creator\": \"easyops\",\n        \"ctime\": \"2021-12-20 16:26:09\",\n        \"instanceId\": \"5d38fa40c9a19\",\n        \"name\": \"test\",\n        \"org\": 2988466,\n        \"p_k\": [],\n        \"p_m\": [],\n        \"p_n\": []\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.DeleteInstanceBatch",
@@ -4221,7 +4447,25 @@
             "description": "删除失败的实例列表"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Batch delete instance",
+            "zh": "批量删除实例"
+          },
+          "request": {
+            "method": "DELETE",
+            "uri": "/object/PARK/instance/_batch?instanceIds=5d234ee4acecd;5d390f87f0252"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"deleteFailedInstances\": []\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.DeleteInstanceQueryStrategy",
@@ -4255,7 +4499,25 @@
       },
       "response": {
         "type": "InstanceQueryStrategy"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Delete instance query strategy",
+            "zh": "删除实例查询策略"
+          },
+          "request": {
+            "method": "DELETE",
+            "uri": "/object/PARK/query/strategy/2ee3a28bf4ed49848ab670e0a0c18f24"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"id\": \"2ee3a28bf4ed49848ab670e0a0c18f24\",\n        \"name\": \"query\",\n        \"objectId\": \"PARK\",\n        \"type\": \"org\",\n        \"instance_type\": \"\",\n        \"query\": {\n            \"filters\": {\n                \"conditions\": [\n                    {\n                        \"field\": \"name\",\n                        \"operator\": \"equal\",\n                        \"value\": [\n                            {\n                                \"value\": \"test\"\n                            }\n                        ]\n                    }\n                ]\n            },\n            \"orders\": {\n                \"asc\": false\n            },\n            \"pagination\": {\n                \"page\": 1,\n                \"pageSize\": 20\n            }\n        },\n        \"ctime\": \"2021-12-20 17:47:20\",\n        \"creator\": \"easyops\"\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.ExportInstance",
@@ -4389,7 +4651,28 @@
       },
       "response": {
         "type": "file"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Multi-model batch search instance",
+            "zh": "多模型批量搜索实例"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/export/object/PARK/instance/excel",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            }
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.FulltextSearch",
@@ -4509,7 +4792,25 @@
       },
       "response": {
         "type": "map"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get instance default value template",
+            "zh": "获取实例默认值模板"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "/object/PARK/instance_default_value_template"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"ID\": null,\n        \"address\": null,\n        \"age\": null,\n        \"name\": null\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.GetDetail",
@@ -4555,7 +4856,25 @@
       },
       "response": {
         "type": "map"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get instance details",
+            "zh": "获取实例详情"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "/object/PARK/instance/:instanceId"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"ID\": 1,\n        \"_object_id\": \"PARK\",\n        \"_object_version\": 41,\n        \"_ts\": 1639995893,\n        \"_version\": 1,\n        \"address\": \"addr1\",\n        \"age\": 1,\n        \"creator\": \"easyops\",\n        \"ctime\": \"2021-12-20 18:24:53\",\n        \"instanceId\": \"5d3914ca4406a\",\n        \"name\": \"name1\",\n        \"org\": 2988466,\n        \"p_k\": [],\n        \"p_m\": [],\n        \"p_n\": []\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.GetImportInstanceCsv",
@@ -4737,7 +5056,29 @@
           }
         ],
         "required": ["list"]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Instance aggregation interface",
+            "zh": "实例聚合接口"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/object/_EVENT_ACCESS_DEFINE/instance/group",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"query\": {\n\n    },\n    \"funcs\": [\n    \t{\n    \t\t\"op\":\"max\",\n    \t\t\"field\":\"showName\",\n    \t\t\"alias\":\"showName\"\n    \t}\n\n    \t],\n    \"group_field\": \"source\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"list\": [\n            {\n                \"group_field\": \"source\",\n                \"group_value\": \"system\",\n                \"func_values\": [\n                    {\n                        \"alias\": \"showName\",\n                        \"value\": \"统一数据告警\"\n                    }\n                ]\n            },\n            {\n                \"group_field\": \"source\",\n                \"group_value\": \"prometheus\",\n                \"func_values\": [\n                    {\n                        \"alias\": \"showName\",\n                        \"value\": \"prometheus\"\n                    }\n                ]\n            },\n            {\n                \"group_field\": \"source\",\n                \"group_value\": \"zabbix\",\n                \"func_values\": [\n                    {\n                        \"alias\": \"showName\",\n                        \"value\": \"zabbix\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.GroupInstanceForHoneycomb",
@@ -4996,7 +5337,29 @@
           }
         ],
         "required": ["list", "total"]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Instance Aggregation Interface v3",
+            "zh": "实例聚合接口v3"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/v3/object/HOST/instance/group",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"query\": {\n\n    },\n    \"funcs\": [\n    \t{\n    \t\t\"op\":\"count\",\n    \t\t\"field\":\"instanceId\",\n    \t\t\"alias\":\"sum\"\n    \t}\n\n    \t],\n    \"group_fields\": [\"_host__IDCRACK._rack__IDC.area\"]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"total\": 2,\n        \"list\": [\n            {\n                \"_host__IDCRACK._rack__IDC.area\": \"华北机房\",\n                \"sum\": 3\n            },\n            {\n                \"_host__IDCRACK._rack__IDC.area\": null,\n                \"sum\": 103\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.ImportInstance",
@@ -5079,7 +5442,29 @@
           }
         ],
         "required": ["insert_count", "update_count", "failed_count", "data"]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Instance Aggregation Interface v3",
+            "zh": "Batch edit/add instance"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/object/PARK/instance/_import",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"keys\": [\"name\"],\n    \"datas\": [\n        {\n            \"name\": \"name1\",\n            \"address\": \"testAddr\",\n            \"age\": 18\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"insert_count\": 0,\n        \"update_count\": 1,\n        \"failed_count\": 0,\n        \"data\": []\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.ImportInstanceWithCsv",
@@ -5416,7 +5801,25 @@
       },
       "response": {
         "type": "map"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Single instance relationship statistics",
+            "zh": "单个实例关系统计"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "/object/PARK/instance/5d3914e090876/_relation_count"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"instanceId\": \"5d3914e090876\",\n        \"p_k\": 0,\n        \"p_m\": 0,\n        \"p_n\": 0\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.InstanceSnapshot",
@@ -5541,7 +5944,25 @@
           }
         ],
         "required": ["list", "total", "page", "page_size"]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Instance paging list query",
+            "zh": "实例分页列表查询"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "/object/PARK/instance?page=1&page_size=2"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"data\": {\n        \"list\": [\n            {\n                \"ID\": 1,\n                \"_object_id\": \"PARK\",\n                \"_object_version\": 41,\n                \"_pre_ts\": 1639995893,\n                \"_ts\": 1640061727,\n                \"_version\": 2,\n                \"address\": \"testAddr\",\n                \"age\": 18,\n                \"creator\": \"easyops\",\n                \"ctime\": \"2021-12-20 18:24:53\",\n                \"instanceId\": \"5d3914ca4406a\",\n                \"modifier\": \"easyops\",\n                \"mtime\": \"2021-12-21 12:42:07\",\n                \"name\": \"name1\",\n                \"org\": 2988466,\n                \"p_k\": [],\n                \"p_m\": [],\n                \"p_n\": []\n            },\n            {\n                \"ID\": 2,\n                \"_object_id\": \"PARK\",\n                \"_object_version\": 41,\n                \"_ts\": 1639995916,\n                \"_version\": 1,\n                \"address\": \"addr2\",\n                \"age\": 2,\n                \"creator\": \"easyops\",\n                \"ctime\": \"2021-12-20 18:25:16\",\n                \"instanceId\": \"5d3914e090876\",\n                \"name\": \"name2\",\n                \"org\": 2988466,\n                \"p_k\": [],\n                \"p_m\": [],\n                \"p_n\": []\n            }\n        ],\n        \"total\": 2,\n        \"page\": 1,\n        \"page_size\": 2\n    },\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\"\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.ListInstanceQueryStrategy",
@@ -5598,7 +6019,25 @@
             "description": "数据"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get a list of instance query strategies",
+            "zh": "获取实例查询策略列表"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "/object/PARK/query/strategy"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"id\": \"18718fbd438f43aa925620b754968d23\",\n            \"name\": \"query\",\n            \"objectId\": \"PARK\",\n            \"type\": \"org\",\n            \"instance_type\": \"\",\n            \"query\": {\n                \"filters\": {\n                    \"conditions\": [\n                        {\n                            \"field\": \"name\",\n                            \"operator\": \"equal\",\n                            \"value\": [\n                                {\n                                    \"value\": \"test\"\n                                }\n                            ]\n                        }\n                    ]\n                },\n                \"orders\": {\n                    \"asc\": false\n                },\n                \"pagination\": {\n                    \"page\": 1,\n                    \"pageSize\": 20\n                }\n            },\n            \"ctime\": \"2021-12-21 14:24:35\",\n            \"creator\": \"easyops\"\n        }\n    ]\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.MixCreateInstance",
@@ -5836,7 +6275,29 @@
             "description": "页大小"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Search examples",
+            "zh": "搜索实例"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/object/PARK/instance/_search",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"query\": {\n        \"address\": {\n            \"$like\": \"%test%\"\n        }\n    },\n    \"fields\": {\n        \"ID\": true,\n        \"name\": true,\n        \"address\": true,\n        \"age\": true\n    }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"data\": {\n        \"list\": [\n            {\n                \"ID\": 1,\n                \"_object_id\": \"PARK\",\n                \"address\": \"testAddr\",\n                \"age\": 18,\n                \"instanceId\": \"5d3914ca4406a\",\n                \"name\": \"name1\"\n            }\n        ],\n        \"total\": 1,\n        \"page\": 1,\n        \"page_size\": 30\n    },\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\"\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.PostSearchV2",
@@ -6191,7 +6652,29 @@
             "description": "页大小"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Search example V3",
+            "zh": "搜索实例V3"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/v3/object/PARK/instance/_search",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"query\": {\n        \"name\": {\n            \"$like\": \"%na%\"\n        }\n    },\n    \"fields\": [\"ID\", \"name\", \"address\", \"age\"],\n    \"page\": 1,\n    \"page_size\": 2\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"data\": {\n        \"list\": [\n            {\n                \"ID\": 1,\n                \"address\": \"testAddr\",\n                \"age\": 18,\n                \"instanceId\": \"5d3914ca4406a\",\n                \"name\": \"name1\"\n            },\n            {\n                \"ID\": 2,\n                \"address\": \"addr2\",\n                \"age\": 2,\n                \"instanceId\": \"5d3914e090876\",\n                \"name\": \"name2\"\n            }\n        ],\n        \"total\": 2,\n        \"page\": 1,\n        \"page_size\": 2\n    },\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\"\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.RelationCountAggregate",
@@ -6451,7 +6934,29 @@
           }
         ],
         "required": ["code", "error", "message", "data"]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Search total",
+            "zh": "搜索总数"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/object/PARK/instance/_search_total",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"query\": {\n        \"name\": {\n            \"$like\": \"%na%\"\n        }\n    }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": 2\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.UpdateByQuery",
@@ -6516,7 +7021,29 @@
             "description": "更新失败总数"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Update the instance according to the query conditions",
+            "zh": "根据查询条件更新实例"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/object/:object_id/instance/update_by_query",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"query\": {\n        \"address\": {\n            \"$like\": \"%test%\"\n        }\n    },\n    \"data\": {\n        \"address\": \"address\"\n    }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"successResult\": [\n            {\n                \"instanceId\": \"5d3914ca4406a\",\n                \"code\": 0,\n                \"message\": \"\"\n            }\n        ],\n        \"failResult\": [],\n        \"total\": 1,\n        \"successTotal\": 1,\n        \"failTotal\": 0\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.UpdateInstance",
@@ -6567,7 +7094,29 @@
       },
       "response": {
         "type": "map"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Update instance",
+            "zh": "更新实例"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "/object/PARK/instance/5d3914ca4406a",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"name\": \"name1\",\n    \"address\": \"address1\",\n    \"age\": 20\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"ID\": 1,\n        \"_object_id\": \"PARK\",\n        \"_object_version\": 41,\n        \"_pre_ts\": 1640088003,\n        \"_ts\": 1640088786,\n        \"_version\": 5,\n        \"address\": \"address1\",\n        \"age\": 20,\n        \"creator\": \"easyops\",\n        \"ctime\": \"2021-12-20 18:24:53\",\n        \"instanceId\": \"5d3914ca4406a\",\n        \"modifier\": \"easyops\",\n        \"mtime\": \"2021-12-21 20:13:06\",\n        \"name\": \"name1\",\n        \"org\": 2988466,\n        \"p_k\": [],\n        \"p_m\": [],\n        \"p_n\": []\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.UpdateInstanceQueryStrategy",
@@ -6616,7 +7165,29 @@
       },
       "response": {
         "type": "InstanceQueryStrategy"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Update instance query strategy",
+            "zh": "更新实例查询策略"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "/object/PARK/query/strategy/18718fbd438f43aa925620b754968d23",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"name\": \"query\",\n    \"query\": {\n        \"filters\": {\n            \"conditions\": [\n                {\n                    \"field\": \"name\",\n                    \"operator\": \"equal\",\n                    \"value\": [\n                        {\n                            \"value\": \"name1\"\n                        }\n                    ]\n                }\n            ]\n        },\n        \"orders\": {\n            \"asc\": false\n        },\n        \"pagination\": {\n            \"page\": 1,\n            \"pageSize\": 20\n        }\n    }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"id\": \"18718fbd438f43aa925620b754968d23\",\n        \"name\": \"query\",\n        \"objectId\": \"PARK\",\n        \"type\": \"org\",\n        \"instance_type\": \"\",\n        \"query\": {\n            \"filters\": {\n                \"conditions\": [\n                    {\n                        \"field\": \"name\",\n                        \"operator\": \"equal\",\n                        \"value\": [\n                            {\n                                \"value\": \"name1\"\n                            }\n                        ]\n                    }\n                ]\n            },\n            \"orders\": {\n                \"asc\": false\n            },\n            \"pagination\": {\n                \"page\": 1,\n                \"pageSize\": 20\n            }\n        },\n        \"ctime\": \"2021-12-21 14:24:35\",\n        \"creator\": \"easyops\"\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.UpdateInstanceV2",
@@ -6668,7 +7239,29 @@
       },
       "response": {
         "type": "map"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Update instance v2",
+            "zh": "更新实例V2"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "/v2/object/PARK/instance/5d3914ca4406a",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"name\": \"name1\",\n    \"address\": \"address1\",\n    \"age\": 20\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"ID\": 1,\n        \"_object_id\": \"PARK\",\n        \"_object_version\": 41,\n        \"_pre_ts\": 1640088879,\n        \"_ts\": 1640088900,\n        \"_version\": 7,\n        \"address\": \"address1\",\n        \"age\": 20,\n        \"creator\": \"easyops\",\n        \"ctime\": \"2021-12-20 18:24:53\",\n        \"instanceId\": \"5d3914ca4406a\",\n        \"modifier\": \"easyops\",\n        \"mtime\": \"2021-12-21 20:15:00\",\n        \"name\": \"name1\",\n        \"org\": 2988466,\n        \"p_k\": [],\n        \"p_m\": [],\n        \"p_n\": []\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.UpdatePermissionBatch",
@@ -6735,7 +7328,29 @@
             "description": "没有权限更新的实例列表"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Batch modify instance permissions",
+            "zh": "批量修改实例权限"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "/permission/PARK/instances/_batch",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"ids\": [\"5d3914ca4406a\",\"5d3914e090876\"],\n    \"fields\": [\"updateAuthorizers\", \"deleteAuthorizers\"],\n    \"list\": [\"easyops\"],\n    \"method\": \"append\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"noAuthorizedList\": []\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.ValidateInstance",
@@ -6796,6 +7411,10 @@
     },
     {
       "contract": "cmdb.instance_archive.ActiveInstance",
+      "category": {
+        "en": "Instance archive",
+        "zh": "实例存档"
+      },
       "name": "ActiveInstance",
       "version": "1.0.0",
       "description": "激活归档实例",
@@ -6823,6 +7442,10 @@
     },
     {
       "contract": "cmdb.instance_archive.ArchiveInstance",
+      "category": {
+        "en": "Instance archive",
+        "zh": "实例存档"
+      },
       "name": "ArchiveInstance",
       "version": "1.0.0",
       "description": "归档实例",
@@ -6846,10 +7469,32 @@
         ],
         "required": ["object_id", "instance_id"]
       },
-      "response": null
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Archive instance",
+            "zh": "归档实例"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/object/:object_id/instance_archive/:instance_id"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"ID\": 1,\n        \"_archive_by\": \"easyops\",\n        \"_archive_time\": \"2021-12-22 10:26:22\",\n        \"_archive_ts\": 1640139982,\n        \"_object_id\": \"PARK\",\n        \"_object_version\": 41,\n        \"_pre_ts\": 1640088879,\n        \"_ts\": 1640088900,\n        \"_version\": 7,\n        \"address\": \"address1\",\n        \"age\": 20,\n        \"creator\": \"easyops\",\n        \"ctime\": \"2021-12-20 18:24:53\",\n        \"deleteAuthorizers\": [\n            \"easyops\"\n        ],\n        \"instanceId\": \"5d3914ca4406a\",\n        \"modifier\": \"easyops\",\n        \"mtime\": \"2021-12-21 20:15:00\",\n        \"name\": \"name1\",\n        \"org\": 2988466,\n        \"p_k\": [],\n        \"p_m\": [],\n        \"p_n\": [],\n        \"updateAuthorizers\": [\n            \"easyops\"\n        ]\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance_archive.BatchArchiveInstance",
+      "category": {
+        "en": "Instance archive",
+        "zh": "实例存档"
+      },
       "name": "BatchArchiveInstance",
       "version": "1.0.0",
       "description": "批量归档实例",
@@ -6877,6 +7522,10 @@
     },
     {
       "contract": "cmdb.instance_archive.BatchDeleteArchiveInstance",
+      "category": {
+        "en": "Instance archive",
+        "zh": "实例存档"
+      },
       "name": "BatchDeleteArchiveInstance",
       "version": "1.0.0",
       "description": "批量删除归档实例",
@@ -6904,6 +7553,10 @@
     },
     {
       "contract": "cmdb.instance_archive.DeleteArchiveInstance",
+      "category": {
+        "en": "Instance archive",
+        "zh": "实例存档"
+      },
       "name": "DeleteArchiveInstance",
       "version": "1.0.0",
       "description": "删除归档实例",
@@ -6931,6 +7584,10 @@
     },
     {
       "contract": "cmdb.instance_archive.ExportArchiveInstanceExcel",
+      "category": {
+        "en": "Instance archive",
+        "zh": "实例存档"
+      },
       "name": "ExportArchiveInstanceExcel",
       "version": "1.0.0",
       "description": "归档实例导出excel",
@@ -6970,6 +7627,10 @@
     },
     {
       "contract": "cmdb.instance_archive.ListArchiveInstance",
+      "category": {
+        "en": "Instance archive",
+        "zh": "实例存档"
+      },
       "name": "ListArchiveInstance",
       "version": "1.0.0",
       "description": "归档实例分页列表查询",
@@ -7036,6 +7697,10 @@
     },
     {
       "contract": "cmdb.instance_graph.TraverseGraph",
+      "category": {
+        "en": "Instance graph",
+        "zh": "实例图"
+      },
       "name": "TraverseGraph",
       "version": "1.0.0",
       "description": "图遍历查询",
@@ -7112,10 +7777,36 @@
           }
         ],
         "required": ["topic_vertices", "vertices", "edges"]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Graph traversal query",
+            "zh": "图遍历查询"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/instance/traverse",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"object_id\": \"APP\",\n    \"query\": {\n        \"instanceId\": {\n            \"$in\": [\n                \"5865023b41d8a\"\n            ]\n        }\n    },\n    \"fields\": {\n        \"instanceId\": true,\n        \"__label\": true\n    },\n    \"child\": [\n        {\n            \"parentOut\": \"clusters\",\n            \"query\": {},\n            \"fields\": {\n                \"instanceId\": true,\n                \"__label\": true\n            }\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"topic_vertices\": [],\n        \"vertices\": [],\n        \"edges\": []\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance_graph.TraverseGraphCount",
+      "category": {
+        "en": "Instance graph",
+        "zh": "实例图"
+      },
       "name": "TraverseGraphCount",
       "version": "1.0.0",
       "description": "图遍历查询叶子节点个数统计",
@@ -7192,6 +7883,10 @@
     },
     {
       "contract": "cmdb.instance_graph.TraverseGraphV2",
+      "category": {
+        "en": "Instance graph",
+        "zh": "实例图"
+      },
       "name": "TraverseGraphV2",
       "version": "1.0.0",
       "description": "图遍历查询v2,",
@@ -7268,10 +7963,36 @@
           }
         ],
         "required": ["topic_vertices", "vertices", "edges"]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Graph traversal query v2",
+            "zh": "图遍历查询v2"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/v2/instance/traverse",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"object_id\": \"APP\",\n    \"query\": {\n        \"clusters\": {\"$exists\": true},\n        \"instanceId\":\"5b13b76269949\"\n    },\n    \"fields\": {\n        \"instanceId\": true,\n        \"__label\": true\n    },\n    \"child\": [\n        {\n            \"parentOut\": \"clusters\",\n            \"query\": {},\n            \"fields\": {\n                \"instanceId\": true,\n                \"__label\": true\n            }\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"topic_vertices\": [\n            {\n                \"__label\": [\n                    \"aaaa\"\n                ],\n                \"_object_id\": \"APP\",\n                \"instanceId\": \"5b13b76269949\",\n                \"name\": \"aaaa\"\n            }\n        ],\n        \"vertices\": [\n            {\n                \"__label\": [\n                    \"cluster1\",\n                    111\n                ],\n                \"_object_id\": \"CLUSTER\",\n                \"instanceId\": \"5b147ca3eb384\",\n                \"name\": \"cluster1\",\n                \"test\": 111\n            }\n        ],\n        \"edges\": [\n            {\n                \"relation_id\": \"APP_clusters_CLUSTER\",\n                \"out\": \"5b13b76269949\",\n                \"in\": \"5b147ca3eb384\",\n                \"out_name\": \"clusters\"\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance_path_search.FlattenSearchPath",
+      "category": {
+        "en": "Instance path search",
+        "zh": "实例路径查询"
+      },
       "name": "FlattenSearchPath",
       "version": "1.0.0",
       "description": "平铺的关系查询[废弃]",
@@ -7331,6 +8052,10 @@
     },
     {
       "contract": "cmdb.instance_path_search.GroupSearchPath",
+      "category": {
+        "en": "Instance path search",
+        "zh": "实例路径查询"
+      },
       "name": "GroupSearchPath",
       "version": "1.0.0",
       "description": "聚合的关系查询[废弃]",
@@ -7390,6 +8115,10 @@
     },
     {
       "contract": "cmdb.instance_path_search.PathSearchExportV3",
+      "category": {
+        "en": "Instance path search",
+        "zh": "实例路径查询"
+      },
       "name": "PathSearchExportV3",
       "version": "1.0.0",
       "description": "实例路径查询v3导出excel",
@@ -7421,10 +8150,35 @@
       },
       "response": {
         "type": "file"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Instance path query v3 export excel",
+            "zh": "实例路径查询v3导出excel"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/v3/path/_search/export/excel",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"path\": [\n        {\n            \"fields\": [\n                {\n                    \"alias_id\": \"APP.name\",\n                    \"id\": \"name\"\n                }\n            ],\n            \"objectId\": \"APP\"\n        },\n        {\n            \"relation_id\": \"APP_clusters_CLUSTER\",\n            \"relation_side_id\": \"clusters\"\n        },\n        {\n            \"fields\": [],\n            \"objectId\": \"CLUSTER\",\n            \"relationDescription\": \"集群\"\n        },\n        {\n            \"relation_id\": \"CLUSTER_deviceList_HOST\",\n            \"relation_side_id\": \"deviceList\"\n        },\n        {\n            \"fields\": [\n                {\n                    \"alias_id\": \"HOST_主机.hostname\",\n                    \"id\": \"hostname\"\n                },\n                {\n                    \"alias_id\": \"HOST_主机._agentStatus\",\n                    \"id\": \"_agentStatus\"\n                },\n                {\n                    \"alias_id\": \"HOST_主机.ip\",\n                    \"id\": \"ip\"\n                },\n                {\n                    \"alias_id\": \"HOST_主机._mac\",\n                    \"id\": \"_mac\"\n                },\n                {\n                    \"alias_id\": \"HOST_主机.service\",\n                    \"id\": \"service\"\n                }\n            ],\n            \"objectId\": \"HOST\",\n            \"relationDescription\": \"主机\"\n        }\n    ],\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"only_relation_view\": true\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            }
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance_path_search.PathSearchExportV4",
+      "category": {
+        "en": "Instance path search",
+        "zh": "实例路径查询"
+      },
       "name": "PathSearchExportV4",
       "version": "1.0.0",
       "description": "实例路径查询v4导出excel",
@@ -7456,10 +8210,35 @@
       },
       "response": {
         "type": "file"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Instance path query v4 export excel",
+            "zh": "实例路径查询v4导出excel"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/v4/path/_search/export/excel",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"path\": [\n        {\n            \"fields\": [\n                {\n                    \"alias_id\": \"APP.name\",\n                    \"id\": \"name\"\n                }\n            ],\n            \"objectId\": \"APP\"\n        },\n        {\n            \"relation_id\": \"APP_clusters_CLUSTER\",\n            \"relation_side_id\": \"clusters\"\n        },\n        {\n            \"fields\": [],\n            \"objectId\": \"CLUSTER\",\n            \"relationDescription\": \"集群\"\n        },\n        {\n            \"relation_id\": \"CLUSTER_deviceList_HOST\",\n            \"relation_side_id\": \"deviceList\"\n        },\n        {\n            \"fields\": [\n                {\n                    \"alias_id\": \"HOST_主机.hostname\",\n                    \"id\": \"hostname\"\n                },\n                {\n                    \"alias_id\": \"HOST_主机._agentStatus\",\n                    \"id\": \"_agentStatus\"\n                },\n                {\n                    \"alias_id\": \"HOST_主机.ip\",\n                    \"id\": \"ip\"\n                },\n                {\n                    \"alias_id\": \"HOST_主机._mac\",\n                    \"id\": \"_mac\"\n                },\n                {\n                    \"alias_id\": \"HOST_主机.service\",\n                    \"id\": \"service\"\n                }\n            ],\n            \"objectId\": \"HOST\",\n            \"relationDescription\": \"主机\"\n        }\n    ],\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"only_relation_view\": true\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            }
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance_path_search.PathSearchV3",
+      "category": {
+        "en": "Instance path search",
+        "zh": "实例路径查询"
+      },
       "name": "PathSearchV3",
       "version": "1.0.0",
       "description": "实例路径查询v3",
@@ -7518,10 +8297,36 @@
             "description": "结果列表 eg: [[{\"_object_id\": \"APP\",\"attrId1\": 2.355, \"instanceId\": \"xxxx\",\"name\": \"test1253\" },{\"_object_id\": \"CLUSTER\",\"instanceId\": \"xxxxx\",\"name\": \"dev\"}]]"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Instance path query v3",
+            "zh": "实例路径查询v3"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/v3/path/_search",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"path\": [\n        {\n            \"fields\": [\n                {\n                    \"alias_id\": \"APP.name\",\n                    \"id\": \"name\"\n                }\n            ],\n            \"objectId\": \"APP\"\n        },\n        {\n            \"relation_id\": \"APP_clusters_CLUSTER\",\n            \"relation_side_id\": \"clusters\"\n        },\n        {\n            \"fields\": [],\n            \"objectId\": \"CLUSTER\",\n            \"relationDescription\": \"集群\"\n        },\n        {\n            \"relation_id\": \"CLUSTER_deviceList_HOST\",\n            \"relation_side_id\": \"deviceList\"\n        },\n        {\n            \"fields\": [\n                {\n                    \"alias_id\": \"HOST_主机.hostname\",\n                    \"id\": \"hostname\"\n                },\n                {\n                    \"alias_id\": \"HOST_主机._agentStatus\",\n                    \"id\": \"_agentStatus\"\n                },\n                {\n                    \"alias_id\": \"HOST_主机.ip\",\n                    \"id\": \"ip\"\n                },\n                {\n                    \"alias_id\": \"HOST_主机._mac\",\n                    \"id\": \"_mac\"\n                },\n                {\n                    \"alias_id\": \"HOST_主机.service\",\n                    \"id\": \"service\"\n                }\n            ],\n            \"objectId\": \"HOST\",\n            \"relationDescription\": \"主机\"\n        }\n    ],\n    \"page\": 1,\n    \"pageSize\": 1,\n    \"only_relation_view\": true\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"page\": 1,\n        \"page_size\": 1,\n        \"total\": 304,\n        \"list\": [\n            [\n                {\n                    \"#showKey\": [\n                        \"aaaa\"\n                    ],\n                    \"_object_id\": \"APP\",\n                    \"instanceId\": \"5b13b76269949\",\n                    \"name\": \"aaaa\"\n                },\n                {\n                    \"#showKey\": [\n                        \"cluster1\",\n                        111\n                    ],\n                    \"_object_id\": \"CLUSTER\",\n                    \"instanceId\": \"5b147ca3eb384\",\n                    \"name\": \"cluster1\",\n                    \"test\": 111\n                },\n                {\n                    \"#showKey\": [\n                        \"192.168.90.70\",\n                        \"test_host_200.3\"\n                    ],\n                    \"_agentStatus\": \"异常\",\n                    \"_mac\": \"mac:26368:27055:6741:761:18820\",\n                    \"_object_id\": \"HOST\",\n                    \"hostname\": \"test_host_200.3\",\n                    \"instanceId\": \"5c5e3f91cf5b8\",\n                    \"ip\": \"192.168.90.70\",\n                    \"service\": null\n                }\n            ]\n        ]\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance_path_search.PathSearchV4",
+      "category": {
+        "en": "Instance path search",
+        "zh": "实例路径查询"
+      },
       "name": "PathSearchV4",
       "version": "1.0.0",
       "description": "实例路径查询v4",
@@ -7575,10 +8380,36 @@
             "description": "结果列表 eg: [[{\"_object_id\": \"APP\",\"attrId1\": 2.355, \"instanceId\": \"xxxx\",\"name\": \"test1253\" },{\"_object_id\": \"CLUSTER\",\"instanceId\": \"xxxxx\",\"name\": \"dev\"}]]"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Instance path query v4",
+            "zh": "实例路径查询v4"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/v4/path/_search",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"path\":[\n        {\n            \"objectId\":\"HOST\",\n            \"fields\":[\n                {\n                    \"id\":\"hostname\",\n                    \"alias_id\":\"HOST.hostname\"\n                }\n            ],\n            \"query\":{\n                \"$and\":[\n                    {\n                        \"$or\":[\n                            {\n                                \"hostname\":{\n                                    \"$like\":\"%on%\"\n                                }\n                            }\n                        ]\n                    }\n                ]\n            }\n        },\n        {\n            \"relation_id\":\"_SERVICENODE_HOST_IP__SERVICENODE_HOST\",\n            \"relation_side_id\":\"_SERVICENODE\"\n        },\n        {\n            \"objectId\":\"_SERVICENODE\",\n            \"relationDescription\":\"服务节点\",\n            \"fields\":[\n                {\n                    \"id\":\"agentIp\",\n                    \"alias_id\":\"_SERVICENODE_服务节点.agentIp\"\n                }\n            ]\n        },\n        {\n            \"relation_id\":\"APP__SERVICENODE_APP__SERVICENODE\",\n            \"relation_side_id\":\"APP\"\n        },\n        {\n            \"objectId\":\"APP\",\n            \"relationDescription\":\"关联应用服务\",\n            \"fields\":[\n                {\n                    \"id\":\"_hierarchy\",\n                    \"alias_id\":\"APP_关联应用服务._hierarchy\"\n                }\n            ]\n        },\n        {\n            \"relation_id\":\"APP_clusters_CLUSTER\",\n            \"relation_side_id\":\"clusters\"\n        },\n        {\n            \"objectId\":\"CLUSTER\",\n            \"relationDescription\":\"集群\",\n            \"fields\":[\n                {\n                    \"id\":\"_resourceLimitCpu\",\n                    \"alias_id\":\"CLUSTER_集群._resourceLimitCpu\"\n                },\n                {\n                    \"id\":\"_resourceLimitMemory\",\n                    \"alias_id\":\"CLUSTER_集群._resourceLimitMemory\"\n                },\n                {\n                    \"id\":\"_resourceRequestCpu\",\n                    \"alias_id\":\"CLUSTER_集群._resourceRequestCpu\"\n                },\n                {\n                    \"id\":\"_resourceRequestMemory\",\n                    \"alias_id\":\"CLUSTER_集群._resourceRequestMemory\"\n                },\n                {\n                    \"id\":\"memo\",\n                    \"alias_id\":\"CLUSTER_集群.memo\"\n                },\n                {\n                    \"id\":\"name\",\n                    \"alias_id\":\"CLUSTER_集群.name\"\n                }\n            ]\n        }\n    ],\n    \"page\":1,\n    \"pageSize\":20\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"root\": 2,\n        \"allPath\": 2,\n        \"list\": [\n            [\n                {\n                    \"#showKey\": [\n                        \"192.168.100.160\",\n                        \"winson_100_160\"\n                    ],\n                    \"_object_id\": \"HOST\",\n                    \"hostname\": \"winson_100_160\",\n                    \"instanceId\": \"5c559351559f8\",\n                    \"ip\": \"192.168.100.160\"\n                }\n            ],\n            [\n                {\n                    \"#showKey\": [\n                        \"192.168.100.42\",\n                        \"localhost.demonode2\"\n                    ],\n                    \"_object_id\": \"HOST\",\n                    \"hostname\": \"localhost.demonode2\",\n                    \"instanceId\": \"5ca39f74a2bdb\",\n                    \"ip\": \"192.168.100.42\"\n                }\n            ]\n        ]\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance_relation.Append",
+      "category": {
+        "en": "Instance relation",
+        "zh": "实例关系"
+      },
       "name": "Append",
       "version": "1.0.0",
       "description": "批量添加关系",
@@ -7606,10 +8437,36 @@
         ],
         "required": ["objectId", "relationSideId"]
       },
-      "response": null
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Batch add relationships",
+            "zh": "批量添加关系"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/object/PARK/relation/test_rel/append",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"related_instance_ids\": [\n        \"5d1fbd255744e\"\n    ],\n    \"instance_ids\": [\n        \"5d3b614868e10\"\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": null\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance_relation.CountRelationInstance",
+      "category": {
+        "en": "Instance relation",
+        "zh": "实例关系"
+      },
       "name": "CountRelationInstance",
       "version": "1.0.0",
       "description": "统计关系实例数量",
@@ -7658,6 +8515,10 @@
     },
     {
       "contract": "cmdb.instance_relation.Discovery",
+      "category": {
+        "en": "Instance relation",
+        "zh": "实例关系"
+      },
       "name": "Discovery",
       "version": "1.0.0",
       "description": "实例关系发现",
@@ -7748,6 +8609,10 @@
     },
     {
       "contract": "cmdb.instance_relation.DiscoveryV2",
+      "category": {
+        "en": "Instance relation",
+        "zh": "实例关系"
+      },
       "name": "DiscoveryV2",
       "version": "1.0.0",
       "description": "实例关系发现V2(支持set关系)",
@@ -7887,10 +8752,36 @@
             ]
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Instance relationship discovery V2 (support set relationship)",
+            "zh": "实例关系发现V2(支持set关系)"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/v2/object_relation/PARK_test_rel_park_rel_TEST123/_autodiscovery/multi",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"match\": {\n        \"left_match\": [\n            \"name\"\n        ],\n        \"right_match\": [\n            \"incr\"\n        ]\n    },\n    \"strict\": false,\n    \"data\": [\n        {\n            \"left_instance\": {\n                \"name\": \"name2\"\n            },\n            \"right_instance\": {\n                \"incr\": \"2\"\n            }\n        }\n    ],\n    \"operation\": \"append\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"code\": 0,\n            \"message\": \"\",\n            \"left_object_id\": \"PARK\",\n            \"right_object_id\": \"TEST123\",\n            \"connect_success\": [\n                {\n                    \"left_instance_id\": \"5d3914e090876\",\n                    \"right_instance_id\": \"5d1fbd314f611\"\n                }\n            ],\n            \"connect_fail\": [],\n            \"disconnect_success\": [],\n            \"disconnect_fail\": []\n        }\n    ]\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance_relation.InstanceRelationSnapshot",
+      "category": {
+        "en": "Instance relation",
+        "zh": "实例关系"
+      },
       "name": "InstanceRelationSnapshot",
       "version": "1.0.0",
       "description": "查询历史实例关系快照",
@@ -8037,6 +8928,10 @@
     },
     {
       "contract": "cmdb.instance_relation.Remove",
+      "category": {
+        "en": "Instance relation",
+        "zh": "实例关系"
+      },
       "name": "Remove",
       "version": "1.0.0",
       "description": "批量移除关系",
@@ -8064,10 +8959,36 @@
         ],
         "required": ["objectId", "relationSideId"]
       },
-      "response": null
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Batch remove relationships",
+            "zh": "批量移除关系"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/object/PARK/relation/test_rel/remove",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"related_instance_ids\": [\n        \"5d1fbd255744e\"\n    ],\n    \"instance_ids\": [\n        \"5d3b614868e10\"\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": null\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance_relation.Set",
+      "category": {
+        "en": "Instance relation",
+        "zh": "实例关系"
+      },
       "name": "Set",
       "version": "1.0.0",
       "description": "批量设置关系",
@@ -8095,10 +9016,36 @@
         ],
         "required": ["objectId", "relationSideId"]
       },
-      "response": null
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Batch setup relationship",
+            "zh": "批量设置关系"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/object/PARK/relation/test_rel/set",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"related_instance_ids\": [\n        \"5d1fbd255744e\"\n    ],\n    \"instance_ids\": [\n        \"5d3b614868e10\"\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": null\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance_tree.InstanceTree",
+      "category": {
+        "en": "Instance tree",
+        "zh": "实例树"
+      },
       "name": "InstanceTree",
       "version": "1.0.0",
       "description": "获取实例树完整数据",
@@ -8132,6 +9079,10 @@
     },
     {
       "contract": "cmdb.instance_tree.InstanceTreeAnchor",
+      "category": {
+        "en": "Instance tree",
+        "zh": "实例树"
+      },
       "name": "InstanceTreeAnchor",
       "version": "1.0.0",
       "description": "实例树定位",
@@ -8171,10 +9122,36 @@
       },
       "response": {
         "type": "map"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Instance tree anchor",
+            "zh": "实例树定位"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/instance_tree/anchor",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"ignore_single\": false,\n    \"tree\": {\n        \"object_id\": \"BUSINESS\",\n        \"query\": {},\n        \"fields\": {\n            \"name\": true,\n            \"ip\": true,\n            \"hostname\": true\n        },\n        \"child\": [\n            {\n                \"relation_field_id\": \"_sub_system\",\n                \"fields\": {\n                    \"name\": true\n                },\n                \"child\": [\n                    {\n                        \"relation_field_id\": \"_businesses_APP\",\n                        \"fields\": {\n                            \"name\": true,\n                            \"ip\": true,\n                            \"hostname\": true\n                        },\n                        \"child\": [\n                            {\n                                \"relation_field_id\": \"clusters\",\n                                \"fields\": {\n                                    \"name\": true,\n                                    \"ip\": true,\n                                    \"hostname\": true\n                                },\n                                \"child\": [\n                                    {\n                                        \"relation_field_id\": \"deviceList\",\n                                        \"fields\": {\n                                            \"name\": true,\n                                            \"ip\": true,\n                                            \"hostname\": true\n                                        }\n                                    }\n                                ]\n                            }\n                        ]\n                    }\n                ]\n            }\n        ]\n    },\n    \"object_id\": \"APP\",\n    \"instanceId\":\"5b14d7b91619f\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"BUSINESS\": [\n            {\n                \"_businesses_APP\": [\n                    {\n                        \"_object_id\": \"APP\",\n                        \"instanceId\": \"5b14d7b91619f\",\n                        \"ip\": null,\n                        \"name\": \"aaron\"\n                    }\n                ],\n                \"_object_id\": \"BUSINESS\",\n                \"instanceId\": \"5d2794607836d\",\n                \"name\": \"Aaron 应用系统\"\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance_tree.InstanceTreeAnchorV2",
+      "category": {
+        "en": "Instance tree",
+        "zh": "实例树"
+      },
       "name": "InstanceTreeAnchorV2",
       "version": "1.0.0",
       "description": "实例树定位V2",
@@ -8214,10 +9191,36 @@
       },
       "response": {
         "type": "map"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Instance tree anchor V2",
+            "zh": "实例树定位V2"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/v2/instance_tree/anchor",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"ignore_single\": false,\n    \"tree\": {\n        \"object_id\": \"BUSINESS\",\n        \"query\": {},\n        \"fields\": {\n            \"name\": true,\n            \"ip\": true,\n            \"hostname\": true\n        },\n        \"child\": [\n            {\n                \"relation_field_id\": \"_sub_system\",\n                \"fields\": {\n                    \"name\": true\n                },\n                \"child\": [\n                    {\n                        \"relation_field_id\": \"_businesses_APP\",\n                        \"fields\": {\n                            \"name\": true,\n                            \"ip\": true,\n                            \"hostname\": true\n                        },\n                        \"child\": [\n                            {\n                                \"relation_field_id\": \"clusters\",\n                                \"fields\": {\n                                    \"name\": true,\n                                    \"ip\": true,\n                                    \"hostname\": true\n                                },\n                                \"child\": [\n                                    {\n                                        \"relation_field_id\": \"deviceList\",\n                                        \"fields\": {\n                                            \"name\": true,\n                                            \"ip\": true,\n                                            \"hostname\": true\n                                        }\n                                    }\n                                ]\n                            }\n                        ]\n                    }\n                ]\n            }\n        ]\n    },\n    \"object_id\": \"APP\",\n    \"instanceIdList\": [\"5b14d7b91619f\"]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"APP\": [\n            {\n                \"_object_id\": \"APP\",\n                \"instanceId\": \"5b14d7b91619f\",\n                \"ip\": null,\n                \"name\": \"aaron\"\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance_tree.InstanceTreeExpand",
+      "category": {
+        "en": "Instance tree",
+        "zh": "实例树"
+      },
       "name": "InstanceTreeExpand",
       "version": "1.0.0",
       "description": "展开实例树某一级",
@@ -8261,6 +9264,10 @@
     },
     {
       "contract": "cmdb.instance_tree.InstanceTreeSearch",
+      "category": {
+        "en": "Instance tree",
+        "zh": "实例树"
+      },
       "name": "InstanceTreeSearch",
       "version": "1.0.0",
       "description": "整树搜索",
@@ -8299,6 +9306,10 @@
     },
     {
       "contract": "cmdb.object_attribute.Create",
+      "category": {
+        "en": "Object attribute",
+        "zh": "模型属性"
+      },
       "name": "Create",
       "version": "1.0.0",
       "description": "创建模型属性定义",
@@ -8352,10 +9363,36 @@
       },
       "response": {
         "type": "ObjectAttr"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Create object attribute definition",
+            "zh": "创建模型属性定义"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/object/PARK/attr",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"id\": \"serialNumber\",\n    \"name\": \"序列号\",\n    \"readonly\": \"false\",\n    \"required\": \"false\",\n    \"tag\": [ ],\n    \"unique\": \"false\",\n    \"value\": {\n        \"default\": \"\",\n        \"default_type\": \"value\",\n        \"mode\": \"default\",\n        \"type\": \"str\"\n    }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"id\": \"serialNumber\",\n        \"name\": \"序列号\",\n        \"protected\": false,\n        \"custom\": \"true\",\n        \"unique\": \"false\",\n        \"readonly\": \"false\",\n        \"required\": \"false\",\n        \"tag\": [],\n        \"description\": \"\",\n        \"tips\": \"\",\n        \"value\": {\n            \"type\": \"str\",\n            \"regex\": null,\n            \"default_type\": \"value\",\n            \"default\": null,\n            \"struct_define\": [],\n            \"mode\": \"default\",\n            \"prefix\": \"\",\n            \"start_value\": 0,\n            \"series_number_length\": 0\n        },\n        \"wordIndexDenied\": false,\n        \"isInherit\": false,\n        \"notifyDenied\": false,\n        \"inheritObjectId\": \"\"\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.object_relation.Create",
+      "category": {
+        "en": "Object relation",
+        "zh": "模型关系"
+      },
       "name": "Create",
       "version": "1.0.0",
       "description": "创建模型关系定义",
@@ -8425,10 +9462,36 @@
       },
       "response": {
         "type": "ObjectRelation"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Create object relationship definition",
+            "zh": "创建模型关系定义"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/object_relation",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"left_description\": \"test2_park\",\n    \"left_id\": \"park_test2\",\n    \"left_max\": -1,\n    \"left_min\": 0,\n    \"left_object_id\": \"PARK\",\n    \"right_description\": \"park_test2\",\n    \"right_id\": \"test2_park\",\n    \"right_max\": -1,\n    \"right_min\": 0,\n    \"right_object_id\": \"BBBB\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"relation_id\": \"PARK_park_test2_test2_park_BBBB\",\n        \"name\": \"\",\n        \"protected\": false,\n        \"notifyDenied\": false,\n        \"isInherit\": false,\n        \"left_object_id\": \"PARK\",\n        \"leftInheritObjectId\": \"\",\n        \"left_id\": \"park_test2\",\n        \"left_description\": \"test2_park\",\n        \"left_name\": \"park_test2\",\n        \"left_min\": 0,\n        \"left_max\": -1,\n        \"left_groups\": [],\n        \"left_tags\": [],\n        \"right_object_id\": \"BBBB\",\n        \"rightInheritObjectId\": \"\",\n        \"right_id\": \"test2_park\",\n        \"right_description\": \"park_test2\",\n        \"right_name\": \"test2_park\",\n        \"right_min\": 0,\n        \"right_max\": -1,\n        \"right_groups\": [],\n        \"right_tags\": [],\n        \"_version\": 1\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.object_relation.CreateRelationGroup",
+      "category": {
+        "en": "Object relation",
+        "zh": "模型关系"
+      },
       "name": "CreateRelationGroup",
       "version": "1.0.0",
       "description": "创建模型关系分组",
@@ -8472,10 +9535,36 @@
       },
       "response": {
         "type": "ObjectRelationGroup"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Create object relationship grouping",
+            "zh": "创建模型关系分组"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/object/:object_id/relation_group",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"id\": \"test\",\n    \"name\": \"test\",\n    \"relations\": [\n        {\n            \"relation_side_id\": \"test_rel\"\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"id\": \"test\",\n        \"name\": \"test\",\n        \"protected\": false\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.object_relation.DeleteRelation",
+      "category": {
+        "en": "Object relation",
+        "zh": "模型关系"
+      },
       "name": "DeleteRelation",
       "version": "1.0.0",
       "description": "删除模型关系定义",
@@ -8495,10 +9584,32 @@
         ],
         "required": ["relation_id"]
       },
-      "response": null
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Delete object relationship definition",
+            "zh": "删除模型关系定义"
+          },
+          "request": {
+            "method": "DELETE",
+            "uri": "/object_relation/PARK_p_k_k_p_KAFKA_SERVICE_NODE"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": null\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.object_relation.DeleteRelationGroup",
+      "category": {
+        "en": "Object relation",
+        "zh": "模型关系"
+      },
       "name": "DeleteRelationGroup",
       "version": "1.0.0",
       "description": "删除模型关系分组",
@@ -8523,10 +9634,32 @@
         ],
         "required": ["object_id", "id"]
       },
-      "response": null
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Delete object relation group",
+            "zh": "删除模型关系分组"
+          },
+          "request": {
+            "method": "DELETE",
+            "uri": "/object/PARK/relation_group/test"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": null\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.object_relation.Get",
+      "category": {
+        "en": "Object relation",
+        "zh": "模型关系"
+      },
       "name": "Get",
       "version": "1.0.0",
       "description": "获取单个模型关系",
@@ -8552,6 +9685,10 @@
     },
     {
       "contract": "cmdb.object_relation.ObjectRelationSnapshot",
+      "category": {
+        "en": "Object relation",
+        "zh": "模型关系"
+      },
       "name": "ObjectRelationSnapshot",
       "version": "1.0.0",
       "description": "查询指定版本模型关系快照",
@@ -8592,6 +9729,10 @@
     },
     {
       "contract": "cmdb.object_relation.GetRelationsByGroupId",
+      "category": {
+        "en": "Object relation",
+        "zh": "模型关系"
+      },
       "name": "GetRelationsByGroupId",
       "version": "1.0.0",
       "description": "根据关系分组查询关系列表",
@@ -8645,6 +9786,10 @@
     },
     {
       "contract": "cmdb.object_relation.Update",
+      "category": {
+        "en": "Object relation",
+        "zh": "模型关系"
+      },
       "name": "Update",
       "version": "1.0.0",
       "description": "更新模型关系定义",
@@ -8695,10 +9840,36 @@
       },
       "response": {
         "type": "ObjectRelation"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Update object relationship definition",
+            "zh": "更新模型关系定义"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "/object_relation/PARK_park_test2_test2_park_BBBB",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"name\": \"update_object_relationship\",\n    \"left_description\": \"test2_park\",\n    \"left_groups\": [\n        \"l_groups\"\n    ],\n    \"left_tags\": [\n        \"l_tags\"\n    ],\n    \"right_description\": \"park_test2\",\n    \"right_groups\": [\n        \"r_groups\"\n    ],\n    \"right_tags\": [\n        \"r_tags\"\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"relation_id\": \"PARK_park_test2_test2_park_BBBB\",\n        \"name\": \"update_object_relationship\",\n        \"protected\": false,\n        \"notifyDenied\": false,\n        \"isInherit\": false,\n        \"left_object_id\": \"PARK\",\n        \"leftInheritObjectId\": \"\",\n        \"left_id\": \"park_test2\",\n        \"left_description\": \"test2_park\",\n        \"left_name\": \"park_test2\",\n        \"left_min\": 0,\n        \"left_max\": -1,\n        \"left_groups\": [\n            \"l_groups\"\n        ],\n        \"left_tags\": [\n            \"l_tags\"\n        ],\n        \"right_object_id\": \"BBBB\",\n        \"rightInheritObjectId\": \"\",\n        \"right_id\": \"test2_park\",\n        \"right_description\": \"park_test2\",\n        \"right_name\": \"test2_park\",\n        \"right_min\": 0,\n        \"right_max\": -1,\n        \"right_groups\": [\n            \"r_groups\"\n        ],\n        \"right_tags\": [\n            \"r_tags\"\n        ],\n        \"_version\": 2\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.object_relation.UpdateRelationGroup",
+      "category": {
+        "en": "Object relation",
+        "zh": "模型关系"
+      },
       "name": "UpdateRelationGroup",
       "version": "1.0.0",
       "description": "更新模型关系分组",
@@ -8742,7 +9913,29 @@
       },
       "response": {
         "type": "ObjectRelationGroup"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Update object relationship grouping",
+            "zh": "更新模型关系分组"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "/object/PARK/relation_group/test",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"name\": \"park_test\",\n    \"relations\": [\n        {\n            \"relation_side_id\": \"test_rel\"\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"id\": \"test\",\n        \"name\": \"park_test\",\n        \"protected\": false\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.terraform.DeleteState",
