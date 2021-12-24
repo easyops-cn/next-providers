@@ -286,6 +286,29 @@
             "validate": {
               "pattern": "^[^/#$%^&?]{2,30}$"
             }
+          },
+          {
+            "name": "company",
+            "type": "string",
+            "description": "企业名称",
+            "validate": {
+              "pattern": "^.{0,30}$"
+            }
+          },
+          {
+            "name": "scale",
+            "type": "string",
+            "description": "公司规模"
+          },
+          {
+            "name": "subject",
+            "type": "string[]",
+            "description": "咨询主题"
+          },
+          {
+            "name": "update",
+            "type": "bool",
+            "description": "更新用户信息"
           }
         ],
         "required": ["phone", "verification_code", "username"]
@@ -395,6 +418,28 @@
       }
     },
     {
+      "contract": "air_admin_service.customer.SendConsultVerificationCode",
+      "name": "SendConsultVerificationCode",
+      "version": "1.1.0",
+      "description": "获取预约验证码",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/consult/verification-code"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "phone_number",
+            "type": "phone_number",
+            "description": "接收申请验证码的手机号码"
+          }
+        ],
+        "required": ["phone_number"]
+      },
+      "response": null
+    },
+    {
       "contract": "air_admin_service.customer.SendUpdatedEmail",
       "name": "SendUpdatedEmail",
       "version": "1.0.0",
@@ -426,28 +471,6 @@
         ],
         "required": ["failedInstanceIds"]
       }
-    },
-    {
-      "contract": "air_admin_service.customer.SendVerificationCode",
-      "name": "SendVerificationCode",
-      "version": "1.0.0",
-      "description": "获取验证码",
-      "endpoint": {
-        "method": "POST",
-        "uri": "/api/v1/customer/verification-code"
-      },
-      "request": {
-        "type": "object",
-        "fields": [
-          {
-            "name": "phone_number",
-            "type": "phone_number",
-            "description": "接收申请验证码的手机号码"
-          }
-        ],
-        "required": ["phone_number"]
-      },
-      "response": null
     },
     {
       "contract": "air_admin_service.customer.SetApplyDisapprovedBatch",

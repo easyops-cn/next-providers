@@ -19,6 +19,7 @@
     "CustomerApi.saveCustomerPublicKey",
     "CustomerApi.saveApplyInfoV2",
     "CustomerApi.signup",
-    "CustomerApi.saveConsultInfo"
+    "CustomerApi.saveConsultInfo",
+    "CustomerApi.sendConsultVerificationCode"
   ]
 }

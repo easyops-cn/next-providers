@@ -9,6 +9,18 @@ export interface CustomerApi_SaveConsultInfoRequestBody {
 
   /** 用户名 */
   username: string;
+
+  /** 企业名称 */
+  company?: string;
+
+  /** 公司规模 */
+  scale?: string;
+
+  /** 咨询主题 */
+  subject?: string[];
+
+  /** 更新用户信息 */
+  update?: boolean;
 }
 
 /**
