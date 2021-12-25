@@ -7,7 +7,7 @@ export interface BuildApi_GetStoriesJsonResponseBody {
 }
 
 /**
- * @description 获取stories.json
+ * @description 获取stories.json (stories.json是构件编译时生成的，包含了构件的文档信息。 本接口返回所有构件的stories.json文件的结构化内容。)
  * @endpoint GET /api/v1/next-builder/storiesjson
  */
 export const BuildApi_getStoriesJson = async (

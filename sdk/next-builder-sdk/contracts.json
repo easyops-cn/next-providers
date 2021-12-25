@@ -242,6 +242,7 @@
       "name": "GetStoriesJson",
       "version": "1.0.0",
       "description": "获取stories.json",
+      "detail": "stories.json是构件编译时生成的，包含了构件的文档信息。 本接口返回所有构件的stories.json文件的结构化内容。",
       "endpoint": {
         "method": "GET",
         "uri": "/api/v1/next-builder/storiesjson"
@@ -265,9 +266,10 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/api/v1/next-builder/storiesjson"
+            "uri": "http://127.0.0.1:8142/api/v1/next-builder/storiesjson"
           },
           "response": {
+            "status_code": 200,
             "headers": {
               "Content-Type": "application/json; charset=utf-8"
             },
@@ -284,7 +286,8 @@
       },
       "name": "GetStoriesJsonV2",
       "version": "1.0.0",
-      "description": "获取stories.json",
+      "description": "获取stories.json V2",
+      "detail": "GetStoriesJson的v2接口，支持指定storyIds返回指定构件的文档，支持指定fields返回文档部分信息字段。 若不填写查询条件，则和v1接口一样，返回所有构件的所有文档信息。",
       "endpoint": {
         "method": "POST",
         "uri": "/api/v2/next-builder/storiesjson"
@@ -322,12 +325,13 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/api/v2/next-builder/storiesjson",
+            "uri": "http://127.0.0.1:8142/api/v2/next-builder/storiesjson",
             "headers": {
               "Content-Type": "application/json"
             }
           },
           "response": {
+            "status_code": 200,
             "headers": {
               "Content-Type": "application/json; charset=utf-8"
             },
@@ -403,13 +407,14 @@
           },
           "request": {
             "method": "PUT",
-            "uri": "/api/v1/next-builder/image-upload",
+            "uri": "http://127.0.0.1:8142/api/v1/next-builder/image-upload",
             "headers": {
               "Content-Type": "multipart/form-data; boundary=abcdefg1234567"
             },
             "body": "--abcdefg1234567 Content-Disposition: form-data; name=\"objectName\"\nbootstrap.png --abcdefg1234567 Content-Disposition: form-data; name=\"file\"; filename=\"bootstrap.png\" Content-Type: image/png\n<File Content> --abcdefg1234567"
           },
           "response": {
+            "status_code": 200,
             "headers": {
               "Content-Type": "application/json; charset=utf-8"
             },
@@ -685,10 +690,6 @@
     },
     {
       "contract": "next_builder.clone.CloneMicroApp",
-      "category": {
-        "en": "Build",
-        "zh": "构建"
-      },
       "name": "CloneMicroApp",
       "version": "1.0.0",
       "description": "克隆微应用",
@@ -1013,6 +1014,301 @@
           }
         ],
         "required": ["documentIds"]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.mock_rule.AddTagBatch",
+      "name": "AddTagBatch",
+      "version": "1.0.0",
+      "description": "批量添加标签",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/mock_rule/batch_tag_addition"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "ruleIds",
+            "type": "instance_id[]",
+            "description": "mock规则实例Id"
+          },
+          {
+            "name": "tag",
+            "type": "string[]",
+            "description": "规则标签"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.mock_rule.CreateMockRule",
+      "name": "CreateMockRule",
+      "version": "1.0.0",
+      "description": "新建mock规则",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/mock_rule"
+      },
+      "import": ["easyops/model/next_builder/contract_mock_rule"],
+      "request": {
+        "type": "MockRule",
+        "required": ["MockRule.name"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "mock规则创建的instanceId"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.mock_rule.DeleteMockRuleBatch",
+      "name": "DeleteMockRuleBatch",
+      "version": "1.0.0",
+      "description": "批量删除mock规则",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/mock_rule/batch_deletion"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceIds",
+            "type": "instance_id[]",
+            "description": "mock规则实例Id"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.mock_rule.DeleteProjectMockRuleBatch",
+      "name": "DeleteProjectMockRuleBatch",
+      "version": "1.0.0",
+      "description": "批量删除mock规则（provier不再在编排中使用）（build & push前生效）",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/project/:projectId/mock_rule/batch"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectId",
+            "type": "string",
+            "description": "项目projectId"
+          },
+          {
+            "name": "contractInstanceIds",
+            "type": "string",
+            "description": "关联契约instanceIds， 多个用逗号分割"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.mock_rule.DeleteSingleMockRule",
+      "name": "DeleteSingleMockRule",
+      "version": "1.0.0",
+      "description": "删除单个mock规则",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/mock_rule/:ruleId"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "ruleId",
+            "type": "instance_id",
+            "description": "mock规则实例Id"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.mock_rule.DeleteTagBatch",
+      "name": "DeleteTagBatch",
+      "version": "1.0.0",
+      "description": "批量删除标签",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/mock_rule/batch_tag_deletion"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "ruleIds",
+            "type": "instance_id[]",
+            "description": "mock规则实例Id"
+          },
+          {
+            "name": "tag",
+            "type": "string[]",
+            "description": "规则标签"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.mock_rule.GetDefaultMockRule",
+      "name": "GetDefaultMockRule",
+      "version": "1.0.0",
+      "description": "获取默认的mock规则",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/default_mock_rule"
+      },
+      "import": ["easyops/model/next_builder/contract_mock_rule"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MockRule.contractInstanceId"
+          }
+        ],
+        "required": ["MockRule.contractInstanceId"]
+      },
+      "response": {
+        "type": "MockRule"
+      }
+    },
+    {
+      "contract": "next_builder.mock_rule.GetMockRule",
+      "name": "GetMockRule",
+      "version": "1.0.0",
+      "description": "获取mock规则",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/mock_rule/:ruleId"
+      },
+      "import": ["easyops/model/next_builder/contract_mock_rule"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "ruleId",
+            "type": "instance_id",
+            "description": "mock规则id"
+          }
+        ],
+        "required": ["ruleId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "mock规则实例Id"
+          },
+          {
+            "ref": "MockRule.*"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.mock_rule.UpdateMockRule",
+      "name": "UpdateMockRule",
+      "version": "1.0.0",
+      "description": "更新mock规则",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/mock_rule/:ruleId"
+      },
+      "import": ["easyops/model/next_builder/contract_mock_rule"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "ruleId",
+            "type": "instance_id",
+            "description": "mock规则实例Id"
+          },
+          {
+            "ref": "MockRule.*"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.mock_rule.BatchUpdateMockRulePriority",
+      "name": "BatchUpdateMockRulePriority",
+      "version": "1.0.0",
+      "description": "批量更新mock规则优先级",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/mock_rule/batch_priority_update"
+      },
+      "import": ["easyops/model/next_builder/contract_mock_rule"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceIds",
+            "type": "instance_id[]",
+            "description": "mock规则实例Id"
+          },
+          {
+            "name": "priority",
+            "type": "int[]",
+            "description": "mock规则优先级， 和instanceIds一一对应"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.mock_rule.UpdateProjectMockRule",
+      "name": "UpdateProjectMockRule",
+      "version": "1.0.0",
+      "description": "更新项目mock规则(需Build&Push后生效)",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/project/:projectInstanceId/update_mock_rule"
+      },
+      "import": ["easyops/model/next_builder/contract_mock_rule"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectInstanceId",
+            "type": "string",
+            "description": "项目projectId"
+          },
+          {
+            "ref": "MockRule.contractInstanceId"
+          },
+          {
+            "name": "rulesInstanceIds",
+            "type": "instance_id[]",
+            "description": "mock规则的instanceIds"
+          },
+          {
+            "name": "isEnable",
+            "type": "bool",
+            "description": "启用/禁用mock规则"
+          },
+          {
+            "name": "url",
+            "type": "string",
+            "description": "契约url"
+          }
+        ]
       },
       "response": null
     },
@@ -1461,9 +1757,10 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/api/v1/next-builder/project?appId=my-micro-app"
+            "uri": "http://127.0.0.1:8142/api/v1/next-builder/project?appId=my-micro-app"
           },
           "response": {
+            "status_code": 200,
             "headers": {
               "Content-Type": "application/json; charset=utf-8"
             },

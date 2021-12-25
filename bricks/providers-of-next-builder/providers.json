@@ -37,6 +37,17 @@
     "BuildApi.snippetPackageUpload",
     "BuildApi.getStoriesJsonV2",
     "ApisApi.getApi",
-    "CloneApi.cloneMicroApp"
+    "CloneApi.cloneMicroApp",
+    "MockRuleApi.addTagBatch",
+    "MockRuleApi.createMockRule",
+    "MockRuleApi.deleteMockRuleBatch",
+    "MockRuleApi.deleteProjectMockRuleBatch",
+    "MockRuleApi.deleteSingleMockRule",
+    "MockRuleApi.deleteTagBatch",
+    "MockRuleApi.getDefaultMockRule",
+    "MockRuleApi.getMockRule",
+    "MockRuleApi.updateMockRule",
+    "MockRuleApi.batchUpdateMockRulePriority",
+    "MockRuleApi.updateProjectMockRule"
   ]
 }
