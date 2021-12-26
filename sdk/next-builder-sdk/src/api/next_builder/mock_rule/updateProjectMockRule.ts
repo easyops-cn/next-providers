@@ -12,6 +12,9 @@ export interface MockRuleApi_UpdateProjectMockRuleRequestBody {
 
   /** 契约url */
   url?: string;
+
+  /** provider */
+  provider?: string;
 }
 
 /**
