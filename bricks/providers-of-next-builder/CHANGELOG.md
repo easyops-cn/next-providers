@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.24](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-next-builder@1.12.23...@next-bricks/providers-of-next-builder@1.12.24) (2021-12-27)
+
+**Note:** Version bump only for package @next-bricks/providers-of-next-builder
+
 ## [1.12.23](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-next-builder@1.12.22...@next-bricks/providers-of-next-builder@1.12.23) (2021-12-26)
 
 **Note:** Version bump only for package @next-bricks/providers-of-next-builder
