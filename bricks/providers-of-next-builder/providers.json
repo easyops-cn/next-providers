@@ -48,6 +48,8 @@
     "MockRuleApi.getMockRule",
     "MockRuleApi.updateMockRule",
     "MockRuleApi.batchUpdateMockRulePriority",
-    "MockRuleApi.updateProjectMockRule"
+    "MockRuleApi.updateProjectMockRule",
+    "MockRuleApi.enableOrDisableMockRule",
+    "MockRuleApi.getMockRuleByProvider"
   ]
 }

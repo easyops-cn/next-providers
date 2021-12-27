@@ -1,8 +1,8 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
 export interface MockRuleApi_DeleteProjectMockRuleBatchRequestParams {
-  /** 关联契约instanceIds， 多个用逗号分割 */
-  contractInstanceIds?: string;
+  /** providers, 多个用逗号分割 */
+  providers?: string;
 }
 
 /**

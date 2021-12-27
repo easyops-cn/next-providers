@@ -1107,9 +1107,9 @@
             "description": "项目projectId"
           },
           {
-            "name": "contractInstanceIds",
+            "name": "providers",
             "type": "string",
-            "description": "关联契约instanceIds， 多个用逗号分割"
+            "description": "providers, 多个用逗号分割"
           }
         ]
       },
@@ -1157,6 +1157,38 @@
             "name": "tag",
             "type": "string[]",
             "description": "规则标签"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.mock_rule.EnableOrDisableMockRule",
+      "name": "EnableOrDisableMockRule",
+      "version": "1.0.0",
+      "description": "启用或者禁用mock规则",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/project/:projectInstanceId/enable_or_disable_mock_rule"
+      },
+      "import": ["easyops/model/next_builder/contract_mock_rule"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectInstanceId",
+            "type": "string",
+            "description": "项目projectId"
+          },
+          {
+            "name": "provider",
+            "type": "string",
+            "description": "provider"
+          },
+          {
+            "name": "isEnable",
+            "type": "bool",
+            "description": "启用/禁用mock规则"
           }
         ]
       },
@@ -1216,6 +1248,47 @@
           },
           {
             "ref": "MockRule.*"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.mock_rule.GetMockRuleByProvider",
+      "name": "GetMockRuleByProvider",
+      "version": "1.0.0",
+      "description": "根据provider获取mock规则",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/mock_rule_by_provider"
+      },
+      "import": ["easyops/model/next_builder/contract_mock_rule"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "providerName",
+            "type": "string",
+            "description": "providerName"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "mockData",
+            "type": "object[]",
+            "description": "mockData",
+            "fields": [
+              {
+                "name": "instanceId",
+                "type": "instance_id",
+                "description": "mock规则实例Id"
+              },
+              {
+                "ref": "MockRule.*"
+              }
+            ]
           }
         ]
       }
@@ -1291,17 +1364,9 @@
             "description": "项目projectId"
           },
           {
-            "ref": "MockRule.contractInstanceId"
-          },
-          {
             "name": "rulesInstanceIds",
             "type": "instance_id[]",
             "description": "mock规则的instanceIds"
-          },
-          {
-            "name": "isEnable",
-            "type": "bool",
-            "description": "启用/禁用mock规则"
           },
           {
             "name": "url",

@@ -1,14 +1,8 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
 export interface MockRuleApi_UpdateProjectMockRuleRequestBody {
-  /** 关联契约instanceId */
-  contractInstanceId?: string;
-
   /** mock规则的instanceIds */
   rulesInstanceIds?: string[];
-
-  /** 启用/禁用mock规则 */
-  isEnable?: boolean;
 
   /** 契约url */
   url?: string;
