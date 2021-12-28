@@ -50,7 +50,6 @@
     "MockRuleApi.batchUpdateMockRulePriority",
     "MockRuleApi.updateProjectMockRule",
     "MockRuleApi.enableOrDisableMockRule",
-    "MockRuleApi.getMockRuleByProvider",
     "MockRuleApi.listMockService",
     "MockRuleApi.getMockRuleByContractName"
   ]
