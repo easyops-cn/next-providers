@@ -321,7 +321,7 @@
         {
           "description": {
             "en": "Basic",
-            "zh": "基础请求"
+            "zh": "简单请求"
           },
           "request": {
             "method": "POST",
