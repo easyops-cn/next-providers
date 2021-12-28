@@ -51,6 +51,7 @@
     "MockRuleApi.updateProjectMockRule",
     "MockRuleApi.enableOrDisableMockRule",
     "MockRuleApi.getMockRuleByProvider",
-    "MockRuleApi.listMockService"
+    "MockRuleApi.listMockService",
+    "MockRuleApi.getMockRuleByContractName"
   ]
 }
