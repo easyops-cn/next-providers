@@ -6,6 +6,9 @@ export interface MockRuleApi_EnableOrDisableMockRuleRequestBody {
 
   /** 启用/禁用mock规则 */
   isEnable?: boolean;
+
+  /** 契约url */
+  url?: string;
 }
 
 /**

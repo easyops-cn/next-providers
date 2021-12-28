@@ -1189,6 +1189,11 @@
             "name": "isEnable",
             "type": "bool",
             "description": "启用/禁用mock规则"
+          },
+          {
+            "name": "url",
+            "type": "string",
+            "description": "契约url"
           }
         ]
       },
@@ -1294,6 +1299,64 @@
       }
     },
     {
+      "contract": "next_builder.mock_rule.ListMockService",
+      "name": "ListMockService",
+      "version": "1.0.0",
+      "description": "mock服务列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/mock_service/list"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "页大小"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "description": "mock服务列表",
+        "fields": [
+          {
+            "name": "mockDataList",
+            "type": "object[]",
+            "description": "mockDataList",
+            "fields": [
+              {
+                "name": "contractNamespace",
+                "type": "string",
+                "description": "契约命名空间"
+              },
+              {
+                "name": "contarctName",
+                "type": "string",
+                "description": "契约名称"
+              },
+              {
+                "name": "description",
+                "type": "string",
+                "description": "描述信息"
+              },
+              {
+                "name": "mockRuleNumber",
+                "type": "int",
+                "description": "mock规则数量"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
       "contract": "next_builder.mock_rule.UpdateMockRule",
       "name": "UpdateMockRule",
       "version": "1.0.0",
@@ -1367,11 +1430,6 @@
             "name": "rulesInstanceIds",
             "type": "instance_id[]",
             "description": "mock规则的instanceIds"
-          },
-          {
-            "name": "url",
-            "type": "string",
-            "description": "契约url"
           },
           {
             "name": "provider",

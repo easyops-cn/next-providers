@@ -4,9 +4,6 @@ export interface MockRuleApi_UpdateProjectMockRuleRequestBody {
   /** mock规则的instanceIds */
   rulesInstanceIds?: string[];
 
-  /** 契约url */
-  url?: string;
-
   /** provider */
   provider?: string;
 }

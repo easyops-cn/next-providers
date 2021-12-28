@@ -8,6 +8,7 @@ export * from "./enableOrDisableMockRule";
 export * from "./getDefaultMockRule";
 export * from "./getMockRule";
 export * from "./getMockRuleByProvider";
+export * from "./listMockService";
 export * from "./updateMockRule";
 export * from "./batchUpdateMockRulePriority";
 export * from "./updateProjectMockRule";
