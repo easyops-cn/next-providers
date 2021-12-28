@@ -7,7 +7,7 @@ export * from "./deleteTagBatch";
 export * from "./enableOrDisableMockRule";
 export * from "./getDefaultMockRule";
 export * from "./getMockRule";
-export * from "./getMockRuleByProvider";
+export * from "./getMockRuleByContractName";
 export * from "./listMockService";
 export * from "./updateMockRule";
 export * from "./batchUpdateMockRulePriority";

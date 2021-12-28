@@ -1258,22 +1258,22 @@
       }
     },
     {
-      "contract": "next_builder.mock_rule.GetMockRuleByProvider",
-      "name": "GetMockRuleByProvider",
+      "contract": "next_builder.mock_rule.GetMockRuleByContractName",
+      "name": "GetMockRuleByContractName",
       "version": "1.0.0",
-      "description": "根据provider获取mock规则",
+      "description": "根据契约名获取mock规则",
       "endpoint": {
         "method": "GET",
-        "uri": "/api/v1/mock_rule_by_provider"
+        "uri": "/api/v1/mock_rule_by_contract_name"
       },
       "import": ["easyops/model/next_builder/contract_mock_rule"],
       "request": {
         "type": "object",
         "fields": [
           {
-            "name": "providerName",
+            "name": "contractName",
             "type": "string",
-            "description": "providerName"
+            "description": "contractName"
           }
         ]
       },
@@ -1304,12 +1304,17 @@
       "version": "1.0.0",
       "description": "mock服务列表",
       "endpoint": {
-        "method": "GET",
+        "method": "POST",
         "uri": "/api/v1/mock_service/list"
       },
       "request": {
         "type": "object",
         "fields": [
+          {
+            "name": "queryCondition",
+            "type": "map",
+            "description": "queryCondition"
+          },
           {
             "name": "page",
             "type": "page",
@@ -1352,6 +1357,21 @@
                 "description": "mock规则数量"
               }
             ]
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "页大小"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "实例总数"
           }
         ]
       }
@@ -1398,11 +1418,6 @@
             "name": "instanceIds",
             "type": "instance_id[]",
             "description": "mock规则实例Id"
-          },
-          {
-            "name": "priority",
-            "type": "int[]",
-            "description": "mock规则优先级， 和instanceIds一一对应"
           }
         ]
       },

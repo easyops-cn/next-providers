@@ -3,9 +3,6 @@ import { http, HttpOptions } from "@next-core/brick-http";
 export interface MockRuleApi_BatchUpdateMockRulePriorityRequestBody {
   /** mock规则实例Id */
   instanceIds?: string[];
-
-  /** mock规则优先级， 和instanceIds一一对应 */
-  priority?: number[];
 }
 
 /**
