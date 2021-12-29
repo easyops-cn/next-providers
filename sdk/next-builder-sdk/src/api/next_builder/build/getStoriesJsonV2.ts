@@ -15,7 +15,7 @@ export interface BuildApi_GetStoriesJsonV2ResponseBody {
 }
 
 /**
- * @description 获取stories.json V2 (GetStoriesJson的v2接口，支持指定storyIds返回指定构件的文档，支持指定fields返回文档部分信息字段。 若不填写查询条件，则和v1接口一样，返回所有构件的所有文档信息。)
+ * @description 获取stories.json V2 (GetStoriesJson的v2接口，支持指定storyIds返回指定构件的文档，支持指定fields返回文档部分信息字段。 若不填写查询条件，则和v1接口一样，返回所有构件的全部文档字段。)
  * @endpoint POST /api/v2/next-builder/storiesjson
  */
 export const BuildApi_getStoriesJsonV2 = async (
