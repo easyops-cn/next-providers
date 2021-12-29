@@ -75,7 +75,7 @@ export interface ModelMockRule_requestQuery_item {
 
 export interface ModelMockRule_responseData {
   /** 响应状态码 */
-  status?: string;
+  status?: number;
 
   /** 响应内容是跟随文档orJson */
   isJson?: boolean;

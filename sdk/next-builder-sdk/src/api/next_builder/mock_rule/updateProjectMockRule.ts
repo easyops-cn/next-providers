@@ -6,6 +6,9 @@ export interface MockRuleApi_UpdateProjectMockRuleRequestBody {
 
   /** provider */
   provider?: string;
+
+  /** contractName */
+  contractName?: string;
 }
 
 /**

@@ -24,7 +24,7 @@ export interface BuildApi_PackageUploadRequestBody {
 }
 
 /**
- * @description 指定环境一键打包上传到r环境
+ * @description 微应用打包
  * @endpoint POST /api/v1/next-builder/package-upload
  */
 export const BuildApi_packageUpload = (

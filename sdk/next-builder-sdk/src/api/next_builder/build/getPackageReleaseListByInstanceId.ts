@@ -8,7 +8,7 @@ export interface BuildApi_GetPackageReleaseListByInstanceIdResponseBody {
 }
 
 /**
- * @description 通过project的instanceId获取r环境已打包列表
+ * @description 获取打包记录
  * @endpoint GET /api/v1/next-builder/packages-released/:instanceId
  */
 export const BuildApi_getPackageReleaseListByInstanceId = async (
