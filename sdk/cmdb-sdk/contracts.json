@@ -70,7 +70,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/system/business_tree/list?ids=5c2d520975c6b"
+            "uri": "http://127.0.0.1:8079/system/business_tree/list?ids=5c2d520975c6b"
           },
           "response": {
             "headers": {
@@ -153,7 +153,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/systems/_graph_mode"
+            "uri": "http://127.0.0.1:8079/systems/_graph_mode"
           },
           "response": {
             "headers": {
@@ -453,7 +453,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/object_word_index/dataCenter@FINTECHDATA",
+            "uri": "http://127.0.0.1:8079/object_word_index/dataCenter@FINTECHDATA",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -532,7 +532,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/v2/batch/object/relation_query_strategy?object_ids=HOST,APP,_IDC,CLUSTER"
+            "uri": "http://127.0.0.1:8079/v2/batch/object/relation_query_strategy?object_ids=HOST,APP,_IDC,CLUSTER"
           },
           "response": {
             "headers": {
@@ -815,7 +815,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/v2/object/APP/relation_query_strategy",
+            "uri": "http://127.0.0.1:8079/v2/object/APP/relation_query_strategy",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -865,7 +865,7 @@
           },
           "request": {
             "method": "DELETE",
-            "uri": "/object/A@FINTECHDATA"
+            "uri": "http://127.0.0.1:8079/object/A@FINTECHDATA"
           },
           "response": {
             "headers": {
@@ -967,7 +967,7 @@
           },
           "request": {
             "method": "DELETE",
-            "uri": "/v2/object/APP/relation_query_strategy/5d34eff675352"
+            "uri": "http://127.0.0.1:8079/v2/object/APP/relation_query_strategy/5d34eff675352"
           },
           "response": {
             "headers": {
@@ -1089,7 +1089,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/v2/object_export",
+            "uri": "http://127.0.0.1:8079/v2/object_export",
             "body": "{\n    \"objectIds\": [\n        \"dataCenter@FINTECHDATA\"\n    ]\n}"
           },
           "response": {
@@ -1142,7 +1142,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/object/dataCenter@FINTECHDATA"
+            "uri": "http://127.0.0.1:8079/object/dataCenter@FINTECHDATA"
           },
           "response": {
             "headers": {
@@ -1205,7 +1205,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/object_id_map_name?ignoreAttrPermission=false&emptySystem=false"
+            "uri": "http://127.0.0.1:8079/object_id_map_name?ignoreAttrPermission=false&emptySystem=false"
           },
           "response": {
             "headers": {
@@ -1284,7 +1284,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/object_all"
+            "uri": "http://127.0.0.1:8079/object_all"
           },
           "response": {
             "headers": {
@@ -1371,7 +1371,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/object/dataCenter@FINTECHDATA/authorizers"
+            "uri": "http://127.0.0.1:8079/object/dataCenter@FINTECHDATA/authorizers"
           },
           "response": {
             "headers": {
@@ -1437,7 +1437,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/object_basic_all"
+            "uri": "http://127.0.0.1:8079/object_basic_all"
           },
           "response": {
             "headers": {
@@ -1508,7 +1508,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/object_ref?ref_object=HOST"
+            "uri": "http://127.0.0.1:8079/object_ref?ref_object=HOST"
           },
           "response": {
             "headers": {
@@ -1637,7 +1637,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/object_relation_path?dst_object_id=HOST&max_depth=6&max_sub_node=1400&src_object_id=_SERVICENODE&with_cycle=false"
+            "uri": "http://127.0.0.1:8079/object_relation_path?dst_object_id=HOST&max_depth=6&max_sub_node=1400&src_object_id=_SERVICENODE&with_cycle=false"
           },
           "response": {
             "headers": {
@@ -1771,7 +1771,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/object_relation_related_key"
+            "uri": "http://127.0.0.1:8079/object_relation_related_key"
           },
           "response": {
             "headers": {
@@ -1867,7 +1867,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/object/dataCenter@FINTECHDATA/attr/geographicalPosition"
+            "uri": "http://127.0.0.1:8079/object/dataCenter@FINTECHDATA/attr/geographicalPosition"
           },
           "response": {
             "headers": {
@@ -1919,7 +1919,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/v2/object/APP/relation_query_strategy/5d351b0ba48a8"
+            "uri": "http://127.0.0.1:8079/v2/object/APP/relation_query_strategy/5d351b0ba48a8"
           },
           "response": {
             "headers": {
@@ -2044,7 +2044,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/v2/object_import_check",
+            "uri": "http://127.0.0.1:8079/v2/object_import_check",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -2332,7 +2332,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/object?page=1&page_size=1"
+            "uri": "http://127.0.0.1:8079/object?page=1&page_size=1"
           },
           "response": {
             "headers": {
@@ -2447,7 +2447,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/object_basic?page=1&page_size=2"
+            "uri": "http://127.0.0.1:8079/object_basic?page=1&page_size=2"
           },
           "response": {
             "headers": {
@@ -2515,7 +2515,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/object_category"
+            "uri": "http://127.0.0.1:8079/object_category"
           },
           "response": {
             "headers": {
@@ -2594,7 +2594,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/object/dataCenter@FINTECHDATA/fields?depth=1"
+            "uri": "http://127.0.0.1:8079/object/dataCenter@FINTECHDATA/fields?depth=1"
           },
           "response": {
             "headers": {
@@ -2669,7 +2669,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/v2/object/APP/relation_query_strategy"
+            "uri": "http://127.0.0.1:8079/v2/object/APP/relation_query_strategy"
           },
           "response": {
             "headers": {
@@ -2798,7 +2798,7 @@
           },
           "request": {
             "method": "PUT",
-            "uri": "/object/dataCenter@FINTECHDATA",
+            "uri": "http://127.0.0.1:8079/object/dataCenter@FINTECHDATA",
             "body": "{\n    \"category\": \"金融元数据.数据中心\",\n    \"memo\": \"qwer\",\n    \"name\": \"数据中心\",\n    \"notifyDenied\": false,\n    \"parentObjectIds\": [],\n    \"system\": \"\"\n}"
           },
           "response": {
@@ -2858,7 +2858,7 @@
           },
           "request": {
             "method": "PUT",
-            "uri": "/object/PARK/attribute_category/abc",
+            "uri": "http://127.0.0.1:8079/object/PARK/attribute_category/abc",
             "body": "{\n    \"newName\": \"other\"\n}"
           },
           "response": {
@@ -2948,7 +2948,7 @@
           },
           "request": {
             "method": "PUT",
-            "uri": "/object/dataCenter@FINTECHDATA/attr/facilityName",
+            "uri": "http://127.0.0.1:8079/object/dataCenter@FINTECHDATA/attr/facilityName",
             "body": "{\n\t\"name\": \"设施名称\",\n\t\"readonly\": \"false\",\n\t\"required\": \"true\",\n\t\"tag\": [\"基本信息\"],\n\t\"unique\": \"false\",\n\t\"value\": {\n\t\t\"default_type\": \"value\",\n\t\t\"mode\": \"default\",\n\t\t\"prefix\": \"\",\n\t\t\"regex\": \"\",\n\t\t\"series_number_length\": 0,\n\t\t\"start_value\": 0,\n\t\t\"struct_define\": [],\n\t\t\"type\": \"str\"\n\t}\n}"
           },
           "response": {
@@ -3038,7 +3038,7 @@
           },
           "request": {
             "method": "PUT",
-            "uri": "/v2/object/APP/relation_query_strategy/5d354b667c378",
+            "uri": "http://127.0.0.1:8079/v2/object/APP/relation_query_strategy/5d354b667c378",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -3138,7 +3138,7 @@
           },
           "request": {
             "method": "PUT",
-            "uri": "/v2/object/dataCenter@FINTECHDATA",
+            "uri": "http://127.0.0.1:8079/v2/object/dataCenter@FINTECHDATA",
             "body": "{\n    \"category\": \"金融元数据.数据中心\",\n    \"memo\": \"qwer\",\n    \"name\": \"数据中心\",\n    \"notifyDenied\": false,\n    \"parentObjectIds\": [],\n    \"system\": \"\"\n}"
           },
           "response": {
@@ -3239,7 +3239,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/history/export/excel?range=today&exclude_event=event.instance.auto_discovery%2Cevent.instance_relation.auto_discovery&with_children=true&st=1575388800&is_next=false"
+            "uri": "http://127.0.0.1:8079/history/export/excel?range=today&exclude_event=event.instance.auto_discovery%2Cevent.instance_relation.auto_discovery&with_children=true&st=1575388800&is_next=false"
           },
           "response": {
             "headers": {
@@ -3299,7 +3299,7 @@
           },
           "request": {
             "method": "PUT",
-            "uri": "/object/PARK/instance/5d234ee4acecd/_rollback",
+            "uri": "http://127.0.0.1:8079/object/PARK/instance/5d234ee4acecd/_rollback",
             "body": "{\n    \"_version\": 2,\n    \"_ts\": \"2021-12-20 12:16:58\"\n}"
           },
           "response": {
@@ -3658,7 +3658,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/object/:objectId/instance/aggregate",
+            "uri": "http://127.0.0.1:8079/object/:objectId/instance/aggregate",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -3740,7 +3740,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/object/PARK/instance/aggregate/count/abc?page=1&page_size=1"
+            "uri": "http://127.0.0.1:8079/object/PARK/instance/aggregate/count/abc?page=1&page_size=1"
           },
           "response": {
             "headers": {
@@ -3813,7 +3813,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/v2/object/PARK/instance_aggregate/count/abc"
+            "uri": "http://127.0.0.1:8079/v2/object/PARK/instance_aggregate/count/abc"
           },
           "response": {
             "headers": {
@@ -3938,7 +3938,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/object/TEST123/instance/_import-json",
+            "uri": "http://127.0.0.1:8079/object/TEST123/instance/_import-json",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -4151,7 +4151,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/batch/object/instance/_search",
+            "uri": "http://127.0.0.1:8079/batch/object/instance/_search",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -4200,7 +4200,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/object_count_all?objectIds=PARK,dataCenter@FINTECHDATA"
+            "uri": "http://127.0.0.1:8079/object_count_all?objectIds=PARK,dataCenter@FINTECHDATA"
           },
           "response": {
             "headers": {
@@ -4271,7 +4271,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/v2/object/PARK/instance",
+            "uri": "http://127.0.0.1:8079/v2/object/PARK/instance",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -4337,7 +4337,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/object/PARK/query/strategy",
+            "uri": "http://127.0.0.1:8079/object/PARK/query/strategy",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -4460,7 +4460,7 @@
           },
           "request": {
             "method": "DELETE",
-            "uri": "/object/PARK/instance/_batch?instanceIds=5d234ee4acecd;5d390f87f0252"
+            "uri": "http://127.0.0.1:8079/object/PARK/instance/_batch?instanceIds=5d234ee4acecd;5d390f87f0252"
           },
           "response": {
             "headers": {
@@ -4512,7 +4512,7 @@
           },
           "request": {
             "method": "DELETE",
-            "uri": "/object/PARK/query/strategy/2ee3a28bf4ed49848ab670e0a0c18f24"
+            "uri": "http://127.0.0.1:8079/object/PARK/query/strategy/2ee3a28bf4ed49848ab670e0a0c18f24"
           },
           "response": {
             "headers": {
@@ -4664,7 +4664,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/export/object/PARK/instance/excel",
+            "uri": "http://127.0.0.1:8079/export/object/PARK/instance/excel",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -4806,7 +4806,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/object/PARK/instance_default_value_template"
+            "uri": "http://127.0.0.1:8079/object/PARK/instance_default_value_template"
           },
           "response": {
             "headers": {
@@ -5071,7 +5071,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/object/_EVENT_ACCESS_DEFINE/instance/group",
+            "uri": "http://127.0.0.1:8079/object/_EVENT_ACCESS_DEFINE/instance/group",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -5352,7 +5352,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/v3/object/HOST/instance/group",
+            "uri": "http://127.0.0.1:8079/v3/object/HOST/instance/group",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -5817,7 +5817,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/object/PARK/instance/5d3914e090876/_relation_count"
+            "uri": "http://127.0.0.1:8079/object/PARK/instance/5d3914e090876/_relation_count"
           },
           "response": {
             "headers": {
@@ -5960,7 +5960,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/object/PARK/instance?page=1&page_size=2"
+            "uri": "http://127.0.0.1:8079/object/PARK/instance?page=1&page_size=2"
           },
           "response": {
             "headers": {
@@ -6035,7 +6035,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "/object/PARK/query/strategy"
+            "uri": "http://127.0.0.1:8079/object/PARK/query/strategy"
           },
           "response": {
             "headers": {
@@ -7105,7 +7105,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/object/:object_id/instance/update_by_query",
+            "uri": "http://127.0.0.1:8079/object/:object_id/instance/update_by_query",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -7178,7 +7178,7 @@
           },
           "request": {
             "method": "PUT",
-            "uri": "/object/PARK/instance/5d3914ca4406a",
+            "uri": "http://127.0.0.1:8079/object/PARK/instance/5d3914ca4406a",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -7249,7 +7249,7 @@
           },
           "request": {
             "method": "PUT",
-            "uri": "/object/PARK/query/strategy/18718fbd438f43aa925620b754968d23",
+            "uri": "http://127.0.0.1:8079/object/PARK/query/strategy/18718fbd438f43aa925620b754968d23",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -7323,7 +7323,7 @@
           },
           "request": {
             "method": "PUT",
-            "uri": "/v2/object/PARK/instance/5d3914ca4406a",
+            "uri": "http://127.0.0.1:8079/v2/object/PARK/instance/5d3914ca4406a",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -7412,7 +7412,7 @@
           },
           "request": {
             "method": "PUT",
-            "uri": "/permission/PARK/instances/_batch",
+            "uri": "http://127.0.0.1:8079/permission/PARK/instances/_batch",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -7553,7 +7553,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/object/:object_id/instance_archive/:instance_id"
+            "uri": "http://127.0.0.1:8079/object/:object_id/instance_archive/:instance_id"
           },
           "response": {
             "headers": {
@@ -7861,7 +7861,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/instance/traverse",
+            "uri": "http://127.0.0.1:8079/instance/traverse",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -8047,7 +8047,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/v2/instance/traverse",
+            "uri": "http://127.0.0.1:8079/v2/instance/traverse",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -8234,7 +8234,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/v3/path/_search/export/excel",
+            "uri": "http://127.0.0.1:8079/v3/path/_search/export/excel",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -8294,7 +8294,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/v4/path/_search/export/excel",
+            "uri": "http://127.0.0.1:8079/v4/path/_search/export/excel",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -8381,7 +8381,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/v3/path/_search",
+            "uri": "http://127.0.0.1:8079/v3/path/_search",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -8464,7 +8464,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/v4/path/_search",
+            "uri": "http://127.0.0.1:8079/v4/path/_search",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -8837,7 +8837,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/v2/object_relation/PARK_test_rel_park_rel_TEST123/_autodiscovery/multi",
+            "uri": "http://127.0.0.1:8079/v2/object_relation/PARK_test_rel_park_rel_TEST123/_autodiscovery/multi",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -9044,7 +9044,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/object/PARK/relation/test_rel/remove",
+            "uri": "http://127.0.0.1:8079/object/PARK/relation/test_rel/remove",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -9101,7 +9101,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/object/PARK/relation/test_rel/set",
+            "uri": "http://127.0.0.1:8079/object/PARK/relation/test_rel/set",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -9207,7 +9207,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/instance_tree/anchor",
+            "uri": "http://127.0.0.1:8079/instance_tree/anchor",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -9276,7 +9276,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/v2/instance_tree/anchor",
+            "uri": "http://127.0.0.1:8079/v2/instance_tree/anchor",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -9622,7 +9622,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "/object/:object_id/relation_group",
+            "uri": "http://127.0.0.1:8079/object/:object_id/relation_group",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -9671,7 +9671,7 @@
           },
           "request": {
             "method": "DELETE",
-            "uri": "/object_relation/PARK_p_k_k_p_KAFKA_SERVICE_NODE"
+            "uri": "http://127.0.0.1:8079/object_relation/PARK_p_k_k_p_KAFKA_SERVICE_NODE"
           },
           "response": {
             "headers": {
@@ -9721,7 +9721,7 @@
           },
           "request": {
             "method": "DELETE",
-            "uri": "/object/PARK/relation_group/test"
+            "uri": "http://127.0.0.1:8079/object/PARK/relation_group/test"
           },
           "response": {
             "headers": {
@@ -9927,7 +9927,7 @@
           },
           "request": {
             "method": "PUT",
-            "uri": "/object_relation/PARK_park_test2_test2_park_BBBB",
+            "uri": "http://127.0.0.1:8079/object_relation/PARK_park_test2_test2_park_BBBB",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -10000,7 +10000,7 @@
           },
           "request": {
             "method": "PUT",
-            "uri": "/object/PARK/relation_group/test",
+            "uri": "http://127.0.0.1:8079/object/PARK/relation_group/test",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -10017,6 +10017,10 @@
     },
     {
       "contract": "cmdb.terraform.DeleteState",
+      "category": {
+        "en": "Terraform",
+        "zh": "Terraform"
+      },
       "name": "DeleteState",
       "version": "1.0.0",
       "description": "删除state",
@@ -10057,6 +10061,10 @@
     },
     {
       "contract": "cmdb.terraform.GetState",
+      "category": {
+        "en": "Terraform",
+        "zh": "Terraform"
+      },
       "name": "GetState",
       "version": "1.0.0",
       "description": "获取state",
@@ -10101,6 +10109,10 @@
     },
     {
       "contract": "cmdb.terraform.LockState",
+      "category": {
+        "en": "Terraform",
+        "zh": "Terraform"
+      },
       "name": "LockState",
       "version": "1.0.0",
       "description": "锁定工作区",
@@ -10153,6 +10165,10 @@
     },
     {
       "contract": "cmdb.terraform.UnLockState",
+      "category": {
+        "en": "Terraform",
+        "zh": "Terraform"
+      },
       "name": "UnLockState",
       "version": "1.0.0",
       "description": "解锁工作区",
@@ -10205,6 +10221,10 @@
     },
     {
       "contract": "cmdb.terraform.UpdateState",
+      "category": {
+        "en": "Terraform",
+        "zh": "Terraform"
+      },
       "name": "UpdateState",
       "version": "1.0.0",
       "description": "更新state",
