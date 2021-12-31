@@ -941,7 +941,8 @@
       },
       "name": "SaveDocument",
       "version": "1.1.0",
-      "description": "保存文档(已存在文档则更新,根据documentId来判断是否是旧文档)",
+      "description": "保存文档",
+      "detail": "已存在文档则更新,根据documentId来判断是否是旧文档",
       "endpoint": {
         "method": "PUT",
         "uri": "/api/v1/document/save"
@@ -1385,17 +1386,17 @@
         "description": "mock服务列表",
         "fields": [
           {
-            "name": "mockDataList",
+            "name": "list",
             "type": "object[]",
-            "description": "mockDataList",
+            "description": "列表数据",
             "fields": [
               {
-                "name": "contractNamespace",
+                "name": "namespaceId",
                 "type": "string",
                 "description": "契约命名空间"
               },
               {
-                "name": "contarctName",
+                "name": "name",
                 "type": "string",
                 "description": "契约名称"
               },

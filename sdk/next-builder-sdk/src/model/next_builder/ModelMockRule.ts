@@ -12,6 +12,9 @@ export interface ModelMockRule {
   /** method */
   method: string;
 
+  /** uri */
+  uri: string;
+
   /** 契约名字 */
   contractName: string;
 

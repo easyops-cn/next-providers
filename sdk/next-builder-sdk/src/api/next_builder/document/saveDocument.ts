@@ -36,7 +36,7 @@ export type DocumentApi_SaveDocumentResponseBody =
   Partial<ModelMicroAppDocument>;
 
 /**
- * @description 保存文档(已存在文档则更新,根据documentId来判断是否是旧文档)
+ * @description 保存文档 (已存在文档则更新,根据documentId来判断是否是旧文档)
  * @endpoint PUT /api/v1/document/save
  */
 export const DocumentApi_saveDocument = async (

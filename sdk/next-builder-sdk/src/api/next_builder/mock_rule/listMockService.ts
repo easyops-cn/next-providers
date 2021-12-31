@@ -14,8 +14,8 @@ export interface MockRuleApi_ListMockServiceRequestBody {
 
 /** mock服务列表 */
 export interface MockRuleApi_ListMockServiceResponseBody {
-  /** mockDataList */
-  mockDataList?: MockRuleApi_ListMockServiceResponseBody_mockDataList_item[];
+  /** 列表数据 */
+  list?: MockRuleApi_ListMockServiceResponseBody_list_item[];
 
   /** 页码 */
   page?: number;
@@ -45,12 +45,12 @@ export const MockRuleApi_listMockService = async (
     )
   ).data;
 
-export interface MockRuleApi_ListMockServiceResponseBody_mockDataList_item {
+export interface MockRuleApi_ListMockServiceResponseBody_list_item {
   /** 契约命名空间 */
-  contractNamespace?: string;
+  namespaceId?: string;
 
   /** 契约名称 */
-  contarctName?: string;
+  name?: string;
 
   /** 描述信息 */
   description?: string;
