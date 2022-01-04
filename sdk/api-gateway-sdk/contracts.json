@@ -1,8 +1,16 @@
 {
   "name": "api_gateway",
+  "description": {
+    "en": "api gateway service",
+    "zh": "API 网关服务"
+  },
   "contracts": [
     {
       "contract": "api_gateway.auth.CheckLogin",
+      "category": {
+        "en": "auth",
+        "zh": "认证"
+      },
       "name": "CheckLogin",
       "version": "1.0.0",
       "description": "判断用户是否登录",
@@ -60,6 +68,10 @@
     },
     {
       "contract": "api_gateway.auth.GetCaptcha",
+      "category": {
+        "en": "auth",
+        "zh": "认证"
+      },
       "name": "GetCaptcha",
       "version": "1.0.0",
       "description": "获取登录验证码",
@@ -74,6 +86,10 @@
     },
     {
       "contract": "api_gateway.auth.LDAPLogin",
+      "category": {
+        "en": "auth",
+        "zh": "认证"
+      },
       "name": "LDAPLogin",
       "version": "1.0.0",
       "description": "ldap 登录",
@@ -146,6 +162,10 @@
     },
     {
       "contract": "api_gateway.auth.LoginV2",
+      "category": {
+        "en": "auth",
+        "zh": "认证"
+      },
       "name": "LoginV2",
       "version": "1.0.0",
       "description": "根据指定方式校验密码登录",
@@ -227,10 +247,39 @@
             "description": "判断当前登录用户是否是系统管理员"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "login v2",
+            "zh": "登录 V2(最新统一登录接口)"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8104/api/auth/login/v2",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"username\": \"username\",\n  \"password\": \"password\",\n  \"loginBy\": \"easyops\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8",
+              "Set-Cookie": "PHPSESSID=VFMTWAJHYRCMUWODZMVGHPSMV4UXCDN4Q3OKODAQAQBZYTUH2QDA; Path=/; Expires=Tue, 28 Dec 2021 11:45:20 GMT; Max-Age=7200",
+              "X-B3-Traceid": "8fffffffffffffff6c1e84cea8ce252c"
+            },
+            "status_code": 200,
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n        \"loggedIn\": true,\n        \"username\": \"easyops\",\n        \"org\": 2988466,\n        \"location\": \"\",\n        \"userInstanceId\": \"5b1338f33ee9c\",\n        \"loginFrom\": \"\",\n        \"accessRule\": \"\",\n        \"isAdmin\": true\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "api_gateway.auth.Logout",
+      "category": {
+        "en": "auth",
+        "zh": "认证"
+      },
       "name": "Logout",
       "version": "1.0.0",
       "description": "退出登录",
@@ -243,6 +292,10 @@
     },
     {
       "contract": "api_gateway.auth.RefreshToken",
+      "category": {
+        "en": "auth",
+        "zh": "认证"
+      },
       "name": "RefreshToken",
       "version": "1.0.0",
       "description": "更新 token",
@@ -270,6 +323,10 @@
     },
     {
       "contract": "api_gateway.auth.Register",
+      "category": {
+        "en": "auth",
+        "zh": "认证"
+      },
       "name": "Register",
       "version": "1.0.0",
       "description": "注册",
@@ -357,10 +414,39 @@
             "description": "判断当前登录用户是否是系统管理员"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "register user by invite code",
+            "zh": "通过邀请码注册用户"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8104/api/auth/register",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"email\": \"test_user@easyops.cn\",\n  \"password\": \"******\",\n  \"invite\": \"invite_code\",\n  \"name\": \"test_user\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8",
+              "Set-Cookie": "PHPSESSID=VFMTWAJHYRCMUWODZMVGHPSMV4UXCDN4Q3OKODAQAQBZYTUH2QDA; Path=/; Expires=Tue, 28 Dec 2021 11:45:20 GMT; Max-Age=7200",
+              "X-B3-Traceid": "8fffffffffffffff6c1e84cea8ce252c"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"error\": \"\",\n  \"message\": \"\",\n  \"data\": {\n      \"name\": \"test_user\",\n      \"email\": \"test_user@easyops.cn\",\n      \"org\": 1234,\n      \"loggedIn\": true,\n      \"username\": \"test_user\",\n      \"location\": \"\",\n      \"userInstanceId\": \"5d4321334842b\",\n      \"loginFrom\": \"\",\n      \"accessRule\": \"\",\n      \"isAdmin\": false\n  }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "api_gateway.auth.TokenLDAPLogin",
+      "category": {
+        "en": "auth",
+        "zh": "认证"
+      },
       "name": "TokenLDAPLogin",
       "version": "1.0.0",
       "description": "ldap 登录成功后，返回 token",
@@ -438,6 +524,10 @@
     },
     {
       "contract": "api_gateway.auth.TokenLogin",
+      "category": {
+        "en": "auth",
+        "zh": "认证"
+      },
       "name": "TokenLogin",
       "version": "1.0.0",
       "description": "登录成功后，返回 token",
@@ -506,7 +596,31 @@
             "description": "更新 token, 只能用来进行更新 token, 在 header 附带 Authorization: Bearer refreshToken"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "jwt token login",
+            "zh": "使用 token 登录(提供给移动端APP或者小程序使用)"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8104/api/auth/token/login",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"username\": \"test_user\",\n  \"password\": \"password\",\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8",
+              "X-B3-Traceid": "8fffffffffffffff6c1e84cea8ce252c"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"data\": {\n      \"loggedIn\": true,\n      \"username\": \"test_user\",\n      \"org\": 1234,\n      \"location\": \"\",\n      \"userInstanceId\": \"5b1338f33ee9c\",\n      \"loginFrom\": \"\",\n      \"token\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyMGMzZTNjOS01NTQ4LTRmYzMtYjJlYi1mNjZmZTZjYzMyYWUiLCJvcmciOjI5ODg0NjYsInVzZXIiOiJlYXN5b3BzIiwiZXhwIjoxNjQwNzAzOTEzLCJncmFudF90eXBlIjoiYWNjZXNzIn0.Bss0M3iIFYld_BkFjC-DJQJ1x335OJr_vJq9aGIXEpktsmqZhFQ662LAkZivizJ0DYGt-PoBOLYaFW_OWhFf39irhIrJ-Iqfwo0I1oASGLlWFm5vhvuvNjS4oUWVHU3DoGAei0IwpSZ-BT-2mOgRKpA_vTgAVOTX40-kOCSi8dmmfIbDoeI51oud6A8lpWNXHtFT4cdJoinfYIVoDFqzKstRNeLCjYl88IXvIkX5K9u_SapAFnTTzcIGJKtvRfzeGBf_imihpz5z7lbOSZ0-Apxz28UgXlFc1PZnQ3J4tN4xtjQuZHCY0_xBeqMrYifxfqhZCXdxWExcLNrKDdo62Q\",\n      \"refreshToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlNzM4ZmI0My01ODJmLTQwZjMtOWU0Yy1jODc3NTU0OGNhZjgiLCJvcmciOjI5ODg0NjYsInVzZXIiOiJlYXN5b3BzIiwiZXhwIjoxNjQxOTk2MzEzLCJncmFudF90eXBlIjoicmVmcmVzaCJ9.DWqvD3YKGofZRguinTTKEk1kfolSZk5kVkSpk6rfrkx2kgF97vjLKnWutGKQNgPwma8B8rOWtzvQjHaNDUGw_JTvrwvddBzlcPXEXkX72TwPbCZbNQo5IMCMpAxCS9hgv9ADbZytXLvCXNRuALwQss3xjvSz93F-b2NpX7Q1sG4AeCQNYrdLbQrNWLCzCwG4d6MFpGelGd7z67p6OKfYo4SiVU89Z_ZsPyllBh1MM-PwEAkDXhMP5HJi-TjG7W6zd1HdNehHmEdrn-FTEI_zyRz6eI1TSfmr6azz66mrGUk5NTUZv_dEmfWYXvvojZ3WL4bwK6uPvndJURwLNGUMWw\"\n  }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "api_gateway.bootstrap.Bootstrap",

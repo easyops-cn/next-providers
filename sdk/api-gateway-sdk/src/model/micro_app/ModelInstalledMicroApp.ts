@@ -107,4 +107,7 @@ export interface ModelInstalledMicroApp {
 
   /** 默认面包屑配置 */
   breadcrumb: string;
+
+  /** 使用主题 */
+  theme: string;
 }
