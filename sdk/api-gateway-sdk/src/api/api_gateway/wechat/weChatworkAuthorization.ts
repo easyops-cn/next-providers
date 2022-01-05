@@ -9,7 +9,7 @@ export interface WechatApi_WeChatworkAuthorizationRequestParams {
 }
 
 /**
- * @description 企业微信认证；扫码登录成功后，会携带code和appid重定向到该接口，获取用户信息UserId
+ * @description 企业微信认证 (扫码登录成功后，会携带code和appid重定向到该接口，获取用户信息UserId)
  * @endpoint GET /api/api_gateway/v1/wechatwork/authorization
  */
 export const WechatApi_weChatworkAuthorization = (

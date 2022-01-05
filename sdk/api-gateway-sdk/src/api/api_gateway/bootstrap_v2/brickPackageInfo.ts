@@ -16,7 +16,7 @@ export interface BootstrapV2Api_BrickPackageInfoResponseBody {
 }
 
 /**
- * @description 获取构件包信息，包括brick、templates、providers、processors（从bootstrap中分离出来）
+ * @description 获取构件包信息 (包括brick、templates、providers、processors（从bootstrap中分离出来）)
  * @endpoint GET /api/auth/brick_package_info
  */
 export const BootstrapV2Api_brickPackageInfo = async (

@@ -875,7 +875,8 @@
       "contract": "api_gateway.bootstrap_v2.BrickPackageInfo",
       "name": "BrickPackageInfo",
       "version": "1.0.0",
-      "description": "获取构件包信息，包括brick、templates、providers、processors（从bootstrap中分离出来）",
+      "description": "获取构件包信息",
+      "detail": "包括brick、templates、providers、processors（从bootstrap中分离出来）",
       "endpoint": {
         "method": "GET",
         "uri": "/api/auth/brick_package_info"
@@ -1251,7 +1252,8 @@
       "contract": "api_gateway.oauth.OauthAuthorizate",
       "name": "OauthAuthorizate",
       "version": "1.0.0",
-      "description": "Oauth认证；在Oauth Server中登录成功后，会携带 authorization_code 重定向到该接口，根据配置文件选择Oauth的实现，通过Oauth Server返回的认证信息向 Oauth Server获取用户信息、服务访问权限等信息",
+      "description": "Oauth认证",
+      "detail": "在Oauth Server中登录成功后，会携带 authorization_code 重定向到该接口，根据配置文件选择Oauth的实现，通过Oauth Server返回的认证信息向 Oauth Server获取用户信息、服务访问权限等信息\"",
       "endpoint": {
         "method": "GET",
         "uri": "/api/auth/oauth/authorizate/:provider"
@@ -1283,7 +1285,8 @@
       "contract": "api_gateway.oauth.OauthLogin",
       "name": "OauthLogin",
       "version": "1.0.0",
-      "description": "Oauth登录；根据配置文件选择Oauth的实现；将请求重定向到指定的Oauth Server中",
+      "description": "Oauth登录",
+      "detail": "根据配置文件选择Oauth的实现；将请求重定向到指定的Oauth Server中",
       "endpoint": {
         "method": "GET",
         "uri": "/api/auth/oauth/login"
@@ -1676,7 +1679,8 @@
       "contract": "api_gateway.wechat.WeChatworkAuthorization",
       "name": "WeChatworkAuthorization",
       "version": "1.0.0",
-      "description": "企业微信认证；扫码登录成功后，会携带code和appid重定向到该接口，获取用户信息UserId",
+      "description": "企业微信认证",
+      "detail": "扫码登录成功后，会携带code和appid重定向到该接口，获取用户信息UserId",
       "endpoint": {
         "method": "GET",
         "uri": "/api/api_gateway/v1/wechatwork/authorization"

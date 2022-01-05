@@ -6,7 +6,7 @@ export interface OauthApi_OauthLoginRequestParams {
 }
 
 /**
- * @description Oauth登录；根据配置文件选择Oauth的实现；将请求重定向到指定的Oauth Server中
+ * @description Oauth登录 (根据配置文件选择Oauth的实现；将请求重定向到指定的Oauth Server中)
  * @endpoint GET /api/auth/oauth/login
  */
 export const OauthApi_oauthLogin = (
