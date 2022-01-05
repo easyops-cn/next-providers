@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.20](https://github.com/easyops-cn/next-providers/compare/@next-sdk/api-gateway-sdk@2.0.19...@next-sdk/api-gateway-sdk@2.0.20) (2022-01-05)
+
+**Note:** Version bump only for package @next-sdk/api-gateway-sdk
+
 ## [2.0.19](https://github.com/easyops-cn/next-providers/compare/@next-sdk/api-gateway-sdk@2.0.18...@next-sdk/api-gateway-sdk@2.0.19) (2022-01-04)
 
 **Note:** Version bump only for package @next-sdk/api-gateway-sdk
