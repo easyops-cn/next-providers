@@ -418,55 +418,6 @@
       "response": null
     },
     {
-      "contract": "micro_app.installed_micro_app.Create",
-      "name": "Create",
-      "version": "1.0.0",
-      "description": "创建小产品",
-      "endpoint": {
-        "method": "POST",
-        "uri": "/api/micro_app/v1/installed_micro_app"
-      },
-      "import": [
-        "easyops/model/micro_app/installed_micro_app",
-        "easyops/model/micro_app/micro_app_container"
-      ],
-      "request": {
-        "type": "object",
-        "fields": [
-          {
-            "ref": "InstalledMicroApp.*"
-          },
-          {
-            "name": "container",
-            "type": "object",
-            "description": "小产品所属桌面",
-            "fields": [
-              {
-                "name": "id",
-                "type": "string",
-                "description": "桌面的id"
-              }
-            ]
-          }
-        ],
-        "required": ["InstalledMicroApp.appId"]
-      },
-      "response": {
-        "type": "object",
-        "fields": [
-          {
-            "ref": "InstalledMicroApp.*"
-          },
-          {
-            "name": "container",
-            "type": "MicroAppContainer",
-            "description": "小产品关联的桌面信息"
-          }
-        ],
-        "required": ["InstalledMicroApp.*"]
-      }
-    },
-    {
       "contract": "micro_app.installed_micro_app.CreateStoryboardMenus",
       "name": "CreateStoryboardMenus",
       "version": "1.2.0",
@@ -779,6 +730,9 @@
           },
           {
             "ref": "InstalledMicroApp.breadcrumb"
+          },
+          {
+            "ref": "InstalledMicroApp.theme"
           }
         ]
       },
@@ -838,7 +792,7 @@
       "contract": "micro_app.installed_micro_app.GetPackageReleaseList",
       "name": "GetPackageReleaseList",
       "version": "1.1.0",
-      "description": "指定环境一键打包上传到r环境",
+      "description": "获取发布列表",
       "endpoint": {
         "method": "GET",
         "uri": "/api/v1/micro_app/packages/:appId"
@@ -911,7 +865,7 @@
       "contract": "micro_app.installed_micro_app.PackageUpload",
       "name": "PackageUpload",
       "version": "1.0.0",
-      "description": "小产品生成打包文件并上传到r环境",
+      "description": "小产品生成打包文件并上传",
       "endpoint": {
         "method": "POST",
         "uri": "/api/micro_app/v1/package-upload"
@@ -985,6 +939,32 @@
           }
         ]
       }
+    },
+    {
+      "contract": "micro_app.installed_micro_app.RegisterMockRule",
+      "name": "RegisterMockRule",
+      "version": "1.0.0",
+      "description": "注册mock规则",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/micro_app/v1/register_mock_rule"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "instanceId"
+          },
+          {
+            "name": "meta",
+            "type": "map",
+            "description": "元数据信息"
+          }
+        ]
+      },
+      "response": null
     },
     {
       "contract": "micro_app.installed_micro_app.SearchInstalledMicroApp",

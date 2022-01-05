@@ -43,7 +43,7 @@ export interface InstalledMicroAppApi_PackageUploadResponseBody {
 }
 
 /**
- * @description 小产品生成打包文件并上传到r环境
+ * @description 小产品生成打包文件并上传
  * @endpoint POST /api/micro_app/v1/package-upload
  */
 export const InstalledMicroAppApi_packageUpload = async (

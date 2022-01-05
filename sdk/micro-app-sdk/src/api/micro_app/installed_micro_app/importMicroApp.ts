@@ -90,6 +90,9 @@ export interface InstalledMicroAppApi_ImportMicroAppRequestBody {
 
   /** 默认面包屑配置 */
   breadcrumb?: string;
+
+  /** 使用主题 */
+  theme?: string;
 }
 
 export interface InstalledMicroAppApi_ImportMicroAppResponseBody {

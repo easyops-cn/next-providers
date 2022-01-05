@@ -15,7 +15,7 @@ export interface InstalledMicroAppApi_GetPackageReleaseListResponseBody {
 }
 
 /**
- * @description 指定环境一键打包上传到r环境
+ * @description 获取发布列表
  * @endpoint GET /api/v1/micro_app/packages/:appId
  */
 export const InstalledMicroAppApi_getPackageReleaseList = async (

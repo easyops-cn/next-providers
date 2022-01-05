@@ -1,4 +1,3 @@
-export * from "./create";
 export * from "./createStoryboardMenus";
 export * from "./deleteMicroApp";
 export * from "./deleteInstalledMicroAppContainer";
@@ -9,6 +8,7 @@ export * from "./importMicroApp";
 export * from "./listMicroApp";
 export * from "./getPackageReleaseList";
 export * from "./packageUpload";
+export * from "./registerMockRule";
 export * from "./searchInstalledMicroApp";
 export * from "./searchInstalledMicroAppWithUniqKey";
 export * from "./updateInstalledMicroApp";
