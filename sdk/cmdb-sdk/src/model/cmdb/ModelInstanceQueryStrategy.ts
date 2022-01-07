@@ -26,4 +26,13 @@ export interface ModelInstanceQueryStrategy {
 
   /** 创建用户 */
   creator: string;
+
+  /** 访问白名单 */
+  readAuthorizers: string[];
+
+  /** 修改白名单 */
+  updateAuthorizers: string[];
+
+  /** 删除白名单 */
+  deleteAuthorizers: string[];
 }

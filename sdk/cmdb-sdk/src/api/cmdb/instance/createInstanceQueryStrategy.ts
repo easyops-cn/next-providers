@@ -4,7 +4,7 @@ import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface InstanceApi_CreateInstanceQueryStrategyRequestBody {
   /** 策略名称 */
-  name?: string;
+  name: string;
 
   /** 策略类型(org 或者 user) */
   type?: string;
@@ -17,6 +17,15 @@ export interface InstanceApi_CreateInstanceQueryStrategyRequestBody {
 
   /** 显示字段 */
   fields?: string[];
+
+  /** 访问白名单 */
+  readAuthorizers?: string[];
+
+  /** 修改白名单 */
+  updateAuthorizers?: string[];
+
+  /** 删除白名单 */
+  deleteAuthorizers?: string[];
 }
 
 export type InstanceApi_CreateInstanceQueryStrategyResponseBody =

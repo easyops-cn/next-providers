@@ -4322,9 +4322,22 @@
           },
           {
             "ref": "InstanceQueryStrategy.fields"
+          },
+          {
+            "ref": "InstanceQueryStrategy.readAuthorizers"
+          },
+          {
+            "ref": "InstanceQueryStrategy.updateAuthorizers"
+          },
+          {
+            "ref": "InstanceQueryStrategy.deleteAuthorizers"
           }
         ],
-        "required": ["objectId", "InstanceQueryStrategy.query"]
+        "required": [
+          "objectId",
+          "InstanceQueryStrategy.query",
+          "InstanceQueryStrategy.name"
+        ]
       },
       "response": {
         "type": "InstanceQueryStrategy"
@@ -7234,6 +7247,15 @@
           },
           {
             "ref": "InstanceQueryStrategy.fields"
+          },
+          {
+            "ref": "InstanceQueryStrategy.readAuthorizers"
+          },
+          {
+            "ref": "InstanceQueryStrategy.updateAuthorizers"
+          },
+          {
+            "ref": "InstanceQueryStrategy.deleteAuthorizers"
           }
         ],
         "required": ["objectId", "strategyId", "InstanceQueryStrategy.name"]
