@@ -2527,6 +2527,73 @@
       ]
     },
     {
+      "contract": "cmdb.cmdb_object.ListObjectCategoryV2",
+      "category": {
+        "en": "CMDB Object",
+        "zh": "CMDB 模型"
+      },
+      "name": "ListObjectCategoryV2",
+      "version": "1.1.0",
+      "description": "获取模型分类信息V2",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/v2/object_category"
+      },
+      "import": ["easyops/model/cmdb/list_object_request"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "ListObjectRequest.visible"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "name",
+                "type": "string",
+                "description": "一级分类名称"
+              },
+              {
+                "name": "count",
+                "type": "int",
+                "description": "一级分类数量"
+              },
+              {
+                "name": "child",
+                "type": "object[]",
+                "fields": [
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "description": "二级分类对应的名称"
+                  },
+                  {
+                    "name": "count",
+                    "type": "int",
+                    "description": "二级分类对应的数量"
+                  }
+                ],
+                "description": "二级分类数组"
+              },
+              {
+                "name": "hasRoot",
+                "type": "bool",
+                "description": "存在只有一级分类的模型"
+              }
+            ],
+            "description": "分类信息"
+          }
+        ]
+      }
+    },
+    {
       "contract": "cmdb.cmdb_object.ListObjectFields",
       "category": {
         "en": "CMDB Object",

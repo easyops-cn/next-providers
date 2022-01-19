@@ -28,6 +28,7 @@ export * from "./list";
 export * from "./listChildObject";
 export * from "./listObjectBasic";
 export * from "./listObjectCategory";
+export * from "./listObjectCategoryV2";
 export * from "./listObjectFields";
 export * from "./listRelationQueryStrategyV2Request";
 export * from "./objectConflictCheck";
