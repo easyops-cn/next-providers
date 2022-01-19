@@ -9595,6 +9595,9 @@
             "ref": "ObjectRelation.left_tags"
           },
           {
+            "ref": "ObjectRelation.left_required"
+          },
+          {
             "ref": "ObjectRelation.right_object_id"
           },
           {
@@ -9614,6 +9617,9 @@
           },
           {
             "ref": "ObjectRelation.right_tags"
+          },
+          {
+            "ref": "ObjectRelation.right_required"
           }
         ],
         "required": [
@@ -9986,6 +9992,9 @@
             "ref": "ObjectRelation.left_tags"
           },
           {
+            "ref": "ObjectRelation.left_required"
+          },
+          {
             "ref": "ObjectRelation.right_description"
           },
           {
@@ -9993,6 +10002,9 @@
           },
           {
             "ref": "ObjectRelation.right_tags"
+          },
+          {
+            "ref": "ObjectRelation.right_required"
           }
         ],
         "required": [

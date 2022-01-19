@@ -33,6 +33,9 @@ export interface ModelObjectRelation {
   /** 关系右端的模型ID */
   right_object_id: string;
 
+  /** 关系右端的资源模型实例是否必须包含关系 */
+  right_required: boolean;
+
   /** 关系左端模型中表达右端模型实例的别名字段: 比如应用的负责人需要在应用的实例中表达出一个字段; 对已有模型添加关系时这个ID需要加下划线前缀避免冲突 */
   left_id: string;
 
@@ -56,6 +59,9 @@ export interface ModelObjectRelation {
 
   /** 关系左端的模型ID */
   left_object_id: string;
+
+  /** 关系左端的资源模型实例是否必须包含关系 */
+  left_required: boolean;
 
   /** 创建者 */
   creator: string;

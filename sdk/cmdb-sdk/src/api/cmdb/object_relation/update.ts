@@ -15,6 +15,9 @@ export interface ObjectRelationApi_UpdateRequestBody {
   /** 关系左端标签 */
   left_tags: string[];
 
+  /** 关系左端的资源模型实例是否必须包含关系 */
+  left_required?: boolean;
+
   /** 是与 right_id 相反的含义, 但仅用于前端展示 (p.s.: 关系右端模型的描述) */
   right_description: string;
 
@@ -23,6 +26,9 @@ export interface ObjectRelationApi_UpdateRequestBody {
 
   /** 关系右端标签 */
   right_tags: string[];
+
+  /** 关系右端的资源模型实例是否必须包含关系 */
+  right_required?: boolean;
 }
 
 export type ObjectRelationApi_UpdateResponseBody = Partial<ModelObjectRelation>;

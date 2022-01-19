@@ -27,6 +27,9 @@ export interface ObjectRelationApi_CreateRequestBody {
   /** 关系左端标签 */
   left_tags?: string[];
 
+  /** 关系左端的资源模型实例是否必须包含关系 */
+  left_required?: boolean;
+
   /** 关系右端的模型ID */
   right_object_id: string;
 
@@ -47,6 +50,9 @@ export interface ObjectRelationApi_CreateRequestBody {
 
   /** 关系右端标签 */
   right_tags?: string[];
+
+  /** 关系右端的资源模型实例是否必须包含关系 */
+  right_required?: boolean;
 }
 
 export type ObjectRelationApi_CreateResponseBody = Partial<ModelObjectRelation>;
