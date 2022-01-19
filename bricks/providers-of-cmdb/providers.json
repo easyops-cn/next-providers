@@ -131,6 +131,7 @@
     "InstancePathSearchApi.flattenSearchPath",
     "InstancePathSearchApi.groupSearchPath",
     "InstanceApi.groupInstanceForHoneycomb",
-    "InstanceGraphApi.traverseGraphCount"
+    "InstanceGraphApi.traverseGraphCount",
+    "CmdbObjectApi.listObjectCategoryV2"
   ]
 }
