@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.14.1](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-cmdb@1.14.0...@next-bricks/providers-of-cmdb@1.14.1) (2022-01-19)
+
+**Note:** Version bump only for package @next-bricks/providers-of-cmdb
+
 # [1.14.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-cmdb@1.13.44...@next-bricks/providers-of-cmdb@1.14.0) (2022-01-19)
 
 ### Features
