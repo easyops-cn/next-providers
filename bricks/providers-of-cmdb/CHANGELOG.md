@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.14.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-cmdb@1.13.44...@next-bricks/providers-of-cmdb@1.14.0) (2022-01-19)
+
+### Features
+
+- add providers: providers-of-cmdb.cmdb-object-api-list-object-category-v2 ([4265fdb](https://github.com/easyops-cn/next-providers/commit/4265fdbe26c53078659b2920f3daf74e4121c556))
+
 ## [1.13.44](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-cmdb@1.13.43...@next-bricks/providers-of-cmdb@1.13.44) (2022-01-07)
 
 **Note:** Version bump only for package @next-bricks/providers-of-cmdb

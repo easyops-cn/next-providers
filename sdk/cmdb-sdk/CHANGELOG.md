@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/cmdb-sdk@2.1.20...@next-sdk/cmdb-sdk@2.2.0) (2022-01-19)
+
+### Features
+
+- add apis: CmdbObjectApi_listObjectCategoryV2 ([86b2756](https://github.com/easyops-cn/next-providers/commit/86b27561af74fbb393289f964ec1714545dc427a))
+
 ## [2.1.20](https://github.com/easyops-cn/next-providers/compare/@next-sdk/cmdb-sdk@2.1.19...@next-sdk/cmdb-sdk@2.1.20) (2022-01-07)
 
 **Note:** Version bump only for package @next-sdk/cmdb-sdk
