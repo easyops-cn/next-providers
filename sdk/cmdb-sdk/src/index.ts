@@ -11,6 +11,8 @@ export * from "./api/cmdb/instance_relation";
 export * from "./api/cmdb/instance_tree";
 export * from "./api/cmdb/object_attribute";
 export * from "./api/cmdb/object_relation";
+export * from "./api/cmdb/permission";
 export * from "./api/cmdb/terraform";
 export * as CmdbModels from "./model/cmdb";
 export * as CommonModels from "./model/common";
+export * as PermissionModels from "./model/permission";

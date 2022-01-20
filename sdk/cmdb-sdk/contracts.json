@@ -10117,6 +10117,158 @@
       ]
     },
     {
+      "contract": "cmdb.permission.GetRoleCmdbPermission",
+      "category": {
+        "en": "CMDB Permission",
+        "zh": "CMDB权限"
+      },
+      "name": "GetRoleCmdbPermission",
+      "version": "1.0.0",
+      "description": "获取角色拥有的cmdb权限",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/role/cmdb/permission"
+      },
+      "import": ["easyops/model/permission/permission"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "role",
+            "type": "string",
+            "description": "角色名"
+          },
+          {
+            "name": "permissionKind",
+            "type": "string",
+            "enum": ["create", "access", "delete", "update", "export", "apply"],
+            "description": "权限类型, create(创建)、access(访问)、delete(删除)、update(更新)、export(导出)、apply(提交变更)"
+          },
+          {
+            "name": "category",
+            "type": "string",
+            "description": "模型分类"
+          },
+          {
+            "name": "hidden",
+            "type": "bool",
+            "description": "是否展示隐藏模型"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "分页大小"
+          }
+        ],
+        "required": ["role"],
+        "default": {
+          "page": 1,
+          "page_size": 20
+        }
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "分页大小"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总数"
+          },
+          {
+            "name": "list",
+            "type": "object[]",
+            "fields": [
+              {
+                "ref": "Permission.id"
+              },
+              {
+                "ref": "Permission.action"
+              },
+              {
+                "name": "objectId",
+                "type": "object_id",
+                "description": "模型id"
+              },
+              {
+                "name": "objectName",
+                "type": "string",
+                "description": "模型名称"
+              },
+              {
+                "name": "permissionKind",
+                "type": "string",
+                "description": "权限类型"
+              },
+              {
+                "name": "category",
+                "type": "string",
+                "description": "模型分类"
+              },
+              {
+                "name": "subCategory",
+                "type": "string",
+                "description": "模型二级分类"
+              }
+            ],
+            "description": "权限列表"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "cmdb.permission.UpdateRoleCmdbPermission",
+      "category": {
+        "en": "CMDB Permission",
+        "zh": "CMDB权限"
+      },
+      "name": "UpdateRoleCmdbPermission",
+      "version": "1.0.0",
+      "description": "更新角色cmdb权限",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/role/cmdb/permission"
+      },
+      "import": ["easyops/model/permission/permission"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "role",
+            "type": "string",
+            "description": "角色名"
+          },
+          {
+            "name": "permissionKinds",
+            "type": "string[]",
+            "enum": ["create", "access", "delete", "update", "export", "apply"],
+            "description": "权限类型列表, create(创建)、access(访问)、delete(删除)、update(更新)、export(导出)、apply(提交变更)"
+          },
+          {
+            "name": "objectIds",
+            "type": "string[]",
+            "description": "模型id列表"
+          }
+        ],
+        "required": ["role", "permissionKinds", "objectIds"]
+      },
+      "response": null
+    },
+    {
       "contract": "cmdb.terraform.DeleteState",
       "category": {
         "en": "Terraform",

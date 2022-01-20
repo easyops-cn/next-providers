@@ -26,4 +26,7 @@ export interface ModelListObjectRequest {
 
   /** visible:只返回可见模型，invisible:只返回不可见模型，all:返回所有模型, 默认all */
   visible: "visible" | "invisible" | "all";
+
+  /** 屏蔽的模型Id, 使用,分隔 */
+  blockObjectIds: string;
 }
