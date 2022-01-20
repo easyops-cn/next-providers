@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/cmdb-sdk@2.2.1...@next-sdk/cmdb-sdk@2.3.0) (2022-01-20)
+
+### Features
+
+- add apis: PermissionApi_getRoleCmdbPermission, PermissionApi_index, PermissionApi_updateRoleCmdbPermission ([93430f1](https://github.com/easyops-cn/next-providers/commit/93430f1ee16138e4a940731a8e6a91ed24b299a6))
+
 ## [2.2.1](https://github.com/easyops-cn/next-providers/compare/@next-sdk/cmdb-sdk@2.2.0...@next-sdk/cmdb-sdk@2.2.1) (2022-01-19)
 
 **Note:** Version bump only for package @next-sdk/cmdb-sdk
