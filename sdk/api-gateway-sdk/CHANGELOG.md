@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/api-gateway-sdk@2.0.20...@next-sdk/api-gateway-sdk@2.1.0) (2022-01-21)
+
+### Features
+
+- add apis: WechatMiniprogramApi_index, WechatMiniprogramApi_miniProgramLogin ([47be774](https://github.com/easyops-cn/next-providers/commit/47be774fe75e5d1d9aa3b99a5294e0f2ea2fe345))
+
 ## [2.0.20](https://github.com/easyops-cn/next-providers/compare/@next-sdk/api-gateway-sdk@2.0.19...@next-sdk/api-gateway-sdk@2.0.20) (2022-01-05)
 
 **Note:** Version bump only for package @next-sdk/api-gateway-sdk
