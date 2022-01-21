@@ -20,6 +20,9 @@ export interface PermissionApi_GetRoleCmdbPermissionRequestBody {
   /** 是否展示隐藏模型 */
   hidden?: boolean;
 
+  /** 字符搜索 */
+  q?: string;
+
   /** 页码 */
   page?: number;
 

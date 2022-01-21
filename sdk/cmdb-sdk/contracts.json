@@ -10155,6 +10155,11 @@
             "description": "是否展示隐藏模型"
           },
           {
+            "name": "q",
+            "type": "string",
+            "description": "字符搜索"
+          },
+          {
             "name": "page",
             "type": "page",
             "description": "页码"
