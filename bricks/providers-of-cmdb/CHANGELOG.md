@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.16.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-cmdb@1.15.0...@next-bricks/providers-of-cmdb@1.16.0) (2022-01-21)
+
+### Features
+
+- add providers: providers-of-cmdb.permission-api-update-role-cmdb-permission ([21ca324](https://github.com/easyops-cn/next-providers/commit/21ca324ee775fd67bd0c4443c48dbd447f64646b))
+
 # [1.15.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-cmdb@1.14.2...@next-bricks/providers-of-cmdb@1.15.0) (2022-01-21)
 
 ### Features
