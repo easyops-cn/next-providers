@@ -1024,6 +1024,11 @@
             "description": "分页大小"
           },
           {
+            "name": "_id__in",
+            "type": "string",
+            "description": "权限id过滤，多个用,分隔"
+          },
+          {
             "name": "XXX_RestFieldMask",
             "type": "string[]",
             "description": "sdk限制字段使用"

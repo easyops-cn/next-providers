@@ -26,6 +26,9 @@ export interface PermissionApi_GetPermissionListRequestParams {
   /** 分页大小 */
   page_size?: number;
 
+  /** 权限id过滤，多个用,分隔 */
+  _id__in?: string;
+
   /** sdk限制字段使用 */
   XXX_RestFieldMask?: string[];
 }
