@@ -9,5 +9,7 @@ export * from "./api/api_gateway/org";
 export * from "./api/api_gateway/sso";
 export * from "./api/api_gateway/walmart";
 export * from "./api/api_gateway/wechat";
+export * from "./api/api_gateway/wechat_miniprogram";
 export * as ApiGatewayModels from "./model/api_gateway";
 export * as MicroAppModels from "./model/micro_app";
+export * as TopboardModels from "./model/topboard";

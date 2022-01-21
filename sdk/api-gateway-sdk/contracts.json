@@ -1014,7 +1014,7 @@
     {
       "contract": "api_gateway.esb.EsbLogin",
       "name": "EsbLogin",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "esb 登录 -【定制化需求】台州银行esb统一认证",
       "endpoint": {
         "method": "POST",
@@ -1069,6 +1069,11 @@
             "name": "loginFrom",
             "type": "string",
             "description": "用户来源"
+          },
+          {
+            "name": "isAdmin",
+            "type": "bool",
+            "description": "判断当前登录用户是否是系统管理员"
           }
         ]
       }
@@ -1139,7 +1144,7 @@
     {
       "contract": "api_gateway.mfa.VerifyTotpCode",
       "name": "VerifyTotpCode",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "验证动态码",
       "endpoint": {
         "method": "POST",
@@ -1203,6 +1208,11 @@
             "name": "loginFrom",
             "type": "string",
             "description": "用户来源"
+          },
+          {
+            "name": "isAdmin",
+            "type": "bool",
+            "description": "判断当前登录用户是否是系统管理员"
           }
         ]
       }
@@ -1781,6 +1791,54 @@
           }
         ],
         "required": ["accessToken", "refreshToken"]
+      }
+    },
+    {
+      "contract": "api_gateway.wechat_miniprogram.MiniProgramLogin",
+      "name": "MiniProgramLogin",
+      "version": "1.0.0",
+      "description": "小程序登录",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/api_gateway/v1/wechat/mini_program/login"
+      },
+      "import": ["easyops/model/topboard/wechat_userinfo"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "string",
+            "description": "微信登陆授权code"
+          },
+          {
+            "name": "phoneCode",
+            "type": "string",
+            "description": "微信获取手机号授权code"
+          }
+        ],
+        "required": ["code"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WechatUserInfo.unionId"
+          },
+          {
+            "ref": "WechatUserInfo.telephone"
+          },
+          {
+            "name": "token",
+            "type": "string",
+            "description": "登录签发的token, 需要在后续请求的 header 附带 Authorization: token"
+          },
+          {
+            "name": "refreshToken",
+            "type": "string",
+            "description": "更新 token, 只能用来进行更新 token, 在 header 附带 Authorization: Bearer refreshToken"
+          }
+        ]
       }
     }
   ]

@@ -33,6 +33,9 @@ export interface MfaApi_VerifyTotpCodeResponseBody {
 
   /** 用户来源 */
   loginFrom?: string;
+
+  /** 判断当前登录用户是否是系统管理员 */
+  isAdmin?: boolean;
 }
 
 /**
@@ -43,7 +46,7 @@ export const MfaApi_verifyTotpCode = async (
   data: MfaApi_VerifyTotpCodeRequestBody,
   options?: HttpOptions
 ): Promise<MfaApi_VerifyTotpCodeResponseBody> =>
-  /**! @contract easyops.api.api_gateway.mfa.VerifyTotpCode@1.0.0 */ (
+  /**! @contract easyops.api.api_gateway.mfa.VerifyTotpCode@1.1.0 */ (
     await http.post<ResponseBodyWrapper<MfaApi_VerifyTotpCodeResponseBody>>(
       "api/v1/mfa/totp/verification",
       data,

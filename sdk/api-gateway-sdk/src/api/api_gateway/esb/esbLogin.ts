@@ -27,6 +27,9 @@ export interface EsbApi_EsbLoginResponseBody {
 
   /** 用户来源 */
   loginFrom?: string;
+
+  /** 判断当前登录用户是否是系统管理员 */
+  isAdmin?: boolean;
 }
 
 /**
@@ -37,7 +40,7 @@ export const EsbApi_esbLogin = async (
   data: EsbApi_EsbLoginRequestBody,
   options?: HttpOptions
 ): Promise<EsbApi_EsbLoginResponseBody> =>
-  /**! @contract easyops.api.api_gateway.esb.EsbLogin@1.0.0 */ (
+  /**! @contract easyops.api.api_gateway.esb.EsbLogin@1.1.0 */ (
     await http.post<ResponseBodyWrapper<EsbApi_EsbLoginResponseBody>>(
       "api/esb/login",
       data,
