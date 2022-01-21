@@ -132,6 +132,7 @@
     "InstancePathSearchApi.groupSearchPath",
     "InstanceApi.groupInstanceForHoneycomb",
     "InstanceGraphApi.traverseGraphCount",
-    "CmdbObjectApi.listObjectCategoryV2"
+    "CmdbObjectApi.listObjectCategoryV2",
+    "PermissionApi.getRoleCmdbPermission"
   ]
 }
