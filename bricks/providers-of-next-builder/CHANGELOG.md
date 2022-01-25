@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-next-builder@1.12.32...@next-bricks/providers-of-next-builder@1.13.0) (2022-01-25)
+
+### Features
+
+- add providers: providers-of-next-builder.build-api-theme-export, providers-of-next-builder.build-api-theme-package-build ([52eeafc](https://github.com/easyops-cn/next-providers/commit/52eeafc5b8e393d54ec3ea94bc7e22b8a88ce5bb))
+
 ## [1.12.32](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-next-builder@1.12.31...@next-bricks/providers-of-next-builder@1.12.32) (2021-12-31)
 
 **Note:** Version bump only for package @next-bricks/providers-of-next-builder

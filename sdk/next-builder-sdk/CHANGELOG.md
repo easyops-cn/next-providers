@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/next-builder-sdk@2.1.20...@next-sdk/next-builder-sdk@2.2.0) (2022-01-25)
+
+### Features
+
+- add apis: BuildApi_themeExport, BuildApi_themePackageBuild, InstalledThemeTemplateApi_index, InstalledThemeTemplateApi_themeDataImport ([cbbb0a5](https://github.com/easyops-cn/next-providers/commit/cbbb0a56365d66efb01d4b8907ed6c8027115aa9))
+
 ## [2.1.20](https://github.com/easyops-cn/next-providers/compare/@next-sdk/next-builder-sdk@2.1.19...@next-sdk/next-builder-sdk@2.1.20) (2021-12-31)
 
 **Note:** Version bump only for package @next-sdk/next-builder-sdk
