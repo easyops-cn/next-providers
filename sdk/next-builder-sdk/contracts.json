@@ -689,6 +689,70 @@
       "response": null
     },
     {
+      "contract": "next_builder.build.ThemeExport",
+      "category": {
+        "en": "Build",
+        "zh": "构建"
+      },
+      "name": "ThemeExport",
+      "version": "1.1.0",
+      "description": "themem模版导出",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next-builder/theme-export"
+      },
+      "import": ["easyops/model/next_builder/installed_theme_template"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "项目instanceId"
+          }
+        ],
+        "required": ["instanceId"]
+      },
+      "response": {
+        "type": "InstalledThemeTemplate"
+      }
+    },
+    {
+      "contract": "next_builder.build.ThemePackageBuild",
+      "category": {
+        "en": "Build",
+        "zh": "构建"
+      },
+      "name": "ThemePackageBuild",
+      "version": "1.1.0",
+      "description": "theme打包",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next-builder/theme-package-build"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.projectId"
+          },
+          {
+            "name": "version",
+            "type": "version",
+            "description": "小产品版本号"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "版本描述信息"
+          }
+        ],
+        "required": ["MicroAppProject.projectId", "version", "description"]
+      },
+      "response": null
+    },
+    {
       "contract": "next_builder.clone.CloneMicroApp",
       "category": {
         "en": "Clone",
@@ -1019,6 +1083,28 @@
           }
         ],
         "required": ["documentIds"]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.installed_theme_template.ThemeDataImport",
+      "name": "ThemeDataImport",
+      "version": "1.1.0",
+      "description": "themem数据部署",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next-builder/theme-data-import"
+      },
+      "import": ["easyops/model/next_builder/installed_theme_template"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "themeData",
+            "type": "map",
+            "description": "theme包的数据"
+          }
+        ]
       },
       "response": null
     },

@@ -122,6 +122,9 @@ export interface ModelMicroAppProject_appSetting {
 
   /** 默认面包屑配置 */
   breadcrumb?: string;
+
+  /** 使用的主题 */
+  theme?: string;
 }
 
 export interface ModelMicroAppProject_dependencies_item {

@@ -1,6 +1,7 @@
 export * from "./ModelMicroAppProject";
 export * from "./ModelMicroAppModifiedLog";
 export * from "./ModelMicroAppReleasedLog";
+export * from "./ModelInstalledThemeTemplate";
 export * from "./ModelMicroAppDocument";
 export * from "./ModelMicroAppDocumentTreeNode";
 export * from "./ModelMockRule";

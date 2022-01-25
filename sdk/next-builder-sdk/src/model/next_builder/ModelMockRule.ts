@@ -36,8 +36,11 @@ export interface ModelMockRule {
   /** requestUrl */
   requestUrl: ModelMockRule_requestUrl_item[];
 
-  /** requestUrl */
+  /** requestQuery */
   requestQuery: ModelMockRule_requestQuery_item[];
+
+  /** requestBody */
+  requestBody: ModelMockRule_requestBody_item[];
 
   /** 响应数据 */
   responseData: ModelMockRule_responseData;
@@ -76,12 +79,23 @@ export interface ModelMockRule_requestQuery_item {
   value?: string;
 }
 
+export interface ModelMockRule_requestBody_item {
+  /** 参数名 */
+  name?: string;
+
+  /** 校验规则 */
+  validateRule?: string;
+
+  /** value */
+  value?: string;
+}
+
 export interface ModelMockRule_responseData {
   /** 响应状态码 */
   status?: number;
 
-  /** 响应内容是跟随文档orJson */
-  isJson?: boolean;
+  /** 返回数据的定义方式， 目前有两种：json/跟随文档 */
+  constructor?: string;
 
   /** 响应内容 */
   body?: string;

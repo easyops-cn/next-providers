@@ -2,6 +2,7 @@ export * from "./api/next_builder/apis";
 export * from "./api/next_builder/build";
 export * from "./api/next_builder/clone";
 export * from "./api/next_builder/document";
+export * from "./api/next_builder/installed_theme_template";
 export * from "./api/next_builder/mock_rule";
 export * from "./api/next_builder/model";
 export * from "./api/next_builder/permission";
