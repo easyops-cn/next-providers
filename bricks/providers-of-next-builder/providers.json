@@ -51,6 +51,8 @@
     "MockRuleApi.updateProjectMockRule",
     "MockRuleApi.enableOrDisableMockRule",
     "MockRuleApi.listMockService",
-    "MockRuleApi.getMockRuleByContractName"
+    "MockRuleApi.getMockRuleByContractName",
+    "BuildApi.themeExport",
+    "BuildApi.themePackageBuild"
   ]
 }
