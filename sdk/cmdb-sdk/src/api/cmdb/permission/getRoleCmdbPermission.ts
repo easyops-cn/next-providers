@@ -28,6 +28,9 @@ export interface PermissionApi_GetRoleCmdbPermissionRequestBody {
 
   /** 分页大小 */
   page_size?: number;
+
+  /** 是否筛选分类为空的模型 */
+  emptyCategory?: boolean;
 }
 
 export interface PermissionApi_GetRoleCmdbPermissionResponseBody {

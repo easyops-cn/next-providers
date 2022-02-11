@@ -10168,6 +10168,11 @@
             "name": "page_size",
             "type": "page_size",
             "description": "分页大小"
+          },
+          {
+            "name": "emptyCategory",
+            "type": "bool",
+            "description": "是否筛选分类为空的模型"
           }
         ],
         "required": ["role"],
