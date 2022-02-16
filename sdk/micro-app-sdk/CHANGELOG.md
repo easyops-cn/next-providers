@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/micro-app-sdk@2.2.1...@next-sdk/micro-app-sdk@3.0.0) (2022-02-16)
+
+### Features
+
+- add apis: InstalledMicroAppApi_findMicroAppContainer, InstalledMicroAppApi_recoverDefaultContainer, MicroAppContainerApi_updateCustomItemContainer, MicroAppContainerApi_updateDirContainer ([b1e0b19](https://github.com/easyops-cn/next-providers/commit/b1e0b19cf82f178045f966260860304b59e8bf33))
+
+### BREAKING CHANGES
+
+- remove apis: DocumentApi_exportDocumentsToFile, InstalledMicroAppApi_registerMockRule
+
+INFRA-0
+
 ## [2.2.1](https://github.com/easyops-cn/next-providers/compare/@next-sdk/micro-app-sdk@2.2.0...@next-sdk/micro-app-sdk@2.2.1) (2022-01-05)
 
 **Note:** Version bump only for package @next-sdk/micro-app-sdk

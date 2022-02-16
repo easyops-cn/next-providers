@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-micro-app@1.4.26...@next-bricks/providers-of-micro-app@2.0.0) (2022-02-16)
+
+### Features
+
+- add providers: providers-of-micro-app.installed-micro-app-api-recover-default-container ([fc017ad](https://github.com/easyops-cn/next-providers/commit/fc017ad1c2b3ec43002f74174e5fc036ae78c2b8))
+
+### BREAKING CHANGES
+
+- remove providers: providers-of-micro-app.document-api-export-documents-to-file
+
+INFRA-0
+
 ## [1.4.26](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-micro-app@1.4.25...@next-bricks/providers-of-micro-app@1.4.26) (2022-01-05)
 
 **Note:** Version bump only for package @next-bricks/providers-of-micro-app
