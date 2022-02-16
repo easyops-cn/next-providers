@@ -112,8 +112,22 @@ export interface ModelInstalledMicroApp {
   theme: string;
 
   /** 默认容器 */
-  defaultContainer: string;
+  defaultContainer: ModelInstalledMicroApp_defaultContainer;
 
   /** 容器类型(默认容器/个性化容器) */
   containerType: string;
+}
+
+export interface ModelInstalledMicroApp_defaultContainer {
+  /** 容器id */
+  id?: string;
+
+  /** 容器name */
+  name?: string;
+
+  /** 容器类型 */
+  type?: "desktop" | "dir";
+
+  /** 排序 */
+  order?: number;
 }

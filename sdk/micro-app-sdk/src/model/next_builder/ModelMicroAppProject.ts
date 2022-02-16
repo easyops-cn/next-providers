@@ -127,7 +127,7 @@ export interface ModelMicroAppProject_appSetting {
   theme?: string;
 
   /** 默认容器 */
-  defaultContainer?: string;
+  defaultContainer?: Record<string, any>;
 }
 
 export interface ModelMicroAppProject_dependencies_item {

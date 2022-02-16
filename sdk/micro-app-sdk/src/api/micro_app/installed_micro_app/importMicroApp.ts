@@ -1,5 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import {
+  ModelInstalledMicroApp,
   ModelInstalledMicroAppIcon,
   ModelInstalledMicroAppClonedFrom,
   ModelInstalledMicroAppMenuIcon,
@@ -95,7 +96,7 @@ export interface InstalledMicroAppApi_ImportMicroAppRequestBody {
   theme?: string;
 
   /** 默认容器 */
-  defaultContainer?: string;
+  defaultContainer?: ModelInstalledMicroApp["defaultContainer"];
 }
 
 export interface InstalledMicroAppApi_ImportMicroAppResponseBody {
