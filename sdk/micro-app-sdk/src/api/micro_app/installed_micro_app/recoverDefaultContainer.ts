@@ -8,7 +8,7 @@ export interface InstalledMicroAppApi_RecoverDefaultContainerResponseBody {
 
 /**
  * @description 恢复默认容器
- * @endpoint POST /api/micro_app/v1/installed_micro_app/:app_id/recover_default_container
+ * @endpoint POST /api/micro_app/v1/installed_micro_app/recover_default_container/:app_id
  */
 export const InstalledMicroAppApi_recoverDefaultContainer = async (
   app_id: string | number,
@@ -18,7 +18,7 @@ export const InstalledMicroAppApi_recoverDefaultContainer = async (
     await http.post<
       ResponseBodyWrapper<InstalledMicroAppApi_RecoverDefaultContainerResponseBody>
     >(
-      `api/gateway/micro_app.installed_micro_app.RecoverDefaultContainer/api/micro_app/v1/installed_micro_app/${app_id}/recover_default_container`,
+      `api/gateway/micro_app.installed_micro_app.RecoverDefaultContainer/api/micro_app/v1/installed_micro_app/recover_default_container/${app_id}`,
       undefined,
       options
     )

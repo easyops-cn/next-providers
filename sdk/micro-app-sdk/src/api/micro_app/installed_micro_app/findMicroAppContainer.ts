@@ -1,9 +1,13 @@
 import { http, HttpOptions } from "@next-core/brick-http";
+import { ModelInstalledMicroApp } from "../../../model/micro_app";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface InstalledMicroAppApi_FindMicroAppContainerRequestBody {
   /** 小产品id */
   app_id?: string;
+
+  /** 默认容器 */
+  defaultContainer?: ModelInstalledMicroApp["defaultContainer"];
 }
 
 export interface InstalledMicroAppApi_FindMicroAppContainerResponseBody {
@@ -12,7 +16,7 @@ export interface InstalledMicroAppApi_FindMicroAppContainerResponseBody {
 }
 
 /**
- * @description 升级时查找微应用应该关联的容器
+ * @description buildpush/升级时查找微应用应该关联的容器（容器不存在时， 要创建容器）
  * @endpoint POST /api/micro_app/v1/installed_micro_app/find_container
  */
 export const InstalledMicroAppApi_findMicroAppContainer = async (

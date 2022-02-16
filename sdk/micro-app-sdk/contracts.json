@@ -460,11 +460,12 @@
       "contract": "micro_app.installed_micro_app.FindMicroAppContainer",
       "name": "FindMicroAppContainer",
       "version": "1.0.0",
-      "description": "升级时查找微应用应该关联的容器",
+      "description": "buildpush/升级时查找微应用应该关联的容器（容器不存在时， 要创建容器）",
       "endpoint": {
         "method": "POST",
         "uri": "/api/micro_app/v1/installed_micro_app/find_container"
       },
+      "import": ["easyops/model/micro_app/installed_micro_app"],
       "request": {
         "type": "object",
         "fields": [
@@ -472,6 +473,9 @@
             "name": "app_id",
             "type": "string",
             "description": "小产品id"
+          },
+          {
+            "ref": "InstalledMicroApp.defaultContainer"
           }
         ]
       },
@@ -948,7 +952,7 @@
       "description": "恢复默认容器",
       "endpoint": {
         "method": "POST",
-        "uri": "/api/micro_app/v1/installed_micro_app/:app_id/recover_default_container"
+        "uri": "/api/micro_app/v1/installed_micro_app/recover_default_container/:app_id"
       },
       "request": {
         "type": "object",
