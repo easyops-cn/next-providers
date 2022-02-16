@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
 export interface MicroAppContainerApi_UpdateCustomItemContainerRequestBody {
-  /** 桌面容器实例ID */
+  /** 桌面容器ID */
   containerId?: string;
 }
 

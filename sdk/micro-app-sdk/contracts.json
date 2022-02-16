@@ -1561,8 +1561,8 @@
           },
           {
             "name": "containerId",
-            "type": "instance_id",
-            "description": "桌面容器实例ID"
+            "type": "string",
+            "description": "桌面容器ID"
           }
         ]
       },
@@ -1587,8 +1587,8 @@
           },
           {
             "name": "containerId",
-            "type": "instance_id",
-            "description": "桌面容器实例ID"
+            "type": "string",
+            "description": "桌面容器ID"
           }
         ]
       },
