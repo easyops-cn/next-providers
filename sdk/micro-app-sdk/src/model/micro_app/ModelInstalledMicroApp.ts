@@ -110,4 +110,10 @@ export interface ModelInstalledMicroApp {
 
   /** 使用主题 */
   theme: string;
+
+  /** 默认容器 */
+  defaultContainer: string;
+
+  /** 容器类型(默认容器/个性化容器) */
+  containerType: string;
 }

@@ -93,6 +93,9 @@ export interface InstalledMicroAppApi_ImportMicroAppRequestBody {
 
   /** 使用主题 */
   theme?: string;
+
+  /** 默认容器 */
+  defaultContainer?: string;
 }
 
 export interface InstalledMicroAppApi_ImportMicroAppResponseBody {

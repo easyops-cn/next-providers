@@ -278,38 +278,6 @@
       }
     },
     {
-      "contract": "micro_app.document.ExportDocumentsToFile",
-      "name": "ExportDocumentsToFile",
-      "version": "1.0.0",
-      "description": "导出已安装小产品文档（导出为文件）",
-      "endpoint": {
-        "method": "POST",
-        "uri": "/api/micro_app/v1/document/export/:appId"
-      },
-      "import": ["easyops/model/micro_app/installed_micro_app_document"],
-      "request": {
-        "type": "object",
-        "fields": [
-          {
-            "name": "appId",
-            "type": "string",
-            "description": "小产品id"
-          },
-          {
-            "name": "exportFileType",
-            "type": "string",
-            "description": "导出文件类型",
-            "enum": ["pdf", "markdown"]
-          }
-        ],
-        "required": ["appId", "exportFileType"]
-      },
-      "response": {
-        "type": "file",
-        "description": "文件信息"
-      }
-    },
-    {
       "contract": "micro_app.document.GetDocumentsDetails",
       "name": "GetDocumentsDetails",
       "version": "1.0.0",
@@ -487,6 +455,36 @@
         ]
       },
       "response": null
+    },
+    {
+      "contract": "micro_app.installed_micro_app.FindMicroAppContainer",
+      "name": "FindMicroAppContainer",
+      "version": "1.0.0",
+      "description": "升级时查找微应用应该关联的容器",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/micro_app/v1/installed_micro_app/find_container"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "app_id",
+            "type": "string",
+            "description": "小产品id"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "containerId",
+            "type": "string",
+            "description": "小产品应该关联的容器"
+          }
+        ]
+      }
     },
     {
       "contract": "micro_app.installed_micro_app.GetInstalledMicroApp",
@@ -733,6 +731,9 @@
           },
           {
             "ref": "InstalledMicroApp.theme"
+          },
+          {
+            "ref": "InstalledMicroApp.defaultContainer"
           }
         ]
       },
@@ -941,30 +942,34 @@
       }
     },
     {
-      "contract": "micro_app.installed_micro_app.RegisterMockRule",
-      "name": "RegisterMockRule",
+      "contract": "micro_app.installed_micro_app.RecoverDefaultContainer",
+      "name": "RecoverDefaultContainer",
       "version": "1.0.0",
-      "description": "注册mock规则",
+      "description": "恢复默认容器",
       "endpoint": {
         "method": "POST",
-        "uri": "/api/micro_app/v1/register_mock_rule"
+        "uri": "/api/micro_app/v1/installed_micro_app/:app_id/recover_default_container"
       },
       "request": {
         "type": "object",
         "fields": [
           {
-            "name": "instanceId",
-            "type": "instance_id",
-            "description": "instanceId"
-          },
-          {
-            "name": "meta",
-            "type": "map",
-            "description": "元数据信息"
+            "name": "app_id",
+            "type": "string",
+            "description": "小产品id"
           }
         ]
       },
-      "response": null
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "defaultContailer",
+            "type": "string",
+            "description": "默认容器"
+          }
+        ]
+      }
     },
     {
       "contract": "micro_app.installed_micro_app.SearchInstalledMicroApp",
@@ -1536,6 +1541,58 @@
           }
         ]
       }
+    },
+    {
+      "contract": "micro_app.micro_app_container.UpdateCustomItemContainer",
+      "name": "UpdateCustomItemContainer",
+      "version": "1.0.0",
+      "description": "修改自定义项所在桌面容器",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/micro_app/v1/custom_items/:instanceId/container"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "自定义项的实例ID"
+          },
+          {
+            "name": "containerId",
+            "type": "instance_id",
+            "description": "桌面容器实例ID"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app.micro_app_container.UpdateDirContainer",
+      "name": "UpdateDirContainer",
+      "version": "1.0.0",
+      "description": "修改文件夹所在桌面容器",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/micro_app/v1/dir/:instanceId/container"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "文件夹的实例ID"
+          },
+          {
+            "name": "containerId",
+            "type": "instance_id",
+            "description": "桌面容器实例ID"
+          }
+        ]
+      },
+      "response": null
     },
     {
       "contract": "micro_app.micro_app_version_log.LogAppVersion",

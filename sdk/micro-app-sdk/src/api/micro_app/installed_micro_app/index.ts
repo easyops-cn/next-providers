@@ -1,6 +1,7 @@
 export * from "./createStoryboardMenus";
 export * from "./deleteMicroApp";
 export * from "./deleteInstalledMicroAppContainer";
+export * from "./findMicroAppContainer";
 export * from "./getInstalledMicroApp";
 export * from "./getImagesByAppId";
 export * from "./getOssObjectsStat";
@@ -8,7 +9,7 @@ export * from "./importMicroApp";
 export * from "./listMicroApp";
 export * from "./getPackageReleaseList";
 export * from "./packageUpload";
-export * from "./registerMockRule";
+export * from "./recoverDefaultContainer";
 export * from "./searchInstalledMicroApp";
 export * from "./searchInstalledMicroAppWithUniqKey";
 export * from "./updateInstalledMicroApp";

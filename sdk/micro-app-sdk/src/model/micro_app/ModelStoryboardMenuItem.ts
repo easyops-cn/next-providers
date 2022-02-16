@@ -47,4 +47,7 @@ export interface ModelStoryboardMenuItem {
 
   /** Group ID */
   groupId: string;
+
+  /** 外链地址 */
+  href: string;
 }
