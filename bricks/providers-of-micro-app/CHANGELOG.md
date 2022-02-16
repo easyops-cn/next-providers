@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-micro-app@2.0.0...@next-bricks/providers-of-micro-app@2.1.0) (2022-02-16)
+
+### Features
+
+- add providers: providers-of-micro-app.micro-app-container-api-list-micro-app-container, providers-of-micro-app.micro-app-container-api-update-custom-item-container, providers-of-micro-app.micro-app-container-api-update-dir-container ([d25ff69](https://github.com/easyops-cn/next-providers/commit/d25ff690d51ad0c51cd99283af840d31973d8eab))
+
 # [2.0.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-micro-app@1.4.26...@next-bricks/providers-of-micro-app@2.0.0) (2022-02-16)
 
 ### Features
