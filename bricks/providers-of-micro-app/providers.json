@@ -20,6 +20,9 @@
     "InstalledMicroAppApi.deleteInstalledMicroAppContainer",
     "MicroAppContainerApi.addMicroAppToContainer",
     "ContractApi.getAllContract",
-    "InstalledMicroAppApi.recoverDefaultContainer"
+    "InstalledMicroAppApi.recoverDefaultContainer",
+    "MicroAppContainerApi.listMicroAppContainer",
+    "MicroAppContainerApi.updateCustomItemContainer",
+    "MicroAppContainerApi.updateDirContainer"
   ]
 }
