@@ -13,6 +13,12 @@ export interface InstalledMicroAppApi_FindMicroAppContainerRequestBody {
 export interface InstalledMicroAppApi_FindMicroAppContainerResponseBody {
   /** 小产品应该关联的容器 */
   containerId?: string;
+
+  /** 容器类型， 自定义容器or默认容器 */
+  containerType?: string;
+
+  /** 小产品应该关联的容器的instanceId */
+  containerInstanceId?: string;
 }
 
 /**

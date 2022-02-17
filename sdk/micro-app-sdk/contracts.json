@@ -486,6 +486,16 @@
             "name": "containerId",
             "type": "string",
             "description": "小产品应该关联的容器"
+          },
+          {
+            "name": "containerType",
+            "type": "string",
+            "description": "容器类型， 自定义容器or默认容器"
+          },
+          {
+            "name": "containerInstanceId",
+            "type": "instance_id",
+            "description": "小产品应该关联的容器的instanceId"
           }
         ]
       }
@@ -1228,9 +1238,14 @@
             "name": "containerId",
             "type": "string",
             "description": "小产品所属桌面Id"
+          },
+          {
+            "name": "containerType",
+            "type": "string",
+            "description": "容器类型， 自定义容器or默认容器"
           }
         ],
-        "required": ["containerId", "app_id"]
+        "required": ["containerId", "app_id", "containerType"]
       },
       "response": null
     },

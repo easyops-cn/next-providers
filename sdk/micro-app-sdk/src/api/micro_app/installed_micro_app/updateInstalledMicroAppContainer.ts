@@ -3,6 +3,9 @@ import { http, HttpOptions } from "@next-core/brick-http";
 export interface InstalledMicroAppApi_UpdateInstalledMicroAppContainerRequestBody {
   /** 小产品所属桌面Id */
   containerId: string;
+
+  /** 容器类型， 自定义容器or默认容器 */
+  containerType: string;
 }
 
 /**
