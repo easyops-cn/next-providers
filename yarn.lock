@@ -2472,11 +2472,6 @@
     react-dnd "^11.1.3"
     react-dnd-html5-backend "^11.1.3"
 
-"@next-sdk/micro-app-sdk@^2.1.1":
-  version "2.2.1"
-  resolved "https://registry.npmjs.org/@next-sdk/micro-app-sdk/-/micro-app-sdk-2.2.1.tgz#4747cf8efb5b5df8f53b6f76aff7972cba4239f1"
-  integrity sha512-80WsVnykE13QcT4JXlArDnqI59yzACauTzlXGhTCVFlXFTIBT/8Bvmn/BILJA3E6VTaREAbFUZs5EpwoGSQNPg==
-
 "@nicolo-ribaudo/chokidar-2@2.1.8-no-fsevents.3":
   version "2.1.8-no-fsevents.3"
   resolved "https://registry.npmjs.org/@nicolo-ribaudo/chokidar-2/-/chokidar-2-2.1.8-no-fsevents.3.tgz#323d72dd25103d0c4fbdce89dadf574a787b1f9b"

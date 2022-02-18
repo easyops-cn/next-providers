@@ -22,7 +22,7 @@ export interface InstalledMicroAppApi_FindMicroAppContainerResponseBody {
 }
 
 /**
- * @description buildpush/升级时查找微应用应该关联的容器（容器不存在时， 要创建容器）
+ * @description build&push/升级时查找微应用应该关联的容器（容器不存在时， 要创建容器）
  * @endpoint POST /api/micro_app/v1/installed_micro_app/find_container
  */
 export const InstalledMicroAppApi_findMicroAppContainer = async (
