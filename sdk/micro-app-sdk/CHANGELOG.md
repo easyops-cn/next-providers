@@ -3,13 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [2.3.1](https://github.com/easyops-cn/next-providers/compare/@next-sdk/micro-app-sdk@3.0.4...@next-sdk/micro-app-sdk@2.3.1) (2022-02-18)
+## [2.3.2](https://github.com/easyops-cn/next-providers/compare/@next-sdk/micro-app-sdk@2.3.1...@next-sdk/micro-app-sdk@2.3.2) (2022-02-18)
 
 **Note:** Version bump only for package @next-sdk/micro-app-sdk
 
+## [2.3.1](https://github.com/easyops-cn/next-providers/compare/@next-sdk/micro-app-sdk@3.0.4...@next-sdk/micro-app-sdk@2.3.1) (2022-02-18)
 
-
-
+**Note:** Version bump only for package @next-sdk/micro-app-sdk
 
 ## [3.0.4](https://github.com/easyops-cn/next-providers/compare/@next-sdk/micro-app-sdk@3.0.3...@next-sdk/micro-app-sdk@3.0.4) (2022-02-17)
 

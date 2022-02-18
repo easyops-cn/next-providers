@@ -3,13 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-micro-app@1.5.1...@next-bricks/providers-of-micro-app@1.6.0) (2022-02-18)
+
+### Features
+
+- add providers: providers-of-micro-app.installed-micro-app-api-find-micro-app-container ([eb76251](https://github.com/easyops-cn/next-providers/commit/eb76251c351b544e4b2049bf88d743aeba6e2e29))
+
 ## [1.5.1](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-micro-app@2.1.4...@next-bricks/providers-of-micro-app@1.5.1) (2022-02-18)
 
 **Note:** Version bump only for package @next-bricks/providers-of-micro-app
-
-
-
-
 
 ## [2.1.4](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-micro-app@2.1.3...@next-bricks/providers-of-micro-app@2.1.4) (2022-02-17)
 
