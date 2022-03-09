@@ -52,4 +52,7 @@ export interface ModelInstalledThemeTemplate_pageTemplates_item {
 
   /** 缩略图 */
   thumbnail?: string;
+
+  /** 主题类型 */
+  type?: string;
 }

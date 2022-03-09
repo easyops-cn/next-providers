@@ -125,6 +125,9 @@ export interface ModelMicroAppProject_appSetting {
 
   /** 使用的主题 */
   theme?: string;
+
+  /** 默认容器 */
+  defaultContainer?: any;
 }
 
 export interface ModelMicroAppProject_dependencies_item {

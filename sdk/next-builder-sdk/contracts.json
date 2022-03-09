@@ -1087,6 +1087,58 @@
       "response": null
     },
     {
+      "contract": "next_builder.import_and_export.ProjectExport",
+      "category": {
+        "en": "ImportAndExport",
+        "zh": "导入导出"
+      },
+      "name": "ProjectExport",
+      "version": "1.0.0",
+      "description": "微应用导出",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next_builder/project_export/:instanceId"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "小产品的instanceId"
+          }
+        ]
+      },
+      "response": {
+        "type": "file"
+      }
+    },
+    {
+      "contract": "next_builder.import_and_export.ProjectImport",
+      "category": {
+        "en": "ImportAndExport",
+        "zh": "导入导出"
+      },
+      "name": "ProjectImport",
+      "version": "1.0.0",
+      "description": "微应用导入",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next_builder/project_import"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "file",
+            "type": "file",
+            "description": "微应用的tar包"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
       "contract": "next_builder.installed_theme_template.ThemeDataImport",
       "name": "ThemeDataImport",
       "version": "1.1.0",
