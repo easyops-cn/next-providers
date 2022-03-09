@@ -53,6 +53,8 @@
     "MockRuleApi.listMockService",
     "MockRuleApi.getMockRuleByContractName",
     "BuildApi.themeExport",
-    "BuildApi.themePackageBuild"
+    "BuildApi.themePackageBuild",
+    "ImportAndExportApi.projectExport",
+    "ImportAndExportApi.projectImport"
   ]
 }
