@@ -1,6 +1,6 @@
 {
   "name": "@next-sdk/next-builder-sdk",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "SDK for Next Builder",
   "homepage": "https://github.com/easyops-cn/next-providers/tree/master/sdk/next-builder-sdk",
   "license": "GPL-3.0",

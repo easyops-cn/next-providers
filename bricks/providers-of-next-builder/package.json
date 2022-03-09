@@ -1,6 +1,6 @@
 {
   "name": "@next-bricks/providers-of-next-builder",
-  "version": "1.13.0",
+  "version": "1.14.0",
   "description": "> TODO: description",
   "homepage": "https://github.com/easyops-cn/next-providers/tree/master/bricks/providers-of-next-builder",
   "license": "GPL-3.0",
@@ -18,7 +18,7 @@
     "test:ci": "cross-env NODE_ENV='test' CI=true jest"
   },
   "devDependencies": {
-    "@next-sdk/next-builder-sdk": "^2.2.0"
+    "@next-sdk/next-builder-sdk": "^2.3.0"
   },
   "sideEffects": true
 }
