@@ -3,16 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [2.2.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/msgsender-sdk@2.1.2...@next-sdk/msgsender-sdk@2.2.0) (2021-12-20)
+## [2.2.1](https://github.com/easyops-cn/next-providers/compare/@next-sdk/msgsender-sdk@2.2.0...@next-sdk/msgsender-sdk@2.2.1) (2022-03-18)
 
+**Note:** Version bump only for package @next-sdk/msgsender-sdk
+
+# [2.2.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/msgsender-sdk@2.1.2...@next-sdk/msgsender-sdk@2.2.0) (2021-12-20)
 
 ### Features
 
-* 统一生成 contract.json 文件 ([a3da373](https://github.com/easyops-cn/next-providers/commit/a3da3737b40db2c347bc2fd3b2d23c9beb1673a7))
-
-
-
-
+- 统一生成 contract.json 文件 ([a3da373](https://github.com/easyops-cn/next-providers/commit/a3da3737b40db2c347bc2fd3b2d23c9beb1673a7))
 
 ## [2.1.2](https://github.com/easyops-cn/next-providers/compare/@next-sdk/msgsender-sdk@2.1.1...@next-sdk/msgsender-sdk@2.1.2) (2021-06-24)
 
