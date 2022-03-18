@@ -55,6 +55,15 @@
     "BuildApi.themeExport",
     "BuildApi.themePackageBuild",
     "ImportAndExportApi.projectExport",
-    "ImportAndExportApi.projectImport"
+    "ImportAndExportApi.projectImport",
+    "ContractCenterApi.addApiContract",
+    "ContractCenterApi.addModelContract",
+    "ContractCenterApi.deleteApiContract",
+    "ContractCenterApi.deleteModelContract",
+    "ContractCenterApi.getApiContractDetail",
+    "ContractCenterApi.getModelContractDetail",
+    "ContractCenterApi.listApiContract",
+    "ContractCenterApi.listModelContract",
+    "ContractCenterApi.updateApiContract"
   ]
 }
