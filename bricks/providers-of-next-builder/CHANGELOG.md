@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-next-builder@1.14.0...@next-bricks/providers-of-next-builder@1.15.0) (2022-03-18)
+
+### Features
+
+- add providers: providers-of-next-builder.contract-center-api-add-api-contract, providers-of-next-builder.contract-center-api-add-model-contract, providers-of-next-builder.contract-center-api-delete-api-contract, providers-of-next-builder.contract-center-api-delete-model-contract, providers-of-next-builder.contract-center-api-get-api-contract-detail, providers-of-next-builder.contract-center-api-get-model-contract-detail, providers-of-next-builder.contract-center-api-list-api-contract, providers-of-next-builder.contract-center-api-list-model-contract, providers-of-next-builder.contract-center-api-update-api-contract ([91c00d9](https://github.com/easyops-cn/next-providers/commit/91c00d969c70f8269a0a3486185c1e3b3eb24f1f))
+
 # [1.14.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-next-builder@1.13.0...@next-bricks/providers-of-next-builder@1.14.0) (2022-03-09)
 
 ### Features
