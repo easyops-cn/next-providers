@@ -155,6 +155,9 @@ export interface ModelMicroAppProject_images_item {
 
   /** 图片地址 */
   url?: string;
+
+  /** 来源 */
+  from?: string;
 }
 
 export interface ModelMicroAppProject_permissions_item {

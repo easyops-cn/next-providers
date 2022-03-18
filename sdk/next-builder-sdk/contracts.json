@@ -598,6 +598,41 @@
       "response": null
     },
     {
+      "contract": "next_builder.build.ProjectDocsUpload",
+      "category": {
+        "en": "Build",
+        "zh": "构建"
+      },
+      "name": "ProjectDocsUpload",
+      "version": "1.0.0",
+      "description": "单个微应用项目文档打包",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next-builder/project-docs-upload"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.projectId"
+          },
+          {
+            "name": "version",
+            "type": "version",
+            "description": "文档版本号"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "版本描述信息"
+          }
+        ],
+        "required": ["MicroAppProject.projectId", "version", "description"]
+      },
+      "response": null
+    },
+    {
       "contract": "next_builder.build.SnippetPackageUpload",
       "category": {
         "en": "Build",
@@ -794,6 +829,321 @@
             "description": "要克隆的当前app的instanceId"
           }
         ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.contract_center.AddApiContract",
+      "name": "AddApiContract",
+      "version": "1.0.0",
+      "description": "添加api契约接口",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/contract/api"
+      },
+      "import": ["easyops/model/flow_builder/api_contract"],
+      "request": {
+        "type": "object",
+        "description": "interface契约请求",
+        "fields": [
+          {
+            "ref": "FlowBuilderApiContract.*"
+          }
+        ],
+        "required": [
+          "FlowBuilderApiContract.name",
+          "FlowBuilderApiContract.version",
+          "FlowBuilderApiContract.namespaceId",
+          "FlowBuilderApiContract.description"
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "apiContractInstanceId",
+            "type": "instance_id",
+            "description": "instance_id"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.contract_center.AddModelContract",
+      "name": "AddModelContract",
+      "version": "1.0.0",
+      "description": "添加model契约接口",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/contract/model"
+      },
+      "import": ["easyops/model/flow_builder/model"],
+      "request": {
+        "type": "object",
+        "description": "model契约请求",
+        "fields": [
+          {
+            "ref": "ModelContract.*"
+          }
+        ],
+        "required": ["ModelContract.name", "ModelContract.namespaceId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "modelContractInstanceId",
+            "type": "instance_id",
+            "description": "instance_id"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.contract_center.DeleteApiContract",
+      "name": "DeleteApiContract",
+      "version": "1.0.0",
+      "description": "删除api接口",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/contract/interface/:instanceId"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "instanceId"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.contract_center.DeleteModelContract",
+      "name": "DeleteModelContract",
+      "version": "1.0.0",
+      "description": "删除model契约接口",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/contract/model/:instanceId"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "instanceId"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.contract_center.GetApiContractDetail",
+      "name": "GetApiContractDetail",
+      "version": "1.0.0",
+      "description": "api契约详情展示",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/contract/api/:instanceId"
+      },
+      "import": ["easyops/model/flow_builder/api_contract"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "instanceId"
+          }
+        ]
+      },
+      "response": {
+        "type": "FlowBuilderApiContract"
+      }
+    },
+    {
+      "contract": "next_builder.contract_center.GetModelContractDetail",
+      "name": "GetModelContractDetail",
+      "version": "1.0.0",
+      "description": "model契约详情展示",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/contract/model/:instanceId"
+      },
+      "import": ["easyops/model/flow_builder/model"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "instanceId"
+          }
+        ]
+      },
+      "response": {
+        "type": "ModelContract"
+      }
+    },
+    {
+      "contract": "next_builder.contract_center.ListApiContract",
+      "name": "ListApiContract",
+      "version": "1.0.0",
+      "description": "api契约列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/contract/api"
+      },
+      "import": ["easyops/model/flow_builder/api_contract"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "namespaceId",
+            "type": "string",
+            "description": "namespaceId"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "data",
+            "type": "object[]",
+            "description": "契约列表",
+            "fields": [
+              {
+                "ref": "FlowBuilderApiContract.namespaceId"
+              },
+              {
+                "ref": "FlowBuilderApiContract.name"
+              },
+              {
+                "ref": "FlowBuilderApiContract.description"
+              },
+              {
+                "ref": "FlowBuilderApiContract.projects"
+              },
+              {
+                "name": "latestVersion",
+                "type": "string",
+                "description": "单个契约的最新版本"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.contract_center.ListModelContract",
+      "name": "ListModelContract",
+      "version": "1.0.0",
+      "description": "model契约列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/contract/model"
+      },
+      "import": ["easyops/model/flow_builder/model"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "namespaceId",
+            "type": "string",
+            "description": "namespaceId"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "data",
+            "type": "object[]",
+            "description": "模型契约列表",
+            "fields": [
+              {
+                "ref": "ModelContract.namespaceId"
+              },
+              {
+                "ref": "ModelContract.name"
+              },
+              {
+                "ref": "ModelContract.description"
+              },
+              {
+                "ref": "ModelContract.useModels"
+              },
+              {
+                "name": "latestVersion",
+                "type": "string",
+                "description": "单个模型的最新版本"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.contract_center.UpdateApiContract",
+      "name": "UpdateApiContract",
+      "version": "1.0.0",
+      "description": "更新api契约接口",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/api/:instanceId"
+      },
+      "import": ["easyops/model/flow_builder/api_contract"],
+      "request": {
+        "type": "object",
+        "description": "api接口请求",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "instanceId"
+          },
+          {
+            "ref": "FlowBuilderApiContract.*"
+          },
+          {
+            "name": "projectInstanceId",
+            "type": "instance_id",
+            "description": "契约关联的project"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.contract_center.UpdateModelContract",
+      "name": "UpdateModelContract",
+      "version": "1.0.0",
+      "description": "更新model接口",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/model/:instanceId"
+      },
+      "import": ["easyops/model/flow_builder/model"],
+      "request": {
+        "type": "object",
+        "description": "api模型",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "instanceId"
+          },
+          {
+            "ref": "ModelContract.*"
+          }
+        ],
+        "required": ["ModelContract.name", "ModelContract.namespaceId"]
       },
       "response": null
     },

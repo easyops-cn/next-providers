@@ -1,6 +1,7 @@
 export * from "./api/next_builder/apis";
 export * from "./api/next_builder/build";
 export * from "./api/next_builder/clone";
+export * from "./api/next_builder/contract_center";
 export * from "./api/next_builder/document";
 export * from "./api/next_builder/import_and_export";
 export * from "./api/next_builder/installed_theme_template";

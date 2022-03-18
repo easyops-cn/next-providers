@@ -43,4 +43,7 @@ export interface ModelObjectAttr {
 
   /** 父模型Id */
   inheritObjectId: string;
+
+  /** 是否屏蔽变更通知 */
+  notifyDenied: boolean;
 }
