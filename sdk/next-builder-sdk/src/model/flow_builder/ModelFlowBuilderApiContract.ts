@@ -2,6 +2,9 @@ import { ModelFieldContract } from ".";
 
 /** flowBuilderApiContract契约定义 */
 export interface ModelFlowBuilderApiContract {
+  /** 实例id */
+  instanceId: string;
+
   /** 契约name */
   name: string;
 

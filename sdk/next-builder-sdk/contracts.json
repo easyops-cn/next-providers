@@ -1006,6 +1006,16 @@
             "name": "namespaceId",
             "type": "string",
             "description": "namespaceId"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "description": "查询条件：name"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "查询条件：描述信息"
           }
         ]
       },
@@ -1017,6 +1027,9 @@
             "type": "object[]",
             "description": "契约列表",
             "fields": [
+              {
+                "ref": "FlowBuilderApiContract.instanceId"
+              },
               {
                 "ref": "FlowBuilderApiContract.namespaceId"
               },
@@ -1056,6 +1069,16 @@
             "name": "namespaceId",
             "type": "string",
             "description": "namespaceId"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "description": "查询条件：name"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "查询条件：描述信息"
           }
         ]
       },
@@ -1067,6 +1090,9 @@
             "type": "object[]",
             "description": "模型契约列表",
             "fields": [
+              {
+                "ref": "ModelContract.instanceId"
+              },
               {
                 "ref": "ModelContract.namespaceId"
               },
@@ -1104,11 +1130,6 @@
         "description": "api接口请求",
         "fields": [
           {
-            "name": "instanceId",
-            "type": "instance_id",
-            "description": "instanceId"
-          },
-          {
             "ref": "FlowBuilderApiContract.*"
           },
           {
@@ -1134,11 +1155,6 @@
         "type": "object",
         "description": "api模型",
         "fields": [
-          {
-            "name": "instanceId",
-            "type": "instance_id",
-            "description": "instanceId"
-          },
           {
             "ref": "ModelContract.*"
           }

@@ -5,6 +5,12 @@ import { ResponseBodyWrapper } from "../../../wrapper";
 export interface ContractCenterApi_ListModelContractRequestParams {
   /** namespaceId */
   namespaceId?: string;
+
+  /** 查询条件：name */
+  name?: string;
+
+  /** 查询条件：描述信息 */
+  description?: string;
 }
 
 export interface ContractCenterApi_ListModelContractResponseBody {
@@ -30,6 +36,9 @@ export const ContractCenterApi_listModelContract = async (
   ).data;
 
 export interface ContractCenterApi_ListModelContractResponseBody_data_item {
+  /** 实例id */
+  instanceId?: string;
+
   /** namespaceId */
   namespaceId?: string;
 

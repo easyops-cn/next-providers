@@ -2,6 +2,9 @@ import { ModelFieldContract } from ".";
 
 /** 模型契约定义 */
 export interface ModelModelContract {
+  /** 实例id */
+  instanceId: string;
+
   /** name */
   name: string;
 
