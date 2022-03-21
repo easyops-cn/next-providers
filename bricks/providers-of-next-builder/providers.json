@@ -64,6 +64,7 @@
     "ContractCenterApi.getModelContractDetail",
     "ContractCenterApi.listApiContract",
     "ContractCenterApi.listModelContract",
-    "ContractCenterApi.updateApiContract"
+    "ContractCenterApi.updateApiContract",
+    "ContractCenterApi.updateModelContract"
   ]
 }
