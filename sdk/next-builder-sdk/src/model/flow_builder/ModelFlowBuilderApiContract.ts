@@ -29,6 +29,12 @@ export interface ModelFlowBuilderApiContract {
   /** 接口详情 */
   detail: string;
 
+  /** provider */
+  provider: string;
+
+  /** providerPackage */
+  providerPackage: string;
+
   /** endpoint */
   endpoint: ModelFlowBuilderApiContract_endpoint;
 
@@ -61,6 +67,9 @@ export interface ModelFlowBuilderApiContract {
 
   /** 契约关联的project, 一个契约可关联多个项目 */
   projects: ModelFlowBuilderApiContract_projects_item[];
+
+  /** 契约关联的namespace */
+  namespace: ModelFlowBuilderApiContract_namespace_item[];
 }
 
 export interface ModelFlowBuilderApiContract_endpoint {
@@ -89,6 +98,9 @@ export interface ModelFlowBuilderApiContract_request {
 
   /** fields */
   fields?: Partial<ModelFieldContract>[];
+
+  /** request引用的模型信息 */
+  modelDefinition?: ModelFlowBuilderApiContract_request_modelDefinition_item[];
 }
 
 export interface ModelFlowBuilderApiContract_response {
@@ -109,6 +121,9 @@ export interface ModelFlowBuilderApiContract_response {
 
   /** fields */
   fields?: Partial<ModelFieldContract>[];
+
+  /** response引用的模型信息 */
+  modelDefinition?: ModelFlowBuilderApiContract_response_modelDefinition_item[];
 }
 
 export interface ModelFlowBuilderApiContract_useModels_item {
@@ -134,4 +149,28 @@ export interface ModelFlowBuilderApiContract_projects_item {
 
   /** name */
   name?: string;
+}
+
+export interface ModelFlowBuilderApiContract_namespace_item {
+  /** instanceId */
+  instanceId?: string;
+
+  /** 命名空间id */
+  id?: string;
+}
+
+export interface ModelFlowBuilderApiContract_request_modelDefinition_item {
+  /** 引用的模型name */
+  name?: string;
+
+  /** 引用模型的fields信息 */
+  fields?: Partial<ModelFieldContract>[];
+}
+
+export interface ModelFlowBuilderApiContract_response_modelDefinition_item {
+  /** 引用的模型name */
+  name?: string;
+
+  /** 引用模型的fields信息 */
+  fields?: Partial<ModelFieldContract>[];
 }
