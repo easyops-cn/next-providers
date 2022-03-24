@@ -38,8 +38,8 @@ export interface ModelModelContract {
   /** 契约关联的namespace */
   namespace: ModelModelContract_namespace_item[];
 
-  /** response引用的模型信息 */
-  modelDefinition: ModelModelContract_modelDefinition_item[];
+  /** 模型所引用的模型具体字段信息 */
+  importModelDefinition: ModelModelContract_importModelDefinition_item[];
 }
 
 export interface ModelModelContract_useModels_item {
@@ -64,10 +64,13 @@ export interface ModelModelContract_namespace_item {
   instanceId?: string;
 }
 
-export interface ModelModelContract_modelDefinition_item {
+export interface ModelModelContract_importModelDefinition_item {
   /** 引用的模型name */
   name?: string;
 
   /** 引用模型的fields信息 */
   fields?: Partial<ModelFieldContract>[];
+
+  /** 模型数据是否更新了 */
+  updated?: boolean;
 }

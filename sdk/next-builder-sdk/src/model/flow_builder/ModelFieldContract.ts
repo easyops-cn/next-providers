@@ -25,7 +25,4 @@ export interface ModelFieldContract {
 
   /** fields */
   fields: Partial<ModelFieldContract>[];
-
-  /** 数据是否有更新， type为引用模型时， 或者ref不为空的时候才有用 */
-  updated: boolean;
 }
