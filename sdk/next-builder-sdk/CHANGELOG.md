@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.3](https://github.com/easyops-cn/next-providers/compare/@next-sdk/next-builder-sdk@2.4.2...@next-sdk/next-builder-sdk@2.4.3) (2022-03-24)
+
+**Note:** Version bump only for package @next-sdk/next-builder-sdk
+
 ## [2.4.2](https://github.com/easyops-cn/next-providers/compare/@next-sdk/next-builder-sdk@2.4.1...@next-sdk/next-builder-sdk@2.4.2) (2022-03-23)
 
 **Note:** Version bump only for package @next-sdk/next-builder-sdk
