@@ -1,5 +1,3 @@
-import { ModelValidateRule } from ".";
-
 /** field契约定义 */
 export interface ModelFieldContract {
   /** name */
@@ -18,7 +16,7 @@ export interface ModelFieldContract {
   enum: any[];
 
   /** validate */
-  validateRule: Partial<ModelValidateRule>;
+  validateRule: Record<string, any>;
 
   /** ref */
   ref: string;

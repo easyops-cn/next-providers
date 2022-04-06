@@ -83,7 +83,7 @@ export interface ModelFlowBuilderApiContract_endpoint {
   uri?: string;
 
   /** 额外字段 */
-  ext_fields?: Record<string, any>;
+  ext_fields?: Record<string, any>[];
 }
 
 export interface ModelFlowBuilderApiContract_importModelDefinition_item {
