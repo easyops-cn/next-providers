@@ -65,6 +65,7 @@
     "ContractCenterApi.listApiContract",
     "ContractCenterApi.listModelContract",
     "ContractCenterApi.updateApiContract",
-    "ContractCenterApi.updateModelContract"
+    "ContractCenterApi.updateModelContract",
+    "BuildApi.projectDocsUpload"
   ]
 }
