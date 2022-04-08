@@ -26,6 +26,9 @@ export interface ModelFlowBuilderApiContract {
   /** 契约描述 */
   description: string;
 
+  /** 服务名字 */
+  serviceName: string;
+
   /** 接口详情 */
   detail: string;
 
