@@ -58,6 +58,9 @@ export interface ModelMicroAppProject {
 
   /** 最新一次export的文档 */
   lastExportedDocuments: string;
+
+  /** 克隆自 */
+  clonedFrom: ModelMicroAppProject_clonedFrom;
 }
 
 export interface ModelMicroAppProject_developmentEnv {
@@ -166,4 +169,12 @@ export interface ModelMicroAppProject_permissions_item {
 
   /** 需要鉴权的动作, 全局唯一，在小产品project中，会少前缀 `next-builder:<appId>:`，导出或者安装时会补全 */
   action?: string;
+}
+
+export interface ModelMicroAppProject_clonedFrom {
+  /** appId */
+  appId?: string;
+
+  /** appName */
+  appName?: string;
 }

@@ -51,9 +51,24 @@ export interface ContractCenterApi_ListApiContractResponseBody_data_item {
   /** 契约描述 */
   description?: string;
 
+  /** endpoint */
+  endpoint?: ModelFlowBuilderApiContract["endpoint"];
+
+  /** deprecated */
+  deprecated?: boolean;
+
   /** 契约关联的project, 一个契约可关联多个项目 */
   projects?: ModelFlowBuilderApiContract["projects"];
 
+  /** 契约实现列表 */
+  implements?: ModelFlowBuilderApiContract["implements"];
+
   /** 单个契约的最新版本 */
   latestVersion?: string;
+
+  /** creator */
+  creator?: string;
+
+  /** modifier */
+  modifier?: string;
 }

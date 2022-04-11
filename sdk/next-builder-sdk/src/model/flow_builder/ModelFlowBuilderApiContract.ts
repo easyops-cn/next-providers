@@ -76,6 +76,9 @@ export interface ModelFlowBuilderApiContract {
 
   /** 契约关联的namespace */
   namespace: ModelFlowBuilderApiContract_namespace_item[];
+
+  /** 契约实现列表 */
+  implements: ModelFlowBuilderApiContract_implements_item[];
 }
 
 export interface ModelFlowBuilderApiContract_endpoint {
@@ -168,4 +171,9 @@ export interface ModelFlowBuilderApiContract_namespace_item {
 
   /** 命名空间id */
   id?: string;
+}
+
+export interface ModelFlowBuilderApiContract_implements_item {
+  /** instanceId */
+  instanceId?: string;
 }

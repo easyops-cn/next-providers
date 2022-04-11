@@ -593,9 +593,9 @@
             "description": "契约内容"
           },
           {
-            "name": "expectedAppId",
-            "type": "string",
-            "description": "打包期望的appId"
+            "name": "useClonedAppId",
+            "type": "bool",
+            "description": "使用克隆源的appId(打包期望的appId)"
           }
         ],
         "required": ["MicroAppProject.projectId", "version", "description"]
@@ -1050,12 +1050,31 @@
                 "ref": "FlowBuilderApiContract.description"
               },
               {
+                "ref": "FlowBuilderApiContract.endpoint"
+              },
+              {
+                "ref": "FlowBuilderApiContract.deprecated"
+              },
+              {
                 "ref": "FlowBuilderApiContract.projects"
+              },
+              {
+                "ref": "FlowBuilderApiContract.implements"
               },
               {
                 "name": "latestVersion",
                 "type": "string",
                 "description": "单个契约的最新版本"
+              },
+              {
+                "name": "creator",
+                "type": "string",
+                "description": "creator"
+              },
+              {
+                "name": "modifier",
+                "type": "string",
+                "description": "modifier"
               }
             ]
           }
