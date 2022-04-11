@@ -591,6 +591,11 @@
             "name": "contractData",
             "type": "string",
             "description": "契约内容"
+          },
+          {
+            "name": "expectedAppId",
+            "type": "string",
+            "description": "打包期望的appId"
           }
         ],
         "required": ["MicroAppProject.projectId", "version", "description"]
@@ -1016,6 +1021,11 @@
             "name": "description",
             "type": "string",
             "description": "查询条件：描述信息"
+          },
+          {
+            "name": "projectInstanceId",
+            "type": "string",
+            "description": "查询条件：project instanceId"
           }
         ]
       },

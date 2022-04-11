@@ -11,6 +11,9 @@ export interface ContractCenterApi_ListApiContractRequestParams {
 
   /** 查询条件：描述信息 */
   description?: string;
+
+  /** 查询条件：project instanceId */
+  projectInstanceId?: string;
 }
 
 export interface ContractCenterApi_ListApiContractResponseBody {

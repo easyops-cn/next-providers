@@ -21,6 +21,9 @@ export interface BuildApi_PackageUploadRequestBody {
 
   /** 契约内容 */
   contractData?: string;
+
+  /** 打包期望的appId */
+  expectedAppId?: string;
 }
 
 /**
