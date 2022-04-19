@@ -45,7 +45,7 @@
       },
       "name": "GetApi",
       "version": "1.0.0",
-      "description": "获取开发环境的api编排信息",
+      "description": "获取开发环境的api编排信息。",
       "endpoint": {
         "method": "GET",
         "uri": "/api/v1/api/get"

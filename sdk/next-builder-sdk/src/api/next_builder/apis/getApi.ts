@@ -13,7 +13,7 @@ export interface ApisApi_GetApiResponseBody {
 }
 
 /**
- * @description 获取开发环境的api编排信息
+ * @description 获取开发环境的api编排信息。
  * @endpoint GET /api/v1/api/get
  */
 export const ApisApi_getApi = async (
