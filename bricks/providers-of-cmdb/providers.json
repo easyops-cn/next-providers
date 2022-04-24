@@ -134,6 +134,7 @@
     "InstanceGraphApi.traverseGraphCount",
     "CmdbObjectApi.listObjectCategoryV2",
     "PermissionApi.getRoleCmdbPermission",
-    "PermissionApi.updateRoleCmdbPermission"
+    "PermissionApi.updateRoleCmdbPermission",
+    "InstanceApi.importMultiplyInstancesWithExcel"
   ]
 }
