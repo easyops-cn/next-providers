@@ -135,6 +135,7 @@
     "CmdbObjectApi.listObjectCategoryV2",
     "PermissionApi.getRoleCmdbPermission",
     "PermissionApi.updateRoleCmdbPermission",
-    "InstanceApi.importMultiplyInstancesWithExcel"
+    "InstanceApi.importMultiplyInstancesWithExcel",
+    "InstanceApi.upsertInstance"
   ]
 }
