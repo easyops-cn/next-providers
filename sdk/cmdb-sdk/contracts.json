@@ -4806,6 +4806,11 @@
             "type": "string",
             "enum": ["true", "false"],
             "description": "默认前缀搜索,true/false"
+          },
+          {
+            "name": "no_regex",
+            "type": "bool",
+            "description": "是否使用模糊匹配模式"
           }
         ],
         "default": {
@@ -5805,6 +5810,91 @@
           }
         ],
         "required": ["code", "error", "message", "data"]
+      }
+    },
+    {
+      "contract": "cmdb.instance.ImportMultiplyInstancesWithExcel",
+      "category": {
+        "en": "Instance",
+        "zh": "实例"
+      },
+      "name": "ImportMultiplyInstancesWithExcel",
+      "version": "1.0.0",
+      "description": "使用excel文件导入多个实例",
+      "detail": "此接口以multipart/form-data方式提交数据",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/import/object/:object_id/multiply_instances/excel"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "object_id",
+            "type": "object_id",
+            "description": "实例所属的模型ID"
+          },
+          {
+            "name": "keys",
+            "type": "string[]",
+            "description": "导入实例的字段,作为更新/创建依据"
+          },
+          {
+            "name": "attachment",
+            "type": "file",
+            "description": "excel文件"
+          },
+          {
+            "name": "relation_operation",
+            "type": "string",
+            "enum": ["set", "append"],
+            "description": "关系操作方式"
+          }
+        ],
+        "required": ["object_id", "keys", "attachment"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "insert_count",
+            "type": "int",
+            "description": "成功插入数量"
+          },
+          {
+            "name": "update_count",
+            "type": "int",
+            "description": "成功更新数量"
+          },
+          {
+            "name": "failed_count",
+            "type": "int",
+            "description": "失败数量"
+          },
+          {
+            "name": "data",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "code",
+                "type": "int",
+                "description": "错误码"
+              },
+              {
+                "name": "error",
+                "type": "string",
+                "description": "错误信息"
+              },
+              {
+                "name": "line",
+                "type": "int",
+                "description": "错误实例所在excel行数"
+              }
+            ],
+            "description": "失败数据"
+          }
+        ],
+        "required": ["insert_count", "update_count", "failed_count", "data"]
       }
     },
     {
@@ -7515,6 +7605,60 @@
           }
         }
       ]
+    },
+    {
+      "contract": "cmdb.instance.UpsertInstance",
+      "category": {
+        "en": "Instance",
+        "zh": "实例"
+      },
+      "name": "UpsertInstance",
+      "version": "1.1.0",
+      "description": "批量创建实例，存在时更新",
+      "detail": "body为实例信息,字段限制参考模型定义,支持关系创建",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/object/:objectId/instance/upsert"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "objectId",
+            "type": "object_id",
+            "description": "objectId"
+          },
+          {
+            "name": "datas",
+            "type": "map[]",
+            "description": "实例数据列表"
+          },
+          {
+            "name": "only_instance_id",
+            "type": "bool",
+            "description": "是否只返回实例id"
+          },
+          {
+            "name": "fill_metadata",
+            "type": "bool",
+            "description": "是否可指定metadata字段,如ctime,creator,为true时将会默认填充mtime,modifier字段"
+          }
+        ],
+        "default": {
+          "only_instance_id": false,
+          "fill_metadata": false
+        }
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "map[]",
+            "description": "实例列表"
+          }
+        ]
+      }
     },
     {
       "contract": "cmdb.instance.ValidateInstance",
@@ -10277,6 +10421,151 @@
         "required": ["role", "permissionKinds", "objectIds"]
       },
       "response": null
+    },
+    {
+      "contract": "cmdb.service_node.DiscoverService",
+      "name": "DiscoverService",
+      "version": "1.0.0",
+      "description": "服务发现",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/discover/service"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "services",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "name",
+                "type": "string",
+                "description": "服务名称"
+              },
+              {
+                "name": "type",
+                "type": "string",
+                "description": "服务类型"
+              },
+              {
+                "name": "category",
+                "type": "string",
+                "description": "服务分类"
+              }
+            ],
+            "description": "上报的服务"
+          }
+        ],
+        "required": ["services.name", "services.type"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "data",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "instanceId",
+                "type": "instance_id",
+                "description": "实例Id"
+              },
+              {
+                "name": "objectId",
+                "type": "object_id",
+                "description": "录入的模型Id"
+              },
+              {
+                "name": "code",
+                "type": "int",
+                "description": "状态码"
+              },
+              {
+                "name": "message",
+                "type": "string",
+                "description": "错误信息"
+              },
+              {
+                "name": "data",
+                "type": "map",
+                "description": "实例数据"
+              }
+            ],
+            "description": "data"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "cmdb.service_node.DiscoverServiceNode",
+      "name": "DiscoverServiceNode",
+      "version": "1.0.0",
+      "description": "服务节点发现(根据匹配规则识别所属服务)",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/discover/service_node"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "nodes",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "filter",
+                "type": "map",
+                "description": "筛选器"
+              },
+              {
+                "name": "update",
+                "type": "map",
+                "description": "更新数据"
+              }
+            ],
+            "description": "上报的服务节点"
+          }
+        ],
+        "required": ["nodes"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "data",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "instanceId",
+                "type": "instance_id",
+                "description": "实例Id"
+              },
+              {
+                "name": "objectId",
+                "type": "object_id",
+                "description": "录入的模型Id"
+              },
+              {
+                "name": "code",
+                "type": "int",
+                "description": "状态码"
+              },
+              {
+                "name": "message",
+                "type": "string",
+                "description": "错误信息"
+              },
+              {
+                "name": "data",
+                "type": "map",
+                "description": "实例数据"
+              }
+            ],
+            "description": "data"
+          }
+        ]
+      }
     },
     {
       "contract": "cmdb.terraform.DeleteState",

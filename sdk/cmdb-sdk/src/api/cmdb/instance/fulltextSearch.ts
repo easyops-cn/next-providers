@@ -16,6 +16,9 @@ export interface InstanceApi_FulltextSearchRequestParams {
 
   /** 默认前缀搜索,true/false */
   prefixSearch?: "true" | "false";
+
+  /** 是否使用模糊匹配模式 */
+  no_regex?: boolean;
 }
 
 export interface InstanceApi_FulltextSearchResponseBody {
