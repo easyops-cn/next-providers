@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.17.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-cmdb@1.16.1...@next-bricks/providers-of-cmdb@1.17.0) (2022-04-24)
+
+### Features
+
+- add providers: providers-of-cmdb.instance-api-import-multiply-instances-with-excel ([882dfba](https://github.com/easyops-cn/next-providers/commit/882dfba0ff675c3b10798214c05401585399811b))
+
 ## [1.16.1](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-cmdb@1.16.0...@next-bricks/providers-of-cmdb@1.16.1) (2022-02-11)
 
 **Note:** Version bump only for package @next-bricks/providers-of-cmdb
