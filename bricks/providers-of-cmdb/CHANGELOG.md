@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.18.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-cmdb@1.17.0...@next-bricks/providers-of-cmdb@1.18.0) (2022-04-24)
+
+### Features
+
+- add providers: providers-of-cmdb.instance-api-upsert-instance ([37a76de](https://github.com/easyops-cn/next-providers/commit/37a76de2907d9c32829740e3f51d7c189c029bf2))
+
 # [1.17.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-cmdb@1.16.1...@next-bricks/providers-of-cmdb@1.17.0) (2022-04-24)
 
 ### Features
