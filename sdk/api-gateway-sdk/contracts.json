@@ -357,6 +357,11 @@
             "name": "invite",
             "type": "string",
             "description": "邀请码"
+          },
+          {
+            "name": "nickname",
+            "type": "string",
+            "description": "用户姓名"
           }
         ]
       },
@@ -412,6 +417,141 @@
             "name": "isAdmin",
             "type": "bool",
             "description": "判断当前登录用户是否是系统管理员"
+          },
+          {
+            "name": "nickname",
+            "type": "string",
+            "description": "用户姓名"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "register user by invite code",
+            "zh": "通过邀请码注册用户"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8104/api/auth/register",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"email\": \"test_user@easyops.cn\",\n  \"password\": \"******\",\n  \"invite\": \"invite_code\",\n  \"name\": \"test_user\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8",
+              "Set-Cookie": "PHPSESSID=VFMTWAJHYRCMUWODZMVGHPSMV4UXCDN4Q3OKODAQAQBZYTUH2QDA; Path=/; Expires=Tue, 28 Dec 2021 11:45:20 GMT; Max-Age=7200",
+              "X-B3-Traceid": "8fffffffffffffff6c1e84cea8ce252c"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"error\": \"\",\n  \"message\": \"\",\n  \"data\": {\n      \"name\": \"test_user\",\n      \"email\": \"test_user@easyops.cn\",\n      \"org\": 1234,\n      \"loggedIn\": true,\n      \"username\": \"test_user\",\n      \"location\": \"\",\n      \"userInstanceId\": \"5d4321334842b\",\n      \"loginFrom\": \"\",\n      \"accessRule\": \"\",\n      \"isAdmin\": false\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "api_gateway.auth.RegisterV2",
+      "category": {
+        "en": "auth",
+        "zh": "认证"
+      },
+      "name": "RegisterV2",
+      "version": "1.0.0",
+      "description": "注册",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/auth/register"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "description": "密码"
+          },
+          {
+            "name": "email",
+            "type": "string",
+            "description": "邮箱"
+          },
+          {
+            "name": "invite",
+            "type": "string",
+            "description": "邀请码"
+          },
+          {
+            "name": "nickname",
+            "type": "string",
+            "description": "用户姓名"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "email",
+            "type": "string",
+            "description": "邮箱"
+          },
+          {
+            "name": "org",
+            "type": "int",
+            "description": "org"
+          },
+          {
+            "name": "loggedIn",
+            "type": "bool",
+            "description": "是否已经登录"
+          },
+          {
+            "name": "username",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "description": "用户地理位置"
+          },
+          {
+            "name": "userInstanceId",
+            "type": "instance_id",
+            "description": "用户 id"
+          },
+          {
+            "name": "loginFrom",
+            "type": "string",
+            "description": "用户来源"
+          },
+          {
+            "name": "accessRule",
+            "type": "string",
+            "description": "访问规则(例如按照平台区分 cmdb,ops)"
+          },
+          {
+            "name": "isAdmin",
+            "type": "bool",
+            "description": "判断当前登录用户是否是系统管理员"
+          },
+          {
+            "name": "nickname",
+            "type": "string",
+            "description": "用户姓名"
           }
         ]
       },
@@ -1837,6 +1977,16 @@
             "name": "refreshToken",
             "type": "string",
             "description": "更新 token, 只能用来进行更新 token, 在 header 附带 Authorization: Bearer refreshToken"
+          },
+          {
+            "name": "customerId",
+            "type": "instance_id",
+            "description": "来源客户ID"
+          },
+          {
+            "name": "customerName",
+            "type": "string",
+            "description": "客户名称"
           }
         ]
       }

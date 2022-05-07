@@ -21,6 +21,12 @@ export interface WechatMiniprogramApi_MiniProgramLoginResponseBody {
 
   /** 更新 token, 只能用来进行更新 token, 在 header 附带 Authorization: Bearer refreshToken */
   refreshToken?: string;
+
+  /** 来源客户ID */
+  customerId?: string;
+
+  /** 客户名称 */
+  customerName?: string;
 }
 
 /**

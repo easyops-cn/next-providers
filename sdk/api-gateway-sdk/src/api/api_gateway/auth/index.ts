@@ -5,5 +5,6 @@ export * from "./loginV2";
 export * from "./logout";
 export * from "./refreshToken";
 export * from "./register";
+export * from "./registerV2";
 export * from "./tokenLdapLogin";
 export * from "./tokenLogin";

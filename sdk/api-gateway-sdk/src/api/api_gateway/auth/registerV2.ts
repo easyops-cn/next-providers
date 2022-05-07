@@ -1,7 +1,7 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface AuthApi_RegisterRequestBody {
+export interface AuthApi_RegisterV2RequestBody {
   /** 用户名 */
   name?: string;
 
@@ -18,7 +18,7 @@ export interface AuthApi_RegisterRequestBody {
   nickname?: string;
 }
 
-export interface AuthApi_RegisterResponseBody {
+export interface AuthApi_RegisterV2ResponseBody {
   /** 用户名 */
   name?: string;
 
@@ -57,12 +57,12 @@ export interface AuthApi_RegisterResponseBody {
  * @description 注册
  * @endpoint POST /api/auth/register
  */
-export const AuthApi_register = async (
-  data: AuthApi_RegisterRequestBody,
+export const AuthApi_registerV2 = async (
+  data: AuthApi_RegisterV2RequestBody,
   options?: HttpOptions
-): Promise<AuthApi_RegisterResponseBody> =>
-  /**! @contract easyops.api.api_gateway.auth.Register@1.0.0 */ (
-    await http.post<ResponseBodyWrapper<AuthApi_RegisterResponseBody>>(
+): Promise<AuthApi_RegisterV2ResponseBody> =>
+  /**! @contract easyops.api.api_gateway.auth.RegisterV2@1.0.0 */ (
+    await http.post<ResponseBodyWrapper<AuthApi_RegisterV2ResponseBody>>(
       "api/auth/register",
       data,
       options
