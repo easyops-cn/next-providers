@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/api-gateway-sdk@2.1.0...@next-sdk/api-gateway-sdk@2.2.0) (2022-05-07)
+
+### Features
+
+- add apis: AuthApi_registerV2 ([d553a47](https://github.com/easyops-cn/next-providers/commit/d553a4720b5b91e34865b58c433db37edca79245))
+
 # [2.1.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/api-gateway-sdk@2.0.20...@next-sdk/api-gateway-sdk@2.1.0) (2022-01-21)
 
 ### Features
