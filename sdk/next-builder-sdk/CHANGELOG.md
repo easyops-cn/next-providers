@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/next-builder-sdk@2.4.8...@next-sdk/next-builder-sdk@2.5.0) (2022-05-11)
+
+### Features
+
+- add apis: ContractCenterApi_debugApiContract, ContractCenterApi_searchContract ([6e2cfc1](https://github.com/easyops-cn/next-providers/commit/6e2cfc13b0d26195a16d7299a4b14c32a433ed06))
+
 ## [2.4.8](https://github.com/easyops-cn/next-providers/compare/@next-sdk/next-builder-sdk@2.4.7...@next-sdk/next-builder-sdk@2.4.8) (2022-04-19)
 
 **Note:** Version bump only for package @next-sdk/next-builder-sdk
