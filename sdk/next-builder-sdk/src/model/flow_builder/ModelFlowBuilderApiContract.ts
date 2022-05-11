@@ -1,4 +1,4 @@
-import { ModelFieldContract } from ".";
+import { ModelContractExample, ModelFieldContract } from ".";
 
 /** flowBuilderApiContract契约定义 */
 export interface ModelFlowBuilderApiContract {
@@ -10,6 +10,9 @@ export interface ModelFlowBuilderApiContract {
 
   /** 命名空间 */
   namespaceId: string;
+
+  /** 契约全名，namespaceId+name */
+  fullContractName: string;
 
   /** version */
   version: string;
@@ -47,9 +50,6 @@ export interface ModelFlowBuilderApiContract {
   /** deprecated */
   deprecated: boolean;
 
-  /** 示例 */
-  examples: Record<string, any>;
-
   /** private */
   private: boolean;
 
@@ -79,6 +79,9 @@ export interface ModelFlowBuilderApiContract {
 
   /** 契约实现列表 */
   implements: ModelFlowBuilderApiContract_implements_item[];
+
+  /** 契约示例 */
+  examples: Partial<ModelContractExample>[];
 }
 
 export interface ModelFlowBuilderApiContract_endpoint {

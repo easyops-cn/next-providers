@@ -905,6 +905,39 @@
       }
     },
     {
+      "contract": "next_builder.contract_center.DebugApiContract",
+      "name": "DebugApiContract",
+      "version": "1.0.0",
+      "description": "api契约调试",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/contract/debug"
+      },
+      "import": [
+        "easyops/model/next_builder/micro_app_project",
+        "easyops/model/flow_builder/contract_example"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.developmentEnv"
+          },
+          {
+            "ref": "ContractExample.request"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "ContractExample.response"
+          }
+        ]
+      }
+    },
+    {
       "contract": "next_builder.contract_center.DeleteApiContract",
       "name": "DeleteApiContract",
       "version": "1.0.0",
@@ -1138,6 +1171,62 @@
                 "name": "latestVersion",
                 "type": "string",
                 "description": "单个模型的最新版本"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.contract_center.SearchContract",
+      "name": "SearchContract",
+      "version": "1.0.0",
+      "description": "契约搜索",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/contract/search"
+      },
+      "import": ["easyops/model/flow_builder/api_contract"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "fullContractName",
+            "type": "string",
+            "description": "契约查找条件, namespace@name"
+          },
+          {
+            "name": "version",
+            "type": "string",
+            "description": "version查询"
+          },
+          {
+            "name": "page",
+            "type": "int",
+            "description": "page"
+          },
+          {
+            "name": "pageSize",
+            "type": "int",
+            "description": "pageSize"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "data",
+            "type": "object[]",
+            "description": "契约列表",
+            "fields": [
+              {
+                "ref": "FlowBuilderApiContract.fullContractName"
+              },
+              {
+                "name": "version",
+                "type": "string[]",
+                "description": "契约版本列表"
               }
             ]
           }
@@ -1764,7 +1853,12 @@
           {
             "name": "contractName",
             "type": "string",
-            "description": "contractName"
+            "description": "契约名"
+          },
+          {
+            "name": "method",
+            "type": "string",
+            "description": "契约方法"
           }
         ]
       },

@@ -10,8 +10,11 @@ export interface MockRuleApi_EnableOrDisableMockRuleRequestBody {
   /** 契约url */
   url?: string;
 
-  /** contractName */
+  /** 契约名 */
   contractName?: string;
+
+  /** 契约方法 */
+  method?: string;
 }
 
 /**
