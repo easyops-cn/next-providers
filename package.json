@@ -103,7 +103,7 @@
     "lodash": "^4.17.21",
     "@next-core/brick-types": "^2.51.1",
     "@testing-library/dom": "^7.31.2",
-    "ua-parser-js": "0.7.19"
+    "ua-parser-js": "0.8.1"
   },
   "easyops": {
     "create-next-repo": "1.2.24",
