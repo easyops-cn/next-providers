@@ -1216,7 +1216,7 @@
         "type": "object",
         "fields": [
           {
-            "name": "data",
+            "name": "list",
             "type": "object[]",
             "description": "契约列表",
             "fields": [

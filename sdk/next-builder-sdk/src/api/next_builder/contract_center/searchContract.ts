@@ -17,7 +17,7 @@ export interface ContractCenterApi_SearchContractRequestBody {
 
 export interface ContractCenterApi_SearchContractResponseBody {
   /** 契约列表 */
-  data?: ContractCenterApi_SearchContractResponseBody_data_item[];
+  list?: ContractCenterApi_SearchContractResponseBody_list_item[];
 }
 
 /**
@@ -38,7 +38,7 @@ export const ContractCenterApi_searchContract = async (
     )
   ).data;
 
-export interface ContractCenterApi_SearchContractResponseBody_data_item {
+export interface ContractCenterApi_SearchContractResponseBody_list_item {
   /** 契约全名，namespaceId+name */
   fullContractName?: string;
 
