@@ -22,6 +22,9 @@ export interface ModelContractExample_request {
 
   /** body */
   body?: string;
+
+  /** serviceName */
+  serviceName?: string;
 }
 
 export interface ModelContractExample_response {

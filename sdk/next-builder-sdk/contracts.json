@@ -915,7 +915,7 @@
       },
       "import": [
         "easyops/model/next_builder/micro_app_project",
-        "easyops/model/flow_builder/contract_example"
+        "easyops/model/flow_builder/debug_contract"
       ],
       "request": {
         "type": "object",
@@ -924,7 +924,22 @@
             "ref": "MicroAppProject.developmentEnv"
           },
           {
-            "ref": "ContractExample.request"
+            "ref": "DebugContract.method"
+          },
+          {
+            "ref": "DebugContract.uri"
+          },
+          {
+            "ref": "DebugContract.headers"
+          },
+          {
+            "ref": "DebugContract.file"
+          },
+          {
+            "ref": "DebugContract.data"
+          },
+          {
+            "ref": "DebugContract.serviceName"
           }
         ]
       },
@@ -932,7 +947,18 @@
         "type": "object",
         "fields": [
           {
-            "ref": "ContractExample.response"
+            "ref": "DebugContract.file"
+          },
+          {
+            "ref": "DebugContract.data"
+          },
+          {
+            "ref": "DebugContract.headers"
+          },
+          {
+            "name": "statusCode",
+            "type": "int",
+            "description": "statusCode"
           }
         ]
       }
