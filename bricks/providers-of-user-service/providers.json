@@ -47,6 +47,7 @@
     "UserAdminApi.userRegister",
     "AuthApi.getCaptcha",
     "UserAdminApi.invitedUserRegister",
-    "RecentVisitedApi.get"
+    "RecentVisitedApi.get",
+    "RecentVisitedApi.set"
   ]
 }
