@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-user-service@1.2.12...@next-bricks/providers-of-user-service@1.3.0) (2022-05-30)
+
+### Features
+
+- add providers: providers-of-user-service.recent-visited-api-get ([4c8536b](https://github.com/easyops-cn/next-providers/commit/4c8536b8302eaffa8bda18506843a04215f86242))
+
 ## [1.2.12](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-user-service@1.2.11...@next-bricks/providers-of-user-service@1.2.12) (2021-12-17)
 
 **Note:** Version bump only for package @next-bricks/providers-of-user-service

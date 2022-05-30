@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/user-service-sdk@2.1.5...@next-sdk/user-service-sdk@2.2.0) (2022-05-30)
+
+### Features
+
+- add apis: RecentVisitedApi_get, RecentVisitedApi_index, RecentVisitedApi_set ([de91edc](https://github.com/easyops-cn/next-providers/commit/de91edcf4621972a9d4e4a01cc43e38fa92ab976))
+
 ## [2.1.5](https://github.com/easyops-cn/next-providers/compare/@next-sdk/user-service-sdk@2.1.4...@next-sdk/user-service-sdk@2.1.5) (2021-12-17)
 
 **Note:** Version bump only for package @next-sdk/user-service-sdk
