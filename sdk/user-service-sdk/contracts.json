@@ -582,6 +582,11 @@
             "name": "invite",
             "type": "string",
             "description": "邀请码"
+          },
+          {
+            "name": "nickname",
+            "type": "string",
+            "description": "用户姓名"
           }
         ],
         "required": ["name", "password", "email", "invite"]
@@ -608,6 +613,11 @@
             "name": "instanceId",
             "type": "instance_id",
             "description": "用户instanceId"
+          },
+          {
+            "name": "nickname",
+            "type": "string",
+            "description": "用户姓名"
           }
         ],
         "required": ["name", "email", "org", "instanceId"]
@@ -1288,6 +1298,141 @@
       "response": null
     },
     {
+      "contract": "user_service.recent_visited.Get",
+      "name": "Get",
+      "version": "1.0.0",
+      "description": "获取最近访问数据",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/user_services/users/:userId/recent_visited"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "keys",
+            "type": "string",
+            "description": "最近访问keys,多个key逗号隔开"
+          },
+          {
+            "name": "userId",
+            "type": "instance_id",
+            "description": "用户ID"
+          }
+        ],
+        "required": ["keys", "userId"]
+      },
+      "response": {
+        "type": "map"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get",
+            "zh": "获取最近访问"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://localhost:8111/api/v1/user_services/users/5ae38530df806/recent_visited?keys=key1,key2,key3",
+            "headers": {
+              "Content-Type": "application/json"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\":0,\n    \"codeExplain\":\"\",\n    \"error\":\"\",\n    \"data\": {\n                \"key1\":[\n                    {\n                        \"jobId\":\"cc420631f8478c48912d49349caf6583\",\n                        \"jobName\":\"notify\",\n                        \"visitedAt\":\"2022-05-27T09:07:37+08:00\"\n                    },\n                    {\n                        \"jobId\":\"b7e23d5e2b5b95f54b6f827888431a72\",\n                        \"jobName\":\"influxdb\",\n                        \"visitedAt\":\"2022-05-27T09:07:45+08:00\"\n                    }\n                ],\n                \"key2\":[\n                    {\n                        \"id\":\"5df67d3330cc9\",\n                        \"name\":\"Form Builder\",\n                        \"visitedAt\":\"2022-05-27T09:08:00+08:00\"\n                    },\n                    {\n                        \"id\":\"5df57d131685b\",\n                        \"name\":\"部署工单\",\n                        \"visitedAt\":\"2022-05-27T09:08:04+08:00\"\n                    }\n                ],\n                \"key3\":[\n                    {\n                        \"id\":\"5c60b63ad7651\",\n                        \"name\":\"paul-test\",\n                        \"visitedAt\":\"2022-05-27T09:08:12+08:00\"\n                    },\n                    {\n                        \"id\":\"5d4f88c5b30b7\",\n                        \"name\":\"需求管理后台服务\",\n                        \"visitedAt\":\"2022-05-27T09:08:18+08:00\"\n                    }\n                ]\n            }\n\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "user_service.recent_visited.Set",
+      "name": "Set",
+      "version": "1.0.0",
+      "description": "保存最近访问数据",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/user_services/users/:userId/recent_visited"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "userId",
+            "type": "instance_id",
+            "description": "用户ID"
+          },
+          {
+            "name": "data",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "key",
+                "type": "string",
+                "description": "key"
+              },
+              {
+                "name": "value",
+                "type": "object[]",
+                "fields": [
+                  {
+                    "name": "visitObjectId",
+                    "type": "string",
+                    "description": "访问实例ID"
+                  },
+                  {
+                    "name": "visitObjectName",
+                    "type": "string",
+                    "description": "访问实例名称"
+                  },
+                  {
+                    "name": "visitedAt",
+                    "type": "string",
+                    "description": "访问时间"
+                  },
+                  {
+                    "name": "count",
+                    "type": "int",
+                    "description": "访问次数"
+                  }
+                ],
+                "description": "value"
+              }
+            ],
+            "description": "最近访问列表"
+          }
+        ],
+        "required": ["data", "userId"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Set",
+            "zh": "保存最近访问数据"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8111/api/v1/user_services/users/5ae38530df806/recent_visited",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"data\": [\n        {\n            \"key\": \"object_visit_history5ae38530df806_invisible\",\n            \"valye\": [\n                {\n                    \"visitObjectId\": \"PACKAGE\",\n                    \"visitObjectName\": \"包\",\n                    \"visitedAt\": \"2022-05-27T09:00:42+08:00\",\n                    \"count\": 2\n                },\n                {\n                    \"visit_objectId\": \"CLUSTER\",\n                    \"visit_objectName\": \"集群\",\n                    \"visitedAt\": \"2022-05-27T09:00:26+08:00\",\n                    \"count\": 1\n                }\n            ]\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\":0,\n    \"codeExplain\":\"\",\n    \"error\":\"\",\n    \"data\":null\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "user_service.user_admin.AlterPassword",
       "name": "AlterPassword",
       "version": "1.0.0",
@@ -1619,7 +1764,7 @@
       "contract": "user_service.user_admin.ListGroupsIdName",
       "name": "ListGroupsIdName",
       "version": "1.0.0",
-      "description": "获取用户Id与name映射",
+      "description": "获取用户组Id与name映射",
       "endpoint": {
         "method": "GET",
         "uri": "/api/v1/groups/id_map_name"

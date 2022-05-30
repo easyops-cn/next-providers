@@ -13,6 +13,9 @@ export interface GatewayApi_UserRegisterRequestBody {
 
   /** 邀请码 */
   invite: string;
+
+  /** 用户姓名 */
+  nickname?: string;
 }
 
 export interface GatewayApi_UserRegisterResponseBody {
@@ -27,6 +30,9 @@ export interface GatewayApi_UserRegisterResponseBody {
 
   /** 用户instanceId */
   instanceId: string;
+
+  /** 用户姓名 */
+  nickname?: string;
 }
 
 /**

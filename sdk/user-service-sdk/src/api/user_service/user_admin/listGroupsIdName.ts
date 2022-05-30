@@ -9,7 +9,7 @@ export interface UserAdminApi_ListGroupsIdNameRequestParams {
 export type UserAdminApi_ListGroupsIdNameResponseBody = Record<string, any>;
 
 /**
- * @description 获取用户Id与name映射
+ * @description 获取用户组Id与name映射
  * @endpoint GET /api/v1/groups/id_map_name
  */
 export const UserAdminApi_listGroupsIdName = async (
