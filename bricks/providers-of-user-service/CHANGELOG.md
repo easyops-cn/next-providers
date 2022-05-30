@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-user-service@1.3.0...@next-bricks/providers-of-user-service@1.4.0) (2022-05-30)
+
+### Features
+
+- add providers: providers-of-user-service.recent-visited-api-set ([a1072ff](https://github.com/easyops-cn/next-providers/commit/a1072ff0a78e65350beca15fcdfa7365b6d1a10d))
+
 # [1.3.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-user-service@1.2.12...@next-bricks/providers-of-user-service@1.3.0) (2022-05-30)
 
 ### Features
