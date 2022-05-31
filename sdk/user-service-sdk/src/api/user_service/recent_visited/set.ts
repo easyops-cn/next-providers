@@ -1,6 +1,9 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
 export interface RecentVisitedApi_SetRequestBody {
+  /** 标识最近访问或者过滤标签 */
+  type?: string;
+
   /** 最近访问列表 */
   data: RecentVisitedApi_SetRequestBody_data_item[];
 }

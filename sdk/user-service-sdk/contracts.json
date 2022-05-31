@@ -1367,6 +1367,12 @@
             "description": "用户ID"
           },
           {
+            "name": "type",
+            "type": "string",
+            "enums": ["tag", "recentHistory"],
+            "description": "标识最近访问或者过滤标签"
+          },
+          {
             "name": "data",
             "type": "object[]",
             "fields": [
