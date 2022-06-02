@@ -1,6 +1,6 @@
 {
   "name": "@next-sdk/user-service-sdk",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "SDK for User Service",
   "homepage": "https://github.com/easyops-cn/next-providers/tree/master/sdk/user-service-sdk",
   "license": "GPL-3.0",
