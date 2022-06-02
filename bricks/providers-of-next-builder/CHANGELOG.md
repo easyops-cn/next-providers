@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.19.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-next-builder@1.18.2...@next-bricks/providers-of-next-builder@1.19.0) (2022-06-02)
+
+### Features
+
+- add providers: providers-of-next-builder.contract-center-api-batch-search-contract, providers-of-next-builder.contract-center-api-list-function-contract ([0868274](https://github.com/easyops-cn/next-providers/commit/08682744dc50404c2eae55825fccedf444d03f22))
+
 ## [1.18.2](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-next-builder@1.18.1...@next-bricks/providers-of-next-builder@1.18.2) (2022-05-23)
 
 **Note:** Version bump only for package @next-bricks/providers-of-next-builder
