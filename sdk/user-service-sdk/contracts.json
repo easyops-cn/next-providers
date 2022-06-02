@@ -1374,7 +1374,7 @@
           },
           {
             "name": "data",
-            "type": "object[]",
+            "type": "object",
             "fields": [
               {
                 "name": "key",

@@ -5,7 +5,7 @@ export interface RecentVisitedApi_SetRequestBody {
   type?: string;
 
   /** 最近访问列表 */
-  data: RecentVisitedApi_SetRequestBody_data_item[];
+  data: RecentVisitedApi_SetRequestBody_data;
 }
 
 /**
@@ -23,15 +23,15 @@ export const RecentVisitedApi_set = (
     options
   );
 
-export interface RecentVisitedApi_SetRequestBody_data_item {
+export interface RecentVisitedApi_SetRequestBody_data {
   /** key */
   key?: string;
 
   /** value */
-  value?: RecentVisitedApi_SetRequestBody_data_item_value_item[];
+  value?: RecentVisitedApi_SetRequestBody_data_value_item[];
 }
 
-export interface RecentVisitedApi_SetRequestBody_data_item_value_item {
+export interface RecentVisitedApi_SetRequestBody_data_value_item {
   /** 访问实例ID */
   visitObjectId?: string;
 
