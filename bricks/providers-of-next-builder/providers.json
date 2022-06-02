@@ -68,6 +68,8 @@
     "ContractCenterApi.updateModelContract",
     "BuildApi.projectDocsUpload",
     "ContractCenterApi.debugApiContract",
-    "ContractCenterApi.searchContract"
+    "ContractCenterApi.searchContract",
+    "ContractCenterApi.batchSearchContract",
+    "ContractCenterApi.listFunctionContract"
   ]
 }
