@@ -3,14 +3,8 @@ import { ModelFlowBuilderApiContract } from "../../../model/flow_builder";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface ContractCenterApi_ListApiContractRequestParams {
-  /** namespaceId */
+  /** 命名空间 */
   namespaceId?: string;
-
-  /** 查询条件：name */
-  name?: string;
-
-  /** 查询条件：描述信息 */
-  description?: string;
 
   /** 查询条件：project instanceId */
   projectInstanceId?: string;

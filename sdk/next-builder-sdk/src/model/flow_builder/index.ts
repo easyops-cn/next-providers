@@ -5,4 +5,5 @@ export * from "./ModelModelContract";
 export * from "./ModelContractExample";
 export * from "./ModelFlowBuilderApiContract";
 export * from "./ModelDebugContract";
+export * from "./ModelFlowBuilderFunction";
 export * from "./ModelFlowBuilderContract";

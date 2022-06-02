@@ -905,6 +905,72 @@
       }
     },
     {
+      "contract": "next_builder.contract_center.BatchSearchContract",
+      "name": "BatchSearchContract",
+      "version": "1.0.0",
+      "description": "批量契约搜索",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/contract/batch_search"
+      },
+      "import": ["easyops/model/flow_builder/api_contract"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "contract",
+            "type": "object[]",
+            "description": "contract查询条件",
+            "fields": [
+              {
+                "name": "fullContractName",
+                "type": "string",
+                "description": "契约查找, namespace@name"
+              },
+              {
+                "name": "version",
+                "type": "string",
+                "description": "version"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "object[]",
+            "description": "契约列表",
+            "fields": [
+              {
+                "ref": "FlowBuilderApiContract.name"
+              },
+              {
+                "ref": "FlowBuilderApiContract.namespaceId"
+              },
+              {
+                "ref": "FlowBuilderApiContract.version"
+              },
+              {
+                "ref": "FlowBuilderApiContract.endpoint"
+              },
+              {
+                "ref": "FlowBuilderApiContract.request"
+              },
+              {
+                "ref": "FlowBuilderApiContract.response"
+              },
+              {
+                "ref": "FlowBuilderApiContract.serviceName"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
       "contract": "next_builder.contract_center.DebugApiContract",
       "name": "DebugApiContract",
       "version": "1.0.0",
@@ -933,22 +999,24 @@
             "ref": "DebugContract.headers"
           },
           {
-            "ref": "DebugContract.file"
-          },
-          {
             "ref": "DebugContract.data"
           },
           {
             "ref": "DebugContract.serviceName"
+          },
+          {
+            "ref": "DebugContract.fileNameMapping"
+          },
+          {
+            "name": "files",
+            "type": "file[]",
+            "description": "file"
           }
         ]
       },
       "response": {
         "type": "object",
         "fields": [
-          {
-            "ref": "DebugContract.file"
-          },
           {
             "ref": "DebugContract.data"
           },
@@ -1067,19 +1135,7 @@
         "type": "object",
         "fields": [
           {
-            "name": "namespaceId",
-            "type": "string",
-            "description": "namespaceId"
-          },
-          {
-            "name": "name",
-            "type": "string",
-            "description": "查询条件：name"
-          },
-          {
-            "name": "description",
-            "type": "string",
-            "description": "查询条件：描述信息"
+            "ref": "FlowBuilderApiContract.namespaceId"
           },
           {
             "name": "projectInstanceId",
@@ -1124,6 +1180,73 @@
                 "name": "latestVersion",
                 "type": "string",
                 "description": "单个契约的最新版本"
+              },
+              {
+                "name": "creator",
+                "type": "string",
+                "description": "creator"
+              },
+              {
+                "name": "modifier",
+                "type": "string",
+                "description": "modifier"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.contract_center.ListFunctionContract",
+      "name": "ListFunctionContract",
+      "version": "1.0.0",
+      "description": "函数契约列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/contract/function"
+      },
+      "import": ["easyops/model/flow_builder/function"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "namespaceId",
+            "type": "string",
+            "description": "namespaceId"
+          },
+          {
+            "name": "projectInstanceId",
+            "type": "string",
+            "description": "查询条件：project instanceId"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "object[]",
+            "description": "函数契约列表",
+            "fields": [
+              {
+                "ref": "FlowBuilderFunction.instanceId"
+              },
+              {
+                "ref": "FlowBuilderFunction.name"
+              },
+              {
+                "ref": "FlowBuilderFunction.language"
+              },
+              {
+                "name": "namespaceId",
+                "type": "string",
+                "description": "namespaceId"
+              },
+              {
+                "name": "latestVersion",
+                "type": "string",
+                "description": "单个函数契约的最新版本"
               },
               {
                 "name": "creator",

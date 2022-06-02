@@ -15,20 +15,20 @@ export interface ContractCenterApi_DebugApiContractRequestBody {
   /** headers */
   headers?: Record<string, any>;
 
-  /** file */
-  file?: File[];
-
   /** 契约调试数据 */
   data?: string;
 
   /** 服务名字 */
   serviceName?: string;
+
+  /** 上传的文件名字和转发接口中fileName的的对应 */
+  fileNameMapping?: Record<string, any>;
+
+  /** file */
+  files?: File[];
 }
 
 export interface ContractCenterApi_DebugApiContractResponseBody {
-  /** file */
-  file?: File[];
-
   /** 契约调试数据 */
   data?: string;
 
