@@ -2357,12 +2357,123 @@
             "description": "relation_list",
             "fields": [
               {
-                "ref": "ObjectRelation.*"
+                "ref": "ObjectRelation.name"
+              },
+              {
+                "ref": "ObjectRelation.protected"
+              },
+              {
+                "ref": "ObjectRelation.relation_id"
+              },
+              {
+                "ref": "ObjectRelation.right_id"
+              },
+              {
+                "ref": "ObjectRelation.right_name"
+              },
+              {
+                "ref": "ObjectRelation.right_description"
+              },
+              {
+                "ref": "ObjectRelation.right_groups"
+              },
+              {
+                "ref": "ObjectRelation.right_tags"
+              },
+              {
+                "ref": "ObjectRelation.right_max"
+              },
+              {
+                "ref": "ObjectRelation.right_min"
+              },
+              {
+                "ref": "ObjectRelation.right_object_id"
+              },
+              {
+                "ref": "ObjectRelation.right_required"
+              },
+              {
+                "ref": "ObjectRelation.left_id"
+              },
+              {
+                "ref": "ObjectRelation.left_name"
+              },
+              {
+                "ref": "ObjectRelation.left_description"
+              },
+              {
+                "ref": "ObjectRelation.left_groups"
+              },
+              {
+                "ref": "ObjectRelation.left_tags"
+              },
+              {
+                "ref": "ObjectRelation.left_max"
+              },
+              {
+                "ref": "ObjectRelation.left_min"
+              },
+              {
+                "ref": "ObjectRelation.left_object_id"
+              },
+              {
+                "ref": "ObjectRelation.left_required"
+              },
+              {
+                "ref": "ObjectRelation.creator"
+              },
+              {
+                "ref": "ObjectRelation.ctime"
+              },
+              {
+                "ref": "ObjectRelation._ts"
+              },
+              {
+                "ref": "ObjectRelation._version"
+              },
+              {
+                "ref": "ObjectRelation.isInherit"
+              },
+              {
+                "ref": "ObjectRelation.leftInheritObjectId"
+              },
+              {
+                "ref": "ObjectRelation.rightInheritObjectId"
               },
               {
                 "name": "instanceId",
                 "type": "instance_id",
                 "description": "relation instanceId"
+              },
+              {
+                "name": "attrList",
+                "type": "object[]",
+                "description": "关系属性列表",
+                "fields": [
+                  {
+                    "name": "instanceId",
+                    "type": "instance_id",
+                    "description": "realtion attribute instanceId"
+                  },
+                  {
+                    "ref": "ObjectAttr.*"
+                  }
+                ]
+              },
+              {
+                "name": "indexList",
+                "type": "object[]",
+                "description": "关系索引列表",
+                "fields": [
+                  {
+                    "name": "instanceId",
+                    "type": "instance_id",
+                    "description": "realtion index instanceId"
+                  },
+                  {
+                    "ref": "ObjectIndex.*"
+                  }
+                ]
               }
             ]
           },
