@@ -4,6 +4,9 @@ export interface MfaApi_UpdateUserTotpSecretRequestBody {
   /** 用户名 */
   username: string;
 
+  /** org */
+  org?: number;
+
   /** 密钥 */
   secret: string;
 }

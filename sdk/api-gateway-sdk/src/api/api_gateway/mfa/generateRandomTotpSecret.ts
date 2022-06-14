@@ -4,6 +4,9 @@ import { ResponseBodyWrapper } from "../../../wrapper";
 export interface MfaApi_GenerateRandomTotpSecretRequestBody {
   /** 用户名 */
   username: string;
+
+  /** org */
+  org?: number;
 }
 
 export interface MfaApi_GenerateRandomTotpSecretResponseBody {

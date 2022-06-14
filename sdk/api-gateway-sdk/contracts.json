@@ -1234,6 +1234,11 @@
             "name": "username",
             "type": "string",
             "description": "用户名"
+          },
+          {
+            "name": "org",
+            "type": "int",
+            "description": "org"
           }
         ],
         "required": ["username"]
@@ -1270,6 +1275,11 @@
             "name": "username",
             "type": "string",
             "description": "用户名"
+          },
+          {
+            "name": "org",
+            "type": "int",
+            "description": "org"
           },
           {
             "name": "secret",
