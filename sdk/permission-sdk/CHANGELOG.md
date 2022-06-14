@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/permission-sdk@2.1.14...@next-sdk/permission-sdk@2.2.0) (2022-06-14)
+
+### Features
+
+- add apis: PermissionApi_validateFlowTaskPermission, RoleApi_getPermissionRoleUserList, RoleV2Api_getUserRoleV2, RoleV2Api_index ([a6d3fdd](https://github.com/easyops-cn/next-providers/commit/a6d3fdd3687a5ba1ea2783ad338b02982d150769))
+
 ## [2.1.14](https://github.com/easyops-cn/next-providers/compare/@next-sdk/permission-sdk@2.1.13...@next-sdk/permission-sdk@2.1.14) (2022-01-21)
 
 **Note:** Version bump only for package @next-sdk/permission-sdk
