@@ -3,6 +3,7 @@ export * from "./createRole";
 export * from "./deletePermissionRole";
 export * from "./getMyRoles";
 export * from "./getPermissionRoleList";
+export * from "./getPermissionRoleUserList";
 export * from "./getRoleDetail";
 export * from "./getUserRole";
 export * from "./putPermissionRole";

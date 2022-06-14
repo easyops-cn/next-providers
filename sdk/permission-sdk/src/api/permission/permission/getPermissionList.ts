@@ -17,8 +17,14 @@ export interface PermissionApi_GetPermissionListRequestParams {
   /** 启用/禁用状态过滤, 空为不过滤 */
   status?: "enable" | "disable";
 
-  /** system名称过滤 */
+  /** 指定system范围 */
   system?: string;
+
+  /** system过滤，过滤多个用,分隔 */
+  exclude_system?: string;
+
+  /** 指定返回字段，多个用,分隔 */
+  fields?: string;
 
   /** 分页 */
   page?: number;

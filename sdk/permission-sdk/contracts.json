@@ -1011,7 +1011,17 @@
           {
             "name": "system",
             "type": "string",
-            "description": "system名称过滤"
+            "description": "指定system范围"
+          },
+          {
+            "name": "exclude_system",
+            "type": "string",
+            "description": "system过滤，过滤多个用,分隔"
+          },
+          {
+            "name": "fields",
+            "type": "string",
+            "description": "指定返回字段，多个用,分隔"
           },
           {
             "name": "page",
@@ -1523,6 +1533,66 @@
             "name": "accepted",
             "type": "bool",
             "description": "是否鉴权成功"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "permission.permission.ValidateFlowTaskPermission",
+      "category": {
+        "en": "permission",
+        "zh": "权限"
+      },
+      "name": "ValidateFlowTaskPermission",
+      "version": "1.0.0",
+      "description": "校验用户对编排方案的操作权限",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/permission/validate"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "action",
+            "type": "string",
+            "description": "需要鉴权的权限点"
+          },
+          {
+            "name": "user",
+            "type": "user_name",
+            "description": "需要鉴权的用户名"
+          },
+          {
+            "name": "id",
+            "type": "string",
+            "description": "方案id"
+          },
+          {
+            "name": "validate_action_only",
+            "type": "bool",
+            "description": "如果一个权限点有数据权限,但是不想校验数据权限,这个参数传true，默认为false, 须传false"
+          }
+        ],
+        "required": ["action", "user"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "accepted",
+            "type": "bool",
+            "description": "是否鉴权成功"
+          },
+          {
+            "name": "is_admin",
+            "type": "bool",
+            "description": "是否为管理员"
+          },
+          {
+            "name": "authorizers",
+            "type": "string[]",
+            "description": "有权限的用户(组)"
           }
         ]
       }
@@ -2065,6 +2135,11 @@
             "description": "分页大小"
           },
           {
+            "name": "fields",
+            "type": "string",
+            "description": "返回指定字段，多个用,分隔"
+          },
+          {
             "name": "role__in",
             "type": "string",
             "description": "查询的role名称(逗号分隔)"
@@ -2112,6 +2187,105 @@
           }
         ]
       }
+    },
+    {
+      "contract": "permission.role.GetPermissionRoleUserList",
+      "category": {
+        "en": "role",
+        "zh": "角色"
+      },
+      "name": "GetPermissionRoleUserList",
+      "version": "1.0.0",
+      "description": "获取角色关联的用户列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/permission_role/config/:role_id/user"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "role_id",
+            "type": "string",
+            "description": "角色ID"
+          },
+          {
+            "name": "user",
+            "type": "string",
+            "description": "根据用户名称模糊查询"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "分页"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "分页大小"
+          },
+          {
+            "name": "sort",
+            "type": "string",
+            "description": "根据user字段进行排序(-user:倒序 user:正序 默认按照user数组字段中的顺序返回)"
+          }
+        ]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "返回码"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "分页大小"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总和"
+          },
+          {
+            "name": "data",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "user",
+                "type": "user_name",
+                "description": "用户名"
+              }
+            ],
+            "description": "角色关联的用户列表"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "GetPermissionRoleUserList",
+            "zh": "获取角色关联的用户列表"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8085/api/v1/permission_role/config/609a1c4a39b1f414e23c4777/user?page=1&page_size=10&user=easy&sort=-user"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": null,
+            "body": "{\n  \"code\": 0,\n  \"page_size\": 10,\n  \"msg\": \"get success\",\n  \"total\": 2,\n  \"data\": [\n    {\n      \"user\": \"easyops_0\"\n    },\n    {\n      \"user\": \"easyops\"\n    }\n  ],\n  \"page\": 1\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "permission.role.GetRoleDetail",
@@ -2517,6 +2691,69 @@
           "response": {
             "status_code": 200,
             "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"data\": {\n    \"count\": 1\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "permission.role_v2.GetUserRoleV2",
+      "name": "GetUserRoleV2",
+      "version": "1.0.0",
+      "description": "获取用户关联的角色",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v2/permission_role/user_role"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "user",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "role",
+            "type": "string",
+            "description": "根据角色名称模糊查询"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "分页大小"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "roles",
+            "type": "string[]",
+            "description": "角色名称列表"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "GetUserRoleV2",
+            "zh": "获取用户关联的角色"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8085/api/v2/permission_role/role_user?user=easyops&role=用户&page=1&page_size=10"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": null,
+            "body": "{\n  \"code\": 0,\n  \"page_size\": 10,\n  \"msg\": \"get success\",\n  \"total\": 1,\n  \"data\": {\n    \"roles\": [\n      \"普通用户\"\n    ]\n  },\n  \"page\": 1\n}"
           }
         }
       ]

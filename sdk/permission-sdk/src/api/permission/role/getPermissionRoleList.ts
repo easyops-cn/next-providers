@@ -14,6 +14,9 @@ export interface RoleApi_GetPermissionRoleListRequestParams {
   /** 分页大小 */
   page_size?: number;
 
+  /** 返回指定字段，多个用,分隔 */
+  fields?: string;
+
   /** 查询的role名称(逗号分隔) */
   role__in?: string;
 

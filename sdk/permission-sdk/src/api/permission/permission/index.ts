@@ -13,6 +13,7 @@ export * from "./validateArtifactPermission";
 export * from "./validateClusterPermission";
 export * from "./validateCmdbPermission";
 export * from "./validateEasyhubServerPermission";
+export * from "./validateFlowTaskPermission";
 export * from "./validateOpsAutomationPermission";
 export * from "./validatePermissionSystemPermission";
 export * from "./validateSchedulerPermission";
