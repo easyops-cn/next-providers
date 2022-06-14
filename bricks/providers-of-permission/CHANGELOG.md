@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-permission@1.11.0...@next-bricks/providers-of-permission@1.12.0) (2022-06-14)
+
+### Features
+
+- add providers: providers-of-permission.role-api-get-permission-role-user-list ([e0bd4b2](https://github.com/easyops-cn/next-providers/commit/e0bd4b22158b9e172554891132bf86da6fde6169))
+
 # [1.11.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-permission@1.10.22...@next-bricks/providers-of-permission@1.11.0) (2022-06-14)
 
 ### Features
