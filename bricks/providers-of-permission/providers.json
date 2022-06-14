@@ -46,6 +46,7 @@
     "PermissionApi.validateEasyhubServerPermission",
     "PermissionApi.validateSchedulerPermission",
     "MenuApi.listLegacyModule",
-    "RoleV2Api.getUserRoleV2"
+    "RoleV2Api.getUserRoleV2",
+    "RoleApi.getPermissionRoleUserList"
   ]
 }
