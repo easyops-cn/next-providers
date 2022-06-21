@@ -21,6 +21,8 @@
     "AuthApi.tokenLogin",
     "BootstrapV2Api.bootstrapV2",
     "BootstrapV2Api.brickPackageInfo",
-    "BootstrapV2Api.getAppStoryboardV2"
+    "BootstrapV2Api.getAppStoryboardV2",
+    "BootstrapV2Api.deleteEtagCache",
+    "BootstrapV2Api.deleteAppEtagCache"
   ]
 }
