@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-api-gateway@1.0.34...@next-bricks/providers-of-api-gateway@1.1.0) (2022-06-21)
+
+### Features
+
+- add providers: providers-of-api-gateway.bootstrap-v2-api-delete-etag-cache, providers-of-api-gateway.bootstrap-v2-api-delete-app-etag-cache ([eb97970](https://github.com/easyops-cn/next-providers/commit/eb979706b43ca00394b1531cac680d2e421d6ec7))
+
 ## [1.0.34](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-api-gateway@1.0.33...@next-bricks/providers-of-api-gateway@1.0.34) (2022-06-14)
 
 **Note:** Version bump only for package @next-bricks/providers-of-api-gateway
