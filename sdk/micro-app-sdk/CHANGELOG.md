@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/micro-app-sdk@2.3.2...@next-sdk/micro-app-sdk@2.4.0) (2022-06-22)
+
+### Features
+
+- add apis: ContractCenterApi_index, ContractCenterApi_runtimeDebugApiContract, PermissionApi_updatePermissionBatch ([f1af67c](https://github.com/easyops-cn/next-providers/commit/f1af67c907fccceb50a4fd92e35fe14e7443ac5a))
+
 ## [2.3.2](https://github.com/easyops-cn/next-providers/compare/@next-sdk/micro-app-sdk@2.3.1...@next-sdk/micro-app-sdk@2.3.2) (2022-02-18)
 
 **Note:** Version bump only for package @next-sdk/micro-app-sdk

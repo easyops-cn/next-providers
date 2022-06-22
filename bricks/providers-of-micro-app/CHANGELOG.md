@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-micro-app@1.6.0...@next-bricks/providers-of-micro-app@1.7.0) (2022-06-22)
+
+### Features
+
+- add providers: providers-of-micro-app.permission-api-update-permission-batch ([54f1844](https://github.com/easyops-cn/next-providers/commit/54f1844daa792f48c699b908177fffa1eac353d8))
+
 # [1.6.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-micro-app@1.5.1...@next-bricks/providers-of-micro-app@1.6.0) (2022-02-18)
 
 ### Features
