@@ -1,3 +1,5 @@
+import { ModelObjectAttr, ModelObjectIndex } from ".";
+
 /** 模型关系 */
 export interface ModelObjectRelation {
   /** 关系名称, 不是必填, 而且在引入了 left_description 和 right_description 之后这个字段几乎处于废弃状态 */
@@ -83,4 +85,10 @@ export interface ModelObjectRelation {
 
   /** 关系右端的父模型ID */
   rightInheritObjectId: string;
+
+  /** 关系属性列表 */
+  attrList: Partial<ModelObjectAttr>[];
+
+  /** 索引列表 */
+  indexList: Partial<ModelObjectIndex>[];
 }

@@ -278,6 +278,61 @@
       }
     },
     {
+      "contract": "micro_app.contract_center.RuntimeDebugApiContract",
+      "name": "RuntimeDebugApiContract",
+      "version": "1.0.0",
+      "description": "api契约调试, 透传",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/runtime/contract/debug"
+      },
+      "import": ["easyops/model/flow_builder/debug_contract"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "DebugContract.method"
+          },
+          {
+            "ref": "DebugContract.uri"
+          },
+          {
+            "ref": "DebugContract.headers"
+          },
+          {
+            "name": "files",
+            "type": "file[]",
+            "description": "files"
+          },
+          {
+            "ref": "DebugContract.data"
+          },
+          {
+            "ref": "DebugContract.serviceName"
+          },
+          {
+            "ref": "DebugContract.fileNameMapping"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "DebugContract.data"
+          },
+          {
+            "ref": "DebugContract.headers"
+          },
+          {
+            "name": "statusCode",
+            "type": "int",
+            "description": "statusCode"
+          }
+        ]
+      }
+    },
+    {
       "contract": "micro_app.document.GetDocumentsDetails",
       "name": "GetDocumentsDetails",
       "version": "1.0.0",
@@ -476,6 +531,9 @@
           },
           {
             "ref": "InstalledMicroApp.defaultContainer"
+          },
+          {
+            "ref": "InstalledMicroApp.position"
           }
         ]
       },
@@ -496,6 +554,9 @@
             "name": "containerInstanceId",
             "type": "instance_id",
             "description": "小产品应该关联的容器的instanceId"
+          },
+          {
+            "ref": "InstalledMicroApp.position"
           }
         ]
       }
@@ -1243,6 +1304,11 @@
             "name": "containerType",
             "type": "string",
             "description": "容器类型， 自定义容器or默认容器"
+          },
+          {
+            "name": "position",
+            "type": "int",
+            "description": "微应用在容器中的排序"
           }
         ],
         "required": ["containerId", "app_id", "containerType"]
@@ -2032,6 +2098,90 @@
       "response": null
     },
     {
+      "contract": "micro_app.permission.UpdatePermissionBatch",
+      "name": "UpdatePermissionBatch",
+      "version": "1.0.0",
+      "description": "批量修改实例权限，供LaunchPad管理使用",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/micro_app/v1/permission/:objectId/instances/_batch"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "objectId",
+            "type": "object_id",
+            "enum": [
+              "_MICROAPP_CONTAINER",
+              "_INSTALLED_MICRO_APP",
+              "DESKTOP_CUSTOM_ITEM@EASYOPS"
+            ],
+            "description": "资源模型ID"
+          },
+          {
+            "name": "ids",
+            "type": "instance_id[]",
+            "description": "实例ID列表"
+          },
+          {
+            "name": "fields",
+            "type": "string[]",
+            "enum": [
+              "updateAthorizers",
+              "deleteAuthorizers",
+              "readAuthorizers",
+              "operateAuthorizers"
+            ],
+            "description": "updateAthorizers, deleteAuthorizers, readAuthorizers, operateAuthorizers中的一个或多个"
+          },
+          {
+            "name": "method",
+            "type": "string",
+            "enum": ["overwrite", "append", "pull"],
+            "description": "修改操作的类型(overwrite, append, pull)(在枚举之外的操作类型会报错)"
+          },
+          {
+            "name": "list",
+            "type": "string[]",
+            "description": "用户,用户组列表"
+          }
+        ],
+        "required": ["objectId", "ids", "fields", "method", "list"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "noAuthorizedList",
+            "type": "map[]",
+            "description": "没有权限更新的实例列表"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "用覆盖的方式，给easyops分配一个读权限"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8146/api/micro_app/v1/permission/DESKTOP_CUSTOM_ITEM@EASYOPS/instances/_batch",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"ids\": [\"5d3914ca4406a\",\"5d3914e090876\"],\n    \"fields\": [\"readAuthorizers\"],\n    \"list\": [\"easyops\"],\n    \"method\": \"overwrite\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"noAuthorizedList\": []\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "micro_app.permission.ValidatePermissions",
       "name": "ValidatePermissions",
       "version": "1.0.0",
@@ -2099,16 +2249,13 @@
     {
       "contract": "micro_app.report.ReportInstalledMicroAppResult",
       "name": "ReportInstalledMicroAppResult",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "上报小产品安装或更新结果",
       "endpoint": {
         "method": "POST",
         "uri": "/api/micro_app/v1/installed_micro_app/report_result"
       },
-      "import": [
-        "easyops/model/micro_app/installed_micro_app",
-        "easyops/model/micro_app/micro_app_api_orchestration"
-      ],
+      "import": ["easyops/model/micro_app/installed_micro_app"],
       "request": {
         "type": "object",
         "fields": [
@@ -2126,11 +2273,6 @@
                 "name": "containerId",
                 "type": "string",
                 "description": "小产品关联的桌面Id"
-              },
-              {
-                "name": "apiList",
-                "type": "MICROAPPAPIORCHESTRATION[]",
-                "description": "api编排列表"
               }
             ]
           }

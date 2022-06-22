@@ -111,6 +111,9 @@ export interface ModelInstalledMicroApp {
   /** 使用主题 */
   theme: string;
 
+  /** 微应用在容器中的排序 */
+  position: number;
+
   /** 默认容器 */
   defaultContainer: ModelInstalledMicroApp_defaultContainer;
 

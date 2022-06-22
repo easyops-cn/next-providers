@@ -8,6 +8,9 @@ export interface InstalledMicroAppApi_FindMicroAppContainerRequestBody {
 
   /** 默认容器 */
   defaultContainer?: ModelInstalledMicroApp["defaultContainer"];
+
+  /** 微应用在容器中的排序 */
+  position?: number;
 }
 
 export interface InstalledMicroAppApi_FindMicroAppContainerResponseBody {
@@ -19,6 +22,9 @@ export interface InstalledMicroAppApi_FindMicroAppContainerResponseBody {
 
   /** 小产品应该关联的容器的instanceId */
   containerInstanceId?: string;
+
+  /** 微应用在容器中的排序 */
+  position?: number;
 }
 
 /**

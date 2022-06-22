@@ -6,6 +6,9 @@ export interface InstalledMicroAppApi_UpdateInstalledMicroAppContainerRequestBod
 
   /** 容器类型， 自定义容器or默认容器 */
   containerType: string;
+
+  /** 微应用在容器中的排序 */
+  position?: number;
 }
 
 /**

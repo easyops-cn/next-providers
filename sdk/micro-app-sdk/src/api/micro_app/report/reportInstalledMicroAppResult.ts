@@ -1,8 +1,5 @@
 import { http, HttpOptions } from "@next-core/brick-http";
-import {
-  ModelInstalledMicroApp,
-  ModelMicroappapiorchestration,
-} from "../../../model/micro_app";
+import { ModelInstalledMicroApp } from "../../../model/micro_app";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface ReportApi_ReportInstalledMicroAppResultRequestBody {
@@ -23,7 +20,7 @@ export const ReportApi_reportInstalledMicroAppResult = async (
   data: ReportApi_ReportInstalledMicroAppResultRequestBody,
   options?: HttpOptions
 ): Promise<ReportApi_ReportInstalledMicroAppResultResponseBody> =>
-  /**! @contract easyops.api.micro_app.report.ReportInstalledMicroAppResult@1.0.0 */ (
+  /**! @contract easyops.api.micro_app.report.ReportInstalledMicroAppResult@1.0.1 */ (
     await http.post<
       ResponseBodyWrapper<ReportApi_ReportInstalledMicroAppResultResponseBody>
     >(
@@ -39,7 +36,4 @@ export interface ReportApi_ReportInstalledMicroAppResultRequestBody_installedApp
 
   /** 小产品关联的桌面Id */
   containerId?: string;
-
-  /** api编排列表 */
-  apiList?: Partial<ModelMicroappapiorchestration>[];
 }
