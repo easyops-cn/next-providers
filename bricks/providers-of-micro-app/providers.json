@@ -24,6 +24,7 @@
     "MicroAppContainerApi.listMicroAppContainer",
     "MicroAppContainerApi.updateCustomItemContainer",
     "MicroAppContainerApi.updateDirContainer",
-    "InstalledMicroAppApi.findMicroAppContainer"
+    "InstalledMicroAppApi.findMicroAppContainer",
+    "PermissionApi.updatePermissionBatch"
   ]
 }
