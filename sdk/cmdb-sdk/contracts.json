@@ -375,7 +375,7 @@
       "version": "1.0.0",
       "description": "模型,属性及关系变更记录配置",
       "endpoint": {
-        "method": "post",
+        "method": "put",
         "uri": "/object_notify_denied/:object_id"
       },
       "import": [

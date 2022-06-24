@@ -14,14 +14,14 @@ export interface CmdbObjectApi_AlertNotifyDeniedRequestBody {
 
 /**
  * @description 模型,属性及关系变更记录配置
- * @endpoint post /object_notify_denied/:object_id
+ * @endpoint put /object_notify_denied/:object_id
  */
 export const CmdbObjectApi_alertNotifyDenied = (
   object_id: string | number,
   data: CmdbObjectApi_AlertNotifyDeniedRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.AlertNotifyDenied@1.0.0 */ http.post<void>(
+  /**! @contract easyops.api.cmdb.cmdb_object.AlertNotifyDenied@1.0.0 */ http.put<void>(
     `api/gateway/cmdb.cmdb_object.AlertNotifyDenied/object_notify_denied/${object_id}`,
     data,
     options
