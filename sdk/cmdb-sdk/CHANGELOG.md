@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/cmdb-sdk@2.4.0...@next-sdk/cmdb-sdk@3.0.0) (2022-06-24)
+
+### Features
+
+- add apis: DatabaseApi_index, DatabaseApi_listV1, InstanceApi_parseSearchQueryStrategy, InstanceApi_validateInstancesWithExcel, InstanceRelationApi_list, ObjectRelationApi_createProperty, ObjectRelationApi_deleteProperty, ObjectRelationApi_updateProperty ([27418ed](https://github.com/easyops-cn/next-providers/commit/27418ed3a3c2ca541b101694fe3900aef6869523))
+
+### BREAKING CHANGES
+
+- remove apis: InstanceApi_importMultiplyInstancesWithExcel
+
+INFRA-0
+
 # [2.4.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/cmdb-sdk@2.3.2...@next-sdk/cmdb-sdk@2.4.0) (2022-04-24)
 
 ### Features
