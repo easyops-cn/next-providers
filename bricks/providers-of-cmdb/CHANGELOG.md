@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.19.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-cmdb@1.18.0...@next-bricks/providers-of-cmdb@1.19.0) (2022-06-24)
+
+
+### Features
+
+* remove providers ([b472ff2](https://github.com/easyops-cn/next-providers/commit/b472ff23ee94dc7d5d2899979703f8684f35f670))
+* remove providers: providers-of-cmdb.instance-api-import-multiply-instances-with-excel ([a36fcd9](https://github.com/easyops-cn/next-providers/commit/a36fcd931eccf7f50b5b86baa2ff576d31d45145))
+
+
+### BREAKING CHANGES
+
+* remove providers: providers-of-cmdb.instance-api-import-multiply-instances-with-excel
+
+INFRA-0
+
+
+
+
+
 # [1.18.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-cmdb@1.17.0...@next-bricks/providers-of-cmdb@1.18.0) (2022-04-24)
 
 ### Features
