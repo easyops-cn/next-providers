@@ -35,7 +35,7 @@ export const InstanceGraphApi_traverseGraphV2 = async (
   data: InstanceGraphApi_TraverseGraphV2RequestBody,
   options?: HttpOptions
 ): Promise<InstanceGraphApi_TraverseGraphV2ResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance_graph.TraverseGraphV2@1.0.0 */ (
+  /**! @contract easyops.api.cmdb.instance_graph.TraverseGraphV2@1.1.0 */ (
     await http.post<
       ResponseBodyWrapper<InstanceGraphApi_TraverseGraphV2ResponseBody>
     >(
@@ -57,4 +57,7 @@ export interface InstanceGraphApi_TraverseGraphV2ResponseBody_edges_item {
 
   /** 关系别名 */
   out_name?: string;
+
+  /** 属性数据 */
+  properties?: Record<string, any>;
 }

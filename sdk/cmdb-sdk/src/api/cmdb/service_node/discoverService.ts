@@ -38,6 +38,9 @@ export interface ServiceNodeApi_DiscoverServiceRequestBody_services_item {
 
   /** 服务分类 */
   category?: string;
+
+  /** 工作空间id */
+  workspaceId?: string;
 }
 
 export interface ServiceNodeApi_DiscoverServiceResponseBody_data_item {

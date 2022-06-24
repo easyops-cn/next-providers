@@ -5,14 +5,15 @@ export interface PermissionApi_GetRoleCmdbPermissionRequestBody {
   /** 角色名 */
   role: string;
 
-  /** 权限类型, create(创建)、access(访问)、delete(删除)、update(更新)、export(导出)、apply(提交变更) */
+  /** 权限类型, create(创建)、access(访问)、delete(删除)、update(更新)、export(导出)、apply(提交变更)、operate(实例操作，仅支持模型：HOST|_DBSERVICE|_DBINSTANCE) */
   permissionKind?:
     | "create"
     | "access"
     | "delete"
     | "update"
     | "export"
-    | "apply";
+    | "apply"
+    | "operate";
 
   /** 模型分类 */
   category?: string;
@@ -55,7 +56,7 @@ export const PermissionApi_getRoleCmdbPermission = async (
   data: PermissionApi_GetRoleCmdbPermissionRequestBody,
   options?: HttpOptions
 ): Promise<PermissionApi_GetRoleCmdbPermissionResponseBody> =>
-  /**! @contract easyops.api.cmdb.permission.GetRoleCmdbPermission@1.0.0 */ (
+  /**! @contract easyops.api.cmdb.permission.GetRoleCmdbPermission@1.1.0 */ (
     await http.post<
       ResponseBodyWrapper<PermissionApi_GetRoleCmdbPermissionResponseBody>
     >(

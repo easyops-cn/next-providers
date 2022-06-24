@@ -14,4 +14,10 @@ export interface ModelTraverseChildNodeV2 {
 
   /** 子节点列表 */
   child: Partial<ModelTraverseChildNodeV2>[];
+
+  /** 当前边属性过滤条件 */
+  relation_query: Record<string, any>;
+
+  /** 指定返回此关系属性的fields */
+  relation_fields: string[];
 }

@@ -12,7 +12,7 @@ export interface InstanceApi_MixCreateInstanceResponseBody {
 }
 
 /**
- * @description 批量创建实例 (提供多模型实例混合创建接口,不支持关系创建(此接口是保证事务的))
+ * @description 批量创建实例 (提供多模型实例混合创建接口,不支持关系创建(此接口是保证事务的).如果你想创建同一种模型的多个实例.请参考import_instance.)
  * @endpoint POST /mix/object/instance/create
  */
 export const InstanceApi_mixCreateInstance = async (

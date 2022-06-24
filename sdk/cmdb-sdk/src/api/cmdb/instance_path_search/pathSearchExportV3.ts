@@ -2,6 +2,9 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelStrategyPathNode } from "../../../model/cmdb";
 
 export interface InstancePathSearchApi_PathSearchExportV3RequestBody {
+  /** 属性显示的顺序 */
+  fields_order?: string[];
+
   /** 查询路径 */
   path: Partial<ModelStrategyPathNode>[];
 

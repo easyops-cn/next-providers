@@ -3218,6 +3218,27 @@
       ]
     },
     {
+      "contract": "cmdb.database.ListV1",
+      "name": "ListV1",
+      "version": "1.0.0",
+      "description": "获取database列表",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/v1/database"
+      },
+      "request": null,
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "id",
+            "type": "org",
+            "description": "database id"
+          }
+        ]
+      }
+    },
+    {
       "contract": "cmdb.history.HistoryExportExcel",
       "category": {
         "en": "History",
@@ -5813,91 +5834,6 @@
       }
     },
     {
-      "contract": "cmdb.instance.ImportMultiplyInstancesWithExcel",
-      "category": {
-        "en": "Instance",
-        "zh": "实例"
-      },
-      "name": "ImportMultiplyInstancesWithExcel",
-      "version": "1.0.0",
-      "description": "使用excel文件导入多个实例",
-      "detail": "此接口以multipart/form-data方式提交数据",
-      "endpoint": {
-        "method": "POST",
-        "uri": "/import/object/:object_id/multiply_instances/excel"
-      },
-      "request": {
-        "type": "object",
-        "fields": [
-          {
-            "name": "object_id",
-            "type": "object_id",
-            "description": "实例所属的模型ID"
-          },
-          {
-            "name": "keys",
-            "type": "string[]",
-            "description": "导入实例的字段,作为更新/创建依据"
-          },
-          {
-            "name": "attachment",
-            "type": "file",
-            "description": "excel文件"
-          },
-          {
-            "name": "relation_operation",
-            "type": "string",
-            "enum": ["set", "append"],
-            "description": "关系操作方式"
-          }
-        ],
-        "required": ["object_id", "keys", "attachment"]
-      },
-      "response": {
-        "type": "object",
-        "fields": [
-          {
-            "name": "insert_count",
-            "type": "int",
-            "description": "成功插入数量"
-          },
-          {
-            "name": "update_count",
-            "type": "int",
-            "description": "成功更新数量"
-          },
-          {
-            "name": "failed_count",
-            "type": "int",
-            "description": "失败数量"
-          },
-          {
-            "name": "data",
-            "type": "object[]",
-            "fields": [
-              {
-                "name": "code",
-                "type": "int",
-                "description": "错误码"
-              },
-              {
-                "name": "error",
-                "type": "string",
-                "description": "错误信息"
-              },
-              {
-                "name": "line",
-                "type": "int",
-                "description": "错误实例所在excel行数"
-              }
-            ],
-            "description": "失败数据"
-          }
-        ],
-        "required": ["insert_count", "update_count", "failed_count", "data"]
-      }
-    },
-    {
       "contract": "cmdb.instance.InstancePreviousSnapshot",
       "category": {
         "en": "Instance",
@@ -6225,7 +6161,7 @@
       "name": "MixCreateInstance",
       "version": "1.0.0",
       "description": "批量创建实例",
-      "detail": "提供多模型实例混合创建接口,不支持关系创建(此接口是保证事务的)",
+      "detail": "提供多模型实例混合创建接口,不支持关系创建(此接口是保证事务的).如果你想创建同一种模型的多个实例.请参考import_instance.",
       "endpoint": {
         "method": "POST",
         "uri": "/mix/object/instance/create"
@@ -6301,7 +6237,7 @@
       "name": "MixUpdateInstance",
       "version": "1.0.0",
       "description": "批量更新实例",
-      "detail": "提供多模型实例混合更新接口,不支持关系更新(此接口是保证事务的)",
+      "detail": "提供多模型实例混合更新接口,不支持关系更新(此接口是保证事务的).如果你想更新同一种模型的多个实例,请参考import_instance.",
       "endpoint": {
         "method": "POST",
         "uri": "/mix/object/instance/update"
@@ -6478,15 +6414,15 @@
         {
           "description": {
             "en": "Instance search, exact match, or condition",
-            "zh": "实例搜索，精确匹配、或条件",
-            "request": {
-              "method": "POST",
-              "uri": "http://127.0.0.1:8079/object/HOST/instance/_search",
-              "headers": {
-                "Content-Type": "application/json"
-              },
-              "body": "{\n    \"fields\": {\n        \"ip\": 1,\n        \"hostname\": 1,\n        \"_agentStatus\": 1,\n        \"_host__IDCRACK\": 1,\n        \"instanceId\": 1,\n        \"memSize\": 1,\n        \"diskSize\": 1\n    },\n    \"page\": 1,\n    \"page_size\": 2,\n    \"query\": {\n        \"$or\": [\n            {\n                \"ip\": {\n                    \"$eq\": \"192.168.100.61\"\n                }\n            },\n            {\n                \"hostname\": {\n                    \"$ne\": \"linus_110_22\"\n                }\n            }\n        ]\n    },\n    \"sort\": {\n        \"memSize\": -1\n    }\n}"
+            "zh": "实例搜索，精确匹配、或条件"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8079/object/HOST/instance/_search",
+            "headers": {
+              "Content-Type": "application/json"
             },
+            "body": "{\n    \"fields\": {\n        \"ip\": 1,\n        \"hostname\": 1,\n        \"_agentStatus\": 1,\n        \"_host__IDCRACK\": 1,\n        \"instanceId\": 1,\n        \"memSize\": 1,\n        \"diskSize\": 1\n    },\n    \"page\": 1,\n    \"page_size\": 2,\n    \"query\": {\n        \"$or\": [\n            {\n                \"ip\": {\n                    \"$eq\": \"192.168.100.61\"\n                }\n            },\n            {\n                \"hostname\": {\n                    \"$ne\": \"linus_110_22\"\n                }\n            }\n        ]\n    },\n    \"sort\": {\n        \"memSize\": -1\n    }\n}",
             "response": {
               "status_code": 200,
               "headers": {
@@ -6494,27 +6430,121 @@
               },
               "body": "{\n    \"data\": {\n        \"list\": [\n            {\n                \"_agentStatus\": \"异常\",\n                \"_host__IDCRACK\": [],\n                \"_object_id\": \"HOST\",\n                \"diskSize\": 1134111316,\n                \"hostname\": \"pacino_100_61\",\n                \"instanceId\": \"5bd1528d61cdf\",\n                \"ip\": \"192.168.100.61\",\n                \"memSize\": 263924188\n            },\n            {\n                \"_agentStatus\": \"Abnormal\",\n                \"_host__IDCRACK\": [],\n                \"_object_id\": \"HOST\",\n                \"diskSize\": 2902507120,\n                \"hostname\": \"ec51b3dbefe3\",\n                \"instanceId\": \"5cdd4ad0cd0f5\",\n                \"ip\": \"172.17.0.3\",\n                \"memSize\": 263774160\n            }\n        ],\n        \"total\": 105,\n        \"page\": 1,\n        \"page_size\": 2\n    },\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\"\n}"
             }
+          },
+          "response": {
+            "body": "{ }"
           }
         },
         {
           "description": {
             "en": "Instance search, existence and scope matching, compound conditions",
-            "zh": "实例搜索，存在和范围匹配、复合条件",
-            "request": {
-              "method": "POST",
-              "uri": "http://127.0.0.1:8079/object/HOST/instance/_search",
-              "headers": {
-                "Content-Type": "application/json"
-              },
-              "body": "{\n    \"fields\": {\n        \"ip\": 1,\n        \"hostname\": 1,\n        \"_agentStatus\": 1,\n        \"_host__IDCRACK\": 1,\n        \"instanceId\": 1,\n        \"memSize\": 1,\n        \"diskSize\": 1\n    },\n    \"page\": 1,\n    \"page_size\": 2,\n    \"query\": {\n        \"$and\": [\n            {\n                \"$or\": [\n                    {\n                        \"memSize\": {\n                            \"$exists\": false\n                        }\n                    },\n                    {\n                        \"hostname\": {\n                            \"$exists\": true\n                        }\n                    }\n                ]\n            },\n            {\n                \"ip\": {\n                    \"$in\": [\n                        \"192.168.100.61\",\n                        \"192.168.100.70\"\n                    ]\n                }\n            }\n        ]\n    },\n    \"sort\": {\n        \"memSize\": -1\n    }\n}"
+            "zh": "实例搜索，存在和范围匹配、复合条件"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8079/object/HOST/instance/_search",
+            "headers": {
+              "Content-Type": "application/json"
             },
-            "response": {
-              "status_code": 200,
-              "headers": {
-                "Content-Type": "application/json; charset=utf-8"
+            "body": "{\n    \"fields\": {\n        \"ip\": 1,\n        \"hostname\": 1,\n        \"_agentStatus\": 1,\n        \"_host__IDCRACK\": 1,\n        \"instanceId\": 1,\n        \"memSize\": 1,\n        \"diskSize\": 1\n    },\n    \"page\": 1,\n    \"page_size\": 2,\n    \"query\": {\n        \"$and\": [\n            {\n                \"$or\": [\n                    {\n                        \"memSize\": {\n                            \"$exists\": false\n                        }\n                    },\n                    {\n                        \"hostname\": {\n                            \"$exists\": true\n                        }\n                    }\n                ]\n            },\n            {\n                \"ip\": {\n                    \"$in\": [\n                        \"192.168.100.61\",\n                        \"192.168.100.70\"\n                    ]\n                }\n            }\n        ]\n    },\n    \"sort\": {\n        \"memSize\": -1\n    }\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"data\": {\n        \"list\": [\n            {\n                \"_agentStatus\": \"异常\",\n                \"_host__IDCRACK\": [],\n                \"_object_id\": \"HOST\",\n                \"diskSize\": 1134111316,\n                \"hostname\": \"pacino_100_61\",\n                \"instanceId\": \"5bd1528d61cdf\",\n                \"ip\": \"192.168.100.61\",\n                \"memSize\": 263924188\n            },\n            {\n                \"_agentStatus\": \"正常\",\n                \"_host__IDCRACK\": [\n                    {\n                        \"_object_id\": \"_IDCRACK\",\n                        \"_object_version\": 32,\n                        \"_pre_ts\": 1635217293,\n                        \"_ts\": 1635217337,\n                        \"_version\": 3,\n                        \"code\": \"A05\",\n                        \"creator\": \"easyops\",\n                        \"ctime\": \"2020-12-15 11:40:26\",\n                        \"freeUnum\": 43,\n                        \"instanceId\": \"5b67884f57d82\",\n                        \"memo\": \"easyops集群111\",\n                        \"modifier\": \"easyops\",\n                        \"mtime\": \"2021-10-26 11:02:17\",\n                        \"name\": \"4B-E08\",\n                        \"org\": 2988466,\n                        \"unum\": 43\n                    }\n                ],\n                \"_object_id\": \"HOST\",\n                \"diskSize\": 3828064388,\n                \"hostname\": \"linus_100_70\",\n                \"instanceId\": \"5b95001405b4c\",\n                \"ip\": \"192.168.100.70\",\n                \"memSize\": 16777216\n            }\n        ],\n        \"total\": 3,\n        \"page\": 1,\n        \"page_size\": 2\n    },\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "cmdb.instance.ParseSearchQueryStrategy",
+      "category": {
+        "en": "Instance",
+        "zh": "实例"
+      },
+      "name": "ParseSearchQueryStrategy",
+      "version": "1.0.0",
+      "description": "通过策略ID或者查询策略获取CMDB查询条件",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/convert/object/:objectId/parse_search_query/strategy"
+      },
+      "import": ["easyops/model/cmdb/instance_query_strategy"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "objectId",
+            "type": "object_id",
+            "description": "模型对象ID"
+          },
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "策略实例ID"
+          },
+          {
+            "ref": "InstanceQueryStrategy.query"
+          },
+          {
+            "ref": "InstanceQueryStrategy.fields"
+          }
+        ],
+        "required": ["objectId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "fields",
+            "type": "string[]",
+            "description": "fields"
+          },
+          {
+            "name": "query",
+            "type": "map",
+            "description": "cmdb 查询query"
+          },
+          {
+            "name": "sort",
+            "type": "object[]",
+            "description": "sort",
+            "fields": [
+              {
+                "name": "key",
+                "type": "string",
+                "description": "属性id"
               },
-              "body": "{\n    \"data\": {\n        \"list\": [\n            {\n                \"_agentStatus\": \"异常\",\n                \"_host__IDCRACK\": [],\n                \"_object_id\": \"HOST\",\n                \"diskSize\": 1134111316,\n                \"hostname\": \"pacino_100_61\",\n                \"instanceId\": \"5bd1528d61cdf\",\n                \"ip\": \"192.168.100.61\",\n                \"memSize\": 263924188\n            },\n            {\n                \"_agentStatus\": \"正常\",\n                \"_host__IDCRACK\": [\n                    {\n                        \"_object_id\": \"_IDCRACK\",\n                        \"_object_version\": 32,\n                        \"_pre_ts\": 1635217293,\n                        \"_ts\": 1635217337,\n                        \"_version\": 3,\n                        \"code\": \"A05\",\n                        \"creator\": \"easyops\",\n                        \"ctime\": \"2020-12-15 11:40:26\",\n                        \"freeUnum\": 43,\n                        \"instanceId\": \"5b67884f57d82\",\n                        \"memo\": \"easyops集群111\",\n                        \"modifier\": \"easyops\",\n                        \"mtime\": \"2021-10-26 11:02:17\",\n                        \"name\": \"4B-E08\",\n                        \"org\": 2988466,\n                        \"unum\": 43\n                    }\n                ],\n                \"_object_id\": \"HOST\",\n                \"diskSize\": 3828064388,\n                \"hostname\": \"linus_100_70\",\n                \"instanceId\": \"5b95001405b4c\",\n                \"ip\": \"192.168.100.70\",\n                \"memSize\": 16777216\n            }\n        ],\n        \"total\": 3,\n        \"page\": 1,\n        \"page_size\": 2\n    },\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\"\n}"
-            }
+              {
+                "name": "order",
+                "type": "int",
+                "description": "1表示升序， -1表示降序, 2表示自然升序， -2表示自然降序"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "ParseSearchQueryStrategy",
+            "zh": "通过策略ID或者快速查询条件获取cmdb的查询条件"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8079/object/HOST/parse_search_query/strategy",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"instanceId\": \"xxxxxxxxxxxx\",\n    \"fields\":[\n        \"ip\",\n        \"hostname\",\n        \"_environment\",\n        \"_agentHeartBeat\",\n        \"_agentStatus\",\n        \"_agentStatus\",\n        \"_mac\",\n        \"_uuid\",\n        \"agentVersion\"\n    ],\n    \"query\":{\n        \"filters\":{\n            \"conditions\":[\n                {\n                    \"operator\":\"equal\",\n                    \"value\":[\n                        {\n                            \"value\":\"正常\"\n                        }\n                    ],\n                    \"field\":\"_agentStatus\"\n                }\n            ]\n        },\n        \"orders\":{\n            \"asc\":false\n        },\n        \"pagination\":{\n            \"page\":1,\n            \"pageSize\":20\n        }\n    }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\":\n        {\n            \"fields\":[\n                \"ip\",\n                \"hostname\",\n                \"_environment\",\n                \"_agentHeartBeat\",\n                \"_agentStatus\",\n                \"_agentStatus\",\n                \"_mac\",\n                \"_uuid\",\n                \"agentVersion\",\n                \"ctime\",\n                \"instanceId\"\n            ],\n            \"page\":1,\n            \"page_size\":20,\n            \"ignore_missing_field_error\":true,\n            \"query\":{\n                \"$and\":[\n                    {\n                        \"$or\":[\n                            {\n                                \"_agentStatus\":{\n                                    \"$eq\":\"正常\"\n                                }\n                            }\n                        ]\n                    }\n                ]\n            }\n        }\n\n}"
           }
         }
       ]
@@ -7718,6 +7748,86 @@
       }
     },
     {
+      "contract": "cmdb.instance.ValidateInstancesWithExcel",
+      "category": {
+        "en": "Instance",
+        "zh": "实例"
+      },
+      "name": "ValidateInstancesWithExcel",
+      "version": "1.0.0",
+      "description": "校验excel文件导入多个实例的合法性",
+      "detail": "此接口以multipart/form-data方式提交数据",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/validate/object/:object_id/instances/excel"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "object_id",
+            "type": "object_id",
+            "description": "实例所属的模型ID"
+          },
+          {
+            "name": "keys",
+            "type": "string[]",
+            "description": "导入实例的字段,作为更新/创建依据"
+          },
+          {
+            "name": "attachment",
+            "type": "file",
+            "description": "excel文件"
+          },
+          {
+            "name": "relation_operation",
+            "type": "string",
+            "enum": ["set", "append"],
+            "description": "关系操作方式"
+          }
+        ],
+        "required": ["object_id", "keys", "attachment"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "insert_list",
+            "type": "map[]",
+            "description": "插入列表"
+          },
+          {
+            "name": "update_list",
+            "type": "map[]",
+            "description": "更新列表"
+          },
+          {
+            "name": "fail_data",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "code",
+                "type": "int",
+                "description": "错误码"
+              },
+              {
+                "name": "error",
+                "type": "string",
+                "description": "错误信息"
+              },
+              {
+                "name": "line",
+                "type": "int",
+                "description": "错误实例所在excel行数"
+              }
+            ],
+            "description": "失败数据列表"
+          }
+        ],
+        "required": ["insert_list", "update_list", "fail_data"]
+      }
+    },
+    {
       "contract": "cmdb.instance_archive.ActiveInstance",
       "category": {
         "en": "Instance archive",
@@ -8196,7 +8306,7 @@
         "zh": "实例图"
       },
       "name": "TraverseGraphV2",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "图遍历查询v2,",
       "endpoint": {
         "method": "POST",
@@ -8265,6 +8375,11 @@
                 "name": "out_name",
                 "type": "string",
                 "description": "关系别名"
+              },
+              {
+                "name": "properties",
+                "type": "map",
+                "description": "属性数据"
               }
             ],
             "description": "关系列表"
@@ -8439,6 +8554,11 @@
         "type": "object",
         "fields": [
           {
+            "name": "fields_order",
+            "type": "string[]",
+            "description": "属性显示的顺序"
+          },
+          {
             "name": "path",
             "type": "StrategyPathNode[]",
             "description": "查询路径"
@@ -8498,6 +8618,11 @@
       "request": {
         "type": "object",
         "fields": [
+          {
+            "name": "fields_order",
+            "type": "string[]",
+            "description": "属性显示的顺序"
+          },
           {
             "name": "path",
             "type": "StrategyPathNode[]",
@@ -9236,6 +9361,86 @@
       }
     },
     {
+      "contract": "cmdb.instance_relation.List",
+      "category": {
+        "en": "Instance relation",
+        "zh": "实例关系"
+      },
+      "name": "List",
+      "version": "1.0.0",
+      "description": "查询实例关系列表",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/instance_relation/:relationId/list"
+      },
+      "import": ["easyops/model/cmdb/instance_basic_info"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "relationId",
+            "type": "string",
+            "description": "关系Id"
+          },
+          {
+            "name": "pairs",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "leftInstanceId",
+                "type": "instance_id",
+                "description": "本端实例id, 对应关系定义left_object_id模型的实例"
+              },
+              {
+                "name": "rightInstanceId",
+                "type": "instance_id",
+                "description": "对端实例id, 对应关系定义right_object_id模型的实例"
+              }
+            ],
+            "description": "关系两端实例id"
+          },
+          {
+            "name": "fields",
+            "type": "string[]",
+            "description": "返回关系属性字段"
+          }
+        ],
+        "required": ["relationId", "pairs"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "relationId",
+                "type": "string",
+                "description": "关系id"
+              },
+              {
+                "name": "leftInstance",
+                "type": "InstanceBasicInfo",
+                "description": "本端实例信息"
+              },
+              {
+                "name": "rightInstance",
+                "type": "InstanceBasicInfo",
+                "description": "对端实例信息"
+              },
+              {
+                "name": "properties",
+                "type": "map",
+                "description": "关系属性信息"
+              }
+            ],
+            "description": "实例关系列表"
+          }
+        ]
+      }
+    },
+    {
       "contract": "cmdb.instance_relation.Remove",
       "category": {
         "en": "Instance relation",
@@ -9804,6 +10009,90 @@
       ]
     },
     {
+      "contract": "cmdb.object_relation.CreateProperty",
+      "category": {
+        "en": "Object relation",
+        "zh": "模型关系"
+      },
+      "name": "CreateProperty",
+      "version": "1.0.0",
+      "description": "创建关系属性定义",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/object_relation/attr/:relation_id"
+      },
+      "import": ["easyops/model/cmdb/object_attr"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "relation_id",
+            "type": "string",
+            "description": "关系Id"
+          },
+          {
+            "ref": "ObjectAttr.id"
+          },
+          {
+            "ref": "ObjectAttr.name"
+          },
+          {
+            "ref": "ObjectAttr.unique"
+          },
+          {
+            "ref": "ObjectAttr.readonly"
+          },
+          {
+            "ref": "ObjectAttr.required"
+          },
+          {
+            "ref": "ObjectAttr.tag"
+          },
+          {
+            "ref": "ObjectAttr.description"
+          },
+          {
+            "ref": "ObjectAttr.tips"
+          },
+          {
+            "ref": "ObjectAttr.value"
+          }
+        ],
+        "required": [
+          "relation_id",
+          "ObjectAttr.id",
+          "ObjectAttr.name",
+          "ObjectAttr.value"
+        ]
+      },
+      "response": {
+        "type": "ObjectAttr"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Create relation attribute definition",
+            "zh": "创建关系属性定义"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8079/object_relation/attr/HOST_owner_USER",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"id\": \"serialNumber\",\n    \"name\": \"序列号\",\n    \"readonly\": \"false\",\n    \"required\": \"false\",\n    \"tag\": [ ],\n    \"unique\": \"false\",\n    \"value\": {\n        \"default\": \"\",\n        \"default_type\": \"value\",\n        \"mode\": \"default\",\n        \"type\": \"str\"\n    }\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"id\": \"serialNumber\",\n        \"name\": \"序列号\",\n        \"protected\": false,\n        \"custom\": \"true\",\n        \"unique\": \"false\",\n        \"readonly\": \"false\",\n        \"required\": \"false\",\n        \"tag\": [],\n        \"description\": \"\",\n        \"tips\": \"\",\n        \"value\": {\n            \"type\": \"str\",\n            \"regex\": null,\n            \"default_type\": \"value\",\n            \"default\": null,\n            \"struct_define\": [],\n            \"mode\": \"default\",\n            \"prefix\": \"\",\n            \"start_value\": 0,\n            \"series_number_length\": 0\n        },\n        \"wordIndexDenied\": false,\n        \"isInherit\": false,\n        \"notifyDenied\": false,\n        \"inheritObjectId\": \"\"\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "cmdb.object_relation.CreateRelationGroup",
       "category": {
         "en": "Object relation",
@@ -9917,6 +10206,61 @@
               "Content-Type": "application/json; charset=utf-8"
             },
             "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": null\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "cmdb.object_relation.DeleteProperty",
+      "category": {
+        "en": "Object relation",
+        "zh": "模型关系"
+      },
+      "name": "DeleteProperty",
+      "version": "1.0.0",
+      "description": "删除关系属性定义",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/object_relation/attr/:relation_id/:attr_id"
+      },
+      "import": ["easyops/model/cmdb/object_attr"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "relation_id",
+            "type": "string",
+            "description": "关系Id"
+          },
+          {
+            "name": "attr_id",
+            "type": "attr_id",
+            "description": "属性id"
+          }
+        ]
+      },
+      "response": {
+        "type": "ObjectAttr"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Delete relation attribute definition",
+            "zh": "删除关系属性定义"
+          },
+          "request": {
+            "method": "DELETE",
+            "uri": "http://127.0.0.1:8079/object_relation/attr/HOST_owner_USER/name",
+            "headers": {
+              "Content-Type": "application/json"
+            }
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"id\": \"name\",\n        \"name\": \"name\",\n        \"protected\": false,\n        \"custom\": \"true\",\n        \"unique\": \"false\",\n        \"readonly\": \"false\",\n        \"required\": \"false\",\n        \"tag\": [],\n        \"description\": \"\",\n        \"tips\": \"\",\n        \"value\": {\n            \"type\": \"str\",\n            \"regex\": null,\n            \"default_type\": \"value\",\n            \"default\": null,\n            \"struct_define\": [],\n            \"mode\": \"default\",\n            \"prefix\": \"\",\n            \"start_value\": 0,\n            \"series_number_length\": 0\n        },\n        \"wordIndexDenied\": false,\n        \"isInherit\": false,\n        \"notifyDenied\": false,\n        \"inheritObjectId\": \"\"\n    }\n}"
           }
         }
       ]
@@ -10188,6 +10532,96 @@
       ]
     },
     {
+      "contract": "cmdb.object_relation.UpdateProperty",
+      "category": {
+        "en": "Object relation",
+        "zh": "模型关系"
+      },
+      "name": "UpdateProperty",
+      "version": "1.0.0",
+      "description": "更新关系属性定义",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/object_relation/attr/:relation_id/:attr_id",
+        "ext_fields": [
+          {
+            "name": "body",
+            "source": "body"
+          }
+        ]
+      },
+      "import": ["easyops/model/cmdb/object_attr"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "relation_id",
+            "type": "string",
+            "description": "关系Id"
+          },
+          {
+            "name": "attr_id",
+            "type": "attr_id",
+            "description": "属性id"
+          },
+          {
+            "name": "body",
+            "type": "object",
+            "fields": [
+              {
+                "ref": "ObjectAttr.name"
+              },
+              {
+                "ref": "ObjectAttr.unique"
+              },
+              {
+                "ref": "ObjectAttr.readonly"
+              },
+              {
+                "ref": "ObjectAttr.required"
+              },
+              {
+                "ref": "ObjectAttr.tag"
+              },
+              {
+                "ref": "ObjectAttr.value"
+              },
+              {
+                "ref": "ObjectAttr.description"
+              },
+              {
+                "ref": "ObjectAttr.tips"
+              }
+            ],
+            "description": "属性信息"
+          }
+        ],
+        "required": ["relation_id", "attr_id"]
+      },
+      "response": {
+        "type": "ObjectAttr"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Update relation attribute definition",
+            "zh": "更新关系属性"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8079/object_relation/attr/HOST_owner_USER/name",
+            "body": "{\n\t\"name\": \"设施名称\",\n\t\"readonly\": \"false\",\n\t\"required\": \"true\",\n\t\"tag\": [\"基本信息\"],\n\t\"unique\": \"false\",\n\t\"value\": {\n\t\t\"default_type\": \"value\",\n\t\t\"mode\": \"default\",\n\t\t\"prefix\": \"\",\n\t\t\"regex\": \"\",\n\t\t\"series_number_length\": 0,\n\t\t\"start_value\": 0,\n\t\t\"struct_define\": [],\n\t\t\"type\": \"str\"\n\t}\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"id\": \"name\",\n        \"name\": \"设施名称\",\n        \"protected\": false,\n        \"custom\": \"true\",\n        \"unique\": \"false\",\n        \"readonly\": \"false\",\n        \"required\": \"true\",\n        \"tag\": [\n            \"基本信息\"\n        ],\n        \"description\": \"\",\n        \"tips\": \"\",\n        \"value\": {\n            \"type\": \"str\",\n            \"regex\": null,\n            \"default_type\": \"value\",\n            \"default\": null,\n            \"struct_define\": [],\n            \"mode\": \"default\",\n            \"prefix\": \"\",\n            \"start_value\": 0,\n            \"series_number_length\": 0\n        },\n        \"wordIndexDenied\": false,\n        \"isInherit\": false,\n        \"notifyDenied\": false,\n        \"inheritObjectId\": \"\"\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "cmdb.object_relation.UpdateRelationGroup",
       "category": {
         "en": "Object relation",
@@ -10267,7 +10701,7 @@
         "zh": "CMDB权限"
       },
       "name": "GetRoleCmdbPermission",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "获取角色拥有的cmdb权限",
       "endpoint": {
         "method": "POST",
@@ -10285,8 +10719,16 @@
           {
             "name": "permissionKind",
             "type": "string",
-            "enum": ["create", "access", "delete", "update", "export", "apply"],
-            "description": "权限类型, create(创建)、access(访问)、delete(删除)、update(更新)、export(导出)、apply(提交变更)"
+            "enum": [
+              "create",
+              "access",
+              "delete",
+              "update",
+              "export",
+              "apply",
+              "operate"
+            ],
+            "description": "权限类型, create(创建)、access(访问)、delete(删除)、update(更新)、export(导出)、apply(提交变更)、operate(实例操作，仅支持模型：HOST|_DBSERVICE|_DBINSTANCE)"
           },
           {
             "name": "category",
@@ -10391,7 +10833,7 @@
         "zh": "CMDB权限"
       },
       "name": "UpdateRoleCmdbPermission",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "更新角色cmdb权限",
       "endpoint": {
         "method": "PUT",
@@ -10409,8 +10851,16 @@
           {
             "name": "permissionKinds",
             "type": "string[]",
-            "enum": ["create", "access", "delete", "update", "export", "apply"],
-            "description": "权限类型列表, create(创建)、access(访问)、delete(删除)、update(更新)、export(导出)、apply(提交变更)"
+            "enum": [
+              "create",
+              "access",
+              "delete",
+              "update",
+              "export",
+              "apply",
+              "operate"
+            ],
+            "description": "权限类型列表, create(创建)、access(访问)、delete(删除)、update(更新)、export(导出)、apply(提交变更)、operate(实例操作，仅支持模型：HOST|_DBSERVICE|_DBINSTANCE)"
           },
           {
             "name": "objectIds",
@@ -10452,6 +10902,11 @@
                 "name": "category",
                 "type": "string",
                 "description": "服务分类"
+              },
+              {
+                "name": "workspaceId",
+                "type": "string",
+                "description": "工作空间id"
               }
             ],
             "description": "上报的服务"
