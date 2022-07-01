@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-permission@1.12.1...@next-bricks/providers-of-permission@1.13.0) (2022-07-01)
+
+### Features
+
+- add providers: providers-of-permission.permission-api-batch-set-permission-disable-status ([0be7401](https://github.com/easyops-cn/next-providers/commit/0be74017207623cdc706cfcc5eed384fa1733bd4))
+
 ## [1.12.1](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-permission@1.12.0...@next-bricks/providers-of-permission@1.12.1) (2022-07-01)
 
 **Note:** Version bump only for package @next-bricks/providers-of-permission
