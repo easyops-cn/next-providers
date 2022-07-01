@@ -47,6 +47,7 @@
     "PermissionApi.validateSchedulerPermission",
     "MenuApi.listLegacyModule",
     "RoleV2Api.getUserRoleV2",
-    "RoleApi.getPermissionRoleUserList"
+    "RoleApi.getPermissionRoleUserList",
+    "PermissionApi.batchSetPermissionDisableStatus"
   ]
 }
