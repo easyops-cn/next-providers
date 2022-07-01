@@ -39,7 +39,7 @@ export const PermissionApi_validateArtifactPermission = (
   params: PermissionApi_ValidateArtifactPermissionRequestParams,
   options?: HttpOptions
 ): Promise<PermissionApi_ValidateArtifactPermissionResponseBody> =>
-  /**! @contract easyops.api.permission.permission.ValidateArtifactPermission@1.0.0 */ http.get<PermissionApi_ValidateArtifactPermissionResponseBody>(
+  /**! @contract easyops.api.permission.permission.ValidateArtifactPermission@1.1.0 */ http.get<PermissionApi_ValidateArtifactPermissionResponseBody>(
     "api/gateway/permission.permission.ValidateArtifactPermission/api/v1/permission/validate",
     { ...options, params }
   );
@@ -47,4 +47,7 @@ export const PermissionApi_validateArtifactPermission = (
 export interface PermissionApi_ValidateArtifactPermissionResponseBody_data {
   /** 是否鉴权成功 */
   accepted?: boolean;
+
+  /** 权限是否被禁用 */
+  disable?: boolean;
 }

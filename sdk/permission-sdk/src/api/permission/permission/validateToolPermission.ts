@@ -27,6 +27,9 @@ export interface PermissionApi_ValidateToolPermissionResponseBody {
 
   /** 有权限的用户(组) */
   authorizers?: string[];
+
+  /** 权限是否被禁用 */
+  disable?: boolean;
 }
 
 /**

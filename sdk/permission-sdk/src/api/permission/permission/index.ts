@@ -1,3 +1,4 @@
+export * from "./batchSetPermissionDisableStatus";
 export * from "./batchValidateCmdbPermission";
 export * from "./deletePermission";
 export * from "./getPermissionDetail";

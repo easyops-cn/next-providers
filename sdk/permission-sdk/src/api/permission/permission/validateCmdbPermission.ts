@@ -21,6 +21,9 @@ export interface PermissionApi_ValidateCmdbPermissionRequestParams {
 export interface PermissionApi_ValidateCmdbPermissionResponseBody {
   /** 是否鉴权成功 */
   accepted?: boolean;
+
+  /** 权限是否被禁用 */
+  disable?: boolean;
 }
 
 /**

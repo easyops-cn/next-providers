@@ -24,6 +24,9 @@ export interface PermissionApi_ValidateFlowTaskPermissionResponseBody {
 
   /** 有权限的用户(组) */
   authorizers?: string[];
+
+  /** 权限是否被禁用 */
+  disable?: boolean;
 }
 
 /**

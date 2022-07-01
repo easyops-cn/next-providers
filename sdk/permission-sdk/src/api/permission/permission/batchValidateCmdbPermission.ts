@@ -39,6 +39,9 @@ export interface PermissionApi_BatchValidateCmdbPermissionResponseBody {
 
   /** 无权限的实例 */
   no_permission_instances?: PermissionApi_BatchValidateCmdbPermissionResponseBody_no_permission_instances_item[];
+
+  /** 权限是否被禁用 */
+  disable?: boolean;
 }
 
 /**

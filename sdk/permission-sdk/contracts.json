@@ -706,6 +706,61 @@
       "response": null
     },
     {
+      "contract": "permission.permission.BatchSetPermissionDisableStatus",
+      "category": {
+        "en": "permission",
+        "zh": "权限"
+      },
+      "name": "BatchSetPermissionDisableStatus",
+      "version": "1.0.0",
+      "description": "批量启用/禁用权限点",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/permission/batch_set_disable_status"
+      },
+      "import": ["easyops/model/permission/permission"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "permissions",
+            "type": "string[]",
+            "description": "权限列表"
+          },
+          {
+            "name": "action",
+            "type": "string",
+            "enum": ["enable", "disable"],
+            "description": "启用/禁用"
+          }
+        ]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "BatchSetPermissionDisableStatus",
+            "zh": "批量启用/禁用权限点"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8085/api/v1/permission/batch_set_disable_status",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"permissions\": [\n    \"permission:access_log\",\n  ],\n  \"action\": \"enable\"\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"code\":0,\n  \"error\":\"\",\n  \"message\":\"\",\n  \"data\": null\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "permission.permission.BatchValidateCmdbPermission",
       "category": {
         "en": "permission",
@@ -806,6 +861,11 @@
               }
             ],
             "description": "无权限的实例"
+          },
+          {
+            "name": "disable",
+            "type": "bool",
+            "description": "权限是否被禁用"
           }
         ]
       },
@@ -822,7 +882,7 @@
           "response": {
             "status_code": 200,
             "headers": null,
-            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"data\": {\n    \"accepted\": true,\n    \"is_admin\": true,\n    \"authorizers\": [\n      \"easyops\"\n    ]\n  }\n}"
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"data\": {\n    \"accepted\": true,\n    \"disable\": false,\n    \"is_admin\": true,\n    \"authorizers\": [\n      \"easyops\"\n    ]\n  }\n}"
           }
         }
       ]
@@ -1190,7 +1250,7 @@
         "zh": "权限"
       },
       "name": "SavePermission",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "保存权限配置(已存在权限点则更新)",
       "endpoint": {
         "method": "POST",
@@ -1203,7 +1263,8 @@
           "Permission.action",
           "Permission.system",
           "Permission.roles",
-          "Permission.remark"
+          "Permission.remark",
+          "Permission.disable"
         ]
       },
       "response": {
@@ -1313,7 +1374,7 @@
         "zh": "权限"
       },
       "name": "ValidateArtifactPermission",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "校验制品包系统权限",
       "endpoint": {
         "method": "GET",
@@ -1378,6 +1439,11 @@
                 "name": "accepted",
                 "type": "bool",
                 "description": "是否鉴权成功"
+              },
+              {
+                "name": "disable",
+                "type": "bool",
+                "description": "权限是否被禁用"
               }
             ],
             "description": "返回数据"
@@ -1431,6 +1497,11 @@
             "name": "accepted",
             "type": "bool",
             "description": "是否鉴权成功"
+          },
+          {
+            "name": "disable",
+            "type": "bool",
+            "description": "权限是否被禁用"
           }
         ]
       }
@@ -1487,6 +1558,11 @@
             "name": "accepted",
             "type": "bool",
             "description": "是否鉴权成功"
+          },
+          {
+            "name": "disable",
+            "type": "bool",
+            "description": "权限是否被禁用"
           }
         ]
       }
@@ -1533,6 +1609,11 @@
             "name": "accepted",
             "type": "bool",
             "description": "是否鉴权成功"
+          },
+          {
+            "name": "disable",
+            "type": "bool",
+            "description": "权限是否被禁用"
           }
         ]
       }
@@ -1593,6 +1674,11 @@
             "name": "authorizers",
             "type": "string[]",
             "description": "有权限的用户(组)"
+          },
+          {
+            "name": "disable",
+            "type": "bool",
+            "description": "权限是否被禁用"
           }
         ]
       }
@@ -1604,7 +1690,7 @@
         "zh": "权限"
       },
       "name": "ValidateOpsAutomationPermission",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "校验运维自动化系统权限",
       "endpoint": {
         "method": "GET",
@@ -1665,6 +1751,11 @@
                 "name": "authorizers",
                 "type": "string[]",
                 "description": "有权限的实例"
+              },
+              {
+                "name": "disable",
+                "type": "bool",
+                "description": "权限是否被禁用"
               }
             ]
           }
@@ -1678,7 +1769,7 @@
         "zh": "权限"
       },
       "name": "ValidatePermissionSystemPermission",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "校验权限系统权限",
       "endpoint": {
         "method": "GET",
@@ -1728,6 +1819,11 @@
                 "name": "accepted",
                 "type": "bool",
                 "description": "是否鉴权成功"
+              },
+              {
+                "name": "disable",
+                "type": "bool",
+                "description": "权限是否被禁用"
               }
             ],
             "description": "返回数据"
@@ -1791,6 +1887,11 @@
             "name": "authorizers",
             "type": "string[]",
             "description": "有权限的用户(组)"
+          },
+          {
+            "name": "disable",
+            "type": "bool",
+            "description": "权限是否被禁用"
           }
         ]
       }
@@ -1856,6 +1957,11 @@
             "name": "authorizers",
             "type": "string[]",
             "description": "有权限的用户(组)"
+          },
+          {
+            "name": "disable",
+            "type": "bool",
+            "description": "权限是否被禁用"
           }
         ]
       }

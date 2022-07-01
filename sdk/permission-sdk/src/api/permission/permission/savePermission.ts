@@ -23,7 +23,7 @@ export const PermissionApi_savePermission = (
   data: PermissionApi_SavePermissionRequestBody,
   options?: HttpOptions
 ): Promise<PermissionApi_SavePermissionResponseBody> =>
-  /**! @contract easyops.api.permission.permission.SavePermission@1.0.0 */ http.post<PermissionApi_SavePermissionResponseBody>(
+  /**! @contract easyops.api.permission.permission.SavePermission@1.1.0 */ http.post<PermissionApi_SavePermissionResponseBody>(
     "api/gateway/permission.permission.SavePermission/api/v1/permission/save",
     data,
     options
@@ -41,6 +41,9 @@ export interface ModelPermission_partial_2 {
 
   /** 权限备注 */
   remark: string;
+
+  /** 是否禁用, 默认为false */
+  disable: boolean;
 }
 
 export interface PermissionApi_SavePermissionResponseBody_data {

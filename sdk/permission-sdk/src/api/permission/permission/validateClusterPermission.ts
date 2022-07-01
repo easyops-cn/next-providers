@@ -18,6 +18,9 @@ export interface PermissionApi_ValidateClusterPermissionRequestParams {
 export interface PermissionApi_ValidateClusterPermissionResponseBody {
   /** 是否鉴权成功 */
   accepted?: boolean;
+
+  /** 权限是否被禁用 */
+  disable?: boolean;
 }
 
 /**

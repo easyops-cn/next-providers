@@ -30,7 +30,7 @@ export const PermissionApi_validateOpsAutomationPermission = (
   params: PermissionApi_ValidateOpsAutomationPermissionRequestParams,
   options?: HttpOptions
 ): Promise<PermissionApi_ValidateOpsAutomationPermissionResponseBody> =>
-  /**! @contract easyops.api.permission.permission.ValidateOpsAutomationPermission@1.0.0 */ http.get<PermissionApi_ValidateOpsAutomationPermissionResponseBody>(
+  /**! @contract easyops.api.permission.permission.ValidateOpsAutomationPermission@1.1.0 */ http.get<PermissionApi_ValidateOpsAutomationPermissionResponseBody>(
     "api/gateway/permission.permission.ValidateOpsAutomationPermission/api/v1/permission/validate",
     { ...options, params }
   );
@@ -44,4 +44,7 @@ export interface PermissionApi_ValidateOpsAutomationPermissionResponseBody_data 
 
   /** 有权限的实例 */
   authorizers?: string[];
+
+  /** 权限是否被禁用 */
+  disable?: boolean;
 }
