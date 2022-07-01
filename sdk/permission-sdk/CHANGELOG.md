@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/permission-sdk@2.2.0...@next-sdk/permission-sdk@2.3.0) (2022-07-01)
+
+### Features
+
+- add apis: PermissionApi_batchSetPermissionDisableStatus ([f7181bd](https://github.com/easyops-cn/next-providers/commit/f7181bdd93c7513e35efe5e218c4738e91901219))
+
 # [2.2.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/permission-sdk@2.1.14...@next-sdk/permission-sdk@2.2.0) (2022-06-14)
 
 ### Features
