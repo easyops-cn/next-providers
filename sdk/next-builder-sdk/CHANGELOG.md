@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/next-builder-sdk@2.6.1...@next-sdk/next-builder-sdk@2.7.0) (2022-07-05)
+
+### Features
+
+- add apis: StoryboardApi_cloneRoutes ([34e8279](https://github.com/easyops-cn/next-providers/commit/34e82792a98e353d087154d25cda8663f8273f34))
+
 ## [2.6.1](https://github.com/easyops-cn/next-providers/compare/@next-sdk/next-builder-sdk@2.6.0...@next-sdk/next-builder-sdk@2.6.1) (2022-06-08)
 
 **Note:** Version bump only for package @next-sdk/next-builder-sdk

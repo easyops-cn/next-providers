@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.20.0](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-next-builder@1.19.1...@next-bricks/providers-of-next-builder@1.20.0) (2022-07-05)
+
+### Features
+
+- add providers: providers-of-next-builder.storyboard-api-clone-routes ([ebc745c](https://github.com/easyops-cn/next-providers/commit/ebc745c247176b4810ac3814a0ee4187311d4506))
+
 ## [1.19.1](https://github.com/easyops-cn/next-providers/compare/@next-bricks/providers-of-next-builder@1.19.0...@next-bricks/providers-of-next-builder@1.19.1) (2022-06-08)
 
 **Note:** Version bump only for package @next-bricks/providers-of-next-builder
