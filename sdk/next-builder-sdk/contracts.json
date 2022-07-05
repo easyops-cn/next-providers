@@ -832,6 +832,11 @@
             "name": "originAppInstanceId",
             "type": "string",
             "description": "要克隆的当前app的instanceId"
+          },
+          {
+            "name": "isDocumentCloned",
+            "type": "bool",
+            "description": "文档是否克隆"
           }
         ]
       },
@@ -2951,6 +2956,48 @@
             "ref": "MicroAppProject.appSetting"
           }
         ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.storyboard.CloneRoutes",
+      "category": {
+        "en": "Storyboard",
+        "zh": "Storyboard"
+      },
+      "name": "CloneRoutes",
+      "version": "1.0.0",
+      "description": "拷贝路由",
+      "detail": "拷贝路由",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/nextBuilder/clone_route"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "sourceRouteId",
+            "type": "string",
+            "description": "源路由id"
+          },
+          {
+            "name": "newParentRouteId",
+            "type": "string",
+            "description": "新的父路由id"
+          },
+          {
+            "name": "newAppId",
+            "type": "string",
+            "description": "新的应用id"
+          },
+          {
+            "name": "exclude",
+            "type": "bool",
+            "description": "是否排除sourceRoute，默认false"
+          }
+        ],
+        "required": ["sourceRouteId", "newAppId"]
       },
       "response": null
     },

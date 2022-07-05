@@ -12,6 +12,9 @@ export interface CloneApi_CloneMicroAppRequestBody {
 
   /** app描述信息 */
   description?: string;
+
+  /** 文档是否克隆 */
+  isDocumentCloned?: boolean;
 }
 
 /**
