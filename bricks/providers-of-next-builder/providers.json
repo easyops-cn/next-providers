@@ -70,6 +70,7 @@
     "ContractCenterApi.debugApiContract",
     "ContractCenterApi.searchContract",
     "ContractCenterApi.batchSearchContract",
-    "ContractCenterApi.listFunctionContract"
+    "ContractCenterApi.listFunctionContract",
+    "StoryboardApi.cloneRoutes"
   ]
 }
