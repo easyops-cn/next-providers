@@ -6,12 +6,8 @@
   "scripts": {
     "prepare": "lerna bootstrap && husky install",
     "start": "lerna run start",
-    "build": "npm run build:sdk && npm run build:libs && npm run build:bricks && npm run build:templates && npm run build:micro-apps",
-    "build:libs": "if [ -d libs ]; then lerna run build --scope \"@next-libs/*\"; else echo \"no libs\"; fi",
-    "build:bricks": "if [ -d bricks ]; then lerna run build --scope \"@next-bricks/*\"; else echo \"no bricks\"; fi",
-    "build:templates": "if [ -d templates ]; then lerna run build --scope \"@next-legacy-templates/*\"; else echo \"no templates\"; fi",
-    "build:micro-apps": "if [ -d micro-apps ]; then lerna run build --scope \"@next-micro-apps/*\"; else echo \"no micro-apps\"; fi",
-    "build:sdk": "if [ -d sdk ]; then lerna run build --scope \"@next-sdk/*\"; else echo \"no sdk\"; fi",
+    "build": "npm run build:sdk",
+    "build:sdk": "lerna run build --scope \"@next-sdk/*\"",
     "postbuild": "npm run size-limit",
     "size-limit": "size-limit",
     "serve": "brick-container-serve",
@@ -92,11 +88,7 @@
     "react-transition-group": "^4.4.2"
   },
   "workspaces": [
-    "bricks/*",
-    "libs/*",
-    "micro-apps/*",
-    "sdk/*",
-    "templates/*"
+    "sdk/*"
   ],
   "resolutions": {
     "@types/react": "^16.14.21",
