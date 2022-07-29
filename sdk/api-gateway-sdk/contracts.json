@@ -897,6 +897,32 @@
       }
     },
     {
+      "contract": "api_gateway.bootstrap_standalone.RuntimeStandalone",
+      "category": {
+        "en": "Bootstrap Standalone",
+        "zh": "独立部署Bootstrap"
+      },
+      "name": "RuntimeStandalone",
+      "version": "1.0.1",
+      "description": "独立小产品Runtime接口",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/runtime_standalone"
+      },
+      "import": ["easyops/model/api_gateway/settings"],
+      "request": null,
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "settings",
+            "type": "Settings",
+            "description": "api_gateway特性配置"
+          }
+        ]
+      }
+    },
+    {
       "contract": "api_gateway.bootstrap_v2.BootstrapV2",
       "name": "BootstrapV2",
       "version": "1.0.0",
