@@ -1,0 +1,147 @@
+{
+  "name": "micro_app_standalone",
+  "description": {
+    "en": "Micro App Standalone",
+    "zh": "微应用（独立部署）"
+  },
+  "contracts": [
+    {
+      "contract": "micro_app_standalone.report.ReportMicroAppStandalone",
+      "category": {
+        "en": "Data Report",
+        "zh": "数据上报"
+      },
+      "name": "ReportMicroAppStandalone",
+      "version": "1.0.1",
+      "description": "上报独立打包小产品",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro_app_standalone/report"
+      },
+      "import": [
+        "easyops/model/micro_app_standalone/installed_micro_app_standalone"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "InstalledMicroAppStandalone.*"
+          },
+          {
+            "name": "setActiveVersion",
+            "type": "bool",
+            "description": "是否设置为启用版本"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app_standalone.runtime.RuntimeMicroAppStandalone",
+      "category": {
+        "en": "Runtime",
+        "zh": "运行时"
+      },
+      "name": "RuntimeMicroAppStandalone",
+      "version": "1.0.1",
+      "description": "独立小产品Runtime接口",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/micro_app_standalone/runtime/:appId"
+      },
+      "import": [
+        "easyops/model/micro_app_standalone/installed_micro_app_standalone",
+        "easyops/model/micro_app/storyboard_menu"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "小产品Id"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "injectMenus",
+            "type": "object[]",
+            "description": "注入菜单",
+            "fields": [
+              {
+                "ref": "StoryboardMenu.*"
+              },
+              {
+                "name": "app",
+                "type": "object[]",
+                "description": "关联微应用",
+                "fields": [
+                  {
+                    "name": "appId",
+                    "type": "string",
+                    "description": "微应用Id"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "userConfig",
+            "type": "map",
+            "description": "用户配置"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "micro_app_standalone.runtime.SearchMicroAppStandalone",
+      "category": {
+        "en": "Runtime",
+        "zh": "运行时"
+      },
+      "name": "SearchMicroAppStandalone",
+      "version": "1.0.1",
+      "description": "查询独立部署小产品",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro_app_standalone/search"
+      },
+      "import": [
+        "easyops/model/micro_app_standalone/installed_micro_app_standalone"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "query",
+            "type": "map",
+            "description": "查询条件"
+          },
+          {
+            "name": "fields",
+            "type": "string[]",
+            "description": "返回字段"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "map[]",
+            "description": "所有启用的微应用"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总数"
+          }
+        ]
+      }
+    }
+  ]
+}
