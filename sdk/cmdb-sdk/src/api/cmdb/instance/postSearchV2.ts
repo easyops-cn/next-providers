@@ -31,6 +31,9 @@ export interface InstanceApi_PostSearchV2RequestBody {
 
   /** 单独指定关系的limit与sort */
   limitations?: InstanceApi_PostSearchV2RequestBody_limitations_item[];
+
+  /** 结果是否仅返回上面filter匹配上的对端关系，默认false返回全部对端关系。 */
+  filter_relation?: boolean;
 }
 
 export interface InstanceApi_PostSearchV2ResponseBody {

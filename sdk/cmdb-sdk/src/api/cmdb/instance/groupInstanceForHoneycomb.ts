@@ -26,6 +26,9 @@ export interface InstanceApi_GroupInstanceForHoneycombRequestBody {
 
   /** 用来设置大小的指标 */
   sizeByMetric?: InstanceApi_GroupInstanceForHoneycombRequestBody_sizeByMetric;
+
+  /** 指标数据汇聚方式（枚举值：avg、sum、max、min、increase、rate、irate、last，默认last） */
+  aggregation: string;
 }
 
 export interface InstanceApi_GroupInstanceForHoneycombResponseBody {
@@ -57,7 +60,7 @@ export const InstanceApi_groupInstanceForHoneycomb = async (
   data: InstanceApi_GroupInstanceForHoneycombRequestBody,
   options?: HttpOptions
 ): Promise<InstanceApi_GroupInstanceForHoneycombResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.GroupInstanceForHoneycomb@1.2.0 */ (
+  /**! @contract easyops.api.cmdb.instance.GroupInstanceForHoneycomb@1.2.1 */ (
     await http.post<
       ResponseBodyWrapper<InstanceApi_GroupInstanceForHoneycombResponseBody>
     >(

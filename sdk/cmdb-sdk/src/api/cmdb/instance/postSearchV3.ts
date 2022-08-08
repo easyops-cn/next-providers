@@ -38,6 +38,9 @@ export interface InstanceApi_PostSearchV3RequestBody {
 
   /** 指标数据查询 */
   metrics_filter?: InstanceApi_PostSearchV3RequestBody_metrics_filter;
+
+  /** 结果是否仅返回上面filter匹配上的对端关系，默认false返回全部对端关系。 */
+  filter_relation?: boolean;
 }
 
 export interface InstanceApi_PostSearchV3ResponseBody {

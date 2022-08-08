@@ -5125,6 +5125,11 @@
             "name": "funcs",
             "type": "GroupInstanceFunc[]",
             "description": "操作列表,对某字段进行,sum, max..."
+          },
+          {
+            "name": "filter_relation",
+            "type": "bool",
+            "description": "结果是否仅返回上面filter匹配上的对端关系，默认false返回全部对端关系。"
           }
         ],
         "required": ["object_id", "group_field", "funcs"]
@@ -5199,7 +5204,7 @@
         "zh": "实例"
       },
       "name": "GroupInstanceForHoneycomb",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "description": "实例分组蜂窝图",
       "endpoint": {
         "method": "POST",
@@ -5267,9 +5272,14 @@
               }
             ],
             "description": "用来设置大小的指标"
+          },
+          {
+            "name": "aggregation",
+            "type": "string",
+            "description": "指标数据汇聚方式（枚举值：avg、sum、max、min、increase、rate、irate、last，默认last）"
           }
         ],
-        "required": ["objectId", "fillByMetric"]
+        "required": ["objectId", "fillByMetric", "aggregation"]
       },
       "response": {
         "type": "object",
@@ -5362,6 +5372,11 @@
             "name": "funcs",
             "type": "GroupInstanceFunc[]",
             "description": "操作列表,对某字段进行,sum, max..."
+          },
+          {
+            "name": "filter_relation",
+            "type": "bool",
+            "description": "结果是否仅返回上面filter匹配上的对端关系，默认false返回全部对端关系。"
           }
         ],
         "required": ["object_id", "group_field", "funcs"]
@@ -5430,6 +5445,11 @@
             "name": "funcs",
             "type": "GroupInstanceFunc[]",
             "description": "操作列表,对某字段进行,sum, max..."
+          },
+          {
+            "name": "filter_relation",
+            "type": "bool",
+            "description": "结果是否仅返回上面filter匹配上的对端关系，默认false返回全部对端关系。"
           }
         ],
         "required": ["object_id", "group_fields", "funcs"]
@@ -6354,6 +6374,11 @@
               }
             ],
             "description": "单独指定关系的limit与sort"
+          },
+          {
+            "name": "filter_relation",
+            "type": "bool",
+            "description": "结果是否仅返回上面filter匹配上的对端关系，默认false返回全部对端关系。"
           }
         ],
         "default": {
@@ -6663,6 +6688,11 @@
               }
             ],
             "description": "单独指定关系的limit与sort"
+          },
+          {
+            "name": "filter_relation",
+            "type": "bool",
+            "description": "结果是否仅返回上面filter匹配上的对端关系，默认false返回全部对端关系。"
           }
         ],
         "default": {
@@ -6892,6 +6922,11 @@
               }
             ],
             "description": "指标数据查询"
+          },
+          {
+            "name": "filter_relation",
+            "type": "bool",
+            "description": "结果是否仅返回上面filter匹配上的对端关系，默认false返回全部对端关系。"
           }
         ],
         "default": {

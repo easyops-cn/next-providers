@@ -34,4 +34,7 @@ export interface ModelObjectView {
 
   /** icon */
   icon: Partial<ModelIcon>;
+
+  /** 图片链接 */
+  image: string;
 }
