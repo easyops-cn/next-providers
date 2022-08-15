@@ -83,25 +83,14 @@
       ]
     },
     {
-      "automerge": false,
       "groupName": "next-core packages",
-      "postUpgradeTasks": {
-        "commands": [
-          "yarn renew",
-          "yarn extract",
-          "./node_modules/.bin/prettier --write package.json"
-        ],
-        "fileFilters": [
-          "**/*",
-          ".gitignore",
-          ".gitlab/**/*",
-          ".huskyrc",
-          ".husky/.gitignore",
-          ".husky/**/*"
-        ]
-      },
-      "major": { "enabled": false },
-      "matchPackagePatterns": ["^@next-core/"]
+      "matchPackagePatterns": ["^@next-core/"],
+      "automerge": false
+    },
+    {
+      "matchPackagePatterns": ["^@next-core/"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
     },
     {
       "groupName": "next-libs packages",
