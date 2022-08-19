@@ -62,6 +62,11 @@
             "name": "isAdmin",
             "type": "bool",
             "description": "判断当前登录用户是否是系统管理员"
+          },
+          {
+            "name": "csrfToken",
+            "type": "string",
+            "description": "csrf_token，开启了csrf特性才返回值"
           }
         ]
       }
@@ -245,6 +250,11 @@
             "name": "isAdmin",
             "type": "bool",
             "description": "判断当前登录用户是否是系统管理员"
+          },
+          {
+            "name": "csrfToken",
+            "type": "string",
+            "description": "csrf_token，开启了csrf特性才返回值"
           }
         ]
       },
@@ -269,7 +279,7 @@
               "X-B3-Traceid": "8fffffffffffffff6c1e84cea8ce252c"
             },
             "status_code": 200,
-            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n        \"loggedIn\": true,\n        \"username\": \"easyops\",\n        \"org\": 2988466,\n        \"location\": \"\",\n        \"userInstanceId\": \"5b1338f33ee9c\",\n        \"loginFrom\": \"\",\n        \"accessRule\": \"\",\n        \"isAdmin\": true\n    }\n}"
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n        \"loggedIn\": true,\n        \"username\": \"easyops\",\n        \"org\": 2988466,\n        \"location\": \"\",\n        \"userInstanceId\": \"5b1338f33ee9c\",\n        \"loginFrom\": \"\",\n        \"accessRule\": \"\",\n        \"isAdmin\": true,\n        \"csrfToken\": \"\"\n    }\n}"
           }
         }
       ]

@@ -39,6 +39,9 @@ export interface AuthApi_LoginV2ResponseBody {
 
   /** 判断当前登录用户是否是系统管理员 */
   isAdmin?: boolean;
+
+  /** csrf_token，开启了csrf特性才返回值 */
+  csrfToken?: string;
 }
 
 /**
