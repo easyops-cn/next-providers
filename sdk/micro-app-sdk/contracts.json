@@ -638,6 +638,62 @@
       }
     },
     {
+      "contract": "micro_app.installed_micro_app.GetI18NData",
+      "name": "GetI18NData",
+      "version": "1.0.0",
+      "description": "获取微应用的i18n数据",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/micro-app/i18n"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appIds",
+            "type": "string",
+            "description": "微应用的appIds, 多个用逗号分开"
+          }
+        ],
+        "required": ["appIds"]
+      },
+      "response": {
+        "type": "object",
+        "description": "微应用的i18n信息",
+        "fields": [
+          {
+            "name": "i18nInfo",
+            "type": "object[]",
+            "description": "i18n信息",
+            "fields": [
+              {
+                "name": "appId",
+                "type": "string",
+                "description": "appId"
+              },
+              {
+                "name": "i18n",
+                "type": "object",
+                "description": "i18n",
+                "fields": [
+                  {
+                    "name": "zh",
+                    "type": "map",
+                    "description": "中文"
+                  },
+                  {
+                    "name": "en",
+                    "type": "map",
+                    "description": "英文"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
       "contract": "micro_app.installed_micro_app.GetOssObjectsStat",
       "name": "GetOssObjectsStat",
       "version": "1.0.0",

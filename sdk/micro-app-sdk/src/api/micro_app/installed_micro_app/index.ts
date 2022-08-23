@@ -4,6 +4,7 @@ export * from "./deleteInstalledMicroAppContainer";
 export * from "./findMicroAppContainer";
 export * from "./getInstalledMicroApp";
 export * from "./getImagesByAppId";
+export * from "./getI18NData";
 export * from "./getOssObjectsStat";
 export * from "./importMicroApp";
 export * from "./listMicroApp";

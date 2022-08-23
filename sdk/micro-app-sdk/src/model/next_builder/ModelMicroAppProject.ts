@@ -32,6 +32,9 @@ export interface ModelMicroAppProject {
   /** Dependencies */
   dependencies: ModelMicroAppProject_dependencies_item[];
 
+  /** DependenciesLock */
+  dependenciesLock: ModelMicroAppProject_dependenciesLock_item[];
+
   /** Depends All */
   dependsAll: boolean;
 
@@ -142,6 +145,35 @@ export interface ModelMicroAppProject_dependencies_item {
 
   /** IsLocalDeploy */
   localDeploy?: boolean;
+
+  /** 是否追踪最新版本 */
+  traceLatestVersion?: boolean;
+}
+
+export interface ModelMicroAppProject_dependenciesLock_item {
+  /** Name */
+  name?: string;
+
+  /** Constraint */
+  constraint?: string;
+
+  /** IsLocalDeploy */
+  localDeploy?: boolean;
+
+  /** packageId */
+  packageId?: string;
+
+  /** versionId */
+  versionId?: string;
+
+  /** actualVersion */
+  actualVersion?: string;
+
+  /** 被谁依赖 */
+  parentDependencies?: string[];
+
+  /** 依赖方式 */
+  dependencyWay?: "direct" | "indirect";
 }
 
 export interface ModelMicroAppProject_modelObjects_item {
