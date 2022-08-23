@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/micro-app-sdk@2.4.0...@next-sdk/micro-app-sdk@2.5.0) (2022-08-23)
+
+### Features
+
+- add apis: InstalledMicroAppApi_getI18NData ([4d46226](https://github.com/easyops-cn/next-providers/commit/4d46226c748f2c72a0ce3bc5c3a2ff95bfa816fb))
+
 # [2.4.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/micro-app-sdk@2.3.2...@next-sdk/micro-app-sdk@2.4.0) (2022-06-22)
 
 ### Features
