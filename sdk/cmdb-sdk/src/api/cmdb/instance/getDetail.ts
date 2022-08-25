@@ -7,6 +7,9 @@ export interface InstanceApi_GetDetailRequestParams {
 
   /** 是否返回实例的默认显示名称 */
   get_show_key?: boolean;
+
+  /** 关联关系最多返回数量 */
+  relation_limit?: number;
 }
 
 export type InstanceApi_GetDetailResponseBody = Record<string, any>;

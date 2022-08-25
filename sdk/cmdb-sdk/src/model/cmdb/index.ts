@@ -28,6 +28,7 @@ export * from "./ModelStrategyPathNode";
 export * from "./ModelInstanceRelationRequest";
 export * from "./ModelAutoDiscoveryInstance";
 export * from "./ModelInstanceRelationPair";
+export * from "./ModelGroupInstanceByRelationFunc";
 export * from "./ModelInstanceBasicInfo";
 export * from "./ModelInstanceTreeChildNode";
 export * from "./ModelInstanceTreeRootNode";

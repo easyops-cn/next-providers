@@ -2938,6 +2938,70 @@
       ]
     },
     {
+      "contract": "cmdb.cmdb_object.UpdateObjectView",
+      "category": {
+        "en": "CMDB Object",
+        "zh": "CMDB 模型"
+      },
+      "name": "UpdateObjectView",
+      "version": "2.0.0",
+      "description": "更新模型视图",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/object_view/:objectId",
+        "ext_fields": [
+          {
+            "name": "body",
+            "source": "body"
+          }
+        ]
+      },
+      "import": ["easyops/model/cmdb/cmdb_object"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "objectId",
+            "type": "object_id",
+            "description": "模型Id"
+          },
+          {
+            "name": "body",
+            "type": "object",
+            "fields": [
+              {
+                "ref": "CmdbObject.view"
+              }
+            ],
+            "description": "视图设置"
+          }
+        ],
+        "required": ["objectId"]
+      },
+      "response": {
+        "type": "CmdbObject"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "update object view",
+            "zh": "更新模型试图"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8079/object_view/TEST_3",
+            "body": "{\n    \"view\": {\n        \"attr_category_order\": [\n            \"基本信息\"\n        ],\n        \"attr_order\": [\n            \"x1\",\n            \"x2\"\n        ],\n        \"icon\": {\n            \"color\": \"blue\",\n            \"icon\": \"cube\",\n            \"lib\": \"fa\",\n            \"prefix\": \"fas\"\n        },\n        \"image\": \"api/gateway/object_store.object_store.GetObject/api/v1/objectStore/bucket/cmdb-bucket/object/6fd6f934793f3c9cb4aea61446a272cb.png\",\n        \"show_key\": [\n            \"x1\"\n        ],\n        \"visible\": true\n    }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"objectId\": \"TEST_3\",\n        \"name\": \"test\",\n        \"icon\": \"\",\n        \"category\": \"TEST\",\n        \"memo\": \"1\",\n        \"protected\": false,\n        \"system\": \"\",\n        \"notifyDenied\": false,\n        \"view\": {\n            \"attr_authorizers\": null,\n            \"attr_category_order\": [\n                \"基本信息\"\n            ],\n            \"attr_order\": [\n                \"x1\",\n                \"x2\"\n            ],\n            \"hide_columns\": null,\n            \"icon\": {\n                \"color\": \"blue\",\n                \"icon\": \"cube\",\n                \"lib\": \"fa\",\n                \"prefix\": \"fas\"\n            },\n            \"image\": \"api/gateway/object_store.object_store.GetObject/api/v1/objectStore/bucket/cmdb-bucket/object/6fd6f934793f3c9cb4aea61446a272cb.png\",\n            \"inherit_attr_category_map\": null,\n            \"relation_group_order\": null,\n            \"relation_order\": null,\n            \"show_key\": [\n                \"x1\"\n            ],\n            \"visible\": true\n        },\n        \"attrList\": [\n            {\n                \"id\": \"x1\",\n                \"name\": \"x1\",\n                \"protected\": false,\n                \"custom\": \"true\",\n                \"unique\": \"false\",\n                \"readonly\": \"false\",\n                \"required\": \"false\",\n                \"tag\": [\n                    \"基本信息\"\n                ],\n                \"description\": \"\",\n                \"tips\": \"\",\n                \"value\": {\n                    \"type\": \"str\",\n                    \"regex\": null,\n                    \"default_type\": \"value\",\n                    \"default\": null,\n                    \"struct_define\": [],\n                    \"mode\": \"default\",\n                    \"prefix\": \"\",\n                    \"start_value\": 0,\n                    \"series_number_length\": 0\n                },\n                \"wordIndexDenied\": false,\n                \"isInherit\": false,\n                \"notifyDenied\": false,\n                \"inheritObjectId\": \"\"\n            },\n            {\n                \"id\": \"x2\",\n                \"name\": \"x2\",\n                \"protected\": false,\n                \"custom\": \"true\",\n                \"unique\": \"false\",\n                \"readonly\": \"false\",\n                \"required\": \"false\",\n                \"tag\": [\n                    \"基本信息\"\n                ],\n                \"description\": \"\",\n                \"tips\": \"\",\n                \"value\": {\n                    \"type\": \"str\",\n                    \"regex\": null,\n                    \"default_type\": \"value\",\n                    \"default\": null,\n                    \"struct_define\": [],\n                    \"mode\": \"default\",\n                    \"prefix\": \"\",\n                    \"start_value\": 0,\n                    \"series_number_length\": 0\n                },\n                \"wordIndexDenied\": false,\n                \"isInherit\": false,\n                \"notifyDenied\": false,\n                \"inheritObjectId\": \"\"\n            }\n        ],\n        \"relation_groups\": [],\n        \"relation_list\": [\n            {\n                \"relation_id\": \"TEST_3_TEST\",\n                \"name\": \"\",\n                \"protected\": false,\n                \"notifyDenied\": false,\n                \"isInherit\": false,\n                \"left_object_id\": \"TEST_APP@EASYOPS\",\n                \"leftInheritObjectId\": \"\",\n                \"left_id\": \"test3\",\n                \"left_description\": \"app\",\n                \"left_remark\": \"特殊的值1\",\n                \"left_name\": \"test3\",\n                \"left_min\": 0,\n                \"left_max\": 0,\n                \"left_groups\": [],\n                \"left_tags\": [],\n                \"left_required\": false,\n                \"right_object_id\": \"TEST_3\",\n                \"rightInheritObjectId\": \"\",\n                \"right_id\": \"app\",\n                \"right_description\": \"test3\",\n                \"right_remark\": \"特殊的值2\",\n                \"right_name\": \"app\",\n                \"right_min\": 0,\n                \"right_max\": 0,\n                \"right_groups\": [],\n                \"right_tags\": [],\n                \"right_required\": false,\n                \"_version\": 0,\n                \"attrList\": [],\n                \"indexList\": []\n            },\n            {\n                \"relation_id\": \"TEST_3_aaa_test_AAA\",\n                \"name\": \"\",\n                \"protected\": false,\n                \"notifyDenied\": false,\n                \"isInherit\": false,\n                \"left_object_id\": \"TEST_3\",\n                \"leftInheritObjectId\": \"\",\n                \"left_id\": \"aaa\",\n                \"left_description\": \"test测试\",\n                \"left_remark\": \"aaa说明\",\n                \"left_name\": \"aaa测试\",\n                \"left_min\": 0,\n                \"left_max\": -1,\n                \"left_groups\": [],\n                \"left_tags\": [],\n                \"left_required\": false,\n                \"right_object_id\": \"AAA\",\n                \"rightInheritObjectId\": \"\",\n                \"right_id\": \"test\",\n                \"right_description\": \"aaa测试\",\n                \"right_remark\": \"test说明\",\n                \"right_name\": \"test测试\",\n                \"right_min\": 0,\n                \"right_max\": -1,\n                \"right_groups\": [],\n                \"right_tags\": [],\n                \"right_required\": false,\n                \"_version\": 1,\n                \"attrList\": [],\n                \"indexList\": []\n            },\n            {\n                \"relation_id\": \"TEST_3_host_test_HOST\",\n                \"name\": \"\",\n                \"protected\": false,\n                \"notifyDenied\": false,\n                \"isInherit\": false,\n                \"left_object_id\": \"TEST_3\",\n                \"leftInheritObjectId\": \"\",\n                \"left_id\": \"host\",\n                \"left_description\": \"test\",\n                \"left_remark\": \"\",\n                \"left_name\": \"host\",\n                \"left_min\": 0,\n                \"left_max\": -1,\n                \"left_groups\": [],\n                \"left_tags\": [],\n                \"left_required\": false,\n                \"right_object_id\": \"HOST\",\n                \"rightInheritObjectId\": \"\",\n                \"right_id\": \"test\",\n                \"right_description\": \"host\",\n                \"right_remark\": \"\",\n                \"right_name\": \"test\",\n                \"right_min\": 0,\n                \"right_max\": -1,\n                \"right_groups\": [],\n                \"right_tags\": [],\n                \"right_required\": false,\n                \"_version\": 1,\n                \"attrList\": [],\n                \"indexList\": []\n            }\n        ],\n        \"indexList\": [],\n        \"updateAuthorizers\": [],\n        \"deleteAuthorizers\": [],\n        \"readAuthorizers\": [\n            \"easyops\",\n            \"hughwang\"\n        ],\n        \"wordIndexDenied\": false,\n        \"_version\": 23,\n        \"creator\": \"easyops\",\n        \"modifier\": \"easyops\",\n        \"isAbstract\": false,\n        \"parentObjectId\": \"\",\n        \"permissionDenied\": false,\n        \"parentObjectIds\": []\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "cmdb.cmdb_object.UpdateProperty",
       "category": {
         "en": "CMDB Object",
@@ -4958,6 +5022,11 @@
             "name": "get_show_key",
             "type": "bool",
             "description": "是否返回实例的默认显示名称"
+          },
+          {
+            "name": "relation_limit",
+            "type": "int",
+            "description": "关联关系最多返回数量"
           }
         ],
         "required": ["objectId", "instanceId"],
@@ -9396,6 +9465,58 @@
       }
     },
     {
+      "contract": "cmdb.instance_relation.GroupInstanceByRelation",
+      "category": {
+        "en": "Instance relation",
+        "zh": "实例关系"
+      },
+      "name": "GroupInstanceByRelation",
+      "version": "1.0.0",
+      "description": "通过关系的实例聚合接口, 支持多字段聚合，返回结果为平铺的实例列表",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/relation/:relation_id/instance/group"
+      },
+      "import": ["easyops/model/cmdb/group_instance_by_relation_func"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "relation_id",
+            "type": "string",
+            "description": "URL中资源关系ID"
+          },
+          {
+            "name": "query",
+            "type": "map",
+            "description": "查询条件,与[实例搜索接口]的query字段说明一致"
+          },
+          {
+            "name": "group_fields",
+            "type": "string[]",
+            "description": "聚合属性id（支持多字段，包括属性和单个关系）"
+          },
+          {
+            "name": "funcs",
+            "type": "GroupInstanceByRelationFunc[]",
+            "description": "操作列表,对某字段进行,sum, max..."
+          }
+        ],
+        "required": ["relation_id", "group_fields", "funcs"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "map[]",
+            "description": "数据列表，将group_field和funcs.alias的值作为key，group_value和funcs.value的值作为value"
+          }
+        ],
+        "required": ["list"]
+      }
+    },
+    {
       "contract": "cmdb.instance_relation.List",
       "category": {
         "en": "Instance relation",
@@ -9533,6 +9654,104 @@
       ]
     },
     {
+      "contract": "cmdb.instance_relation.SearchInstanceByRelation",
+      "category": {
+        "en": "Instance relation",
+        "zh": "实例关系"
+      },
+      "name": "SearchInstanceByRelation",
+      "version": "1.0.0",
+      "description": "通过关系搜索实例",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/relation/:relation_id/instance/_search"
+      },
+      "import": ["easyops/model/cmdb/search_sort"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "relation_id",
+            "type": "string",
+            "description": "关系对象ID"
+          },
+          {
+            "name": "query",
+            "type": "map",
+            "description": "e.g.: { name: { $like: '%q%' } }, { $or: [{ name: { $like: '%q%' }}] }"
+          },
+          {
+            "name": "fields",
+            "type": "string[]",
+            "description": "指定返回字段(支持通过父模型指定子模型属性)(支持关系数据的二级jsonPath格式的指定字段如clusters.name), e.g.: [name, instanceId]"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "页大小"
+          },
+          {
+            "name": "sort",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "key",
+                "type": "string",
+                "description": "属性id"
+              },
+              {
+                "name": "order",
+                "type": "int",
+                "enum": [-1, 1, -2, 2],
+                "description": "1表示升序， -1表示降序, 2表示自然升序， -2表示自然降序"
+              }
+            ],
+            "description": "按字段排序， 留空默认按照实例ID降序排序(1表示升序， -1表示降序, 2表示自然升序， -2表示自然降序) e.g.: [{ key: instanceId, order: 1}]"
+          },
+          {
+            "name": "ignore_missing_field_error",
+            "type": "bool",
+            "description": "是否忽略fields有不存在的字段的报错"
+          }
+        ],
+        "default": {
+          "page": 1,
+          "page_size": 30
+        },
+        "required": ["relation_id", "fields"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "map[]",
+            "description": "instance list"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "实例总数"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "页大小"
+          }
+        ]
+      }
+    },
+    {
       "contract": "cmdb.instance_relation.Set",
       "category": {
         "en": "Instance relation",
@@ -9615,6 +9834,11 @@
             "name": "ignore_single",
             "type": "bool",
             "description": "全局忽略与父级无关联实例,默认false"
+          },
+          {
+            "name": "ignore_app",
+            "type": "bool",
+            "description": "是否忽略应用模型数据"
           }
         ],
         "required": ["tree"],
@@ -9800,6 +10024,11 @@
             "name": "instanceId",
             "type": "instance_id",
             "description": "实例Id"
+          },
+          {
+            "name": "ignore_app",
+            "type": "bool",
+            "description": "是否忽略应用模型数据"
           }
         ],
         "required": ["tree"],
@@ -9967,6 +10196,9 @@
             "ref": "ObjectRelation.left_description"
           },
           {
+            "ref": "ObjectRelation.left_remark"
+          },
+          {
             "ref": "ObjectRelation.left_min"
           },
           {
@@ -9989,6 +10221,9 @@
           },
           {
             "ref": "ObjectRelation.right_description"
+          },
+          {
+            "ref": "ObjectRelation.right_remark"
           },
           {
             "ref": "ObjectRelation.right_min"
@@ -10031,14 +10266,14 @@
             "headers": {
               "Content-Type": "application/json"
             },
-            "body": "{\n    \"left_description\": \"test2_park\",\n    \"left_id\": \"park_test2\",\n    \"left_max\": -1,\n    \"left_min\": 0,\n    \"left_object_id\": \"PARK\",\n    \"right_description\": \"park_test2\",\n    \"right_id\": \"test2_park\",\n    \"right_max\": -1,\n    \"right_min\": 0,\n    \"right_object_id\": \"BBBB\"\n}"
+            "body": "{\n    \"left_description\": \"test2_park\",\n    \"left_remark\": \"test2_park的描述\",\n    \"left_id\": \"park_test2\",\n    \"left_max\": -1,\n    \"left_min\": 0,\n    \"left_object_id\": \"PARK\",\n    \"right_description\": \"park_test2\",\n    \"right_remark\": \"park_test2的描述\",\n    \"right_id\": \"test2_park\",\n    \"right_max\": -1,\n    \"right_min\": 0,\n    \"right_object_id\": \"BBBB\"\n}"
           },
           "response": {
             "status_code": 200,
             "headers": {
               "Content-Type": "application/json; charset=utf-8"
             },
-            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"relation_id\": \"PARK_park_test2_test2_park_BBBB\",\n        \"name\": \"\",\n        \"protected\": false,\n        \"notifyDenied\": false,\n        \"isInherit\": false,\n        \"left_object_id\": \"PARK\",\n        \"leftInheritObjectId\": \"\",\n        \"left_id\": \"park_test2\",\n        \"left_description\": \"test2_park\",\n        \"left_name\": \"park_test2\",\n        \"left_min\": 0,\n        \"left_max\": -1,\n        \"left_groups\": [],\n        \"left_tags\": [],\n        \"right_object_id\": \"BBBB\",\n        \"rightInheritObjectId\": \"\",\n        \"right_id\": \"test2_park\",\n        \"right_description\": \"park_test2\",\n        \"right_name\": \"test2_park\",\n        \"right_min\": 0,\n        \"right_max\": -1,\n        \"right_groups\": [],\n        \"right_tags\": [],\n        \"_version\": 1\n    }\n}"
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"relation_id\": \"PARK_park_test2_test2_park_BBBB\",\n        \"name\": \"\",\n        \"protected\": false,\n        \"notifyDenied\": false,\n        \"isInherit\": false,\n        \"left_object_id\": \"PARK\",\n        \"leftInheritObjectId\": \"\",\n        \"left_id\": \"park_test2\",\n        \"left_description\": \"test2_park\",\n        \"left_remark\": \"test2_park的描述\",\n        \"left_name\": \"park_test2\",\n        \"left_min\": 0,\n        \"left_max\": -1,\n        \"left_groups\": [],\n        \"left_tags\": [],\n        \"right_object_id\": \"BBBB\",\n        \"rightInheritObjectId\": \"\",\n        \"right_id\": \"test2_park\",\n        \"right_description\": \"park_test2\",\n        \"right_remark\": \"park_test2的描述\",\n        \"right_name\": \"test2_park\",\n        \"right_min\": 0,\n        \"right_max\": -1,\n        \"right_groups\": [],\n        \"right_tags\": [],\n        \"_version\": 1\n    }\n}"
           }
         }
       ]
@@ -10509,6 +10744,9 @@
             "ref": "ObjectRelation.left_description"
           },
           {
+            "ref": "ObjectRelation.left_remark"
+          },
+          {
             "ref": "ObjectRelation.left_groups"
           },
           {
@@ -10519,6 +10757,9 @@
           },
           {
             "ref": "ObjectRelation.right_description"
+          },
+          {
+            "ref": "ObjectRelation.right_remark"
           },
           {
             "ref": "ObjectRelation.right_groups"
@@ -10555,13 +10796,13 @@
             "headers": {
               "Content-Type": "application/json"
             },
-            "body": "{\n    \"name\": \"update_object_relationship\",\n    \"left_description\": \"test2_park\",\n    \"left_groups\": [\n        \"l_groups\"\n    ],\n    \"left_tags\": [\n        \"l_tags\"\n    ],\n    \"right_description\": \"park_test2\",\n    \"right_groups\": [\n        \"r_groups\"\n    ],\n    \"right_tags\": [\n        \"r_tags\"\n    ]\n}"
+            "body": "{\n    \"name\": \"update_object_relationship\",\n    \"left_description\": \"test2_park\",\n    \"left_remark\": \"test2_park的描述\",\n    \"left_groups\": [\n        \"l_groups\"\n    ],\n    \"left_tags\": [\n        \"l_tags\"\n    ],\n    \"right_description\": \"park_test2\",\n    \"right_remark\": \"park_test2的描述\",\n    \"right_groups\": [\n        \"r_groups\"\n    ],\n    \"right_tags\": [\n        \"r_tags\"\n    ]\n}"
           },
           "response": {
             "headers": {
               "Content-Type": "application/json; charset=utf-8"
             },
-            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"relation_id\": \"PARK_park_test2_test2_park_BBBB\",\n        \"name\": \"update_object_relationship\",\n        \"protected\": false,\n        \"notifyDenied\": false,\n        \"isInherit\": false,\n        \"left_object_id\": \"PARK\",\n        \"leftInheritObjectId\": \"\",\n        \"left_id\": \"park_test2\",\n        \"left_description\": \"test2_park\",\n        \"left_name\": \"park_test2\",\n        \"left_min\": 0,\n        \"left_max\": -1,\n        \"left_groups\": [\n            \"l_groups\"\n        ],\n        \"left_tags\": [\n            \"l_tags\"\n        ],\n        \"right_object_id\": \"BBBB\",\n        \"rightInheritObjectId\": \"\",\n        \"right_id\": \"test2_park\",\n        \"right_description\": \"park_test2\",\n        \"right_name\": \"test2_park\",\n        \"right_min\": 0,\n        \"right_max\": -1,\n        \"right_groups\": [\n            \"r_groups\"\n        ],\n        \"right_tags\": [\n            \"r_tags\"\n        ],\n        \"_version\": 2\n    }\n}"
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"relation_id\": \"PARK_park_test2_test2_park_BBBB\",\n        \"name\": \"update_object_relationship\",\n        \"protected\": false,\n        \"notifyDenied\": false,\n        \"isInherit\": false,\n        \"left_object_id\": \"PARK\",\n        \"leftInheritObjectId\": \"\",\n        \"left_id\": \"park_test2\",\n        \"left_description\": \"test2_park\",\n        \"left_remark\": \"test2_park的描述\",\n        \"left_name\": \"park_test2\",\n        \"left_min\": 0,\n        \"left_max\": -1,\n        \"left_groups\": [\n            \"l_groups\"\n        ],\n        \"left_tags\": [\n            \"l_tags\"\n        ],\n        \"right_object_id\": \"BBBB\",\n        \"rightInheritObjectId\": \"\",\n        \"right_id\": \"test2_park\",\n        \"right_description\": \"park_test2\",\n        \"right_remark\": \"park_test2的描述\",\n        \"right_name\": \"test2_park\",\n        \"right_min\": 0,\n        \"right_max\": -1,\n        \"right_groups\": [\n            \"r_groups\"\n        ],\n        \"right_tags\": [\n            \"r_tags\"\n        ],\n        \"_version\": 2\n    }\n}"
           }
         }
       ]

@@ -9,6 +9,9 @@ export interface ObjectRelationApi_UpdateRequestBody {
   /** 是与 left_id 相反的含义, 但仅用于前端展示 (p.s.: 关系左端模型的描述) */
   left_description: string;
 
+  /** 关系左端备注描述 (由于name和description本来存在混淆使用的问题，所以重新加一个remark字段表示描述) */
+  left_remark?: string;
+
   /** 关系在左端模型的哪些分组里 */
   left_groups: string[];
 
@@ -20,6 +23,9 @@ export interface ObjectRelationApi_UpdateRequestBody {
 
   /** 是与 right_id 相反的含义, 但仅用于前端展示 (p.s.: 关系右端模型的描述) */
   right_description: string;
+
+  /** 关系右端备注描述 (由于name和description本来存在混淆使用的问题，所以重新加一个remark字段表示描述) */
+  right_remark?: string;
 
   /** 关系在右端模型的哪些分组里 */
   right_groups: string[];

@@ -34,6 +34,7 @@ export * from "./listRelationQueryStrategyV2Request";
 export * from "./objectConflictCheck";
 export * from "./update";
 export * from "./updateAttributeCategory";
+export * from "./updateObjectView";
 export * from "./updateProperty";
 export * from "./updateRelationQueryStrategyV2";
 export * from "./updateV2";

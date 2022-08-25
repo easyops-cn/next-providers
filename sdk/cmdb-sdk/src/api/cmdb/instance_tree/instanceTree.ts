@@ -8,6 +8,9 @@ export interface InstanceTreeApi_InstanceTreeRequestBody {
 
   /** 全局忽略与父级无关联实例,默认false */
   ignore_single?: boolean;
+
+  /** 是否忽略应用模型数据 */
+  ignore_app?: boolean;
 }
 
 export type InstanceTreeApi_InstanceTreeResponseBody = Record<string, any>;

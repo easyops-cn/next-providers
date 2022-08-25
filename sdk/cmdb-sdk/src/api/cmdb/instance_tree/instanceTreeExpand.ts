@@ -14,6 +14,9 @@ export interface InstanceTreeApi_InstanceTreeExpandRequestBody {
 
   /** 实例Id */
   instanceId?: string;
+
+  /** 是否忽略应用模型数据 */
+  ignore_app?: boolean;
 }
 
 export type InstanceTreeApi_InstanceTreeExpandResponseBody = Record<
