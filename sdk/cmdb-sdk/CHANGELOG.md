@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/cmdb-sdk@3.0.2...@next-sdk/cmdb-sdk@3.1.0) (2022-08-25)
+
+### Features
+
+- add apis: CmdbObjectApi_updateObjectView, InstanceRelationApi_groupInstanceByRelation, InstanceRelationApi_searchInstanceByRelation ([c113d5a](https://github.com/easyops-cn/next-providers/commit/c113d5a4588cb73d38317d4e75d199d0bf670e6e))
+
 ## [3.0.2](https://github.com/easyops-cn/next-providers/compare/@next-sdk/cmdb-sdk@3.0.1...@next-sdk/cmdb-sdk@3.0.2) (2022-08-08)
 
 **Note:** Version bump only for package @next-sdk/cmdb-sdk
