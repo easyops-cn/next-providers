@@ -648,6 +648,37 @@
       }
     },
     {
+      "contract": "cmdb.cmdb_object.collect",
+      "category": {
+        "en": "CMDB Object",
+        "zh": "CMDB 模型"
+      },
+      "name": "collect",
+      "version": "1.0.0",
+      "description": "收藏或者取消收藏模型",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/object/collect"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "objectIdList",
+            "type": "string[]",
+            "description": "模型id列表"
+          },
+          {
+            "name": "isCollect",
+            "type": "bool",
+            "description": "是否收藏"
+          }
+        ],
+        "required": ["objectIdList", "isCollect"]
+      },
+      "response": null
+    },
+    {
       "contract": "cmdb.cmdb_object.Create",
       "category": {
         "en": "CMDB Object",
@@ -2790,6 +2821,31 @@
           }
         ],
         "required": ["import_result"]
+      }
+    },
+    {
+      "contract": "cmdb.cmdb_object.search_collect",
+      "category": {
+        "en": "CMDB Object",
+        "zh": "CMDB 模型"
+      },
+      "name": "search_collect",
+      "version": "1.0.0",
+      "description": "查询收藏的模型",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/object/search_collect"
+      },
+      "request": null,
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "objectIdList",
+            "type": "string[]",
+            "description": "模型id列表"
+          }
+        ]
       }
     },
     {
