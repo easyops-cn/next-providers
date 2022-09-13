@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/cmdb-sdk@3.1.0...@next-sdk/cmdb-sdk@3.2.0) (2022-09-13)
+
+### Features
+
+- add apis: CmdbObjectApi_collect, CmdbObjectApi_searchCollect ([a4b01c0](https://github.com/easyops-cn/next-providers/commit/a4b01c01e2f4d06b3d601988d2621a5e49f17fda))
+
 # [3.1.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/cmdb-sdk@3.0.2...@next-sdk/cmdb-sdk@3.1.0) (2022-08-25)
 
 ### Features
