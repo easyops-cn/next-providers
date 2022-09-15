@@ -1,6 +1,6 @@
 {
   "name": "@next-sdk/form-builder-service-sdk",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "SDK for Form Builder Service",
   "homepage": "https://github.com/easyops-cn/next-providers/tree/master/sdk/form-builder-service-sdk",
   "license": "GPL-3.0",

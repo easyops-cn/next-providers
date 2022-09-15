@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/form-builder-service-sdk@1.1.0...@next-sdk/form-builder-service-sdk@1.2.0) (2022-09-15)
+
+### Features
+
+- add apis: FormProjectApi_createFormItem ([da84ee5](https://github.com/easyops-cn/next-providers/commit/da84ee55771157d9158035c912312ad05b1e9481))
+
 # 1.1.0 (2022-08-16)
 
 ### Features
