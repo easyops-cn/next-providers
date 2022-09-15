@@ -4,6 +4,9 @@ import { ModelFormItem } from "../../../model/form_builder_service";
 export interface FormProjectApi_BatchUpdateFormItemRequestBody {
   /** 字段实例列表 */
   formItemList: Partial<ModelFormItem>[];
+
+  /** 是否为草稿状态 */
+  isDraft: boolean;
 }
 
 /**

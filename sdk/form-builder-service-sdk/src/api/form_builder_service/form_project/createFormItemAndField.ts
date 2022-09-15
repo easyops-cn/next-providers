@@ -5,6 +5,9 @@ export interface FormProjectApi_CreateFormItemAndFieldRequestBody {
   /** 表单实例id */
   parentItemId?: string;
 
+  /** 是否为草稿状态 */
+  isDraft: boolean;
+
   /** 序号 */
   id: string;
 

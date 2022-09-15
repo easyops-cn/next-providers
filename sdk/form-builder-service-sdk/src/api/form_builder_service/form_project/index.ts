@@ -1,5 +1,6 @@
 export * from "./batchUpdateFormItem";
 export * from "./createFormDraft";
+export * from "./createFormItem";
 export * from "./createFormItemByField";
 export * from "./createFormItemWithoutField";
 export * from "./createFormModel";

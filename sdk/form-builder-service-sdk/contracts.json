@@ -18,9 +18,14 @@
             "name": "formItemList",
             "type": "FormItem[]",
             "description": "字段实例列表"
+          },
+          {
+            "name": "isDraft",
+            "type": "bool",
+            "description": "是否为草稿状态"
           }
         ],
-        "required": ["formItemList"]
+        "required": ["formItemList", "isDraft"]
       },
       "response": null
     },
@@ -92,6 +97,100 @@
       }
     },
     {
+      "contract": "form_builder_service.form_project.CreateFormItem",
+      "name": "CreateFormItem",
+      "version": "1.0.0",
+      "description": "创建表单项业务聚合",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/form_builder_service/v1/form_project/create/form_item"
+      },
+      "import": [
+        "easyops/model/form_builder_service/form_item",
+        "easyops/model/form_builder_service/form_model_field"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "formTemplateId",
+            "type": "string",
+            "description": "表单实例id"
+          },
+          {
+            "name": "parentItemId",
+            "type": "string",
+            "description": "表单实例id"
+          },
+          {
+            "name": "modelId",
+            "type": "string",
+            "description": "表单模型id"
+          },
+          {
+            "name": "isDraft",
+            "type": "bool",
+            "description": "是否为草稿状态"
+          },
+          {
+            "name": "formModelField",
+            "type": "FormModelField",
+            "description": "模型字段"
+          },
+          {
+            "name": "formItem",
+            "type": "object",
+            "description": "表单项信息",
+            "fields": [
+              {
+                "ref": "FormItem.id"
+              },
+              {
+                "ref": "FormItem.brick"
+              },
+              {
+                "ref": "FormItem.properties"
+              },
+              {
+                "ref": "FormItem.mountPoint"
+              },
+              {
+                "ref": "FormItem.events"
+              },
+              {
+                "ref": "FormItem.sort"
+              },
+              {
+                "ref": "FormItem.if"
+              }
+            ]
+          }
+        ],
+        "required": [
+          "formTemplateId",
+          "formItem.id",
+          "parentItemId",
+          "isDraft",
+          "modelId"
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "itemInstanceId",
+            "type": "string",
+            "description": "表单项实例Id"
+          },
+          {
+            "name": "fieldInstanceId",
+            "type": "string",
+            "description": "模型字段Id"
+          }
+        ]
+      }
+    },
+    {
       "contract": "form_builder_service.form_project.CreateFormItemByField",
       "name": "CreateFormItemByField",
       "version": "1.0.0",
@@ -120,6 +219,11 @@
             "description": "表单实例id"
           },
           {
+            "name": "isDraft",
+            "type": "bool",
+            "description": "是否为草稿状态"
+          },
+          {
             "ref": "FormItem.id"
           },
           {
@@ -141,7 +245,7 @@
             "ref": "FormItem.if"
           }
         ],
-        "required": ["formTemplateId", "FormItem.id", "fieldId"]
+        "required": ["formTemplateId", "FormItem.id", "fieldId", "isDraft"]
       },
       "response": {
         "type": "object",
@@ -178,6 +282,11 @@
             "description": "表单实例id"
           },
           {
+            "name": "isDraft",
+            "type": "bool",
+            "description": "是否为草稿状态"
+          },
+          {
             "ref": "FormItem.id"
           },
           {
@@ -199,7 +308,7 @@
             "ref": "FormItem.if"
           }
         ],
-        "required": ["formTemplateId", "FormItem.id"]
+        "required": ["formTemplateId", "FormItem.id", "isDraft"]
       },
       "response": {
         "type": "object",
@@ -435,6 +544,11 @@
             "description": "表单实例id"
           },
           {
+            "name": "isDraft",
+            "type": "bool",
+            "description": "是否为草稿状态"
+          },
+          {
             "ref": "FormItem.id"
           },
           {
@@ -479,7 +593,8 @@
           "modelId",
           "FormItem.id",
           "FormModelField.name",
-          "FormModelField.fieldId"
+          "FormModelField.fieldId",
+          "isDraft"
         ]
       },
       "response": {
@@ -585,9 +700,14 @@
             "name": "instanceId",
             "type": "string",
             "description": "id"
+          },
+          {
+            "name": "isDraft",
+            "type": "bool",
+            "description": "是否为草稿状态"
           }
         ],
-        "required": ["instanceId"]
+        "required": ["instanceId", "isDraft"]
       },
       "response": null
     },
@@ -1132,9 +1252,14 @@
             "name": "if",
             "type": "bool",
             "description": "是否展示"
+          },
+          {
+            "name": "isDraft",
+            "type": "bool",
+            "description": "是否为草稿状态"
           }
         ],
-        "required": ["instanceId", "formId"]
+        "required": ["instanceId", "formId", "isDraft"]
       },
       "response": null
     },

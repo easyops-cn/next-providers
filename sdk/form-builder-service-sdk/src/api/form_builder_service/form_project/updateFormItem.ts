@@ -24,6 +24,9 @@ export interface FormProjectApi_UpdateFormItemRequestBody {
 
   /** 是否展示 */
   if?: boolean;
+
+  /** 是否为草稿状态 */
+  isDraft: boolean;
 }
 
 /**
