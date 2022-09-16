@@ -28,9 +28,42 @@
             "ref": "InstalledMicroAppStandalone.*"
           },
           {
+            "name": "meta",
+            "type": "string",
+            "description": "元数据定义（当前用于获取菜单信息）"
+          },
+          {
             "name": "setActiveVersion",
             "type": "bool",
             "description": "是否设置为启用版本"
+          },
+          {
+            "name": "defaultContainer",
+            "type": "object",
+            "fields": [
+              {
+                "name": "id",
+                "type": "string",
+                "description": "容器id"
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "description": "容器name"
+              },
+              {
+                "name": "type",
+                "type": "string",
+                "enum": ["desktop", "dir"],
+                "description": "容器类型"
+              },
+              {
+                "name": "order",
+                "type": "int",
+                "description": "排序"
+              }
+            ],
+            "description": "默认容器"
           }
         ]
       },
@@ -68,25 +101,8 @@
         "fields": [
           {
             "name": "injectMenus",
-            "type": "object[]",
-            "description": "注入菜单",
-            "fields": [
-              {
-                "ref": "StoryboardMenu.*"
-              },
-              {
-                "name": "app",
-                "type": "object[]",
-                "description": "关联微应用",
-                "fields": [
-                  {
-                    "name": "appId",
-                    "type": "string",
-                    "description": "微应用Id"
-                  }
-                ]
-              }
-            ]
+            "type": "map[]",
+            "description": "注入菜单信息"
           },
           {
             "name": "userConfig",

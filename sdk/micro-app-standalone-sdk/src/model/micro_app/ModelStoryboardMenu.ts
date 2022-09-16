@@ -37,6 +37,9 @@ export interface ModelStoryboardMenu {
 
   /** Default Collapsed Breakpoint */
   defaultCollapsedBreakpoint: number;
+
+  /** i18n data */
+  i18n: Record<string, any>;
 }
 
 export interface ModelStoryboardMenu_titleDataSource {

@@ -20,6 +20,26 @@ export const ReportApi_reportMicroAppStandalone = (
   );
 
 export interface ReportApi_ReportMicroAppStandaloneRequestBody_2 {
+  /** 元数据定义（当前用于获取菜单信息） */
+  meta?: string;
+
   /** 是否设置为启用版本 */
   setActiveVersion?: boolean;
+
+  /** 默认容器 */
+  defaultContainer?: ReportApi_ReportMicroAppStandaloneRequestBody_defaultContainer;
+}
+
+export interface ReportApi_ReportMicroAppStandaloneRequestBody_defaultContainer {
+  /** 容器id */
+  id?: string;
+
+  /** 容器name */
+  name?: string;
+
+  /** 容器类型 */
+  type?: "desktop" | "dir";
+
+  /** 排序 */
+  order?: number;
 }

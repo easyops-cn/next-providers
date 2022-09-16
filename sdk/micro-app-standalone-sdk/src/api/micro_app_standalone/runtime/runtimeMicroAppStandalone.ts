@@ -1,11 +1,9 @@
 import { http, HttpOptions } from "@next-core/brick-http";
-import { ModelStoryboardMenu } from "../../../model/micro_app";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface RuntimeApi_RuntimeMicroAppStandaloneResponseBody {
-  /** 注入菜单 */
-  injectMenus?: (Partial<ModelStoryboardMenu> &
-    RuntimeApi_RuntimeMicroAppStandaloneResponseBody_injectMenus_item)[];
+  /** 注入菜单信息 */
+  injectMenus?: Record<string, any>[];
 
   /** 用户配置 */
   userConfig?: Record<string, any>;
@@ -27,13 +25,3 @@ export const RuntimeApi_runtimeMicroAppStandalone = async (
       options
     )
   ).data;
-
-export interface RuntimeApi_RuntimeMicroAppStandaloneResponseBody_injectMenus_item {
-  /** 关联微应用 */
-  app?: RuntimeApi_RuntimeMicroAppStandaloneResponseBody_injectMenus_item_app_item[];
-}
-
-export interface RuntimeApi_RuntimeMicroAppStandaloneResponseBody_injectMenus_item_app_item {
-  /** 微应用Id */
-  appId?: string;
-}
