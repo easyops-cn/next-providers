@@ -15,6 +15,11 @@
         "type": "object",
         "fields": [
           {
+            "name": "formTemplateId",
+            "type": "string",
+            "description": "表单实例id"
+          },
+          {
             "name": "formItemList",
             "type": "FormItem[]",
             "description": "字段实例列表"
@@ -166,13 +171,7 @@
             ]
           }
         ],
-        "required": [
-          "formTemplateId",
-          "formItem.id",
-          "parentItemId",
-          "isDraft",
-          "modelId"
-        ]
+        "required": ["formTemplateId", "formItem.id", "parentItemId", "isDraft"]
       },
       "response": {
         "type": "object",
@@ -185,7 +184,12 @@
           {
             "name": "fieldInstanceId",
             "type": "string",
-            "description": "模型字段Id"
+            "description": "模型字段实例Id"
+          },
+          {
+            "name": "draftInstanceId",
+            "type": "string",
+            "description": "表单草稿实例Id"
           }
         ]
       }
@@ -696,6 +700,11 @@
       "request": {
         "type": "object",
         "fields": [
+          {
+            "name": "formTemplateId",
+            "type": "string",
+            "description": "表单实例id"
+          },
           {
             "name": "instanceId",
             "type": "string",
@@ -1209,9 +1218,9 @@
         "type": "object",
         "fields": [
           {
-            "name": "formId",
+            "name": "formTemplateId",
             "type": "string",
-            "description": "关联的表单Id"
+            "description": "表单实例id"
           },
           {
             "name": "instanceId",
@@ -1259,7 +1268,7 @@
             "description": "是否为草稿状态"
           }
         ],
-        "required": ["instanceId", "formId", "isDraft"]
+        "required": ["instanceId", "isDraft", "formTemplateId"]
       },
       "response": null
     },

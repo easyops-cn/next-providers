@@ -1,8 +1,8 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
 export interface FormProjectApi_UpdateFormItemRequestBody {
-  /** 关联的表单Id */
-  formId: string;
+  /** 表单实例id */
+  formTemplateId: string;
 
   /** 序号 */
   id?: string;

@@ -2,6 +2,9 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelFormItem } from "../../../model/form_builder_service";
 
 export interface FormProjectApi_BatchUpdateFormItemRequestBody {
+  /** 表单实例id */
+  formTemplateId?: string;
+
   /** 字段实例列表 */
   formItemList: Partial<ModelFormItem>[];
 

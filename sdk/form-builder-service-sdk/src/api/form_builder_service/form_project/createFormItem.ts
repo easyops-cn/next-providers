@@ -10,7 +10,7 @@ export interface FormProjectApi_CreateFormItemRequestBody {
   parentItemId: string;
 
   /** 表单模型id */
-  modelId: string;
+  modelId?: string;
 
   /** 是否为草稿状态 */
   isDraft: boolean;
@@ -26,8 +26,11 @@ export interface FormProjectApi_CreateFormItemResponseBody {
   /** 表单项实例Id */
   itemInstanceId?: string;
 
-  /** 模型字段Id */
+  /** 模型字段实例Id */
   fieldInstanceId?: string;
+
+  /** 表单草稿实例Id */
+  draftInstanceId?: string;
 }
 
 /**

@@ -1,6 +1,9 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
 export interface FormProjectApi_DeleteFormItemRequestParams {
+  /** 表单实例id */
+  formTemplateId?: string;
+
   /** 是否为草稿状态 */
   isDraft: boolean;
 }
