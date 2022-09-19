@@ -6,6 +6,117 @@
   },
   "contracts": [
     {
+      "contract": "micro_app_standalone.launchpad.GetLaunchpadInfo",
+      "name": "GetLaunchpadInfo",
+      "version": "1.0.1",
+      "description": "Launchpad信息",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/micro_app_standalone/launchpad_info"
+      },
+      "import": [
+        "easyops/model/api_gateway/settings",
+        "easyops/model/micro_app/installed_micro_app_bootstrap"
+      ],
+      "request": null,
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "settings",
+            "type": "Settings",
+            "description": "配置"
+          },
+          {
+            "name": "desktops",
+            "description": "桌面列表",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "name",
+                "type": "string",
+                "description": "桌面名称"
+              },
+              {
+                "name": "order",
+                "type": "int",
+                "description": "排序"
+              },
+              {
+                "name": "storyboards",
+                "type": "object[]",
+                "description": "storyboards",
+                "fields": [
+                  {
+                    "name": "app",
+                    "type": "InstalledMicroAppBootstrap",
+                    "description": "小产品基本信息"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "siteSort",
+            "type": "object[]",
+            "description": "系统地图",
+            "fields": [
+              {
+                "name": "id",
+                "type": "string",
+                "description": "分类ID"
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "description": "分类名称"
+              },
+              {
+                "name": "order",
+                "type": "int",
+                "description": "分类顺序"
+              },
+              {
+                "name": "apps",
+                "type": "object[]",
+                "description": "微应用列表",
+                "fields": [
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "description": "微应用id"
+                  },
+                  {
+                    "name": "sort",
+                    "type": "int",
+                    "description": "微应用排序"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get launchpad info",
+            "zh": "Launchpad信息"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8259/api/v1/micro_app_standalone/launchpad_info"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"data\": {\n    \"settings\": {\n      \"launchpad\": {\n        \"columns\": 7,\n        \"rows\": 4\n      }\n    },\n    \"desktops\": [\n      {\n        \"name\": \"系统管理\",\n        \"order\": 1,\n        \"storyboards\": [\n          {\n            \"app\": {\n              \"id\": \"agent-management\",\n              \"name\": \"Agent 管理\",\n              \"icons\": {\n                \"large\": \"icons/large.png\"\n              },\n              \"currentVersion\": \"1.2.14\",\n              \"installStatus\": \"ok\",\n              \"homepage\": \"/legacy/agent-management\",\n              \"status\": \"enabled\"\n            },\n            \"dependsAll\": false\n          }\n        ]\n      }\n    ],\n    \"siteSort\": [\n      {\n        \"id\": \"PublicService\",\n        \"name\": \"公共服务\",\n        \"order\": 1,\n        \"apps\": [\n          {\n            \"id\": \"agent-management\",\n            \"sort\": 1\n          }\n        ]\n      }\n    ]\n  },\n  \"error\": \"\"\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "micro_app_standalone.report.ReportMicroAppStandalone",
       "category": {
         "en": "Data Report",
