@@ -8,7 +8,7 @@
     {
       "contract": "micro_app_standalone.launchpad.GetLaunchpadInfo",
       "name": "GetLaunchpadInfo",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "description": "Launchpad信息",
       "endpoint": {
         "method": "GET",
@@ -16,9 +16,19 @@
       },
       "import": [
         "easyops/model/api_gateway/settings",
-        "easyops/model/micro_app/installed_micro_app_bootstrap"
+        "easyops/model/micro_app/installed_micro_app_bootstrap",
+        "easyops/model/api_gateway/desktop"
       ],
-      "request": null,
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appFields",
+            "type": "string",
+            "description": "指定查询storyboard下的app字段，不指定则默认返回 appId,name,position,homepage,menuIcon,icons"
+          }
+        ]
+      },
       "response": {
         "type": "object",
         "fields": [
@@ -29,30 +39,18 @@
           },
           {
             "name": "desktops",
-            "description": "桌面列表",
+            "type": "Desktop[]",
+            "description": "桌面列表"
+          },
+          {
+            "name": "storyboards",
             "type": "object[]",
+            "description": "storyboards",
             "fields": [
               {
-                "name": "name",
-                "type": "string",
-                "description": "桌面名称"
-              },
-              {
-                "name": "order",
-                "type": "int",
-                "description": "排序"
-              },
-              {
-                "name": "storyboards",
-                "type": "object[]",
-                "description": "storyboards",
-                "fields": [
-                  {
-                    "name": "app",
-                    "type": "InstalledMicroAppBootstrap",
-                    "description": "小产品基本信息"
-                  }
-                ]
+                "name": "app",
+                "type": "InstalledMicroAppBootstrap",
+                "description": "小产品基本信息"
               }
             ]
           },
@@ -111,7 +109,7 @@
             "headers": {
               "Content-Type": "application/json; charset=utf-8"
             },
-            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"data\": {\n    \"settings\": {\n      \"launchpad\": {\n        \"columns\": 7,\n        \"rows\": 4\n      }\n    },\n    \"desktops\": [\n      {\n        \"name\": \"系统管理\",\n        \"order\": 1,\n        \"storyboards\": [\n          {\n            \"app\": {\n              \"id\": \"agent-management\",\n              \"name\": \"Agent 管理\",\n              \"icons\": {\n                \"large\": \"icons/large.png\"\n              },\n              \"currentVersion\": \"1.2.14\",\n              \"installStatus\": \"ok\",\n              \"homepage\": \"/legacy/agent-management\",\n              \"status\": \"enabled\"\n            },\n            \"dependsAll\": false\n          }\n        ]\n      }\n    ],\n    \"siteSort\": [\n      {\n        \"id\": \"PublicService\",\n        \"name\": \"公共服务\",\n        \"order\": 1,\n        \"apps\": [\n          {\n            \"id\": \"agent-management\",\n            \"sort\": 1\n          }\n        ]\n      }\n    ]\n  },\n  \"error\": \"\"\n}"
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"data\": {\n    \"storyboards\": [\n      {\n        \"app\": {\n          \"id\": \"agent-management\",\n          \"name\": \"Agent 管理\",\n          \"icons\": {\n            \"large\": \"icons/large.png\"\n          },\n          \"currentVersion\": \"1.2.14\",\n          \"installStatus\": \"ok\",\n          \"homepage\": \"/legacy/agent-management\",\n          \"status\": \"enabled\"\n        }\n      }\n    ],\n    \"settings\": {\n      \"launchpad\": {\n        \"columns\": 7,\n        \"rows\": 4\n      }\n    },\n    \"desktops\": [\n      {\n        \"name\": \"持续交付\",\n        \"order\": 2,\n        \"items\": [\n          {\n            \"type\": \"app\",\n            \"id\": \"app-deploy\",\n            \"name\": \"\",\n            \"position\": 10,\n            \"url\": \"\",\n            \"items\": []\n          }\n        ]\n      }\n    ],\n    \"siteSort\": [\n      {\n        \"id\": \"ResourceManagement\",\n        \"name\": \"资源管理\",\n        \"order\": 1,\n        \"apps\": [\n          {\n            \"id\": \"cmdb-instance-management\",\n            \"sort\": 1\n          }\n        ]\n      }\n    ]\n  },\n  \"error\": \"\"\n}"
           }
         }
       ]

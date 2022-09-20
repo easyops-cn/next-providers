@@ -1,4 +1,7 @@
-import { ModelInstalledMicroAppIcon } from "../micro_app";
+import {
+  ModelInstalledMicroAppIcon,
+  ModelInstalledMicroAppMenuIcon,
+} from "../micro_app";
 
 /** 小产品 */
 export interface ModelInstalledMicroAppStandalone {
@@ -13,6 +16,9 @@ export interface ModelInstalledMicroAppStandalone {
 
   /** 小产品图标图标url */
   icons: Partial<ModelInstalledMicroAppIcon>;
+
+  /** 菜单中显示的图标 */
+  menuIcon: Partial<ModelInstalledMicroAppMenuIcon>;
 
   /** 小产品首页 */
   homepage: string;
