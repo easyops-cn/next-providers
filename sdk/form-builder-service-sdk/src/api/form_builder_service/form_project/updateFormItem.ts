@@ -1,4 +1,6 @@
 import { http, HttpOptions } from "@next-core/brick-http";
+import { ModelDraftTemplateInfo } from "../../../model/form_builder_service";
+import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface FormProjectApi_UpdateFormItemRequestBody {
   /** 表单实例id */
@@ -29,17 +31,24 @@ export interface FormProjectApi_UpdateFormItemRequestBody {
   isDraft: boolean;
 }
 
+export type FormProjectApi_UpdateFormItemResponseBody =
+  Partial<ModelDraftTemplateInfo>;
+
 /**
  * @description 更新表单项
  * @endpoint PUT /api/form_builder_service/v1/form_project/form_item/update/:instanceId
  */
-export const FormProjectApi_updateFormItem = (
+export const FormProjectApi_updateFormItem = async (
   instanceId: string | number,
   data: FormProjectApi_UpdateFormItemRequestBody,
   options?: HttpOptions
-): Promise<void> =>
-  /**! @contract easyops.api.form_builder_service.form_project.UpdateFormItem@1.0.0 */ http.put<void>(
-    `api/gateway/form_builder_service.form_project.UpdateFormItem/api/form_builder_service/v1/form_project/form_item/update/${instanceId}`,
-    data,
-    options
-  );
+): Promise<FormProjectApi_UpdateFormItemResponseBody> =>
+  /**! @contract easyops.api.form_builder_service.form_project.UpdateFormItem@1.0.0 */ (
+    await http.put<
+      ResponseBodyWrapper<FormProjectApi_UpdateFormItemResponseBody>
+    >(
+      `api/gateway/form_builder_service.form_project.UpdateFormItem/api/form_builder_service/v1/form_project/form_item/update/${instanceId}`,
+      data,
+      options
+    )
+  ).data;

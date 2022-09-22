@@ -45,7 +45,8 @@
       },
       "import": [
         "easyops/model/form_builder_service/form_tpl",
-        "easyops/model/form_builder_service/form_item"
+        "easyops/model/form_builder_service/form_item",
+        "easyops/model/form_builder_service/draft_template_info"
       ],
       "request": {
         "type": "object",
@@ -64,41 +65,7 @@
         "required": ["instanceId"]
       },
       "response": {
-        "type": "object",
-        "fields": [
-          {
-            "name": "draftInstanceId",
-            "type": "string",
-            "description": "表单草稿Id"
-          },
-          {
-            "name": "itemInstanceId",
-            "type": "string",
-            "description": "表单项实例Id"
-          },
-          {
-            "name": "rootItemInstanceId",
-            "type": "string",
-            "description": "草稿根节点实例id"
-          },
-          {
-            "name": "itemMapList",
-            "type": "object[]",
-            "description": "新老表单项映射",
-            "fields": [
-              {
-                "name": "oldInstanceId",
-                "type": "string",
-                "description": "旧实例Id"
-              },
-              {
-                "name": "newItem",
-                "type": "FormItem",
-                "description": "新表单项信息"
-              }
-            ]
-          }
-        ]
+        "type": "DraftTemplateInfo"
       }
     },
     {
@@ -112,7 +79,8 @@
       },
       "import": [
         "easyops/model/form_builder_service/form_item",
-        "easyops/model/form_builder_service/form_model_field"
+        "easyops/model/form_builder_service/form_model_field",
+        "easyops/model/form_builder_service/draft_template_info"
       ],
       "request": {
         "type": "object",
@@ -174,24 +142,7 @@
         "required": ["formTemplateId", "formItem.id", "parentItemId", "isDraft"]
       },
       "response": {
-        "type": "object",
-        "fields": [
-          {
-            "name": "itemInstanceId",
-            "type": "string",
-            "description": "表单项实例Id"
-          },
-          {
-            "name": "fieldInstanceId",
-            "type": "string",
-            "description": "模型字段实例Id"
-          },
-          {
-            "name": "draftInstanceId",
-            "type": "string",
-            "description": "表单草稿实例Id"
-          }
-        ]
+        "type": "DraftTemplateInfo"
       }
     },
     {
@@ -696,7 +647,7 @@
         "method": "DELETE",
         "uri": "/api/form_builder_service/v1/form_project/form_item/delete/:instanceId"
       },
-      "import": [],
+      "import": ["easyops/model/form_builder_service/draft_template_info"],
       "request": {
         "type": "object",
         "fields": [
@@ -718,7 +669,9 @@
         ],
         "required": ["instanceId", "isDraft"]
       },
-      "response": null
+      "response": {
+        "type": "DraftTemplateInfo"
+      }
     },
     {
       "contract": "form_builder_service.form_project.DeleteFormModel",
@@ -1213,7 +1166,10 @@
         "method": "PUT",
         "uri": "/api/form_builder_service/v1/form_project/form_item/update/:instanceId"
       },
-      "import": ["easyops/model/form_builder_service/form_item"],
+      "import": [
+        "easyops/model/form_builder_service/form_item",
+        "easyops/model/form_builder_service/draft_template_info"
+      ],
       "request": {
         "type": "object",
         "fields": [
@@ -1270,7 +1226,9 @@
         ],
         "required": ["instanceId", "isDraft", "formTemplateId"]
       },
-      "response": null
+      "response": {
+        "type": "DraftTemplateInfo"
+      }
     },
     {
       "contract": "form_builder_service.form_project.UpdateFormModel",

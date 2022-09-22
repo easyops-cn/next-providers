@@ -1,5 +1,6 @@
 export * from "./ModelFormItem";
 export * from "./ModelFormTpl";
+export * from "./ModelDraftTemplateInfo";
 export * from "./ModelFormModelField";
 export * from "./ModelFormModels";
 export * from "./ModelFormProject";

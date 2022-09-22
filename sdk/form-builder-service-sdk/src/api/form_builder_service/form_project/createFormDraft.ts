@@ -1,5 +1,5 @@
 import { http, HttpOptions } from "@next-core/brick-http";
-import { ModelFormItem } from "../../../model/form_builder_service";
+import { ModelDraftTemplateInfo } from "../../../model/form_builder_service";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface FormProjectApi_CreateFormDraftRequestBody {
@@ -7,19 +7,8 @@ export interface FormProjectApi_CreateFormDraftRequestBody {
   formItemId?: string;
 }
 
-export interface FormProjectApi_CreateFormDraftResponseBody {
-  /** 表单草稿Id */
-  draftInstanceId?: string;
-
-  /** 表单项实例Id */
-  itemInstanceId?: string;
-
-  /** 草稿根节点实例id */
-  rootItemInstanceId?: string;
-
-  /** 新老表单项映射 */
-  itemMapList?: FormProjectApi_CreateFormDraftResponseBody_itemMapList_item[];
-}
+export type FormProjectApi_CreateFormDraftResponseBody =
+  Partial<ModelDraftTemplateInfo>;
 
 /**
  * @description 创建表单草稿
@@ -39,11 +28,3 @@ export const FormProjectApi_createFormDraft = async (
       options
     )
   ).data;
-
-export interface FormProjectApi_CreateFormDraftResponseBody_itemMapList_item {
-  /** 旧实例Id */
-  oldInstanceId?: string;
-
-  /** 新表单项信息 */
-  newItem?: Partial<ModelFormItem>;
-}
