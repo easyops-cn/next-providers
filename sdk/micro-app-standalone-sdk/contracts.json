@@ -179,6 +179,31 @@
       "response": null
     },
     {
+      "contract": "micro_app_standalone.runtime.DeleteStandaloneAppEtagCache",
+      "category": {
+        "en": "Runtime",
+        "zh": "运行时"
+      },
+      "name": "DeleteStandaloneAppEtagCache",
+      "version": "1.0.0",
+      "description": "删除具体bootstrapV2的etag缓存(standalone_micro_app)",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/standalone_micro_app/bootstrap_etag"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appIds",
+            "type": "string",
+            "description": "小产品id，多个用逗号分割"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
       "contract": "micro_app_standalone.runtime.RuntimeMicroAppStandalone",
       "category": {
         "en": "Runtime",

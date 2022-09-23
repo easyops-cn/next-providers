@@ -71,6 +71,9 @@ export interface ModelInstalledMicroAppBootstrap {
   /** 是否来自buildPsh方式 */
   isBuildPush: boolean;
 
+  /** 是否独立部署 */
+  standaloneMode: boolean;
+
   /** 小产品id */
   id: string;
 
