@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.8.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/next-builder-sdk@2.7.0...@next-sdk/next-builder-sdk@2.8.0) (2022-10-14)
+
+### Features
+
+- add apis: OlapApi_getRouteMinLoadTime, OlapApi_index, PackageAloneApi_addDependencies, PackageAloneApi_deleteDependencies, PackageAloneApi_editDependencies, PackageAloneApi_index, PackageAloneApi_listDependencies, PackageAloneApi_packageStandAlone, PackageAloneApi_updateDependencies ([fd4ae5f](https://github.com/easyops-cn/next-providers/commit/fd4ae5f5db0f1cc89a08ebf9410d62287821984a))
+
 # [2.7.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/next-builder-sdk@2.6.1...@next-sdk/next-builder-sdk@2.7.0) (2022-07-05)
 
 ### Features
