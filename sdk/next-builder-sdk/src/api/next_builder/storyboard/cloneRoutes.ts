@@ -12,6 +12,9 @@ export interface StoryboardApi_CloneRoutesRequestBody {
 
   /** 是否排除sourceRoute，默认false */
   exclude?: boolean;
+
+  /** 是否linked sourceRoute关联的template */
+  linked?: boolean;
 }
 
 /**

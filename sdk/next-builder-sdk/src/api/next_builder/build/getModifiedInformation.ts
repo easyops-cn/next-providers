@@ -7,6 +7,9 @@ export interface BuildApi_GetModifiedInformationRequestParams {
 
   /** 结束版本，如果为 `current`时，返回数据包含基于最新版本的修改 */
   endVersion?: string;
+
+  /** 是否独立部署 */
+  isStandalone?: boolean;
 }
 
 export interface BuildApi_GetModifiedInformationResponseBody {

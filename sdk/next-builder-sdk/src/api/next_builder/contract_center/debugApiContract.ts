@@ -23,9 +23,6 @@ export interface ContractCenterApi_DebugApiContractRequestBody {
 
   /** 上传的文件名字和转发接口中fileName的的对应 */
   fileNameMapping?: Record<string, any>;
-
-  /** file */
-  files?: File[];
 }
 
 export interface ContractCenterApi_DebugApiContractResponseBody {
@@ -46,26 +43,13 @@ export interface ContractCenterApi_DebugApiContractResponseBody {
 export const ContractCenterApi_debugApiContract = async (
   data: ContractCenterApi_DebugApiContractRequestBody,
   options?: HttpOptions
-): Promise<ContractCenterApi_DebugApiContractResponseBody> => {
-  /**! @contract easyops.api.next_builder.contract_center.DebugApiContract@1.0.0 */ const _formData =
-    new FormData();
-  for (const [key, value] of Object.entries(data)) {
-    if (Array.isArray(value)) {
-      const k = `${key}[]`;
-      value.forEach((v) => {
-        _formData.append(k, v);
-      });
-    } else {
-      _formData.append(key, value);
-    }
-  }
-  return (
+): Promise<ContractCenterApi_DebugApiContractResponseBody> =>
+  /**! @contract easyops.api.next_builder.contract_center.DebugApiContract@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<ContractCenterApi_DebugApiContractResponseBody>
     >(
       "api/gateway/next_builder.contract_center.DebugApiContract/api/v1/contract/debug",
-      _formData,
+      data,
       options
     )
   ).data;
-};

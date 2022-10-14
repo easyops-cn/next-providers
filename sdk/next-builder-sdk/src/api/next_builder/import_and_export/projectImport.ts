@@ -3,6 +3,9 @@ import { http, HttpOptions } from "@next-core/brick-http";
 export interface ImportAndExportApi_ProjectImportRequestBody {
   /** 微应用的tar包 */
   file?: File;
+
+  /** 如果APP已经存在是否允许覆盖，是则会删除和重建APP相关数据，否则会在已有基础上更新，但可能会存在部分无法使用的数据 */
+  rebuild?: boolean;
 }
 
 /**

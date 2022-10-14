@@ -119,6 +119,9 @@ export interface ModelInstalledMicroApp {
 
   /** 容器类型(默认容器/个性化容器) */
   containerType: string;
+
+  /** 是否独立部署 */
+  standaloneMode: boolean;
 }
 
 export interface ModelInstalledMicroApp_defaultContainer {

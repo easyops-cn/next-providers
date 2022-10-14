@@ -156,6 +156,11 @@
             "name": "endVersion",
             "type": "string",
             "description": "结束版本，如果为 `current`时，返回数据包含基于最新版本的修改"
+          },
+          {
+            "name": "isStandalone",
+            "type": "bool",
+            "description": "是否独立部署"
           }
         ],
         "required": ["projectId"]
@@ -213,6 +218,11 @@
             "name": "endVersion",
             "type": "string",
             "description": "结束版本，如果为 `current`时，返回当前build&push和expor models之后的数据作为发布日志"
+          },
+          {
+            "name": "isStandalone",
+            "type": "bool",
+            "description": "是否独立部署"
           }
         ],
         "required": ["projectId"]
@@ -1011,11 +1021,6 @@
           },
           {
             "ref": "DebugContract.fileNameMapping"
-          },
-          {
-            "name": "files",
-            "type": "file[]",
-            "description": "file"
           }
         ]
       },
@@ -1771,6 +1776,11 @@
             "name": "file",
             "type": "file",
             "description": "微应用的tar包"
+          },
+          {
+            "name": "rebuild",
+            "type": "bool",
+            "description": "如果APP已经存在是否允许覆盖，是则会删除和重建APP相关数据，否则会在已有基础上更新，但可能会存在部分无法使用的数据"
           }
         ]
       },
@@ -2712,6 +2722,347 @@
       }
     },
     {
+      "contract": "next_builder.olap.GetRouteMinLoadTime",
+      "category": {
+        "en": "Olap",
+        "zh": "路由性能"
+      },
+      "name": "GetRouteMinLoadTime",
+      "version": "1.0.0",
+      "description": "查询routeId最小加载时间",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next_builder/olap/:instanceId"
+      },
+      "import": [
+        "easyops/model/data_exchange/filter",
+        "easyops/model/data_exchange/order",
+        "easyops/model/data_exchange/measure",
+        "easyops/model/data_exchange/having"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "小产品instanceId"
+          },
+          {
+            "name": "model",
+            "type": "string",
+            "description": "1. dataSource 为 cmdb 时， model 为 \"cmdb.model\"\n2. dataSource 为 clickhouse 时， model 为 \"库名.表名\"\n"
+          },
+          {
+            "name": "dims",
+            "type": "string[]",
+            "description": "聚合的维度"
+          },
+          {
+            "name": "measures",
+            "type": "Measure[]",
+            "description": "指标聚合计算规则"
+          },
+          {
+            "name": "filters",
+            "type": "Filter[]",
+            "description": "过滤条件"
+          },
+          {
+            "name": "order",
+            "type": "Order[]",
+            "description": "指定字段排序, 数组是有顺序，哪个字段在前，先按哪个字段排序"
+          },
+          {
+            "name": "having",
+            "type": "Having[]",
+            "description": "having过滤"
+          }
+        ],
+        "required": ["model", "measures", "dims", "filters"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总数"
+          },
+          {
+            "name": "list",
+            "type": "map[]",
+            "description": "统计后的数据"
+          }
+        ],
+        "required": ["total", "list"]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Query data, and perform statistics aggregation",
+            "zh": "查询数据， 并进行统计聚合统计"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/api/v1/next_builder/olap/instance_id",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"instanceId\": \"instance_id\",\n    \"dims\": [\n        \"route\"\n    ],\n    \"filters\": [\n\n        {\n            \"name\": \"time\",\n            \"operator\": \">=\",\n            \"value\": \"now-3d\"\n        },\n        {\n            \"name\": \"time\",\n            \"operator\": \"<=\",\n            \"value\": \"now-1s\"\n        },\n        {\n            \"name\": \"app\",\n            \"operator\": \"like\",\n            \"value\": \"apm\"\n        }\n    ],\n    \"having\": [\n        {\n            \"name\": \"lt_min\",\n            \"operator\": \">=\",\n            \"value\": 2500\n        }\n    ],\n    \"measures\": [\n        {\n            \"function\": {\n                \"args\": [\n                    \"lt\"\n                ],\n                \"expression\": \"min\"\n            },\n            \"name\": \"lt_min\"\n        }\n    ],\n    \"model\": \"easyops.FRONTEND_STAT\",\n    \"order\": [\n        {\n            \"name\": \"lt_min\",\n            \"order\": \"desc\"\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n        \"total\": 0,\n        \"list\": []\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "next_builder.package_alone.AddDependencies",
+      "category": {
+        "zh": "微应用独立打包",
+        "en": "PackageStandalone"
+      },
+      "name": "AddDependencies",
+      "version": "1.0.0",
+      "description": "增加依赖",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next_builder/micro_apps/:instanceId/dependencies"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.instanceId"
+          },
+          {
+            "ref": "MicroAppProject.dependencies"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.package_alone.DeleteDependencies",
+      "category": {
+        "zh": "微应用独立打包",
+        "en": "PackageStandalone"
+      },
+      "name": "DeleteDependencies",
+      "version": "1.0.0",
+      "description": "删除依赖",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/next_builder/micro_apps/:instanceId/dependencies"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.instanceId"
+          },
+          {
+            "name": "dependenciesName",
+            "type": "string",
+            "description": "dependenciesName, 多个用,分割"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.package_alone.EditDependencies",
+      "category": {
+        "zh": "微应用独立打包",
+        "en": "PackageStandalone"
+      },
+      "name": "EditDependencies",
+      "version": "1.0.0",
+      "description": "编辑依赖",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/next_builder/micro_apps/:instanceId/dependencies"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.instanceId"
+          },
+          {
+            "ref": "MicroAppProject.dependencies"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.package_alone.ListDependencies",
+      "category": {
+        "zh": "微应用独立打包",
+        "en": "PackageStandalone"
+      },
+      "name": "ListDependencies",
+      "version": "1.0.0",
+      "description": "微应用依赖列表",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/v1/next_builder/micro_apps/:instanceId/dependencies"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.instanceId"
+          }
+        ],
+        "required": ["MicroAppProject.instanceId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string",
+            "description": "name"
+          },
+          {
+            "name": "constraint",
+            "type": "string",
+            "description": "Constraint"
+          },
+          {
+            "name": "localDeploy",
+            "type": "bool",
+            "description": "IsLocalDeploy"
+          },
+          {
+            "name": "actualVersion",
+            "type": "string",
+            "description": "actualVersion"
+          },
+          {
+            "name": "parentDependency",
+            "type": "string",
+            "description": "被谁依赖"
+          },
+          {
+            "name": "dependencyWay",
+            "type": "string",
+            "enum": ["direct", "indirect"],
+            "description": "依赖方式"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "DependenciesListOfMicroApp",
+            "zh": "微应用依赖列表"
+          },
+          "request": {
+            "method": "LIST",
+            "uri": "http://127.0.0.1:8142/api/v1/next-builder/micro_apps/:instanceId/dependencies"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"list\": [\n        {\n            \"actualVersion\": \"1.260.1\",\n            \"constraint\": \"^1.0.0\",\n            \"dependencyWay\": \"direct\",\n            \"localDeploy\": true,\n            \"name\": \"presentational-bricks-NB\"\n        },\n        {\n            \"actualVersion\": \"2.68.27\",\n            \"constraint\": \"^2.65.1,=2.68.27\",\n            \"dependencyWay\": \"indirect\",\n            \"localDeploy\": true,\n            \"name\": \"brick_next\",\n            \"parentDependency\": \"presentational-bricks-NB:^1.0.0\"\n        }\n    ]\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "next_builder.package_alone.PackageStandAlone",
+      "category": {
+        "zh": "微应用独立打包",
+        "en": "PackageStandalone"
+      },
+      "name": "PackageStandAlone",
+      "version": "1.0.0",
+      "description": "微应用独立打包",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next_builder/package_standalone"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.projectId"
+          },
+          {
+            "name": "version",
+            "type": "version",
+            "description": "小产品版本号"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "版本描述信息"
+          }
+        ],
+        "required": ["MicroAppProject.projectId", "version", "description"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "releasedLogInstanceId",
+            "type": "instance_id",
+            "description": "packageStandAlone releasedLogInstanceId"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.package_alone.UpdateDependencies",
+      "category": {
+        "zh": "微应用独立打包",
+        "en": "PackageStandalone"
+      },
+      "name": "UpdateDependencies",
+      "version": "1.0.0",
+      "description": "更新依赖",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/next_builder/micro_apps/:instanceId/dependencies/version"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.instanceId"
+          },
+          {
+            "name": "name",
+            "type": "string[]",
+            "description": "依赖名称"
+          },
+          {
+            "name": "isEnterprise",
+            "type": "bool",
+            "description": "是否是企业版"
+          }
+        ],
+        "default": {
+          "isEnterprise": false
+        }
+      },
+      "response": null
+    },
+    {
       "contract": "next_builder.permission.ExportPermissions",
       "category": {
         "en": "Permission",
@@ -2995,6 +3346,11 @@
             "name": "exclude",
             "type": "bool",
             "description": "是否排除sourceRoute，默认false"
+          },
+          {
+            "name": "linked",
+            "type": "bool",
+            "description": "是否linked sourceRoute关联的template"
           }
         ],
         "required": ["sourceRouteId", "newAppId"]

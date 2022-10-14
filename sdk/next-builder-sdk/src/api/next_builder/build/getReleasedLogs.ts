@@ -8,6 +8,9 @@ export interface BuildApi_GetReleasedLogsRequestParams {
 
   /** 结束版本，如果为 `current`时，返回当前build&push和expor models之后的数据作为发布日志 */
   endVersion?: string;
+
+  /** 是否独立部署 */
+  isStandalone?: boolean;
 }
 
 export interface BuildApi_GetReleasedLogsResponseBody {
