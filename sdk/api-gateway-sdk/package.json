@@ -1,6 +1,6 @@
 {
   "name": "@next-sdk/api-gateway-sdk",
-  "version": "2.3.1",
+  "version": "2.4.0",
   "description": "SDK for Api Gateway",
   "homepage": "https://github.com/easyops-cn/next-providers/tree/master/sdk/api-gateway-sdk",
   "license": "GPL-3.0",
