@@ -1,3 +1,5 @@
+import { ModelDesktopItem } from ".";
+
 /** app展示视图 */
 export interface ModelDesktop {
   /** 桌面名称 */
@@ -24,16 +26,5 @@ export interface ModelDesktop_items_item {
   position?: number;
 
   /** 小产品列表(type为dir时有效) */
-  items?: ModelDesktop_items_item_items_item[];
-}
-
-export interface ModelDesktop_items_item_items_item {
-  /** 元素类型 */
-  type?: "app";
-
-  /** 小产品id */
-  id?: string;
-
-  /** 元素位置 */
-  position?: number;
+  items?: Partial<ModelDesktopItem>[];
 }

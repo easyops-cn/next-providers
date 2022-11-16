@@ -28,6 +28,9 @@ export interface AuthApi_CheckLoginResponseBody {
 
   /** csrf_token，开启了csrf特性才返回值 */
   csrfToken?: string;
+
+  /** license info */
+  license?: AuthApi_CheckLoginResponseBody_license;
 }
 
 /**
@@ -37,9 +40,17 @@ export interface AuthApi_CheckLoginResponseBody {
 export const AuthApi_checkLogin = async (
   options?: HttpOptions
 ): Promise<AuthApi_CheckLoginResponseBody> =>
-  /**! @contract easyops.api.api_gateway.auth.CheckLogin@1.0.0 */ (
+  /**! @contract easyops.api.api_gateway.auth.CheckLogin@1.1.1 */ (
     await http.get<ResponseBodyWrapper<AuthApi_CheckLoginResponseBody>>(
       "api/auth/login",
       options
     )
   ).data;
+
+export interface AuthApi_CheckLoginResponseBody_license {
+  /** 过期时间。如 02-Nov-2022 */
+  expires?: string;
+
+  /** 剩余有效天数 */
+  validDaysLeft?: number;
+}

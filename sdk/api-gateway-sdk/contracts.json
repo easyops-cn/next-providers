@@ -12,7 +12,7 @@
         "zh": "认证"
       },
       "name": "CheckLogin",
-      "version": "1.0.0",
+      "version": "1.1.1",
       "description": "判断用户是否登录",
       "endpoint": {
         "method": "GET",
@@ -67,6 +67,23 @@
             "name": "csrfToken",
             "type": "string",
             "description": "csrf_token，开启了csrf特性才返回值"
+          },
+          {
+            "name": "license",
+            "type": "object",
+            "description": "license info",
+            "fields": [
+              {
+                "name": "expires",
+                "type": "string",
+                "description": "过期时间。如 02-Nov-2022"
+              },
+              {
+                "name": "validDaysLeft",
+                "type": "int",
+                "description": "剩余有效天数"
+              }
+            ]
           }
         ]
       }
@@ -775,7 +792,7 @@
     {
       "contract": "api_gateway.bootstrap.Bootstrap",
       "name": "Bootstrap",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "获取系统初始化信息",
       "endpoint": {
         "method": "GET",
@@ -907,6 +924,46 @@
       }
     },
     {
+      "contract": "api_gateway.bootstrap_standalone.DeleteBootstrapStandaloneCache",
+      "category": {
+        "en": "Bootstrap Standalone",
+        "zh": "独立部署Bootstrap"
+      },
+      "name": "DeleteBootstrapStandaloneCache",
+      "version": "1.0.0",
+      "description": "删除独立小产品主页缓存",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/bootstrap_standalone_cache"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "homePage",
+            "type": "string",
+            "description": "主页"
+          }
+        ]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Delete bootstrap standalone home page cache",
+            "zh": "删除独立小产品主页缓存"
+          },
+          "request": {
+            "method": "DELETE",
+            "uri": "http://127.0.0.1:8104/api/v1/bootstrap_standalone_cache?homePage=/some-page"
+          },
+          "response": {
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": null\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "api_gateway.bootstrap_standalone.RuntimeStandalone",
       "category": {
         "en": "Bootstrap Standalone",
@@ -935,7 +992,7 @@
     {
       "contract": "api_gateway.bootstrap_v2.BootstrapV2",
       "name": "BootstrapV2",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "获取系统初始化信息",
       "endpoint": {
         "method": "GET",
@@ -1515,7 +1572,7 @@
     {
       "contract": "api_gateway.org.SaaSOrgRegister",
       "name": "SaaSOrgRegister",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "saas注册org",
       "endpoint": {
         "method": "POST",

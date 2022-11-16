@@ -51,7 +51,7 @@ export const BootstrapV2Api_bootstrapV2 = async (
   params: BootstrapV2Api_BootstrapV2RequestParams,
   options?: HttpOptions
 ): Promise<BootstrapV2Api_BootstrapV2ResponseBody> =>
-  /**! @contract easyops.api.api_gateway.bootstrap_v2.BootstrapV2@1.0.0 */ (
+  /**! @contract easyops.api.api_gateway.bootstrap_v2.BootstrapV2@1.1.0 */ (
     await http.get<ResponseBodyWrapper<BootstrapV2Api_BootstrapV2ResponseBody>>(
       "api/auth/v2/bootstrap",
       { ...options, params }
