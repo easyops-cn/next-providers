@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/api-gateway-sdk@2.4.0...@next-sdk/api-gateway-sdk@2.5.0) (2022-11-18)
+
+### Features
+
+- add apis: SsoApi_ssoAuthorizeRedirect ([892507d](https://github.com/easyops-cn/next-providers/commit/892507d80ecc08f8798e956347032e33edfb2ca0))
+
 # [2.4.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/api-gateway-sdk@2.3.1...@next-sdk/api-gateway-sdk@2.4.0) (2022-11-16)
 
 ### Features
