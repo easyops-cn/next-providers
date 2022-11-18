@@ -1792,9 +1792,24 @@
       }
     },
     {
+      "contract": "api_gateway.sso.SSOAuthorizeRedirect",
+      "name": "SSOAuthorizeRedirect",
+      "version": "1.0.0",
+      "description": "SSO访问令牌认证; SSO身份认证成功后认证服务将会携带 登录凭证 重定向至该接口",
+      "detail": "该接口最后会直接重定向到easyops平台的/next/sso-auth/authorize页面，可以是GET请求也可以是POST请求",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v2/sso/authorization"
+      },
+      "request": {
+        "type": "value"
+      },
+      "response": null
+    },
+    {
       "contract": "api_gateway.sso.SSOLogin",
       "name": "SSOLogin",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "SSO登录; 将请求重定向到指定的身份认证服务中",
       "endpoint": {
         "method": "GET",
@@ -1813,6 +1828,17 @@
       "response": {
         "type": "object",
         "fields": [
+          {
+            "name": "method",
+            "type": "string",
+            "enum": ["POST", "GET"],
+            "description": "请求方法，默认是GET方法"
+          },
+          {
+            "name": "requestArgs",
+            "type": "map",
+            "description": "请求体参数"
+          },
           {
             "name": "redirectURL",
             "type": "string",
@@ -1845,7 +1871,7 @@
     {
       "contract": "api_gateway.sso.SSOLogoutV2",
       "name": "SSOLogoutV2",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "SSO注销",
       "endpoint": {
         "method": "POST",
@@ -1864,6 +1890,17 @@
       "response": {
         "type": "object",
         "fields": [
+          {
+            "name": "method",
+            "type": "string",
+            "enum": ["POST", "GET"],
+            "description": "请求方法，默认是GET方法"
+          },
+          {
+            "name": "requestArgs",
+            "type": "map",
+            "description": "请求体参数"
+          },
           {
             "name": "logoutCallbackUrl",
             "type": "string",
