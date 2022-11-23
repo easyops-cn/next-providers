@@ -791,6 +791,41 @@
       }
     },
     {
+      "contract": "form_builder_service.form_project.GetFormTemplate",
+      "name": "GetFormTemplate",
+      "version": "1.0.0",
+      "description": "获取表单详情",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/form_builder_service/v1/form_project/form_template/retrieve/:id"
+      },
+      "import": ["easyops/model/form_builder_service/form_tpl"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectId",
+            "type": "string",
+            "description": "项目Id"
+          },
+          {
+            "name": "id",
+            "type": "string",
+            "description": "表单Id"
+          },
+          {
+            "name": "isMain",
+            "type": "bool",
+            "description": "主版本(false时返回最新发行版本)"
+          }
+        ],
+        "required": ["projectId", "id"]
+      },
+      "response": {
+        "type": "FormTpl"
+      }
+    },
+    {
       "contract": "form_builder_service.form_project.GetFormItemListByRoot",
       "name": "GetFormItemListByRoot",
       "version": "1.0.0",
@@ -1069,6 +1104,47 @@
       }
     },
     {
+      "contract": "form_builder_service.form_project.ListFormTemplate",
+      "name": "ListFormTemplate",
+      "version": "1.0.0",
+      "description": "获取表单列表",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/form_builder_service/v1/form_project/form_template/retrieve"
+      },
+      "import": ["easyops/model/form_builder_service/form_tpl"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "每页数据量"
+          },
+          {
+            "name": "projectId",
+            "type": "string",
+            "description": "项目Id"
+          },
+          {
+            "ref": "FormTpl.formName"
+          }
+        ],
+        "default": {
+          "page": 1,
+          "pageSize": 20
+        }
+      },
+      "response": {
+        "type": "FormTpl"
+      }
+    },
+    {
       "contract": "form_builder_service.form_project.ReleaseProjectFormVersion",
       "name": "ReleaseProjectFormVersion",
       "version": "1.0.0",
@@ -1098,6 +1174,52 @@
           }
         ],
         "required": ["instanceId", "version", "formName"]
+      },
+      "response": null
+    },
+    {
+      "contract": "form_builder_service.form_project.SetFormItemPosition",
+      "name": "SetFormItemPosition",
+      "version": "1.0.0",
+      "description": "设置表单项位置",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/form_builder_service/v1/form_item/update/item_position"
+      },
+      "import": ["easyops/model/form_builder_service/form_item"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "itemSortList",
+            "type": "object[]",
+            "description": "表单项顺序列表(有序) 其中 mountPoint 字段若为 null 则需要清空字段",
+            "fields": [
+              {
+                "ref": "FormItem.instanceId"
+              },
+              {
+                "ref": "FormItem.mountPoint"
+              },
+              {
+                "name": "parentItemId",
+                "type": "string",
+                "description": "父表单项实例Id"
+              }
+            ]
+          },
+          {
+            "name": "isDraft",
+            "type": "bool",
+            "description": "是否为草稿状态"
+          },
+          {
+            "name": "formTemplateId",
+            "type": "string",
+            "description": "表单实例id"
+          }
+        ],
+        "required": ["formTemplateId", "itemSortList.instanceId", "isDraft"]
       },
       "response": null
     },
