@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/form-builder-service-sdk@1.2.2...@next-sdk/form-builder-service-sdk@1.3.0) (2022-11-23)
+
+### Features
+
+- add apis: FormProjectApi_getFormTemplate, FormProjectApi_listFormTemplate, FormProjectApi_setFormItemPosition ([e5eaa58](https://github.com/easyops-cn/next-providers/commit/e5eaa58bfd55f85ad78b8a1f7db153742a673f87))
+
 ## [1.2.2](https://github.com/easyops-cn/next-providers/compare/@next-sdk/form-builder-service-sdk@1.2.1...@next-sdk/form-builder-service-sdk@1.2.2) (2022-09-22)
 
 **Note:** Version bump only for package @next-sdk/form-builder-service-sdk
