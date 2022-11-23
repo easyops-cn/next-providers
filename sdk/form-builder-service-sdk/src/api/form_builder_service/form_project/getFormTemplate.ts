@@ -5,15 +5,12 @@ import { ResponseBodyWrapper } from "../../../wrapper";
 export interface FormProjectApi_GetFormTemplateRequestParams {
   /** 项目Id */
   projectId: string;
-
-  /** 主版本(false时返回最新发行版本) */
-  isMain?: boolean;
 }
 
 export type FormProjectApi_GetFormTemplateResponseBody = Partial<ModelFormTpl>;
 
 /**
- * @description 获取表单详情
+ * @description 获取表单详情(主版本)
  * @endpoint GET /api/form_builder_service/v1/form_project/form_template/retrieve/:id
  */
 export const FormProjectApi_getFormTemplate = async (

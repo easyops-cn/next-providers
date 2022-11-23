@@ -794,7 +794,7 @@
       "contract": "form_builder_service.form_project.GetFormTemplate",
       "name": "GetFormTemplate",
       "version": "1.0.0",
-      "description": "获取表单详情",
+      "description": "获取表单详情(主版本)",
       "endpoint": {
         "method": "GET",
         "uri": "/api/form_builder_service/v1/form_project/form_template/retrieve/:id"
@@ -812,11 +812,6 @@
             "name": "id",
             "type": "string",
             "description": "表单Id"
-          },
-          {
-            "name": "isMain",
-            "type": "bool",
-            "description": "主版本(false时返回最新发行版本)"
           }
         ],
         "required": ["projectId", "id"]
