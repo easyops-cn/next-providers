@@ -27,3 +27,5 @@ report.*.json
 /templates/*/.pkgbuild/
 /templates/*/version.ini
 /templates/*/*.tgz
+
+.cache

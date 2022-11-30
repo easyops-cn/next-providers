@@ -9,7 +9,7 @@
     {
       "automerge": true,
       "matchDepTypes": ["devDependencies"],
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["patch"]
     },
     {
       "enabled": false,
