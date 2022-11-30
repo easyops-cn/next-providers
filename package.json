@@ -98,6 +98,6 @@
   },
   "easyops": {
     "create-next-repo": "1.2.24",
-    "dev-dependencies": "1.15.17"
+    "dev-dependencies": "1.15.18"
   }
 }
