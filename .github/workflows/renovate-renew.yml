@@ -22,12 +22,12 @@ jobs:
 
     # Only if the latest commit is by renovate itself.
     # (Ignore if easyops-eve pushed a renew commit).
-    - uses: actions/github-script@v4
+    - uses: actions/github-script@v6
       id: match-commit
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
-          const commit = (await github.git.getCommit({
+          const commit = (await github.rest.git.getCommit({
             owner: context.repo.owner,
             repo: context.repo.repo,
             commit_sha: context.payload.pull_request.head.sha,
