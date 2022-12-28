@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/cmdb-sdk@3.2.0...@next-sdk/cmdb-sdk@3.3.0) (2022-12-28)
+
+### Features
+
+- add apis: HistoryApi_batchRollbackInstanceEdit, InstanceApi_batchInstanceCount, InstanceRelationApi_deleteInstanceRelationV2, InstanceRelationApi_updateInstanceRelation ([9515af0](https://github.com/easyops-cn/next-providers/commit/9515af0864c54616133132980967db4ccda03544))
+
 # [3.2.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/cmdb-sdk@3.1.0...@next-sdk/cmdb-sdk@3.2.0) (2022-09-13)
 
 ### Features
