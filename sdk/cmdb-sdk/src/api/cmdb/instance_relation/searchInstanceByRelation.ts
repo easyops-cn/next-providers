@@ -19,6 +19,9 @@ export interface InstanceRelationApi_SearchInstanceByRelationRequestBody {
 
   /** 是否忽略fields有不存在的字段的报错 */
   ignore_missing_field_error?: boolean;
+
+  /** 是否返回边属性为空的关系 */
+  with_empty_edge_instance?: boolean;
 }
 
 export interface InstanceRelationApi_SearchInstanceByRelationResponseBody {

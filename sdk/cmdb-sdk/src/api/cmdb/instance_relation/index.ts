@@ -1,5 +1,6 @@
 export * from "./append";
 export * from "./countRelationInstance";
+export * from "./deleteInstanceRelationV2";
 export * from "./discovery";
 export * from "./discoveryV2";
 export * from "./instanceRelationSnapshot";
@@ -8,3 +9,4 @@ export * from "./list";
 export * from "./remove";
 export * from "./searchInstanceByRelation";
 export * from "./set";
+export * from "./updateInstanceRelation";

@@ -14,7 +14,7 @@ export const InstanceRelationApi_set = (
   data: InstanceRelationApi_SetRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.cmdb.instance_relation.Set@1.0.0 */ http.post<void>(
+  /**! @contract easyops.api.cmdb.instance_relation.Set@1.1.0 */ http.post<void>(
     `api/gateway/cmdb.instance_relation.Set/object/${objectId}/relation/${relationSideId}/set`,
     data,
     options

@@ -13,11 +13,11 @@ export interface CmdbObjectApi_SearchCollectResponseBody {
 export const CmdbObjectApi_searchCollect = async (
   options?: HttpOptions
 ): Promise<CmdbObjectApi_SearchCollectResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.search_collect@1.0.0 */ (
+  /**! @contract easyops.api.cmdb.cmdb_object.SearchCollect@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<CmdbObjectApi_SearchCollectResponseBody>
     >(
-      "api/gateway/cmdb.cmdb_object.search_collect/object/search_collect",
+      "api/gateway/cmdb.cmdb_object.SearchCollect/object/search_collect",
       options
     )
   ).data;

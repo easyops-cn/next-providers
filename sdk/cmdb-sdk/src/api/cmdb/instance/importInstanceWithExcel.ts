@@ -3,7 +3,7 @@ import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface InstanceApi_ImportInstanceWithExcelRequestBody {
   /** 导入实例的字段,作为更新/创建依据 */
-  keys: string[];
+  keys?: string[];
 
   /** excel文件 */
   attachment: File;

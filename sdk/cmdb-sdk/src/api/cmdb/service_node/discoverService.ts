@@ -2,6 +2,9 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface ServiceNodeApi_DiscoverServiceRequestBody {
+  /** 导入主键 */
+  pks: string[];
+
   /** 上报的服务 */
   services?: ServiceNodeApi_DiscoverServiceRequestBody_services_item[];
 }
@@ -41,6 +44,21 @@ export interface ServiceNodeApi_DiscoverServiceRequestBody_services_item {
 
   /** 工作空间id */
   workspaceId?: string;
+
+  /** 服务ip */
+  ip?: string;
+
+  /** 服务端口 */
+  port?: number;
+
+  /** 服务实例id，用于更新 */
+  instanceId?: string;
+
+  /** 服务关联主机实例id */
+  host?: string[];
+
+  /** 服务入库的模型id */
+  objectId?: string;
 }
 
 export interface ServiceNodeApi_DiscoverServiceResponseBody_data_item {

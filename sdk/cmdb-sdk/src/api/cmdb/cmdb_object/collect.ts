@@ -16,8 +16,8 @@ export const CmdbObjectApi_collect = (
   data: CmdbObjectApi_CollectRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.collect@1.0.0 */ http.post<void>(
-    "api/gateway/cmdb.cmdb_object.collect/object/collect",
+  /**! @contract easyops.api.cmdb.cmdb_object.Collect@1.0.0 */ http.post<void>(
+    "api/gateway/cmdb.cmdb_object.Collect/object/collect",
     data,
     options
   );

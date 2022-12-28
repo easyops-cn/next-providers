@@ -26,6 +26,7 @@ export * from "./ModelTraverseChildNode";
 export * from "./ModelTraverseChildNodeV2";
 export * from "./ModelStrategyPathNode";
 export * from "./ModelInstanceRelationRequest";
+export * from "./ModelInstanceRelationList";
 export * from "./ModelAutoDiscoveryInstance";
 export * from "./ModelInstanceRelationPair";
 export * from "./ModelGroupInstanceByRelationFunc";

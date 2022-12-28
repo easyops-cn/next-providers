@@ -648,12 +648,12 @@
       }
     },
     {
-      "contract": "cmdb.cmdb_object.collect",
+      "contract": "cmdb.cmdb_object.Collect",
       "category": {
         "en": "CMDB Object",
         "zh": "CMDB 模型"
       },
-      "name": "collect",
+      "name": "Collect",
       "version": "1.0.0",
       "description": "收藏或者取消收藏模型",
       "endpoint": {
@@ -2824,12 +2824,12 @@
       }
     },
     {
-      "contract": "cmdb.cmdb_object.search_collect",
+      "contract": "cmdb.cmdb_object.SearchCollect",
       "category": {
         "en": "CMDB Object",
         "zh": "CMDB 模型"
       },
-      "name": "search_collect",
+      "name": "SearchCollect",
       "version": "1.0.0",
       "description": "查询收藏的模型",
       "endpoint": {
@@ -2968,6 +2968,11 @@
             "name": "appendAttrList",
             "type": "string[]",
             "description": "添加属性，关系到此分组"
+          },
+          {
+            "name": "removeAttrList",
+            "type": "string[]",
+            "description": "从此分组中移除属性，关系"
           }
         ],
         "required": ["name"]
@@ -3354,6 +3359,68 @@
             "name": "id",
             "type": "org",
             "description": "database id"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "cmdb.history.BatchRollbackInstanceEdit",
+      "category": {
+        "en": "History",
+        "zh": "历史"
+      },
+      "name": "BatchRollbackInstanceEdit",
+      "version": "1.0.0",
+      "description": "回滚单次批量操作的全部编辑实例",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/object/instance/batch/_rollback/:parent_event_id/edit"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "parent_event_id",
+            "type": "string",
+            "description": "父事件id"
+          }
+        ],
+        "required": ["parent_event_id"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "success",
+            "type": "int",
+            "description": "成功回滚的实例数量"
+          },
+          {
+            "name": "updateCount",
+            "type": "int",
+            "description": "总共需要更新数量"
+          },
+          {
+            "name": "failDetails",
+            "description": "错误信息",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "objectId",
+                "type": "string",
+                "description": "模型id"
+              },
+              {
+                "name": "objectName",
+                "type": "string",
+                "description": "模型名"
+              },
+              {
+                "name": "errMsg",
+                "type": "string",
+                "description": "失败原因"
+              }
+            ]
           }
         ]
       }
@@ -4160,6 +4227,64 @@
           }
         }
       ]
+    },
+    {
+      "contract": "cmdb.instance.BatchInstanceCount",
+      "category": {
+        "en": "Instance",
+        "zh": "实例"
+      },
+      "name": "BatchInstanceCount",
+      "version": "1.0.0",
+      "description": "获取多个模型指定过滤条件对应的实例数量",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/v1/batch/instance/count"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "objectList",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "objectId",
+                "type": "string",
+                "description": "模型id"
+              },
+              {
+                "name": "query",
+                "type": "map",
+                "description": "搜索条件, 不传则计数所有实例"
+              }
+            ],
+            "description": "模型列表"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "objectInfo",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "objectId",
+                "type": "string",
+                "description": "模型id"
+              },
+              {
+                "name": "count",
+                "type": "int",
+                "description": "模型实例数量"
+              }
+            ],
+            "description": "模型信息列表"
+          }
+        ]
+      }
     },
     {
       "contract": "cmdb.instance.BatchListInstanceQueryStrategy",
@@ -5842,7 +5967,7 @@
             "description": "关系操作方式"
           }
         ],
-        "required": ["object_id", "keys", "attachment"]
+        "required": ["object_id", "attachment"]
       },
       "response": {
         "type": "object",
@@ -7400,7 +7525,7 @@
         "zh": "实例"
       },
       "name": "UpdateByQuery",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "根据查询条件更新实例",
       "endpoint": {
         "method": "POST",
@@ -7424,6 +7549,11 @@
             "name": "data",
             "type": "map",
             "description": "要更新的数据"
+          },
+          {
+            "name": "importMetadata",
+            "type": "bool",
+            "description": "是否导入metadata字段, 为true时支持按照导入的内置字段覆盖属性值"
           }
         ]
       },
@@ -9004,7 +9134,7 @@
         "zh": "实例关系"
       },
       "name": "Append",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "批量添加关系",
       "endpoint": {
         "method": "POST",
@@ -9108,6 +9238,65 @@
       }
     },
     {
+      "contract": "cmdb.instance_relation.DeleteInstanceRelationV2",
+      "category": {
+        "en": "Instance relation",
+        "zh": "实例关系"
+      },
+      "name": "DeleteInstanceRelationV2",
+      "version": "1.0.0",
+      "description": "删除实例关系v2, 支持传数组的方式批量删除",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/v2/object_relation/:relation_id/relation_instance",
+        "ext_fields": [
+          {
+            "name": "body",
+            "source": "body"
+          }
+        ]
+      },
+      "import": ["easyops/model/cmdb/instance_relation_list"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "relation_id",
+            "type": "object_relation_id",
+            "description": "关系Id"
+          },
+          {
+            "name": "body",
+            "type": "InstanceRelationList",
+            "description": "body"
+          }
+        ],
+        "required": ["relation_id"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "left_instance_id",
+                "type": "string",
+                "description": "左边实例id"
+              },
+              {
+                "name": "right_instance_id",
+                "type": "string",
+                "description": "右边实例id"
+              }
+            ],
+            "description": "关系列表值"
+          }
+        ]
+      }
+    },
+    {
       "contract": "cmdb.instance_relation.Discovery",
       "category": {
         "en": "Instance relation",
@@ -9208,7 +9397,7 @@
         "zh": "实例关系"
       },
       "name": "DiscoveryV2",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "实例关系发现V2(支持set关系)",
       "endpoint": {
         "method": "POST",
@@ -9253,6 +9442,11 @@
                 "name": "right_instance",
                 "type": "map",
                 "description": "右侧匹配的实例数据"
+              },
+              {
+                "name": "properties",
+                "type": "map",
+                "description": "关系属性数据"
               }
             ],
             "description": "发现实例的数据列表"
@@ -9659,7 +9853,7 @@
         "zh": "实例关系"
       },
       "name": "Remove",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "批量移除关系",
       "endpoint": {
         "method": "POST",
@@ -9773,6 +9967,11 @@
             "name": "ignore_missing_field_error",
             "type": "bool",
             "description": "是否忽略fields有不存在的字段的报错"
+          },
+          {
+            "name": "with_empty_edge_instance",
+            "type": "bool",
+            "description": "是否返回边属性为空的关系"
           }
         ],
         "default": {
@@ -9814,7 +10013,7 @@
         "zh": "实例关系"
       },
       "name": "Set",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "批量设置关系",
       "endpoint": {
         "method": "POST",
@@ -9863,6 +10062,80 @@
           }
         }
       ]
+    },
+    {
+      "contract": "cmdb.instance_relation.UpdateInstanceRelation",
+      "category": {
+        "en": "Instance relation",
+        "zh": "实例关系"
+      },
+      "name": "UpdateInstanceRelation",
+      "version": "1.0.0",
+      "description": "更新实例关系属性值",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/object_relation/:relation_id/relation_instance"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "relation_id",
+            "type": "object_relation_id",
+            "description": "关系Id"
+          },
+          {
+            "name": "list",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "left_instance_id",
+                "type": "string",
+                "description": "左边实例id"
+              },
+              {
+                "name": "right_instance_id",
+                "type": "string",
+                "description": "右边实例id"
+              },
+              {
+                "name": "properties",
+                "type": "map",
+                "description": "关系属性值"
+              }
+            ],
+            "description": "关系列表值"
+          }
+        ],
+        "required": ["relation_id"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "left_instance_id",
+                "type": "string",
+                "description": "左边实例id"
+              },
+              {
+                "name": "right_instance_id",
+                "type": "string",
+                "description": "右边实例id"
+              },
+              {
+                "name": "properties",
+                "type": "map",
+                "description": "关系属性值，返回数据可以不赋值"
+              }
+            ],
+            "description": "关系列表值"
+          }
+        ]
+      }
     },
     {
       "contract": "cmdb.instance_tree.InstanceTree",
@@ -11217,6 +11490,11 @@
         "type": "object",
         "fields": [
           {
+            "name": "pks",
+            "type": "string[]",
+            "description": "导入主键"
+          },
+          {
             "name": "services",
             "type": "object[]",
             "fields": [
@@ -11239,12 +11517,37 @@
                 "name": "workspaceId",
                 "type": "string",
                 "description": "工作空间id"
+              },
+              {
+                "name": "ip",
+                "type": "string",
+                "description": "服务ip"
+              },
+              {
+                "name": "port",
+                "type": "int",
+                "description": "服务端口"
+              },
+              {
+                "name": "instanceId",
+                "type": "instance_id",
+                "description": "服务实例id，用于更新"
+              },
+              {
+                "name": "host",
+                "type": "string[]",
+                "description": "服务关联主机实例id"
+              },
+              {
+                "name": "objectId",
+                "type": "object_id",
+                "description": "服务入库的模型id"
               }
             ],
             "description": "上报的服务"
           }
         ],
-        "required": ["services.name", "services.type"]
+        "required": ["pks"]
       },
       "response": {
         "type": "object",

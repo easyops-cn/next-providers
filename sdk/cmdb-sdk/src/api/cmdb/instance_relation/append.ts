@@ -14,7 +14,7 @@ export const InstanceRelationApi_append = (
   data: InstanceRelationApi_AppendRequestBody,
   options?: HttpOptions
 ): Promise<void> =>
-  /**! @contract easyops.api.cmdb.instance_relation.Append@1.0.0 */ http.post<void>(
+  /**! @contract easyops.api.cmdb.instance_relation.Append@1.1.0 */ http.post<void>(
     `api/gateway/cmdb.instance_relation.Append/object/${objectId}/relation/${relationSideId}/append`,
     data,
     options

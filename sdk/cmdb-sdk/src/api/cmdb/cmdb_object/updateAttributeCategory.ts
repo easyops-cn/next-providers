@@ -6,6 +6,9 @@ export interface CmdbObjectApi_UpdateAttributeCategoryRequestBody {
 
   /** 添加属性，关系到此分组 */
   appendAttrList?: string[];
+
+  /** 从此分组中移除属性，关系 */
+  removeAttrList?: string[];
 }
 
 /**

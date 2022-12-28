@@ -29,4 +29,7 @@ export interface ModelListObjectRequest {
 
   /** 屏蔽的模型Id, 使用,分隔 */
   blockObjectIds: string;
+
+  /** 筛选返回模型信息携带哪些属性，使用,分隔，不传则返回模型信息带有全部属性 */
+  fields: string;
 }

@@ -41,7 +41,7 @@ export const InstanceRelationApi_discoveryV2 = (
   data: InstanceRelationApi_DiscoveryV2RequestBody,
   options?: HttpOptions
 ): Promise<InstanceRelationApi_DiscoveryV2ResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance_relation.DiscoveryV2@1.0.0 */ http.post<InstanceRelationApi_DiscoveryV2ResponseBody>(
+  /**! @contract easyops.api.cmdb.instance_relation.DiscoveryV2@1.0.1 */ http.post<InstanceRelationApi_DiscoveryV2ResponseBody>(
     `api/gateway/cmdb.instance_relation.DiscoveryV2/v2/object_relation/${relationId}/_autodiscovery/multi`,
     data,
     options
@@ -61,6 +61,9 @@ export interface InstanceRelationApi_DiscoveryV2RequestBody_data_item {
 
   /** 右侧匹配的实例数据 */
   right_instance?: Record<string, any>;
+
+  /** 关系属性数据 */
+  properties?: Record<string, any>;
 }
 
 export interface InstanceRelationApi_DiscoveryV2ResponseBody_data_item {

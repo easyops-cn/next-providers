@@ -4,6 +4,7 @@ export * from "./aggregateInstance";
 export * from "./aggregateCount";
 export * from "./aggregateCountV2";
 export * from "./autoDiscovery";
+export * from "./batchInstanceCount";
 export * from "./batchListInstanceQueryStrategy";
 export * from "./batchSearch";
 export * from "./countAll";

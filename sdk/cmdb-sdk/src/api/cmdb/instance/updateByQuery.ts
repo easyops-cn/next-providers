@@ -8,6 +8,9 @@ export interface InstanceApi_UpdateByQueryRequestBody {
 
   /** 要更新的数据 */
   data?: Record<string, any>;
+
+  /** 是否导入metadata字段, 为true时支持按照导入的内置字段覆盖属性值 */
+  importMetadata?: boolean;
 }
 
 export interface InstanceApi_UpdateByQueryResponseBody {
@@ -36,7 +39,7 @@ export const InstanceApi_updateByQuery = async (
   data: InstanceApi_UpdateByQueryRequestBody,
   options?: HttpOptions
 ): Promise<InstanceApi_UpdateByQueryResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.UpdateByQuery@1.0.0 */ (
+  /**! @contract easyops.api.cmdb.instance.UpdateByQuery@1.0.1 */ (
     await http.post<ResponseBodyWrapper<InstanceApi_UpdateByQueryResponseBody>>(
       `api/gateway/cmdb.instance.UpdateByQuery/object/${object_id}/instance/update_by_query`,
       data,
