@@ -9247,8 +9247,8 @@
       "version": "1.0.0",
       "description": "删除实例关系v2, 支持传数组的方式批量删除",
       "endpoint": {
-        "method": "DELETE",
-        "uri": "/v2/object_relation/:relation_id/relation_instance",
+        "method": "POST",
+        "uri": "/v2/object_relation/:relation_id/relation_instance/delete",
         "ext_fields": [
           {
             "name": "body",

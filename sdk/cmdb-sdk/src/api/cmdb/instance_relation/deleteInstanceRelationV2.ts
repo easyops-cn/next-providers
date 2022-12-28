@@ -13,7 +13,7 @@ export interface InstanceRelationApi_DeleteInstanceRelationV2ResponseBody {
 
 /**
  * @description 删除实例关系v2, 支持传数组的方式批量删除
- * @endpoint DELETE /v2/object_relation/:relation_id/relation_instance
+ * @endpoint POST /v2/object_relation/:relation_id/relation_instance/delete
  */
 export const InstanceRelationApi_deleteInstanceRelationV2 = async (
   relation_id: string | number,
@@ -21,10 +21,10 @@ export const InstanceRelationApi_deleteInstanceRelationV2 = async (
   options?: HttpOptions
 ): Promise<InstanceRelationApi_DeleteInstanceRelationV2ResponseBody> =>
   /**! @contract easyops.api.cmdb.instance_relation.DeleteInstanceRelationV2@1.0.0 */ (
-    await http.delete<
+    await http.post<
       ResponseBodyWrapper<InstanceRelationApi_DeleteInstanceRelationV2ResponseBody>
     >(
-      `api/gateway/cmdb.instance_relation.DeleteInstanceRelationV2/v2/object_relation/${relation_id}/relation_instance`,
+      `api/gateway/cmdb.instance_relation.DeleteInstanceRelationV2/v2/object_relation/${relation_id}/relation_instance/delete`,
       data,
       options
     )
