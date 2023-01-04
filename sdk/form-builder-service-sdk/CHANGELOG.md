@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/form-builder-service-sdk@1.3.1...@next-sdk/form-builder-service-sdk@1.4.0) (2023-01-04)
+
+### Features
+
+- add apis: FormModelsApi_importFormModels, FormModelsApi_index ([c7d9cfa](https://github.com/easyops-cn/next-providers/commit/c7d9cfac631efd74f5549b3d207705086caafd20))
+
 ## [1.3.1](https://github.com/easyops-cn/next-providers/compare/@next-sdk/form-builder-service-sdk@1.3.0...@next-sdk/form-builder-service-sdk@1.3.1) (2022-11-23)
 
 **Note:** Version bump only for package @next-sdk/form-builder-service-sdk
