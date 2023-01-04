@@ -1,4 +1,8 @@
 import { http, HttpOptions } from "@next-core/brick-http";
+import {
+  ModelGlobalSetting,
+  ModelGlobalEvent,
+} from "../../../model/form_builder_service";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface FormProjectApi_CreateFormTemplateByModelRequestBody {
@@ -19,6 +23,12 @@ export interface FormProjectApi_CreateFormTemplateByModelRequestBody {
 
   /** 表单id */
   id?: string;
+
+  /** 通用配置 */
+  globalSetting?: Partial<ModelGlobalSetting>;
+
+  /** 公共事件列表 */
+  globalEventList?: Partial<ModelGlobalEvent>[];
 }
 
 export interface FormProjectApi_CreateFormTemplateByModelResponseBody {

@@ -12,6 +12,12 @@ export interface FormProjectApi_ListFormTemplateRequestParams {
   /** 项目Id */
   projectId?: string;
 
+  /** formId过滤，多个用,分隔 */
+  id__in?: string;
+
+  /** formId过滤, 填写关键字 */
+  id__like?: string;
+
   /** 名字 */
   formName?: string;
 }

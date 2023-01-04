@@ -6,6 +6,9 @@ export interface ModelFormModels {
   /** 模型名 */
   modelName: string;
 
+  /** 模型Id(objectId, table name) */
+  modelId: string;
+
   /** 类型 */
   modelType: string;
 

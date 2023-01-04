@@ -2,6 +2,66 @@
   "name": "form_builder_service",
   "contracts": [
     {
+      "contract": "form_builder_service.form_models.ImportFormModels",
+      "name": "ImportFormModels",
+      "version": "1.0.0",
+      "description": "引入表单模型",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/form_builder_service/v1/form_models/create/form_project/:projectId"
+      },
+      "import": [
+        "easyops/model/form_builder_service/form_models",
+        "easyops/model/form_builder_service/form_model_with_field"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectId",
+            "type": "string",
+            "description": "表单项目实例id"
+          },
+          {
+            "name": "importInfos",
+            "type": "object[]",
+            "description": "导入信息列表",
+            "fields": [
+              {
+                "ref": "FormModels.modelType"
+              },
+              {
+                "name": "models",
+                "type": "object[]",
+                "description": "模型列表",
+                "fields": [
+                  {
+                    "ref": "FormModels.modelId"
+                  },
+                  {
+                    "name": "details",
+                    "type": "map",
+                    "description": "模型详情(仅在导入非 cmdb 类型模型需要填写)"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "required": ["projectId", "importInfos.modelType", "importInfos.models"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceIdList",
+            "type": "string[]",
+            "description": "模型实例id列表"
+          }
+        ]
+      }
+    },
+    {
       "contract": "form_builder_service.form_project.BatchUpdateFormItem",
       "name": "BatchUpdateFormItem",
       "version": "1.0.0",
@@ -426,7 +486,11 @@
         "method": "POST",
         "uri": "/api/form_builder_service/v1/form_project/form_template/create/form_model/:modelId"
       },
-      "import": ["easyops/model/form_builder_service/form_tpl"],
+      "import": [
+        "easyops/model/form_builder_service/form_tpl",
+        "easyops/model/form_builder_service/form_model_global_setting",
+        "easyops/model/form_builder_service/form_model_global_event"
+      ],
       "request": {
         "type": "object",
         "fields": [
@@ -452,6 +516,16 @@
           },
           {
             "ref": "FormTpl.id"
+          },
+          {
+            "name": "globalSetting",
+            "type": "GlobalSetting",
+            "description": "通用配置"
+          },
+          {
+            "name": "globalEventList",
+            "type": "GlobalEvent[]",
+            "description": "公共事件列表"
           }
         ],
         "required": ["modelId", "FormTpl.formName"]
@@ -579,7 +653,9 @@
       },
       "import": [
         "easyops/model/form_builder_service/form_tpl",
-        "easyops/model/form_builder_service/form_models"
+        "easyops/model/form_builder_service/form_models",
+        "easyops/model/form_builder_service/form_model_global_setting",
+        "easyops/model/form_builder_service/form_model_global_event"
       ],
       "request": {
         "type": "object",
@@ -618,6 +694,16 @@
           },
           {
             "ref": "FormTpl.id"
+          },
+          {
+            "name": "globalSetting",
+            "type": "GlobalSetting",
+            "description": "通用配置"
+          },
+          {
+            "name": "globalEventList",
+            "type": "GlobalEvent[]",
+            "description": "公共事件列表"
           }
         ],
         "required": ["projectId", "FormModels.modelName", "FormTpl.formName"]
@@ -1127,6 +1213,16 @@
             "description": "项目Id"
           },
           {
+            "name": "id__in",
+            "type": "string",
+            "description": "formId过滤，多个用,分隔"
+          },
+          {
+            "name": "id__like",
+            "type": "string",
+            "description": "formId过滤, 填写关键字"
+          },
+          {
             "ref": "FormTpl.formName"
           }
         ],
@@ -1155,7 +1251,7 @@
           {
             "name": "instanceId",
             "type": "string",
-            "description": "id"
+            "description": "instanceId"
           },
           {
             "name": "formName",
@@ -1166,6 +1262,21 @@
             "name": "version",
             "type": "string",
             "description": "表单版本"
+          },
+          {
+            "name": "projectId",
+            "type": "string",
+            "description": "项目Id"
+          },
+          {
+            "name": "id",
+            "type": "string",
+            "description": "表单Id"
+          },
+          {
+            "name": "isMain",
+            "type": "bool",
+            "description": "主版本"
           }
         ],
         "required": ["instanceId", "version", "formName"]
@@ -1451,7 +1562,10 @@
         "method": "PUT",
         "uri": "/api/form_builder_service/v1/form_project/form_template/update/:instanceId"
       },
-      "import": [],
+      "import": [
+        "easyops/model/form_builder_service/form_model_global_setting",
+        "easyops/model/form_builder_service/form_model_global_event"
+      ],
       "request": {
         "type": "object",
         "fields": [
@@ -1494,6 +1608,16 @@
             "name": "projectInstanceId",
             "type": "string",
             "description": "所属项目实例Id"
+          },
+          {
+            "name": "globalSetting",
+            "type": "GlobalSetting",
+            "description": "通用配置"
+          },
+          {
+            "name": "globalEventList",
+            "type": "GlobalEvent[]",
+            "description": "公共事件列表"
           }
         ],
         "required": ["instanceId", "projectInstanceId"]

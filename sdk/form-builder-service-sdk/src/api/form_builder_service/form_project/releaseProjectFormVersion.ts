@@ -6,6 +6,15 @@ export interface FormProjectApi_ReleaseProjectFormVersionRequestBody {
 
   /** 表单版本 */
   version: string;
+
+  /** 项目Id */
+  projectId?: string;
+
+  /** 表单Id */
+  id?: string;
+
+  /** 主版本 */
+  isMain?: boolean;
 }
 
 /**
