@@ -17,4 +17,7 @@ export interface ModelInstalledMicroAppMenuIcon {
 
   /** EasyOps 图标分类 */
   category: string;
+
+  /** 图标颜色 */
+  color: string;
 }
