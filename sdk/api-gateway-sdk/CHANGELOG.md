@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/api-gateway-sdk@2.5.0...@next-sdk/api-gateway-sdk@2.6.0) (2023-01-29)
+
+### Features
+
+- add apis: BootstrapStandaloneApi_deleteLaunchpadEtagCache, BootstrapStandaloneApi_getLaunchpadInfo, BootstrapV2Api_getBricksInfo, CustomAuthConfigApi_createCustomAuthConfig, CustomAuthConfigApi_deleteCustomAuthConfig, CustomAuthConfigApi_getCustomAuthConfig, CustomAuthConfigApi_index, CustomAuthConfigApi_listCustomAuthConfig, CustomAuthConfigApi_updateCustomAuthConfig ([39ad06f](https://github.com/easyops-cn/next-providers/commit/39ad06f817b84aa5f76578db28861c14e09369ec))
+
 # [2.5.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/api-gateway-sdk@2.4.0...@next-sdk/api-gateway-sdk@2.5.0) (2022-11-18)
 
 ### Features
