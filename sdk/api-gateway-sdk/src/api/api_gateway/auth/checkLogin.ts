@@ -31,6 +31,9 @@ export interface AuthApi_CheckLoginResponseBody {
 
   /** license info */
   license?: AuthApi_CheckLoginResponseBody_license;
+
+  /** 主名称 次名称 */
+  userShowValue?: string[];
 }
 
 /**
@@ -40,7 +43,7 @@ export interface AuthApi_CheckLoginResponseBody {
 export const AuthApi_checkLogin = async (
   options?: HttpOptions
 ): Promise<AuthApi_CheckLoginResponseBody> =>
-  /**! @contract easyops.api.api_gateway.auth.CheckLogin@1.1.1 */ (
+  /**! @contract easyops.api.api_gateway.auth.CheckLogin@1.1.4 */ (
     await http.get<ResponseBodyWrapper<AuthApi_CheckLoginResponseBody>>(
       "api/auth/login",
       options

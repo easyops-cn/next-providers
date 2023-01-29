@@ -12,7 +12,7 @@
         "zh": "认证"
       },
       "name": "CheckLogin",
-      "version": "1.1.1",
+      "version": "1.1.4",
       "description": "判断用户是否登录",
       "endpoint": {
         "method": "GET",
@@ -84,6 +84,11 @@
                 "description": "剩余有效天数"
               }
             ]
+          },
+          {
+            "name": "userShowValue",
+            "type": "string[]",
+            "description": "主名称 次名称"
           }
         ]
       }
@@ -964,6 +969,96 @@
       ]
     },
     {
+      "contract": "api_gateway.bootstrap_standalone.DeleteLaunchpadEtagCache",
+      "category": {
+        "en": "Bootstrap Standalone",
+        "zh": "独立部署Bootstrap"
+      },
+      "name": "DeleteLaunchpadEtagCache",
+      "version": "1.0.0",
+      "description": "删除launchpad的etag缓存",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/launchpad/etag"
+      },
+      "request": null,
+      "response": null
+    },
+    {
+      "contract": "api_gateway.bootstrap_standalone.GetLaunchpadInfo",
+      "category": {
+        "en": "Bootstrap Standalone",
+        "zh": "独立部署Bootstrap"
+      },
+      "name": "GetLaunchpadInfo",
+      "version": "1.1.0",
+      "description": "获取Launchpad信息",
+      "detail": "透传micro_app_standalone_service的GetLaunchpadInfo接口，并进行accessRule过滤",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/micro_app_standalone/launchpad_info"
+      },
+      "import": [
+        "easyops/model/micro_app_standalone/launchpad_settings",
+        "easyops/model/micro_app_standalone/launchpad_storyboard",
+        "easyops/model/micro_app_standalone/launchpad_desktop",
+        "easyops/model/micro_app_standalone/launchpad_site_map"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appFields",
+            "type": "string",
+            "description": "指定查询storyboard下的app字段，不指定则默认返回 appId,name,position,homepage,menuIcon,icons"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "settings",
+            "type": "LaunchpadSettings",
+            "description": "配置"
+          },
+          {
+            "name": "desktops",
+            "type": "LaunchpadDesktop[]",
+            "description": "桌面列表"
+          },
+          {
+            "name": "storyboards",
+            "type": "LaunchpadStoryboard[]",
+            "description": "storyboards"
+          },
+          {
+            "name": "siteSort",
+            "type": "LaunchpadSiteMap[]",
+            "description": "系统地图"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get launchpad info",
+            "zh": "Launchpad信息"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8104/api/v1/micro_app_standalone/launchpad_info"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"data\": {\n    \"storyboards\": [\n      {\n        \"app\": {\n          \"id\": \"agent-management\",\n          \"name\": \"Agent 管理\",\n          \"icons\": {\n            \"large\": \"icons/large.png\"\n          },\n          \"currentVersion\": \"1.2.14\",\n          \"installStatus\": \"ok\",\n          \"homepage\": \"/legacy/agent-management\",\n          \"status\": \"enabled\"\n        }\n      }\n    ],\n    \"settings\": {\n      \"launchpad\": {\n        \"columns\": 7,\n        \"rows\": 4\n      }\n    },\n    \"desktops\": [\n      {\n        \"name\": \"持续交付\",\n        \"order\": 2,\n        \"items\": [\n          {\n            \"type\": \"app\",\n            \"id\": \"app-deploy\",\n            \"name\": \"\",\n            \"position\": 10,\n            \"url\": \"\",\n            \"items\": []\n          }\n        ]\n      }\n    ],\n    \"siteSort\": [\n      {\n        \"id\": \"ResourceManagement\",\n        \"name\": \"资源管理\",\n        \"order\": 1,\n        \"apps\": [\n          {\n            \"id\": \"cmdb-instance-management\",\n            \"sort\": 1\n          }\n        ]\n      }\n    ]\n  },\n  \"error\": \"\"\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "api_gateway.bootstrap_standalone.RuntimeStandalone",
       "category": {
         "en": "Bootstrap Standalone",
@@ -1209,6 +1304,54 @@
       }
     },
     {
+      "contract": "api_gateway.bootstrap_v2.GetBricksInfo",
+      "name": "GetBricksInfo",
+      "version": "1.0.0",
+      "description": "获取bricks信息",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/api_gateway/bricks"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "ignoredBrickFields",
+            "type": "string",
+            "description": "brick数据需要忽略的字段，多个字段用逗号分开"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "bricksInfo",
+            "type": "map[]",
+            "description": "相关 NB 构件包信息"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get Bricks Info",
+            "zh": "获取bricks信息"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8104/api/v1/api_gateway/bricks"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"bricksInfo\": {\n            \"bricks\": [\n                \"custom-page-title.title-one\"\n            ],\n            \"dll\": [],\n            \"filePath\": \"bricks/custom-page-title/dist/index.9ff65961.js\",\n            \"processors\": [],\n            \"providers\": []\n        }\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "api_gateway.contract.SearchSingleContract",
       "name": "SearchSingleContract",
       "version": "1.0.0",
@@ -1243,6 +1386,308 @@
           }
         ]
       }
+    },
+    {
+      "contract": "api_gateway.custom_auth_config.CreateCustomAuthConfig",
+      "name": "CreateCustomAuthConfig",
+      "version": "1.3.0",
+      "description": "创建服务认证配置",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/api_gateway/custom_auth_config"
+      },
+      "import": ["easyops/model/api_gateway/custom_auth_config"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "CustomAuthConfig.*"
+          },
+          {
+            "name": "serviceInstanceIds",
+            "type": "instance_id[]",
+            "description": "关联的服务ID列表"
+          }
+        ],
+        "required": [
+          "CustomAuthConfig.configName",
+          "CustomAuthConfig.authType",
+          "CustomAuthConfig.authConfig"
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "CustomAuthConfig.*"
+          },
+          {
+            "name": "serviceInstanceIds",
+            "type": "instance_id[]",
+            "description": "关联的服务ID列表"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Create Custom Auth Config",
+            "zh": "创建服务认证配置"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8107/api/v1/api_gateway/custom_auth_config",
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"serviceInstanceIds\": [\"5aaec6de45fd6\"],\n  \"configName\": \"oauth2\",\n  \"description\": \"测试服务\",\n  \"authType\": \"oauth2\",\n  \"authConfig\": {\n    \"configPosition\": \"header\",\n    \"configKey\": \"Authorization\",\n    \"configValuePrefix\": \"Bearer \",\n    \"configEnv\": [\n      {\n        \"key\": \"k1\",\n        \"value\": \"v1\"\n      }\n    ],\n    \"oauth2\": {\n      \"accessTokenUrl\": \"http://127.0.0.1/oauth/accessToken\",\n      \"accessTokenMethod\": \"POST\",\n      \"accessTokenHeader\": [\n        {\n          \"key\": \"k1\",\n          \"value\": \"v1\"\n        }\n      ],\n      \"accessTokenParams\": [],\n      \"accessTokenBodyType\": \"json\",\n      \"accessTokenBodyJson\": {\n        \"k1\": \"accessTokenBody类型不定，可能是数组\"\n      },\n      \"accessTokenBodyUrlEncoded\": null,\n      \"expireTime\": 7200,\n      \"accessTokenJsonPath\": \"$.access_token\"\n    },\n    \"basicAuth\": null,\n    \"apiKey\": null\n  }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"data\": {\n    \"instanceId\": \"5aaec6de45fe7\",\n    \"serviceInstanceIds\": [\"5aaec6de45fd6\"],\n    \"configName\": \"oauth2\",\n    \"description\": \"测试服务\",\n    \"authType\": \"oauth2\",\n    \"authConfig\": {\n      \"configPosition\": \"header\",\n      \"configKey\": \"Authorization\",\n      \"configValuePrefix\": \"Bearer \",\n      \"configEnv\": [\n        {\n          \"key\": \"k1\",\n          \"value\": \"v1\"\n        }\n      ],\n      \"oauth2\": {\n        \"accessTokenUrl\": \"http://127.0.0.1/oauth/accessToken\",\n        \"accessTokenMethod\": \"POST\",\n        \"accessTokenHeader\": [\n          {\n            \"key\": \"k1\",\n            \"value\": \"v1\"\n          }\n        ],\n        \"accessTokenParams\": [],\n        \"accessTokenBodyType\": \"json\",\n        \"accessTokenBodyJson\": {\n          \"k1\": \"accessTokenBody类型不定，可能是数组\"\n        },\n        \"accessTokenBodyUrlEncoded\": null,\n        \"expireTime\": 7200,\n        \"accessTokenJsonPath\": \"$.access_token\"\n      },\n      \"basicAuth\": null,\n      \"apiKey\": null\n    },\n    \"error\": \"\"\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "api_gateway.custom_auth_config.DeleteCustomAuthConfig",
+      "name": "DeleteCustomAuthConfig",
+      "version": "1.0.0",
+      "description": "删除服务认证配置，如果存在已关联的服务则禁止删除",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/api_gateway/custom_auth_config/:instanceId"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "实例ID"
+          }
+        ],
+        "required": ["instanceId"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Delete Custom Auth Config",
+            "zh": "删除服务认证配置"
+          },
+          "request": {
+            "method": "DELETE",
+            "uri": "http://127.0.0.1:8107/api/v1/api_gateway/custom_auth_config/5aaec6de45fe7"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"data\": {},\n  \"error\": \"\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "api_gateway.custom_auth_config.GetCustomAuthConfig",
+      "name": "GetCustomAuthConfig",
+      "version": "1.3.0",
+      "description": "获取服务认证配置详情",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/api_gateway/custom_auth_config/:instanceId"
+      },
+      "import": [
+        "easyops/model/api_gateway/custom_auth_config",
+        "easyops/model/api_gateway/general_service"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "实例ID"
+          },
+          {
+            "name": "fields",
+            "type": "string",
+            "description": "多个字段用逗号分割(默认返回全部字段)"
+          }
+        ],
+        "required": ["instanceId"]
+      },
+      "response": {
+        "type": "map"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get Custom Auth Config",
+            "zh": "更新服务认证配置"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8107/api/v1/api_gateway/custom_auth_config/5aaec6de45fe7"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"data\": {\n    \"instanceId\": \"5aaec6de45fe7\",\n    \"services\": [\n      {\n        \"instanceId\": \"5aaec6de45fc5\"\n      }\n    ],\n    \"configName\": \"oauth2\",\n    \"description\": \"测试服务\",\n    \"authType\": \"oauth2\",\n    \"authConfig\": {\n      \"configPosition\": \"header\",\n      \"configKey\": \"Authorization\",\n      \"configValuePrefix\": \"Bearer \",\n      \"configEnv\": [\n        {\n          \"key\": \"k1\",\n          \"value\": \"v1\"\n        }\n      ],\n      \"oauth2\": {\n        \"accessTokenUrl\": \"http://127.0.0.1/oauth/accessToken\",\n        \"accessTokenMethod\": \"POST\",\n        \"accessTokenHeader\": [\n          {\n            \"key\": \"k1\",\n            \"value\": \"v1\"\n          }\n        ],\n        \"accessTokenParams\": [],\n        \"accessTokenBodyType\": \"json\",\n        \"accessTokenBodyJson\": {\n          \"k1\": \"accessTokenBody类型不定，可能是数组\"\n        },\n        \"accessTokenBodyUrlEncoded\": null,\n        \"expireTime\": 7200,\n        \"accessTokenJsonPath\": \"$.access_token\"\n      },\n      \"basicAuth\": null,\n      \"apiKey\": null\n    },\n    \"error\": \"\"\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "api_gateway.custom_auth_config.ListCustomAuthConfig",
+      "name": "ListCustomAuthConfig",
+      "version": "1.3.0",
+      "description": "获取服务认证配置列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/api_gateway/custom_auth_config"
+      },
+      "import": [
+        "easyops/model/api_gateway/custom_auth_config",
+        "easyops/model/api_gateway/general_service"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "查询页面"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "每页数量"
+          },
+          {
+            "name": "keyword",
+            "type": "string",
+            "description": "名字模糊匹配"
+          },
+          {
+            "name": "fields",
+            "type": "string",
+            "description": "多个字段用逗号分割(默认返回全部字段)"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "total",
+            "type": "int",
+            "description": "返回总数"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页数"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "该页大小"
+          },
+          {
+            "name": "list",
+            "type": "map[]",
+            "description": "认证配置列表"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "List Custom Auth Config",
+            "zh": "更新服务认证配置"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8107/api/v1/api_gateway/custom_auth_config"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"data\": {\n    \"total\": 1,\n    \"page\": 3,\n    \"pageSize\": 10,\n    \"list\": [\n      {\n        \"services\": [\n          {\n            \"instanceId\": \"5aaec6de45fc5\"\n          }\n        ],\n        \"configName\": \"oauth2\",\n        \"description\": \"测试服务\",\n        \"authType\": \"oauth2\",\n        \"authConfig\": {\n          \"configPosition\": \"header\",\n          \"configKey\": \"Authorization\",\n          \"configValuePrefix\": \"Bearer \",\n          \"configEnv\": [\n            {\n              \"key\": \"k1\",\n              \"value\": \"v1\"\n            }\n          ],\n          \"oauth2\": {\n            \"accessTokenUrl\": \"http://127.0.0.1/oauth/accessToken\",\n            \"accessTokenMethod\": \"POST\",\n            \"accessTokenHeader\": [\n              {\n                \"key\": \"k1\",\n                \"value\": \"v1\"\n              }\n            ],\n            \"accessTokenParams\": [],\n            \"accessTokenBodyType\": \"json\",\n            \"accessTokenBodyJson\": {\n              \"k1\": \"accessTokenBody类型不定，可能是数组\"\n            },\n            \"accessTokenBodyUrlEncoded\": null,\n            \"expireTime\": 7200,\n            \"accessTokenJsonPath\": \"$.access_token\"\n          },\n          \"basicAuth\": null,\n          \"apiKey\": null\n        }\n      },\n      {\n        \"services\": [\n          {\n            \"instanceId\": \"5aaec6de45fc5\"\n          }\n        ],\n        \"configName\": \"basicAuth\",\n        \"description\": \"测试服务\",\n        \"authType\": \"basicAuth\",\n        \"authConfig\": {\n          \"configPosition\": \"header\",\n          \"configKey\": \"Authorization\",\n          \"configValuePrefix\": \"Basic \",\n          \"configEnv\": [\n            {\n              \"key\": \"k1\",\n              \"value\": \"v1\"\n            }\n          ],\n          \"oauth2\": null,\n          \"basicAuth\": {\n            \"username\": \"tester\",\n            \"password\": \"1231243\",\n            \"encryptionAlgorithm\": \"Base64(默认应该都是base64，这里只是占位)\"\n          },\n          \"apiKey\": null\n        }\n      },\n      {\n        \"services\": [\n          {\n            \"instanceId\": \"5aaec6de45fc5\"\n          }\n        ],\n        \"configName\": \"apiKey\",\n        \"description\": \"测试服务\",\n        \"authType\": \"apiKey\",\n        \"authConfig\": {\n          \"configPosition\": \"header\",\n          \"configKey\": \"Authorization\",\n          \"configValuePrefix\": \"Bearer \",\n          \"configEnv\": [\n            {\n              \"key\": \"k1\",\n              \"value\": \"v1\"\n            }\n          ],\n          \"oauth2\": null,\n          \"basicAuth\": null,\n          \"apiKey\": {\n            \"kv\": [\n              {\n                \"key\": \"user\",\n                \"value\": \"tester\",\n                \"description\": \"租户\"\n              },\n              {\n                \"key\": \"org\",\n                \"value\": \"1888\",\n                \"description\": \"租户org\"\n              }\n            ]\n          }\n        }\n      }\n    ]\n  },\n  \"error\": \"\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "api_gateway.custom_auth_config.UpdateCustomAuthConfig",
+      "name": "UpdateCustomAuthConfig",
+      "version": "1.2.0",
+      "description": "更新服务认证配置",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/api_gateway/custom_auth_config/:instanceId"
+      },
+      "import": ["easyops/model/api_gateway/custom_auth_config"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "CustomAuthConfig.*"
+          },
+          {
+            "name": "serviceInstanceIds",
+            "type": "instance_id[]",
+            "description": "关联的服务ID列表"
+          }
+        ],
+        "required": [
+          "CustomAuthConfig.instanceId",
+          "CustomAuthConfig.configName",
+          "CustomAuthConfig.authType",
+          "CustomAuthConfig.authConfig"
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "CustomAuthConfig.*"
+          },
+          {
+            "name": "serviceInstanceIds",
+            "type": "instance_id[]",
+            "description": "关联的服务ID列表"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Update Custom Auth Config",
+            "zh": "更新服务认证配置"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8107/api/v1/api_gateway/custom_auth_config/5aaec6de45fe7",
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"serviceInstanceIds\": [\n    \"5aaec6de45fc5\",\n    \"5aaec6de45fd6\"\n  ],\n  \"configName\": \"oauth2\",\n  \"description\": \"测试服务\",\n  \"authType\": \"oauth2\",\n  \"authConfig\": {\n    \"configPosition\": \"header\",\n    \"configKey\": \"Authorization\",\n    \"configValuePrefix\": \"Bearer \",\n    \"configEnv\": [\n      {\n        \"key\": \"k1\",\n        \"value\": \"v1\"\n      }\n    ],\n    \"oauth2\": {\n      \"accessTokenUrl\": \"http://127.0.0.1/oauth/accessToken\",\n      \"accessTokenMethod\": \"POST\",\n      \"accessTokenHeader\": [\n        {\n          \"key\": \"k1\",\n          \"value\": \"v1\"\n        }\n      ],\n      \"accessTokenParams\": [],\n      \"accessTokenBodyType\": \"json\",\n      \"accessTokenBodyJson\": {\n        \"k1\": \"accessTokenBody类型不定，可能是数组\"\n      },\n      \"accessTokenBodyUrlEncoded\": null,\n      \"expireTime\": 7200,\n      \"accessTokenJsonPath\": \"$.access_token\"\n    },\n    \"basicAuth\": null,\n    \"apiKey\": null\n  }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"data\": {\n    \"instanceId\": \"5aaec6de45fe7\",\n    \"serviceInstanceIds\": [\n      \"5aaec6de45fc5\",\n      \"5aaec6de45fd6\"\n    ],\n    \"configName\": \"oauth2\",\n    \"description\": \"测试服务\",\n    \"authType\": \"oauth2\",\n    \"authConfig\": {\n      \"configPosition\": \"header\",\n      \"configKey\": \"Authorization\",\n      \"configValuePrefix\": \"Bearer \",\n      \"configEnv\": [\n        {\n          \"key\": \"k1\",\n          \"value\": \"v1\"\n        }\n      ],\n      \"oauth2\": {\n        \"accessTokenUrl\": \"http://127.0.0.1/oauth/accessToken\",\n        \"accessTokenMethod\": \"POST\",\n        \"accessTokenHeader\": [\n          {\n            \"key\": \"k1\",\n            \"value\": \"v1\"\n          }\n        ],\n        \"accessTokenParams\": [],\n        \"accessTokenBodyType\": \"json\",\n        \"accessTokenBodyJson\": {\n          \"k1\": \"accessTokenBody类型不定，可能是数组\"\n        },\n        \"accessTokenBodyUrlEncoded\": null,\n        \"expireTime\": 7200,\n        \"accessTokenJsonPath\": \"$.access_token\"\n      },\n      \"basicAuth\": null,\n      \"apiKey\": null\n    }\n  },\n  \"error\": \"\"\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "api_gateway.esb.EsbLogin",
