@@ -32,4 +32,10 @@ export interface ModelListObjectRequest {
 
   /** 筛选返回模型信息携带哪些属性，使用,分隔，不传则返回模型信息带有全部属性 */
   fields: string;
+
+  /** 是否校验对模型的访问权限 */
+  isValidatePermission: boolean;
+
+  /** 按权限点action校验，默认按实例访问权限校验 */
+  action: string;
 }

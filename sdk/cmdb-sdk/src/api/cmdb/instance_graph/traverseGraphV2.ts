@@ -14,6 +14,9 @@ export interface InstanceGraphApi_TraverseGraphV2RequestBody {
 
   /** 子节点列表 */
   child: Partial<ModelTraverseChildNodeV2>[];
+
+  /** 是否需要返回图的方向 */
+  need_redirection?: boolean;
 }
 
 export interface InstanceGraphApi_TraverseGraphV2ResponseBody {

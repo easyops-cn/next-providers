@@ -20,4 +20,7 @@ export interface ModelTraverseChildNodeV2 {
 
   /** 指定返回此关系属性的fields */
   relation_fields: string[];
+
+  /** 关系是父模型时，可以通过object_id限制成子模型 */
+  object_id: string;
 }

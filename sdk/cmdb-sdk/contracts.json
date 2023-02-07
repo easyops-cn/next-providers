@@ -2310,6 +2310,38 @@
       ]
     },
     {
+      "contract": "cmdb.cmdb_object.ImportV3",
+      "category": {
+        "en": "CMDB Object",
+        "zh": "CMDB 模型"
+      },
+      "name": "ImportV3",
+      "version": "1.1.0",
+      "description": "批量导入模型v3",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/v3/object_import"
+      },
+      "import": ["easyops/model/cmdb/cmdb_object"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "ignore_dst_relation",
+            "type": "bool",
+            "description": "忽略对端关系不存在错误"
+          },
+          {
+            "name": "object_list",
+            "type": "CmdbObject[]",
+            "description": "模型列表"
+          }
+        ],
+        "required": ["object_list"]
+      },
+      "response": null
+    },
+    {
       "contract": "cmdb.cmdb_object.List",
       "category": {
         "en": "CMDB Object",
@@ -5454,7 +5486,7 @@
         "zh": "实例"
       },
       "name": "GroupInstanceForHoneycomb",
-      "version": "1.2.1",
+      "version": "1.2.2",
       "description": "实例分组蜂窝图",
       "endpoint": {
         "method": "POST",
@@ -5527,6 +5559,11 @@
             "name": "aggregation",
             "type": "string",
             "description": "指标数据汇聚方式（枚举值：avg、sum、max、min、increase、rate、irate、last，默认last）"
+          },
+          {
+            "name": "havings",
+            "type": "map[]",
+            "description": "having过滤参数"
           }
         ],
         "required": ["objectId", "fillByMetric", "aggregation"]
@@ -7551,6 +7588,11 @@
             "description": "要更新的数据"
           },
           {
+            "name": "fields",
+            "type": "string[]",
+            "description": "指定返回的字段"
+          },
+          {
             "name": "importMetadata",
             "type": "bool",
             "description": "是否导入metadata字段, 为true时支持按照导入的内置字段覆盖属性值"
@@ -7584,6 +7626,11 @@
             "name": "failTotal",
             "type": "int",
             "description": "更新失败总数"
+          },
+          {
+            "name": "successList",
+            "type": "map[]",
+            "description": "更新成功的实例列表"
           }
         ]
       },
@@ -8625,6 +8672,11 @@
             "name": "child",
             "type": "TraverseChildNodeV2[]",
             "description": "子节点列表"
+          },
+          {
+            "name": "need_redirection",
+            "type": "bool",
+            "description": "是否需要返回图的方向"
           }
         ],
         "required": ["object_id", "select_fields", "query", "child"]
@@ -9397,7 +9449,7 @@
         "zh": "实例关系"
       },
       "name": "DiscoveryV2",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "description": "实例关系发现V2(支持set关系)",
       "endpoint": {
         "method": "POST",

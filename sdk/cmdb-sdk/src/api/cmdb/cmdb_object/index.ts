@@ -25,6 +25,7 @@ export * from "./importCheck";
 export * from "./importCheckV2";
 export * from "./importObject";
 export * from "./importV2";
+export * from "./importV3";
 export * from "./list";
 export * from "./listChildObject";
 export * from "./listObjectBasic";

@@ -9,6 +9,9 @@ export interface InstanceApi_UpdateByQueryRequestBody {
   /** 要更新的数据 */
   data?: Record<string, any>;
 
+  /** 指定返回的字段 */
+  fields?: string[];
+
   /** 是否导入metadata字段, 为true时支持按照导入的内置字段覆盖属性值 */
   importMetadata?: boolean;
 }
@@ -28,6 +31,9 @@ export interface InstanceApi_UpdateByQueryResponseBody {
 
   /** 更新失败总数 */
   failTotal?: number;
+
+  /** 更新成功的实例列表 */
+  successList?: Record<string, any>[];
 }
 
 /**
