@@ -37,7 +37,7 @@ export const CustomAuthConfigApi_listCustomAuthConfig = async (
   params: CustomAuthConfigApi_ListCustomAuthConfigRequestParams,
   options?: HttpOptions
 ): Promise<CustomAuthConfigApi_ListCustomAuthConfigResponseBody> =>
-  /**! @contract easyops.api.api_gateway.custom_auth_config.ListCustomAuthConfig@1.3.0 */ (
+  /**! @contract easyops.api.api_gateway.custom_auth_config.ListCustomAuthConfig@1.5.0 */ (
     await http.get<
       ResponseBodyWrapper<CustomAuthConfigApi_ListCustomAuthConfigResponseBody>
     >("api/v1/api_gateway/custom_auth_config", { ...options, params })

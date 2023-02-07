@@ -4,15 +4,21 @@ import { ResponseBodyWrapper } from "../../../wrapper";
 export interface BootstrapV2Api_GetBricksInfoRequestParams {
   /** brick数据需要忽略的字段，多个字段用逗号分开 */
   ignoredBrickFields?: string;
+
+  /** template数据需要忽略的字段，多个字段用逗号分开 */
+  ignoredTemplateFields?: string;
 }
 
 export interface BootstrapV2Api_GetBricksInfoResponseBody {
   /** 相关 NB 构件包信息 */
   bricksInfo?: Record<string, any>[];
+
+  /** 相关 NT 构件包信息 */
+  templatesInfo?: Record<string, any>[];
 }
 
 /**
- * @description 获取bricks信息
+ * @description 获取bricks/templates信息
  * @endpoint GET /api/v1/api_gateway/bricks
  */
 export const BootstrapV2Api_getBricksInfo = async (

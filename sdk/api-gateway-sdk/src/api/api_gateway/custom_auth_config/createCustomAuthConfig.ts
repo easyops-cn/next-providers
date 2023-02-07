@@ -19,7 +19,7 @@ export const CustomAuthConfigApi_createCustomAuthConfig = async (
   data: CustomAuthConfigApi_CreateCustomAuthConfigRequestBody,
   options?: HttpOptions
 ): Promise<CustomAuthConfigApi_CreateCustomAuthConfigResponseBody> =>
-  /**! @contract easyops.api.api_gateway.custom_auth_config.CreateCustomAuthConfig@1.3.0 */ (
+  /**! @contract easyops.api.api_gateway.custom_auth_config.CreateCustomAuthConfig@1.4.0 */ (
     await http.post<
       ResponseBodyWrapper<CustomAuthConfigApi_CreateCustomAuthConfigResponseBody>
     >("api/v1/api_gateway/custom_auth_config", data, options)
