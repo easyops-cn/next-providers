@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/api-gateway-sdk@2.6.0...@next-sdk/api-gateway-sdk@2.7.0) (2023-02-07)
+
+### Features
+
+- add apis: BootstrapStandaloneApi_getBrandFavicon, BootstrapStandaloneApi_getBrandTitle, CustomAuthConfigApi_oAuth2AccessTokenDebug ([bf24309](https://github.com/easyops-cn/next-providers/commit/bf24309117b61b4ee92b1fef575687a5f57d4a46))
+
 # [2.6.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/api-gateway-sdk@2.5.0...@next-sdk/api-gateway-sdk@2.6.0) (2023-01-29)
 
 ### Features
