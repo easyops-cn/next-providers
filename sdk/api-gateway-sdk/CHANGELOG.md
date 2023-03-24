@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.8.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/api-gateway-sdk@2.7.0...@next-sdk/api-gateway-sdk@2.8.0) (2023-03-24)
+
+### Features
+
+- add apis: UnionPayApi_index, UnionPayApi_unionPayLogin ([e338678](https://github.com/easyops-cn/next-providers/commit/e33867874a9ba59c7bcc21d5b7376e65391bfa78))
+
 # [2.7.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/api-gateway-sdk@2.6.0...@next-sdk/api-gateway-sdk@2.7.0) (2023-02-07)
 
 ### Features
