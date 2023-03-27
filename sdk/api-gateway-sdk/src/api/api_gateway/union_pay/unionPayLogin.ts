@@ -7,6 +7,9 @@ export interface UnionPayApi_UnionPayLoginRequestBody {
 
   /** 密码 */
   password: string;
+
+  /** 验证码 */
+  phrase?: string;
 }
 
 export interface UnionPayApi_UnionPayLoginResponseBody {
@@ -15,6 +18,9 @@ export interface UnionPayApi_UnionPayLoginResponseBody {
 
   /** 用户名 */
   username?: string;
+
+  /** 用户instanceId */
+  userInstanceId?: string;
 
   /** 客户id */
   org?: number;

@@ -2501,6 +2501,11 @@
             "name": "password",
             "type": "string",
             "description": "密码"
+          },
+          {
+            "name": "phrase",
+            "type": "string",
+            "description": "验证码"
           }
         ],
         "required": ["username", "password"]
@@ -2517,6 +2522,11 @@
             "name": "username",
             "type": "user_name",
             "description": "用户名"
+          },
+          {
+            "name": "userInstanceId",
+            "type": "string",
+            "description": "用户instanceId"
           },
           {
             "name": "org",
@@ -2561,7 +2571,7 @@
               "X-B3-Traceid": "8fffffffffffffff6c1e84cea8ce252c"
             },
             "status_code": 200,
-            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n        \"loggedIn\": true,\n        \"username\": \"easyops\",\n        \"org\": 2988466,\n        \"loginFrom\": \"\",\n        \"isAdmin\": true,\n        \"isSet\": true\n    }\n}"
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n        \"isLoggedIn\": true,\n        \"username\": \"easyops\",\n        \"org\": 2988466,\n        \"loginFrom\": \"\",\n        \"isAdmin\": true,\n        \"isSet\": true\n    }\n}"
           }
         }
       ]
