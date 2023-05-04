@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/cmdb-sdk@3.4.0...@next-sdk/cmdb-sdk@3.5.0) (2023-05-04)
+
+### Features
+
+- add apis: InstanceApi_getInstanceQueryStrategyView, InstanceApi_setInstanceQueryStrategyView, InstanceGraphApi_traverseGraphV3 ([8875a5e](https://github.com/easyops-cn/next-providers/commit/8875a5e250babdc3e9bd67475f19b1b2c9744b56))
+
 # [3.4.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/cmdb-sdk@3.3.1...@next-sdk/cmdb-sdk@3.4.0) (2023-02-07)
 
 ### Features
