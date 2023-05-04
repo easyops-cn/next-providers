@@ -5361,6 +5361,35 @@
       }
     },
     {
+      "contract": "cmdb.instance.GetInstanceQueryStrategyView",
+      "category": {
+        "en": "Instance",
+        "zh": "实例"
+      },
+      "name": "GetInstanceQueryStrategyView",
+      "version": "1.0.0",
+      "description": "获取实例查询策略视图",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/object/:objectId/query/strategy/view"
+      },
+      "import": ["easyops/model/cmdb/instance_query_strategy"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "objectId",
+            "type": "object_id",
+            "description": "模型对象ID"
+          }
+        ],
+        "required": ["objectId"]
+      },
+      "response": {
+        "type": "InstanceQueryStrategy"
+      }
+    },
+    {
       "contract": "cmdb.instance.GroupInstance",
       "category": {
         "en": "Instance",
@@ -7556,6 +7585,42 @@
       ]
     },
     {
+      "contract": "cmdb.instance.SetInstanceQueryStrategyView",
+      "category": {
+        "en": "Instance",
+        "zh": "实例"
+      },
+      "name": "SetInstanceQueryStrategyView",
+      "version": "1.0.0",
+      "description": "设置实例查询策略视图",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/object/:objectId/query/strategy/view"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "objectId",
+            "type": "object_id",
+            "description": "模型对象ID"
+          },
+          {
+            "name": "oldStrategyId",
+            "type": "string",
+            "description": "旧的全局视图策略id"
+          },
+          {
+            "name": "newStrategyId",
+            "type": "string",
+            "description": "新的全局视图策略id"
+          }
+        ],
+        "required": ["objectId"]
+      },
+      "response": null
+    },
+    {
       "contract": "cmdb.instance.UpdateByQuery",
       "category": {
         "en": "Instance",
@@ -8644,7 +8709,7 @@
       },
       "name": "TraverseGraphV2",
       "version": "1.1.0",
-      "description": "图遍历查询v2,",
+      "description": "图遍历查询v2,支持查询子模型字段",
       "endpoint": {
         "method": "POST",
         "uri": "/v2/instance/traverse"
@@ -8748,6 +8813,122 @@
               "Content-Type": "application/json; charset=utf-8"
             },
             "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"topic_vertices\": [\n            {\n                \"__label\": [\n                    \"aaaa\"\n                ],\n                \"_object_id\": \"APP\",\n                \"instanceId\": \"5b13b76269949\",\n                \"name\": \"aaaa\"\n            }\n        ],\n        \"vertices\": [\n            {\n                \"__label\": [\n                    \"cluster1\",\n                    111\n                ],\n                \"_object_id\": \"CLUSTER\",\n                \"instanceId\": \"5b147ca3eb384\",\n                \"name\": \"cluster1\",\n                \"test\": 111\n            }\n        ],\n        \"edges\": [\n            {\n                \"relation_id\": \"APP_clusters_CLUSTER\",\n                \"out\": \"5b13b76269949\",\n                \"in\": \"5b147ca3eb384\",\n                \"out_name\": \"clusters\"\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "cmdb.instance_graph.TraverseGraphV3",
+      "category": {
+        "en": "Instance graph",
+        "zh": "实例图"
+      },
+      "name": "TraverseGraphV3",
+      "version": "1.0.0",
+      "description": "图遍历查询v3,支持父模型定义跳转",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/v3/instance/traverse"
+      },
+      "import": ["easyops/model/cmdb/traverse_child_node_v2"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "object_id",
+            "type": "object_id",
+            "description": "模型Id"
+          },
+          {
+            "name": "query",
+            "type": "map",
+            "description": "实例的过滤条件 (过滤条件不仅支持属性的过滤，也支持关系字段的过滤)"
+          },
+          {
+            "name": "select_fields",
+            "type": "string[]",
+            "description": "指定返回此关系指向模型的fields,支持子模型属性"
+          },
+          {
+            "name": "child",
+            "type": "TraverseChildNodeV2[]",
+            "description": "子节点列表"
+          },
+          {
+            "name": "need_redirection",
+            "type": "bool",
+            "description": "是否需要返回图的方向"
+          }
+        ],
+        "required": ["object_id", "select_fields", "query", "child"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "topic_vertices",
+            "type": "map[]",
+            "description": "根节点实例列表"
+          },
+          {
+            "name": "vertices",
+            "type": "map[]",
+            "description": "节点实例列表"
+          },
+          {
+            "name": "edges",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "relation_id",
+                "type": "string",
+                "description": "关系Id"
+              },
+              {
+                "name": "out",
+                "type": "string",
+                "description": "实例Id"
+              },
+              {
+                "name": "in",
+                "type": "string",
+                "description": "实例Id, 例如:「 应用的负责人 」 这一关系数据中, 「应用」数据是 out, 「用户」数据是 in"
+              },
+              {
+                "name": "out_name",
+                "type": "string",
+                "description": "关系别名"
+              },
+              {
+                "name": "properties",
+                "type": "map",
+                "description": "属性数据"
+              }
+            ],
+            "description": "关系列表"
+          }
+        ],
+        "required": ["topic_vertices", "vertices", "edges"]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Graph traversal query v3",
+            "zh": "图遍历查询v3"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8079/v3/instance/traverse",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"object_id\": \"HOST\",\n    \"query\": {\n        \"instanceId\": \"5f419aef68685\"\n    },\n    \"fields\": {\n        \"instanceId\": true,\n        \"__label\": true\n    },\n    \"child\": [\n        {\n            \"parentOut\": \"artifactInsts\",\n            \"query\": {\n                \"instanceId\": \"5f42978586c69\"\n            },\n            \"objectId\": \"ARTIFACT_INST@ONEMODEL\",\n            \"fields\": {\n                \"instanceId\": true,\n                \"__label\": true\n            },\n            \"child\": [\n                {\n                    \"parentOut\": \"services\",\n                    \"objectId\": \"SERVICE@ONEMODEL\",\n                    \"query\": {},\n                    \"fields\": {\n                        \"instanceId\": true,\n                        \"__label\": true\n                    }\n                }\n            ]\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"topic_vertices\": [\n            {\n                \"__label\": [\n                    \"dev-host-0-136-frontend-ci\",\n                    \"172.30.0.136\"\n                ],\n                \"_object_id\": \"HOST\",\n                \"hostname\": \"dev-host-0-136-frontend-ci\",\n                \"instanceId\": \"5f419aef68685\",\n                \"ip\": \"172.30.0.136\"\n            }\n        ],\n        \"vertices\": [\n            {\n                \"__label\": [\n                    null\n                ],\n                \"_object_id\": \"REDIS_SERVICE@ONEMODEL\",\n                \"id\": null,\n                \"instanceId\": \"5ee6a42df0378\",\n                \"name\": \"redis-172.30.0.89:6379\"\n            },\n            {\n                \"__label\": [\n                    \"/usr/bin/docker-proxy -proto tcp -host-ip :: -host-port 13306 -container-ip 172.18.0.2 -container-port 3306\"\n                ],\n                \"_object_id\": \"MYSQL@ONEMODEL\",\n                \"installPath\": \"/usr/bin/docker-proxy -proto tcp -host-ip :: -host-port 13306 -container-ip 172.18.0.2 -container-port 3306\",\n                \"instanceId\": \"5f42978586c69\",\n                \"ip\": \"172.30.0.136\",\n                \"ports\": [\n                    \"13306\"\n                ]\n            },\n            {\n                \"__label\": [\n                    \"mysql-172.30.0.136:13306\"\n                ],\n                \"_object_id\": \"MYSQL_SERVICE@ONEMODEL\",\n                \"id\": null,\n                \"instanceId\": \"5f42a955aeb3d\",\n                \"name\": \"mysql-172.30.0.136:13306\"\n            }\n        ],\n        \"edges\": [\n            {\n                \"relation_id\": \"ARTIFACT_INST@ONEMODEL_host_artifactInsts_HOST\",\n                \"out\": \"5f42978586c69\",\n                \"in\": \"5f419aef68685\",\n                \"out_name\": \"artifactInsts\",\n                \"properties\": {\n                    \"instanceId\": \"5f4297872ca69\"\n                }\n            },\n            {\n                \"relation_id\": \"SERVICE@ONEMODEL_resources_services_RESOURCE@ONEMODEL\",\n                \"out\": \"5ee6a42df0378\",\n                \"in\": \"5f42978586c69\",\n                \"out_name\": \"services\",\n                \"properties\": null\n            },\n            {\n                \"relation_id\": \"SERVICE@ONEMODEL_resources_services_RESOURCE@ONEMODEL\",\n                \"out\": \"5f42a955aeb3d\",\n                \"in\": \"5f42978586c69\",\n                \"out_name\": \"services\",\n                \"properties\": {\n                    \"instanceId\": \"5f42a958bfe21\"\n                }\n            }\n        ]\n    }\n}"
           }
         }
       ]

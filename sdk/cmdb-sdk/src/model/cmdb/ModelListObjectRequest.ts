@@ -38,4 +38,7 @@ export interface ModelListObjectRequest {
 
   /** 按权限点action校验，默认按实例访问权限校验 */
   action: string;
+
+  /** 模型的基本信息指定字段返回，使用,分隔，不传则返回模型全部基础信息字段，如果过滤条件中包含某些字段，那么baseFields的值也应该有这些字段，否则过滤无效 */
+  baseFields: string;
 }

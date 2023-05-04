@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelTraverseChildNodeV2 } from "../../../model/cmdb";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
-export interface InstanceGraphApi_TraverseGraphV2RequestBody {
+export interface InstanceGraphApi_TraverseGraphV3RequestBody {
   /** 模型Id */
   object_id: string;
 
@@ -19,7 +19,7 @@ export interface InstanceGraphApi_TraverseGraphV2RequestBody {
   need_redirection?: boolean;
 }
 
-export interface InstanceGraphApi_TraverseGraphV2ResponseBody {
+export interface InstanceGraphApi_TraverseGraphV3ResponseBody {
   /** 根节点实例列表 */
   topic_vertices: Record<string, any>[];
 
@@ -27,28 +27,28 @@ export interface InstanceGraphApi_TraverseGraphV2ResponseBody {
   vertices: Record<string, any>[];
 
   /** 关系列表 */
-  edges: InstanceGraphApi_TraverseGraphV2ResponseBody_edges_item[];
+  edges: InstanceGraphApi_TraverseGraphV3ResponseBody_edges_item[];
 }
 
 /**
- * @description 图遍历查询v2,支持查询子模型字段
- * @endpoint POST /v2/instance/traverse
+ * @description 图遍历查询v3,支持父模型定义跳转
+ * @endpoint POST /v3/instance/traverse
  */
-export const InstanceGraphApi_traverseGraphV2 = async (
-  data: InstanceGraphApi_TraverseGraphV2RequestBody,
+export const InstanceGraphApi_traverseGraphV3 = async (
+  data: InstanceGraphApi_TraverseGraphV3RequestBody,
   options?: HttpOptions
-): Promise<InstanceGraphApi_TraverseGraphV2ResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance_graph.TraverseGraphV2@1.1.0 */ (
+): Promise<InstanceGraphApi_TraverseGraphV3ResponseBody> =>
+  /**! @contract easyops.api.cmdb.instance_graph.TraverseGraphV3@1.0.0 */ (
     await http.post<
-      ResponseBodyWrapper<InstanceGraphApi_TraverseGraphV2ResponseBody>
+      ResponseBodyWrapper<InstanceGraphApi_TraverseGraphV3ResponseBody>
     >(
-      "api/gateway/cmdb.instance_graph.TraverseGraphV2/v2/instance/traverse",
+      "api/gateway/cmdb.instance_graph.TraverseGraphV3/v3/instance/traverse",
       data,
       options
     )
   ).data;
 
-export interface InstanceGraphApi_TraverseGraphV2ResponseBody_edges_item {
+export interface InstanceGraphApi_TraverseGraphV3ResponseBody_edges_item {
   /** 关系Id */
   relation_id?: string;
 
