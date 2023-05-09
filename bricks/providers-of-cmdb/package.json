@@ -1,7 +1,7 @@
 {
   "name": "@next-bricks/providers-of-cmdb",
   "version": "1.19.0",
-  "description": "> TODO: description",
+  "description": "Provider bricks form CMDB",
   "homepage": "https://github.com/easyops-cn/next-providers/tree/master/bricks/providers-of-cmdb",
   "license": "GPL-3.0",
   "files": [
