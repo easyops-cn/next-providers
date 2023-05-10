@@ -38,7 +38,7 @@
     "@next-core/brick-http": "^2.8.0",
     "@next-core/brick-icons": "^2.31.14",
     "@next-core/brick-kit": "^2.164.4",
-    "@next-core/brick-types": "^2.82.0",
+    "@next-core/brick-types": "^2.82.5",
     "@next-core/brick-utils": "^2.45.20",
     "@next-core/dev-dependencies": "^1.16.85",
     "@next-core/easyops-analytics": "^0.10.8",
@@ -93,11 +93,11 @@
   "resolutions": {
     "@types/react": "^16.14.34",
     "lodash": "^4.17.21",
-    "@next-core/brick-types": "^2.82.0",
+    "@next-core/brick-types": "^2.82.5",
     "ua-parser-js": "0.7.19"
   },
   "easyops": {
     "create-next-repo": "1.2.24",
-    "dev-dependencies": "1.16.84"
+    "dev-dependencies": "1.16.85"
   }
 }
