@@ -1,0 +1,24 @@
+{
+  "name": "@next-bricks/providers-of-cmdb",
+  "version": "1.19.1",
+  "description": "Provider bricks form CMDB",
+  "homepage": "https://github.com/easyops-cn/next-providers/tree/master/bricks/providers-of-cmdb",
+  "license": "GPL-3.0",
+  "files": [
+    "dist",
+    "deploy"
+  ],
+  "scripts": {
+    "prestart": "node scripts/pre-build.js",
+    "start": "cross-env NODE_ENV='development' webpack --config webpack.config.js --watch",
+    "prebuild": "node scripts/pre-build.js",
+    "build": "cross-env NODE_ENV='production' webpack --config webpack.config.js",
+    "postbuild": "node scripts/post-build.js",
+    "test": "cross-env NODE_ENV='test' jest",
+    "test:ci": "cross-env NODE_ENV='test' CI=true jest"
+  },
+  "devDependencies": {
+    "@next-sdk/cmdb-sdk": "^3.0.1"
+  },
+  "sideEffects": true
+}

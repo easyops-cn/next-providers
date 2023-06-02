@@ -1,0 +1,705 @@
+{
+  "name": "air_admin_service",
+  "contracts": [
+    {
+      "contract": "air_admin_service.customer.CreateOrgForCustomerBatch",
+      "name": "CreateOrgForCustomerBatch",
+      "version": "1.0.0",
+      "description": "批量为客户注册org，并申请user",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/customer/batch_org"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceIds",
+            "type": "instance_id[]",
+            "description": "客户申请信息, 模型CUSTOMER_APPLY_INFO的实例id列表"
+          }
+        ],
+        "required": ["instanceIds"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "successIds",
+            "type": "object[]",
+            "description": "创建成功的实例id列表",
+            "fields": [
+              {
+                "name": "applyInfoId",
+                "type": "instance_id",
+                "description": "申请信息的instanceId"
+              },
+              {
+                "name": "orgInfoId",
+                "type": "instance_id",
+                "description": "Org信息的instanceId"
+              }
+            ]
+          }
+        ],
+        "required": ["successIds"]
+      }
+    },
+    {
+      "contract": "air_admin_service.customer.GetExpiration",
+      "name": "GetExpiration",
+      "version": "1.0.0",
+      "description": "获取过期时间戳",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/customer/expiration"
+      },
+      "request": null,
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "expires",
+            "type": "int",
+            "description": "过期时间戳"
+          },
+          {
+            "name": "updating",
+            "type": "bool",
+            "description": "org是否已经是延期中状态"
+          }
+        ],
+        "required": ["expires", "updating"]
+      }
+    },
+    {
+      "contract": "air_admin_service.customer.ListOrgInfo",
+      "name": "ListOrgInfo",
+      "version": "1.0.0",
+      "description": "列出符合要求的org信息",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/customer/org/list"
+      },
+      "import": ["easyops/model/air_admin_service/customer_org_info"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "query",
+            "type": "string",
+            "description": "查询条件, 企业或者org的字符串"
+          },
+          {
+            "name": "state",
+            "type": "string",
+            "enum": ["expired", "normal", "updating", "willExpired"],
+            "description": "org使用状态: 已过期，正常，延期中，即将过期"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页数"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "页码"
+          },
+          {
+            "name": "sort",
+            "type": "map",
+            "description": "按字段排序, 留空默认按照实例ID降序排序(1表示升序, -1表示降序)"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "CustomerOrgInfo[]",
+            "description": "数据"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总数"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页数"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "页码"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "air_admin_service.customer.SaveApplyInfo",
+      "name": "SaveApplyInfo",
+      "version": "1.0.0",
+      "description": "保存用户的申请信息到cmdb",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/customer/info"
+      },
+      "import": ["easyops/model/air_admin_service/customer_apply_info"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "CustomerApplyInfo.userName"
+          },
+          {
+            "ref": "CustomerApplyInfo.userId"
+          },
+          {
+            "ref": "CustomerApplyInfo.gender"
+          },
+          {
+            "ref": "CustomerApplyInfo.email"
+          },
+          {
+            "ref": "CustomerApplyInfo.phone"
+          },
+          {
+            "ref": "CustomerApplyInfo.company"
+          },
+          {
+            "ref": "CustomerApplyInfo.website"
+          },
+          {
+            "ref": "CustomerApplyInfo.industry"
+          },
+          {
+            "ref": "CustomerApplyInfo.scale"
+          },
+          {
+            "ref": "CustomerApplyInfo.position"
+          },
+          {
+            "ref": "CustomerApplyInfo.city"
+          },
+          {
+            "name": "message_id",
+            "type": "string",
+            "description": "发送的申请验证码消息 ID"
+          },
+          {
+            "name": "verification_code",
+            "type": "verification_code",
+            "description": "验证码"
+          }
+        ],
+        "required": [
+          "CustomerApplyInfo.userName",
+          "CustomerApplyInfo.userId",
+          "CustomerApplyInfo.gender",
+          "CustomerApplyInfo.email",
+          "CustomerApplyInfo.phone",
+          "CustomerApplyInfo.company",
+          "message_id",
+          "verification_code"
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "air_admin_service.customer.SaveApplyInfoV2",
+      "name": "SaveApplyInfoV2",
+      "version": "1.0.0",
+      "description": "保存用户的体验申请信息到cmdb",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v2/customer/info"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "phone",
+            "type": "phone_number",
+            "description": "手机号码"
+          },
+          {
+            "name": "email",
+            "type": "email",
+            "description": "邮箱地址"
+          },
+          {
+            "name": "message_id",
+            "type": "string",
+            "description": "发送的申请验证码消息 ID"
+          },
+          {
+            "name": "verification_code",
+            "type": "verification_code",
+            "description": "验证码"
+          },
+          {
+            "name": "source",
+            "type": "string",
+            "description": "申请来源链接"
+          }
+        ],
+        "required": [
+          "phone",
+          "email",
+          "message_id",
+          "verification_code",
+          "source"
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "air_admin_service.customer.SaveConsultInfo",
+      "name": "SaveConsultInfo",
+      "version": "1.0.0",
+      "description": "保存用户预约咨询信息",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/consult/info"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "phone",
+            "type": "phone_number",
+            "description": "手机号码"
+          },
+          {
+            "name": "verification_code",
+            "type": "verification_code",
+            "description": "验证码"
+          },
+          {
+            "name": "username",
+            "type": "string",
+            "description": "用户名",
+            "validate": {
+              "pattern": "^[^/#$%^&?]{2,30}$"
+            }
+          },
+          {
+            "name": "company",
+            "type": "string",
+            "description": "企业名称",
+            "validate": {
+              "pattern": "^.{0,30}$"
+            }
+          },
+          {
+            "name": "scale",
+            "type": "string",
+            "description": "公司规模"
+          },
+          {
+            "name": "subject",
+            "type": "string[]",
+            "description": "咨询主题"
+          },
+          {
+            "name": "update",
+            "type": "bool",
+            "description": "更新用户信息"
+          }
+        ],
+        "required": ["phone", "verification_code", "username"]
+      },
+      "response": null
+    },
+    {
+      "contract": "air_admin_service.customer.SaveCustomerPublicKey",
+      "name": "SaveCustomerPublicKey",
+      "version": "1.0.0",
+      "description": " 保存用户提交的公钥",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/air_admin_service/customer/v1/publickey"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "orgId",
+            "type": "org",
+            "description": "用户orgId"
+          },
+          {
+            "name": "userId",
+            "type": "user_name",
+            "description": "平台用户名"
+          },
+          {
+            "name": "passwd",
+            "type": "string",
+            "description": "用户密码"
+          },
+          {
+            "name": "publicKey",
+            "type": "string",
+            "description": "用户提交的公钥"
+          }
+        ],
+        "required": ["orgId", "userId", "passwd", "publicKey"]
+      },
+      "response": null
+    },
+    {
+      "contract": "air_admin_service.customer.SendApplicationVerificationCode",
+      "name": "SendApplicationVerificationCode",
+      "version": "1.0.0",
+      "description": "发送申请验证码",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/customer/application/verification-code"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "phone_number",
+            "type": "phone_number",
+            "description": "接收申请验证码的手机号码"
+          }
+        ],
+        "required": ["phone_number"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "message_id",
+            "type": "string",
+            "description": "发送的消息 ID"
+          }
+        ],
+        "required": ["message_id"]
+      }
+    },
+    {
+      "contract": "air_admin_service.customer.SendApprovedEmail",
+      "name": "SendApprovedEmail",
+      "version": "1.0.0",
+      "description": "发送审核完成邮件给客户",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/customer/approved_email"
+      },
+      "import": ["easyops/model/air_admin_service/customer_apply_info"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceIds",
+            "type": "instance_id[]",
+            "description": "EASYOPS_AIR_CUSTOMER_ORG的实例id列表"
+          }
+        ],
+        "required": ["instanceIds"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "failedInstanceIds",
+            "type": "instance_id[]",
+            "description": "发送邮件失败的实例id列表"
+          }
+        ],
+        "required": ["failedInstanceIds"]
+      }
+    },
+    {
+      "contract": "air_admin_service.customer.SendConsultVerificationCode",
+      "name": "SendConsultVerificationCode",
+      "version": "1.1.0",
+      "description": "获取预约验证码",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/consult/verification-code"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "phone_number",
+            "type": "phone_number",
+            "description": "接收申请验证码的手机号码"
+          }
+        ],
+        "required": ["phone_number"]
+      },
+      "response": null
+    },
+    {
+      "contract": "air_admin_service.customer.SendUpdatedEmail",
+      "name": "SendUpdatedEmail",
+      "version": "1.0.0",
+      "description": "发送延期申请的审核完成邮件给客户",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/customer/updated_email"
+      },
+      "import": ["easyops/model/air_admin_service/customer_apply_info"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceIds",
+            "type": "instance_id[]",
+            "description": "EASYOPS_AIR_CUSTOMER_ORG的实例id列表"
+          }
+        ],
+        "required": ["instanceIds"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "failedInstanceIds",
+            "type": "instance_id[]",
+            "description": "发送邮件失败的实例id列表"
+          }
+        ],
+        "required": ["failedInstanceIds"]
+      }
+    },
+    {
+      "contract": "air_admin_service.customer.SetApplyDisapprovedBatch",
+      "name": "SetApplyDisapprovedBatch",
+      "version": "1.0.0",
+      "description": "将客户申请状态修改成disapproved",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/customer/disapproved_apply"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceIds",
+            "type": "instance_id[]",
+            "description": "客户申请信息, 模型CUSTOMER_APPLY_INFO的实例id的列表"
+          }
+        ],
+        "required": ["instanceIds"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "failedInstanceIds",
+            "type": "instance_id[]",
+            "description": "修改失败的id列表"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "air_admin_service.customer.SetOrgUpdating",
+      "name": "SetOrgUpdating",
+      "version": "1.0.0",
+      "description": "将客户Org的状态修改成updating",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/customer/updating_org"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "orgId",
+            "type": "org",
+            "description": "需要修改状态的org"
+          }
+        ],
+        "required": ["orgId"]
+      },
+      "response": null
+    },
+    {
+      "contract": "air_admin_service.customer.Signup",
+      "name": "Signup",
+      "version": "1.0.0",
+      "description": "SaaS平台用户注册",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/customer/signup"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "username",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "email",
+            "type": "email",
+            "description": "邮箱字符串"
+          },
+          {
+            "name": "password",
+            "type": "password",
+            "description": "密码"
+          },
+          {
+            "name": "phone",
+            "type": "phone_number",
+            "description": "手机号码"
+          },
+          {
+            "name": "verification_code",
+            "type": "verification_code",
+            "description": "验证码"
+          },
+          {
+            "name": "message_id",
+            "type": "string",
+            "description": "验证码消息 ID"
+          }
+        ],
+        "required": [
+          "username",
+          "email",
+          "password",
+          "phone",
+          "verification_code",
+          "message_id"
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "org",
+            "type": "org",
+            "description": "ORG"
+          },
+          {
+            "name": "userInstanceId",
+            "type": "instance_id",
+            "description": "用户 id"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "air_admin_service.customer.UpdateLicenseBatch",
+      "name": "UpdateLicenseBatch",
+      "version": "1.0.0",
+      "description": "批量续期",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/customer/batch_license"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "orgIds",
+            "type": "org[]",
+            "description": "需要续期的orgId列表"
+          }
+        ],
+        "required": ["orgIds"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "successOrgs",
+            "type": "object[]",
+            "description": "延期成功的Org列表",
+            "fields": [
+              {
+                "name": "orgId",
+                "type": "org",
+                "description": "延期成功的org"
+              },
+              {
+                "name": "orgInfoId",
+                "type": "instance_id",
+                "description": "延期成功的Org信息的instanceId"
+              }
+            ]
+          }
+        ],
+        "required": ["successOrgs"]
+      }
+    },
+    {
+      "contract": "air_admin_service.customer.ValidateEmail",
+      "name": "ValidateEmail",
+      "version": "1.0.0",
+      "description": "验证邮箱email是否唯一",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/customer/email_uniqueness"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "email",
+            "type": "string",
+            "description": "邮箱字符串"
+          }
+        ],
+        "required": ["email"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "validateInfo",
+            "type": "string",
+            "enum": ["OK", "duplicated_email", "invalid_email"],
+            "description": "校验结果"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "air_admin_service.customer.ValidateUser",
+      "name": "ValidateUser",
+      "version": "1.0.0",
+      "description": "验证用户名userId是否唯一",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/customer/user_uniqueness"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "userId",
+            "type": "string",
+            "description": "用户Id字符串, 用于申请平台用户"
+          }
+        ],
+        "required": ["userId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "validateInfo",
+            "type": "string",
+            "enum": ["OK", "duplicated_user", "invalid_user"],
+            "description": "校验结果"
+          }
+        ]
+      }
+    }
+  ]
+}

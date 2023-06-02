@@ -1,0 +1,103 @@
+{
+  "name": "next-providers",
+  "private": true,
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/easyops-cn/next-providers",
+  "scripts": {
+    "prepare": "lerna bootstrap && husky install",
+    "start": "lerna run start",
+    "build": "npm run build:sdk",
+    "build:sdk": "lerna run build --scope \"@next-sdk/*\"",
+    "postbuild": "npm run size-limit",
+    "size-limit": "size-limit",
+    "serve": "brick-container-serve",
+    "test": "next-jest",
+    "test:ci": "lerna run test:ci --",
+    "yo": "brick-scripts",
+    "yo-debug": "node --inspect-brk ./node_modules/@next-core/brick-scripts/dist/index.js",
+    "yo-sdk": "sdk-scripts",
+    "yo-sdk-debug": "node --inspect-brk ./node_modules/@next-core/sdk-scripts/dist/index.js",
+    "renew": "dev-dependencies-renew",
+    "extract": "dev-dependencies-extract",
+    "lint-staged": "lint-staged"
+  },
+  "browserslist": {
+    "development": [
+      "extends @next-core/browserslist-config-next/development"
+    ],
+    "production": [
+      "extends @next-core/browserslist-config-next/production"
+    ]
+  },
+  "devDependencies": {
+    "@ant-design/compatible": "^1.0.8",
+    "@ant-design/icons": "^4.5.0",
+    "@babel/runtime": "^7.20.6",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@next-core/babel-runtime-helpers": "^1.0.27",
+    "@next-core/brick-http": "^2.8.0",
+    "@next-core/brick-icons": "^2.31.14",
+    "@next-core/brick-kit": "^2.164.4",
+    "@next-core/brick-types": "^2.82.0",
+    "@next-core/brick-utils": "^2.45.20",
+    "@next-core/dev-dependencies": "^1.16.84",
+    "@next-core/easyops-analytics": "^0.10.8",
+    "@next-core/editor-bricks-helper": "^0.49.58",
+    "@next-core/fontawesome-library": "^1.1.36",
+    "@next-core/illustrations": "^0.11.4",
+    "@next-core/pipes": "^1.0.15",
+    "@next-core/sdk-scripts": "^2.7.18",
+    "@size-limit/file": "^8.1.0",
+    "@types/d3": "^6.7.5",
+    "@types/dompurify": "^2.4.0",
+    "@types/echarts": "^4.9.16",
+    "@types/enzyme": "^3.10.12",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/history": "^4.7.11",
+    "@types/jest": "^29.2.4",
+    "@types/js-yaml": "^3.12.7",
+    "@types/lodash": "^4.14.191",
+    "@types/lolex": "^5.1.2",
+    "@types/node": "^16.18.7",
+    "@types/react": "^16.14.34",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-test-renderer": "^17.0.2",
+    "@types/react-transition-group": "^4.4.5",
+    "antd": "~4.12.3",
+    "d3-drag": "^2.0.0",
+    "d3-force": "^2.1.1",
+    "d3-hierarchy": "^2.0.0",
+    "d3-selection": "^2.0.0",
+    "d3-shape": "^2.1.0",
+    "d3-zoom": "^2.0.0",
+    "dnd-core": "^11.1.3",
+    "echarts": "^4.9.0",
+    "enzyme": "^3.11.0",
+    "history": "^4.10.1",
+    "i18next": "^22.1.4",
+    "js-yaml": "^3.14.1",
+    "lodash": "^4.17.21",
+    "lolex": "^5.1.2",
+    "moment": "^2.29.4",
+    "react": "^16.14.0",
+    "react-ace": "^7.0.5",
+    "react-dnd": "^11.1.3",
+    "react-dnd-html5-backend": "^11.1.3",
+    "react-dom": "^16.14.0",
+    "react-i18next": "^11.18.6",
+    "react-transition-group": "^4.4.5"
+  },
+  "workspaces": [
+    "sdk/*"
+  ],
+  "resolutions": {
+    "@types/react": "^16.14.34",
+    "lodash": "^4.17.21",
+    "@next-core/brick-types": "^2.82.0",
+    "ua-parser-js": "0.7.19"
+  },
+  "easyops": {
+    "create-next-repo": "1.2.24",
+    "dev-dependencies": "1.16.84"
+  }
+}

@@ -1,0 +1,2306 @@
+{
+  "name": "user_service",
+  "contracts": [
+    {
+      "contract": "user_service.apikey.CreateApiKey",
+      "name": "CreateApiKey",
+      "version": "1.0.0",
+      "description": "创建用户ApiKey[内部]",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/apikey/:user"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "user",
+            "type": "string",
+            "description": "用户名"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "user",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "access_key",
+            "type": "string",
+            "description": "access_key"
+          },
+          {
+            "name": "secret_key",
+            "type": "string",
+            "description": "secret_key"
+          },
+          {
+            "name": "state",
+            "type": "string",
+            "enum": ["invalid", "valid"],
+            "description": "是否可用"
+          },
+          {
+            "name": "org",
+            "type": "int",
+            "description": "org"
+          },
+          {
+            "name": "ctime",
+            "type": "string",
+            "description": "创建时间"
+          },
+          {
+            "name": "ts",
+            "type": "int",
+            "description": "更新时间戳"
+          }
+        ],
+        "required": [
+          "user",
+          "access_key",
+          "secret_key",
+          "state",
+          "org",
+          "ctime",
+          "ts"
+        ]
+      }
+    },
+    {
+      "contract": "user_service.apikey.DeleteApiKey",
+      "name": "DeleteApiKey",
+      "version": "1.0.0",
+      "description": "删除用户ApiKey[内部]",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/apikey/delete/:access_key"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "access_key",
+            "type": "string",
+            "description": "access_key"
+          }
+        ],
+        "required": ["access_key"]
+      },
+      "response": null
+    },
+    {
+      "contract": "user_service.apikey.DisableApiKey",
+      "name": "DisableApiKey",
+      "version": "1.0.0",
+      "description": "禁用用户ApiKey[内部]",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/apikey/disable/:access_key"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "access_key",
+            "type": "string",
+            "description": "access_key"
+          }
+        ],
+        "required": ["access_key"]
+      },
+      "response": null
+    },
+    {
+      "contract": "user_service.apikey.EnableApiKey",
+      "name": "EnableApiKey",
+      "version": "1.0.0",
+      "description": "启用用户ApiKey[内部]",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/apikey/enable/:access_key"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "access_key",
+            "type": "string",
+            "description": "access_key"
+          }
+        ],
+        "required": ["access_key"]
+      },
+      "response": null
+    },
+    {
+      "contract": "user_service.apikey.GetApiKey",
+      "name": "GetApiKey",
+      "version": "1.0.0",
+      "description": "查询个人apikey",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/profile/apikey"
+      },
+      "request": null,
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "user",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "access_key",
+            "type": "string",
+            "description": "access_key"
+          },
+          {
+            "name": "secret_key",
+            "type": "string",
+            "description": "secret_key"
+          },
+          {
+            "name": "state",
+            "type": "string",
+            "enum": ["invalid", "valid"],
+            "description": "是否可用"
+          },
+          {
+            "name": "org",
+            "type": "int",
+            "description": "org"
+          },
+          {
+            "name": "ctime",
+            "type": "string",
+            "description": "创建时间"
+          },
+          {
+            "name": "ts",
+            "type": "int",
+            "description": "更新时间戳"
+          }
+        ],
+        "required": [
+          "user",
+          "access_key",
+          "secret_key",
+          "state",
+          "org",
+          "ctime",
+          "ts"
+        ]
+      }
+    },
+    {
+      "contract": "user_service.apikey.ListApiKey",
+      "name": "ListApiKey",
+      "version": "1.0.0",
+      "description": "获取用户ApiKey[内部]",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/v1/apikey"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "页大小"
+          },
+          {
+            "name": "q",
+            "type": "string",
+            "description": "按用户名模糊搜索"
+          }
+        ],
+        "default": {
+          "page": 1,
+          "page_size": 30
+        }
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "user",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "access_key",
+            "type": "string",
+            "description": "access_key"
+          },
+          {
+            "name": "secret_key",
+            "type": "string",
+            "description": "secret_key"
+          },
+          {
+            "name": "state",
+            "type": "string",
+            "enum": ["invalid", "valid"],
+            "description": "是否可用"
+          },
+          {
+            "name": "org",
+            "type": "int",
+            "description": "org"
+          },
+          {
+            "name": "ctime",
+            "type": "string",
+            "description": "创建时间"
+          },
+          {
+            "name": "ts",
+            "type": "int",
+            "description": "更新时间戳"
+          }
+        ],
+        "required": [
+          "user",
+          "access_key",
+          "secret_key",
+          "state",
+          "org",
+          "ctime",
+          "ts"
+        ]
+      }
+    },
+    {
+      "contract": "user_service.apikey.ResetApiKey",
+      "name": "ResetApiKey",
+      "version": "1.0.0",
+      "description": "重置用户ApiKey[内部]",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/apikey/_reset/:user"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "user",
+            "type": "string",
+            "description": "用户名"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "user",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "access_key",
+            "type": "string",
+            "description": "access_key"
+          },
+          {
+            "name": "secret_key",
+            "type": "string",
+            "description": "secret_key"
+          },
+          {
+            "name": "state",
+            "type": "string",
+            "enum": ["invalid", "valid"],
+            "description": "是否可用"
+          },
+          {
+            "name": "org",
+            "type": "int",
+            "description": "org"
+          },
+          {
+            "name": "ctime",
+            "type": "string",
+            "description": "创建时间"
+          },
+          {
+            "name": "ts",
+            "type": "int",
+            "description": "更新时间戳"
+          }
+        ],
+        "required": [
+          "user",
+          "access_key",
+          "secret_key",
+          "state",
+          "org",
+          "ctime",
+          "ts"
+        ]
+      }
+    },
+    {
+      "contract": "user_service.auth.GetCaptcha",
+      "name": "GetCaptcha",
+      "version": "1.0.0",
+      "description": "登录验证码[内部]",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/users/captcha"
+      },
+      "request": null,
+      "response": {
+        "type": "file"
+      }
+    },
+    {
+      "contract": "user_service.auth.UserAuth",
+      "name": "UserAuth",
+      "version": "1.0.0",
+      "description": "登录认证[内部]",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/users/auth"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "description": "密码"
+          },
+          {
+            "name": "phrase",
+            "type": "string",
+            "description": "验证码"
+          },
+          {
+            "name": "loginBy",
+            "type": "string",
+            "description": "校验密码的方式 easyops: 默认账号密码的方式 custom: 通过客户自定义方式校验, 这种方式需要在 sso-adapter 实现和客户对接的逻辑 ldap: 通过 ldap 登录"
+          },
+          {
+            "name": "clientIp",
+            "type": "ip",
+            "description": "客户端 ip, 某些客户需要此字段"
+          }
+        ],
+        "required": ["name", "password"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "name",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "用户instanceId"
+          },
+          {
+            "name": "org",
+            "type": "int",
+            "description": "org"
+          }
+        ],
+        "required": ["name", "org"]
+      }
+    },
+    {
+      "contract": "user_service.auth.UserValidate",
+      "name": "UserValidate",
+      "version": "1.0.0",
+      "description": "用户密码验证[内部]",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/users/validate"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "description": "密码"
+          }
+        ],
+        "required": ["name", "password"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "name",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "用户instanceId"
+          },
+          {
+            "name": "org",
+            "type": "int",
+            "description": "org"
+          }
+        ],
+        "required": ["name", "org"]
+      }
+    },
+    {
+      "contract": "user_service.gateway.ListApiKey",
+      "name": "ListApiKey",
+      "version": "1.0.0",
+      "description": "获取用户ApiKey",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/user_service/v1/apikey"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "页大小"
+          }
+        ],
+        "required": ["page", "page_size"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "user",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "access_key",
+            "type": "string",
+            "description": "access_key"
+          },
+          {
+            "name": "secret_key",
+            "type": "string",
+            "description": "secret_key"
+          },
+          {
+            "name": "state",
+            "type": "string",
+            "enum": ["invalid", "valid"],
+            "description": "是否可用"
+          },
+          {
+            "name": "org",
+            "type": "int",
+            "description": "org"
+          },
+          {
+            "name": "ctime",
+            "type": "string",
+            "description": "创建时间"
+          },
+          {
+            "name": "ts",
+            "type": "int",
+            "description": "更新时间戳"
+          }
+        ],
+        "required": [
+          "user",
+          "access_key",
+          "secret_key",
+          "state",
+          "org",
+          "ctime",
+          "ts"
+        ]
+      }
+    },
+    {
+      "contract": "user_service.gateway.UserRegister",
+      "name": "UserRegister",
+      "version": "1.0.0",
+      "description": "用户邀请注册",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/user_service/v1/users/register"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "name",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "description": "密码"
+          },
+          {
+            "name": "email",
+            "type": "email",
+            "description": "邮箱"
+          },
+          {
+            "name": "invite",
+            "type": "string",
+            "description": "邀请码"
+          },
+          {
+            "name": "nickname",
+            "type": "string",
+            "description": "用户姓名"
+          }
+        ],
+        "required": ["name", "password", "email", "invite"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "name",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "email",
+            "type": "email",
+            "description": "邮箱"
+          },
+          {
+            "name": "org",
+            "type": "int",
+            "description": "org"
+          },
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "用户instanceId"
+          },
+          {
+            "name": "nickname",
+            "type": "string",
+            "description": "用户姓名"
+          }
+        ],
+        "required": ["name", "email", "org", "instanceId"]
+      }
+    },
+    {
+      "contract": "user_service.invitation_code.CheckInvitationCode",
+      "name": "CheckInvitationCode",
+      "version": "1.0.0",
+      "description": "邀请码检查[内部]",
+      "detail": "已过期或不存在会返回失败",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/invitation/code/:code/check"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "string",
+            "description": "邀请码"
+          }
+        ],
+        "required": ["code"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "string",
+            "description": "邀请码"
+          },
+          {
+            "name": "org",
+            "type": "int",
+            "description": "org"
+          }
+        ],
+        "required": ["code", "org"]
+      }
+    },
+    {
+      "contract": "user_service.invitation_code.GetInvitationCode",
+      "name": "GetInvitationCode",
+      "version": "1.0.0",
+      "description": "邀请码获取[内部]",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/invitation/code"
+      },
+      "request": null,
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "string",
+            "description": "邀请码"
+          },
+          {
+            "name": "org",
+            "type": "int",
+            "description": "org"
+          },
+          {
+            "name": "expires",
+            "type": "string",
+            "description": "过期时间"
+          },
+          {
+            "name": "state",
+            "type": "string",
+            "enum": ["invalid", "valid"],
+            "description": "是否可用"
+          }
+        ],
+        "required": ["code", "org", "expires", "state"]
+      }
+    },
+    {
+      "contract": "user_service.invitation_code.ResetInvitationCode",
+      "name": "ResetInvitationCode",
+      "version": "1.0.0",
+      "description": "重置邀请码[内部]",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/invitation/code/_reset"
+      },
+      "request": null,
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "string",
+            "description": "邀请码"
+          },
+          {
+            "name": "org",
+            "type": "int",
+            "description": "org"
+          },
+          {
+            "name": "expires",
+            "type": "string",
+            "description": "过期时间"
+          },
+          {
+            "name": "state",
+            "type": "string",
+            "enum": ["invalid", "valid"],
+            "description": "是否可用"
+          }
+        ],
+        "required": ["code", "org", "expires", "state"]
+      }
+    },
+    {
+      "contract": "user_service.launchpad.CreateCollection",
+      "name": "CreateCollection",
+      "version": "1.0.0",
+      "description": "新增我的收藏",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/launchpad/collection"
+      },
+      "import": ["easyops/model/user_service/launchpad_collection"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "launchpadCollection",
+            "type": "LaunchpadCollection",
+            "description": "LaunchpadCollection"
+          },
+          {
+            "name": "microAppId",
+            "type": "string",
+            "description": "microApp Id, 当type为microApp时必填"
+          }
+        ],
+        "required": ["launchpadCollection.type", "launchpadCollection.name"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "launchpadInstanceId",
+            "type": "instance_id",
+            "description": "LaunchpadCollection instanceId"
+          }
+        ],
+        "required": ["launchpadInstanceId"]
+      }
+    },
+    {
+      "contract": "user_service.launchpad.DeleteCollection",
+      "name": "DeleteCollection",
+      "version": "1.0.0",
+      "description": "删除我的收藏",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/launchpad/collection/:instanceId"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "launchpad instanceId"
+          }
+        ],
+        "required": ["instanceId"]
+      },
+      "response": null
+    },
+    {
+      "contract": "user_service.launchpad.ListCollection",
+      "name": "ListCollection",
+      "version": "1.0.0",
+      "description": "获取我的收藏列表",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/v1/launchpad/collection"
+      },
+      "import": ["easyops/model/user_service/launchpad_collection"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "页大小"
+          }
+        ],
+        "default": {
+          "page": 1,
+          "pageSize": 24
+        }
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "launchpadCollection",
+            "type": "LaunchpadCollection",
+            "description": "LaunchpadCollection"
+          },
+          {
+            "name": "microAppId",
+            "type": "string",
+            "description": "microApp Id, 当type为microApp时有该字段"
+          }
+        ],
+        "required": [
+          "launchpadCollection.name",
+          "launchpadCollection.icon",
+          "launchpadCollection.type",
+          "launchpadCollection.instanceId"
+        ]
+      }
+    },
+    {
+      "contract": "user_service.launchpad.SortCollection",
+      "name": "SortCollection",
+      "version": "1.0.0",
+      "description": "我的收藏排序",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/launchpad/sort-collection"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "instance_id[]",
+            "description": "launchpad instanceId列表"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "user_service.launchpad.UpdateCollection",
+      "name": "UpdateCollection",
+      "version": "1.0.0",
+      "description": "修改我的收藏",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/launchpad/collection/:instanceId"
+      },
+      "import": ["easyops/model/user_service/launchpad_collection"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "LaunchpadCollection.instanceId"
+          },
+          {
+            "name": "launchpadCollection",
+            "type": "LaunchpadCollection",
+            "description": "LaunchpadCollection"
+          },
+          {
+            "name": "microAppId",
+            "type": "string",
+            "description": "microApp Id, 当type为microApp时必填"
+          }
+        ],
+        "required": [
+          "LaunchpadCollection.instanceId",
+          "launchpadCollection.type",
+          "launchpadCollection.name"
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "user_service.ldap.Auth",
+      "name": "Auth",
+      "version": "1.0.0",
+      "description": "LDAP认证",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/users/ldap_auth"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "login_id",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "description": "密码"
+          },
+          {
+            "name": "ldapServer",
+            "type": "string",
+            "description": "ladp服务器名称"
+          }
+        ],
+        "required": ["login_id", "password"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "username",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "description": "用户名,和username一致(兼容以前返回)"
+          },
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "用户instanceId"
+          },
+          {
+            "name": "org",
+            "type": "int",
+            "description": "org"
+          }
+        ],
+        "required": ["username", "name", "org"]
+      }
+    },
+    {
+      "contract": "user_service.ldap.Config",
+      "name": "Config",
+      "version": "1.0.0",
+      "description": "LDAP配置",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/users/ldap_conf"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "key",
+            "type": "string",
+            "description": "key"
+          },
+          {
+            "name": "conf",
+            "type": "object",
+            "fields": [
+              {
+                "name": "name",
+                "type": "string",
+                "description": "name"
+              },
+              {
+                "name": "user_search_dn",
+                "type": "string",
+                "description": "user_search_dn"
+              },
+              {
+                "name": "user_filter",
+                "type": "string",
+                "description": "user_filter"
+              },
+              {
+                "name": "manager_dn",
+                "type": "string",
+                "description": "manager_dn"
+              },
+              {
+                "name": "manager_password",
+                "type": "string",
+                "description": "manager_password"
+              },
+              {
+                "name": "username",
+                "type": "string",
+                "description": "username"
+              },
+              {
+                "name": "org",
+                "type": "int",
+                "description": "org"
+              }
+            ],
+            "description": "配置"
+          }
+        ],
+        "required": ["key", "conf"]
+      },
+      "response": null
+    },
+    {
+      "contract": "user_service.organization.CreateOrg",
+      "name": "CreateOrg",
+      "version": "1.0.0",
+      "description": "创建Org[内部]",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/org"
+      },
+      "import": ["easyops/model/user_service/org_info"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "OrgInfo.id"
+          },
+          {
+            "ref": "OrgInfo.name"
+          },
+          {
+            "ref": "OrgInfo.memo"
+          },
+          {
+            "ref": "OrgInfo.namespaces"
+          },
+          {
+            "name": "expired_days",
+            "type": "int",
+            "description": "过期日期(天数)"
+          },
+          {
+            "name": "edition",
+            "type": "string",
+            "description": "版本类型"
+          }
+        ],
+        "required": ["edition"],
+        "default": {
+          "id": 0,
+          "expired_days": 0
+        }
+      },
+      "response": {
+        "type": "OrgInfo",
+        "required": [
+          "OrgInfo.id",
+          "OrgInfo.expires",
+          "OrgInfo.createAt",
+          "OrgInfo.valid",
+          "OrgInfo.ts"
+        ]
+      }
+    },
+    {
+      "contract": "user_service.organization.DisableOrg",
+      "name": "DisableOrg",
+      "version": "1.0.0",
+      "description": "禁用Org[内部]",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/org/:id/disable"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "description": "org"
+          }
+        ],
+        "required": ["id"]
+      },
+      "response": null
+    },
+    {
+      "contract": "user_service.organization.EnableOrg",
+      "name": "EnableOrg",
+      "version": "1.0.0",
+      "description": "启用Org[内部]",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/org/:id/enable"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "description": "org"
+          }
+        ],
+        "required": ["id"]
+      },
+      "response": null
+    },
+    {
+      "contract": "user_service.organization.GetCurrentOrg",
+      "name": "GetCurrentOrg",
+      "version": "1.0.0",
+      "description": "获取当前用户所属Org[内部]",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/org/current"
+      },
+      "import": ["easyops/model/user_service/org_info"],
+      "request": null,
+      "response": {
+        "type": "OrgInfo",
+        "required": [
+          "OrgInfo.id",
+          "OrgInfo.expires",
+          "OrgInfo.createAt",
+          "OrgInfo.valid",
+          "OrgInfo.ts"
+        ]
+      }
+    },
+    {
+      "contract": "user_service.organization.GetOrgInfo",
+      "name": "GetOrgInfo",
+      "version": "1.0.0",
+      "description": "获取Org信息[内部]",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/org/info/:id"
+      },
+      "import": ["easyops/model/user_service/org_info"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "description": "org"
+          }
+        ],
+        "required": ["id"]
+      },
+      "response": {
+        "type": "OrgInfo",
+        "required": [
+          "OrgInfo.id",
+          "OrgInfo.expires",
+          "OrgInfo.createAt",
+          "OrgInfo.valid",
+          "OrgInfo.ts"
+        ]
+      }
+    },
+    {
+      "contract": "user_service.organization.ListOrg",
+      "name": "ListOrg",
+      "version": "1.0.0",
+      "description": "获取所有Org[内部]",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/org/list"
+      },
+      "import": ["easyops/model/user_service/org_info"],
+      "request": null,
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "返回码"
+          },
+          {
+            "name": "error",
+            "type": "string",
+            "description": "错误信息"
+          },
+          {
+            "name": "message",
+            "type": "string",
+            "description": "返回消息"
+          },
+          {
+            "name": "data",
+            "type": "OrgInfo[]",
+            "description": "org列表"
+          }
+        ],
+        "required": ["code", "error", "message", "data"]
+      }
+    },
+    {
+      "contract": "user_service.organization.SetOrgExpiredDate",
+      "name": "SetOrgExpiredDate",
+      "version": "1.0.0",
+      "description": "设置Org过期日期[内部]",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/org/:id/_expired_date"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "description": "org"
+          },
+          {
+            "name": "expired_date",
+            "type": "string",
+            "validate": {
+              "pattern": "^[0-9]{4}-(((0[13578]|(10|12))-(0[1-9]|[1-2][0-9]|3[0-1]))|(02-(0[1-9]|[1-2][0-9]))|((0[469]|11)-(0[1-9]|[1-2][0-9]|30)))$"
+            },
+            "description": "过期日期"
+          }
+        ],
+        "required": ["id", "expired_date"]
+      },
+      "response": null
+    },
+    {
+      "contract": "user_service.organization.SetOrgName",
+      "name": "SetOrgName",
+      "version": "1.0.0",
+      "description": "设置Org名称[内部]",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/org/:id/name"
+      },
+      "import": ["easyops/model/user_service/org_info"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "description": "org"
+          },
+          {
+            "ref": "OrgInfo.name"
+          }
+        ],
+        "required": ["id", "OrgInfo.name"]
+      },
+      "response": null
+    },
+    {
+      "contract": "user_service.organization.SetOrgNamespaces",
+      "name": "SetOrgNamespaces",
+      "version": "1.0.0",
+      "description": "设置Org模型命名空间[内部]",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/org/:id/namespaces"
+      },
+      "import": ["easyops/model/user_service/org_info"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "description": "org"
+          },
+          {
+            "ref": "OrgInfo.namespaces"
+          }
+        ],
+        "required": ["id", "OrgInfo.namespaces"]
+      },
+      "response": null
+    },
+    {
+      "contract": "user_service.recent_visited.Get",
+      "name": "Get",
+      "version": "1.0.0",
+      "description": "获取最近访问数据",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/user_services/users/:userId/recent_visited"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "keys",
+            "type": "string",
+            "description": "最近访问keys,多个key逗号隔开"
+          },
+          {
+            "name": "userId",
+            "type": "instance_id",
+            "description": "用户ID"
+          }
+        ],
+        "required": ["keys", "userId"]
+      },
+      "response": {
+        "type": "map"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get",
+            "zh": "获取最近访问"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://localhost:8111/api/v1/user_services/users/5ae38530df806/recent_visited?keys=key1,key2,key3",
+            "headers": {
+              "Content-Type": "application/json"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\":0,\n    \"codeExplain\":\"\",\n    \"error\":\"\",\n    \"data\": {\n                \"key1\":[\n                    {\n                        \"jobId\":\"cc420631f8478c48912d49349caf6583\",\n                        \"jobName\":\"notify\",\n                        \"visitedAt\":\"2022-05-27T09:07:37+08:00\"\n                    },\n                    {\n                        \"jobId\":\"b7e23d5e2b5b95f54b6f827888431a72\",\n                        \"jobName\":\"influxdb\",\n                        \"visitedAt\":\"2022-05-27T09:07:45+08:00\"\n                    }\n                ],\n                \"key2\":[\n                    {\n                        \"id\":\"5df67d3330cc9\",\n                        \"name\":\"Form Builder\",\n                        \"visitedAt\":\"2022-05-27T09:08:00+08:00\"\n                    },\n                    {\n                        \"id\":\"5df57d131685b\",\n                        \"name\":\"部署工单\",\n                        \"visitedAt\":\"2022-05-27T09:08:04+08:00\"\n                    }\n                ],\n                \"key3\":[\n                    {\n                        \"id\":\"5c60b63ad7651\",\n                        \"name\":\"paul-test\",\n                        \"visitedAt\":\"2022-05-27T09:08:12+08:00\"\n                    },\n                    {\n                        \"id\":\"5d4f88c5b30b7\",\n                        \"name\":\"需求管理后台服务\",\n                        \"visitedAt\":\"2022-05-27T09:08:18+08:00\"\n                    }\n                ]\n            }\n\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "user_service.recent_visited.Set",
+      "name": "Set",
+      "version": "1.0.0",
+      "description": "保存最近访问数据",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/user_services/users/:userId/recent_visited"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "userId",
+            "type": "instance_id",
+            "description": "用户ID"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "enums": ["tag", "recentHistory"],
+            "description": "标识最近访问或者过滤标签"
+          },
+          {
+            "name": "data",
+            "type": "object",
+            "fields": [
+              {
+                "name": "key",
+                "type": "string",
+                "description": "key"
+              },
+              {
+                "name": "value",
+                "type": "object[]",
+                "fields": [
+                  {
+                    "name": "visitObjectId",
+                    "type": "string",
+                    "description": "访问实例ID"
+                  },
+                  {
+                    "name": "visitObjectName",
+                    "type": "string",
+                    "description": "访问实例名称"
+                  },
+                  {
+                    "name": "visitedAt",
+                    "type": "string",
+                    "description": "访问时间"
+                  },
+                  {
+                    "name": "count",
+                    "type": "int",
+                    "description": "访问次数"
+                  }
+                ],
+                "description": "value"
+              }
+            ],
+            "description": "最近访问列表"
+          }
+        ],
+        "required": ["data", "userId"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Set",
+            "zh": "保存最近访问数据"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8111/api/v1/user_services/users/5ae38530df806/recent_visited",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"data\": [\n        {\n            \"key\": \"object_visit_history5ae38530df806_invisible\",\n            \"valye\": [\n                {\n                    \"visitObjectId\": \"PACKAGE\",\n                    \"visitObjectName\": \"包\",\n                    \"visitedAt\": \"2022-05-27T09:00:42+08:00\",\n                    \"count\": 2\n                },\n                {\n                    \"visit_objectId\": \"CLUSTER\",\n                    \"visit_objectName\": \"集群\",\n                    \"visitedAt\": \"2022-05-27T09:00:26+08:00\",\n                    \"count\": 1\n                }\n            ]\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\":0,\n    \"codeExplain\":\"\",\n    \"error\":\"\",\n    \"data\":null\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "user_service.user_admin.AlterPassword",
+      "name": "AlterPassword",
+      "version": "1.0.0",
+      "description": "修改密码[内部]",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/users/alter_password"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "name",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "description": "密码"
+          }
+        ],
+        "required": ["name"]
+      },
+      "response": null
+    },
+    {
+      "contract": "user_service.user_admin.AlterSelfPassword",
+      "name": "AlterSelfPassword",
+      "version": "1.0.0",
+      "description": "修改自己密码",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/users/password"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "password",
+            "type": "string",
+            "description": "新密码"
+          },
+          {
+            "name": "oldPassword",
+            "type": "string",
+            "description": "原密码"
+          }
+        ],
+        "required": ["password", "oldPassword"]
+      },
+      "response": null
+    },
+    {
+      "contract": "user_service.user_admin.CheckUserExist",
+      "name": "CheckUserExist",
+      "version": "1.0.0",
+      "description": "验证用户或者邮箱是否存在",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/users/user_exist"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "parameter",
+            "type": "string",
+            "description": "用户名或者邮箱"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "enum": ["username", "email"],
+            "description": "校验类型"
+          }
+        ],
+        "required": ["parameter", "type"]
+      },
+      "response": null
+    },
+    {
+      "contract": "user_service.user_admin.ForgotPassword",
+      "name": "ForgotPassword",
+      "version": "1.0.0",
+      "description": "用户忘记密码",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/users/password/forgot"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "email",
+            "type": "email",
+            "description": "邮箱"
+          },
+          {
+            "name": "url",
+            "type": "string",
+            "description": "重置密码地址"
+          }
+        ],
+        "required": ["email", "url"]
+      },
+      "response": null
+    },
+    {
+      "contract": "user_service.user_admin.GetPasswordConfig",
+      "name": "GetPasswordConfig",
+      "version": "1.0.0",
+      "description": "获取密码配置",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/users/passconf"
+      },
+      "request": null,
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "regex",
+            "type": "string",
+            "description": "正则"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "提示"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "user_service.user_admin.GetUserInfo",
+      "name": "GetUserInfo",
+      "version": "1.0.0",
+      "description": "获取用户信息",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/users/detail/:username"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "username",
+            "type": "string",
+            "description": "用户名"
+          }
+        ]
+      },
+      "response": {
+        "type": "map"
+      }
+    },
+    {
+      "contract": "user_service.user_admin.GetSimpleUserInfo",
+      "name": "GetSimpleUserInfo",
+      "version": "1.1.0",
+      "description": "获取简单用户信息",
+      "detail": "返回结构化信息,方便使用--无需登录即可获取用户信息",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/users/simple_detail/:username"
+      },
+      "import": ["easyops/model/user_service/user_info"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "username",
+            "type": "string",
+            "description": "用户名"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string",
+            "description": "用户name"
+          },
+          {
+            "name": "org",
+            "type": "int",
+            "description": "org"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "user_service.user_admin.GetUserInfoV2",
+      "name": "GetUserInfoV2",
+      "version": "1.1.0",
+      "description": "获取用户信息v2",
+      "detail": "返回结构化信息,方便使用",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/users/detail/:username"
+      },
+      "import": ["easyops/model/user_service/user_info"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "username",
+            "type": "string",
+            "description": "用户名"
+          }
+        ]
+      },
+      "response": {
+        "type": "UserInfo"
+      }
+    },
+    {
+      "contract": "user_service.user_admin.GetUserInfoV3",
+      "name": "GetUserInfoV3",
+      "version": "1.1.0",
+      "description": "获取用户信息v3",
+      "detail": "返回结构化信息,方便使用",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v3/users/detail/:username"
+      },
+      "import": ["easyops/model/user_service/user_info"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "username",
+            "type": "string",
+            "description": "用户名"
+          }
+        ]
+      },
+      "response": {
+        "type": "UserInfo"
+      }
+    },
+    {
+      "contract": "user_service.user_admin.InvitedUserRegister",
+      "name": "InvitedUserRegister",
+      "version": "1.0.0",
+      "description": "受邀用户注册",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/users/register_with_code"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "username",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "password",
+            "type": "password",
+            "description": "密码"
+          },
+          {
+            "name": "email",
+            "type": "email",
+            "description": "邮箱"
+          },
+          {
+            "name": "invitation_code",
+            "type": "string",
+            "description": "邀请码"
+          }
+        ],
+        "required": ["username", "password", "email", "invitation_code"]
+      },
+      "response": null
+    },
+    {
+      "contract": "user_service.user_admin.ListGroupsId",
+      "name": "ListGroupsId",
+      "version": "1.0.0",
+      "description": "获取用户组Id列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/groups/id"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "user_id",
+            "type": "string",
+            "description": "用户id, 传此参数返回用户所在的所有用户组, 默认返回所有用户组"
+          }
+        ]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "返回码"
+          },
+          {
+            "name": "error",
+            "type": "string",
+            "description": "错误信息"
+          },
+          {
+            "name": "codeExplain",
+            "type": "string",
+            "description": "错误码解析"
+          },
+          {
+            "name": "data",
+            "type": "string[]",
+            "description": "用户组列表"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "user_service.user_admin.ListGroupsIdName",
+      "name": "ListGroupsIdName",
+      "version": "1.0.0",
+      "description": "获取用户组Id与name映射",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/groups/id_map_name"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "user_id",
+            "type": "string",
+            "description": "用户id, 传此参数返回用户所在的所有用户组, 默认返回所有用户组"
+          }
+        ]
+      },
+      "response": {
+        "type": "map"
+      }
+    },
+    {
+      "contract": "user_service.user_admin.ListUsersInfo",
+      "name": "ListUsersInfo",
+      "version": "1.0.0",
+      "description": "获取用户信息列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/users"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "state",
+            "type": "string",
+            "description": "状态"
+          },
+          {
+            "name": "name",
+            "type": "comma_separated_string",
+            "description": "查询的name列表,使用逗号分隔"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "页大小"
+          }
+        ],
+        "default": {
+          "page": 1,
+          "pageSize": 20
+        }
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "页大小"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总数"
+          },
+          {
+            "name": "list",
+            "type": "map[]",
+            "description": "用户列表"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "user_service.user_admin.ListUsersId",
+      "name": "ListUsersId",
+      "version": "1.0.0",
+      "description": "获取用户name列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/users/id"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "state",
+            "type": "string",
+            "description": "状态"
+          }
+        ]
+      },
+      "response": {
+        "type": "string[]"
+      }
+    },
+    {
+      "contract": "user_service.user_admin.ListUsersIdNick",
+      "name": "ListUsersIdNick",
+      "version": "1.0.0",
+      "description": "获取用户name与昵称映射",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/users/id_map_nickname"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "state",
+            "type": "string",
+            "description": "状态"
+          }
+        ]
+      },
+      "response": {
+        "type": "map"
+      }
+    },
+    {
+      "contract": "user_service.user_admin.ListUsersInfoV2",
+      "name": "ListUsersInfoV2",
+      "version": "1.1.0",
+      "description": "获取用户信息列表v2",
+      "detail": "返回结构化信息,方便使用",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/users"
+      },
+      "import": ["easyops/model/user_service/user_info"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "state",
+            "type": "string",
+            "description": "状态"
+          },
+          {
+            "name": "comma_separated_string",
+            "type": "string",
+            "description": "查询的name列表,使用逗号分隔"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "页大小"
+          }
+        ],
+        "default": {
+          "page": 1,
+          "pageSize": 20
+        }
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "页大小"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总数"
+          },
+          {
+            "name": "list",
+            "type": "UserInfo[]",
+            "description": "用户列表"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "user_service.user_admin.ListUsersInfoV3",
+      "name": "ListUsersInfoV3",
+      "version": "1.1.0",
+      "description": "获取用户信息列表v3",
+      "detail": "返回结构化信息,方便使用",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v3/users"
+      },
+      "import": ["easyops/model/user_service/user_info"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "state",
+            "type": "string",
+            "description": "状态"
+          },
+          {
+            "name": "name",
+            "type": "comma_separated_string",
+            "description": "查询的name列表,使用逗号分隔"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "页大小"
+          }
+        ],
+        "default": {
+          "page": 1,
+          "pageSize": 20
+        }
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "页大小"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总数"
+          },
+          {
+            "name": "list",
+            "type": "UserInfo[]",
+            "description": "用户列表"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "user_service.user_admin.ResetPassword",
+      "name": "ResetPassword",
+      "version": "1.0.0",
+      "description": "用户重置密码",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/users/password/reset"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "username",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "ts",
+            "type": "int",
+            "description": "时间戳"
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "description": "新密码"
+          },
+          {
+            "name": "key",
+            "type": "string",
+            "description": "重置密码key"
+          }
+        ],
+        "required": ["username", "ts", "password", "key"]
+      },
+      "response": null
+    },
+    {
+      "contract": "user_service.user_admin.SearchAllUserGroup",
+      "name": "SearchAllUserGroup",
+      "version": "1.0.0",
+      "description": "搜索所有用户组列表",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/users/group/all"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "query",
+            "type": "map",
+            "description": "e.g.: { name: { $like: '%q%' } }, { $or: [{ name: { $like: '%q%' }}] }"
+          },
+          {
+            "name": "fields",
+            "type": "map",
+            "description": "e.g.: { instanceId: true, name: true }"
+          },
+          {
+            "name": "sort",
+            "type": "map",
+            "description": "按字段排序, 留空默认按照实例ID降序排序(1表示升序, -1表示降序) e.g.: { instanceId: 1 }"
+          }
+        ],
+        "required": ["fields"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "map[]",
+            "description": "用户组列表"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "user_service.user_admin.SearchAllUsersInfo",
+      "name": "SearchAllUsersInfo",
+      "version": "1.0.0",
+      "description": "搜索所有用户信息列表",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/users/all"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "query",
+            "type": "map",
+            "description": "e.g.: { name: { $like: '%q%' } }, { $or: [{ name: { $like: '%q%' }}] }"
+          },
+          {
+            "name": "fields",
+            "type": "map",
+            "description": "e.g.: { instanceId: true, name: true }"
+          },
+          {
+            "name": "sort",
+            "type": "map",
+            "description": "按字段排序, 留空默认按照实例ID降序排序(1表示升序, -1表示降序) e.g.: { instanceId: 1 }"
+          }
+        ],
+        "required": ["fields"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "map[]",
+            "description": "用户列表"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "user_service.user_admin.UpdateUserInfo",
+      "name": "UpdateUserInfo",
+      "version": "1.1.0",
+      "description": "更新用户信息",
+      "detail": "更新用户信息",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/users/info/:instanceId"
+      },
+      "import": ["easyops/model/user_service/user_info"],
+      "request": {
+        "type": "UserInfo"
+      },
+      "response": null
+    },
+    {
+      "contract": "user_service.user_admin.UserDelete",
+      "name": "UserDelete",
+      "version": "1.0.0",
+      "description": "用户删除[内部]",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/users/:username"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "username",
+            "type": "user_name",
+            "description": "用户名"
+          }
+        ],
+        "required": ["username"]
+      },
+      "response": null
+    },
+    {
+      "contract": "user_service.user_admin.GetUserLoginInfo",
+      "name": "GetUserLoginInfo",
+      "version": "1.0.0",
+      "description": "查询用户登录信息",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/user/login_info"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "login_key",
+            "type": "string",
+            "description": "登录的key字符串, 例如SSO登录时候的工号的key"
+          },
+          {
+            "name": "login_value",
+            "type": "string",
+            "description": "登录的值, 例如SSO登录时候的工号的值"
+          }
+        ],
+        "required": ["login_key", "login_value"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string",
+            "description": "用户name"
+          },
+          {
+            "name": "org",
+            "type": "int",
+            "description": "org"
+          }
+        ],
+        "required": ["name", "org"]
+      }
+    },
+    {
+      "contract": "user_service.user_admin.UserRegister",
+      "name": "UserRegister",
+      "version": "1.0.1",
+      "description": "用户注册[内部]",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/users/register"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "name",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "description": "密码"
+          },
+          {
+            "name": "email",
+            "type": "email",
+            "description": "邮箱"
+          },
+          {
+            "name": "org",
+            "type": "int",
+            "description": "org"
+          },
+          {
+            "name": "isAdmin",
+            "type": "bool",
+            "description": "isAdmin"
+          },
+          {
+            "name": "nickname",
+            "type": "string",
+            "description": "昵称"
+          }
+        ],
+        "required": ["name", "password", "email", "org"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "name",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "email",
+            "type": "email",
+            "description": "邮箱"
+          },
+          {
+            "name": "org",
+            "type": "int",
+            "description": "org"
+          },
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "instanceId"
+          }
+        ],
+        "required": ["name", "email", "org", "instanceId"]
+      }
+    }
+  ]
+}

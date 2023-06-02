@@ -1,0 +1,28 @@
+{
+  "sdk": "@next-sdk/api-gateway-sdk",
+  "providers": [
+    "SsoApi.ssoAuthorization",
+    "SsoApi.ssoLogin",
+    "SsoApi.ssoLogout",
+    "AuthApi.checkLogin",
+    "MfaApi.generateRandomTotpSecret",
+    "MfaApi.updateUserTotpSecret",
+    "MfaApi.verifyTotpCode",
+    "AuthApi.loginV2",
+    "MfaApi.verifyUserIsSetRule",
+    "AuthApi.logout",
+    "AuthApi.getCaptcha",
+    "AuthApi.ldapLogin",
+    "ContractApi.searchSingleContract",
+    "OrgApi.saaSOrgRegister",
+    "AuthApi.refreshToken",
+    "AuthApi.register",
+    "AuthApi.tokenLdapLogin",
+    "AuthApi.tokenLogin",
+    "BootstrapV2Api.bootstrapV2",
+    "BootstrapV2Api.brickPackageInfo",
+    "BootstrapV2Api.getAppStoryboardV2",
+    "BootstrapV2Api.deleteEtagCache",
+    "BootstrapV2Api.deleteAppEtagCache"
+  ]
+}

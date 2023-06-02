@@ -1,0 +1,25 @@
+{
+  "sdk": "@next-sdk/air-admin-service-sdk",
+  "providers": [
+    "CustomerApi.createOrgForCustomerBatch",
+    "CustomerApi.getExpiration",
+    "CustomerApi.saveApplyInfo",
+    "CustomerApi.sendApprovedEmail",
+    "CustomerApi.sendUpdatedEmail",
+    "CustomerApi.updateLicenseBatch",
+    "CustomerApi.validateParameter",
+    "CustomerApi.listOrgInfo",
+    "CustomerApi.sendApplicationVerificationCode",
+    "CustomerApi.setOrgDisapproved",
+    "CustomerApi.setOrgUpdating",
+    "CustomerApi.validateEmail",
+    "CustomerApi.validateUser",
+    "CustomerApi.setApplyDisapproved",
+    "CustomerApi.setApplyDisapprovedBatch",
+    "CustomerApi.saveCustomerPublicKey",
+    "CustomerApi.saveApplyInfoV2",
+    "CustomerApi.signup",
+    "CustomerApi.saveConsultInfo",
+    "CustomerApi.sendConsultVerificationCode"
+  ]
+}

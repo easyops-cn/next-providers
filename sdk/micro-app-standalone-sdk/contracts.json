@@ -1,0 +1,297 @@
+{
+  "name": "micro_app_standalone",
+  "description": {
+    "en": "Micro App Standalone",
+    "zh": "微应用（独立部署）"
+  },
+  "contracts": [
+    {
+      "contract": "micro_app_standalone.launchpad.GetLaunchpadInfo",
+      "name": "GetLaunchpadInfo",
+      "version": "1.1.0",
+      "description": "Launchpad信息",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/micro_app_standalone/launchpad_info"
+      },
+      "import": [
+        "easyops/model/api_gateway/settings",
+        "easyops/model/micro_app/installed_micro_app_bootstrap",
+        "easyops/model/api_gateway/desktop"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appFields",
+            "type": "string",
+            "description": "指定查询storyboard下的app字段，不指定则默认返回 appId,name,position,homepage,menuIcon,icons"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "settings",
+            "type": "Settings",
+            "description": "配置"
+          },
+          {
+            "name": "desktops",
+            "type": "Desktop[]",
+            "description": "桌面列表"
+          },
+          {
+            "name": "storyboards",
+            "type": "object[]",
+            "description": "storyboards",
+            "fields": [
+              {
+                "name": "app",
+                "type": "InstalledMicroAppBootstrap",
+                "description": "小产品基本信息"
+              }
+            ]
+          },
+          {
+            "name": "siteSort",
+            "type": "object[]",
+            "description": "系统地图",
+            "fields": [
+              {
+                "name": "id",
+                "type": "string",
+                "description": "分类ID"
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "description": "分类名称"
+              },
+              {
+                "name": "order",
+                "type": "int",
+                "description": "分类顺序"
+              },
+              {
+                "name": "apps",
+                "type": "object[]",
+                "description": "微应用列表",
+                "fields": [
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "description": "微应用id"
+                  },
+                  {
+                    "name": "sort",
+                    "type": "int",
+                    "description": "微应用排序"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get launchpad info",
+            "zh": "Launchpad信息"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8259/api/v1/micro_app_standalone/launchpad_info"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"data\": {\n    \"storyboards\": [\n      {\n        \"app\": {\n          \"id\": \"agent-management\",\n          \"name\": \"Agent 管理\",\n          \"icons\": {\n            \"large\": \"icons/large.png\"\n          },\n          \"currentVersion\": \"1.2.14\",\n          \"installStatus\": \"ok\",\n          \"homepage\": \"/legacy/agent-management\",\n          \"status\": \"enabled\"\n        }\n      }\n    ],\n    \"settings\": {\n      \"launchpad\": {\n        \"columns\": 7,\n        \"rows\": 4\n      }\n    },\n    \"desktops\": [\n      {\n        \"name\": \"持续交付\",\n        \"order\": 2,\n        \"items\": [\n          {\n            \"type\": \"app\",\n            \"id\": \"app-deploy\",\n            \"name\": \"\",\n            \"position\": 10,\n            \"url\": \"\",\n            \"items\": []\n          }\n        ]\n      }\n    ],\n    \"siteSort\": [\n      {\n        \"id\": \"ResourceManagement\",\n        \"name\": \"资源管理\",\n        \"order\": 1,\n        \"apps\": [\n          {\n            \"id\": \"cmdb-instance-management\",\n            \"sort\": 1\n          }\n        ]\n      }\n    ]\n  },\n  \"error\": \"\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app_standalone.report.ReportMicroAppStandalone",
+      "category": {
+        "en": "Data Report",
+        "zh": "数据上报"
+      },
+      "name": "ReportMicroAppStandalone",
+      "version": "1.0.1",
+      "description": "上报独立打包小产品",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro_app_standalone/report"
+      },
+      "import": [
+        "easyops/model/micro_app_standalone/installed_micro_app_standalone"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "InstalledMicroAppStandalone.*"
+          },
+          {
+            "name": "meta",
+            "type": "string",
+            "description": "元数据定义（当前用于获取菜单信息）"
+          },
+          {
+            "name": "setActiveVersion",
+            "type": "bool",
+            "description": "是否设置为启用版本"
+          },
+          {
+            "name": "defaultContainer",
+            "type": "object",
+            "fields": [
+              {
+                "name": "id",
+                "type": "string",
+                "description": "容器id"
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "description": "容器name"
+              },
+              {
+                "name": "type",
+                "type": "string",
+                "enum": ["desktop", "dir"],
+                "description": "容器类型"
+              },
+              {
+                "name": "order",
+                "type": "int",
+                "description": "排序"
+              }
+            ],
+            "description": "默认容器"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app_standalone.runtime.DeleteStandaloneAppEtagCache",
+      "category": {
+        "en": "Runtime",
+        "zh": "运行时"
+      },
+      "name": "DeleteStandaloneAppEtagCache",
+      "version": "1.0.0",
+      "description": "删除具体bootstrapV2的etag缓存(standalone_micro_app)",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/standalone_micro_app/bootstrap_etag"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appIds",
+            "type": "string",
+            "description": "小产品id，多个用逗号分割"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app_standalone.runtime.RuntimeMicroAppStandalone",
+      "category": {
+        "en": "Runtime",
+        "zh": "运行时"
+      },
+      "name": "RuntimeMicroAppStandalone",
+      "version": "1.0.1",
+      "description": "独立小产品Runtime接口",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/micro_app_standalone/runtime/:appId"
+      },
+      "import": [
+        "easyops/model/micro_app_standalone/installed_micro_app_standalone",
+        "easyops/model/micro_app/storyboard_menu"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "小产品Id"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "injectMenus",
+            "type": "map[]",
+            "description": "注入菜单信息"
+          },
+          {
+            "name": "userConfig",
+            "type": "map",
+            "description": "用户配置"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "micro_app_standalone.runtime.SearchMicroAppStandalone",
+      "category": {
+        "en": "Runtime",
+        "zh": "运行时"
+      },
+      "name": "SearchMicroAppStandalone",
+      "version": "1.0.1",
+      "description": "查询独立部署小产品",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro_app_standalone/search"
+      },
+      "import": [
+        "easyops/model/micro_app_standalone/installed_micro_app_standalone"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "query",
+            "type": "map",
+            "description": "查询条件"
+          },
+          {
+            "name": "fields",
+            "type": "string[]",
+            "description": "返回字段"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "map[]",
+            "description": "所有启用的微应用"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总数"
+          }
+        ]
+      }
+    }
+  ]
+}

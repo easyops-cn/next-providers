@@ -1,0 +1,3045 @@
+{
+  "name": "micro_app",
+  "contracts": [
+    {
+      "contract": "micro_app.archive.ExportDynamicResourcePackage",
+      "name": "ExportDynamicResourcePackage",
+      "version": "1.0.0",
+      "description": "导出NA包",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/resourcePackage/dynamic/export/:packageName/:packageVersion"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "packageName",
+            "type": "string",
+            "description": "包名"
+          },
+          {
+            "name": "packageVersion",
+            "type": "string",
+            "description": "包版本"
+          }
+        ],
+        "required": ["packageName", "packageVersion"]
+      },
+      "response": {
+        "type": "file"
+      }
+    },
+    {
+      "contract": "micro_app.archive.ExportStaticResourcePackage",
+      "name": "ExportStaticResourcePackage",
+      "version": "1.0.0",
+      "description": "导出NB NT包",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/resourcePackage/static/export/:packageName/:packageVersion"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "packageName",
+            "type": "string",
+            "description": "包名"
+          },
+          {
+            "name": "packageVersion",
+            "type": "string",
+            "description": "包版本"
+          }
+        ],
+        "required": ["packageName", "packageVersion"]
+      },
+      "response": {
+        "type": "file"
+      }
+    },
+    {
+      "contract": "micro_app.archive.ImportDynamicResourcePackage",
+      "name": "ImportDynamicResourcePackage",
+      "version": "1.0.0",
+      "description": "导入NA包",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/resourcePackage/dynamic/import"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "packageName",
+            "type": "string",
+            "description": "包名"
+          },
+          {
+            "name": "packageVersion",
+            "type": "string",
+            "description": "包版本"
+          },
+          {
+            "name": "file",
+            "type": "file",
+            "description": "包文件"
+          }
+        ],
+        "required": ["packageName", "file"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "产品id"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "micro_app.archive.ImportStaticResourcePackage",
+      "name": "ImportStaticResourcePackage",
+      "version": "1.0.0",
+      "description": "导入NB NT包",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/resourcePackage/static/import"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "packageName",
+            "type": "string",
+            "description": "包名"
+          },
+          {
+            "name": "packageVersion",
+            "type": "string",
+            "description": "包版本"
+          },
+          {
+            "name": "file",
+            "type": "file",
+            "description": "包文件"
+          }
+        ],
+        "required": ["packageName", "file"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "产品id"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "micro_app.brick.ImportInstalledBrickAtom",
+      "name": "ImportInstalledBrickAtom",
+      "version": "1.0.0",
+      "description": "导入原子构件",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/brick/atom/import"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "packageName",
+            "type": "string",
+            "description": "包名"
+          },
+          {
+            "name": "packageVersion",
+            "type": "string",
+            "description": "包版本"
+          },
+          {
+            "name": "data",
+            "type": "object",
+            "fields": [
+              {
+                "name": "stories",
+                "type": "map[]",
+                "description": "stories.json的内容 获取组件对应的文档数据"
+              },
+              {
+                "name": "bricks",
+                "type": "map",
+                "description": "bricks.json的内容 获取所有组件id"
+              }
+            ],
+            "description": "相关数据"
+          },
+          {
+            "name": "file",
+            "type": "file",
+            "description": "NB压缩包"
+          }
+        ],
+        "required": ["packageName", "data"]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app.brick.ImportInstalledBrickSnippet",
+      "name": "ImportInstalledBrickSnippet",
+      "version": "1.0.0",
+      "description": "导入编排片段",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/brick/snippet/import"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "packageName",
+            "type": "string",
+            "description": "包名"
+          },
+          {
+            "name": "snippets",
+            "type": "map",
+            "description": "snippets.json的内容 获取编排片段数据"
+          }
+        ],
+        "required": ["packageName", "snippets"]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app.brick.ImportProviderIntoContract",
+      "name": "ImportProviderIntoContract",
+      "version": "1.0.0",
+      "description": "将provider导入接口契约",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/brick/provider/import_into_contract"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "packageName",
+            "type": "string",
+            "description": "包名"
+          },
+          {
+            "name": "data",
+            "type": "object",
+            "fields": [
+              {
+                "name": "contractInfo",
+                "type": "map",
+                "description": "contract.json的内容"
+              }
+            ],
+            "description": "provider包里的契约数据"
+          }
+        ],
+        "required": ["packageName", "data"]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app.brick.ReportBrickNext",
+      "name": "ReportBrickNext",
+      "version": "1.0.0",
+      "description": "上报brick_next到制品仓库",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/brick_next/report"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "packageName",
+            "type": "string",
+            "description": "包名"
+          },
+          {
+            "name": "packageVersion",
+            "type": "string",
+            "description": "包版本"
+          },
+          {
+            "name": "file",
+            "type": "file",
+            "description": "brick_next.tar.gz"
+          }
+        ],
+        "required": ["packageName", "packageVersion", "file"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Report BrickNext",
+            "zh": "上报brick_next到制品仓库"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8146/api/v1/brick_next/report",
+            "headers": {
+              "Content-Type": "multipart/form-data; boundary=abcdefg1234567"
+            },
+            "body": "--abcdefg1234567 Content-Disposition: form-data; name=\"packageName\"\nbrick_next --abcdefg1234567 Content-Disposition: form-data; name=\"packageVersion\"\n1.0.0 --abcdefg1234567 Content-Disposition: form-data; name=\"file\"; filename=\"brick_next.tar.gz\" Content-Type: application/x-gzip\n<File Content> --abcdefg1234567"
+          },
+          "response": {
+            "status_code": 200,
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": null\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app.contract.GetAllContract",
+      "name": "GetAllContract",
+      "version": "1.0.0",
+      "description": "拉取所有契约(模型：_INTERFACE_CONTRACT@EASYOPS)",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/flow-builder/get_all_contract"
+      },
+      "request": {
+        "type": "object",
+        "description": "请求消息体",
+        "fields": [
+          {
+            "name": "query",
+            "type": "map",
+            "description": "e.g.: { name: { $like: '%q%' } }, { $or: [{ name: { $like: '%q%' }}] }"
+          },
+          {
+            "name": "fields",
+            "type": "string[]",
+            "description": "指定返回字段, e.g.: [name, instanceId]"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "map[]",
+            "description": "instance list"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "micro_app.contract_center.RuntimeDebugApiContract",
+      "name": "RuntimeDebugApiContract",
+      "version": "1.0.0",
+      "description": "api契约调试, 透传",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/runtime/contract/debug"
+      },
+      "import": ["easyops/model/flow_builder/debug_contract"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "DebugContract.method"
+          },
+          {
+            "ref": "DebugContract.uri"
+          },
+          {
+            "ref": "DebugContract.headers"
+          },
+          {
+            "name": "files",
+            "type": "file[]",
+            "description": "files"
+          },
+          {
+            "ref": "DebugContract.data"
+          },
+          {
+            "ref": "DebugContract.serviceName"
+          },
+          {
+            "ref": "DebugContract.fileNameMapping"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "DebugContract.data"
+          },
+          {
+            "ref": "DebugContract.headers"
+          },
+          {
+            "name": "statusCode",
+            "type": "int",
+            "description": "statusCode"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "micro_app.document.GetDocumentsDetails",
+      "name": "GetDocumentsDetails",
+      "version": "1.0.0",
+      "description": "获取已安装小产品的文档详情",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/micro_app/v1/document/details/:documentId"
+      },
+      "import": ["easyops/model/micro_app/installed_micro_app_document"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "documentId",
+            "type": "string",
+            "description": "小产品文档Id"
+          }
+        ],
+        "required": ["documentId"]
+      },
+      "response": {
+        "type": "object",
+        "description": "详细文档，不返回parent和children",
+        "fields": [
+          {
+            "ref": "InstalledMicroAppDocument.instanceId"
+          },
+          {
+            "ref": "InstalledMicroAppDocument.documentId"
+          },
+          {
+            "ref": "InstalledMicroAppDocument.author"
+          },
+          {
+            "ref": "InstalledMicroAppDocument.name"
+          },
+          {
+            "ref": "InstalledMicroAppDocument.content"
+          },
+          {
+            "ref": "InstalledMicroAppDocument.relatedMicroAppId"
+          },
+          {
+            "ref": "InstalledMicroAppDocument.relatedRouteAliases"
+          },
+          {
+            "ref": "InstalledMicroAppDocument.sort"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "micro_app.document.GetDocumentsTreeByAppId",
+      "name": "GetDocumentsTreeByAppId",
+      "version": "1.0.0",
+      "description": "获取已安装小产品的所有文档列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/micro_app/v1/document/tree/:appId"
+      },
+      "import": [
+        "easyops/model/micro_app/installed_micro_app_document_tree_node"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "小产品id"
+          }
+        ],
+        "required": ["appId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "documentsTree",
+            "type": "InstalledMicroAppDocumentTreeNode[]",
+            "description": "文档列表，不返回content"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "micro_app.document.ImportDocuments",
+      "name": "ImportDocuments",
+      "version": "1.0.0",
+      "description": "导入小产品文档",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/micro_app/v1/document/import"
+      },
+      "import": ["easyops/model/micro_app/installed_micro_app_document"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "documents",
+            "type": "InstalledMicroAppDocument[]",
+            "description": "文档列表"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app.installed_micro_app.CreateStoryboardMenus",
+      "name": "CreateStoryboardMenus",
+      "version": "1.2.0",
+      "description": "创建storybord menu",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/micro_app/v1/installed_micro_app/storyboard-menus"
+      },
+      "import": ["easyops/model/micro_app/storyboard_menu"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "menus",
+            "type": "StoryboardMenu[]",
+            "description": "meta.menus"
+          },
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "micro_app id"
+          }
+        ],
+        "required": ["menus", "appId"]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app.installed_micro_app.DeleteMicroApp",
+      "name": "DeleteMicroApp",
+      "version": "1.0.0",
+      "description": "删除小产品",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/micro_app/v1/installed_micro_app/:app_id"
+      },
+      "import": ["easyops/model/micro_app/installed_micro_app"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "app_id",
+            "type": "string",
+            "description": "小产品id"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app.installed_micro_app.DeleteInstalledMicroAppContainer",
+      "name": "DeleteInstalledMicroAppContainer",
+      "version": "1.0.0",
+      "description": "删除小产品与桌面关系",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/micro_app/v1/installed_micro_app/:app_id/container"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "app_id",
+            "type": "string",
+            "description": "小产品id"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app.installed_micro_app.FindMicroAppContainer",
+      "name": "FindMicroAppContainer",
+      "version": "1.0.0",
+      "description": "build&push/升级时查找微应用应该关联的容器（容器不存在时， 要创建容器）",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/micro_app/v1/installed_micro_app/find_container"
+      },
+      "import": ["easyops/model/micro_app/installed_micro_app"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "app_id",
+            "type": "string",
+            "description": "小产品id"
+          },
+          {
+            "ref": "InstalledMicroApp.defaultContainer"
+          },
+          {
+            "ref": "InstalledMicroApp.position"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "containerId",
+            "type": "string",
+            "description": "小产品应该关联的容器"
+          },
+          {
+            "name": "containerType",
+            "type": "string",
+            "description": "容器类型， 自定义容器or默认容器"
+          },
+          {
+            "name": "containerInstanceId",
+            "type": "instance_id",
+            "description": "小产品应该关联的容器的instanceId"
+          },
+          {
+            "ref": "InstalledMicroApp.position"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "micro_app.installed_micro_app.GetInstalledMicroApp",
+      "name": "GetInstalledMicroApp",
+      "version": "1.0.0",
+      "description": "获取已安装小产品信息",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/micro_app/v1/installed_micro_app/:app_id"
+      },
+      "import": [
+        "easyops/model/micro_app/installed_micro_app",
+        "easyops/model/micro_app/micro_app_container"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "app_id",
+            "type": "string",
+            "description": "小产品id"
+          }
+        ],
+        "required": ["app_id"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "InstalledMicroApp.*"
+          },
+          {
+            "name": "container",
+            "type": "MicroAppContainer",
+            "description": "小产品关联的桌面信息"
+          }
+        ],
+        "required": ["InstalledMicroApp.*"]
+      }
+    },
+    {
+      "contract": "micro_app.installed_micro_app.GetImagesByAppId",
+      "name": "GetImagesByAppId",
+      "version": "1.0.0",
+      "description": "获取app图片库图片",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro-app/images"
+      },
+      "import": [
+        "easyops/model/micro_app/installed_micro_app",
+        "easyops/model/micro_app/image"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "InstalledMicroApp.appId"
+          },
+          {
+            "name": "images",
+            "type": "Image[]",
+            "description": "图片"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "images",
+            "type": "Image[]",
+            "description": "图片"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "micro_app.installed_micro_app.GetMenusInfo",
+      "name": "GetMenusInfo",
+      "version": "1.0.0",
+      "description": "获取菜单信息",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/micro-app/menus/:menuId"
+      },
+      "import": ["easyops/model/micro_app/storyboard_menu"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "StoryboardMenu.menuId"
+          },
+          {
+            "name": "menuObjectId",
+            "type": "string",
+            "description": "菜单所在模型(独立打包和非独立打包两个菜单模型)"
+          }
+        ],
+        "required": ["menuId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "menus",
+            "type": "object[]",
+            "description": "menus info",
+            "fields": [
+              {
+                "ref": "StoryboardMenu.*"
+              },
+              {
+                "name": "app",
+                "description": "菜单关联的app信息",
+                "type": "object[]",
+                "fields": [
+                  {
+                    "name": "appId",
+                    "type": "string",
+                    "description": "appId"
+                  },
+                  {
+                    "name": "instanceId",
+                    "type": "instance_id",
+                    "description": "instanceId"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get Menus Info",
+            "zh": "获取菜单信息"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8146/api/v1/micro-app/menus/cmdb-common-main-menu"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"menus\":[\n      {\n        \"defaultCollapsed\": false,\n        \"defaultCollapsedBreakpoint\": 0,\n        \"dynamicItems\": false,\n        \"i18n\": {\n          \"en\": {\n            \"PERMISSION_INHERITANCE\": \"Permission Inheritance\"\n          },\n          \"zh\": {\n            \"PERMISSION_INHERITANCE\": \"权限继承\"\n          }\n        },\n        \"injectMenuGroupId\": \"cmdb-data-managent-group-menu\",\n        \"instanceId\": \"5f5d3d73df74d\",\n        \"menuId\": \"cmdb-common-main-menu\",\n        \"type\": \"inject\"\n      }\n  ]\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app.installed_micro_app.GetI18NData",
+      "name": "GetI18NData",
+      "version": "1.0.0",
+      "description": "获取微应用的i18n数据",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/micro-app/i18n"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appIds",
+            "type": "string",
+            "description": "微应用的appIds, 多个用逗号分开"
+          }
+        ],
+        "required": ["appIds"]
+      },
+      "response": {
+        "type": "object",
+        "description": "微应用的i18n信息",
+        "fields": [
+          {
+            "name": "i18nInfo",
+            "type": "object[]",
+            "description": "i18n信息",
+            "fields": [
+              {
+                "name": "appId",
+                "type": "string",
+                "description": "appId"
+              },
+              {
+                "name": "i18n",
+                "type": "object",
+                "description": "i18n",
+                "fields": [
+                  {
+                    "name": "zh",
+                    "type": "map",
+                    "description": "中文"
+                  },
+                  {
+                    "name": "en",
+                    "type": "map",
+                    "description": "英文"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "micro_app.installed_micro_app.GetOssObjectsStat",
+      "name": "GetOssObjectsStat",
+      "version": "1.0.0",
+      "description": "获取对象信息",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro-app/oss/get-objects-stat"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "bucketName",
+            "type": "bucket_name",
+            "description": "存储桶名称"
+          },
+          {
+            "name": "objects",
+            "type": "object[]",
+            "description": "存储桶中对象",
+            "fields": [
+              {
+                "name": "objectName",
+                "type": "string",
+                "description": "对象名称"
+              }
+            ]
+          }
+        ],
+        "required": ["bucketName", "objects"]
+      },
+      "response": {
+        "type": "object",
+        "description": "对象信息",
+        "fields": [
+          {
+            "name": "objects",
+            "type": "object[]",
+            "description": "存储桶中对象",
+            "fields": [
+              {
+                "name": "objectName",
+                "type": "string",
+                "description": "对象名称"
+              },
+              {
+                "name": "md5",
+                "type": "string",
+                "description": "对象md5"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "micro_app.installed_micro_app.ImportMicroApp",
+      "name": "ImportMicroApp",
+      "version": "1.1.0",
+      "description": "导入小产品（存在更新，不存在创建）",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/micro_app/v1/import_installed_micro_app/:appId"
+      },
+      "import": [
+        "easyops/model/micro_app/installed_micro_app",
+        "easyops/model/micro_app/installed_micro_app_cloned_from",
+        "easyops/model/micro_app/installed_micro_app_menu_icon",
+        "easyops/model/micro_app/installed_micro_app_icon",
+        "easyops/model/next_builder/workflow_def"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "InstalledMicroApp.instanceId"
+          },
+          {
+            "ref": "InstalledMicroApp.appId"
+          },
+          {
+            "ref": "InstalledMicroApp.homepage"
+          },
+          {
+            "ref": "InstalledMicroApp.name"
+          },
+          {
+            "ref": "InstalledMicroApp.owner"
+          },
+          {
+            "ref": "InstalledMicroApp.storyboardJson"
+          },
+          {
+            "ref": "InstalledMicroApp.installStatus"
+          },
+          {
+            "ref": "InstalledMicroApp.currentVersion"
+          },
+          {
+            "ref": "InstalledMicroApp.tags"
+          },
+          {
+            "ref": "InstalledMicroApp.appVersion"
+          },
+          {
+            "name": "icons",
+            "type": "InstalledMicroAppIcon",
+            "description": "小产品图标url"
+          },
+          {
+            "ref": "InstalledMicroApp.internal"
+          },
+          {
+            "ref": "InstalledMicroApp.private"
+          },
+          {
+            "name": "clonedFrom",
+            "type": "InstalledMicroAppClonedFrom",
+            "description": "小产品的克隆对象"
+          },
+          {
+            "ref": "InstalledMicroApp.status"
+          },
+          {
+            "ref": "InstalledMicroApp.iconBackground"
+          },
+          {
+            "ref": "InstalledMicroApp.defaultConfig"
+          },
+          {
+            "ref": "InstalledMicroApp.dependsAll"
+          },
+          {
+            "ref": "InstalledMicroApp.legacy"
+          },
+          {
+            "ref": "InstalledMicroApp.routes"
+          },
+          {
+            "ref": "InstalledMicroApp.meta"
+          },
+          {
+            "name": "menuIcon",
+            "type": "InstalledMicroAppMenuIcon",
+            "description": "小产品的菜单中显示的图标"
+          },
+          {
+            "ref": "InstalledMicroApp.env"
+          },
+          {
+            "ref": "InstalledMicroApp.locales"
+          },
+          {
+            "ref": "InstalledMicroApp.visibility"
+          },
+          {
+            "ref": "InstalledMicroApp.layoutType"
+          },
+          {
+            "ref": "InstalledMicroApp.isBuildPush"
+          },
+          {
+            "ref": "InstalledMicroApp.noAuthGuard"
+          },
+          {
+            "ref": "InstalledMicroApp.breadcrumb"
+          },
+          {
+            "ref": "InstalledMicroApp.theme"
+          },
+          {
+            "ref": "InstalledMicroApp.defaultContainer"
+          },
+          {
+            "ref": "InstalledMicroApp.standaloneMode"
+          },
+          {
+            "name": "workflows",
+            "type": "WorkflowDef[]",
+            "description": "小产品关联的工作流定义"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "InstalledMicroApp.instanceId"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "ImportMicroApp",
+            "zh": "导入小产品"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8146/api/micro_app/v1/import_installed_micro_app/janice-hei-hei",
+            "body": "{\n    \"icons\": {\n        \"large\": \"/next/api/gateway/object_store.object_store.GetObject/api/v1/objectStore/bucket/next-builder/object/image16080390648879824081636614785510056761.png\"\n    },\n    \"clonedFrom\": null,\n    \"menuIcon\": {\n        \"lib\": \"fa\",\n        \"type\": \"\",\n        \"theme\": \"\",\n        \"icon\": \"ambulance\",\n        \"prefix\": \"fas\",\n        \"category\": \"\",\n        \"color\": \"\"\n    },\n    \"instanceId\": \"\",\n    \"appId\": \"my-micro-app\",\n    \"homepage\": \"/my-micro-app\",\n    \"name\": \"我的微应用\",\n    \"owner\": \"defaultUser\",\n    \"storyboardJson\": \"{\\\"routes\\\":[{\\\"alias\\\":\\\"首页\\\",\\\"exact\\\":true,\\\"hybrid\\\":false,\\\"path\\\":\\\"${APP.homepage}\\\",\\\"public\\\":false,\\\"type\\\":\\\"bricks\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.micro-view\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"pageTitle\\\":\\\"Hello world\\\"},\\\"slots\\\":{\\\"toolbar\\\":{\\\"type\\\":\\\"bricks\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.general-button\\\",\\\"events\\\":{\\\"general.button.click\\\":[{\\\"action\\\":\\\"message.success\\\",\\\"args\\\":[\\\"点击操作按钮\\\"]}]},\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"buttonName\\\":\\\"操作\\\"}}]},\\\"content\\\":{\\\"type\\\":\\\"bricks\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"presentational-bricks.brick-result\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"customTitle\\\":\\\"Today is Tuesday\\\",\\\"status\\\":\\\"info\\\",\\\"subTitle\\\":\\\"2019/10/29 21:35\\\"}}]}}}]},{\\\"alias\\\":\\\"用户列表\\\",\\\"exact\\\":true,\\\"hybrid\\\":false,\\\"path\\\":\\\"${APP.homepage}/users\\\",\\\"public\\\":false,\\\"type\\\":\\\"bricks\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.micro-view\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"pageTitle\\\":\\\"用户列表\\\"}}]}],\\\"meta\\\":{\\\"customTemplates\\\":[],\\\"menus\\\":[],\\\"i18n\\\":{\\\"en\\\":{},\\\"zh\\\":{}},\\\"functions\\\":[]},\\\"dependsAll\\\":false}\",\n    \"installStatus\": \"ok\",\n    \"tags\": [],\n    \"appVersion\": \"\",\n    \"internal\": \"false\",\n    \"private\": \"false\",\n    \"status\": \"developing\",\n    \"iconBackground\": \"\",\n    \"defaultConfig\": \"\",\n    \"dependsAll\": false,\n    \"legacy\": \"\",\n    \"env\": \"\",\n    \"locales\": \"\",\n    \"visibility\": \"\",\n    \"layoutType\": \"\",\n    \"isBuildPush\": true,\n    \"noAuthGuard\": false,\n    \"breadcrumb\": \"\",\n    \"theme\": \"\",\n    \"defaultContainer\": {\n        \"id\": \"\",\n        \"name\": \"\",\n        \"type\": \"\",\n        \"order\": 0\n    },\n    \"workflows\": [\n        {\n            \"id\": \"janice-workflow1\",\n            \"appId\": \"janice-hei\",\n            \"name\": \"janice-workflow1\",\n            \"description\": \"janice-workflow\",\n            \"workflowYaml\": \"{\\\"kind\\\": \\\"workflow\\\", \\\"id\\\": \\\"Ask for leave\\\", \\\"name\\\": \\\"请假申情\\\", \\\"steps\\\": [{\\\"id\\\": \\\"1\\\", \\\"name\\\": \\\"开始\\\", \\\"type\\\": \\\"start\\\", \\\"next\\\": [\\\"2\\\"]}, {\\\"id\\\": \\\"2\\\", \\\"name\\\": \\\"结束\\\", \\\"type\\\": \\\"end\\\", \\\"pre\\\": [\\\"1\\\"]}]}\"\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"instanceId\": \"5f7f4ff757233\"\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app.installed_micro_app.ListMicroApp",
+      "name": "ListMicroApp",
+      "version": "1.0.0",
+      "description": "获取已安装小产品列表",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/micro_app/v1/installed_micro_app"
+      },
+      "import": [
+        "easyops/model/micro_app/installed_micro_app",
+        "easyops/model/micro_app/micro_app_container"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "每页大小"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "InstalledMicroApp.*"
+          },
+          {
+            "name": "container",
+            "type": "MicroAppContainer",
+            "description": "小产品关联的桌面信息"
+          }
+        ],
+        "required": ["InstalledMicroApp.*"]
+      }
+    },
+    {
+      "contract": "micro_app.installed_micro_app.GetPackageReleaseList",
+      "name": "GetPackageReleaseList",
+      "version": "1.1.0",
+      "description": "获取发布列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/micro_app/packages/:appId"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "小产品id"
+          },
+          {
+            "name": "org",
+            "type": "org",
+            "description": "组织代码"
+          },
+          {
+            "name": "needCount",
+            "type": "int",
+            "description": "需要返回的数量，目前只返回一页，如果这个值为0时，最多返回3000条数据"
+          }
+        ],
+        "required": ["appId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "packages",
+            "type": "object[]",
+            "description": "包列表",
+            "fields": [
+              {
+                "name": "appId",
+                "type": "string",
+                "description": "小产品id"
+              },
+              {
+                "name": "version",
+                "type": "version",
+                "description": "版本"
+              },
+              {
+                "name": "description",
+                "type": "string",
+                "description": "版本描述"
+              },
+              {
+                "name": "packageStatus",
+                "type": "string",
+                "description": "打包状态"
+              },
+              {
+                "name": "commitUser",
+                "type": "string",
+                "description": "创建用户"
+              },
+              {
+                "name": "ctime",
+                "type": "string",
+                "description": "创建时间"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "micro_app.installed_micro_app.PackageUpload",
+      "name": "PackageUpload",
+      "version": "1.0.0",
+      "description": "小产品生成打包文件并上传",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/micro_app/v1/package-upload"
+      },
+      "import": [
+        "easyops/model/micro_app/installed_micro_app",
+        "easyops/model/next_builder/micro_app_project"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "InstalledMicroApp.appId"
+          },
+          {
+            "name": "version",
+            "type": "version",
+            "description": "小产品版本号"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "版本描述信息"
+          },
+          {
+            "name": "objectIds",
+            "type": "object_id[]",
+            "description": "小产品关联的objectId列表(deprecated)"
+          },
+          {
+            "name": "objectsBase64",
+            "type": "string",
+            "description": "objects.json的base64内容"
+          },
+          {
+            "name": "dependBricks",
+            "type": "string[]",
+            "description": "项目依赖的bricks"
+          },
+          {
+            "name": "dependTemplates",
+            "type": "string[]",
+            "description": "项目依赖的templates"
+          },
+          {
+            "ref": "MicroAppProject.dependencies"
+          },
+          {
+            "name": "org",
+            "type": "org",
+            "description": "组织代码"
+          },
+          {
+            "name": "user",
+            "type": "user_name",
+            "description": "用户名"
+          }
+        ],
+        "required": ["InstalledMicroApp.appId", "version", "description"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "InstalledMicroApp.appId"
+          },
+          {
+            "name": "version",
+            "type": "version",
+            "description": "小产品版本号"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "micro_app.installed_micro_app.RecoverDefaultContainer",
+      "name": "RecoverDefaultContainer",
+      "version": "1.0.0",
+      "description": "恢复默认容器",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/micro_app/v1/installed_micro_app/recover_default_container/:app_id"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "app_id",
+            "type": "string",
+            "description": "小产品id"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "defaultContailer",
+            "type": "string",
+            "description": "默认容器"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "micro_app.installed_micro_app.SearchInstalledMicroApp",
+      "name": "SearchInstalledMicroApp",
+      "version": "1.0.0",
+      "description": "获取小产品列表",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/micro_app/v1/installed_micro_app/search"
+      },
+      "import": ["easyops/model/micro_app/installed_micro_app"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "每页大小"
+          },
+          {
+            "name": "query",
+            "type": "object",
+            "description": "查询条件",
+            "fields": [
+              {
+                "name": "key",
+                "type": "string",
+                "description": "按name或appId搜索,%xx%:模糊匹配,xx%:前缀匹配"
+              },
+              {
+                "name": "filterInternal",
+                "type": "bool",
+                "description": "是否过滤内部小产品"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "total",
+            "type": "int",
+            "description": "返回总数"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页数"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "该页大小"
+          },
+          {
+            "name": "list",
+            "type": "object[]",
+            "description": "数据列表",
+            "fields": [
+              {
+                "ref": "InstalledMicroApp.*"
+              }
+            ]
+          }
+        ],
+        "required": [
+          "total",
+          "page",
+          "page_size",
+          "list",
+          "InstalledMicroApp.*"
+        ]
+      }
+    },
+    {
+      "contract": "micro_app.installed_micro_app.SearchInstalledMicroAppWithUniqKey",
+      "name": "SearchInstalledMicroAppWithUniqKey",
+      "version": "1.0.0",
+      "description": "按唯一key(name,appId,homepage)搜索小产品列表",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/micro_app/v1/installed_micro_app/search/uniq_key"
+      },
+      "import": ["easyops/model/micro_app/installed_micro_app"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "每页大小"
+          },
+          {
+            "name": "query",
+            "type": "object",
+            "description": "查询条件",
+            "fields": [
+              {
+                "name": "name",
+                "type": "string",
+                "description": "app name"
+              },
+              {
+                "name": "app_id",
+                "type": "string",
+                "description": "appid"
+              },
+              {
+                "name": "homepage",
+                "type": "string",
+                "description": "homepage"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "total",
+            "type": "int",
+            "description": "返回总数"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页数"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "该页大小"
+          },
+          {
+            "name": "list",
+            "type": "object[]",
+            "description": "数据列表",
+            "fields": [
+              {
+                "ref": "InstalledMicroApp.*"
+              }
+            ]
+          }
+        ],
+        "required": [
+          "total",
+          "page",
+          "page_size",
+          "list",
+          "InstalledMicroApp.*"
+        ]
+      }
+    },
+    {
+      "contract": "micro_app.installed_micro_app.UpdateInstalledMicroApp",
+      "name": "UpdateInstalledMicroApp",
+      "version": "1.0.0",
+      "description": "更新小产品信息",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/micro_app/v1/installed_micro_app/:app_id",
+        "ext_fields": [
+          {
+            "source": "body",
+            "name": "micro_app"
+          }
+        ]
+      },
+      "import": [
+        "easyops/model/micro_app/installed_micro_app",
+        "easyops/model/micro_app/micro_app_container"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "app_id",
+            "type": "string",
+            "description": "小产品id"
+          },
+          {
+            "name": "micro_app",
+            "type": "object",
+            "description": "小产品id",
+            "fields": [
+              {
+                "ref": "InstalledMicroApp.*"
+              },
+              {
+                "name": "container",
+                "type": "object",
+                "description": "小产品所属桌面",
+                "fields": [
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "description": "桌面的id"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "required": ["micro_app.appId", "app_id"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "InstalledMicroApp.*"
+          },
+          {
+            "name": "container",
+            "type": "MicroAppContainer",
+            "description": "小产品关联的桌面信息"
+          }
+        ],
+        "required": ["InstalledMicroApp.*"]
+      }
+    },
+    {
+      "contract": "micro_app.installed_micro_app.UpdateInstalledMicroAppContainer",
+      "name": "UpdateInstalledMicroAppContainer",
+      "version": "1.0.0",
+      "description": "更新小产品与桌面关系",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/micro_app/v1/installed_micro_app/:app_id/container"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "app_id",
+            "type": "string",
+            "description": "小产品id"
+          },
+          {
+            "name": "containerId",
+            "type": "string",
+            "description": "小产品所属桌面Id"
+          },
+          {
+            "name": "containerType",
+            "type": "string",
+            "description": "容器类型， 自定义容器or默认容器"
+          },
+          {
+            "name": "position",
+            "type": "int",
+            "description": "微应用在容器中的排序"
+          }
+        ],
+        "required": ["containerId", "app_id", "containerType"]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app.installed_micro_app.UpdateInstalledMicroAppStatus",
+      "name": "UpdateInstalledMicroAppStatus",
+      "version": "1.0.0",
+      "description": "更新小产品信息",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/micro_app/v1/installed_micro_app/:app_id/status",
+        "ext_fields": [
+          {
+            "source": "body",
+            "name": "micro_app"
+          }
+        ]
+      },
+      "import": ["easyops/model/micro_app/installed_micro_app"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "app_id",
+            "type": "string",
+            "description": "小产品id"
+          },
+          {
+            "name": "micro_app",
+            "type": "object",
+            "description": "要更新的小产品信息",
+            "fields": [
+              {
+                "name": "status",
+                "type": "string",
+                "enum": ["enabled", "disabled", "developing"],
+                "description": "状态"
+              }
+            ]
+          }
+        ],
+        "required": ["micro_app.status", "app_id"]
+      },
+      "response": {
+        "type": "InstalledMicroApp",
+        "required": ["InstalledMicroApp.*"]
+      }
+    },
+    {
+      "contract": "micro_app.installed_micro_app.UpdateInstalledMicroAppStoryboardJson",
+      "name": "UpdateInstalledMicroAppStoryboardJson",
+      "version": "1.0.0",
+      "description": "更新小产品配置信息",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/micro_app/v1/installed_micro_app/:app_id/storyboardJson",
+        "ext_fields": [
+          {
+            "source": "body",
+            "name": "micro_app"
+          }
+        ]
+      },
+      "import": ["easyops/model/micro_app/installed_micro_app"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "app_id",
+            "type": "string",
+            "description": "小产品id"
+          },
+          {
+            "name": "micro_app",
+            "type": "object",
+            "description": "要更新的小产品信息",
+            "fields": [
+              {
+                "name": "storyboardJson",
+                "type": "string",
+                "description": "小产品配置信息"
+              }
+            ]
+          }
+        ],
+        "required": ["micro_app.storyboardJson", "app_id"]
+      },
+      "response": {
+        "type": "InstalledMicroApp",
+        "required": ["InstalledMicroApp.*"]
+      }
+    },
+    {
+      "contract": "micro_app.installed_micro_app.UpdateInstalledMicroAppUserConfig",
+      "name": "UpdateInstalledMicroAppUserConfig",
+      "version": "1.0.0",
+      "description": "更新小产品用户配置",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/micro_app/v1/installed_micro_app/:app_id/userConfig",
+        "ext_fields": [
+          {
+            "source": "body",
+            "name": "micro_app"
+          }
+        ]
+      },
+      "import": ["easyops/model/micro_app/installed_micro_app"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "app_id",
+            "type": "string",
+            "description": "小产品id"
+          },
+          {
+            "name": "micro_app",
+            "type": "object",
+            "description": "要更新的小产品信息",
+            "fields": [
+              {
+                "name": "userConfig",
+                "type": "string",
+                "description": "用户配置"
+              }
+            ]
+          }
+        ],
+        "required": ["micro_app.userConfig", "app_id"]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app.installed_micro_app.UpgradeInstalledMicroApp",
+      "name": "UpgradeInstalledMicroApp",
+      "version": "1.0.0",
+      "description": "升级已小产品",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/micro_app/v1/installed_micro_app/upgrade/:packageName"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "packageName",
+            "type": "string",
+            "description": "小产品安装包名称"
+          }
+        ],
+        "required": ["packageName"]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app.installed_micro_app.UploadAppIcon",
+      "name": "UploadAppIcon",
+      "version": "1.0.0",
+      "description": "上传app图标",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro-app/upload-app-icon"
+      },
+      "import": [
+        "easyops/model/micro_app/installed_micro_app",
+        "easyops/model/micro_app/image"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "InstalledMicroApp.appId"
+          },
+          {
+            "name": "appIconBase64",
+            "type": "string",
+            "description": "app图标的base64"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app.installed_micro_app.UploadImages",
+      "name": "UploadImages",
+      "version": "1.0.0",
+      "description": "上传app图片库",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro-app/upload-app-images"
+      },
+      "import": [
+        "easyops/model/micro_app/installed_micro_app",
+        "easyops/model/micro_app/image"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "InstalledMicroApp.appId"
+          },
+          {
+            "name": "images",
+            "type": "Image[]",
+            "description": "图片"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "images",
+            "type": "Image[]",
+            "description": "图片"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "micro_app.micro_app_container.AddMicroAppToContainer",
+      "name": "AddMicroAppToContainer",
+      "version": "1.0.0",
+      "description": "为桌面添加微应用",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/micro_app/v1/micro_app_container/:containerId/add_micro_app"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "containerId",
+            "type": "string",
+            "description": "桌面容器Id"
+          },
+          {
+            "name": "appIds",
+            "type": "string[]",
+            "description": "需添加的Micro App的id"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app.micro_app_container.ListMicroAppContainer",
+      "name": "ListMicroAppContainer",
+      "version": "1.0.0",
+      "description": "获取小产品桌面列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/micro_app/v1/micro_app_container"
+      },
+      "import": [
+        "easyops/model/micro_app/installed_micro_app",
+        "easyops/model/micro_app/micro_app_container"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "每页大小"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "object[]",
+            "description": "小产品桌面列表",
+            "fields": [
+              {
+                "ref": "MicroAppContainer.*"
+              },
+              {
+                "name": "INSTALLED_MICRO_APP",
+                "type": "InstalledMicroApp[]",
+                "description": "小产品列表"
+              },
+              {
+                "name": "children",
+                "type": "MicroAppContainer[]",
+                "description": "子容器列表"
+              }
+            ]
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "实例总数"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "页大小"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "micro_app.micro_app_container.UpdateCustomItemContainer",
+      "name": "UpdateCustomItemContainer",
+      "version": "1.0.0",
+      "description": "修改自定义项所在桌面容器",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/micro_app/v1/custom_items/:instanceId/container"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "自定义项的实例ID"
+          },
+          {
+            "name": "containerId",
+            "type": "string",
+            "description": "桌面容器ID"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app.micro_app_container.UpdateDirContainer",
+      "name": "UpdateDirContainer",
+      "version": "1.0.0",
+      "description": "修改文件夹所在桌面容器",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/micro_app/v1/dir/:instanceId/container"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "文件夹的实例ID"
+          },
+          {
+            "name": "containerId",
+            "type": "string",
+            "description": "桌面容器ID"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app.micro_app_version_log.LogAppVersion",
+      "name": "LogAppVersion",
+      "version": "1.0.0",
+      "description": "记录小产品版本变化（存在更新，不存在创建）",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/micro_app/v1/log_micro_app_version/:packageOrg/:packageId"
+      },
+      "import": ["easyops/model/micro_app/micro_app_version_log"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppVersionLog.packageOrg"
+          },
+          {
+            "ref": "MicroAppVersionLog.packageId"
+          },
+          {
+            "ref": "MicroAppVersionLog.distVersionNo"
+          },
+          {
+            "ref": "MicroAppVersionLog.changeResult"
+          },
+          {
+            "ref": "MicroAppVersionLog.srcVersionNo"
+          }
+        ],
+        "required": ["packageOrg", "packageId"]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app.object_micro_app.AggregateMicroApp",
+      "name": "AggregateMicroApp",
+      "version": "1.0.0",
+      "description": "根据模型ID聚合小产品",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/micro_app/v1/object_micro_app/aggregate"
+      },
+      "import": ["easyops/model/micro_app/object_micro_app"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "query",
+            "type": "object",
+            "description": "查询条件",
+            "fields": [
+              {
+                "name": "objectId",
+                "type": "string[]",
+                "description": "按objectId列表查询"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "object[]",
+            "description": "数据列表",
+            "fields": [
+              {
+                "name": "objectId",
+                "type": "string",
+                "description": "模型ID"
+              },
+              {
+                "name": "microAppList",
+                "type": "ObjectMicroApp[]",
+                "description": "关联小产品列表"
+              }
+            ]
+          }
+        ],
+        "required": ["list"]
+      }
+    },
+    {
+      "contract": "micro_app.object_micro_app.BindObjectMicroApp",
+      "name": "BindObjectMicroApp",
+      "version": "1.0.0",
+      "description": "绑定Object与MicroApp关系",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/micro_app/v1/object_micro_app/bind"
+      },
+      "import": ["easyops/model/micro_app/installed_micro_app"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "InstalledMicroApp.appId"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app.object_micro_app.GetObjectMicroAppList",
+      "name": "GetObjectMicroAppList",
+      "version": "1.0.0",
+      "description": "查询模型关联小产品列表",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/micro_app/v1/object_micro_app"
+      },
+      "import": ["easyops/model/micro_app/object_micro_app"],
+      "request": null,
+      "response": {
+        "type": "ObjectMicroApp",
+        "required": ["ObjectMicroApp.*"]
+      }
+    },
+    {
+      "contract": "micro_app.object_micro_app.GetMicroAppList",
+      "name": "GetMicroAppList",
+      "version": "1.0.0",
+      "description": "根据模型查询关联小产品列表",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/micro_app/v1/object_micro_app/object_id/:object_id"
+      },
+      "import": ["easyops/model/micro_app/object_micro_app"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "object_id",
+            "type": "object_id",
+            "description": "模型id"
+          }
+        ],
+        "required": ["object_id"]
+      },
+      "response": {
+        "type": "ObjectMicroApp",
+        "required": ["ObjectMicroApp.*"]
+      }
+    },
+    {
+      "contract": "micro_app.object_micro_app.GetObjectByMicroApp",
+      "name": "GetObjectByMicroApp",
+      "version": "1.0.0",
+      "description": "根据小产品查询模型和小产品关联信息",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/micro_app/v1/object_micro_app/appId/:appId"
+      },
+      "import": ["easyops/model/micro_app/object_micro_app"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "小产品id"
+          }
+        ],
+        "required": ["appId"]
+      },
+      "response": {
+        "type": "ObjectMicroApp",
+        "required": ["ObjectMicroApp.*"]
+      }
+    },
+    {
+      "contract": "micro_app.object_micro_app.SearchMicroAppList",
+      "name": "SearchMicroAppList",
+      "version": "1.0.0",
+      "description": "搜索模型查询关联小产品列表",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/micro_app/v1/object_micro_app/search"
+      },
+      "import": ["easyops/model/micro_app/object_micro_app"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "每页大小"
+          },
+          {
+            "name": "query",
+            "type": "object",
+            "description": "查询条件",
+            "fields": [
+              {
+                "name": "objectId",
+                "type": "string[]",
+                "description": "按objectId列表查询"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "total",
+            "type": "int",
+            "description": "返回总数"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页数"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "该页大小"
+          },
+          {
+            "name": "list",
+            "type": "object[]",
+            "description": "数据列表",
+            "fields": [
+              {
+                "ref": "ObjectMicroApp.*",
+                "description": "关联小产品列表"
+              }
+            ]
+          }
+        ],
+        "required": ["total", "page", "page_size", "list"]
+      }
+    },
+    {
+      "contract": "micro_app.orchestration.GetMicroAppApisByAppId",
+      "name": "GetMicroAppApisByAppId",
+      "version": "1.0.0",
+      "description": "通过appId获取api编排",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/apis/:appId"
+      },
+      "import": ["easyops/model/micro_app/micro_app_api_orchestration"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "micro_app id"
+          }
+        ],
+        "required": ["appId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "apiList",
+            "type": "MICROAPPAPIORCHESTRATION[]",
+            "description": "api编排列表"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "micro_app.orchestration.ImportMicroAppApis",
+      "name": "ImportMicroAppApis",
+      "version": "1.0.0",
+      "description": "导入api编排",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/apis/import"
+      },
+      "import": ["easyops/model/micro_app/micro_app_api_orchestration"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "micro_app id"
+          },
+          {
+            "name": "apiList",
+            "type": "MICROAPPAPIORCHESTRATION[]",
+            "description": "api编排列表"
+          }
+        ],
+        "required": ["appId", "apiList"]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app.org.ImportModels",
+      "name": "ImportModels",
+      "version": "1.0.0",
+      "description": "导入模型和实例数据",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/org/import-models"
+      },
+      "import": [],
+      "request": null,
+      "response": null
+    },
+    {
+      "contract": "micro_app.org.RegisterOrg",
+      "name": "RegisterOrg",
+      "version": "1.0.0",
+      "description": "org注册",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/org/register"
+      },
+      "import": [],
+      "request": null,
+      "response": null
+    },
+    {
+      "contract": "micro_app.permission.GetMicroAppList",
+      "name": "GetMicroAppList",
+      "version": "1.0.0",
+      "description": "获取所有拥有权限的小产品",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/micro_app/v1/permission"
+      },
+      "import": ["easyops/model/micro_app/installed_micro_app"],
+      "request": null,
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "installedMicroAppList",
+            "type": "object[]",
+            "description": "已安装小产品",
+            "fields": [
+              {
+                "ref": "InstalledMicroApp.name"
+              },
+              {
+                "ref": "InstalledMicroApp.appId"
+              },
+              {
+                "ref": "InstalledMicroApp.menuIcon"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get Micro App List",
+            "zh": "获取所有拥有权限的小产品"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8146/api/micro_app/v1/permission"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"installedMicroAppList\": [\n            {\n                \"name\": \"持续集成\",\n                \"appId\": \"ci\",\n                \"menuIcon\": {\n                    \"category\": \"app\",\n                    \"icon\": \"ci\",\n                    \"lib\": \"easyops\"\n                }\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app.permission.GetPermissionsByAppId",
+      "name": "GetPermissionsByAppId",
+      "version": "1.0.0",
+      "description": "获取小产品的所有权限列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/micro_app/v1/permission/:appId"
+      },
+      "import": ["easyops/model/permission/permission"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "小产品id"
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "description": "启用/禁用状态过滤, 空为不过滤",
+            "enum": ["enable", "disable"]
+          }
+        ],
+        "required": ["appId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "permissionList",
+            "type": "Permission[]",
+            "description": "权限点列表"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "micro_app.permission.ImportPermissions",
+      "name": "ImportPermissions",
+      "version": "1.0.0",
+      "description": "导入小产品权限点（只能导入一个小产品的权限点）",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/micro_app/v1/permission/import"
+      },
+      "import": ["easyops/model/permission/permission"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "permissionList",
+            "type": "Permission[]",
+            "description": "权限点列表"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app.permission.UpdatePermissionBatch",
+      "name": "UpdatePermissionBatch",
+      "version": "1.0.0",
+      "description": "批量修改实例权限，供LaunchPad管理使用",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/micro_app/v1/permission/:objectId/instances/_batch"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "objectId",
+            "type": "object_id",
+            "enum": [
+              "_MICROAPP_CONTAINER",
+              "_INSTALLED_MICRO_APP",
+              "DESKTOP_CUSTOM_ITEM@EASYOPS"
+            ],
+            "description": "资源模型ID"
+          },
+          {
+            "name": "ids",
+            "type": "instance_id[]",
+            "description": "实例ID列表"
+          },
+          {
+            "name": "fields",
+            "type": "string[]",
+            "enum": [
+              "updateAthorizers",
+              "deleteAuthorizers",
+              "readAuthorizers",
+              "operateAuthorizers"
+            ],
+            "description": "updateAthorizers, deleteAuthorizers, readAuthorizers, operateAuthorizers中的一个或多个"
+          },
+          {
+            "name": "method",
+            "type": "string",
+            "enum": ["overwrite", "append", "pull"],
+            "description": "修改操作的类型(overwrite, append, pull)(在枚举之外的操作类型会报错)"
+          },
+          {
+            "name": "list",
+            "type": "string[]",
+            "description": "用户,用户组列表"
+          }
+        ],
+        "required": ["objectId", "ids", "fields", "method", "list"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "noAuthorizedList",
+            "type": "map[]",
+            "description": "没有权限更新的实例列表"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "用覆盖的方式，给easyops分配一个读权限"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8146/api/micro_app/v1/permission/DESKTOP_CUSTOM_ITEM@EASYOPS/instances/_batch",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"ids\": [\"5d3914ca4406a\",\"5d3914e090876\"],\n    \"fields\": [\"readAuthorizers\"],\n    \"list\": [\"easyops\"],\n    \"method\": \"overwrite\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"noAuthorizedList\": []\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app.permission.ValidatePermissions",
+      "name": "ValidatePermissions",
+      "version": "1.0.0",
+      "description": "校验系统权限",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/micro_app/v1/permission/validate"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "actions",
+            "type": "string[]",
+            "description": "权限点action列表"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "actions",
+            "type": "object[]",
+            "description": "权限点列表",
+            "fields": [
+              {
+                "name": "action",
+                "type": "string",
+                "description": "action"
+              },
+              {
+                "name": "authorizationStatus",
+                "type": "string",
+                "description": "授权状态",
+                "enum": ["authorized", "unauthorized", "undefined"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "micro_app.report.ReportInstalledBricksNextPackageResult",
+      "name": "ReportInstalledBricksNextPackageResult",
+      "version": "1.0.0",
+      "description": "上报小产品NB和NT包安装或更新结果",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/micro_app/v1/installed_bricks_next_package/report_result"
+      },
+      "import": ["easyops/model/micro_app/installed_bricks_next_package"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "installedPackages",
+            "description": "已安装的小产品NB和NT包",
+            "type": "InstalledBricksNextPackage[]"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app.report.ReportInstalledMicroAppResult",
+      "name": "ReportInstalledMicroAppResult",
+      "version": "1.0.1",
+      "description": "上报小产品安装或更新结果",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/micro_app/v1/installed_micro_app/report_result"
+      },
+      "import": ["easyops/model/micro_app/installed_micro_app"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "installedApps",
+            "description": "已安装的小产品",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "microApp",
+                "type": "InstalledMicroApp",
+                "description": "已安装的小产品id"
+              },
+              {
+                "name": "containerId",
+                "type": "string",
+                "description": "小产品关联的桌面Id"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "object[]",
+            "description": "数据列表",
+            "fields": [
+              {
+                "ref": "InstalledMicroApp.*",
+                "description": "小产品列表"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "micro_app.resource.UpgradeResourcePackage",
+      "name": "UpgradeResourcePackage",
+      "version": "1.0.0",
+      "description": "升级资源包",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/resourcePackage/resource/upgrade"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "packageName",
+            "type": "string",
+            "description": "包名"
+          }
+        ],
+        "required": ["packageName"]
+      },
+      "response": null
+    },
+    {
+      "contract": "micro_app.sitemap.GetAllSiteMap",
+      "name": "GetAllSiteMap",
+      "version": "1.0.0",
+      "description": "获取所有系统地图信息",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/micro-app/get_all_site_map"
+      },
+      "import": ["easyops/model/api_gateway/sitemap"],
+      "request": null,
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "siteMaps",
+            "type": "SiteMap[]",
+            "description": "系统地图"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "micro_app.workflow.Approval",
+      "name": "Approval",
+      "version": "1.0.0",
+      "description": "人工审批",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro_app/build/:buildId/steps/:stepId/approval"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "buildId",
+            "type": "string",
+            "description": "工作流任务id"
+          },
+          {
+            "name": "stepId",
+            "type": "string",
+            "description": "步骤id"
+          },
+          {
+            "name": "action",
+            "type": "string",
+            "enum": ["approve", "refuse"],
+            "description": "审批结果"
+          },
+          {
+            "name": "comment",
+            "type": "string",
+            "description": "审批意见"
+          }
+        ],
+        "required": ["buildId", "stepId", "action"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Approval",
+            "zh": "工作流人工审批"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8146/api/v1/micro_app/build/645903525a33efd0db76940f/approval/test_approval_id",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"action\": \"approve\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\":0,\n    \"codeExplain\":\"\",\n    \"error\":\"\",\n    \"data\":{\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app.workflow.Cancel",
+      "name": "Cancel",
+      "version": "1.0.0",
+      "description": "终止工作流执行",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro_app/workflow/build/:buildId/cancel"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "buildId",
+            "type": "string",
+            "description": "工作流任务id"
+          }
+        ],
+        "required": ["buildId"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Cancel",
+            "zh": "终止工作流执行"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8146/api/v1/micro_app/workflow/build/61cbcf83445aa2482585a23f/cancel",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{ }"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\":0,\n    \"codeExplain\":\"\",\n    \"error\":\"\",\n    \"data\":{\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app.workflow.Execute",
+      "name": "Execute",
+      "version": "1.0.0",
+      "description": "手动触发执行工作流",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro_app/projects/:project_id/workflows/:workflow_id/execute"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "project_id",
+            "type": "instance_id",
+            "description": "关联的project id"
+          },
+          {
+            "name": "workflow_id",
+            "type": "instance_id",
+            "description": "要执行的workflow id"
+          },
+          {
+            "name": "inputs",
+            "type": "object[]",
+            "description": "输入",
+            "fields": [
+              {
+                "name": "name",
+                "type": "string",
+                "description": "变量名"
+              },
+              {
+                "name": "value",
+                "type": "string",
+                "description": "变量值，type为enum时，使用英文逗号拼接多个枚举值"
+              },
+              {
+                "name": "type",
+                "type": "string",
+                "enum": ["int", "string", "enum"],
+                "description": "变量类型"
+              },
+              {
+                "name": "enum_values",
+                "type": "string[]",
+                "description": "枚举值列表"
+              }
+            ]
+          }
+        ],
+        "required": ["project_id", "workflow_id"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "description": "任务id, 服务端自动生成"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Execute",
+            "zh": "执行工作流"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8146/api/v1/micro_app/projects/5b58cfd9556c5/workflows/5c27bf8662b5e/execute",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"inputs\":[\n        {\n            \"name\": \"env1\",\n            \"value\": \"env1\",\n            \"type\": \"string\",\n            \"enum_values\": []\n        },\n        {\n            \"name\": \"env2\",\n            \"value\": \"env2,env22\",\n            \"type\": \"enum\",\n            \"enum_values\": [\"env2\",\"env22\",\"env222\"]\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\":0,\n    \"codeExplain\":\"\",\n    \"error\":\"\",\n    \"data\":{\n        \"id\":\"61cbcf83445aa2482585a23f\"\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app.workflow.Get",
+      "name": "Get",
+      "version": "1.0.0",
+      "description": "获取单个工作流任务详情",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/workflow/build/:build_id"
+      },
+      "import": ["easyops/model/micro_app/build"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "build_id",
+            "type": "string",
+            "description": "工作流任务id"
+          }
+        ],
+        "required": ["build_id"]
+      },
+      "response": {
+        "type": "BuildDetail",
+        "required": ["BuildDetail.*"]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get Workflow Build Detail",
+            "zh": "获取单个工作流任务详情"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8146/api/v1/workflow/build/5f90b3114dcdb",
+            "headers": {
+              "Org": 8888,
+              "User": "easyops"
+            }
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"id\": \"5f90b3114dcdb\",\n  \"projectId\": \"5f1fabf57d74d\",\n  \"workflowId\": \"5fac624a9b2b9\",\n  \"yamlString\": \"\",\n  \"status\": {\n    \"state\": \"succeeded\",\n    \"started\": 1683115074,\n    \"updated\": 1683115074,\n    \"finished\": 1683115074\n  },\n  \"steps\": [\n    {\n      \"id\": \"janice-test-ppp-janice_test_workflow_start\",\n      \"name\": \"开始\",\n      \"state\": \"succeeded\",\n      \"next\": [\n        \"janice-test-ppp-condtion_tests-gateway\"\n      ],\n      \"type\": \"start\",\n      \"started\": 1683115074,\n      \"finished\": 1683115074\n    },\n    {\n      \"id\": \"janice-test-ppp-janice_test_workflow_end\",\n      \"name\": \"结束\",\n      \"state\": \"succeeded\",\n      \"pre\": [\n        \"janice-test-ppp-cccc\"\n      ],\n      \"type\": \"end\",\n      \"started\": 1683115074,\n      \"finished\": 1683115074\n    },\n    {\n      \"id\": \"janice-test-ppp-condtion_tests-gateway\",\n      \"name\": \"condition_testsGateway\",\n      \"state\": \"succeeded\",\n      \"pre\": [\n        \"janice-test-ppp-janice_test_workflow_start\"\n      ],\n      \"next\": [\n        \"janice-test-ppp-cccc\"\n      ],\n      \"children\": [\n        \"janice-test-ppp-condtion_tests\",\n        \"janice-test-ppp-approval_tet\"\n      ],\n      \"type\": \"gateway\",\n      \"started\": 1683115074,\n      \"finished\": 1683115074\n    },\n    {\n      \"id\": \"janice-test-ppp-condtion_tests\",\n      \"name\": \"condition_tests\",\n      \"state\": \"succeeded\",\n      \"next\": [\n        \"janice-test-ppp-approval_tet\"\n      ],\n      \"parent\": \"janice-test-ppp-condtion_tests-gateway\",\n      \"type\": \"condition\",\n      \"started\": 1683115074,\n      \"finished\": 1683115074\n    },\n    {\n      \"id\": \"janice-test-ppp-approval_tet\",\n      \"name\": \"approval_tet\",\n      \"state\": \"succeeded\",\n      \"pre\": [\n        \"janice-test-ppp-condtion_tests\"\n      ],\n      \"parent\": \"janice-test-ppp-condtion_tests-gateway\",\n      \"type\": \"approval\",\n      \"started\": 1683115074,\n      \"finished\": 1683115074\n    },\n    {\n      \"uid\": \"70131bd300524f0cb71dd25e4845daa7\",\n      \"id\": \"janice-test-ppp-cccc\",\n      \"name\": \"cccc\",\n      \"state\": \"succeeded\",\n      \"pre\": [\n        \"janice-test-ppp-condtion_tests-gateway\"\n      ],\n      \"next\": [\n        \"janice-test-ppp-janice_test_workflow_end\"\n      ],\n      \"type\": \"cc\",\n      \"started\": 1683115074,\n      \"finished\": 1683115074\n    }\n  ],\n  \"created\": 1683115074,\n  \"inputs\": [\n    {\n      \"name\": \"id\",\n      \"value\": \"\",\n      \"type\": \"string\",\n      \"enumvalues\": []\n    },\n    {\n      \"name\": \"name\",\n      \"value\": \"\",\n      \"type\": \"string\",\n      \"enumvalues\": []\n    }\n  ],\n  \"org\": 8888,\n  \"buildVars\": [\n    {\n      \"name\": \"name\",\n      \"value\": \"aa\",\n      \"type\": \"\",\n      \"enumvalues\": null\n    }\n  ]\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app.workflow.List",
+      "name": "List",
+      "version": "1.0.0",
+      "description": "获取工作流任务列表",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/v1/:projectId/workflow/:workflowId/build"
+      },
+      "import": ["easyops/model/micro_app/build"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectId",
+            "type": "instance_id",
+            "description": "项目instanceId"
+          },
+          {
+            "name": "workflowId",
+            "type": "instance_id",
+            "description": "工作流instance_id"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "每页大小"
+          },
+          {
+            "name": "startTime",
+            "type": "int64",
+            "description": "开始时间"
+          },
+          {
+            "name": "endTime",
+            "type": "int64",
+            "description": "结束时间"
+          },
+          {
+            "name": "state",
+            "type": "string",
+            "description": "状态"
+          }
+        ],
+        "required": ["projectId", "workflowId", "page", "page_size"]
+      },
+      "response": {
+        "type": "BuildDetail"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get Workflow Build Detail",
+            "zh": "根据workflowId获取所有工作流任务记录"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8146/api/v1/5f90b3114dcdm/workflow/5f90b3114dcdb/build",
+            "headers": {
+              "Org": 8888,
+              "User": "easyops"
+            }
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"list\": [\n    {\n      \"id\": \"5f90b3114dcdb\",\n      \"projectId\": \"5f1fabf57d74d\",\n      \"workflowId\": \"5fac624a9b2b9\",\n      \"yamlString\": \"\",\n      \"status\": {\n        \"state\": \"succeeded\",\n        \"started\": 1683115074,\n        \"updated\": 1683115074,\n        \"finished\": 1683115074\n      },\n      \"steps\": [\n        {\n          \"id\": \"janice-test-ppp-janice_test_workflow_start\",\n          \"name\": \"开始\",\n          \"state\": \"succeeded\",\n          \"next\": [\n            \"janice-test-ppp-condtion_tests-gateway\"\n          ],\n          \"type\": \"start\",\n          \"started\": 1683115074,\n          \"finished\": 1683115074\n        },\n        {\n          \"id\": \"janice-test-ppp-janice_test_workflow_end\",\n          \"name\": \"结束\",\n          \"state\": \"succeeded\",\n          \"pre\": [\n            \"janice-test-ppp-cccc\"\n          ],\n          \"type\": \"end\",\n          \"started\": 1683115074,\n          \"finished\": 1683115074\n        },\n        {\n          \"id\": \"janice-test-ppp-condtion_tests-gateway\",\n          \"name\": \"condition_testsGateway\",\n          \"state\": \"succeeded\",\n          \"pre\": [\n            \"janice-test-ppp-janice_test_workflow_start\"\n          ],\n          \"next\": [\n            \"janice-test-ppp-cccc\"\n          ],\n          \"children\": [\n            \"janice-test-ppp-condtion_tests\",\n            \"janice-test-ppp-approval_tet\"\n          ],\n          \"type\": \"gateway\",\n          \"started\": 1683115074,\n          \"finished\": 1683115074\n        },\n        {\n          \"id\": \"janice-test-ppp-condtion_tests\",\n          \"name\": \"condition_tests\",\n          \"state\": \"succeeded\",\n          \"next\": [\n            \"janice-test-ppp-approval_tet\"\n          ],\n          \"parent\": \"janice-test-ppp-condtion_tests-gateway\",\n          \"type\": \"condition\",\n          \"started\": 1683115074,\n          \"finished\": 1683115074\n        },\n        {\n          \"id\": \"janice-test-ppp-approval_tet\",\n          \"name\": \"approval_tet\",\n          \"state\": \"succeeded\",\n          \"pre\": [\n            \"janice-test-ppp-condtion_tests\"\n          ],\n          \"parent\": \"janice-test-ppp-condtion_tests-gateway\",\n          \"type\": \"approval\",\n          \"started\": 1683115074,\n          \"finished\": 1683115074\n        },\n        {\n          \"uid\": \"70131bd300524f0cb71dd25e4845daa7\",\n          \"id\": \"janice-test-ppp-cccc\",\n          \"name\": \"cccc\",\n          \"state\": \"succeeded\",\n          \"pre\": [\n            \"janice-test-ppp-condtion_tests-gateway\"\n          ],\n          \"next\": [\n            \"janice-test-ppp-janice_test_workflow_end\"\n          ],\n          \"type\": \"cc\",\n          \"started\": 1683115074,\n          \"finished\": 1683115074\n        }\n      ],\n      \"created\": 1683115074,\n      \"inputs\": [\n        {\n          \"name\": \"id\",\n          \"value\": \"\",\n          \"type\": \"string\",\n          \"enumvalues\": []\n        },\n        {\n          \"name\": \"name\",\n          \"value\": \"\",\n          \"type\": \"string\",\n          \"enumvalues\": []\n        }\n      ],\n      \"org\": 8888,\n      \"buildVars\": [\n        {\n          \"name\": \"name\",\n          \"value\": \"aa\",\n          \"type\": \"\",\n          \"enumvalues\": null\n        }\n      ]\n    }\n  ]\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app.workflow.ViewApprovalHistory",
+      "name": "ViewApprovalHistory",
+      "version": "1.0.0",
+      "description": "查看用户审批历史",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/v1/micro_app/workflows/approval_history"
+      },
+      "import": ["easyops/model/micro_app/build"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "userName",
+            "type": "string",
+            "description": "userName如果为空, 取ctx中的user"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "每页大小"
+          },
+          {
+            "name": "startTime",
+            "type": "int64",
+            "description": "开始时间"
+          },
+          {
+            "name": "endTime",
+            "type": "int64",
+            "description": "结束时间"
+          }
+        ],
+        "default": {
+          "page": 1,
+          "pageSize": 300
+        }
+      },
+      "response": {
+        "type": "BuildDetail"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "View Approval History",
+            "zh": "查看审批历史"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8146/api/v1/micro_app/workflows/approval_history",
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"userName\": \"janice\"\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"list\": [\n    {\n      \"id\": \"5f90b3114dcdb\",\n      \"projectId\": \"5f1fabf57d74d\",\n      \"workflowId\": \"5fac624a9b2b9\",\n      \"yamlString\": \"\",\n      \"status\": {\n        \"state\": \"succeeded\",\n        \"started\": 1683115074,\n        \"updated\": 1683115074,\n        \"finished\": 1683115074\n      },\n      \"steps\": [\n        {\n          \"id\": \"janice-test-ppp-janice_test_workflow_start\",\n          \"name\": \"开始\",\n          \"state\": \"succeeded\",\n          \"next\": [\n            \"janice-test-ppp-condtion_tests-gateway\"\n          ],\n          \"type\": \"start\",\n          \"started\": 1683115074,\n          \"finished\": 1683115074\n        },\n        {\n          \"id\": \"janice-test-ppp-janice_test_workflow_end\",\n          \"name\": \"结束\",\n          \"state\": \"pending\",\n          \"pre\": [\n            \"janice-test-ppp-cccc\"\n          ],\n          \"type\": \"end\",\n          \"started\": 1683115074,\n          \"finished\": 1683115074\n        },\n        {\n          \"id\": \"janice-test-ppp-condtion_tests-gateway\",\n          \"name\": \"condition_testsGateway\",\n          \"state\": \"succeeded\",\n          \"pre\": [\n            \"janice-test-ppp-janice_test_workflow_start\"\n          ],\n          \"next\": [\n            \"janice-test-ppp-cccc\"\n          ],\n          \"children\": [\n            \"janice-test-ppp-condtion_tests\",\n            \"janice-test-ppp-approval_tet\"\n          ],\n          \"type\": \"gateway\",\n          \"started\": 1683115074,\n          \"finished\": 1683115074\n        },\n        {\n          \"id\": \"janice-test-ppp-condtion_tests\",\n          \"name\": \"condition_tests\",\n          \"state\": \"succeeded\",\n          \"next\": [\n            \"janice-test-ppp-approval_tet\"\n          ],\n          \"parent\": \"janice-test-ppp-condtion_tests-gateway\",\n          \"type\": \"condition\",\n          \"started\": 1683115074,\n          \"finished\": 1683115074\n        },\n        {\n          \"id\": \"janice-test-ppp-approval_tet\",\n          \"name\": \"approval_tet\",\n          \"state\": \"succeeded\",\n          \"pre\": [\n            \"janice-test-ppp-condtion_tests\"\n          ],\n          \"parent\": \"janice-test-ppp-condtion_tests-gateway\",\n          \"type\": \"approval\",\n          \"started\": 1683115074\n        },\n        {\n          \"uid\": \"70131bd300524f0cb71dd25e4845daa7\",\n          \"id\": \"janice-test-ppp-cccc\",\n          \"name\": \"cccc\",\n          \"state\": \"pending\",\n          \"pre\": [\n            \"janice-test-ppp-condtion_tests-gateway\"\n          ],\n          \"next\": [\n            \"janice-test-ppp-janice_test_workflow_end\"\n          ],\n          \"type\": \"cc\",\n          \"started\": 1683115074\n        }\n      ],\n      \"created\": 1683115074,\n      \"inputs\": [\n        {\n          \"name\": \"id\",\n          \"value\": \"\",\n          \"type\": \"string\",\n          \"enumvalues\": []\n        },\n        {\n          \"name\": \"name\",\n          \"value\": \"\",\n          \"type\": \"string\",\n          \"enumvalues\": []\n        }\n      ],\n      \"org\": 8888,\n      \"buildVars\": [\n        {\n          \"name\": \"name\",\n          \"value\": \"aa\",\n          \"type\": \"\",\n          \"enumvalues\": null\n        }\n      ]\n    }\n  ]\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app.workflow.ViewTodo",
+      "name": "ViewTodo",
+      "version": "1.0.0",
+      "description": "查看某用户待办流程",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/v1/micro_app/workflows/view_todo"
+      },
+      "import": ["easyops/model/micro_app/build"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "userName",
+            "type": "string",
+            "description": "userName如果为空, 取ctx中的user"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "每页大小"
+          },
+          {
+            "name": "startTime",
+            "type": "int64",
+            "description": "开始时间"
+          },
+          {
+            "name": "endTime",
+            "type": "int64",
+            "description": "结束时间"
+          }
+        ],
+        "default": {
+          "page": 1,
+          "pageSize": 300
+        }
+      },
+      "response": {
+        "type": "BuildDetail"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "View Todo",
+            "zh": "查看待办"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8146/api/v1/micro_app/workflows/view_todo",
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"userName\": \"janice\"\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"list\": [\n    {\n      \"id\": \"5f90b3114dcdb\",\n      \"projectId\": \"5f1fabf57d74d\",\n      \"workflowId\": \"5fac624a9b2b9\",\n      \"yamlString\": \"\",\n      \"status\": {\n        \"state\": \"succeeded\",\n        \"started\": 1683115074,\n        \"updated\": 1683115074,\n        \"finished\": 1683115074\n      },\n      \"steps\": [\n        {\n          \"id\": \"janice-test-ppp-janice_test_workflow_start\",\n          \"name\": \"开始\",\n          \"state\": \"succeeded\",\n          \"next\": [\n            \"janice-test-ppp-condtion_tests-gateway\"\n          ],\n          \"type\": \"start\",\n          \"started\": 1683115074,\n          \"finished\": 1683115074\n        },\n        {\n          \"id\": \"janice-test-ppp-janice_test_workflow_end\",\n          \"name\": \"结束\",\n          \"state\": \"pending\",\n          \"pre\": [\n            \"janice-test-ppp-cccc\"\n          ],\n          \"type\": \"end\",\n          \"started\": 1683115074,\n          \"finished\": 1683115074\n        },\n        {\n          \"id\": \"janice-test-ppp-condtion_tests-gateway\",\n          \"name\": \"condition_testsGateway\",\n          \"state\": \"succeeded\",\n          \"pre\": [\n            \"janice-test-ppp-janice_test_workflow_start\"\n          ],\n          \"next\": [\n            \"janice-test-ppp-cccc\"\n          ],\n          \"children\": [\n            \"janice-test-ppp-condtion_tests\",\n            \"janice-test-ppp-approval_tet\"\n          ],\n          \"type\": \"gateway\",\n          \"started\": 1683115074,\n          \"finished\": 1683115074\n        },\n        {\n          \"id\": \"janice-test-ppp-condtion_tests\",\n          \"name\": \"condition_tests\",\n          \"state\": \"succeeded\",\n          \"next\": [\n            \"janice-test-ppp-approval_tet\"\n          ],\n          \"parent\": \"janice-test-ppp-condtion_tests-gateway\",\n          \"type\": \"condition\",\n          \"started\": 1683115074,\n          \"finished\": 1683115074\n        },\n        {\n          \"id\": \"janice-test-ppp-approval_tet\",\n          \"name\": \"approval_tet\",\n          \"state\": \"running\",\n          \"pre\": [\n            \"janice-test-ppp-condtion_tests\"\n          ],\n          \"parent\": \"janice-test-ppp-condtion_tests-gateway\",\n          \"type\": \"approval\",\n          \"started\": 1683115074\n        },\n        {\n          \"uid\": \"70131bd300524f0cb71dd25e4845daa7\",\n          \"id\": \"janice-test-ppp-cccc\",\n          \"name\": \"cccc\",\n          \"state\": \"pending\",\n          \"pre\": [\n            \"janice-test-ppp-condtion_tests-gateway\"\n          ],\n          \"next\": [\n            \"janice-test-ppp-janice_test_workflow_end\"\n          ],\n          \"type\": \"cc\",\n          \"started\": 1683115074\n        }\n      ],\n      \"created\": 1683115074,\n      \"inputs\": [\n        {\n          \"name\": \"id\",\n          \"value\": \"\",\n          \"type\": \"string\",\n          \"enumvalues\": []\n        },\n        {\n          \"name\": \"name\",\n          \"value\": \"\",\n          \"type\": \"string\",\n          \"enumvalues\": []\n        }\n      ],\n      \"org\": 8888,\n      \"buildVars\": [\n        {\n          \"name\": \"name\",\n          \"value\": \"aa\",\n          \"type\": \"\",\n          \"enumvalues\": null\n        }\n      ]\n    }\n  ]\n}"
+          }
+        }
+      ]
+    }
+  ]
+}

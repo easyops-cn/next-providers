@@ -1,0 +1,3601 @@
+{
+  "name": "next_builder",
+  "description": {
+    "en": "Visual Builder Service",
+    "zh": "Visual Builder 后台服务"
+  },
+  "contracts": [
+    {
+      "contract": "next_builder.apis.ExportApis",
+      "category": {
+        "en": "API(Deprecated)",
+        "zh": "接口(废弃)"
+      },
+      "name": "ExportApis",
+      "version": "1.0.0",
+      "description": "同步api编排到开发环境",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/apis/export"
+      },
+      "import": [
+        "easyops/model/micro_app/micro_app_api_orchestration",
+        "easyops/model/next_builder/micro_app_project"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.instanceId"
+          },
+          {
+            "name": "apiList",
+            "type": "MICROAPPAPIORCHESTRATION[]",
+            "description": "api编排列表"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.apis.GetApi",
+      "category": {
+        "en": "API(Deprecated)",
+        "zh": "接口(废弃)"
+      },
+      "name": "GetApi",
+      "version": "1.0.0",
+      "description": "获取开发环境的api编排信息。",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/api/get"
+      },
+      "import": [
+        "easyops/model/micro_app/micro_app_api_orchestration",
+        "easyops/model/next_builder/micro_app_project"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.projectId"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "apis",
+            "type": "MICROAPPAPIORCHESTRATION[]",
+            "description": "api列表"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.build.BuildAndPush",
+      "category": {
+        "en": "Build",
+        "zh": "构建"
+      },
+      "name": "BuildAndPush",
+      "version": "1.1.0",
+      "description": "构建推送app",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next-builder/build-and-push"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.projectId"
+          },
+          {
+            "name": "storyboardJson",
+            "type": "string",
+            "description": "storyboard的json内容"
+          },
+          {
+            "name": "appIconBase64",
+            "type": "string",
+            "description": "app图标的base64"
+          },
+          {
+            "name": "ignoredResources",
+            "type": "object",
+            "description": "忽略push的资源",
+            "fields": [
+              {
+                "name": "image",
+                "type": "bool",
+                "description": "图片"
+              },
+              {
+                "name": "menus",
+                "type": "bool",
+                "description": "目录"
+              }
+            ]
+          }
+        ],
+        "required": ["projectId", "storyboardJson"]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.build.GetModifiedInformation",
+      "category": {
+        "en": "Build",
+        "zh": "构建"
+      },
+      "name": "GetModifiedInformation",
+      "version": "1.0.0",
+      "description": "获取两个版本之间的修改信息",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/next-builder/modified-information/:projectId"
+      },
+      "import": ["easyops/model/next_builder/micro_app_modified_log"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectId",
+            "type": "string",
+            "description": "小产品项目id"
+          },
+          {
+            "name": "startVersion",
+            "type": "string",
+            "description": "开始版本"
+          },
+          {
+            "name": "endVersion",
+            "type": "string",
+            "description": "结束版本，如果为 `current`时，返回数据包含基于最新版本的修改"
+          },
+          {
+            "name": "isStandalone",
+            "type": "bool",
+            "description": "是否独立部署"
+          }
+        ],
+        "required": ["projectId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "modifiedLogs",
+            "type": "object[]",
+            "description": "修改日志",
+            "fields": [
+              {
+                "ref": "MicroAppModifiedLog.modifiedUser"
+              },
+              {
+                "ref": "MicroAppModifiedLog.lastModifiedTime"
+              },
+              {
+                "ref": "MicroAppModifiedLog.modifiedTimes"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.build.GetReleasedLogs",
+      "category": {
+        "en": "Build",
+        "zh": "构建"
+      },
+      "name": "GetReleasedLogs",
+      "version": "1.0.0",
+      "description": "获取两个版本之间的发布日志",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/next-builder/released-logs/:projectId"
+      },
+      "import": ["easyops/model/next_builder/micro_app_released_log"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectId",
+            "type": "string",
+            "description": "小产品项目id"
+          },
+          {
+            "name": "startVersion",
+            "type": "string",
+            "description": "开始版本"
+          },
+          {
+            "name": "endVersion",
+            "type": "string",
+            "description": "结束版本，如果为 `current`时，返回当前build&push和expor models之后的数据作为发布日志"
+          },
+          {
+            "name": "isStandalone",
+            "type": "bool",
+            "description": "是否独立部署"
+          }
+        ],
+        "required": ["projectId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "startReleasedLog",
+            "type": "MicroAppReleasedLog",
+            "description": "开始版本的发布日志"
+          },
+          {
+            "name": "endReleasedLog",
+            "type": "MicroAppReleasedLog",
+            "description": "结束版本的发布日志"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.build.GetStoriesJson",
+      "category": {
+        "en": "Build",
+        "zh": "构建"
+      },
+      "name": "GetStoriesJson",
+      "version": "1.0.0",
+      "description": "获取stories.json",
+      "detail": "stories.json是构件编译时生成的，包含了构件的文档信息。 本接口返回所有构件的stories.json文件的结构化内容。",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/next-builder/storiesjson"
+      },
+      "request": null,
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "map[]",
+            "description": "所有stories.json整合后的数组"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Basic",
+            "zh": "基础请求"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8142/api/v1/next-builder/storiesjson"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"data\": {\n    \"list\": [\n      {\n        \"author\": \"momo\",\n        \"category\": \"description\",\n        \"description\": {\n          \"zh\": \"折叠容器，只折叠单个内容，支持slot\"\n        },\n        \"doc\": {\n          \"author\": \"momo\",\n          \"description\": \"折叠容器，只折叠单个内容，支持slot\",\n          \"dockind\": \"brick\",\n          \"editor\": null,\n          \"editorProps\": null,\n          \"events\": null,\n          \"history\": [\n            {\n              \"change\": \"新增属性 `isShowFoldIcon`, `type`\",\n              \"version\": \"1.87.0\"\n            },\n            {\n              \"change\": \"新增属性 `showDivider`,`dividerOrientation`,`dividerDashed`,`show`\",\n              \"version\": \"1.64.0\"\n            },\n            {\n              \"change\": \"新增构件 `basic-bricks.fold-brick-v2`\",\n              \"version\": \"1.56.0\"\n            }\n          ],\n          \"id\": \"basic-bricks.fold-brick-v2\",\n          \"interface\": [\n\n          ],\n          \"memo\": \"\",\n          \"methods\": null,\n          \"name\": \"basic-bricks.fold-brick-v2\",\n          \"properties\": [\n            {\n              \"default\": \"-\",\n              \"description\": \"折叠展示名称\",\n              \"name\": \"foldName\",\n              \"required\": \"true\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"true\",\n              \"description\": \"是否显示展开图标\",\n              \"name\": \"isShowFoldIcon\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"是否默认展开\",\n              \"name\": \"defaultShow\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"是否展开\",\n              \"name\": \"showDivider\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"\\\"normal\\\"\",\n              \"description\": \"折叠面板类型\",\n              \"name\": \"type\",\n              \"required\": \"false\",\n              \"type\": \"\\\"normal\\\" | \\\"primary\\\"\"\n            },\n            {\n              \"default\": \"center\",\n              \"description\": \"分割线标题的位置\",\n              \"group\": \"advanced\",\n              \"name\": \"dividerOrientation\",\n              \"required\": \"false\",\n              \"type\": \"\\\"left\\\"|\\\"right\\\"\"\n            },\n            {\n              \"default\": \"false\",\n              \"description\": \"是否虚线\",\n              \"group\": \"advanced\",\n              \"name\": \"dividerDashed\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"折叠展示的样式编写\",\n              \"group\": \"advanced\",\n              \"name\": \"foldStyle\",\n              \"required\": \"false\",\n              \"type\": \"object\"\n            },\n            {\n              \"name\": \"show\",\n              \"type\": \"boolean\"\n            }\n          ],\n          \"slots\": [\n            {\n              \"description\": \"内容插槽\",\n              \"name\": \"content\"\n            }\n          ]\n        },\n        \"examples\": [\n          {\n            \"brick\": \"basic-bricks.fold-brick-v2\",\n            \"description\": {\n              \"message\": \"\",\n              \"title\": \"基本\"\n            },\n            \"properties\": {\n              \"foldName\": \"查看\"\n            },\n            \"slots\": {\n              \"content\": {\n                \"bricks\": [\n                  {\n                    \"brick\": \"div\",\n                    \"properties\": {\n                      \"textContent\": \"123\"\n                    }\n                  }\n                ],\n                \"type\": \"bricks\"\n              }\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.fold-brick-v2\",\n            \"description\": {\n              \"message\": \"\",\n              \"title\": \"type为primary\"\n            },\n            \"properties\": {\n              \"foldName\": \"查看\",\n              \"type\": \"primary\"\n            },\n            \"slots\": {\n              \"content\": {\n                \"bricks\": [\n                  {\n                    \"brick\": \"div\",\n                    \"properties\": {\n                      \"textContent\": \"123\"\n                    }\n                  }\n                ],\n                \"type\": \"bricks\"\n              }\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.fold-brick-v2\",\n            \"description\": {\n              \"message\": \"\",\n              \"title\": \"isShowFoldIcon为false\"\n            },\n            \"properties\": {\n              \"foldName\": \"查看\",\n              \"isShowFoldIcon\": false,\n              \"type\": \"primary\"\n            },\n            \"slots\": {\n              \"content\": {\n                \"bricks\": [\n                  {\n                    \"brick\": \"div\",\n                    \"properties\": {\n                      \"textContent\": \"123\"\n                    }\n                  }\n                ],\n                \"type\": \"bricks\"\n              }\n            }\n          }\n        ],\n        \"icon\": {\n          \"icon\": \"chevron-down\",\n          \"lib\": \"fa\"\n        },\n        \"id\": \"basic-bricks.fold-brick-v2\",\n        \"text\": {\n          \"en\": \"fold brick\",\n          \"zh\": \"折叠容器V2\"\n        },\n        \"type\": \"brick\"\n      },\n      {\n        \"author\": \"jo\",\n        \"category\": \"other\",\n        \"description\": {\n          \"en\": \"General button\",\n          \"zh\": \"可发送点击事件、可配置按钮名称、按钮跳转链接等\"\n        },\n        \"doc\": {\n          \"author\": \"jo\",\n          \"description\": \"可发送点击事件、可配置按钮名称、按钮跳转链接等\",\n          \"dockind\": \"brick\",\n          \"editor\": null,\n          \"editorProps\": null,\n          \"events\": [\n            {\n              \"description\": \"按钮被点击时触发, detail 为 dataSource 数据\",\n              \"detail\": \"`any`\",\n              \"type\": \"general.button.click\"\n            }\n          ],\n          \"history\": [\n            {\n              \"change\": \"新增属性 `buttonHref`\",\n              \"version\": \"1.54.0\"\n            },\n            {\n              \"change\": \"使用 `dataSource` 替代 `detail`\",\n              \"version\": \"1.55.1\"\n            },\n            {\n              \"change\": \"新增属性 `disableAfterClick`\",\n              \"version\": \"1.59.0\"\n            },\n            {\n              \"change\": \"新增属性 `fadedText`\",\n              \"version\": \"1.97.0\"\n            }\n          ],\n          \"id\": \"basic-bricks.general-button\",\n          \"interface\": [\n            {\n              \"children\": [\n                {\n                  \"description\": \"箭头是否指向目标元素中心\",\n                  \"name\": \"arrowPointAtCenter\",\n                  \"required\": false,\n                  \"type\": \"boolean\"\n                },\n                {\n                  \"description\": \"气泡框位置，可选 `top` `left` `right` `bottom` `topLeft` `topRight` `bottomLeft` `bottomRight` `leftTop` `leftBottom` `rightTop` `rightBottom`\",\n                  \"name\": \"placement\",\n                  \"required\": false,\n                  \"type\": \"TooltipPlacement\"\n                }\n              ],\n              \"kind\": \"interface\",\n              \"name\": \"TooltipConfig\"\n            },\n            {\n              \"description\": \"\",\n              \"kind\": \"type\",\n              \"name\": \"TooltipPlacement\",\n              \"type\": \"\\\"top\\\" | \\\"left\\\" | \\\"right\\\" | \\\"bottom\\\" | \\\"topLeft\\\" | \\\"topRight\\\" | \\\"bottomLeft\\\" | \\\"bottomRight\\\" | \\\"leftTop\\\" | \\\"leftBottom\\\" | \\\"rightTop\\\" | \\\"rightBottom\\\"\"\n            }\n          ],\n          \"memo\": \"注意，因为按钮是有 margin 的，在`type=link` 时候也一样会有，所以在表格里面放置点击链接的时候，请选用[链接](developers/brick-book/brick/presentational-bricks.brick-link)\",\n          \"methods\": null,\n          \"name\": \"basic-bricks.general-button\",\n          \"properties\": [\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮名称\",\n              \"group\": \"basic\",\n              \"name\": \"buttonName\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮 icon，支持[icon 图标库](developers/icon)，可直接复制图标图标的配置（antd、fa 及 easyops 三种库都支持），也可只取 icon 字段的值（仅支持 antd 库）。配置{ \\\"lib\\\": \\\"antd\\\", \\\"icon\\\": \\\"edit\\\" }与 \\\"edit\\\"等价\",\n              \"group\": \"basic\",\n              \"name\": \"buttonIcon\",\n              \"required\": \"false\",\n              \"type\": \"MenuIcon\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"点击按钮跳转的 url\",\n              \"group\": \"basic\",\n              \"name\": \"buttonUrl\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"是否使用原生 <a> 标签，通常用于外链的跳转\",\n              \"group\": \"basic\",\n              \"name\": \"buttonHref\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"跳转的 target，例如可以设置为\\\"\\\\_blank\\\"\",\n              \"group\": \"basic\",\n              \"name\": \"target\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"`{}`\",\n              \"description\": \"替代之前 detail 属性，用法相同。暂存的数据在事件传出时使用\",\n              \"group\": \"basic\",\n              \"name\": \"dataSource\",\n              \"required\": \"false\",\n              \"type\": \"any\"\n            },\n            {\n              \"default\": \"`false`\",\n              \"description\": \"是否禁用按钮\",\n              \"group\": \"basic\",\n              \"name\": \"disabled\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"`false`\",\n              \"description\": \"按钮加载动画\",\n              \"name\": \"loading\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮类型  ButtonType(`\\\"link\\\" | \\\"default\\\" | \\\"primary\\\" | \\\"ghost\\\" | \\\"dashed\\\" | \\\"danger\\\" | \\\"icon\\\"|\\\"text\\\"`)\",\n              \"group\": \"basic\",\n              \"name\": \"buttonType\",\n              \"required\": \"false\",\n              \"type\": \"ButtonType\"\n            },\n            {\n              \"default\": \"`false`\",\n              \"description\": \"设置危险按钮\",\n              \"group\": \"basic\",\n              \"name\": \"buttonDanger\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮形状，支持圆形、椭圆形，不设置为默认方形\",\n              \"group\": \"basic\",\n              \"name\": \"buttonShape\",\n              \"required\": \"false\",\n              \"type\": \"\\\"circle\\\" | \\\"round\\\"\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮大小，支持大、小，不设置为默认中\",\n              \"group\": \"basic\",\n              \"name\": \"buttonSize\",\n              \"required\": \"false\",\n              \"type\": \"small | large\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮的 tooltip\",\n              \"group\": \"basic\",\n              \"name\": \"tooltip\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"禁用按钮的 tooltip\",\n              \"group\": \"basic\",\n              \"name\": \"disabledTooltip\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"tooltip的配置,配置属性见TooltipConfig\",\n              \"group\": \"basic\",\n              \"name\": \"tooltipConfig\",\n              \"required\": \"false\",\n              \"type\": \"TooltipConfig\"\n            },\n            {\n              \"default\": \"`false`\",\n              \"description\": \"淡化按钮文字，按钮类型为 text 时可以设置。默认 `false` 文字按钮颜色和平台的字体颜色一样，在一些希望弱化文字颜色的场景下可以设置为 `true`。\",\n              \"group\": \"advanced\",\n              \"name\": \"fadedText\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"`false`\",\n              \"description\": \"点击按钮后自动禁用\",\n              \"group\": \"advanced\",\n              \"name\": \"disableAfterClick\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"完全透传给 antd 的 Button 属性\",\n              \"group\": \"advanced\",\n              \"name\": \"buttonProps\",\n              \"required\": \"-\",\n              \"type\": \"ButtonProps\"\n            },\n            {\n              \"default\": \"{}\",\n              \"deprecated\": true,\n              \"description\": \"[已废弃]按钮点击事件传出的内容。当用于列表类构件，例如 `brick-table` 中，可通过传入传入 `detail` 来识别不通的行进行操作处理。\",\n              \"group\": \"advanced\",\n              \"name\": \"detail\",\n              \"required\": \"false\",\n              \"type\": \"any\"\n            }\n          ],\n          \"slots\": null\n        },\n        \"examples\": [\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonIcon\": {\n                \"icon\": \"edit\",\n                \"lib\": \"fa\",\n                \"prefix\": \"fas\"\n              },\n              \"buttonName\": \"新建\",\n              \"dataset\": {\n                \"testid\": \"basic-usage-demo\"\n              },\n              \"tooltip\": \"新建实例\"\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonName\": \"新建\",\n              \"disabled\": true,\n              \"disabledTooltip\": \"无权限\",\n              \"tooltip\": \"新建实例\"\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonIcon\": \"search\",\n              \"buttonName\": \"搜索\",\n              \"buttonShape\": \"round\",\n              \"buttonType\": \"primary\",\n              \"buttonUrl\": \"/\",\n              \"target\": \"_blank\"\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonIcon\": \"search\",\n              \"buttonShape\": \"circle\",\n              \"buttonType\": \"icon\",\n              \"buttonUrl\": \"/\",\n              \"target\": \"_blank\"\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"description\": {\n              \"message\": \"默认和平台文字颜色一致\",\n              \"title\": \"文字按钮\"\n            },\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonName\": \"更多\",\n              \"buttonType\": \"text\",\n              \"buttonUrl\": \"/\",\n              \"target\": \"_blank\"\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"description\": {\n              \"message\": \"可以设置 `fadedText` 为 `true` 以淡化文字颜色。适用场景：用于卡片中或和其他按钮搭配使用。\",\n              \"title\": \"淡化文字按钮\"\n            },\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonName\": \"了解更多\",\n              \"buttonType\": \"text\",\n              \"buttonUrl\": \"/\",\n              \"fadedText\": true,\n              \"target\": \"_blank\"\n            }\n          }\n        ],\n        \"icon\": {\n          \"icon\": \"pencil-alt\",\n          \"lib\": \"fa\"\n        },\n        \"id\": \"basic-bricks.general-button\",\n        \"text\": {\n          \"en\": \"General button\",\n          \"zh\": \"通用按钮\"\n        },\n        \"type\": \"brick\"\n      }\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "next_builder.build.GetStoriesJsonV2",
+      "category": {
+        "en": "Build",
+        "zh": "构建"
+      },
+      "name": "GetStoriesJsonV2",
+      "version": "1.0.0",
+      "description": "获取stories.json V2",
+      "detail": "GetStoriesJson的v2接口，支持指定storyIds返回指定构件的文档，支持指定fields返回文档部分信息字段。 若不填写查询条件，则和v1接口一样，返回所有构件的全部文档字段。",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v2/next-builder/storiesjson"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "storyIds",
+            "type": "string[]",
+            "description": "构件ids"
+          },
+          {
+            "name": "fields",
+            "type": "string[]",
+            "description": "构件详细信息字段"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "map[]",
+            "description": "stories.json整合后的数组"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Basic",
+            "zh": "简单请求"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8142/api/v2/next-builder/storiesjson",
+            "headers": {
+              "Content-Type": "application/json"
+            }
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"data\": {\n    \"list\": [\n      {\n        \"author\": \"momo\",\n        \"category\": \"description\",\n        \"description\": {\n          \"zh\": \"折叠容器，只折叠单个内容，支持slot\"\n        },\n        \"doc\": {\n          \"author\": \"momo\",\n          \"description\": \"折叠容器，只折叠单个内容，支持slot\",\n          \"dockind\": \"brick\",\n          \"editor\": null,\n          \"editorProps\": null,\n          \"events\": null,\n          \"history\": [\n            {\n              \"change\": \"新增属性 `isShowFoldIcon`, `type`\",\n              \"version\": \"1.87.0\"\n            },\n            {\n              \"change\": \"新增属性 `showDivider`,`dividerOrientation`,`dividerDashed`,`show`\",\n              \"version\": \"1.64.0\"\n            },\n            {\n              \"change\": \"新增构件 `basic-bricks.fold-brick-v2`\",\n              \"version\": \"1.56.0\"\n            }\n          ],\n          \"id\": \"basic-bricks.fold-brick-v2\",\n          \"interface\": [\n\n          ],\n          \"memo\": \"\",\n          \"methods\": null,\n          \"name\": \"basic-bricks.fold-brick-v2\",\n          \"properties\": [\n            {\n              \"default\": \"-\",\n              \"description\": \"折叠展示名称\",\n              \"name\": \"foldName\",\n              \"required\": \"true\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"true\",\n              \"description\": \"是否显示展开图标\",\n              \"name\": \"isShowFoldIcon\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"是否默认展开\",\n              \"name\": \"defaultShow\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"是否展开\",\n              \"name\": \"showDivider\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"\\\"normal\\\"\",\n              \"description\": \"折叠面板类型\",\n              \"name\": \"type\",\n              \"required\": \"false\",\n              \"type\": \"\\\"normal\\\" | \\\"primary\\\"\"\n            },\n            {\n              \"default\": \"center\",\n              \"description\": \"分割线标题的位置\",\n              \"group\": \"advanced\",\n              \"name\": \"dividerOrientation\",\n              \"required\": \"false\",\n              \"type\": \"\\\"left\\\"|\\\"right\\\"\"\n            },\n            {\n              \"default\": \"false\",\n              \"description\": \"是否虚线\",\n              \"group\": \"advanced\",\n              \"name\": \"dividerDashed\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"折叠展示的样式编写\",\n              \"group\": \"advanced\",\n              \"name\": \"foldStyle\",\n              \"required\": \"false\",\n              \"type\": \"object\"\n            },\n            {\n              \"name\": \"show\",\n              \"type\": \"boolean\"\n            }\n          ],\n          \"slots\": [\n            {\n              \"description\": \"内容插槽\",\n              \"name\": \"content\"\n            }\n          ]\n        },\n        \"examples\": [\n          {\n            \"brick\": \"basic-bricks.fold-brick-v2\",\n            \"description\": {\n              \"message\": \"\",\n              \"title\": \"基本\"\n            },\n            \"properties\": {\n              \"foldName\": \"查看\"\n            },\n            \"slots\": {\n              \"content\": {\n                \"bricks\": [\n                  {\n                    \"brick\": \"div\",\n                    \"properties\": {\n                      \"textContent\": \"123\"\n                    }\n                  }\n                ],\n                \"type\": \"bricks\"\n              }\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.fold-brick-v2\",\n            \"description\": {\n              \"message\": \"\",\n              \"title\": \"type为primary\"\n            },\n            \"properties\": {\n              \"foldName\": \"查看\",\n              \"type\": \"primary\"\n            },\n            \"slots\": {\n              \"content\": {\n                \"bricks\": [\n                  {\n                    \"brick\": \"div\",\n                    \"properties\": {\n                      \"textContent\": \"123\"\n                    }\n                  }\n                ],\n                \"type\": \"bricks\"\n              }\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.fold-brick-v2\",\n            \"description\": {\n              \"message\": \"\",\n              \"title\": \"isShowFoldIcon为false\"\n            },\n            \"properties\": {\n              \"foldName\": \"查看\",\n              \"isShowFoldIcon\": false,\n              \"type\": \"primary\"\n            },\n            \"slots\": {\n              \"content\": {\n                \"bricks\": [\n                  {\n                    \"brick\": \"div\",\n                    \"properties\": {\n                      \"textContent\": \"123\"\n                    }\n                  }\n                ],\n                \"type\": \"bricks\"\n              }\n            }\n          }\n        ],\n        \"icon\": {\n          \"icon\": \"chevron-down\",\n          \"lib\": \"fa\"\n        },\n        \"id\": \"basic-bricks.fold-brick-v2\",\n        \"text\": {\n          \"en\": \"fold brick\",\n          \"zh\": \"折叠容器V2\"\n        },\n        \"type\": \"brick\"\n      },\n      {\n        \"author\": \"jo\",\n        \"category\": \"other\",\n        \"description\": {\n          \"en\": \"General button\",\n          \"zh\": \"可发送点击事件、可配置按钮名称、按钮跳转链接等\"\n        },\n        \"doc\": {\n          \"author\": \"jo\",\n          \"description\": \"可发送点击事件、可配置按钮名称、按钮跳转链接等\",\n          \"dockind\": \"brick\",\n          \"editor\": null,\n          \"editorProps\": null,\n          \"events\": [\n            {\n              \"description\": \"按钮被点击时触发, detail 为 dataSource 数据\",\n              \"detail\": \"`any`\",\n              \"type\": \"general.button.click\"\n            }\n          ],\n          \"history\": [\n            {\n              \"change\": \"新增属性 `buttonHref`\",\n              \"version\": \"1.54.0\"\n            },\n            {\n              \"change\": \"使用 `dataSource` 替代 `detail`\",\n              \"version\": \"1.55.1\"\n            },\n            {\n              \"change\": \"新增属性 `disableAfterClick`\",\n              \"version\": \"1.59.0\"\n            },\n            {\n              \"change\": \"新增属性 `fadedText`\",\n              \"version\": \"1.97.0\"\n            }\n          ],\n          \"id\": \"basic-bricks.general-button\",\n          \"interface\": [\n            {\n              \"children\": [\n                {\n                  \"description\": \"箭头是否指向目标元素中心\",\n                  \"name\": \"arrowPointAtCenter\",\n                  \"required\": false,\n                  \"type\": \"boolean\"\n                },\n                {\n                  \"description\": \"气泡框位置，可选 `top` `left` `right` `bottom` `topLeft` `topRight` `bottomLeft` `bottomRight` `leftTop` `leftBottom` `rightTop` `rightBottom`\",\n                  \"name\": \"placement\",\n                  \"required\": false,\n                  \"type\": \"TooltipPlacement\"\n                }\n              ],\n              \"kind\": \"interface\",\n              \"name\": \"TooltipConfig\"\n            },\n            {\n              \"description\": \"\",\n              \"kind\": \"type\",\n              \"name\": \"TooltipPlacement\",\n              \"type\": \"\\\"top\\\" | \\\"left\\\" | \\\"right\\\" | \\\"bottom\\\" | \\\"topLeft\\\" | \\\"topRight\\\" | \\\"bottomLeft\\\" | \\\"bottomRight\\\" | \\\"leftTop\\\" | \\\"leftBottom\\\" | \\\"rightTop\\\" | \\\"rightBottom\\\"\"\n            }\n          ],\n          \"memo\": \"注意，因为按钮是有 margin 的，在`type=link` 时候也一样会有，所以在表格里面放置点击链接的时候，请选用[链接](developers/brick-book/brick/presentational-bricks.brick-link)\",\n          \"methods\": null,\n          \"name\": \"basic-bricks.general-button\",\n          \"properties\": [\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮名称\",\n              \"group\": \"basic\",\n              \"name\": \"buttonName\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮 icon，支持[icon 图标库](developers/icon)，可直接复制图标图标的配置（antd、fa 及 easyops 三种库都支持），也可只取 icon 字段的值（仅支持 antd 库）。配置{ \\\"lib\\\": \\\"antd\\\", \\\"icon\\\": \\\"edit\\\" }与 \\\"edit\\\"等价\",\n              \"group\": \"basic\",\n              \"name\": \"buttonIcon\",\n              \"required\": \"false\",\n              \"type\": \"MenuIcon\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"点击按钮跳转的 url\",\n              \"group\": \"basic\",\n              \"name\": \"buttonUrl\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"是否使用原生 <a> 标签，通常用于外链的跳转\",\n              \"group\": \"basic\",\n              \"name\": \"buttonHref\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"跳转的 target，例如可以设置为\\\"\\\\_blank\\\"\",\n              \"group\": \"basic\",\n              \"name\": \"target\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"`{}`\",\n              \"description\": \"替代之前 detail 属性，用法相同。暂存的数据在事件传出时使用\",\n              \"group\": \"basic\",\n              \"name\": \"dataSource\",\n              \"required\": \"false\",\n              \"type\": \"any\"\n            },\n            {\n              \"default\": \"`false`\",\n              \"description\": \"是否禁用按钮\",\n              \"group\": \"basic\",\n              \"name\": \"disabled\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"`false`\",\n              \"description\": \"按钮加载动画\",\n              \"name\": \"loading\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮类型  ButtonType(`\\\"link\\\" | \\\"default\\\" | \\\"primary\\\" | \\\"ghost\\\" | \\\"dashed\\\" | \\\"danger\\\" | \\\"icon\\\"|\\\"text\\\"`)\",\n              \"group\": \"basic\",\n              \"name\": \"buttonType\",\n              \"required\": \"false\",\n              \"type\": \"ButtonType\"\n            },\n            {\n              \"default\": \"`false`\",\n              \"description\": \"设置危险按钮\",\n              \"group\": \"basic\",\n              \"name\": \"buttonDanger\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮形状，支持圆形、椭圆形，不设置为默认方形\",\n              \"group\": \"basic\",\n              \"name\": \"buttonShape\",\n              \"required\": \"false\",\n              \"type\": \"\\\"circle\\\" | \\\"round\\\"\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮大小，支持大、小，不设置为默认中\",\n              \"group\": \"basic\",\n              \"name\": \"buttonSize\",\n              \"required\": \"false\",\n              \"type\": \"small | large\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"按钮的 tooltip\",\n              \"group\": \"basic\",\n              \"name\": \"tooltip\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"禁用按钮的 tooltip\",\n              \"group\": \"basic\",\n              \"name\": \"disabledTooltip\",\n              \"required\": \"false\",\n              \"type\": \"string\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"tooltip的配置,配置属性见TooltipConfig\",\n              \"group\": \"basic\",\n              \"name\": \"tooltipConfig\",\n              \"required\": \"false\",\n              \"type\": \"TooltipConfig\"\n            },\n            {\n              \"default\": \"`false`\",\n              \"description\": \"淡化按钮文字，按钮类型为 text 时可以设置。默认 `false` 文字按钮颜色和平台的字体颜色一样，在一些希望弱化文字颜色的场景下可以设置为 `true`。\",\n              \"group\": \"advanced\",\n              \"name\": \"fadedText\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"`false`\",\n              \"description\": \"点击按钮后自动禁用\",\n              \"group\": \"advanced\",\n              \"name\": \"disableAfterClick\",\n              \"required\": \"false\",\n              \"type\": \"boolean\"\n            },\n            {\n              \"default\": \"-\",\n              \"description\": \"完全透传给 antd 的 Button 属性\",\n              \"group\": \"advanced\",\n              \"name\": \"buttonProps\",\n              \"required\": \"-\",\n              \"type\": \"ButtonProps\"\n            },\n            {\n              \"default\": \"{}\",\n              \"deprecated\": true,\n              \"description\": \"[已废弃]按钮点击事件传出的内容。当用于列表类构件，例如 `brick-table` 中，可通过传入传入 `detail` 来识别不通的行进行操作处理。\",\n              \"group\": \"advanced\",\n              \"name\": \"detail\",\n              \"required\": \"false\",\n              \"type\": \"any\"\n            }\n          ],\n          \"slots\": null\n        },\n        \"examples\": [\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonIcon\": {\n                \"icon\": \"edit\",\n                \"lib\": \"fa\",\n                \"prefix\": \"fas\"\n              },\n              \"buttonName\": \"新建\",\n              \"dataset\": {\n                \"testid\": \"basic-usage-demo\"\n              },\n              \"tooltip\": \"新建实例\"\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonName\": \"新建\",\n              \"disabled\": true,\n              \"disabledTooltip\": \"无权限\",\n              \"tooltip\": \"新建实例\"\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonIcon\": \"search\",\n              \"buttonName\": \"搜索\",\n              \"buttonShape\": \"round\",\n              \"buttonType\": \"primary\",\n              \"buttonUrl\": \"/\",\n              \"target\": \"_blank\"\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonIcon\": \"search\",\n              \"buttonShape\": \"circle\",\n              \"buttonType\": \"icon\",\n              \"buttonUrl\": \"/\",\n              \"target\": \"_blank\"\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"description\": {\n              \"message\": \"默认和平台文字颜色一致\",\n              \"title\": \"文字按钮\"\n            },\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonName\": \"更多\",\n              \"buttonType\": \"text\",\n              \"buttonUrl\": \"/\",\n              \"target\": \"_blank\"\n            }\n          },\n          {\n            \"brick\": \"basic-bricks.general-button\",\n            \"description\": {\n              \"message\": \"可以设置 `fadedText` 为 `true` 以淡化文字颜色。适用场景：用于卡片中或和其他按钮搭配使用。\",\n              \"title\": \"淡化文字按钮\"\n            },\n            \"events\": {\n              \"general.button.click\": [\n                {\n                  \"action\": \"console.log\"\n                }\n              ]\n            },\n            \"properties\": {\n              \"buttonName\": \"了解更多\",\n              \"buttonType\": \"text\",\n              \"buttonUrl\": \"/\",\n              \"fadedText\": true,\n              \"target\": \"_blank\"\n            }\n          }\n        ],\n        \"icon\": {\n          \"icon\": \"pencil-alt\",\n          \"lib\": \"fa\"\n        },\n        \"id\": \"basic-bricks.general-button\",\n        \"text\": {\n          \"en\": \"General button\",\n          \"zh\": \"通用按钮\"\n        },\n        \"type\": \"brick\"\n      }\n    ]\n  }\n}"
+          }
+        },
+        {
+          "description": {
+            "en": "With Query",
+            "zh": "带查询条件"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/api/v2/next-builder/storiesjson",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"storyIds\": [\n    \"basic-bricks.general-button\"\n  ],\n  \"fields\": [\n    \"id\",\n    \"author\",\n    \"description\"\n  ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"data\": {\n    \"list\": [\n      {\n        \"author\": \"jo\",\n        \"description\": {\n          \"en\": \"General button\",\n          \"zh\": \"可发送点击事件、可配置按钮名称、按钮跳转链接等\"\n        },\n        \"id\": \"basic-bricks.general-button\"\n      }\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "next_builder.build.ImageUpload",
+      "category": {
+        "en": "Build",
+        "zh": "构建"
+      },
+      "name": "ImageUpload",
+      "version": "1.0.0",
+      "description": "上传图片",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/next-builder/image-upload"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "objectName",
+            "type": "string",
+            "description": "图片名称(如果不为空，则服务器以该参数值命名存储图片，用于覆盖已存在的图片)"
+          },
+          {
+            "name": "file",
+            "type": "file",
+            "description": "上传文件流。"
+          }
+        ],
+        "required": ["file"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "url",
+            "type": "string",
+            "description": "上传图片后，服务器返回的图片地址"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Basic",
+            "zh": "基础请求"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8142/api/v1/next-builder/image-upload",
+            "headers": {
+              "Content-Type": "multipart/form-data; boundary=abcdefg1234567"
+            },
+            "body": "--abcdefg1234567 Content-Disposition: form-data; name=\"objectName\"\nbootstrap.png --abcdefg1234567 Content-Disposition: form-data; name=\"file\"; filename=\"bootstrap.png\" Content-Type: image/png\n<File Content> --abcdefg1234567"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n      \"url\": \"/next/api/gateway/object_store.object_store.GetObject/api/v1/objectStore/bucket/next-builder/object/bootstrap.png\"\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "next_builder.build.GetPackageReleaseList",
+      "category": {
+        "en": "Build",
+        "zh": "构建"
+      },
+      "name": "GetPackageReleaseList",
+      "version": "1.0.0",
+      "description": "指定环境一键打包上传到r环境",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/next-builder/packages/:projectId"
+      },
+      "import": ["easyops/model/next_builder/micro_app_released_log"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectId",
+            "type": "string",
+            "description": "小产品项目id"
+          }
+        ],
+        "required": ["projectId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "packages",
+            "type": "object[]",
+            "description": "包列表",
+            "fields": [
+              {
+                "name": "appId",
+                "type": "string",
+                "description": "小产品id"
+              },
+              {
+                "name": "version",
+                "type": "version",
+                "description": "版本"
+              },
+              {
+                "name": "description",
+                "type": "string",
+                "description": "版本描述"
+              },
+              {
+                "name": "packageStatus",
+                "type": "string",
+                "description": "打包状态"
+              },
+              {
+                "name": "commitUser",
+                "type": "string",
+                "description": "创建用户"
+              },
+              {
+                "name": "ctime",
+                "type": "string",
+                "description": "创建时间"
+              },
+              {
+                "ref": "MicroAppReleasedLog.packageInfo"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.build.GetPackageReleaseListByInstanceId",
+      "category": {
+        "en": "Build",
+        "zh": "构建"
+      },
+      "name": "GetPackageReleaseListByInstanceId",
+      "version": "1.0.0",
+      "description": "获取打包记录",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/next-builder/packages-released/:instanceId"
+      },
+      "import": ["easyops/model/next_builder/micro_app_released_log"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "小产品项目id"
+          }
+        ],
+        "required": ["instanceId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "packages",
+            "type": "MicroAppReleasedLog[]",
+            "description": "包列表"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.build.PackageUpload",
+      "category": {
+        "en": "Build",
+        "zh": "构建"
+      },
+      "name": "PackageUpload",
+      "version": "1.1.0",
+      "description": "微应用打包",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next-builder/package-upload"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.projectId"
+          },
+          {
+            "name": "version",
+            "type": "version",
+            "description": "小产品版本号"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "版本描述信息"
+          },
+          {
+            "name": "dependBricks",
+            "type": "string[]",
+            "description": "项目依赖的bricks"
+          },
+          {
+            "name": "dependTemplates",
+            "type": "string[]",
+            "description": "项目依赖的templates"
+          },
+          {
+            "name": "dependApis",
+            "type": "object[]",
+            "description": "项目依赖的bricks",
+            "fields": [
+              {
+                "name": "namespace",
+                "type": "string",
+                "description": "命名空间"
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "description": "api标识"
+              }
+            ]
+          },
+          {
+            "name": "contractData",
+            "type": "string",
+            "description": "契约内容"
+          },
+          {
+            "name": "useClonedAppId",
+            "type": "bool",
+            "description": "使用克隆源的appId(打包期望的appId)"
+          }
+        ],
+        "required": ["MicroAppProject.projectId", "version", "description"]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.build.ProjectDocsUpload",
+      "category": {
+        "en": "Build",
+        "zh": "构建"
+      },
+      "name": "ProjectDocsUpload",
+      "version": "1.0.0",
+      "description": "单个微应用项目文档打包",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next-builder/project-docs-upload"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.projectId"
+          },
+          {
+            "name": "version",
+            "type": "version",
+            "description": "文档版本号"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "版本描述信息"
+          }
+        ],
+        "required": ["MicroAppProject.projectId", "version", "description"]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.build.SnippetPackageUpload",
+      "category": {
+        "en": "Build",
+        "zh": "构建"
+      },
+      "name": "SnippetPackageUpload",
+      "version": "1.1.0",
+      "description": "snippet打包",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next-builder/snippet-package-upload"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.projectId"
+          },
+          {
+            "name": "version",
+            "type": "version",
+            "description": "小产品版本号"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "版本描述信息"
+          },
+          {
+            "name": "dependBricks",
+            "type": "string[]",
+            "description": "项目依赖的bricks"
+          },
+          {
+            "name": "dependProcessorPakcages",
+            "type": "string[]",
+            "description": "项目依赖的构建包"
+          },
+          {
+            "name": "files",
+            "type": "object[]",
+            "description": "文件路径和内容",
+            "fields": [
+              {
+                "name": "path",
+                "type": "string",
+                "description": "文件存储路径"
+              },
+              {
+                "name": "content",
+                "type": "string",
+                "description": "文件内容"
+              }
+            ]
+          },
+          {
+            "name": "images",
+            "type": "object",
+            "description": "图片dir和oss路径",
+            "fields": [
+              {
+                "name": "imagesPath",
+                "type": "object[]",
+                "description": "图片oss路径和nb包中新的文件名",
+                "fields": [
+                  {
+                    "name": "fileName",
+                    "type": "string",
+                    "description": "图片新名字"
+                  },
+                  {
+                    "name": "imageOssPath",
+                    "type": "string",
+                    "description": "图片的oss路径"
+                  }
+                ]
+              },
+              {
+                "name": "imagesDir",
+                "type": "string",
+                "description": "写到nb包的图片目录"
+              }
+            ]
+          }
+        ],
+        "required": ["MicroAppProject.projectId", "version", "description"]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.build.ThemeExport",
+      "category": {
+        "en": "Build",
+        "zh": "构建"
+      },
+      "name": "ThemeExport",
+      "version": "1.1.0",
+      "description": "themem模版导出",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next-builder/theme-export"
+      },
+      "import": ["easyops/model/next_builder/installed_theme_template"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "项目instanceId"
+          }
+        ],
+        "required": ["instanceId"]
+      },
+      "response": {
+        "type": "InstalledThemeTemplate"
+      }
+    },
+    {
+      "contract": "next_builder.build.ThemePackageBuild",
+      "category": {
+        "en": "Build",
+        "zh": "构建"
+      },
+      "name": "ThemePackageBuild",
+      "version": "1.1.0",
+      "description": "theme打包",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next-builder/theme-package-build"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.projectId"
+          },
+          {
+            "name": "version",
+            "type": "version",
+            "description": "小产品版本号"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "版本描述信息"
+          }
+        ],
+        "required": ["MicroAppProject.projectId", "version", "description"]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.clone.CloneMicroApp",
+      "category": {
+        "en": "Clone",
+        "zh": "克隆"
+      },
+      "name": "CloneMicroApp",
+      "version": "1.0.0",
+      "description": "克隆微应用",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/clone_micro_app/:originAppInstanceId"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "newAppId",
+            "type": "string",
+            "description": "appId"
+          },
+          {
+            "name": "newAppName",
+            "type": "string",
+            "description": "appName"
+          },
+          {
+            "name": "newAppIcon",
+            "type": "string",
+            "description": "appIcon"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "app描述信息"
+          },
+          {
+            "name": "originAppInstanceId",
+            "type": "string",
+            "description": "要克隆的当前app的instanceId"
+          },
+          {
+            "name": "isDocumentCloned",
+            "type": "bool",
+            "description": "文档是否克隆"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.contract_center.AddApiContract",
+      "name": "AddApiContract",
+      "version": "1.0.0",
+      "description": "添加api契约接口",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/contract/api"
+      },
+      "import": ["easyops/model/flow_builder/api_contract"],
+      "request": {
+        "type": "object",
+        "description": "interface契约请求",
+        "fields": [
+          {
+            "ref": "FlowBuilderApiContract.*"
+          }
+        ],
+        "required": [
+          "FlowBuilderApiContract.name",
+          "FlowBuilderApiContract.version",
+          "FlowBuilderApiContract.namespaceId",
+          "FlowBuilderApiContract.description"
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "apiContractInstanceId",
+            "type": "instance_id",
+            "description": "instance_id"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.contract_center.AddModelContract",
+      "name": "AddModelContract",
+      "version": "1.0.0",
+      "description": "添加model契约接口",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/contract/model"
+      },
+      "import": ["easyops/model/flow_builder/model"],
+      "request": {
+        "type": "object",
+        "description": "model契约请求",
+        "fields": [
+          {
+            "ref": "ModelContract.*"
+          }
+        ],
+        "required": ["ModelContract.name", "ModelContract.namespaceId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "modelContractInstanceId",
+            "type": "instance_id",
+            "description": "instance_id"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.contract_center.BatchSearchContract",
+      "name": "BatchSearchContract",
+      "version": "1.0.0",
+      "description": "批量契约搜索",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/contract/batch_search"
+      },
+      "import": ["easyops/model/flow_builder/api_contract"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "contract",
+            "type": "object[]",
+            "description": "contract查询条件",
+            "fields": [
+              {
+                "name": "fullContractName",
+                "type": "string",
+                "description": "契约查找, namespace@name"
+              },
+              {
+                "name": "version",
+                "type": "string",
+                "description": "version"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "object[]",
+            "description": "契约列表",
+            "fields": [
+              {
+                "ref": "FlowBuilderApiContract.name"
+              },
+              {
+                "ref": "FlowBuilderApiContract.namespaceId"
+              },
+              {
+                "ref": "FlowBuilderApiContract.version"
+              },
+              {
+                "ref": "FlowBuilderApiContract.endpoint"
+              },
+              {
+                "ref": "FlowBuilderApiContract.request"
+              },
+              {
+                "ref": "FlowBuilderApiContract.response"
+              },
+              {
+                "ref": "FlowBuilderApiContract.serviceName"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.contract_center.DebugApiContract",
+      "name": "DebugApiContract",
+      "version": "1.0.0",
+      "description": "api契约调试",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/contract/debug"
+      },
+      "import": [
+        "easyops/model/next_builder/micro_app_project",
+        "easyops/model/flow_builder/debug_contract"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.developmentEnv"
+          },
+          {
+            "ref": "DebugContract.method"
+          },
+          {
+            "ref": "DebugContract.uri"
+          },
+          {
+            "ref": "DebugContract.headers"
+          },
+          {
+            "ref": "DebugContract.data"
+          },
+          {
+            "ref": "DebugContract.serviceName"
+          },
+          {
+            "ref": "DebugContract.fileNameMapping"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "DebugContract.data"
+          },
+          {
+            "ref": "DebugContract.headers"
+          },
+          {
+            "name": "statusCode",
+            "type": "int",
+            "description": "statusCode"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.contract_center.DeleteApiContract",
+      "name": "DeleteApiContract",
+      "version": "1.0.0",
+      "description": "删除api接口",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/contract/interface/:instanceId"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "instanceId"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.contract_center.DeleteModelContract",
+      "name": "DeleteModelContract",
+      "version": "1.0.0",
+      "description": "删除model契约接口",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/contract/model/:instanceId"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "instanceId"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.contract_center.GetApiContractDetail",
+      "name": "GetApiContractDetail",
+      "version": "1.0.0",
+      "description": "api契约详情展示",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/contract/api/:instanceId"
+      },
+      "import": ["easyops/model/flow_builder/api_contract"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "instanceId"
+          }
+        ]
+      },
+      "response": {
+        "type": "FlowBuilderApiContract"
+      }
+    },
+    {
+      "contract": "next_builder.contract_center.GetModelContractDetail",
+      "name": "GetModelContractDetail",
+      "version": "1.0.0",
+      "description": "model契约详情展示",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/contract/model/:instanceId"
+      },
+      "import": ["easyops/model/flow_builder/model"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "instanceId"
+          }
+        ]
+      },
+      "response": {
+        "type": "ModelContract"
+      }
+    },
+    {
+      "contract": "next_builder.contract_center.ListApiContract",
+      "name": "ListApiContract",
+      "version": "1.0.0",
+      "description": "api契约列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/contract/api"
+      },
+      "import": ["easyops/model/flow_builder/api_contract"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "FlowBuilderApiContract.namespaceId"
+          },
+          {
+            "name": "projectInstanceId",
+            "type": "string",
+            "description": "查询条件：project instanceId"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "data",
+            "type": "object[]",
+            "description": "契约列表",
+            "fields": [
+              {
+                "ref": "FlowBuilderApiContract.instanceId"
+              },
+              {
+                "ref": "FlowBuilderApiContract.namespaceId"
+              },
+              {
+                "ref": "FlowBuilderApiContract.name"
+              },
+              {
+                "ref": "FlowBuilderApiContract.description"
+              },
+              {
+                "ref": "FlowBuilderApiContract.endpoint"
+              },
+              {
+                "ref": "FlowBuilderApiContract.deprecated"
+              },
+              {
+                "ref": "FlowBuilderApiContract.projects"
+              },
+              {
+                "ref": "FlowBuilderApiContract.implements"
+              },
+              {
+                "name": "latestVersion",
+                "type": "string",
+                "description": "单个契约的最新版本"
+              },
+              {
+                "name": "creator",
+                "type": "string",
+                "description": "creator"
+              },
+              {
+                "name": "modifier",
+                "type": "string",
+                "description": "modifier"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.contract_center.ListFunctionContract",
+      "name": "ListFunctionContract",
+      "version": "1.0.0",
+      "description": "函数契约列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/contract/function"
+      },
+      "import": ["easyops/model/flow_builder/function"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "namespaceId",
+            "type": "string",
+            "description": "namespaceId"
+          },
+          {
+            "name": "projectInstanceId",
+            "type": "string",
+            "description": "查询条件：project instanceId"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "object[]",
+            "description": "函数契约列表",
+            "fields": [
+              {
+                "ref": "FlowBuilderFunction.instanceId"
+              },
+              {
+                "ref": "FlowBuilderFunction.name"
+              },
+              {
+                "ref": "FlowBuilderFunction.language"
+              },
+              {
+                "name": "namespaceId",
+                "type": "string",
+                "description": "namespaceId"
+              },
+              {
+                "name": "latestVersion",
+                "type": "string",
+                "description": "单个函数契约的最新版本"
+              },
+              {
+                "name": "creator",
+                "type": "string",
+                "description": "creator"
+              },
+              {
+                "name": "modifier",
+                "type": "string",
+                "description": "modifier"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.contract_center.ListModelContract",
+      "name": "ListModelContract",
+      "version": "1.0.0",
+      "description": "model契约列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/contract/model"
+      },
+      "import": ["easyops/model/flow_builder/model"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "namespaceId",
+            "type": "string",
+            "description": "namespaceId"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "description": "查询条件：name"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "查询条件：描述信息"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "data",
+            "type": "object[]",
+            "description": "模型契约列表",
+            "fields": [
+              {
+                "ref": "ModelContract.instanceId"
+              },
+              {
+                "ref": "ModelContract.namespaceId"
+              },
+              {
+                "ref": "ModelContract.name"
+              },
+              {
+                "ref": "ModelContract.description"
+              },
+              {
+                "ref": "ModelContract.useModels"
+              },
+              {
+                "name": "latestVersion",
+                "type": "string",
+                "description": "单个模型的最新版本"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.contract_center.SearchContract",
+      "name": "SearchContract",
+      "version": "1.0.0",
+      "description": "契约搜索",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/contract/search"
+      },
+      "import": ["easyops/model/flow_builder/api_contract"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "fullContractName",
+            "type": "string",
+            "description": "契约查找条件, namespace@name"
+          },
+          {
+            "name": "version",
+            "type": "string",
+            "description": "version查询"
+          },
+          {
+            "name": "page",
+            "type": "int",
+            "description": "page"
+          },
+          {
+            "name": "pageSize",
+            "type": "int",
+            "description": "pageSize"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "object[]",
+            "description": "契约列表",
+            "fields": [
+              {
+                "ref": "FlowBuilderApiContract.fullContractName"
+              },
+              {
+                "name": "version",
+                "type": "string[]",
+                "description": "契约版本列表"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.contract_center.UpdateApiContract",
+      "name": "UpdateApiContract",
+      "version": "1.0.0",
+      "description": "更新api契约接口",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/api/:instanceId"
+      },
+      "import": ["easyops/model/flow_builder/api_contract"],
+      "request": {
+        "type": "object",
+        "description": "api接口请求",
+        "fields": [
+          {
+            "ref": "FlowBuilderApiContract.*"
+          },
+          {
+            "name": "projectInstanceId",
+            "type": "instance_id",
+            "description": "契约关联的project"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.contract_center.UpdateModelContract",
+      "name": "UpdateModelContract",
+      "version": "1.0.0",
+      "description": "更新model接口",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/model/:instanceId"
+      },
+      "import": ["easyops/model/flow_builder/model"],
+      "request": {
+        "type": "object",
+        "description": "api模型",
+        "fields": [
+          {
+            "ref": "ModelContract.*"
+          }
+        ],
+        "required": ["ModelContract.name", "ModelContract.namespaceId"]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.document.DeleteDocument",
+      "category": {
+        "en": "Documents",
+        "zh": "文档"
+      },
+      "name": "DeleteDocument",
+      "version": "1.0.0",
+      "description": "删除文档，包括下级文档",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/document/:instanceId"
+      },
+      "import": ["easyops/model/next_builder/micro_app_document"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppDocument.instanceId"
+          }
+        ],
+        "required": ["MicroAppDocument.instanceId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceIds",
+            "type": "string[]",
+            "description": "删除的实例Id数组"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.document.ExportDocuments",
+      "category": {
+        "en": "Documents",
+        "zh": "文档"
+      },
+      "name": "ExportDocuments",
+      "version": "1.1.0",
+      "description": "同步小产品文档到开发环境",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/document/export"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.instanceId"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.document.GetDocumentsDetails",
+      "category": {
+        "en": "Documents",
+        "zh": "文档"
+      },
+      "name": "GetDocumentsDetails",
+      "version": "1.1.0",
+      "description": "获取小产品的文档详情",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/document/details/:documentId"
+      },
+      "import": ["easyops/model/next_builder/micro_app_document"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "documentId",
+            "type": "string",
+            "description": "小产品文档Id"
+          }
+        ],
+        "required": ["documentId"]
+      },
+      "response": {
+        "type": "object",
+        "description": "详细文档，只返回parent.instanceId，不返回children",
+        "fields": [
+          {
+            "ref": "MicroAppDocument.instanceId"
+          },
+          {
+            "ref": "MicroAppDocument.documentId"
+          },
+          {
+            "ref": "MicroAppDocument.author"
+          },
+          {
+            "ref": "MicroAppDocument.name"
+          },
+          {
+            "ref": "MicroAppDocument.content"
+          },
+          {
+            "ref": "MicroAppDocument.relatedMicroAppId"
+          },
+          {
+            "ref": "MicroAppDocument.relatedRouteAliases"
+          },
+          {
+            "ref": "MicroAppDocument.sort"
+          },
+          {
+            "ref": "MicroAppDocument.ctime"
+          },
+          {
+            "ref": "MicroAppDocument.mtime"
+          },
+          {
+            "ref": "MicroAppDocument.status"
+          },
+          {
+            "name": "parent",
+            "type": "object",
+            "description": "上级文档",
+            "fields": [
+              {
+                "ref": "MicroAppDocument.instanceId"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.document.GetDocumentsTreeByAppId",
+      "category": {
+        "en": "Documents",
+        "zh": "文档"
+      },
+      "name": "GetDocumentsTreeByAppId",
+      "version": "1.1.0",
+      "description": "获取小产品的所有文档列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/document/tree/:appId"
+      },
+      "import": ["easyops/model/next_builder/micro_app_document_tree_node"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "小产品id"
+          }
+        ],
+        "required": ["appId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "documentsTree",
+            "type": "MicroAppDocumentTreeNode[]",
+            "description": "文档列表"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.document.MoveDocument",
+      "category": {
+        "en": "Documents",
+        "zh": "文档"
+      },
+      "name": "MoveDocument",
+      "version": "1.1.0",
+      "description": "小产品文档移动",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/document/move"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "sourceDocumentId",
+            "type": "string",
+            "description": "要移动的documentId"
+          },
+          {
+            "name": "targetDocumentId",
+            "type": "string",
+            "description": "移动到的目标id下，为空时，移动到根目录下"
+          }
+        ],
+        "required": ["sourceDocumentId"]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.document.SaveDocument",
+      "category": {
+        "en": "Documents",
+        "zh": "文档"
+      },
+      "name": "SaveDocument",
+      "version": "1.1.0",
+      "description": "保存文档",
+      "detail": "已存在文档则更新,根据documentId来判断是否是旧文档",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/document/save"
+      },
+      "import": ["easyops/model/next_builder/micro_app_document"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppDocument.documentId"
+          },
+          {
+            "ref": "MicroAppDocument.author"
+          },
+          {
+            "ref": "MicroAppDocument.name"
+          },
+          {
+            "ref": "MicroAppDocument.content"
+          },
+          {
+            "ref": "MicroAppDocument.relatedMicroAppId"
+          },
+          {
+            "ref": "MicroAppDocument.relatedRouteAliases"
+          },
+          {
+            "ref": "MicroAppDocument.sort"
+          },
+          {
+            "ref": "MicroAppDocument.status"
+          },
+          {
+            "name": "parent",
+            "type": "object",
+            "description": "上级文档",
+            "fields": [
+              {
+                "ref": "MicroAppDocument.instanceId"
+              }
+            ]
+          }
+        ],
+        "required": [
+          "MicroAppDocument.name",
+          "MicroAppDocument.relatedMicroAppId"
+        ]
+      },
+      "response": {
+        "type": "MicroAppDocument",
+        "description": "保存后的文档，不返回parent和children"
+      }
+    },
+    {
+      "contract": "next_builder.document.SortDocuments",
+      "category": {
+        "en": "Documents",
+        "zh": "文档"
+      },
+      "name": "SortDocuments",
+      "version": "1.1.0",
+      "description": "小产品文档排序",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/document/sort"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "documentIds",
+            "type": "string[]",
+            "description": "documentId array"
+          }
+        ],
+        "required": ["documentIds"]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.import_and_export.ProjectExport",
+      "category": {
+        "en": "ImportAndExport",
+        "zh": "导入导出"
+      },
+      "name": "ProjectExport",
+      "version": "1.0.0",
+      "description": "微应用导出",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next_builder/project_export/:instanceId"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "小产品的instanceId"
+          }
+        ]
+      },
+      "response": {
+        "type": "file"
+      }
+    },
+    {
+      "contract": "next_builder.import_and_export.ProjectImport",
+      "category": {
+        "en": "ImportAndExport",
+        "zh": "导入导出"
+      },
+      "name": "ProjectImport",
+      "version": "1.0.0",
+      "description": "微应用导入",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next_builder/project_import"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "file",
+            "type": "file",
+            "description": "微应用的tar包"
+          },
+          {
+            "name": "rebuild",
+            "type": "bool",
+            "description": "如果APP已经存在是否允许覆盖，是则会删除和重建APP相关数据，否则会在已有基础上更新，但可能会存在部分无法使用的数据"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.installed_theme_template.ThemeDataImport",
+      "name": "ThemeDataImport",
+      "version": "1.1.0",
+      "description": "themem数据部署",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next-builder/theme-data-import"
+      },
+      "import": ["easyops/model/next_builder/installed_theme_template"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "themeData",
+            "type": "map",
+            "description": "theme包的数据"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.mock_rule.AddTagBatch",
+      "category": {
+        "en": "Mock Rule",
+        "zh": "Mock规则"
+      },
+      "name": "AddTagBatch",
+      "version": "1.0.0",
+      "description": "批量添加标签",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/mock_rule/batch_tag_addition"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "ruleIds",
+            "type": "instance_id[]",
+            "description": "mock规则实例Id"
+          },
+          {
+            "name": "tag",
+            "type": "string[]",
+            "description": "规则标签"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.mock_rule.CreateMockRule",
+      "category": {
+        "en": "Mock Rule",
+        "zh": "Mock规则"
+      },
+      "name": "CreateMockRule",
+      "version": "1.0.0",
+      "description": "新建mock规则",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/mock_rule"
+      },
+      "import": ["easyops/model/next_builder/contract_mock_rule"],
+      "request": {
+        "type": "MockRule",
+        "required": ["MockRule.name"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "mock规则创建的instanceId"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.mock_rule.DeleteMockRuleBatch",
+      "category": {
+        "en": "Mock Rule",
+        "zh": "Mock规则"
+      },
+      "name": "DeleteMockRuleBatch",
+      "version": "1.0.0",
+      "description": "批量删除mock规则",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/mock_rule/batch_deletion"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceIds",
+            "type": "instance_id[]",
+            "description": "mock规则实例Id"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.mock_rule.DeleteProjectMockRuleBatch",
+      "category": {
+        "en": "Mock Rule",
+        "zh": "Mock规则"
+      },
+      "name": "DeleteProjectMockRuleBatch",
+      "version": "1.0.0",
+      "description": "批量删除mock规则（provier不再在编排中使用）（build & push前生效）",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/project/:projectId/mock_rule/batch"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectId",
+            "type": "string",
+            "description": "项目projectId"
+          },
+          {
+            "name": "providers",
+            "type": "string",
+            "description": "providers, 多个用逗号分割"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.mock_rule.DeleteSingleMockRule",
+      "category": {
+        "en": "Mock Rule",
+        "zh": "Mock规则"
+      },
+      "name": "DeleteSingleMockRule",
+      "version": "1.0.0",
+      "description": "删除单个mock规则",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/mock_rule/:ruleId"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "ruleId",
+            "type": "instance_id",
+            "description": "mock规则实例Id"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.mock_rule.DeleteTagBatch",
+      "category": {
+        "en": "Mock Rule",
+        "zh": "Mock规则"
+      },
+      "name": "DeleteTagBatch",
+      "version": "1.0.0",
+      "description": "批量删除标签",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/mock_rule/batch_tag_deletion"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "ruleIds",
+            "type": "instance_id[]",
+            "description": "mock规则实例Id"
+          },
+          {
+            "name": "tag",
+            "type": "string[]",
+            "description": "规则标签"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.mock_rule.EnableOrDisableMockRule",
+      "category": {
+        "en": "Mock Rule",
+        "zh": "Mock规则"
+      },
+      "name": "EnableOrDisableMockRule",
+      "version": "1.0.0",
+      "description": "启用或者禁用mock规则",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/project/:projectInstanceId/enable_or_disable_mock_rule"
+      },
+      "import": ["easyops/model/next_builder/contract_mock_rule"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectInstanceId",
+            "type": "string",
+            "description": "项目projectId"
+          },
+          {
+            "name": "provider",
+            "type": "string",
+            "description": "provider"
+          },
+          {
+            "name": "isEnable",
+            "type": "bool",
+            "description": "启用/禁用mock规则"
+          },
+          {
+            "name": "url",
+            "type": "string",
+            "description": "契约url"
+          },
+          {
+            "name": "contractName",
+            "type": "string",
+            "description": "契约名"
+          },
+          {
+            "name": "method",
+            "type": "string",
+            "description": "契约方法"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.mock_rule.GetDefaultMockRule",
+      "category": {
+        "en": "Mock Rule",
+        "zh": "Mock规则"
+      },
+      "name": "GetDefaultMockRule",
+      "version": "1.0.0",
+      "description": "获取默认的mock规则",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/default_mock_rule"
+      },
+      "import": ["easyops/model/next_builder/contract_mock_rule"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MockRule.contractInstanceId"
+          }
+        ],
+        "required": ["MockRule.contractInstanceId"]
+      },
+      "response": {
+        "type": "MockRule"
+      }
+    },
+    {
+      "contract": "next_builder.mock_rule.GetMockRule",
+      "category": {
+        "en": "Mock Rule",
+        "zh": "Mock规则"
+      },
+      "name": "GetMockRule",
+      "version": "1.0.0",
+      "description": "获取mock规则",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/mock_rule/:ruleId"
+      },
+      "import": ["easyops/model/next_builder/contract_mock_rule"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "ruleId",
+            "type": "instance_id",
+            "description": "mock规则id"
+          }
+        ],
+        "required": ["ruleId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "mock规则实例Id"
+          },
+          {
+            "ref": "MockRule.*"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.mock_rule.GetMockRuleByContractName",
+      "category": {
+        "en": "Mock Rule",
+        "zh": "Mock规则"
+      },
+      "name": "GetMockRuleByContractName",
+      "version": "1.0.0",
+      "description": "根据契约名获取mock规则",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/mock_rule_by_contract_name"
+      },
+      "import": ["easyops/model/next_builder/contract_mock_rule"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "contractName",
+            "type": "string",
+            "description": "contractName"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "mockData",
+            "type": "object[]",
+            "description": "mockData",
+            "fields": [
+              {
+                "name": "instanceId",
+                "type": "instance_id",
+                "description": "mock规则实例Id"
+              },
+              {
+                "ref": "MockRule.*"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.mock_rule.ListMockService",
+      "category": {
+        "en": "Mock Rule",
+        "zh": "Mock规则"
+      },
+      "name": "ListMockService",
+      "version": "1.0.0",
+      "description": "mock服务列表",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/mock_service/list"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "queryCondition",
+            "type": "map",
+            "description": "queryCondition"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "页大小"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "description": "mock服务列表",
+        "fields": [
+          {
+            "name": "list",
+            "type": "object[]",
+            "description": "列表数据",
+            "fields": [
+              {
+                "name": "namespaceId",
+                "type": "string",
+                "description": "契约命名空间"
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "description": "契约名称"
+              },
+              {
+                "name": "description",
+                "type": "string",
+                "description": "描述信息"
+              },
+              {
+                "name": "mockRuleNumber",
+                "type": "int",
+                "description": "mock规则数量"
+              }
+            ]
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "页大小"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "实例总数"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.mock_rule.UpdateMockRule",
+      "category": {
+        "en": "Mock Rule",
+        "zh": "Mock规则"
+      },
+      "name": "UpdateMockRule",
+      "version": "1.0.0",
+      "description": "更新mock规则",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/mock_rule/:ruleId"
+      },
+      "import": ["easyops/model/next_builder/contract_mock_rule"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "ruleId",
+            "type": "instance_id",
+            "description": "mock规则实例Id"
+          },
+          {
+            "ref": "MockRule.*"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.mock_rule.BatchUpdateMockRulePriority",
+      "category": {
+        "en": "Mock Rule",
+        "zh": "Mock规则"
+      },
+      "name": "BatchUpdateMockRulePriority",
+      "version": "1.0.0",
+      "description": "批量更新mock规则优先级",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/mock_rule/batch_priority_update"
+      },
+      "import": ["easyops/model/next_builder/contract_mock_rule"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceIds",
+            "type": "instance_id[]",
+            "description": "mock规则实例Id"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.mock_rule.UpdateProjectMockRule",
+      "category": {
+        "en": "Mock Rule",
+        "zh": "Mock规则"
+      },
+      "name": "UpdateProjectMockRule",
+      "version": "1.0.0",
+      "description": "更新项目mock规则(需Build&Push后生效)",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/project/:projectInstanceId/update_mock_rule"
+      },
+      "import": ["easyops/model/next_builder/contract_mock_rule"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectInstanceId",
+            "type": "string",
+            "description": "项目projectId"
+          },
+          {
+            "name": "rulesInstanceIds",
+            "type": "instance_id[]",
+            "description": "mock规则的instanceIds"
+          },
+          {
+            "name": "provider",
+            "type": "string",
+            "description": "provider"
+          },
+          {
+            "name": "contractName",
+            "type": "string",
+            "description": "contractName"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.model.CheckModel",
+      "category": {
+        "en": "Model",
+        "zh": "模型"
+      },
+      "name": "CheckModel",
+      "version": "1.0.0",
+      "description": "校验模型",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/model/check"
+      },
+      "import": [
+        "easyops/model/cmdb/cmdb_object",
+        "easyops/model/cmdb/object_attr",
+        "easyops/model/cmdb/object_relation",
+        "easyops/model/cmdb/object_index"
+      ],
+      "request": {
+        "type": "object",
+        "description": "模型",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "model instanceId"
+          },
+          {
+            "ref": "CmdbObject.name"
+          },
+          {
+            "ref": "CmdbObject.objectId"
+          },
+          {
+            "name": "attrList",
+            "type": "object[]",
+            "description": "attrList",
+            "fields": [
+              {
+                "ref": "ObjectAttr.*"
+              },
+              {
+                "name": "instanceId",
+                "type": "instance_id",
+                "description": "attr instanceId"
+              }
+            ]
+          },
+          {
+            "name": "relation_list",
+            "type": "object[]",
+            "description": "relation_list",
+            "fields": [
+              {
+                "ref": "ObjectRelation.name"
+              },
+              {
+                "ref": "ObjectRelation.protected"
+              },
+              {
+                "ref": "ObjectRelation.relation_id"
+              },
+              {
+                "ref": "ObjectRelation.right_id"
+              },
+              {
+                "ref": "ObjectRelation.right_name"
+              },
+              {
+                "ref": "ObjectRelation.right_description"
+              },
+              {
+                "ref": "ObjectRelation.right_groups"
+              },
+              {
+                "ref": "ObjectRelation.right_tags"
+              },
+              {
+                "ref": "ObjectRelation.right_max"
+              },
+              {
+                "ref": "ObjectRelation.right_min"
+              },
+              {
+                "ref": "ObjectRelation.right_object_id"
+              },
+              {
+                "ref": "ObjectRelation.right_required"
+              },
+              {
+                "ref": "ObjectRelation.left_id"
+              },
+              {
+                "ref": "ObjectRelation.left_name"
+              },
+              {
+                "ref": "ObjectRelation.left_description"
+              },
+              {
+                "ref": "ObjectRelation.left_groups"
+              },
+              {
+                "ref": "ObjectRelation.left_tags"
+              },
+              {
+                "ref": "ObjectRelation.left_max"
+              },
+              {
+                "ref": "ObjectRelation.left_min"
+              },
+              {
+                "ref": "ObjectRelation.left_object_id"
+              },
+              {
+                "ref": "ObjectRelation.left_required"
+              },
+              {
+                "ref": "ObjectRelation.creator"
+              },
+              {
+                "ref": "ObjectRelation.ctime"
+              },
+              {
+                "ref": "ObjectRelation._ts"
+              },
+              {
+                "ref": "ObjectRelation._version"
+              },
+              {
+                "ref": "ObjectRelation.isInherit"
+              },
+              {
+                "ref": "ObjectRelation.leftInheritObjectId"
+              },
+              {
+                "ref": "ObjectRelation.rightInheritObjectId"
+              },
+              {
+                "name": "instanceId",
+                "type": "instance_id",
+                "description": "relation instanceId"
+              },
+              {
+                "name": "attrList",
+                "type": "object[]",
+                "description": "关系属性列表",
+                "fields": [
+                  {
+                    "name": "instanceId",
+                    "type": "instance_id",
+                    "description": "realtion attribute instanceId"
+                  },
+                  {
+                    "ref": "ObjectAttr.*"
+                  }
+                ]
+              },
+              {
+                "name": "indexList",
+                "type": "object[]",
+                "description": "关系索引列表",
+                "fields": [
+                  {
+                    "name": "instanceId",
+                    "type": "instance_id",
+                    "description": "realtion index instanceId"
+                  },
+                  {
+                    "ref": "ObjectIndex.*"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "indexList",
+            "type": "object[]",
+            "description": "indexList",
+            "fields": [
+              {
+                "ref": "ObjectIndex.*"
+              },
+              {
+                "name": "instanceId",
+                "type": "instance_id",
+                "description": "index instanceId"
+              }
+            ]
+          },
+          {
+            "name": "space",
+            "type": "object",
+            "description": "命名空间",
+            "fields": [
+              {
+                "name": "instanceId",
+                "type": "instance_id",
+                "description": "命名空间instanceId"
+              }
+            ]
+          }
+        ],
+        "required": ["objectId"]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.model.CheckView",
+      "category": {
+        "en": "Model",
+        "zh": "模型"
+      },
+      "name": "CheckView",
+      "version": "1.0.0",
+      "description": "校验领域模型",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/view/check"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "namespace",
+            "type": "instance_id",
+            "description": "命名空间instanceId"
+          },
+          {
+            "name": "id",
+            "type": "string",
+            "description": "领域id"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "description": "领域name"
+          },
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "领域instanceId"
+          }
+        ],
+        "required": ["namespace", "id", "name"]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.model.ExportModels",
+      "category": {
+        "en": "Model",
+        "zh": "模型"
+      },
+      "name": "ExportModels",
+      "version": "1.0.0",
+      "description": "同步模型到开发环境",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/model/export"
+      },
+      "import": [
+        "easyops/model/cmdb/cmdb_object",
+        "easyops/model/next_builder/micro_app_project"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.projectId"
+          },
+          {
+            "name": "isModelCenter",
+            "type": "bool",
+            "description": "模型定义来源"
+          },
+          {
+            "name": "objectList",
+            "type": "CmdbObject[]",
+            "description": "模型列表"
+          }
+        ],
+        "default": {
+          "isModelCenter": false
+        }
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.projectId"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.model.GenerateModelsDefinition",
+      "category": {
+        "en": "Model",
+        "zh": "模型"
+      },
+      "name": "GenerateModelsDefinition",
+      "version": "1.0.0",
+      "description": "由模型定义生成ModelsDefinition",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/model/generate_models_definition"
+      },
+      "import": [
+        "easyops/model/cmdb/cmdb_object",
+        "easyops/model/next_builder/micro_app_project"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.projectId"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.projectId"
+          },
+          {
+            "name": "objectList",
+            "type": "CmdbObject[]",
+            "description": "模型列表"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.model.GetModel",
+      "category": {
+        "en": "Model",
+        "zh": "模型"
+      },
+      "name": "GetModel",
+      "version": "1.0.0",
+      "description": "获取开发环境的模型信息",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/model/get"
+      },
+      "import": [
+        "easyops/model/cmdb/cmdb_object",
+        "easyops/model/next_builder/micro_app_project"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.instanceId"
+          },
+          {
+            "name": "objectId",
+            "type": "object_id",
+            "description": "要获取的objectId"
+          }
+        ]
+      },
+      "response": {
+        "type": "CmdbObject"
+      }
+    },
+    {
+      "contract": "next_builder.model.ModelCenterGenerateModelsDefinition",
+      "category": {
+        "en": "Model",
+        "zh": "模型"
+      },
+      "name": "ModelCenterGenerateModelsDefinition",
+      "version": "1.0.0",
+      "description": "ModelCenter由模型定义生成ModelsDefinition",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/model-center/generate-models-definition"
+      },
+      "import": ["easyops/model/cmdb/cmdb_object"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceIds",
+            "type": "string[]",
+            "description": "模型instanceId"
+          }
+        ],
+        "required": ["instanceIds"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "objectList",
+            "type": "CmdbObject[]",
+            "description": "模型列表"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.olap.GetRouteMinLoadTime",
+      "category": {
+        "en": "Olap",
+        "zh": "路由性能"
+      },
+      "name": "GetRouteMinLoadTime",
+      "version": "1.0.0",
+      "description": "查询routeId最小加载时间",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next_builder/olap/:instanceId"
+      },
+      "import": [
+        "easyops/model/data_exchange/filter",
+        "easyops/model/data_exchange/order",
+        "easyops/model/data_exchange/measure",
+        "easyops/model/data_exchange/having"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "小产品instanceId"
+          },
+          {
+            "name": "model",
+            "type": "string",
+            "description": "1. dataSource 为 cmdb 时， model 为 \"cmdb.model\"\n2. dataSource 为 clickhouse 时， model 为 \"库名.表名\"\n"
+          },
+          {
+            "name": "dims",
+            "type": "string[]",
+            "description": "聚合的维度"
+          },
+          {
+            "name": "measures",
+            "type": "Measure[]",
+            "description": "指标聚合计算规则"
+          },
+          {
+            "name": "filters",
+            "type": "Filter[]",
+            "description": "过滤条件"
+          },
+          {
+            "name": "order",
+            "type": "Order[]",
+            "description": "指定字段排序, 数组是有顺序，哪个字段在前，先按哪个字段排序"
+          },
+          {
+            "name": "having",
+            "type": "Having[]",
+            "description": "having过滤"
+          }
+        ],
+        "required": ["model", "measures", "dims", "filters"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总数"
+          },
+          {
+            "name": "list",
+            "type": "map[]",
+            "description": "统计后的数据"
+          }
+        ],
+        "required": ["total", "list"]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Query data, and perform statistics aggregation",
+            "zh": "查询数据， 并进行统计聚合统计"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/api/v1/next_builder/olap/instance_id",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"instanceId\": \"instance_id\",\n    \"dims\": [\n        \"route\"\n    ],\n    \"filters\": [\n\n        {\n            \"name\": \"time\",\n            \"operator\": \">=\",\n            \"value\": \"now-3d\"\n        },\n        {\n            \"name\": \"time\",\n            \"operator\": \"<=\",\n            \"value\": \"now-1s\"\n        },\n        {\n            \"name\": \"app\",\n            \"operator\": \"like\",\n            \"value\": \"apm\"\n        }\n    ],\n    \"having\": [\n        {\n            \"name\": \"lt_min\",\n            \"operator\": \">=\",\n            \"value\": 2500\n        }\n    ],\n    \"measures\": [\n        {\n            \"function\": {\n                \"args\": [\n                    \"lt\"\n                ],\n                \"expression\": \"min\"\n            },\n            \"name\": \"lt_min\"\n        }\n    ],\n    \"model\": \"easyops.FRONTEND_STAT\",\n    \"order\": [\n        {\n            \"name\": \"lt_min\",\n            \"order\": \"desc\"\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n        \"total\": 0,\n        \"list\": []\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "next_builder.package_alone.AddDependencies",
+      "category": {
+        "zh": "微应用独立打包",
+        "en": "PackageStandalone"
+      },
+      "name": "AddDependencies",
+      "version": "1.0.0",
+      "description": "增加依赖",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next_builder/micro_apps/:instanceId/dependencies"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.instanceId"
+          },
+          {
+            "ref": "MicroAppProject.dependencies"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.package_alone.DeleteDependencies",
+      "category": {
+        "zh": "微应用独立打包",
+        "en": "PackageStandalone"
+      },
+      "name": "DeleteDependencies",
+      "version": "1.0.0",
+      "description": "删除依赖",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/next_builder/micro_apps/:instanceId/dependencies"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.instanceId"
+          },
+          {
+            "name": "dependenciesName",
+            "type": "string",
+            "description": "dependenciesName, 多个用,分割"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.package_alone.EditDependencies",
+      "category": {
+        "zh": "微应用独立打包",
+        "en": "PackageStandalone"
+      },
+      "name": "EditDependencies",
+      "version": "1.0.0",
+      "description": "编辑依赖",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/next_builder/micro_apps/:instanceId/dependencies"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.instanceId"
+          },
+          {
+            "ref": "MicroAppProject.dependencies"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.package_alone.ListDependencies",
+      "category": {
+        "zh": "微应用独立打包",
+        "en": "PackageStandalone"
+      },
+      "name": "ListDependencies",
+      "version": "1.0.0",
+      "description": "微应用依赖列表",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/v1/next_builder/micro_apps/:instanceId/dependencies"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.instanceId"
+          }
+        ],
+        "required": ["MicroAppProject.instanceId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string",
+            "description": "name"
+          },
+          {
+            "name": "constraint",
+            "type": "string",
+            "description": "Constraint"
+          },
+          {
+            "name": "localDeploy",
+            "type": "bool",
+            "description": "IsLocalDeploy"
+          },
+          {
+            "name": "actualVersion",
+            "type": "string",
+            "description": "actualVersion"
+          },
+          {
+            "name": "parentDependency",
+            "type": "string",
+            "description": "被谁依赖"
+          },
+          {
+            "name": "dependencyWay",
+            "type": "string",
+            "enum": ["direct", "indirect"],
+            "description": "依赖方式"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "DependenciesListOfMicroApp",
+            "zh": "微应用依赖列表"
+          },
+          "request": {
+            "method": "LIST",
+            "uri": "http://127.0.0.1:8142/api/v1/next-builder/micro_apps/:instanceId/dependencies"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"list\": [\n        {\n            \"actualVersion\": \"1.260.1\",\n            \"constraint\": \"^1.0.0\",\n            \"dependencyWay\": \"direct\",\n            \"localDeploy\": true,\n            \"name\": \"presentational-bricks-NB\"\n        },\n        {\n            \"actualVersion\": \"2.68.27\",\n            \"constraint\": \"^2.65.1,=2.68.27\",\n            \"dependencyWay\": \"indirect\",\n            \"localDeploy\": true,\n            \"name\": \"brick_next\",\n            \"parentDependency\": \"presentational-bricks-NB:^1.0.0\"\n        }\n    ]\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "next_builder.package_alone.PackageStandAlone",
+      "category": {
+        "zh": "微应用独立打包",
+        "en": "PackageStandalone"
+      },
+      "name": "PackageStandAlone",
+      "version": "1.0.0",
+      "description": "微应用独立打包",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next_builder/package_standalone"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.projectId"
+          },
+          {
+            "name": "version",
+            "type": "version",
+            "description": "小产品版本号"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "版本描述信息"
+          }
+        ],
+        "required": ["MicroAppProject.projectId", "version", "description"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "releasedLogInstanceId",
+            "type": "instance_id",
+            "description": "packageStandAlone releasedLogInstanceId"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.package_alone.UpdateDependencies",
+      "category": {
+        "zh": "微应用独立打包",
+        "en": "PackageStandalone"
+      },
+      "name": "UpdateDependencies",
+      "version": "1.0.0",
+      "description": "更新依赖",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/next_builder/micro_apps/:instanceId/dependencies/version"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.instanceId"
+          },
+          {
+            "name": "name",
+            "type": "string[]",
+            "description": "依赖名称"
+          },
+          {
+            "name": "isEnterprise",
+            "type": "bool",
+            "description": "是否是企业版"
+          }
+        ],
+        "default": {
+          "isEnterprise": false
+        }
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.permission.ExportPermissions",
+      "category": {
+        "en": "Permission",
+        "zh": "权限"
+      },
+      "name": "ExportPermissions",
+      "version": "1.0.0",
+      "description": "同步权限点到开发环境",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/permission/export"
+      },
+      "import": [
+        "easyops/model/permission/permission",
+        "easyops/model/next_builder/micro_app_project"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.instanceId"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.permission.GeneratePermissionsDefinition",
+      "category": {
+        "en": "Permission",
+        "zh": "权限"
+      },
+      "name": "GeneratePermissionsDefinition",
+      "version": "1.0.0",
+      "description": "由模型定义生成PermissionsDefinition",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/permissions/generate_permissions_definition/:instanceId"
+      },
+      "import": ["easyops/model/permission/permission"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "string",
+            "description": "小产品项目instanceId"
+          }
+        ],
+        "required": ["instanceId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "permissionList",
+            "type": "Permission[]",
+            "description": "权限点列表"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "next_builder.project.DeleteStoryboardProject",
+      "category": {
+        "en": "Project",
+        "zh": "项目"
+      },
+      "name": "DeleteStoryboardProject",
+      "version": "1.0.0",
+      "description": "storyboard项目删除",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/next-builder/project/:projectId"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.projectId"
+          },
+          {
+            "name": "delApp",
+            "type": "bool",
+            "description": "是否删除install_micro_app"
+          }
+        ],
+        "required": ["MicroAppProject.projectId", "delApp"]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.project.GetMicroAppProject",
+      "category": {
+        "en": "Project",
+        "zh": "项目"
+      },
+      "name": "GetMicroAppProject",
+      "version": "1.0.0",
+      "description": "获取MicroApp项目",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/next-builder/project/:projectId"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.projectId"
+          }
+        ]
+      },
+      "response": {
+        "type": "MicroAppProject"
+      }
+    },
+    {
+      "contract": "next_builder.project.GetMicroAppProjectByAppId",
+      "category": {
+        "en": "Project",
+        "zh": "项目"
+      },
+      "name": "GetMicroAppProjectByAppId",
+      "version": "1.0.0",
+      "description": "获取MicroApp项目 by appId",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/next-builder/project"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.appId"
+          }
+        ]
+      },
+      "response": {
+        "type": "MicroAppProject"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Basic",
+            "zh": "基础请求"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8142/api/v1/next-builder/project?appId=my-micro-app"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"message\": \"success\",\n  \"data\": {\n    \"appId\": \"my-micro-app\",\n    \"appSetting\": {\n      \"appIconUrl\": \"api/gateway/object_store.object_store.GetObject/api/v1/objectStore/bucket/next-builder/object/image16080390648879824081636614785510056761.png\",\n      \"breadcrumb\": null,\n      \"defaultConfig\": null,\n      \"env\": null,\n      \"homepage\": \"/my-micro-app\",\n      \"icon\": \"{\\n  \\\"lib\\\": \\\"fa\\\",\\n  \\\"icon\\\": \\\"ambulance\\\",\\n  \\\"prefix\\\": \\\"fas\\\"\\n}\",\n      \"iconBackground\": null,\n      \"internal\": false,\n      \"layoutType\": null,\n      \"legacy\": null,\n      \"locales\": null,\n      \"name\": \"我的微应用\",\n      \"noAuthGuard\": null,\n      \"private\": false,\n      \"visibility\": null\n    },\n    \"dependencies\": [\n\n    ],\n    \"dependsAll\": false,\n    \"developmentEnv\": {\n      \"accessKey\": \"ee6e5c3a615bd2c2cbbeed1c\",\n      \"openApiIP\": \"192.168.100.210\",\n      \"openApiPort\": 30109,\n      \"protocol\": \"http\",\n      \"secretKey\": \"496d4a69657045757248436145694f467551574c55425652735345685a6a726f\"\n    },\n    \"images\": [\n\n    ],\n    \"instanceId\": \"5cf34702be413\",\n    \"lastExportedDocuments\": \"[{\\\"instanceId\\\":\\\"\\\",\\\"documentId\\\":\\\"my-micro-app_YPLv8kZJToew8TA2W9vl_w\\\",\\\"author\\\":\\\"sdfsdf\\\",\\\"name\\\":\\\"sdfsdf\\\",\\\"content\\\":\\\"this is document\\\",\\\"relatedMicroAppId\\\":\\\"my-micro-app\\\",\\\"relatedRouteAliases\\\":null,\\\"sort\\\":1,\\\"children\\\":null,\\\"parent\\\":null}]\",\n    \"lastExportedModelsDefinition\": null,\n    \"lastExportedPermissions\": null,\n    \"lastReleasedModelsDefinition\": null,\n    \"modelObjects\": [\n\n    ],\n    \"models\": [\n\n    ],\n    \"modelsDefinition\": [\n\n    ],\n    \"name\": \"我的微应用\",\n    \"permissions\": [\n\n    ],\n    \"projectId\": \"P-1300007\",\n    \"storyboardJson\": \"{\\\"app\\\":{\\\"id\\\":\\\"my-micro-app\\\",\\\"internal\\\":false,\\\"private\\\":false,\\\"legacy\\\":\\\"\\\",\\\"name\\\":\\\"我的微应用\\\",\\\"icons\\\":null,\\\"storyboardJson\\\":\\\"\\\",\\\"tags\\\":[],\\\"currentVersion\\\":\\\"\\\",\\\"installStatus\\\":\\\"\\\",\\\"homepage\\\":\\\"/my-micro-app\\\",\\\"clonedFrom\\\":null,\\\"owner\\\":\\\"\\\",\\\"readme\\\":\\\"\\\",\\\"status\\\":\\\"\\\",\\\"ctime\\\":\\\"\\\",\\\"mtime\\\":\\\"\\\",\\\"pkgName\\\":\\\"\\\",\\\"menuIcon\\\":{\\\"lib\\\":\\\"fa\\\",\\\"type\\\":\\\"\\\",\\\"theme\\\":\\\"\\\",\\\"icon\\\":\\\"ambulance\\\",\\\"prefix\\\":\\\"fas\\\",\\\"category\\\":\\\"\\\"},\\\"iconBackground\\\":\\\"\\\",\\\"defaultConfig\\\":null,\\\"env\\\":null,\\\"locales\\\":null,\\\"layoutType\\\":\\\"\\\",\\\"noAuthGuard\\\":false,\\\"breadcrumb\\\":null},\\\"dependsAll\\\":false,\\\"routes\\\":[{\\\"alias\\\":\\\"首页\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.micro-view\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"pageTitle\\\":\\\"Hello world\\\"},\\\"slots\\\":{\\\"content\\\":{\\\"bricks\\\":[{\\\"brick\\\":\\\"presentational-bricks.brick-result\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"customTitle\\\":\\\"Today is Tuesday\\\",\\\"status\\\":\\\"info\\\",\\\"subTitle\\\":\\\"2019/10/29 21:35\\\"}}],\\\"type\\\":\\\"bricks\\\"},\\\"toolbar\\\":{\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.general-button\\\",\\\"events\\\":{\\\"general.button.click\\\":[{\\\"action\\\":\\\"message.success\\\",\\\"args\\\":[\\\"点击操作按钮\\\"]}]},\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"buttonName\\\":\\\"按钮\\\"}}],\\\"type\\\":\\\"bricks\\\"}}}],\\\"exact\\\":true,\\\"hybrid\\\":false,\\\"path\\\":\\\"${APP.homepage}\\\",\\\"public\\\":false,\\\"type\\\":\\\"bricks\\\"},{\\\"alias\\\":\\\"用户列表\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.micro-view\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"pageTitle\\\":\\\"用户列表\\\"}}],\\\"exact\\\":true,\\\"hybrid\\\":false,\\\"path\\\":\\\"${APP.homepage}/users\\\",\\\"public\\\":false,\\\"type\\\":\\\"bricks\\\"}],\\\"meta\\\":{\\\"customTemplates\\\":[],\\\"functions\\\":[],\\\"i18n\\\":{\\\"en\\\":{},\\\"zh\\\":{}},\\\"menus\\\":[]}}\",\n    \"type\": \"storyboard\"\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "next_builder.project.GetMicroAppProjectByInstanceId",
+      "category": {
+        "en": "Project",
+        "zh": "项目"
+      },
+      "name": "GetMicroAppProjectByInstanceId",
+      "version": "1.0.0",
+      "description": "获取MicroApp项目",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/next-builder/project-get-detail"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.instanceId"
+          }
+        ]
+      },
+      "response": {
+        "type": "MicroAppProject"
+      }
+    },
+    {
+      "contract": "next_builder.project.RemoveStoryboardProject",
+      "category": {
+        "en": "Project",
+        "zh": "项目"
+      },
+      "name": "RemoveStoryboardProject",
+      "version": "1.0.0",
+      "description": "storyboard项目删除(该接口用于api编排)",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/next-builder/removeProject"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.instanceId"
+          }
+        ],
+        "required": ["MicroAppProject.instanceId"]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.project.UpdateProjectStoryboard",
+      "category": {
+        "en": "Project",
+        "zh": "项目"
+      },
+      "name": "UpdateProjectStoryboard",
+      "version": "1.0.0",
+      "description": "更新项目storyboardJson字段",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/next-builder/project/:projectId"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.projectId"
+          },
+          {
+            "ref": "MicroAppProject.storyboardJson"
+          },
+          {
+            "ref": "MicroAppProject.dependsAll"
+          },
+          {
+            "ref": "MicroAppProject.appSetting"
+          }
+        ]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.storyboard.CloneRoutes",
+      "category": {
+        "en": "Storyboard",
+        "zh": "Storyboard"
+      },
+      "name": "CloneRoutes",
+      "version": "1.0.0",
+      "description": "拷贝路由",
+      "detail": "拷贝路由",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/nextBuilder/clone_route"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "sourceRouteId",
+            "type": "string",
+            "description": "源路由id"
+          },
+          {
+            "name": "newParentRouteId",
+            "type": "string",
+            "description": "新的父路由id"
+          },
+          {
+            "name": "newAppId",
+            "type": "string",
+            "description": "新的应用id"
+          },
+          {
+            "name": "exclude",
+            "type": "bool",
+            "description": "是否排除sourceRoute，默认false"
+          },
+          {
+            "name": "linked",
+            "type": "bool",
+            "description": "是否linked sourceRoute关联的template"
+          }
+        ],
+        "required": ["sourceRouteId", "newAppId"]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.storyboard.CloneBricks",
+      "category": {
+        "en": "Storyboard",
+        "zh": "Storyboard"
+      },
+      "name": "CloneBricks",
+      "version": "1.0.0",
+      "description": "拷贝构件",
+      "detail": "拷贝构件",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/nextBuilder/clone"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "sourceBrickId",
+            "type": "string",
+            "description": "源构件id"
+          },
+          {
+            "name": "newParentBrickId",
+            "type": "string",
+            "description": "新的父构件id"
+          },
+          {
+            "name": "newAppId",
+            "type": "string",
+            "description": "新的应用id"
+          },
+          {
+            "name": "exclude",
+            "type": "bool",
+            "description": "是否排除sourceBrick，默认false"
+          },
+          {
+            "name": "linked",
+            "type": "bool",
+            "description": "是否导入linked sourceBrick关联的template"
+          }
+        ],
+        "required": ["sourceBrickId", "newParentBrickId", "newAppId"]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.storyboard.DeleteStoryboardNode",
+      "category": {
+        "en": "Storyboard",
+        "zh": "Storyboard"
+      },
+      "name": "DeleteStoryboardNode",
+      "version": "1.0.0",
+      "description": "storyboard节点删除",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/nextBuilder/storyboard/:nodeId"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "nodeId",
+            "type": "string",
+            "description": "storyboard node id"
+          }
+        ],
+        "required": ["nodeId"]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.storyboard.GetStoryboardNode",
+      "category": {
+        "en": "Storyboard",
+        "zh": "Storyboard"
+      },
+      "name": "GetStoryboardNode",
+      "version": "1.0.0",
+      "description": "获取storyboard节点的子节点",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/nextBuilder/storyboard/:nodeId"
+      },
+      "import": ["easyops/model/next_builder/storyboard_node"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "nodeId",
+            "type": "string",
+            "description": "节点id"
+          }
+        ],
+        "required": ["nodeId"]
+      },
+      "response": {
+        "type": "StoryboardNode"
+      }
+    },
+    {
+      "contract": "next_builder.storyboard.ImportStoryboardNodes",
+      "category": {
+        "en": "Storyboard",
+        "zh": "Storyboard"
+      },
+      "name": "ImportStoryboardNodes",
+      "version": "1.0.0",
+      "description": "批量导入storyboard节点",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/nextBuilder/importNodes"
+      },
+      "import": [
+        "easyops/model/next_builder/storyboard_node",
+        "easyops/model/next_builder/micro_app_project",
+        "easyops/model/micro_app/installed_micro_app"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "project",
+            "type": "object",
+            "description": "Project",
+            "fields": [
+              {
+                "ref": "MicroAppProject.projectId"
+              },
+              {
+                "ref": "MicroAppProject.dependsAll"
+              },
+              {
+                "name": "app",
+                "type": "object",
+                "description": "节点列表",
+                "fields": [
+                  {
+                    "ref": "InstalledMicroApp.menuIcon"
+                  },
+                  {
+                    "name": "defaultConfig",
+                    "type": "map",
+                    "description": "默认定义"
+                  },
+                  {
+                    "name": "env",
+                    "type": "string",
+                    "description": "Env配置"
+                  },
+                  {
+                    "name": "internal",
+                    "type": "bool",
+                    "description": "是否内置应用"
+                  },
+                  {
+                    "name": "private",
+                    "type": "bool",
+                    "description": "是否私有"
+                  },
+                  {
+                    "ref": "InstalledMicroApp.legacy"
+                  },
+                  {
+                    "ref": "InstalledMicroApp.iconBackground"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "nodes",
+            "type": "object[]",
+            "fields": [
+              {
+                "ref": "StoryboardNode.id"
+              },
+              {
+                "ref": "StoryboardNode.alias"
+              },
+              {
+                "ref": "StoryboardNode.mountPoint"
+              },
+              {
+                "ref": "StoryboardNode.sort"
+              },
+              {
+                "ref": "StoryboardNode.type"
+              },
+              {
+                "ref": "StoryboardNode.brick"
+              },
+              {
+                "ref": "StoryboardNode.route"
+              },
+              {
+                "ref": "StoryboardNode.template"
+              },
+              {
+                "name": "parentId",
+                "type": "string",
+                "description": "父节点id"
+              }
+            ],
+            "description": "节点列表"
+          }
+        ],
+        "required": ["nodes"]
+      },
+      "response": null
+    },
+    {
+      "contract": "next_builder.storyboard.SortStoryboardNodes",
+      "category": {
+        "en": "Storyboard",
+        "zh": "Storyboard"
+      },
+      "name": "SortStoryboardNodes",
+      "version": "1.0.0",
+      "description": "storyboard节点排序",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/nextBuilder/sortNodes"
+      },
+      "import": ["easyops/model/next_builder/storyboard_node"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "nodeIds",
+            "type": "string[]",
+            "description": "storyboard nodeId array"
+          }
+        ],
+        "required": ["nodeIds"]
+      },
+      "response": null
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "sdk": "@next-sdk/msgsender-sdk",
+  "providers": [
+    "CustomSenderApi.listSupportInform",
+    "CustomSenderApi.sendMessage",
+    "CustomSenderApi.sendMessageForAlert",
+    "CustomSenderApi.sendMessageWithAppendix",
+    "ConfigApi.createConfig",
+    "ConfigApi.deleteConfig",
+    "ConfigApi.getConfig",
+    "ConfigApi.listConfig",
+    "ConfigApi.updateConfig"
+  ]
+}

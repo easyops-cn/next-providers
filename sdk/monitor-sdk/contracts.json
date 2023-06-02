@@ -1,0 +1,1755 @@
+{
+  "name": "monitor",
+  "contracts": [
+    {
+      "contract": "monitor.alert.GetAlertCount",
+      "name": "GetAlertCount",
+      "version": "1.0.0",
+      "description": "获取目标范围内的告警数量统计",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/alert/count"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "st",
+            "type": "int",
+            "description": "开始时间",
+            "validate": {
+              "gte": 1
+            }
+          },
+          {
+            "name": "et",
+            "type": "int",
+            "description": "结束时间",
+            "validate": {
+              "gte": 1
+            }
+          },
+          {
+            "name": "aggregate_interval",
+            "type": "string",
+            "description": "聚合粒度"
+          },
+          {
+            "name": "instanceId__in",
+            "type": "string",
+            "description": "查询的目标instanceIds(逗号分隔)"
+          },
+          {
+            "name": "objectId__in",
+            "type": "string",
+            "description": "查询的目标objectIds(逗号分隔)"
+          },
+          {
+            "name": "instanceId",
+            "type": "string",
+            "description": "查询的目标instanceId"
+          },
+          {
+            "name": "objectId",
+            "type": "string",
+            "description": "查询的目标objectId"
+          }
+        ],
+        "required": ["st", "aggregate_interval"]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "返回码"
+          },
+          {
+            "name": "msg",
+            "type": "string",
+            "description": "返回消息"
+          },
+          {
+            "name": "data",
+            "type": "object[]",
+            "description": "统计结果列表",
+            "fields": [
+              {
+                "name": "count",
+                "type": "int",
+                "description": "聚合周期告警数"
+              },
+              {
+                "name": "ids",
+                "type": "string[]",
+                "description": "聚合周期告警ID列表"
+              },
+              {
+                "name": "time",
+                "type": "int",
+                "description": "聚合周期时间戳"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "monitor.alert.GetAlertEventDetail",
+      "name": "GetAlertEventDetail",
+      "version": "1.0.0",
+      "description": "获取告警事件详情",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/alert"
+      },
+      "import": ["easyops/model/monitor/alert_event"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "_id",
+            "type": "string",
+            "description": "告警 ID"
+          },
+          {
+            "name": "st",
+            "type": "string",
+            "description": "开始时间, e.g.: -1h 过去1小时, -1d 过去1天, -30m 过去30分钟, 1490967693 unix 时间戳"
+          },
+          {
+            "name": "et",
+            "type": "string",
+            "description": "结束时间, e.g.: -1h 过去1小时, -1d 过去1天, -30m 过去30分钟, 1490967693 unix 时间戳。默认为当前时间"
+          }
+        ]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "返回码"
+          },
+          {
+            "name": "msg",
+            "type": "string",
+            "description": "消息"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "分页大小"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总数"
+          },
+          {
+            "name": "data",
+            "type": "AlertEvent[]",
+            "description": "告警事件列表，返回的是一个列表，只有一个告警事件的列表当作详情接口的返回"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "monitor.alert.GetAlertEventList",
+      "name": "GetAlertEventList",
+      "version": "1.0.0",
+      "description": "获取告警事件列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/alert"
+      },
+      "import": ["easyops/model/monitor/alert_event"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "_id",
+            "type": "string",
+            "description": "告警 ID"
+          },
+          {
+            "name": "__select__",
+            "type": "string",
+            "description": "选择返回的字段，以逗号分隔"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "分页大小"
+          },
+          {
+            "name": "objectId",
+            "type": "object_id",
+            "description": "模型id"
+          },
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "实例id"
+          },
+          {
+            "name": "rule_id",
+            "type": "string",
+            "description": "告警策略ID"
+          },
+          {
+            "name": "st",
+            "type": "string",
+            "description": "开始时间, e.g.: -1h 过去1小时, -1d 过去1天, -30m 过去30分钟, 1490967693 unix 时间戳"
+          },
+          {
+            "name": "et",
+            "type": "string",
+            "description": "结束时间, e.g.: -1h 过去1小时, -1d 过去1天, -30m 过去30分钟, 1490967693 unix 时间戳。默认为当前时间"
+          }
+        ]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "返回码"
+          },
+          {
+            "name": "msg",
+            "type": "string",
+            "description": "消息"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "分页大小"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总数"
+          },
+          {
+            "name": "data",
+            "type": "AlertEvent[]",
+            "description": "告警事件列表"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "monitor.alert.GetNotRecoverAlertEventList",
+      "name": "GetNotRecoverAlertEventList",
+      "version": "1.0.0",
+      "description": "获取未恢复告警事件列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/alert/alert_status_not_recover"
+      },
+      "import": ["easyops/model/monitor/alert_event"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "st",
+            "type": "string",
+            "description": "开始时间, e.g.: -1h 过去1小时, -1d 过去1天, -30m 过去30分钟, 1490967693 unix 时间戳"
+          },
+          {
+            "name": "et",
+            "type": "string",
+            "description": "结束时间, e.g.: -1h 过去1小时, -1d 过去1天, -30m 过去30分钟, 1490967693 unix 时间戳。默认为当前时间"
+          },
+          {
+            "name": "key_word",
+            "type": "string",
+            "description": "搜索关键字"
+          },
+          {
+            "name": "alert_type",
+            "type": "string",
+            "description": "告警类型"
+          },
+          {
+            "name": "alert_sub_type",
+            "type": "string",
+            "description": "告警子类型"
+          },
+          {
+            "name": "alert_item",
+            "type": "string",
+            "description": "告警项"
+          },
+          {
+            "name": "objectId",
+            "type": "object_id",
+            "description": "模型id"
+          },
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "实例id"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "页大小, [1, 300]"
+          },
+          {
+            "name": "__sortby__",
+            "type": "string",
+            "description": "排序"
+          }
+        ]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "返回码"
+          },
+          {
+            "name": "msg",
+            "type": "string",
+            "description": "消息"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "分页大小"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总数"
+          },
+          {
+            "name": "data",
+            "type": "AlertEvent[]",
+            "description": "告警事件列表"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "monitor.alert.ListAlertRange",
+      "name": "ListAlertRange",
+      "version": "1.0.0",
+      "description": "获取告警状态列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/alert_range"
+      },
+      "import": ["easyops/model/monitor/alert_range"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "key",
+            "type": "string",
+            "description": "告警事件Id"
+          }
+        ]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "返回码"
+          },
+          {
+            "name": "msg",
+            "type": "string",
+            "description": "消息"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "分页大小"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总数"
+          },
+          {
+            "name": "data",
+            "type": "AlertRange[]",
+            "description": "数据列表"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "monitor.alert_downtime.GetAllAlertDowntime",
+      "name": "GetAllAlertDowntime",
+      "version": "1.0.0",
+      "description": "获取告警屏蔽规则列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/alert_downtime/config"
+      },
+      "import": ["easyops/model/monitor/alert_downtime"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "alert_rule_id__in",
+            "type": "string",
+            "description": "规则id, 多个用逗号分隔符"
+          }
+        ]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "code"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "分页大小"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页数"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总数"
+          },
+          {
+            "name": "msg",
+            "type": "string",
+            "description": "msg"
+          },
+          {
+            "name": "data",
+            "type": "AlertDowntime[]",
+            "description": "data"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "monitor.alert_rule.CreateAlertRule",
+      "name": "CreateAlertRule",
+      "version": "1.0.0",
+      "description": "创建告警规则",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v3/alert_rule/config"
+      },
+      "import": ["easyops/model/monitor/alert_rule"],
+      "request": {
+        "type": "AlertRule"
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "code"
+          },
+          {
+            "name": "msg",
+            "type": "string",
+            "description": "msg"
+          },
+          {
+            "name": "data",
+            "type": "object",
+            "description": "data",
+            "fields": [
+              {
+                "name": "id",
+                "type": "mongo_object_id",
+                "description": "告警规则id"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "monitor.alert_rule.DeleteAlertRule",
+      "name": "DeleteAlertRule",
+      "version": "1.0.0",
+      "description": "删除告警规则",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v3/alert_rule/config/:id"
+      },
+      "import": ["easyops/model/monitor/alert_rule"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "AlertRule.id"
+          }
+        ],
+        "required": ["AlertRule.id"]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "code"
+          },
+          {
+            "name": "msg",
+            "type": "string",
+            "description": "msg"
+          },
+          {
+            "name": "data",
+            "type": "map",
+            "description": "data"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "monitor.alert_rule.DetailAlertRule",
+      "name": "DetailAlertRule",
+      "version": "1.0.0",
+      "description": "获取告警规则详情",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v3/alert_rule/config/:id"
+      },
+      "import": ["easyops/model/monitor/alert_rule"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "AlertRule.id"
+          }
+        ],
+        "required": ["AlertRule.id"]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "code"
+          },
+          {
+            "name": "msg",
+            "type": "string",
+            "description": "msg"
+          },
+          {
+            "name": "data",
+            "type": "AlertRule",
+            "description": "data"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "monitor.alert_rule.DetailAlertRuleV4",
+      "name": "DetailAlertRuleV4",
+      "version": "1.0.0",
+      "description": "获取告警规则详情(支持按历史版本搜索)",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v4/alert_rule/config/:id"
+      },
+      "import": ["easyops/model/monitor/alert_rule"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "AlertRule.id"
+          },
+          {
+            "ref": "AlertRule.version"
+          }
+        ],
+        "required": ["AlertRule.id"]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "code"
+          },
+          {
+            "name": "msg",
+            "type": "string",
+            "description": "msg"
+          },
+          {
+            "name": "data",
+            "type": "AlertRule",
+            "description": "data"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "monitor.alert_rule.DisableAlertRule",
+      "name": "DisableAlertRule",
+      "version": "1.0.0",
+      "description": "禁/启用告警规则",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v3/alert_rule/disabled/:id"
+      },
+      "import": ["easyops/model/monitor/alert_rule"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "AlertRule.disabled"
+          },
+          {
+            "ref": "AlertRule.id"
+          }
+        ]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "code"
+          },
+          {
+            "name": "msg",
+            "type": "string",
+            "description": "msg"
+          },
+          {
+            "name": "data",
+            "type": "object",
+            "description": "data",
+            "fields": [
+              {
+                "name": "count",
+                "type": "int",
+                "description": "更新数量"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "monitor.alert_rule.AlertRuleInfo",
+      "name": "AlertRuleInfo",
+      "version": "1.0.0",
+      "description": "根据告警类型，表名获取相关信息",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v3/alert_rule/info"
+      },
+      "import": ["easyops/model/monitor/alert_rule"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "alert_type_id",
+            "type": "string",
+            "description": "告警类型"
+          },
+          {
+            "name": "table",
+            "type": "string",
+            "description": "表名"
+          },
+          {
+            "name": "alert_sub_type_id",
+            "type": "string",
+            "description": "告警子类型"
+          }
+        ],
+        "required": ["alert_type_id", "table", "alert_sub_type_id"]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "code"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "分页大小"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页数"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总数"
+          },
+          {
+            "name": "msg",
+            "type": "string",
+            "description": "msg"
+          },
+          {
+            "name": "data",
+            "type": "object",
+            "description": "data",
+            "fields": [
+              {
+                "ref": "AlertRule.templates"
+              },
+              {
+                "name": "macros",
+                "type": "object[]",
+                "description": "内置变量",
+                "fields": [
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "description": "变量名称"
+                  },
+                  {
+                    "name": "description",
+                    "type": "string",
+                    "description": "描述"
+                  }
+                ]
+              },
+              {
+                "name": "metrics",
+                "type": "object[]",
+                "description": "关联指标列表",
+                "fields": [
+                  {
+                    "name": "value_type",
+                    "type": "string",
+                    "description": "指标类型"
+                  },
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "description": "指标名称"
+                  },
+                  {
+                    "name": "unit",
+                    "type": "string",
+                    "description": "指标单位"
+                  },
+                  {
+                    "name": "description",
+                    "type": "string",
+                    "description": "描述"
+                  }
+                ]
+              },
+              {
+                "name": "dims",
+                "type": "object[]",
+                "description": "关联维度列表",
+                "fields": [
+                  {
+                    "name": "object_key",
+                    "type": "string",
+                    "description": "模型字段名称"
+                  },
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "description": "指标名称"
+                  },
+                  {
+                    "name": "object_id",
+                    "type": "string",
+                    "description": "模型ID"
+                  },
+                  {
+                    "name": "description",
+                    "type": "string",
+                    "description": "描述"
+                  }
+                ]
+              },
+              {
+                "name": "receiver_owner_groups",
+                "type": "object[]",
+                "description": "通知用户组列表",
+                "fields": [
+                  {
+                    "name": "translate",
+                    "type": "string",
+                    "description": "说明"
+                  },
+                  {
+                    "name": "object_attr_id",
+                    "type": "string",
+                    "description": "模型字段ID"
+                  },
+                  {
+                    "name": "object_id",
+                    "type": "string",
+                    "description": "模型ID"
+                  }
+                ]
+              },
+              {
+                "name": "custom_fields",
+                "type": "object[]",
+                "description": "自定义变量列表",
+                "fields": [
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "description": "变量名称"
+                  },
+                  {
+                    "name": "field_name",
+                    "type": "string",
+                    "description": "原始字段名称"
+                  },
+                  {
+                    "name": "value_type",
+                    "type": "string",
+                    "description": "变量类型"
+                  },
+                  {
+                    "name": "unit",
+                    "type": "string",
+                    "description": "单位"
+                  },
+                  {
+                    "name": "description",
+                    "type": "string",
+                    "description": "描述"
+                  }
+                ]
+              },
+              {
+                "name": "comparators",
+                "type": "string[]",
+                "description": "比较器列表"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "monitor.alert_rule.GetAlertRuleList",
+      "name": "GetAlertRuleList",
+      "version": "1.0.0",
+      "description": "获取告警规则列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v3/alert_rule/config"
+      },
+      "import": ["easyops/model/monitor/alert_rule"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页数"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "分页大小"
+          },
+          {
+            "name": "system",
+            "type": "string",
+            "enum": ["monitor_v2"],
+            "description": "如果指定此参数为monitor_v2,则查询的为新告警策略,否则为旧告警策略"
+          },
+          {
+            "name": "_id__in",
+            "type": "string",
+            "description": "规则id, 多个用逗号分隔符"
+          },
+          {
+            "name": "objectId",
+            "type": "string",
+            "description": "关联模型ID"
+          },
+          {
+            "name": "XXX_RestFieldMask",
+            "type": "string[]",
+            "description": "sdk限制字段使用"
+          }
+        ]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "code"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "分页大小"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页数"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总数"
+          },
+          {
+            "name": "msg",
+            "type": "string",
+            "description": "msg"
+          },
+          {
+            "name": "data",
+            "type": "AlertRule[]",
+            "description": "data"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "monitor.alert_rule.ListAlertRuleAll",
+      "name": "ListAlertRuleAll",
+      "version": "1.0.0",
+      "description": "获取全部告警规则列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v3/alert_rule/config/all"
+      },
+      "import": ["easyops/model/monitor/alert_rule"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "system",
+            "type": "string",
+            "enum": ["monitor_v2"],
+            "description": "如果指定此参数为monitor_v2,则查询的为新告警策略,否则为旧告警策略"
+          },
+          {
+            "name": "XXX_RestFieldMask",
+            "type": "string[]",
+            "description": "sdk限制字段使用"
+          }
+        ]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "code"
+          },
+          {
+            "name": "msg",
+            "type": "string",
+            "description": "msg"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总数"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页数",
+            "validate": {
+              "gte": 1
+            }
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "分页大小",
+            "validate": {
+              "gte": 1
+            }
+          },
+          {
+            "name": "data",
+            "type": "AlertRule[]",
+            "description": "data"
+          }
+        ],
+        "required": ["code", "msg", "data", "total", "page", "page_size"]
+      }
+    },
+    {
+      "contract": "monitor.alert_rule.UpdateAlertRule",
+      "name": "UpdateAlertRule",
+      "version": "1.0.0",
+      "description": "更新告警规则",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v3/alert_rule/config/:id"
+      },
+      "import": ["easyops/model/monitor/alert_rule"],
+      "request": {
+        "type": "AlertRule"
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "code"
+          },
+          {
+            "name": "msg",
+            "type": "string",
+            "description": "msg"
+          },
+          {
+            "name": "data",
+            "type": "object",
+            "description": "data",
+            "fields": [
+              {
+                "name": "count",
+                "type": "int",
+                "description": "更新数量"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "monitor.app_health.GetAppHealthConfigV2",
+      "name": "GetAppHealthConfigV2",
+      "version": "1.0.0",
+      "description": "获取应用评分配置v2",
+      "endpoint": {
+        "method": "get",
+        "uri": "/api/v2/app_health/config/:app_id"
+      },
+      "import": ["easyops/model/monitor_config/app_health_config"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "app_id",
+            "type": "string",
+            "description": "应用id"
+          }
+        ]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "返回码"
+          },
+          {
+            "name": "msg",
+            "type": "string",
+            "description": "返回信息"
+          },
+          {
+            "name": "data",
+            "type": "AppHealthConfig",
+            "description": "返回数据"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "monitor.auto_recovery.CreateAutoRecoveryEvent",
+      "name": "CreateAutoRecoveryEvent",
+      "version": "1.0.0",
+      "description": "创建告警自愈事件",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/auto_recovery/event"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "source",
+            "type": "string",
+            "description": "告警自愈事件源"
+          },
+          {
+            "name": "desc",
+            "type": "string",
+            "description": "描述"
+          },
+          {
+            "name": "url",
+            "type": "string",
+            "description": "分页大小"
+          },
+          {
+            "name": "event",
+            "type": "map",
+            "description": "自愈事件"
+          }
+        ]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "code"
+          },
+          {
+            "name": "msg",
+            "type": "string",
+            "description": "msg"
+          },
+          {
+            "name": "data",
+            "type": "object",
+            "description": "data",
+            "fields": [
+              {
+                "name": "id",
+                "type": "string[]",
+                "description": "告警自愈历史id列表"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "monitor.collector.GetList",
+      "name": "GetList",
+      "version": "1.0.0",
+      "description": "获取指标数据",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/collector/list/:table"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "table",
+            "type": "string",
+            "description": "指定查询的表"
+          },
+          {
+            "name": "__select__",
+            "type": "string[]",
+            "description": "指定查询的指标名"
+          },
+          {
+            "name": "__groupby__",
+            "type": "string",
+            "description": "指定分组字段"
+          },
+          {
+            "name": "st",
+            "type": "string",
+            "description": "开始时间"
+          },
+          {
+            "name": "et",
+            "type": "string",
+            "description": "结束时间"
+          },
+          {
+            "name": "timerange",
+            "type": "string",
+            "description": "时间范围"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "页大小"
+          }
+        ],
+        "description": "支持动态构造请求参数进行通用查询，具体如下：\n  1. 默认查询为精确查询，如\n      /collector/list/host?ip=1.1.1.1&page=1&page_size=10000\n  2. 支持两种范式的in查询，如\n      /collector/list/host?ip__in=1.1.1.1,1.1.1.2&page=1&page_size=10000\n      /collector/list/host?ip__in=1.1.1.1&ip__in=1.1.1.2&page=1&page_size=10000\n  3. 支持模糊查询，如\n      /collector/list/host?ip__like=1.1.1.&page=1&page_size=10000\n  4. 支持不等于查询，如\n      /collector/list/host?ip__ne=1.1.1.3&page=1&page_size=10000\n  5. 支持大于查询，如\n      /collector/list/host?create_time__gt=1111111&page=1&page_size=10000\n  6. 支持小于查询，如\n      /collector/list/host?create_time__lt=2222222&page=1&page_size=10000\n  7. 支持between查询，如\n      /collector/list/host?create_time__between=1111111,2222222&page=1&page_size=10000\n  8. 支持或查询，如\n      /collector/list/host?ip__like|disabled__eq=1.1.1.,0&page=1&page_size=10000#ip为1.1.1.0/24网段或者disabled等于0\n",
+        "required": ["table"]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "返回码"
+          },
+          {
+            "name": "msg",
+            "type": "string",
+            "description": "消息"
+          },
+          {
+            "name": "data",
+            "type": "map[]",
+            "description": "数据"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "分页大小"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总数"
+          }
+        ],
+        "required": ["code", "msg", "data"]
+      }
+    },
+    {
+      "contract": "monitor.data_name.CreateMetrics",
+      "name": "CreateMetrics",
+      "version": "1.0.0",
+      "description": "创建采集指标",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/collector/general_config"
+      },
+      "import": ["easyops/model/monitor/metrics"],
+      "request": {
+        "type": "Metrics"
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "返回码"
+          },
+          {
+            "name": "msg",
+            "type": "string",
+            "description": "返回信息"
+          },
+          {
+            "name": "data",
+            "type": "object",
+            "fields": [
+              {
+                "name": "id",
+                "type": "string",
+                "description": "Metrics _id"
+              }
+            ],
+            "description": "结果"
+          }
+        ],
+        "required": ["code", "msg", "data"]
+      }
+    },
+    {
+      "contract": "monitor.data_name.ListMetrics",
+      "name": "ListMetrics",
+      "version": "1.0.0",
+      "description": "获取指标表列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/collector/general_config"
+      },
+      "import": ["easyops/model/monitor/metrics"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "int",
+            "description": "页数",
+            "validate": {
+              "gte": 1
+            }
+          },
+          {
+            "name": "page_size",
+            "type": "int",
+            "description": "分页大小",
+            "validate": {
+              "gte": 1,
+              "lte": 300
+            }
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "wrapper": false,
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "返回码"
+          },
+          {
+            "name": "msg",
+            "type": "string",
+            "description": "返回信息"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总数"
+          },
+          {
+            "name": "page",
+            "type": "int",
+            "description": "页码",
+            "validate": {
+              "gte": 1
+            }
+          },
+          {
+            "name": "page_size",
+            "type": "int",
+            "description": "分页大小",
+            "validate": {
+              "gte": 1
+            }
+          },
+          {
+            "name": "data",
+            "type": "Metrics[]",
+            "description": "翻译规则列表"
+          }
+        ],
+        "required": ["code", "msg", "data", "total", "page", "page_size"]
+      }
+    },
+    {
+      "contract": "monitor.influxdb.InfluxdbProxy",
+      "name": "InfluxdbProxy",
+      "version": "1.0.0",
+      "description": "influxdb数据获取",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/influxdb/proxy/query"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "db",
+            "type": "string",
+            "description": "数据库"
+          },
+          {
+            "name": "q",
+            "type": "string",
+            "description": "SQL语句"
+          },
+          {
+            "name": "epoch",
+            "type": "string",
+            "enum": ["w", "d", "h", "m", "s", "ms", "u", "ns"],
+            "description": "返回时间戳的精度"
+          }
+        ],
+        "required": ["db", "q", "epoch"]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "results",
+            "type": "object[]",
+            "description": "返回的数据",
+            "fields": [
+              {
+                "name": "series",
+                "type": "object[]",
+                "description": "series",
+                "fields": [
+                  {
+                    "name": "values",
+                    "type": "value",
+                    "description": "指标值（是一个二维表），根据sql不同而不同，他的列在columns标明"
+                  },
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "description": "表名"
+                  },
+                  {
+                    "name": "columns",
+                    "type": "string[]",
+                    "description": "列名"
+                  },
+                  {
+                    "name": "tags",
+                    "type": "map",
+                    "description": "tags"
+                  }
+                ]
+              },
+              {
+                "name": "error",
+                "type": "string",
+                "description": "error"
+              },
+              {
+                "name": "statement_id",
+                "type": "int",
+                "description": "statement_id"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "monitor.log_search.LogSearch",
+      "name": "LogSearch",
+      "version": "1.0.0",
+      "description": "日志搜索",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/log_search/search"
+      },
+      "import": ["easyops/model/log_search/log_search_data"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "log_file_name",
+            "type": "string",
+            "description": "日志路径"
+          },
+          {
+            "name": "enabled_file_pattern",
+            "type": "bool",
+            "description": "是否允许模糊匹配日志路径"
+          },
+          {
+            "name": "keywords",
+            "type": "string",
+            "description": "搜索关键字。多个用空格分隔，and逻辑"
+          },
+          {
+            "name": "max_return_lines",
+            "type": "string",
+            "description": "最大返回行数。如需修改最大查询行数, 以逗号分隔, 如 10,1000 表示一次最多查询1000行, 返回匹配到关键字的10行"
+          },
+          {
+            "name": "before_lines",
+            "type": "int",
+            "description": "关键字前n行"
+          },
+          {
+            "name": "after_lines",
+            "type": "int",
+            "description": "关键字后n行"
+          },
+          {
+            "name": "agents",
+            "type": "ip[]",
+            "description": "搜索主机IP列表"
+          }
+        ],
+        "required": ["log_file_name", "agents"]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "code"
+          },
+          {
+            "name": "message",
+            "type": "string",
+            "description": "返回码字符串表示"
+          },
+          {
+            "name": "data",
+            "type": "LogSearchData[]",
+            "description": "data"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "monitor.translate.ListTranslateData",
+      "name": "ListTranslateData",
+      "version": "1.0.0",
+      "description": "获取翻译规则对应的翻译数据",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v2/translate/storm/data"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "rule_ids",
+            "type": "string[]",
+            "description": "翻译规则id列表"
+          }
+        ],
+        "required": ["rule_ids"]
+      },
+      "response": {
+        "type": "object",
+        "wrapper": false,
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "返回码"
+          },
+          {
+            "name": "page_size",
+            "type": "int",
+            "description": "分页参数",
+            "validate": {
+              "gte": 1,
+              "lte": 1000
+            }
+          },
+          {
+            "name": "page",
+            "type": "int",
+            "description": "页数",
+            "validate": {
+              "gte": 1
+            }
+          },
+          {
+            "name": "msg",
+            "type": "string",
+            "description": "返回信息"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总数"
+          },
+          {
+            "name": "data",
+            "type": "object[]",
+            "description": "返回数据",
+            "fields": [
+              {
+                "name": "matchKey",
+                "type": "string",
+                "description": "匹配key"
+              },
+              {
+                "name": "resource",
+                "type": "object",
+                "description": "关联资源",
+                "fields": [
+                  {
+                    "name": "instances",
+                    "type": "instance_id[]",
+                    "description": "实例id列表"
+                  },
+                  {
+                    "name": "objectId",
+                    "type": "object_id",
+                    "description": "关联模型Id"
+                  }
+                ]
+              },
+              {
+                "name": "tags",
+                "type": "object[]",
+                "description": "标签",
+                "fields": [
+                  {
+                    "name": "value",
+                    "type": "string[]",
+                    "description": "值"
+                  },
+                  {
+                    "name": "key",
+                    "type": "string",
+                    "description": "键"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "monitor.translate.ListTranslateRule",
+      "name": "ListTranslateRule",
+      "version": "1.0.0",
+      "description": "获取翻译规则列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/translate/rule"
+      },
+      "import": ["easyops/model/monitor/translate_rule"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "int",
+            "description": "页数",
+            "validate": {
+              "gte": 1
+            }
+          },
+          {
+            "name": "page_size",
+            "type": "int",
+            "description": "分页大小",
+            "validate": {
+              "gte": 1,
+              "lte": 1000
+            }
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "wrapper": false,
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "返回码"
+          },
+          {
+            "name": "msg",
+            "type": "string",
+            "description": "返回信息"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总数"
+          },
+          {
+            "name": "page",
+            "type": "int",
+            "description": "页码",
+            "validate": {
+              "gte": 1
+            }
+          },
+          {
+            "name": "page_size",
+            "type": "int",
+            "description": "分页大小",
+            "validate": {
+              "gte": 1
+            }
+          },
+          {
+            "name": "data",
+            "type": "TransalteRule[]",
+            "description": "翻译规则列表"
+          }
+        ],
+        "required": ["code", "msg", "data", "total", "page", "page_size"]
+      }
+    }
+  ]
+}
