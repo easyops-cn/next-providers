@@ -12,6 +12,9 @@ export interface ModelApi_CheckModelRequestBody {
   /** objectId */
   objectId?: string;
 
+  /** 所属父模型列表 */
+  parentObjectIds?: string[];
+
   /** attrList */
   attrList?: (Partial<ModelObjectAttr> &
     ModelApi_CheckModelRequestBody_attrList_item)[];

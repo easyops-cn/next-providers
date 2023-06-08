@@ -5,6 +5,9 @@ import { ResponseBodyWrapper } from "../../../wrapper";
 export interface ModelApi_ModelCenterGenerateModelsDefinitionRequestBody {
   /** 模型instanceId */
   instanceIds: string[];
+
+  /** 只包含发布模型 */
+  onlyReleased?: boolean;
 }
 
 export interface ModelApi_ModelCenterGenerateModelsDefinitionResponseBody {

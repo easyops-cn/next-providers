@@ -1,11 +1,8 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
 export interface PackageAloneApi_UpdateDependenciesRequestBody {
-  /** 依赖名称 */
-  name?: string[];
-
-  /** 是否是企业版 */
-  isEnterprise?: boolean;
+  /** dependencyInfo */
+  dependencyInfo?: PackageAloneApi_UpdateDependenciesRequestBody_dependencyInfo_item[];
 }
 
 /**
@@ -22,3 +19,14 @@ export const PackageAloneApi_updateDependencies = (
     data,
     options
   );
+
+export interface PackageAloneApi_UpdateDependenciesRequestBody_dependencyInfo_item {
+  /** 依赖名称 */
+  name?: string;
+
+  /** actualVersion */
+  actualVersion?: string;
+
+  /** 是否使用最新开发版本 */
+  isDeveloping?: boolean;
+}

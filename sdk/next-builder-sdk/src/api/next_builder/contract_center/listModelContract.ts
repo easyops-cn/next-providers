@@ -1,5 +1,8 @@
 import { http, HttpOptions } from "@next-core/brick-http";
-import { ModelModelContract } from "../../../model/flow_builder";
+import {
+  ModelModelContract,
+  ModelFlowBuilderContractNamespace,
+} from "../../../model/flow_builder";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface ContractCenterApi_ListModelContractRequestParams {
@@ -50,6 +53,9 @@ export interface ContractCenterApi_ListModelContractResponseBody_data_item {
 
   /** 契约引用到的模型 */
   useModels?: ModelModelContract["useModels"];
+
+  /** 契约对应的命名空间信息 */
+  namespace?: Partial<ModelFlowBuilderContractNamespace>;
 
   /** 单个模型的最新版本 */
   latestVersion?: string;

@@ -19,6 +19,9 @@ export interface PackageAloneApi_ListDependenciesResponseItem {
 
   /** 依赖方式 */
   dependencyWay?: "direct" | "indirect";
+
+  /** 是否使用最新开发版本 */
+  isDeveloping?: boolean;
 }
 
 export type PackageAloneApi_ListDependenciesResponseBody =

@@ -8,4 +8,7 @@ export interface ModelObjectIndex {
 
   /** 是否唯一 */
   unique: boolean;
+
+  /** true 内置索引，false 用户自定义索引 */
+  protected: boolean;
 }

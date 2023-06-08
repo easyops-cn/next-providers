@@ -1,4 +1,4 @@
-/** 权限点 */
+/** 权限点, mongoDB的存储结构 */
 export interface ModelPermission {
   /** 权限点id */
   id: string;

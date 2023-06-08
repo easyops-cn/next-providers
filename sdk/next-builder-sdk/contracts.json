@@ -74,6 +74,59 @@
       }
     },
     {
+      "contract": "next_builder.build.BatchDeleteImages",
+      "category": {
+        "en": "Build",
+        "zh": "构建"
+      },
+      "name": "BatchDeleteImages",
+      "version": "1.1.0",
+      "description": "批量删除图片",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next_builder/images/batch_delete"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectInstanceId",
+            "type": "string",
+            "description": "图片所在项目的instanceId"
+          },
+          {
+            "name": "imageNames",
+            "type": "string[]",
+            "description": "图片名字"
+          }
+        ],
+        "required": ["projectInstanceId", "imageNames"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "BatchDeleteImages",
+            "zh": "批量删除图片"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8142/api/v1/next_builder/images/batch_delete",
+            "headers": {
+              "Content-Type": "application/json",
+              "body": "{\n    \"projectInstanceId\": \"5ef4c373fd109\",\n    \"imageNames\": [\n        \"xx.png\",\n        \"yy.png\"\n    ]\n}"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {}\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "next_builder.build.BuildAndPush",
       "category": {
         "en": "Build",
@@ -117,11 +170,137 @@
                 "name": "menus",
                 "type": "bool",
                 "description": "目录"
+              },
+              {
+                "name": "workflow",
+                "type": "bool",
+                "description": "工作流"
               }
             ]
           }
         ],
         "required": ["projectId", "storyboardJson"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Build And Push",
+            "zh": "推送app"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8142/api/v1/next-builder/build-and-push",
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8",
+              "body": "{\n  \"projectId\": \"P-1300007\",\n  \"storyboardJson\": \"{\\\"routes\\\":[{\\\"alias\\\":\\\"首页\\\",\\\"exact\\\":true,\\\"hybrid\\\":false,\\\"path\\\":\\\"${APP.homepage}\\\",\\\"public\\\":false,\\\"type\\\":\\\"bricks\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.micro-view\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"pageTitle\\\":\\\"Hello world\\\"},\\\"slots\\\":{\\\"toolbar\\\":{\\\"type\\\":\\\"bricks\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.general-button\\\",\\\"events\\\":{\\\"general.button.click\\\":[{\\\"action\\\":\\\"message.success\\\",\\\"args\\\":[\\\"点击操作按钮\\\"]}]},\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"buttonName\\\":\\\"操作\\\"}}]},\\\"content\\\":{\\\"type\\\":\\\"bricks\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"presentational-bricks.brick-result\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"customTitle\\\":\\\"Today is Tuesday\\\",\\\"status\\\":\\\"info\\\",\\\"subTitle\\\":\\\"2019/10/29 21:35\\\"}}]}}}]},{\\\"alias\\\":\\\"用户列表\\\",\\\"exact\\\":true,\\\"hybrid\\\":false,\\\"path\\\":\\\"${APP.homepage}/users\\\",\\\"public\\\":false,\\\"type\\\":\\\"bricks\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.micro-view\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"pageTitle\\\":\\\"用户列表\\\"}}]}],\\\"meta\\\":{\\\"customTemplates\\\":[],\\\"menus\\\":[],\\\"i18n\\\":{\\\"en\\\":{},\\\"zh\\\":{}},\\\"functions\\\":[]},\\\"dependsAll\\\":false}\"\n}"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "contract": "next_builder.build.BuildAndPushStandalone",
+      "category": {
+        "en": "Build",
+        "zh": "构建"
+      },
+      "name": "BuildAndPushStandalone",
+      "version": "1.1.0",
+      "description": "构建推送app (standalone模式)",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next-builder/build-and-push-standalone"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.projectId"
+          },
+          {
+            "name": "storyboardJson",
+            "type": "string",
+            "description": "storyboard的json内容"
+          },
+          {
+            "name": "appIconBase64",
+            "type": "string",
+            "description": "app图标的base64"
+          },
+          {
+            "name": "ignoredResources",
+            "type": "object",
+            "description": "忽略push的资源",
+            "fields": [
+              {
+                "name": "image",
+                "type": "bool",
+                "description": "图片"
+              },
+              {
+                "name": "menus",
+                "type": "bool",
+                "description": "目录"
+              }
+            ]
+          }
+        ],
+        "required": ["projectId", "storyboardJson"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Build And Push Standalone",
+            "zh": "构建推送app (standalone模式)"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8142/api/v1/next-builder/build-and-push-standalone",
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"ignoredResources\": {\n        \"image\": true,\n        \"menus\": true\n    },\n    \"projectId\": \"P-1300361\",\n    \"storyboardJson\": \"{\\\"routes\\\": [{\\\"bricks\\\": [{\\\"iid\\\": \\\"5de54eeb50426\\\", \\\"brick\\\": \\\"basic-bricks.general-button\\\", \\\"injectDeep\\\": true, \\\"portal\\\": false, \\\"properties\\\": {}}, {\\\"iid\\\": \\\"5dd0d4442979e\\\", \\\"brick\\\": \\\"basic-bricks.grid-layout\\\", \\\"injectDeep\\\": true, \\\"portal\\\": false}], \\\"exact\\\": true, \\\"hybrid\\\": false, \\\"alias\\\": \\\"kaka\\\", \\\"context\\\": [{\\\"resolve\\\": {\\\"args\\\": [\\\"HOST\\\"], \\\"useProvider\\\": \\\"providers-of-cmdb.cmdb-object-api-get-detail\\\"}, \\\"name\\\": \\\"abc\\\"}], \\\"path\\\": \\\"${APP.homepage}/kaka\\\", \\\"type\\\": \\\"bricks\\\", \\\"public\\\": false}], \\\"meta\\\": {\\\"functions\\\": [], \\\"customTemplates\\\": [], \\\"menus\\\": [], \\\"contracts\\\": [], \\\"i18n\\\": {\\\"en\\\": {}, \\\"zh\\\": {}}, \\\"mocks\\\": {\\\"mockList\\\": [], \\\"mockId\\\": \\\"1317a9b0\\\"}}, \\\"dependsAll\\\": false}\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"data\": null\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "next_builder.build.DeleteImage",
+      "category": {
+        "en": "Build",
+        "zh": "构建"
+      },
+      "name": "DeleteImage",
+      "version": "1.1.0",
+      "description": "删除图片",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/next_builder/images/:imageInstanceId"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "imageInstanceId",
+            "type": "instance_id",
+            "description": "图片的instanceId"
+          }
+        ],
+        "required": ["imageInstanceId"]
       },
       "response": null
     },
@@ -525,6 +704,11 @@
             "name": "instanceId",
             "type": "instance_id",
             "description": "小产品项目id"
+          },
+          {
+            "name": "isStandalone",
+            "type": "bool",
+            "description": "是否standalone模式的打包记录"
           }
         ],
         "required": ["instanceId"]
@@ -646,6 +830,51 @@
         "required": ["MicroAppProject.projectId", "version", "description"]
       },
       "response": null
+    },
+    {
+      "contract": "next_builder.build.RecoverFromHistoryVersion",
+      "category": {
+        "en": "Build",
+        "zh": "构建"
+      },
+      "name": "RecoverFromHistoryVersion",
+      "version": "1.0.0",
+      "description": "从历史版本恢复数据",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next_builder/:appId/recover"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "小产品appId"
+          },
+          {
+            "name": "historyVersion",
+            "type": "string",
+            "description": "历史版本"
+          }
+        ],
+        "required": ["appId", "historyVersion"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "newAppInstanceId",
+            "type": "instance_id",
+            "description": "新的小产品instanceId"
+          },
+          {
+            "name": "newAppProjectId",
+            "type": "string",
+            "description": "新的小产品projectId"
+          }
+        ]
+      }
     },
     {
       "contract": "next_builder.build.SnippetPackageUpload",
@@ -851,6 +1080,128 @@
         ]
       },
       "response": null
+    },
+    {
+      "contract": "next_builder.cmdb_object.List",
+      "name": "List",
+      "version": "1.0.0",
+      "description": "透传cmdb接口-获取模型列表",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/v1/next_builder/:instanceId/object"
+      },
+      "import": [
+        "easyops/model/cmdb/cmdb_object",
+        "easyops/model/cmdb/list_object_request",
+        "easyops/model/next_builder/micro_app_project"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.instanceId"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "页大小"
+          },
+          {
+            "ref": "ListObjectRequest.*"
+          },
+          {
+            "name": "ignoreAttrPermission",
+            "type": "bool",
+            "description": "忽略模型字段权限校验"
+          }
+        ],
+        "default": {
+          "ignoreAttrPermission": false
+        }
+      },
+      "response": {
+        "type": "CmdbObject"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "get object list（pass-through）",
+            "zh": "透传cmdb接口-获取模型列表"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8142/api/v1/next_builder/5f636896fd646/object?page=1&page_size=1"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n\t\"code\": 0,\n\t\"error\": \"\",\n\t\"message\": \"\",\n\t\"data\": {\n\t\t\"total\": 769,\n\t\t\"page\": 1,\n\t\t\"page_size\": 1,\n\t\t\"list\": [{\n\t\t\t\"objectId\": \"BUSINESS\",\n\t\t\t\"name\": \"应用系统\",\n\t\t\t\"icon\": \"fa fa-cubes\",\n\t\t\t\"category\": \"应用资源.门户\",\n\t\t\t\"memo\": \"\",\n\t\t\t\"protected\": true,\n\t\t\t\"system\": \"\",\n\t\t\t\"notifyDenied\": false,\n\t\t\t\"view\": {\n\t\t\t\t\"attr_authorizers\": null,\n\t\t\t\t\"attr_category_order\": [\n\t\t\t\t\t\"基本信息\",\n\t\t\t\t\t\"默认属性\"\n\t\t\t\t],\n\t\t\t\t\"attr_order\": [\n\t\t\t\t\t\"applicationProfile\"\n\t\t\t\t],\n\t\t\t\t\"hide_columns\": [\n\t\t\t\t\t\"BUSINESS_POST\",\n\t\t\t\t\t\"HOST\",\n\t\t\t\t\t\"_owner_BUSINESS\"\n\t\t\t\t],\n\t\t\t\t\"relation_group_order\": [],\n\t\t\t\t\"relation_order\": [],\n\t\t\t\t\"showHideAttrs\": true,\n\t\t\t\t\"show_key\": [\n\t\t\t\t\t\"name\"\n\t\t\t\t],\n\t\t\t\t\"visible\": true\n\t\t\t},\n\t\t\t\"attrList\": [{\n\t\t\t\t\"id\": \"applicationProfile\",\n\t\t\t\t\"name\": \"应用简介\",\n\t\t\t\t\"protected\": false,\n\t\t\t\t\"custom\": \"true\",\n\t\t\t\t\"unique\": \"false\",\n\t\t\t\t\"readonly\": \"false\",\n\t\t\t\t\"required\": \"true\",\n\t\t\t\t\"tag\": [\n\t\t\t\t\t\"基本信息\"\n\t\t\t\t],\n\t\t\t\t\"description\": \"\",\n\t\t\t\t\"tips\": \"\",\n\t\t\t\t\"value\": {\n\t\t\t\t\t\"type\": \"str\",\n\t\t\t\t\t\"regex\": null,\n\t\t\t\t\t\"default_type\": \"value\",\n\t\t\t\t\t\"default\": null,\n\t\t\t\t\t\"struct_define\": [],\n\t\t\t\t\t\"mode\": \"default\",\n\t\t\t\t\t\"prefix\": \"\",\n\t\t\t\t\t\"start_value\": 0,\n\t\t\t\t\t\"series_number_length\": 0\n\t\t\t\t},\n\t\t\t\t\"wordIndexDenied\": false,\n\t\t\t\t\"isInherit\": false,\n\t\t\t\t\"notifyDenied\": false,\n\t\t\t\t\"inheritObjectId\": \"\"\n\t\t\t}],\n\t\t\t\"relation_groups\": [{\n\t\t\t\t\t\"id\": \"_user\",\n\t\t\t\t\t\"name\": \"负责人\",\n\t\t\t\t\t\"protected\": true\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"id\": \"_relate_business\",\n\t\t\t\t\t\"name\": \"父子关系\",\n\t\t\t\t\t\"protected\": true\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"id\": \"_relate_app\",\n\t\t\t\t\t\"name\": \"关联应用\",\n\t\t\t\t\t\"protected\": true\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"id\": \"basic_info\",\n\t\t\t\t\t\"name\": \"基本属性\",\n\t\t\t\t\t\"protected\": true\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"relation_list\": [{\n\t\t\t\t\t\"relation_id\": \"APP_INTERFACE_belongToBUSINESS_APP_INTERFACE_BUSINESS\",\n\t\t\t\t\t\"name\": \"\",\n\t\t\t\t\t\"protected\": false,\n\t\t\t\t\t\"notifyDenied\": false,\n\t\t\t\t\t\"isInherit\": false,\n\t\t\t\t\t\"left_object_id\": \"APP_INTERFACE\",\n\t\t\t\t\t\"leftInheritObjectId\": \"\",\n\t\t\t\t\t\"left_id\": \"belongToBUSINESS\",\n\t\t\t\t\t\"left_description\": \"包含应用接口\",\n\t\t\t\t\t\"left_name\": \"所属应用系统\",\n\t\t\t\t\t\"left_min\": 0,\n\t\t\t\t\t\"left_max\": -1,\n\t\t\t\t\t\"left_groups\": [],\n\t\t\t\t\t\"left_tags\": [],\n\t\t\t\t\t\"right_object_id\": \"BUSINESS\",\n\t\t\t\t\t\"rightInheritObjectId\": \"\",\n\t\t\t\t\t\"right_id\": \"APP_INTERFACE\",\n\t\t\t\t\t\"right_description\": \"所属应用系统\",\n\t\t\t\t\t\"right_name\": \"包含应用接口\",\n\t\t\t\t\t\"right_min\": 0,\n\t\t\t\t\t\"right_max\": -1,\n\t\t\t\t\t\"right_groups\": [],\n\t\t\t\t\t\"right_tags\": [\n\t\t\t\t\t\t\"默认属性\"\n\t\t\t\t\t],\n\t\t\t\t\t\"_version\": 3\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"relation_id\": \"APP_businesses_BUSINESS\",\n\t\t\t\t\t\"name\": \"所属系统\",\n\t\t\t\t\t\"protected\": true,\n\t\t\t\t\t\"notifyDenied\": false,\n\t\t\t\t\t\"isInherit\": false,\n\t\t\t\t\t\"left_object_id\": \"APP\",\n\t\t\t\t\t\"leftInheritObjectId\": \"\",\n\t\t\t\t\t\"left_id\": \"businesses\",\n\t\t\t\t\t\"left_description\": \"应用\",\n\t\t\t\t\t\"left_name\": \"所属系统\",\n\t\t\t\t\t\"left_min\": 0,\n\t\t\t\t\t\"left_max\": 1,\n\t\t\t\t\t\"left_groups\": [\n\t\t\t\t\t\t\"_relate_business\",\n\t\t\t\t\t\t\"basic_info\"\n\t\t\t\t\t],\n\t\t\t\t\t\"left_tags\": [],\n\t\t\t\t\t\"right_object_id\": \"BUSINESS\",\n\t\t\t\t\t\"rightInheritObjectId\": \"\",\n\t\t\t\t\t\"right_id\": \"_businesses_APP\",\n\t\t\t\t\t\"right_description\": \"所属系统\",\n\t\t\t\t\t\"right_name\": \"应用\",\n\t\t\t\t\t\"right_min\": 0,\n\t\t\t\t\t\"right_max\": -1,\n\t\t\t\t\t\"right_groups\": [\n\t\t\t\t\t\t\"_relate_app\",\n\t\t\t\t\t\t\"basic_info\"\n\t\t\t\t\t],\n\t\t\t\t\t\"right_tags\": [],\n\t\t\t\t\t\"_version\": 1\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"indexList\": [{\n\t\t\t\t\"name\": \"1030&u&name\",\n\t\t\t\t\"propertyIds\": [\n\t\t\t\t\t\"name\"\n\t\t\t\t],\n\t\t\t\t\"unique\": true\n\t\t\t}],\n\t\t\t\"updateAuthorizers\": [],\n\t\t\t\"deleteAuthorizers\": [],\n\t\t\t\"readAuthorizers\": [],\n\t\t\t\"wordIndexDenied\": false,\n\t\t\t\"_version\": 102,\n\t\t\t\"creator\": \"defaultUser\",\n\t\t\t\"modifier\": \"easyops\",\n\t\t\t\"isAbstract\": false,\n\t\t\t\"parentObjectId\": \"\",\n\t\t\t\"permissionDenied\": false,\n\t\t\t\"parentObjectIds\": []\n\t\t}]\n\t}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "next_builder.cmdb_object.ListObjectBasic",
+      "name": "ListObjectBasic",
+      "version": "1.0.0",
+      "description": "透传cmdb接口-获取模型基本信息列表",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/v1/next_builder/:instanceId/object_basic"
+      },
+      "import": [
+        "easyops/model/cmdb/object_basic_info",
+        "easyops/model/cmdb/list_object_request",
+        "easyops/model/next_builder/micro_app_project"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.instanceId"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "页大小"
+          },
+          {
+            "ref": "ListObjectRequest.*"
+          }
+        ]
+      },
+      "response": {
+        "type": "ObjectBasicInfo"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "get object basic information list(pass-through)",
+            "zh": "透传cmdb接口-获取模型基本信息列表"
+          },
+          "request": {
+            "method": "LIST",
+            "uri": "http://127.0.0.1:8142/5f636896fd646/object_basic?page=1&page_size=2"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"total\": 769,\n        \"page\": 1,\n        \"page_size\": 2,\n        \"list\": [\n            {\n                \"objectId\": \"BUSINESS\",\n                \"name\": \"应用系统\",\n                \"icon\": \"fa fa-cubes\",\n                \"category\": \"应用资源.门户\",\n                \"memo\": \"\",\n                \"protected\": true,\n                \"system\": \"\",\n                \"notifyDenied\": false,\n                \"view\": {\n                    \"attr_authorizers\": null,\n                    \"attr_category_order\": [\n                        \"基本信息\",\n                        \"默认属性\"\n                    ],\n                    \"attr_order\": [\n                        \"_businesses_APP\",\n                        \"owner\",\n                        \"applicationProfile\",\n                        \"levelOfProtection\",\n                        \"brandLand\",\n                        \"isLeaf\",\n                        \"ssssssssssss\",\n                        \"wqew\",\n                        \"APP_INTERFACE\",\n                        \"_category\",\n                        \"memo\",\n                        \"name\",\n                        \"owner_platform\",\n                        \"businessId\",\n                        \"rpo\"\n                    ],\n                    \"hide_columns\": [\n                        \"BUSINESS_POST\",\n                        \"HOST\",\n                        \"_owner_BUSINESS\"\n                    ],\n                    \"relation_group_order\": [],\n                    \"relation_order\": [],\n                    \"showHideAttrs\": true,\n                    \"show_key\": [\n                        \"name\"\n                    ],\n                    \"visible\": true\n                },\n                \"updateAuthorizers\": [],\n                \"deleteAuthorizers\": [],\n                \"readAuthorizers\": [],\n                \"wordIndexDenied\": false,\n                \"_version\": 102,\n                \"creator\": \"defaultUser\",\n                \"modifier\": \"easyops\",\n                \"isAbstract\": false,\n                \"parentObjectId\": \"\",\n                \"permissionDenied\": false,\n                \"parentObjectIds\": []\n            },\n            {\n                \"objectId\": \"PACKAGE\",\n                \"name\": \"包\",\n                \"icon\": \"fa fa-briefcase\",\n                \"category\": \"应用资源\",\n                \"memo\": \"\",\n                \"protected\": false,\n                \"system\": \"\",\n                \"notifyDenied\": false,\n                \"view\": {\n                    \"attr_category_order\": [\n                        \"默认属性\",\n                        \"test\",\n                        \"基本信息\"\n                    ],\n                    \"attr_order\": [\n                        \"name\",\n                        \"platform\",\n                        \"packageId\",\n                        \"installPath\",\n                        \"preStop\",\n                        \"forceUpdate\",\n                        \"postRestart\",\n                        \"autoStart\",\n                        \"targetVersion\",\n                        \"userCheck\",\n                        \"isMaster\"\n                    ],\n                    \"hide_columns\": [],\n                    \"icon\": {\n                        \"color\": \"blue\",\n                        \"icon\": \"briefcase\",\n                        \"lib\": \"fa\",\n                        \"prefix\": \"fas\"\n                    },\n                    \"relation_group_order\": [],\n                    \"relation_order\": [],\n                    \"show_key\": [\n                        \"name\",\n                        \"packageId\"\n                    ],\n                    \"visible\": false\n                },\n                \"updateAuthorizers\": [],\n                \"deleteAuthorizers\": [],\n                \"readAuthorizers\": [],\n                \"wordIndexDenied\": false,\n                \"_version\": 23,\n                \"creator\": \"defaultUser\",\n                \"modifier\": \"easyops\",\n                \"isAbstract\": false,\n                \"parentObjectId\": \"\",\n                \"permissionDenied\": false,\n                \"parentObjectIds\": []\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "next_builder.contract_center.AddApiContract",
@@ -1140,7 +1491,10 @@
         "method": "GET",
         "uri": "/api/v1/contract/api"
       },
-      "import": ["easyops/model/flow_builder/api_contract"],
+      "import": [
+        "easyops/model/flow_builder/api_contract",
+        "easyops/model/flow_builder/contract_namespace"
+      ],
       "request": {
         "type": "object",
         "fields": [
@@ -1200,11 +1554,35 @@
                 "name": "modifier",
                 "type": "string",
                 "description": "modifier"
+              },
+              {
+                "name": "namespace",
+                "type": "FlowBuilderContractNamespace",
+                "description": "契约对应的命名空间信息"
               }
             ]
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "列出API契约",
+            "en": "List Api Contract"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8142/api/v1/contract/api"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n        \"instanceId\": \"5f4933ac806cb\",\n        \"name\": \"PushConfig\",\n        \"namespaceId\": \"easyops.api.collector_proxy_server.agent_manage\",\n        \"fullContractName\": \"easyops.api.collector_proxy_server.agent_manage@PushConfig\",\n        \"version\": \"1.0.0\",\n        \"eamlVersion\": \"2.0\",\n        \"eamlKind\": \"interface\",\n        \"classify\": \"\",\n        \"description\": \"下发配置\",\n        \"serviceName\": \"logic.collector_proxy_server\",\n        \"detail\": \"\",\n        \"provider\": \"\",\n        \"providerPackage\": \"\",\n        \"endpoint\": {\n            \"method\": \"POST\",\n            \"uri\": \"/proxy/v1/agent-cmd/target/:target/cmd/pushConfig\",\n            \"ext_fields\": []\n        },\n        \"customController\": false,\n        \"deprecated\": false,\n        \"private\": false,\n        \"useApiGateWay\": false,\n        \"import\": [\n            \"easyops.model.agent_admin.AgentConfigInfo\"\n        ],\n        \"importModelDefinition\": [\n            {\n                \"name\": \"AgentConfigInfo\",\n                \"fields\": [\n                    {\n                        \"name\": \"appName\",\n                        \"type\": \"string\",\n                        \"description\": \"配置所属组件\",\n                        \"deprecated\": false,\n                        \"enum\": [],\n                        \"validateRule\": null,\n                        \"ref\": \"\",\n                        \"fields\": []\n                    },\n                    {\n                        \"name\": \"config\",\n                        \"type\": \"map\",\n                        \"description\": \"配置内容\",\n                        \"deprecated\": false,\n                        \"enum\": [],\n                        \"validateRule\": null,\n                        \"ref\": \"\",\n                        \"fields\": []\n                    },\n                    {\n                        \"name\": \"version\",\n                        \"type\": \"string\",\n                        \"description\": \"版本\",\n                        \"deprecated\": false,\n                        \"enum\": [],\n                        \"validateRule\": null,\n                        \"ref\": \"\",\n                        \"fields\": []\n                    },\n                    {\n                        \"name\": \"filePath\",\n                        \"type\": \"string\",\n                        \"description\": \"配置文件路径，所属组件的相对路径\",\n                        \"deprecated\": false,\n                        \"enum\": [],\n                        \"validateRule\": null,\n                        \"ref\": \"\",\n                        \"fields\": []\n                    },\n                    {\n                        \"name\": \"fileType\",\n                        \"type\": \"string\",\n                        \"description\": \"文件类型\",\n                        \"deprecated\": false,\n                        \"enum\": [\n                            \"yaml\",\n                            \"json\"\n                        ],\n                        \"validateRule\": null,\n                        \"ref\": \"\",\n                        \"fields\": []\n                    }\n                ],\n                \"updated\": false\n            }\n        ],\n        \"request\": {\n            \"description\": \"\",\n            \"default\": null,\n            \"required\": [],\n            \"type\": \"object\",\n            \"fields\": [\n                {\n                    \"name\": \"target\",\n                    \"type\": \"string\",\n                    \"description\": \"目标节点, ${groupId}@@${nodeId}\",\n                    \"deprecated\": false,\n                    \"enum\": [],\n                    \"validateRule\": null,\n                    \"ref\": \"\",\n                    \"fields\": []\n                },\n                {\n                    \"name\": \"configList\",\n                    \"type\": \"AgentConfigInfo[]\",\n                    \"description\": \"配置列表\",\n                    \"deprecated\": false,\n                    \"enum\": [],\n                    \"validateRule\": null,\n                    \"ref\": \"\",\n                    \"fields\": []\n                }\n            ]\n        },\n        \"response\": {\n            \"description\": \"\",\n            \"default\": null,\n            \"wrapper\": true,\n            \"type\": \"\",\n            \"required\": [],\n            \"fields\": []\n        },\n        \"useModels\": [\n            {\n                \"instanceId\": \"5f49338fcdb85\",\n                \"namespaceId\": \"easyops.model.agent_admin\",\n                \"name\": \"AgentConfigInfo\",\n                \"version\": \"1.0.0\"\n            }\n        ],\n        \"projects\": [],\n        \"namespace\": [\n            {\n                \"instanceId\": \"5f493395593a3\",\n                \"id\": \"easyops.api.collector_proxy_server.agent_manage\"\n            }\n        ],\n        \"implements\": [],\n        \"examples\": []\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "next_builder.contract_center.ListFunctionContract",
@@ -1215,7 +1593,10 @@
         "method": "GET",
         "uri": "/api/v1/contract/function"
       },
-      "import": ["easyops/model/flow_builder/function"],
+      "import": [
+        "easyops/model/flow_builder/function",
+        "easyops/model/flow_builder/contract_namespace"
+      ],
       "request": {
         "type": "object",
         "fields": [
@@ -1249,6 +1630,11 @@
                 "ref": "FlowBuilderFunction.language"
               },
               {
+                "name": "namespace",
+                "type": "FlowBuilderContractNamespace",
+                "description": "契约对应的命名空间信息"
+              },
+              {
                 "name": "namespaceId",
                 "type": "string",
                 "description": "namespaceId"
@@ -1271,7 +1657,26 @@
             ]
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "列出函数契约",
+            "en": "List Function Contract"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8142/api/v1/contract/function"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"error\": \"\",\n  \"message\": \"\",\n  \"data\": {\n    \"_object_id\": \"FLOW_BUILDER_FUNCTION_CONTRACT@EASYOPS\",\n    \"_object_version\": 34,\n    \"_pre_ts\": 1635929567,\n    \"_ts\": 1653356651,\n    \"_version\": 4,\n    \"creator\": \"defaultUser\",\n    \"ctime\": \"2021-08-22 05:57:32\",\n    \"deleteAuthorizers\": [ ],\n    \"description\": \"add\",\n    \"eamlKind\": \"interface\",\n    \"eamlVersion\": \"2.2\",\n    \"fullContractName\": \"easyops.function.paul_test.function@Add\",\n    \"implementCodeLanguage\": \"go\",\n    \"import\": [ ],\n    \"importModelDefinition\": [ ],\n    \"input\": {\n      \"default\": null,\n      \"description\": \"\",\n      \"fields\": [\n        {\n          \"description\": \"a\",\n          \"name\": \"a\",\n          \"type\": \"int\"\n        },\n        {\n          \"description\": \"b\",\n          \"name\": \"b\",\n          \"type\": \"int\"\n        }\n      ],\n      \"required\": [ ],\n      \"type\": \"object\"\n    },\n    \"instanceId\": \"5c95c7c6ecd67\",\n    \"modifier\": \"openapi\",\n    \"mtime\": \"2022-05-24 09:44:11\",\n    \"name\": \"Add\",\n    \"namespace\": [\n      {\n        \"_object_id\": \"FLOW_BUILDER_CONTRACT_NAMESPACE@EASYOPS\",\n        \"_object_version\": 3,\n        \"_ts\": 1629583017,\n        \"_version\": 1,\n        \"creator\": \"defaultUser\",\n        \"ctime\": \"2021-08-22 05:56:57\",\n        \"id\": \"easyops.function.paul_test.function\",\n        \"instanceId\": \"5c95c7c6dcb80\",\n        \"org\": 1888\n      }\n    ],\n    \"namespaceId\": \"easyops.function.paul_test.function\",\n    \"org\": 1888,\n    \"output\": {\n      \"default\": null,\n      \"description\": \"\",\n      \"fields\": [\n        {\n          \"description\": \"result\",\n          \"name\": \"result\",\n          \"type\": \"int\"\n        }\n      ],\n      \"required\": [ ],\n      \"type\": \"object\"\n    },\n    \"readAuthorizers\": [ ],\n    \"script_function\": [ ],\n    \"settings\": [ ],\n    \"updateAuthorizers\": [ ],\n    \"version\": \"1.0.2\"\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "next_builder.contract_center.ListModelContract",
@@ -1282,7 +1687,10 @@
         "method": "GET",
         "uri": "/api/v1/contract/model"
       },
-      "import": ["easyops/model/flow_builder/model"],
+      "import": [
+        "easyops/model/flow_builder/model",
+        "easyops/model/flow_builder/contract_namespace"
+      ],
       "request": {
         "type": "object",
         "fields": [
@@ -1327,6 +1735,11 @@
                 "ref": "ModelContract.useModels"
               },
               {
+                "name": "namespace",
+                "type": "FlowBuilderContractNamespace",
+                "description": "契约对应的命名空间信息"
+              },
+              {
                 "name": "latestVersion",
                 "type": "string",
                 "description": "单个模型的最新版本"
@@ -1334,7 +1747,26 @@
             ]
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "列出模型契约",
+            "en": "List Model Contract"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8142/api/v1/contract/model"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n        \"instanceId\": \"5c6584f81ad24\",\n        \"name\": \"SystemDependency\",\n        \"version\": \"1.0.0\",\n        \"namespaceId\": \"easyops.model.cmdb_extend\",\n        \"type\": \"\",\n        \"description\": \"系统依赖\",\n        \"eamlVersion\": \"2.0\",\n        \"eamlKind\": \"model\",\n        \"import\": [\n            \"easyops.model.cmdb_extend.SubsystemDependency\"\n        ],\n        \"fields\": [\n            {\n                \"name\": \"abbreviation\",\n                \"type\": \"string\",\n                \"description\": \"系统简称\",\n                \"deprecated\": false,\n                \"enum\": [],\n                \"validateRule\": null,\n                \"ref\": \"\",\n                \"fields\": []\n            },\n            {\n                \"name\": \"name\",\n                \"type\": \"string\",\n                \"description\": \"系统名称\",\n                \"deprecated\": false,\n                \"enum\": [],\n                \"validateRule\": null,\n                \"ref\": \"\",\n                \"fields\": []\n            },\n            {\n                \"name\": \"object_id\",\n                \"type\": \"object_id\",\n                \"description\": \"模型ID\",\n                \"deprecated\": false,\n                \"enum\": [],\n                \"validateRule\": null,\n                \"ref\": \"\",\n                \"fields\": []\n            },\n            {\n                \"name\": \"instance_id\",\n                \"type\": \"instance_id\",\n                \"description\": \"实例ID\",\n                \"deprecated\": false,\n                \"enum\": [],\n                \"validateRule\": null,\n                \"ref\": \"\",\n                \"fields\": []\n            },\n            {\n                \"name\": \"subsystems\",\n                \"type\": \"SubsystemDependency[]\",\n                \"description\": \"子系统依赖\",\n                \"deprecated\": false,\n                \"enum\": [],\n                \"validateRule\": null,\n                \"ref\": \"\",\n                \"fields\": []\n            }\n        ],\n        \"useModels\": [\n            {\n                \"instanceId\": \"5c73a94f42aac\",\n                \"name\": \"SubsystemDependency\",\n                \"version\": \"1.0.0\",\n                \"namespaceId\": \"easyops.model.cmdb_extend\"\n            }\n        ],\n        \"namespace\": [\n            {\n                \"id\": \"easyops.model.cmdb_extend\",\n                \"instanceId\": \"5c87e14705ed7\"\n            }\n        ],\n        \"importModelDefinition\": [\n            {\n                \"name\": \"SubsystemDependency\",\n                \"fields\": [\n                    {\n                        \"name\": \"abbreviation\",\n                        \"type\": \"string\",\n                        \"description\": \"系统简称\",\n                        \"deprecated\": false,\n                        \"enum\": [],\n                        \"validateRule\": null,\n                        \"ref\": \"\",\n                        \"fields\": []\n                    },\n                    {\n                        \"name\": \"name\",\n                        \"type\": \"string\",\n                        \"description\": \"系统名称\",\n                        \"deprecated\": false,\n                        \"enum\": [],\n                        \"validateRule\": null,\n                        \"ref\": \"\",\n                        \"fields\": []\n                    },\n                    {\n                        \"name\": \"object_id\",\n                        \"type\": \"object_id\",\n                        \"description\": \"模型ID\",\n                        \"deprecated\": false,\n                        \"enum\": [],\n                        \"validateRule\": null,\n                        \"ref\": \"\",\n                        \"fields\": []\n                    },\n                    {\n                        \"name\": \"instance_id\",\n                        \"type\": \"instance_id\",\n                        \"description\": \"实例ID\",\n                        \"deprecated\": false,\n                        \"enum\": [],\n                        \"validateRule\": null,\n                        \"ref\": \"\",\n                        \"fields\": []\n                    },\n                    {\n                        \"name\": \"components\",\n                        \"type\": \"AppDependency[]\",\n                        \"description\": \"应用依赖\",\n                        \"deprecated\": false,\n                        \"enum\": [],\n                        \"validateRule\": null,\n                        \"ref\": \"\",\n                        \"fields\": []\n                    },\n                    {\n                        \"name\": \"connect_subsystems\",\n                        \"type\": \"object[]\",\n                        \"description\": \"关联系统\",\n                        \"deprecated\": false,\n                        \"enum\": [],\n                        \"validateRule\": null,\n                        \"ref\": \"\",\n                        \"fields\": [\n                            {\n                                \"name\": \"abbreviation\",\n                                \"type\": \"string\",\n                                \"description\": \"系统简称\",\n                                \"deprecated\": false,\n                                \"enum\": [],\n                                \"validateRule\": null,\n                                \"ref\": \"\",\n                                \"fields\": []\n                            },\n                            {\n                                \"name\": \"object_id\",\n                                \"type\": \"object_id\",\n                                \"description\": \"模型ID\",\n                                \"deprecated\": false,\n                                \"enum\": [],\n                                \"validateRule\": null,\n                                \"ref\": \"\",\n                                \"fields\": []\n                            },\n                            {\n                                \"name\": \"instance_id\",\n                                \"type\": \"instance_id\",\n                                \"description\": \"实例ID\",\n                                \"deprecated\": false,\n                                \"enum\": [],\n                                \"validateRule\": null,\n                                \"ref\": \"\",\n                                \"fields\": []\n                            },\n                            {\n                                \"name\": \"name\",\n                                \"type\": \"string\",\n                                \"description\": \"名称\",\n                                \"deprecated\": false,\n                                \"enum\": [],\n                                \"validateRule\": null,\n                                \"ref\": \"\",\n                                \"fields\": []\n                            }\n                        ]\n                    }\n                ],\n                \"updated\": false\n            },\n            {\n                \"name\": \"AppDependency\",\n                \"fields\": [\n                    {\n                        \"name\": \"abbreviation\",\n                        \"type\": \"string\",\n                        \"description\": \"应用简称\",\n                        \"deprecated\": false,\n                        \"enum\": [],\n                        \"validateRule\": null,\n                        \"ref\": \"\",\n                        \"fields\": []\n                    },\n                    {\n                        \"name\": \"name\",\n                        \"type\": \"string\",\n                        \"description\": \"应用名称\",\n                        \"deprecated\": false,\n                        \"enum\": [],\n                        \"validateRule\": null,\n                        \"ref\": \"\",\n                        \"fields\": []\n                    },\n                    {\n                        \"name\": \"object_id\",\n                        \"type\": \"object_id\",\n                        \"description\": \"模型ID\",\n                        \"deprecated\": false,\n                        \"enum\": [],\n                        \"validateRule\": null,\n                        \"ref\": \"\",\n                        \"fields\": []\n                    },\n                    {\n                        \"name\": \"instance_id\",\n                        \"type\": \"instance_id\",\n                        \"description\": \"实例ID\",\n                        \"deprecated\": false,\n                        \"enum\": [],\n                        \"validateRule\": null,\n                        \"ref\": \"\",\n                        \"fields\": []\n                    },\n                    {\n                        \"name\": \"_hierarchy\",\n                        \"type\": \"int\",\n                        \"description\": \"应用层级\",\n                        \"deprecated\": false,\n                        \"enum\": [],\n                        \"validateRule\": null,\n                        \"ref\": \"\",\n                        \"fields\": []\n                    },\n                    {\n                        \"name\": \"depend_services\",\n                        \"type\": \"object[]\",\n                        \"description\": \"依赖服务\",\n                        \"deprecated\": false,\n                        \"enum\": [],\n                        \"validateRule\": null,\n                        \"ref\": \"\",\n                        \"fields\": [\n                            {\n                                \"name\": \"object_id\",\n                                \"type\": \"object_id\",\n                                \"description\": \"模型ID\",\n                                \"deprecated\": false,\n                                \"enum\": [],\n                                \"validateRule\": null,\n                                \"ref\": \"\",\n                                \"fields\": []\n                            },\n                            {\n                                \"name\": \"instance_id\",\n                                \"type\": \"instance_id\",\n                                \"description\": \"实例ID\",\n                                \"deprecated\": false,\n                                \"enum\": [],\n                                \"validateRule\": null,\n                                \"ref\": \"\",\n                                \"fields\": []\n                            },\n                            {\n                                \"name\": \"name\",\n                                \"type\": \"string\",\n                                \"description\": \"名称\",\n                                \"deprecated\": false,\n                                \"enum\": [],\n                                \"validateRule\": null,\n                                \"ref\": \"\",\n                                \"fields\": []\n                            }\n                        ]\n                    }\n                ],\n                \"updated\": false\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "next_builder.contract_center.SearchContract",
@@ -1807,6 +2239,47 @@
         ]
       },
       "response": null
+    },
+    {
+      "contract": "next_builder.installed_theme_template.InitThemeTemplate",
+      "name": "InitThemeTemplate",
+      "version": "1.0.0",
+      "description": "初始化theme页面模版",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next_builder/theme_template/init"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectInstanceId",
+            "type": "instance_id",
+            "description": "项目instanceId"
+          },
+          {
+            "name": "themeId",
+            "type": "string",
+            "description": "主题模版id"
+          },
+          {
+            "name": "snippetId",
+            "type": "string",
+            "description": "snippetId"
+          }
+        ],
+        "required": ["themeId", "snippetId", "projectInstanceId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "templateInstanceId",
+            "type": "instance_id",
+            "description": "初始化生成的模板instanceId"
+          }
+        ]
+      }
     },
     {
       "contract": "next_builder.mock_rule.AddTagBatch",
@@ -2352,6 +2825,9 @@
             "ref": "CmdbObject.objectId"
           },
           {
+            "ref": "CmdbObject.parentObjectIds"
+          },
+          {
             "name": "attrList",
             "type": "object[]",
             "description": "attrList",
@@ -2522,7 +2998,32 @@
         ],
         "required": ["objectId"]
       },
-      "response": null
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "zh": "校验模型",
+            "en": "Check Model"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8142/api/v1/model/check",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            },
+            "body": "{\n  \"objectId\": \"CHILD_0603\",\n  \"space\": {\n    \"instanceId\": \"5e22bf91686ed\"\n  },\n  \"instanceId\": \"5fd1d6c0b3511\",\n  \"name\": \"CHILD_0603\"\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"code\": 0,\n  \"error: \"\",\n  \"codeExplain\": \"\",\n  \"data\": {\n  }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "next_builder.model.CheckView",
@@ -2706,6 +3207,11 @@
             "name": "instanceIds",
             "type": "string[]",
             "description": "模型instanceId"
+          },
+          {
+            "name": "onlyReleased",
+            "type": "bool",
+            "description": "只包含发布模型"
           }
         ],
         "required": ["instanceIds"]
@@ -2841,11 +3347,59 @@
             "ref": "MicroAppProject.instanceId"
           },
           {
-            "ref": "MicroAppProject.dependencies"
+            "name": "dependencies",
+            "type": "object[]",
+            "description": "Dependencies",
+            "fields": [
+              {
+                "name": "name",
+                "type": "string",
+                "description": "Name"
+              },
+              {
+                "name": "constraint",
+                "type": "string",
+                "description": "Constraint"
+              },
+              {
+                "name": "localDeploy",
+                "type": "bool",
+                "description": "IsLocalDeploy"
+              },
+              {
+                "name": "actualVersion",
+                "type": "string",
+                "description": "actualVersion"
+              },
+              {
+                "name": "isDeveloping",
+                "type": "bool",
+                "description": "是否使用最新开发版本"
+              }
+            ]
           }
         ]
       },
-      "response": null
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Add Dependencies",
+            "zh": "增加微应用依赖"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8142/api/v1/next-builder/micro_apps/5d03d21e74deb/dependencies",
+            "body": "{\n    \"dependencies\": [\n        {\n            \"name\": \"presentational-bricks-NB\",\n            \"constraint\": \"^1.0.0\",\n            \"localDeploy\": true,\n            \"actualVersion\": \"1.260.1\",\n            \"isDeveloping\": true\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": null\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "next_builder.package_alone.DeleteDependencies",
@@ -2904,6 +3458,69 @@
       "response": null
     },
     {
+      "contract": "next_builder.package_alone.GetPackageVersionList",
+      "category": {
+        "zh": "微应用独立打包",
+        "en": "PackageStandalone"
+      },
+      "name": "GetPackageVersionList",
+      "version": "1.0.0",
+      "description": "获取包的版本列表",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next-builder/package/version"
+      },
+      "import": ["easyops/model/artifact/version"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "packageList",
+            "description": "packageList",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "name",
+                "type": "string",
+                "description": "制品包名字"
+              }
+            ]
+          }
+        ],
+        "required": ["packageList"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "object[]",
+            "description": "包版本列表",
+            "fields": [
+              {
+                "name": "name",
+                "type": "string",
+                "description": "name"
+              },
+              {
+                "name": "versionList",
+                "type": "object[]",
+                "description": "versionList",
+                "fields": [
+                  {
+                    "ref": "Version.name"
+                  },
+                  {
+                    "ref": "Version.env_type"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
       "contract": "next_builder.package_alone.ListDependencies",
       "category": {
         "zh": "微应用独立打包",
@@ -2959,6 +3576,11 @@
             "type": "string",
             "enum": ["direct", "indirect"],
             "description": "依赖方式"
+          },
+          {
+            "name": "isDeveloping",
+            "type": "bool",
+            "description": "是否使用最新开发版本"
           }
         ]
       },
@@ -2976,7 +3598,7 @@
             "headers": {
               "Content-Type": "application/json; charset=utf-8"
             },
-            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"list\": [\n        {\n            \"actualVersion\": \"1.260.1\",\n            \"constraint\": \"^1.0.0\",\n            \"dependencyWay\": \"direct\",\n            \"localDeploy\": true,\n            \"name\": \"presentational-bricks-NB\"\n        },\n        {\n            \"actualVersion\": \"2.68.27\",\n            \"constraint\": \"^2.65.1,=2.68.27\",\n            \"dependencyWay\": \"indirect\",\n            \"localDeploy\": true,\n            \"name\": \"brick_next\",\n            \"parentDependency\": \"presentational-bricks-NB:^1.0.0\"\n        }\n    ]\n}"
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"list\": [\n        {\n            \"actualVersion\": \"1.260.1\",\n            \"constraint\": \"^1.0.0\",\n            \"dependencyWay\": \"direct\",\n            \"localDeploy\": true,\n            \"name\": \"presentational-bricks-NB\",\n            \"isDeveloping\": true\n        },\n        {\n            \"actualVersion\": \"2.68.27\",\n            \"constraint\": \"^2.65.1,=2.68.27\",\n            \"dependencyWay\": \"indirect\",\n            \"localDeploy\": true,\n            \"name\": \"brick_next\",\n            \"parentDependency\": \"presentational-bricks-NB:^1.0.0\"\n        }\n    ]\n}"
           }
         }
       ]
@@ -3026,6 +3648,73 @@
       }
     },
     {
+      "contract": "next_builder.package_alone.PackageStandAloneWithBase",
+      "category": {
+        "zh": "微应用独立打包",
+        "en": "PackageStandalone"
+      },
+      "name": "PackageStandAloneWithBase",
+      "version": "1.0.0",
+      "description": "基于Base版本独立打包",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next_builder/package_standalone_with_base"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "packageId",
+            "type": "string",
+            "description": "Base包Id"
+          },
+          {
+            "name": "versionId",
+            "type": "string",
+            "description": "Base版本Id"
+          },
+          {
+            "name": "newVersion",
+            "type": "string",
+            "description": "新的版本号，例如: 1.1.0"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "版本描述信息"
+          },
+          {
+            "name": "newDependencies",
+            "type": "object[]",
+            "description": "新的依赖",
+            "fields": [
+              {
+                "name": "name",
+                "type": "string",
+                "description": "依赖组件名称"
+              },
+              {
+                "name": "version",
+                "type": "string",
+                "description": "依赖组件版本"
+              }
+            ]
+          }
+        ],
+        "required": ["packageId", "versionId", "newVersion"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "releasedLogInstanceId",
+            "type": "instance_id",
+            "description": "packageStandAlone releasedLogInstanceId"
+          }
+        ]
+      }
+    },
+    {
       "contract": "next_builder.package_alone.UpdateDependencies",
       "category": {
         "zh": "微应用独立打包",
@@ -3046,21 +3735,49 @@
             "ref": "MicroAppProject.instanceId"
           },
           {
-            "name": "name",
-            "type": "string[]",
-            "description": "依赖名称"
-          },
-          {
-            "name": "isEnterprise",
-            "type": "bool",
-            "description": "是否是企业版"
+            "name": "dependencyInfo",
+            "type": "object[]",
+            "description": "dependencyInfo",
+            "fields": [
+              {
+                "name": "name",
+                "type": "string",
+                "description": "依赖名称"
+              },
+              {
+                "name": "actualVersion",
+                "type": "string",
+                "description": "actualVersion"
+              },
+              {
+                "name": "isDeveloping",
+                "type": "bool",
+                "description": "是否使用最新开发版本"
+              }
+            ]
           }
-        ],
-        "default": {
-          "isEnterprise": false
-        }
+        ]
       },
-      "response": null
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Update Dependencies",
+            "zh": "更新微应用依赖"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8142/api/v1/next-builder/micro_apps/5d03d21e74deb/dependencies",
+            "body": "{\n    \"dependencyInfo\": [\n        {\n            \"name\": \"presentational-bricks-NB\",\n            \"actualVersion\": \"1.260.1\",\n            \"isDeveloping\": true\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": null\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "next_builder.permission.ExportPermissions",
@@ -3276,6 +3993,58 @@
         "required": ["MicroAppProject.instanceId"]
       },
       "response": null
+    },
+    {
+      "contract": "next_builder.project.UpdateProjectDevelopmentEnv",
+      "category": {
+        "en": "Project",
+        "zh": "项目"
+      },
+      "name": "UpdateProjectDevelopmentEnv",
+      "version": "1.0.0",
+      "description": "切换开发环境",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/next-builder/project/developmentEnv/:instanceId"
+      },
+      "import": [
+        "easyops/model/next_builder/micro_app_project",
+        "easyops/model/next_builder/micro_app_development_env"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.instanceId"
+          },
+          {
+            "ref": "MicroAppDevelopmentEnv.*"
+          }
+        ]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Update Project Development Env",
+            "zh": "切换开发环境"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8142/api/v1/next-builder/project/developmentEnv/5b9f29ed870ee",
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"accessKey\": \"6abeca54619ad2b44b9a673c\",\n    \"secretKey\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    \"openApiIP\": \"172.30.10.34\",\n    \"openApiPort\": 20002,\n    \"previewIP\": \"dev.easyops.local\",\n    \"protocol\": \"https\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"data\": null\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "next_builder.project.UpdateProjectStoryboard",
@@ -3596,6 +4365,392 @@
         "required": ["nodeIds"]
       },
       "response": null
+    },
+    {
+      "contract": "next_builder.workflow.AddWorkflowStep",
+      "name": "AddWorkflowStep",
+      "version": "1.0.0",
+      "description": "新建流程步骤",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next_builder/workflow/:instanceId/step"
+      },
+      "import": [
+        "easyops/model/next_builder/workflow_def",
+        "easyops/model/next_builder/workflow_step"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkflowDef.instanceId"
+          },
+          {
+            "ref": "WorkflowStep.*"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkflowStep.*"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Add Step",
+            "zh": "新建流程步骤"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8142/api/v1/next_builder/workflow/5ebc02ba83901/step",
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"id\": \"approval\",\n    \"type\": \"approval\",\n    \"name\": \"审批节点\",\n    \"pre\": [\"11\"],\n    \"next\": [\"99\"]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"data\": {\n    \"instanceId\": \"5f8b62738ef4d\",\n    \"id\": \"approval\",\n    \"name\": \"审批节点\",\n    \"type\": \"start_approval_node\",\n    \"pre\": [\"11\"],\n    \"next\": [\"99\"]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "next_builder.workflow.AddWorkflowDef",
+      "name": "AddWorkflowDef",
+      "version": "1.0.0",
+      "description": "新建流程定义",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/visual_builder/:projectInstanceId/workflow/add"
+      },
+      "import": [
+        "easyops/model/next_builder/workflow_def",
+        "easyops/model/next_builder/workflow_step"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectInstanceId",
+            "type": "instance_id",
+            "description": "工作流所在小产品的instanceId"
+          },
+          {
+            "ref": "WorkflowDef.*"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkflowDef.*"
+          },
+          {
+            "name": "steps",
+            "type": "object[]",
+            "description": "新建流程后默认的start和end步骤",
+            "fields": [
+              {
+                "ref": "WorkflowStep.*"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Add Workflow Def",
+            "zh": "新建流程定义"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8142/api/v1/next_builder/5f9ac6316cac5/workflow/add",
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"id\": \"Ask for leave\",\n    \"name\": \"请假申请\",\n    \"triggerMethod\": \"manual\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"data\": {\n    \"instanceId\": \"5ef4e8ea28129\",\n    \"id\": \"Ask for leave\",\n    \"name\": \"请假申请\",\n    \"triggerMethod\": \"manual\",\n    \"workflowYaml\": \"{\\\"kind\\\": \\\"workflow\\\", \\\"id\\\": \\\"Ask for leave\\\", \\\"name\\\": \\\"请假申情\\\", \\\"steps\\\": [{\\\"id\\\": \\\"1\\\", \\\"name\\\": \\\"开始\\\", \\\"type\\\": \\\"start\\\", \\\"next\\\": [\\\"2\\\"]}, {\\\"id\\\": \\\"2\\\", \\\"name\\\": \\\"结束\\\", \\\"type\\\": \\\"end\\\", \\\"pre\\\": [\\\"1\\\"]}]}\",\n    \"steps\": [\n      {\n        \"id\": \"start\",\n        \"type\": \"start\",\n        \"name\": \"start\"\n      },\n      {\n        \"id\": \"end\",\n        \"name\": \"结束\",\n        \"type\": \"end\"\n      }\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "next_builder.workflow.DeleteWorkflowStep",
+      "name": "DeleteWorkflowStep",
+      "version": "1.0.0",
+      "description": "删除流程步骤",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/next_builder/workflow/:instanceId/step/:id"
+      },
+      "import": [
+        "easyops/model/next_builder/workflow_def",
+        "easyops/model/next_builder/workflow_step"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkflowDef.instanceId"
+          },
+          {
+            "ref": "WorkflowStep.id"
+          }
+        ]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Delete Step",
+            "zh": "删除流程步骤"
+          },
+          "request": {
+            "method": "DELETE",
+            "uri": "http://127.0.0.1:8142/api/v1/next_builder/workflow/5f220123e33b6/step/xxx"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"data\": {\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "next_builder.workflow.DeleteWorkflowDef",
+      "name": "DeleteWorkflowDef",
+      "version": "1.0.0",
+      "description": "更新流程定义",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/next_builder/workflow/:instanceId"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "工作流instanceId"
+          }
+        ]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Delete Workflow Def",
+            "zh": "删除流程定义"
+          },
+          "request": {
+            "method": "DELETE",
+            "uri": "http://127.0.0.1:8142/api/v1/next_builder/workflow/5f220123e33b6"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"data\": {\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "next_builder.workflow.GetWorkflowGraph",
+      "name": "GetWorkflowGraph",
+      "version": "1.0.0",
+      "description": "获取流程拓扑",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/workflow/:instanceId/graph"
+      },
+      "import": [
+        "easyops/model/next_builder/workflow_def",
+        "easyops/model/next_builder/workflow_step"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkflowDef.instanceId"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "steps",
+            "type": "object[]",
+            "description": "步骤列表",
+            "fields": [
+              {
+                "ref": "WorkflowStep.*"
+              }
+            ]
+          },
+          {
+            "name": "relations",
+            "type": "object[]",
+            "description": "关系列表",
+            "fields": [
+              {
+                "name": "src",
+                "type": "string",
+                "description": "起始步骤ID"
+              },
+              {
+                "name": "dst",
+                "type": "string",
+                "description": "目的步骤ID"
+              },
+              {
+                "name": "type",
+                "type": "string",
+                "description": "起始步骤和目的步骤的关系(container/line)"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "GetWorkflowGraph",
+            "zh": "获取流程拓扑"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8142/api/v1/workflow/5f77c3715f9a6/graph"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"data\": {\n    \"steps\": [\n      {\n        \"id\": \"5f220175dadfd\",\n        \"name\": \"aaa\",\n        \"next\": [\"ddd\"],\n        \"parent\": \"\",\n        \"pre\": [],\n        \"type\": \"start\"\n      },\n      {\n        \"id\": \"5f220175dadfm\",\n        \"name\": \"ddd\",\n        \"parent\": \"\",\n        \"pre\": [\"aaa\"],\n        \"type\": \"end\"\n      }\n    ],\n    \"relations\": [\n      {\n        \"src\": \"aaa\",\n        \"dst\": \"ddd\"\n      }\n    ]\n  }"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "next_builder.workflow.UpdateWorkflowStep",
+      "name": "UpdateWorkflowStep",
+      "version": "1.0.0",
+      "description": "更新流程步骤",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/next_builder/workflow/:instanceId/step"
+      },
+      "import": [
+        "easyops/model/next_builder/workflow_def",
+        "easyops/model/next_builder/workflow_step"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkflowDef.instanceId"
+          },
+          {
+            "ref": "WorkflowStep.*"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkflowStep.*"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Update Step",
+            "zh": "更新流程步骤"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8142/api/v1/next_builder/workflow/5ebc02ba83901/step",
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"name\": \"审批节点\",\n    \"pre\": [\"11\"]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"data\": {\n    \"name\": \"发起审批节点\",\n    \"pre\": [\"11\"]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "next_builder.workflow.UpdateWorkflowDef",
+      "name": "UpdateWorkflowDef",
+      "version": "1.0.0",
+      "description": "更新流程定义",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/visual_builder/:projectInstanceId/workflow/:instanceId"
+      },
+      "import": ["easyops/model/next_builder/workflow_def"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectInstanceId",
+            "type": "instance_id",
+            "description": "工作流所在小产品的instanceId"
+          },
+          {
+            "ref": "WorkflowDef.*"
+          }
+        ]
+      },
+      "response": {
+        "type": "WorkflowDef"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Update Workflow Def",
+            "zh": "更新流程定义"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8142/api/v1/next_builder/5f9ac6316cac5/workflow/5f9a86f82307f",
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"id\": \"Ask for leave\",\n    \"name\": \"请假申请\",\n    \"triggerMethod\": \"manual\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"data\": {\n    \"instanceId\": \"5f9a86f82307f\",\n    \"id\": \"Ask for leave\",\n    \"name\": \"请假申请\",\n    \"triggerMethod\": \"manual\"\n  }\n}"
+          }
+        }
+      ]
     }
   ]
 }

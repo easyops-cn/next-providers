@@ -6,6 +6,9 @@ export interface ModelMicroAppReleasedLog {
   /** 版本 */
   version: string;
 
+  /** 基于哪个版本打的包 */
+  baseVersion: string;
+
   /** 提交用户 */
   commitUser: string;
 
@@ -32,9 +35,18 @@ export interface ModelMicroAppReleasedLog {
 
   /** 制品包信息 */
   packageInfo: ModelMicroAppReleasedLog_packageInfo;
+
+  /** 打包错误信息 */
+  errMsg: string;
 }
 
 export interface ModelMicroAppReleasedLog_packageInfo {
+  /** packageId */
+  packageId?: string;
+
+  /** versionId */
+  versionId?: string;
+
   /** naPackageId */
   naPackageId?: string;
 

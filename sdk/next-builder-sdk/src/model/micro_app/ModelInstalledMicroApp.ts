@@ -122,6 +122,12 @@ export interface ModelInstalledMicroApp {
 
   /** 是否独立部署 */
   standaloneMode: boolean;
+
+  /** 定时触发的工作流信息 */
+  periodicWorkflowInfo: ModelInstalledMicroApp_periodicWorkflowInfo_item[];
+
+  /** 数据变更触发的工作流信息 */
+  dataChangedWorkflowInfo: ModelInstalledMicroApp_dataChangedWorkflowInfo_item[];
 }
 
 export interface ModelInstalledMicroApp_defaultContainer {
@@ -136,4 +142,20 @@ export interface ModelInstalledMicroApp_defaultContainer {
 
   /** 排序 */
   order?: number;
+}
+
+export interface ModelInstalledMicroApp_periodicWorkflowInfo_item {
+  /** 工作流id */
+  workflowId?: string;
+
+  /** 定时任务id */
+  taskId?: string;
+}
+
+export interface ModelInstalledMicroApp_dataChangedWorkflowInfo_item {
+  /** 工作流id */
+  workflowId?: string;
+
+  /** 订阅任务id */
+  subscriptionId?: string;
 }

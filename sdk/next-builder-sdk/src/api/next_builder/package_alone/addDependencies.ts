@@ -1,9 +1,8 @@
 import { http, HttpOptions } from "@next-core/brick-http";
-import { ModelMicroAppProject } from "../../../model/next_builder";
 
 export interface PackageAloneApi_AddDependenciesRequestBody {
   /** Dependencies */
-  dependencies?: ModelMicroAppProject["dependencies"];
+  dependencies?: PackageAloneApi_AddDependenciesRequestBody_dependencies_item[];
 }
 
 /**
@@ -20,3 +19,20 @@ export const PackageAloneApi_addDependencies = (
     data,
     options
   );
+
+export interface PackageAloneApi_AddDependenciesRequestBody_dependencies_item {
+  /** Name */
+  name?: string;
+
+  /** Constraint */
+  constraint?: string;
+
+  /** IsLocalDeploy */
+  localDeploy?: boolean;
+
+  /** actualVersion */
+  actualVersion?: string;
+
+  /** 是否使用最新开发版本 */
+  isDeveloping?: boolean;
+}

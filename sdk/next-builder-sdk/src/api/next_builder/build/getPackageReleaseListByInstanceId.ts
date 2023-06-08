@@ -2,6 +2,11 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelMicroAppReleasedLog } from "../../../model/next_builder";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
+export interface BuildApi_GetPackageReleaseListByInstanceIdRequestParams {
+  /** 是否standalone模式的打包记录 */
+  isStandalone?: boolean;
+}
+
 export interface BuildApi_GetPackageReleaseListByInstanceIdResponseBody {
   /** 包列表 */
   packages?: Partial<ModelMicroAppReleasedLog>[];
@@ -13,6 +18,7 @@ export interface BuildApi_GetPackageReleaseListByInstanceIdResponseBody {
  */
 export const BuildApi_getPackageReleaseListByInstanceId = async (
   instanceId: string | number,
+  params: BuildApi_GetPackageReleaseListByInstanceIdRequestParams,
   options?: HttpOptions
 ): Promise<BuildApi_GetPackageReleaseListByInstanceIdResponseBody> =>
   /**! @contract easyops.api.next_builder.build.GetPackageReleaseListByInstanceId@1.0.0 */ (
@@ -20,6 +26,6 @@ export const BuildApi_getPackageReleaseListByInstanceId = async (
       ResponseBodyWrapper<BuildApi_GetPackageReleaseListByInstanceIdResponseBody>
     >(
       `api/gateway/next_builder.build.GetPackageReleaseListByInstanceId/api/v1/next-builder/packages-released/${instanceId}`,
-      options
+      { ...options, params }
     )
   ).data;

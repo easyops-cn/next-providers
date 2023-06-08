@@ -34,4 +34,7 @@ export interface BuildApi_BuildAndPushRequestBody_ignoredResources {
 
   /** 目录 */
   menus?: boolean;
+
+  /** 工作流 */
+  workflow?: boolean;
 }

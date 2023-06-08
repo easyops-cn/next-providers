@@ -7,3 +7,4 @@ export * from "./ModelObjectRelationGroup";
 export * from "./ModelObjectView";
 export * from "./ModelObjectBasicInfo";
 export * from "./ModelCmdbObject";
+export * from "./ModelListObjectRequest";

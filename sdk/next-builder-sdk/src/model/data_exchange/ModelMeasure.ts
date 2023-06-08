@@ -19,7 +19,8 @@ export interface ModelMeasure_function {
     | "divide"
     | "increase"
     | "rate"
-    | "irate";
+    | "irate"
+    | "quantile";
 
   /** 参数列表，可以填children的name 如 sum -> args["power"]
                               topK -> args["power", 10]
