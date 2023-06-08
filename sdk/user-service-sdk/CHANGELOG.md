@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.2.3 (2023-06-08)
+
+**Note:** Version bump only for package @next-sdk/user-service-sdk
+
 ## [2.2.2](https://github.com/easyops-cn/next-providers/compare/@next-sdk/user-service-sdk@2.2.1...@next-sdk/user-service-sdk@2.2.2) (2022-06-02)
 
 **Note:** Version bump only for package @next-sdk/user-service-sdk

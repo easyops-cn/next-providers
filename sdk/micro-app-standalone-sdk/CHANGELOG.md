@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.2.1 (2023-06-08)
+
+**Note:** Version bump only for package @next-sdk/micro-app-standalone-sdk
+
 # [1.2.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/micro-app-standalone-sdk@1.1.1...@next-sdk/micro-app-standalone-sdk@1.2.0) (2022-09-23)
 
 ### Features

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.4.1 (2023-06-08)
+
+**Note:** Version bump only for package @next-sdk/form-builder-service-sdk
+
 # [1.4.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/form-builder-service-sdk@1.3.1...@next-sdk/form-builder-service-sdk@1.4.0) (2023-01-04)
 
 ### Features

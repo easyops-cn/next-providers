@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.9.0 (2023-06-08)
+
+### Features
+
+- add apis: BuildApi_batchDeleteImages, BuildApi_buildAndPushStandalone, BuildApi_deleteImage, BuildApi_recoverFromHistoryVersion, CmdbObjectApi_index, CmdbObjectApi_list, CmdbObjectApi_listObjectBasic, InstalledThemeTemplateApi_initThemeTemplate, PackageAloneApi_getPackageVersionList, PackageAloneApi_packageStandAloneWithBase, ProjectApi_updateProjectDevelopmentEnv, WorkflowApi_addWorkflowDef, WorkflowApi_addWorkflowStep, WorkflowApi_deleteWorkflowDef, WorkflowApi_deleteWorkflowStep, WorkflowApi_getWorkflowGraph, WorkflowApi_index, WorkflowApi_updateWorkflowDef, WorkflowApi_updateWorkflowStep ([a0b3096](https://github.com/easyops-cn/next-providers/commit/a0b30967cb2774c12b3719b75aa3b473257c6fde))
+
 # [2.8.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/next-builder-sdk@2.7.0...@next-sdk/next-builder-sdk@2.8.0) (2022-10-14)
 
 ### Features
