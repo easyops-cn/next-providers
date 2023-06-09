@@ -2384,17 +2384,57 @@
     {
       "contract": "api_gateway.sso.SSOAuthorizeRedirect",
       "name": "SSOAuthorizeRedirect",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "SSO访问令牌认证; SSO身份认证成功后认证服务将会携带 登录凭证 重定向至该接口",
       "detail": "该接口最后会直接重定向到easyops平台的/next/sso-auth/authorize页面，可以是GET请求也可以是POST请求",
       "endpoint": {
         "method": "POST",
-        "uri": "/api/v2/sso/authorization"
+        "uri": "/api/v2/sso/authorization/:protocol",
+        "ext_fields": [
+          {
+            "name": "body",
+            "source": "body"
+          }
+        ]
       },
       "request": {
-        "type": "value"
+        "type": "object",
+        "fields": [
+          {
+            "name": "protocol",
+            "type": "string",
+            "description": "身份认证协议类型, 如OAuth2、cas等"
+          },
+          {
+            "name": "body",
+            "type": "value",
+            "description": "认证参数"
+          }
+        ]
       },
-      "response": null
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "SSOAuthorizeRedirect",
+            "zh": "sso 认证重定向接口"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8107/api/v2/sso/authorization/oauth2",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n        \"token\": \"5444212577\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"成功: Success\",\n    \"message\": \"Success\",\n    \"data\": null\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "api_gateway.sso.SSOLogin",
