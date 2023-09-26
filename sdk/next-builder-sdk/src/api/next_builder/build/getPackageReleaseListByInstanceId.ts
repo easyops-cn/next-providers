@@ -5,6 +5,12 @@ import { ResponseBodyWrapper } from "../../../wrapper";
 export interface BuildApi_GetPackageReleaseListByInstanceIdRequestParams {
   /** 是否standalone模式的打包记录 */
   isStandalone?: boolean;
+
+  /** 页数, 不传或为0时表示全量查询（不超过3000条） */
+  page?: number;
+
+  /** 分页大小 */
+  pageSize?: number;
 }
 
 export interface BuildApi_GetPackageReleaseListByInstanceIdResponseBody {

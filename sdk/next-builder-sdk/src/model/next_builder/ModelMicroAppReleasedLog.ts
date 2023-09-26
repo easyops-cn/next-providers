@@ -18,6 +18,9 @@ export interface ModelMicroAppReleasedLog {
   /** StoryboardJson */
   storyboardJson: string;
 
+  /** StoryboardJson URL */
+  storyboardJsonUrl: string;
+
   /** 模型定义Json */
   modelsDefinitionJson: string;
 
@@ -26,6 +29,15 @@ export interface ModelMicroAppReleasedLog {
 
   /** 权限点资源Json */
   permissionsJson: string;
+
+  /** 权限点资源Json URL */
+  permissionsJsonUrl: string;
+
+  /** ThemeJson */
+  themeJson: string;
+
+  /** ThemeJson URL */
+  themeJsonUrl: string;
 
   /** 小产品id */
   appId: string;

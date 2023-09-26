@@ -1,4 +1,5 @@
 export * from "./deleteDocument";
+export * from "./exportDocumentFile";
 export * from "./exportDocuments";
 export * from "./getDocumentsDetails";
 export * from "./getDocumentsTreeByAppId";

@@ -5,6 +5,9 @@ import { ResponseBodyWrapper } from "../../../wrapper";
 export interface ProjectApi_GetMicroAppProjectByInstanceIdRequestParams {
   /** cmdb实例标识 */
   instanceId?: string;
+
+  /** 指定返回的fields */
+  fields?: string;
 }
 
 export type ProjectApi_GetMicroAppProjectByInstanceIdResponseBody =

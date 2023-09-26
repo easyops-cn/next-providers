@@ -10,6 +10,30 @@ export interface ProjectApi_UpdateProjectStoryboardRequestBody {
 
   /** app配置 */
   appSetting?: ModelMicroAppProject["appSetting"];
+
+  /** 框架版本 */
+  brickNextVersion?: number;
+
+  /** name */
+  name?: string;
+
+  /** 微应用描述信息 */
+  description?: string;
+
+  /** 开发环境 */
+  developmentEnv?: ModelMicroAppProject["developmentEnv"];
+
+  /** UI版本 */
+  uiVersion?: string;
+
+  /** updateAuthorizers */
+  updateAuthorizers?: string[];
+
+  /** readAuthorizers */
+  readAuthorizers?: string[];
+
+  /** deleteAuthorizers */
+  deleteAuthorizers?: string[];
 }
 
 /**

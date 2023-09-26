@@ -22,6 +22,9 @@ export interface PackageAloneApi_ListDependenciesResponseItem {
 
   /** 是否使用最新开发版本 */
   isDeveloping?: boolean;
+
+  /** 版本是否存在, 仅判断前端组件NB、NT、brick_next等，不包括后端组件 */
+  versionExists?: boolean;
 }
 
 export type PackageAloneApi_ListDependenciesResponseBody =

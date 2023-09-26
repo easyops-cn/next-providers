@@ -21,6 +21,9 @@ export interface ModelVersion {
   /** 创建者 */
   creator: string;
 
+  /** 真实创建者(可以不是平台用户) */
+  realUser: string;
+
   /** 版本创建者(这里使用string类型:github用户名字符最长39位,user_name正则为31位不满足) */
   builder: string;
 

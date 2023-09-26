@@ -2,6 +2,11 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelMicroAppProject } from "../../../model/next_builder";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
+export interface ProjectApi_GetMicroAppProjectRequestParams {
+  /** 指定返回的fields */
+  fields?: string;
+}
+
 export type ProjectApi_GetMicroAppProjectResponseBody =
   Partial<ModelMicroAppProject>;
 
@@ -11,6 +16,7 @@ export type ProjectApi_GetMicroAppProjectResponseBody =
  */
 export const ProjectApi_getMicroAppProject = async (
   projectId: string | number,
+  params: ProjectApi_GetMicroAppProjectRequestParams,
   options?: HttpOptions
 ): Promise<ProjectApi_GetMicroAppProjectResponseBody> =>
   /**! @contract easyops.api.next_builder.project.GetMicroAppProject@1.0.0 */ (
@@ -18,6 +24,6 @@ export const ProjectApi_getMicroAppProject = async (
       ResponseBodyWrapper<ProjectApi_GetMicroAppProjectResponseBody>
     >(
       `api/gateway/next_builder.project.GetMicroAppProject/api/v1/next-builder/project/${projectId}`,
-      options
+      { ...options, params }
     )
   ).data;

@@ -633,6 +633,21 @@
             "name": "projectId",
             "type": "string",
             "description": "小产品项目id"
+          },
+          {
+            "name": "isStandalone",
+            "type": "bool",
+            "description": "是否standalone模式的打包记录"
+          },
+          {
+            "name": "page",
+            "type": "int",
+            "description": "页数, 不传或为0时表示全量查询（不超过3000条）"
+          },
+          {
+            "name": "pageSize",
+            "type": "int",
+            "description": "分页大小"
           }
         ],
         "required": ["projectId"]
@@ -681,7 +696,26 @@
             ]
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Basic",
+            "zh": "基础请求"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8142/api/v1/next-builder/project/P-1300007"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"message\": \"success\",\n    \"data\": {\n        \"packages\": [\n            {\n                \"version\": \"1.72.2\",\n                \"baseVersion\": \"1.72.1\",\n                \"commitUser\": \"alexchen\",\n                \"description\": \"Update monitor-alert-NB 、 widget.monitor-alert-NT version\",\n                \"storyboardJson\": \"\",\n                \"storyboardJsonUrl\": \"\",\n                \"modelsDefinitionJson\": \"\",\n                \"ctime\": \"2023-09-05 16:59:04\",\n                \"permissionsJson\": \"\",\n                \"permissionsJsonUrl\": \"\",\n                \"themeJson\": \"\",\n                \"themeJsonUrl\": \"\",\n                \"appId\": \"infra-monitor\",\n                \"packageStatus\": \"done\",\n                \"packageInfo\": {\n                    \"packageId\": \"5007793e40c445afb62c018c1629decb\",\n                    \"versionId\": \"f95c8e10222a44718cc7b59ed70d47ff\",\n                    \"naPackageId\": \"\",\n                    \"naVersionId\": \"\",\n                    \"rPackageId\": \"\",\n                    \"rVersionId\": \"\"\n                },\n                \"errMsg\": \"\",\n                \"projectId\": \"P-1300026\"\n            },\n            {\n                \"version\": \"1.72.1\",\n                \"baseVersion\": \"1.72.0\",\n                \"commitUser\": \"astridli\",\n                \"description\": \"fix(): 无数据告警增加特性开关\\n\\nCloses MONITOR-6833\",\n                \"storyboardJson\": \"\",\n                \"storyboardJsonUrl\": \"\",\n                \"modelsDefinitionJson\": \"\",\n                \"ctime\": \"2023-09-05 12:19:46\",\n                \"permissionsJson\": \"\",\n                \"permissionsJsonUrl\": \"\",\n                \"themeJson\": \"\",\n                \"themeJsonUrl\": \"\",\n                \"appId\": \"infra-monitor\",\n                \"packageStatus\": \"done\",\n                \"packageInfo\": {\n                    \"packageId\": \"5007793e40c445afb62c018c1629decb\",\n                    \"versionId\": \"a1982c9d810b41c580dc2b35c5f2ca36\",\n                    \"naPackageId\": \"\",\n                    \"naVersionId\": \"\",\n                    \"rPackageId\": \"\",\n                    \"rVersionId\": \"\"\n                },\n                \"errMsg\": \"\",\n                \"projectId\": \"P-1300026\"\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "next_builder.build.GetPackageReleaseListByInstanceId",
@@ -709,6 +743,16 @@
             "name": "isStandalone",
             "type": "bool",
             "description": "是否standalone模式的打包记录"
+          },
+          {
+            "name": "page",
+            "type": "int",
+            "description": "页数, 不传或为0时表示全量查询（不超过3000条）"
+          },
+          {
+            "name": "pageSize",
+            "type": "int",
+            "description": "分页大小"
           }
         ],
         "required": ["instanceId"]
@@ -722,7 +766,26 @@
             "description": "包列表"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Basic",
+            "zh": "基础请求"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8142/api/v1/next-builder/project/P-1300007"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"message\": \"success\",\n    \"data\": {\n        \"packages\": [\n            {\n                \"version\": \"1.72.2\",\n                \"baseVersion\": \"1.72.1\",\n                \"commitUser\": \"alexchen\",\n                \"description\": \"Update monitor-alert-NB 、 widget.monitor-alert-NT version\",\n                \"storyboardJson\": \"\",\n                \"storyboardJsonUrl\": \"\",\n                \"modelsDefinitionJson\": \"\",\n                \"ctime\": \"2023-09-05 16:59:04\",\n                \"permissionsJson\": \"\",\n                \"permissionsJsonUrl\": \"\",\n                \"themeJson\": \"\",\n                \"themeJsonUrl\": \"\",\n                \"appId\": \"infra-monitor\",\n                \"packageStatus\": \"done\",\n                \"packageInfo\": {\n                    \"packageId\": \"5007793e40c445afb62c018c1629decb\",\n                    \"versionId\": \"f95c8e10222a44718cc7b59ed70d47ff\",\n                    \"naPackageId\": \"\",\n                    \"naVersionId\": \"\",\n                    \"rPackageId\": \"\",\n                    \"rVersionId\": \"\"\n                },\n                \"errMsg\": \"\",\n                \"projectId\": \"P-1300026\"\n            },\n            {\n                \"version\": \"1.72.1\",\n                \"baseVersion\": \"1.72.0\",\n                \"commitUser\": \"astridli\",\n                \"description\": \"fix(): 无数据告警增加特性开关\\n\\nCloses MONITOR-6833\",\n                \"storyboardJson\": \"\",\n                \"storyboardJsonUrl\": \"\",\n                \"modelsDefinitionJson\": \"\",\n                \"ctime\": \"2023-09-05 12:19:46\",\n                \"permissionsJson\": \"\",\n                \"permissionsJsonUrl\": \"\",\n                \"themeJson\": \"\",\n                \"themeJsonUrl\": \"\",\n                \"appId\": \"infra-monitor\",\n                \"packageStatus\": \"done\",\n                \"packageInfo\": {\n                    \"packageId\": \"5007793e40c445afb62c018c1629decb\",\n                    \"versionId\": \"a1982c9d810b41c580dc2b35c5f2ca36\",\n                    \"naPackageId\": \"\",\n                    \"naVersionId\": \"\",\n                    \"rPackageId\": \"\",\n                    \"rVersionId\": \"\"\n                },\n                \"errMsg\": \"\",\n                \"projectId\": \"P-1300026\"\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "next_builder.build.PackageUpload",
@@ -1907,6 +1970,66 @@
       }
     },
     {
+      "contract": "next_builder.document.ExportDocumentFile",
+      "category": {
+        "en": "Documents",
+        "zh": "文档"
+      },
+      "name": "ExportDocumentFile",
+      "version": "1.0.0",
+      "description": "导出文档",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/document/export/file"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "documentId",
+            "type": "string",
+            "description": "文档ID"
+          },
+          {
+            "name": "exportChildren",
+            "type": "bool",
+            "description": "是否导出子文档"
+          },
+          {
+            "name": "fileType",
+            "type": "string",
+            "enum": ["docx", "pdf"],
+            "description": "导出文件类型"
+          }
+        ],
+        "required": ["documentId", "exportChildren", "fileType"]
+      },
+      "response": {
+        "download_enable": true,
+        "type": "file",
+        "description": "下载的文件"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "ExportDocumentFile",
+            "zh": "导出文档"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8142/api/v1/document/export/file",
+            "body": "{\n  \"documentId\": \"next-artifact_O8F9fZ68TRCFfeItUiwrGg\",\n  \"exportChildren\": true,\n  \"fileType\": \"pdf\"\n}"
+          },
+          "response": {
+            "content_type": "application/octet-stream",
+            "content_disposition": "attachment;filename=制品管理.tar.gz",
+            "status_code": 200,
+            "body": ""
+          }
+        }
+      ]
+    },
+    {
       "contract": "next_builder.document.ExportDocuments",
       "category": {
         "en": "Documents",
@@ -2160,6 +2283,228 @@
         "required": ["documentIds"]
       },
       "response": null
+    },
+    {
+      "contract": "next_builder.git.CodeDiff",
+      "name": "CodeDiff",
+      "version": "1.0.0",
+      "description": "Code Diff",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next-builder/diff/:appId"
+      },
+      "import": ["easyops/model/next_builder/git_diff_tree"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "appId"
+          },
+          {
+            "name": "refFrom",
+            "type": "string",
+            "description": "diff ref from"
+          },
+          {
+            "name": "refTo",
+            "type": "string",
+            "description": "diff ref to"
+          }
+        ],
+        "required": ["appId", "refFrom", "refTo"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "diffs",
+            "type": "object[]",
+            "description": "git diff差异信息",
+            "fields": [
+              {
+                "name": "category",
+                "type": "string",
+                "description": "类别：routes/functions/i18n...."
+              },
+              {
+                "name": "root",
+                "type": "GitDiffTree[]",
+                "description": "数据变更信息"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "CodeDiff",
+            "en": "Code Diff"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/api/v1/next-builder/diff/demo-app",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            },
+            "body": "{\n    \"appId\": \"demo-app\",\n    \"refFrom\": \"7d4de97f874144c4599cc4226abe76f54377df5e\",\n    \"refTo\": \"329c52b531fa338eba6779c8ed5c4f3a38bdb435\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"diffs\": [\n            {\n                \"category\": \"routes\",\n                \"root\": [\n                    {\n                        \"id\": \"604a91da3c931\",\n                        \"action\": \"M\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "next_builder.git.CommitAppData",
+      "name": "CommitAppData",
+      "version": "1.0.0",
+      "description": "Commit App Data",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next-builder/commits/:projectId"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectId",
+            "type": "string",
+            "description": "projectId"
+          },
+          {
+            "name": "branch",
+            "type": "string",
+            "description": "branch will commit"
+          },
+          {
+            "name": "srcBranch",
+            "type": "string",
+            "description": "src branch"
+          },
+          {
+            "name": "commitMessage",
+            "type": "string",
+            "description": "提交信息"
+          }
+        ],
+        "required": ["projectId", "commitMessage"],
+        "default": {
+          "branch": "master",
+          "srcBranch": "master"
+        }
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "commitId",
+            "type": "string",
+            "description": "commitId"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "提交App数据",
+            "en": "Commit App Data"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/api/v1/next-builder/P-104/commits",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            },
+            "body": "{\n    \"projectId\": \"P-104\",\n    \"branch\": \"master\",\n    \"srcBranch\": \"master\",\n    \"commitMessage\": \"this is a commit about xx\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n      \"commitId\": \"b269266fea4e71aa87a52993b73772394e7bbebe\"\n    } \n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "next_builder.git.RecoverMicroApp",
+      "name": "RecoverMicroApp",
+      "version": "1.0.0",
+      "description": "从Gitea恢复微应用数据",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next-builder/recover/:appId"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "小产品appId"
+          },
+          {
+            "name": "ref",
+            "type": "string",
+            "description": "可选:branch/commitId/tag"
+          },
+          {
+            "name": "curBranch",
+            "type": "string",
+            "description": "当前项目所在分支"
+          }
+        ],
+        "required": ["appId", "ref"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "newAppInstanceId",
+            "type": "instance_id",
+            "description": "新的小产品instanceId"
+          },
+          {
+            "name": "newAppProjectId",
+            "type": "string",
+            "description": "新的小产品projectId"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "从Gitea恢复微应用数据",
+            "en": "Recover Micro App"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/api/v1/next-builder/janice-test-app/recover",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            },
+            "body": "{\n    \"appId\": \"janice-test-app\",\n    \"ref\": \"1.0.0\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n      \"newAppInstanceId\": \"6047ffcd26c81\",\n      \"newAppProjectId\": \"P-01\"\n    } \n}"
+          }
+        }
+      ]
     },
     {
       "contract": "next_builder.import_and_export.ProjectExport",
@@ -3067,6 +3412,157 @@
       "response": null
     },
     {
+      "contract": "next_builder.model.ExportColumnTables",
+      "category": {
+        "en": "Model",
+        "zh": "模型"
+      },
+      "name": "ExportColumnTables",
+      "version": "1.0.1",
+      "description": "导出列模型",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/model-center/column/export"
+      },
+      "import": ["easyops/model/next_builder/column_object"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceIds",
+            "type": "string[]",
+            "description": "列模型instanceIds"
+          },
+          {
+            "name": "onlyReleased",
+            "type": "bool",
+            "description": "只包含发布模型"
+          }
+        ],
+        "required": ["instanceIds"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "map[]",
+            "description": "列模型定义"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "ExportColumnTables",
+            "zh": "导出列模型"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8142/api/v1/model-center/column/export",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n        \"instanceIds\": [\"foo\",\"bar\"],\n        \"onlyReleased\": true\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"成功: Success\",\n    \"message\": \"Success\",\n    \"data\": {\n        \"list\": [\n            {\n                \"base\": {\n                  \"id\": \"CO_SIMPLE@TEST\",\n                  \"parquet_config\": {\n                    \"parquet_max_file_size\": \"123\",\n                    \"row_group\": \"123\"\n                  },\n                  \"tmp_table_config\": {\n                    \"checked_field_id\": \"cfid1\",\n                    \"checked_field_value\": [\n                      \"cfid1\",\n                      \"cfid2\"\n                    ],\n                    \"enabled\": true,\n                    \"flush_ttl\": 123\n                  },\n                  \"ttl\": 123\n                },\n                \"columns\": [\n                  {\n                    \"data_type\": {\n                      \"string\": {}\n                    },\n                    \"enable_mem_index\": true,\n                    \"id\": \"CC_1\",\n                    \"instanceId\": \"6014aacb1818a\",\n                    \"name\": \"CCNAME_1\",\n                    \"parquet_config\": {\n                      \"bloom_filter_enabled\": \"true\",\n                      \"bloom_filter_properties_fpp\": \"123\",\n                      \"bloom_filter_properties_ndv\": \"123\",\n                      \"dictionary_enabled\": \"true\",\n                      \"max_statistics_size\": \"123\",\n                      \"statistics_enabled\": \"true\"\n                    },\n                    \"required\": true\n                  },\n                  {\n                    \"data_type\": {\n                      \"string\": {}\n                    },\n                    \"enable_mem_index\": true,\n                    \"id\": \"CC_2\",\n                    \"instanceId\": \"6014aae94eaab\",\n                    \"name\": \"CCNAME_2\",\n                    \"parquet_config\": {\n                      \"bloom_filter_enabled\": \"true\",\n                      \"bloom_filter_properties_fpp\": \"123\",\n                      \"bloom_filter_properties_ndv\": \"123\",\n                      \"dictionary_enabled\": \"true\",\n                      \"max_statistics_size\": \"123\",\n                      \"statistics_enabled\": \"true\"\n                    },\n                    \"required\": true\n                  }\n                ]\n              }\n            ]\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "next_builder.model.ExportMetrics",
+      "category": {
+        "en": "Model",
+        "zh": "模型"
+      },
+      "name": "ExportMetrics",
+      "version": "1.1.2",
+      "description": "导出指标",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/model-center/metrics/export"
+      },
+      "import": [
+        "easyops/model/collector_service/alias_metric",
+        "easyops/model/collector_service/metric_set"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceIds",
+            "type": "string[]",
+            "description": "模型instanceIds"
+          },
+          {
+            "name": "onlyReleased",
+            "type": "bool",
+            "description": "只包含发布模型"
+          }
+        ],
+        "required": ["instanceIds"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "objectId",
+                "type": "string",
+                "description": "objectId(with namespace)"
+              },
+              {
+                "name": "parentObjectIds",
+                "type": "string[]",
+                "description": "父模型ObjectId(with namespace)"
+              },
+              {
+                "name": "metrics",
+                "type": "CollectorAliasMetric[]",
+                "description": "映射指标"
+              },
+              {
+                "name": "metricSets",
+                "type": "MetricSet[]",
+                "description": "指标集"
+              }
+            ],
+            "description": "映射指标列表(按模型)"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "ExportMetrics",
+            "zh": "导出指标"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8142/api/v1/model-center/metrics/export",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n        \"instanceIds\": [\"foo\",\"bar\"],\n        \"onlyReleased\": true\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"成功: Success\",\n    \"message\": \"Success\",\n    \"data\": {\n        \"list\": [\n            {\n                \"objectId\": \"C1@EASYOPS\",\n                \"parentObjectIds\": [\"P1@EASYOPS\", \"P2@EASYOPS\"],\n                \"metrics\": {\n                    \"dims\": [\n                        {\n                            \"dimName\": \"system_diskio_name\",\n                            \"dimDisplayName\": \"磁盘IO名称\"\n                        }\n                    ],\n                    \"isKeyMetric\": false,\n                    \"protected\": true,\n                    \"dataType\": \"double\",\n                    \"name\": \"system_diskio_iostat_read_request_merges_per_sec\",\n                    \"displayName\": \"磁盘每秒读请求的合并数\",\n                    \"metricSet\": [\n                        {\n                            \"name\": \"diskio\",\n                            \"relateObjectId\": \"HOST\"\n                            \"protected\": true,\n                        }\n                    ],\n                    \"description\": \"The number of read requests merged per second that were queued to the device.\",\n                    \"type\": \"normal\",\n                    \"objectId\": \"HOST\"\n                },\n                \"metricSets\": [\n                    {\n                        \"name\": \"diskio\",\n                        \"relateObjectId\": \"HOST\"\n                        \"protected\": true,\n                    },\n                    {\n                        \"name\": \"diskio\",\n                        \"relateObjectId\": \"HOST\"\n                        \"protected\": true,\n                    }\n                ]\n            },\n            {\n                \"objectId\": \"P1@EASYOPS\",\n                \"parentObjectIds\": [],\n                \"metrics\": {\n                    \"dims\": [\n                        {\n                            \"dimName\": \"system_diskio_name\",\n                            \"dimDisplayName\": \"磁盘IO名称\"\n                        }\n                    ],\n                    \"dataType\": \"double\",\n                    \"isKeyMetric\": false,\n                    \"protected\": false,\n                    \"name\": \"system_diskio_iostat_read_await\",\n                    \"displayName\": \"磁盘读请求等待时间\",\n                    \"metricSet\": [\n                        {\n                            \"name\": \"diskio\",\n                            \"relateObjectId\": \"HOST\"\n                            \"protected\": false,\n                        }\n                    ],\n                    \"description\": \"The average time spent for read requests issued to the device to be served.\",\n                    \"type\": \"normal\",\n                    \"objectId\": \"HOST\"\n                },\n                \"metricSets\": [\n                    {\n                        \"name\": \"diskio3\",\n                        \"relateObjectId\": \"HOST\"\n                        \"protected\": false,\n                    }\n                ]\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "next_builder.model.ExportModels",
       "category": {
         "en": "Model",
@@ -3581,6 +4077,11 @@
             "name": "isDeveloping",
             "type": "bool",
             "description": "是否使用最新开发版本"
+          },
+          {
+            "name": "versionExists",
+            "type": "bool",
+            "description": "版本是否存在, 仅判断前端组件NB、NT、brick_next等，不包括后端组件"
           }
         ]
       },
@@ -3843,6 +4344,100 @@
       }
     },
     {
+      "contract": "next_builder.project.CreateMicroAppProject",
+      "category": {
+        "en": "Project",
+        "zh": "项目"
+      },
+      "name": "CreateMicroAppProject",
+      "version": "1.0.0",
+      "description": "创建微应用项目",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next-builder/project/:appId"
+      },
+      "import": ["easyops/model/next_builder/micro_app_project"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MicroAppProject.appId"
+          },
+          {
+            "ref": "MicroAppProject.name"
+          },
+          {
+            "ref": "MicroAppProject.storyboardType"
+          },
+          {
+            "ref": "MicroAppProject.appSetting"
+          },
+          {
+            "ref": "MicroAppProject.brickNextVersion"
+          },
+          {
+            "ref": "MicroAppProject.uiVersion"
+          },
+          {
+            "ref": "MicroAppProject.developmentEnv"
+          },
+          {
+            "ref": "MicroAppProject.description"
+          },
+          {
+            "name": "updateAuthorizers",
+            "type": "string[]",
+            "description": "updateAuthorizers"
+          },
+          {
+            "name": "readAuthorizers",
+            "type": "string[]",
+            "description": "readAuthorizers"
+          },
+          {
+            "name": "deleteAuthorizers",
+            "type": "string[]",
+            "description": "deleteAuthorizers"
+          }
+        ],
+        "required": [
+          "MicroAppProject.appId",
+          "MicroAppProject.name",
+          "MicroAppProject.appSetting"
+        ],
+        "default": {
+          "brickNextVersion": 2,
+          "storyboardType": "micro-app"
+        }
+      },
+      "response": {
+        "type": "MicroAppProject"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Create MicroApp Project",
+            "zh": "创建微应用项目"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8142/api/v1/next-builder/my-micro-app",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"appId\": \"my-micro-app\",\n    \"name\": \"my-micro-app\",\n    \"description\": \"微应用创建测试\",\n    \"appSetting\": {\n        \"name\": \"我的微应用\",\n        \"homepage\": \"/my-micro-app\",\n        \"icon\": \"{\\n  \\\"lib\\\":\\\"fa\\\",\\n  \\\"icon\\\":\\\"ambulance\\\",\\n  \\\"prefix\\\":\\\"fas\\\"\\n}\",\n        \"defaultContainer\": {},\n        \"uiVersion\": \"8.2\",\n        \"defaultConfig\": \"{\\n  \\\"settings\\\":{\\n    \\\"featureFlags\\\":{\\n      \\\"support-ui-8.2-compact-layout\\\":true\\n    }\\n  }\\n}\"\n    }\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"message\": \"success\",\n    \"data\": {\n        \"appId\": \"my-micro-app\",\n        \"appSetting\": {\n            \"defaultConfig\": \"{\\n  \\\"settings\\\":{\\n    \\\"featureFlags\\\":{\\n      \\\"support-ui-8.2-compact-layout\\\":true\\n    }\\n  }\\n}\",\n            \"defaultContainer\": {},\n            \"homepage\": \"/my-micro-app\",\n            \"icon\": \"{\\n  \\\"lib\\\":\\\"fa\\\",\\n  \\\"icon\\\":\\\"ambulance\\\",\\n  \\\"prefix\\\":\\\"fas\\\"\\n}\",\n            \"locales\": null,\n            \"name\": \"我的微应用\",\n            \"uiVersion\": \"8.2\"\n        },\n        \"brickNextVersion\": 2,\n        \"description\": \"微应用创建测试\",\n        \"instanceId\": \"6043350820c21\",\n        \"name\": \"my-micro-app\",\n        \"storyboardType\": \"micro-app\"\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "next_builder.project.DeleteStoryboardProject",
       "category": {
         "en": "Project",
@@ -3891,12 +4486,36 @@
         "fields": [
           {
             "ref": "MicroAppProject.projectId"
+          },
+          {
+            "name": "fields",
+            "type": "string",
+            "description": "指定返回的fields"
           }
         ]
       },
       "response": {
         "type": "MicroAppProject"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Basic",
+            "zh": "基础请求"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8142/api/v1/next-builder/project/P-1300007"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"message\": \"success\",\n  \"data\": {\n    \"appId\": \"my-micro-app\",\n    \"appSetting\": {\n      \"appIconUrl\": \"api/gateway/object_store.object_store.GetObject/api/v1/objectStore/bucket/next-builder/object/image16080390648879824081636614785510056761.png\",\n      \"breadcrumb\": null,\n      \"defaultConfig\": null,\n      \"private\": false,\n      \"visibility\": null\n    },\n    \"dependencies\": [\n\n    ],\n    \"dependsAll\": false,\n    \"developmentEnv\": {\n      \"accessKey\": \"ee6e5c3a615bd2c2cbbeed1c\",\n      \"openApiIP\": \"192.168.100.210\",\n      \"openApiPort\": 30109,\n      \"protocol\": \"http\",\n      \"secretKey\": \"496d4a69657045757248436145694f467551574c55425652735345685a6a726f\"\n    },\n    \"images\": [\n\n    ],\n    \"instanceId\": \"5cf34702be413\",\n    \"lastExportedDocuments\": \"[{\\\"instanceId\\\":\\\"\\\",\\\"documentId\\\":\\\"my-micro-app_YPLv8kZJToew8TA2W9vl_w\\\",\\\"author\\\":\\\"sdfsdf\\\",\\\"name\\\":\\\"sdfsdf\\\",\\\"content\\\":\\\"this is document\\\",\\\"relatedMicroAppId\\\":\\\"my-micro-app\\\",\\\"relatedRouteAliases\\\":null,\\\"sort\\\":1,\\\"children\\\":null,\\\"parent\\\":null}]\",\n    \"lastExportedModelsDefinition\": null,\n    \"lastExportedPermissions\": null,\n    \"lastReleasedModelsDefinition\": null,\n    \"modelObjects\": [\n\n    ],\n    \"models\": [\n\n    ],\n    \"modelsDefinition\": [\n\n    ],\n    \"name\": \"我的微应用\",\n    \"permissions\": [\n\n    ],\n    \"projectId\": \"P-1300007\",\n    \"storyboardJson\": \"{\\\"app\\\":{\\\"id\\\":\\\"my-micro-app\\\",\\\"internal\\\":false,\\\"private\\\":false,\\\"legacy\\\":\\\"\\\",\\\"name\\\":\\\"我的微应用\\\",\\\"icons\\\":null,\\\"storyboardJson\\\":\\\"\\\",\\\"tags\\\":[],\\\"currentVersion\\\":\\\"\\\",\\\"installStatus\\\":\\\"\\\",\\\"homepage\\\":\\\"/my-micro-app\\\",\\\"clonedFrom\\\":null,\\\"owner\\\":\\\"\\\",\\\"readme\\\":\\\"\\\",\\\"status\\\":\\\"\\\",\\\"ctime\\\":\\\"\\\",\\\"mtime\\\":\\\"\\\",\\\"pkgName\\\":\\\"\\\",\\\"menuIcon\\\":{\\\"lib\\\":\\\"fa\\\",\\\"type\\\":\\\"\\\",\\\"theme\\\":\\\"\\\",\\\"icon\\\":\\\"ambulance\\\",\\\"prefix\\\":\\\"fas\\\",\\\"category\\\":\\\"\\\"},\\\"iconBackground\\\":\\\"\\\",\\\"defaultConfig\\\":null,\\\"env\\\":null,\\\"locales\\\":null,\\\"layoutType\\\":\\\"\\\",\\\"noAuthGuard\\\":false,\\\"breadcrumb\\\":null},\\\"dependsAll\\\":false,\\\"routes\\\":[{\\\"alias\\\":\\\"首页\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.micro-view\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"pageTitle\\\":\\\"Hello world\\\"},\\\"slots\\\":{\\\"content\\\":{\\\"bricks\\\":[{\\\"brick\\\":\\\"presentational-bricks.brick-result\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"customTitle\\\":\\\"Today is Tuesday\\\",\\\"status\\\":\\\"info\\\",\\\"subTitle\\\":\\\"2019/10/29 21:35\\\"}}],\\\"type\\\":\\\"bricks\\\"},\\\"toolbar\\\":{\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.general-button\\\",\\\"events\\\":{\\\"general.button.click\\\":[{\\\"action\\\":\\\"message.success\\\",\\\"args\\\":[\\\"点击操作按钮\\\"]}]},\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"buttonName\\\":\\\"按钮\\\"}}],\\\"type\\\":\\\"bricks\\\"}}}],\\\"exact\\\":true,\\\"hybrid\\\":false,\\\"path\\\":\\\"${APP.homepage}\\\",\\\"public\\\":false,\\\"type\\\":\\\"bricks\\\"},{\\\"alias\\\":\\\"用户列表\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.micro-view\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"pageTitle\\\":\\\"用户列表\\\"}}],\\\"exact\\\":true,\\\"hybrid\\\":false,\\\"path\\\":\\\"${APP.homepage}/users\\\",\\\"public\\\":false,\\\"type\\\":\\\"bricks\\\"}],\\\"meta\\\":{\\\"customTemplates\\\":[],\\\"functions\\\":[],\\\"i18n\\\":{\\\"en\\\":{},\\\"zh\\\":{}},\\\"menus\\\":[]}}\",\n    \"type\": \"storyboard\"\n  }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "next_builder.project.GetMicroAppProjectByAppId",
@@ -3917,6 +4536,11 @@
         "fields": [
           {
             "ref": "MicroAppProject.appId"
+          },
+          {
+            "name": "fields",
+            "type": "string",
+            "description": "指定返回的fields"
           }
         ]
       },
@@ -3962,12 +4586,36 @@
         "fields": [
           {
             "ref": "MicroAppProject.instanceId"
+          },
+          {
+            "name": "fields",
+            "type": "string",
+            "description": "指定返回的fields"
           }
         ]
       },
       "response": {
         "type": "MicroAppProject"
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Basic",
+            "zh": "基础请求"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8142/api/v1/next-builder/project-get-detail?instanceId=5cf34702be413"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"message\": \"success\",\n  \"data\": {\n    \"appId\": \"my-micro-app\",\n    \"appSetting\": {\n      \"appIconUrl\": \"api/gateway/object_store.object_store.GetObject/api/v1/objectStore/bucket/next-builder/object/image16080390648879824081636614785510056761.png\",\n      \"breadcrumb\": null,\n      \"defaultConfig\": null,\n      \"private\": false,\n      \"visibility\": null\n    },\n    \"dependencies\": [\n\n    ],\n    \"dependsAll\": false,\n    \"developmentEnv\": {\n      \"accessKey\": \"ee6e5c3a615bd2c2cbbeed1c\",\n      \"openApiIP\": \"192.168.100.210\",\n      \"openApiPort\": 30109,\n      \"protocol\": \"http\",\n      \"secretKey\": \"496d4a69657045757248436145694f467551574c55425652735345685a6a726f\"\n    },\n    \"images\": [\n\n    ],\n    \"instanceId\": \"5cf34702be413\",\n    \"lastExportedDocuments\": \"[{\\\"instanceId\\\":\\\"\\\",\\\"documentId\\\":\\\"my-micro-app_YPLv8kZJToew8TA2W9vl_w\\\",\\\"author\\\":\\\"sdfsdf\\\",\\\"name\\\":\\\"sdfsdf\\\",\\\"content\\\":\\\"this is document\\\",\\\"relatedMicroAppId\\\":\\\"my-micro-app\\\",\\\"relatedRouteAliases\\\":null,\\\"sort\\\":1,\\\"children\\\":null,\\\"parent\\\":null}]\",\n    \"lastExportedModelsDefinition\": null,\n    \"lastExportedPermissions\": null,\n    \"lastReleasedModelsDefinition\": null,\n    \"modelObjects\": [\n\n    ],\n    \"models\": [\n\n    ],\n    \"modelsDefinition\": [\n\n    ],\n    \"name\": \"我的微应用\",\n    \"permissions\": [\n\n    ],\n    \"projectId\": \"P-1300007\",\n    \"storyboardJson\": \"{\\\"app\\\":{\\\"id\\\":\\\"my-micro-app\\\",\\\"internal\\\":false,\\\"private\\\":false,\\\"legacy\\\":\\\"\\\",\\\"name\\\":\\\"我的微应用\\\",\\\"icons\\\":null,\\\"storyboardJson\\\":\\\"\\\",\\\"tags\\\":[],\\\"currentVersion\\\":\\\"\\\",\\\"installStatus\\\":\\\"\\\",\\\"homepage\\\":\\\"/my-micro-app\\\",\\\"clonedFrom\\\":null,\\\"owner\\\":\\\"\\\",\\\"readme\\\":\\\"\\\",\\\"status\\\":\\\"\\\",\\\"ctime\\\":\\\"\\\",\\\"mtime\\\":\\\"\\\",\\\"pkgName\\\":\\\"\\\",\\\"menuIcon\\\":{\\\"lib\\\":\\\"fa\\\",\\\"type\\\":\\\"\\\",\\\"theme\\\":\\\"\\\",\\\"icon\\\":\\\"ambulance\\\",\\\"prefix\\\":\\\"fas\\\",\\\"category\\\":\\\"\\\"},\\\"iconBackground\\\":\\\"\\\",\\\"defaultConfig\\\":null,\\\"env\\\":null,\\\"locales\\\":null,\\\"layoutType\\\":\\\"\\\",\\\"noAuthGuard\\\":false,\\\"breadcrumb\\\":null},\\\"dependsAll\\\":false,\\\"routes\\\":[{\\\"alias\\\":\\\"首页\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.micro-view\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"pageTitle\\\":\\\"Hello world\\\"},\\\"slots\\\":{\\\"content\\\":{\\\"bricks\\\":[{\\\"brick\\\":\\\"presentational-bricks.brick-result\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"customTitle\\\":\\\"Today is Tuesday\\\",\\\"status\\\":\\\"info\\\",\\\"subTitle\\\":\\\"2019/10/29 21:35\\\"}}],\\\"type\\\":\\\"bricks\\\"},\\\"toolbar\\\":{\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.general-button\\\",\\\"events\\\":{\\\"general.button.click\\\":[{\\\"action\\\":\\\"message.success\\\",\\\"args\\\":[\\\"点击操作按钮\\\"]}]},\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"buttonName\\\":\\\"按钮\\\"}}],\\\"type\\\":\\\"bricks\\\"}}}],\\\"exact\\\":true,\\\"hybrid\\\":false,\\\"path\\\":\\\"${APP.homepage}\\\",\\\"public\\\":false,\\\"type\\\":\\\"bricks\\\"},{\\\"alias\\\":\\\"用户列表\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.micro-view\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"pageTitle\\\":\\\"用户列表\\\"}}],\\\"exact\\\":true,\\\"hybrid\\\":false,\\\"path\\\":\\\"${APP.homepage}/users\\\",\\\"public\\\":false,\\\"type\\\":\\\"bricks\\\"}],\\\"meta\\\":{\\\"customTemplates\\\":[],\\\"functions\\\":[],\\\"i18n\\\":{\\\"en\\\":{},\\\"zh\\\":{}},\\\"menus\\\":[]}}\",\n    \"type\": \"storyboard\"\n  }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "next_builder.project.RemoveStoryboardProject",
@@ -4074,10 +4722,264 @@
           },
           {
             "ref": "MicroAppProject.appSetting"
+          },
+          {
+            "ref": "MicroAppProject.brickNextVersion"
+          },
+          {
+            "ref": "MicroAppProject.name"
+          },
+          {
+            "ref": "MicroAppProject.description"
+          },
+          {
+            "ref": "MicroAppProject.developmentEnv"
+          },
+          {
+            "ref": "MicroAppProject.uiVersion"
+          },
+          {
+            "name": "updateAuthorizers",
+            "type": "string[]",
+            "description": "updateAuthorizers"
+          },
+          {
+            "name": "readAuthorizers",
+            "type": "string[]",
+            "description": "readAuthorizers"
+          },
+          {
+            "name": "deleteAuthorizers",
+            "type": "string[]",
+            "description": "deleteAuthorizers"
           }
         ]
       },
-      "response": null
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Update Project Storyboard",
+            "zh": "更新微应用项目"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8142/api/v1/next-builder/project/P-123",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"projectId\": \"P-123\",\n    \"appId\": \"my-micro-app\",\n    \"name\": \"my-micro-app\",\n    \"description\": \"更新微应用\",\n    \"appSetting\": {\n        \"name\": \"我的微应用\",\n        \"homepage\": \"/my-micro-app\",\n        \"icon\": \"{\\n  \\\"lib\\\":\\\"fa\\\",\\n  \\\"icon\\\":\\\"ambulance\\\",\\n  \\\"prefix\\\":\\\"fas\\\"\\n}\",\n        \"defaultContainer\": {},\n        \"uiVersion\": \"8.2\",\n        \"defaultConfig\": \"{\\n  \\\"settings\\\":{\\n    \\\"featureFlags\\\":{\\n      \\\"support-ui-8.2-compact-layout\\\":true\\n    }\\n  }\\n}\"\n    }\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"message\": \"success\",\n    \"data\": {\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "next_builder.storyboard.AddNode",
+      "category": {
+        "en": "Storyboard",
+        "zh": "Storyboard"
+      },
+      "name": "AddNode",
+      "version": "1.0.0",
+      "description": "Add Node",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next-builder/:projectInstanceId/nodes"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectInstanceId",
+            "type": "string",
+            "description": "project instanceId"
+          },
+          {
+            "name": "objectId",
+            "type": "string",
+            "description": "模型id"
+          },
+          {
+            "name": "instance",
+            "type": "map",
+            "description": "node instance"
+          }
+        ],
+        "required": ["projectInstanceId", "objectId", "instance"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instance",
+            "type": "map",
+            "description": "节点实例信息"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "添加节点",
+            "en": "Add Node"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/api/v1/next-builder/604a846464329/nodes",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            },
+            "body": "{\n    \"projectInstanceId\": \"604a846464329\",\n    \"objectId\": \"STORYBOARD_ROUTE\",\n    \"instance\": {\n        \"alias\": \"test-alias\",\n        \"appId\": \"janice-test-create1\",\n        \"children\": [],\n        \"context\": null,\n        \"contextModel\": [],\n        \"exact\": true,\n        \"hybrid\": false,\n        \"id\": \"B-52633\",\n        \"org\": 6620199,\n        \"parent\": [],\n        \"path\": \"${APP.homepage}/new\",\n        \"previewSettings\": null,\n        \"public\": false,\n        \"tests\": [],\n        \"type\": \"bricks\",\n        \"userFlowNode\": []\n    }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"instance\": {\n            \"_object_id\": \"STORYBOARD_ROUTE\",\n            \"alias\": \"test-alias\",\n            \"appId\": \"janice-test-create1\",\n            \"children\": [],\n            \"context\": null,\n            \"contextModel\": [],\n            \"creator\": \"easyops\",\n            \"ctime\": \"2023-09-25 10:27:56\",\n            \"deleteAuthorizers\": [],\n            \"exact\": true,\n            \"hybrid\": false,\n            \"id\": \"B-52633\",\n            \"instanceId\": \"60625b4bf9b79\",\n            \"parent\": [],\n            \"path\": \"${APP.homepage}/new\",\n            \"previewSettings\": null,\n            \"public\": false,\n            \"tests\": [],\n            \"type\": \"bricks\",\n            \"userFlowNode\": [],\n            \"project\": [\n                {\n                    \"instanceId\": \"604a846464329\"\n                }\n            ]\n        }\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "next_builder.storyboard.BatchImportNodes",
+      "category": {
+        "en": "Storyboard",
+        "zh": "Storyboard"
+      },
+      "name": "BatchImportNodes",
+      "version": "1.0.0",
+      "description": "Batch Import Nodes",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/next-builder/:projectInstanceId/nodes/import"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectInstanceId",
+            "type": "string",
+            "description": "project instanceId"
+          },
+          {
+            "name": "nodesInfo",
+            "type": "object[]",
+            "description": "node that need to import",
+            "fields": [
+              {
+                "name": "objectId",
+                "type": "string",
+                "description": "模型id"
+              },
+              {
+                "name": "keys",
+                "type": "string[]",
+                "description": "联合唯一的key(只支持普通属性,不支持结构体与关系字段),以这些key与datas里的数据组装query,作为插入/更新的依据"
+              },
+              {
+                "name": "datas",
+                "type": "map[]",
+                "description": "导入实例数据列表,必须包含keys里面的字段"
+              }
+            ]
+          }
+        ],
+        "required": ["projectInstanceId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "importResult",
+            "type": "object[]",
+            "description": "导入结果",
+            "fields": [
+              {
+                "name": "objectId",
+                "type": "string",
+                "description": "模型id"
+              },
+              {
+                "name": "result",
+                "type": "object",
+                "description": "导入结果",
+                "fields": [
+                  {
+                    "name": "insert_count",
+                    "type": "int",
+                    "description": "成功插入数量"
+                  },
+                  {
+                    "name": "update_count",
+                    "type": "int",
+                    "description": "成功更新数量"
+                  },
+                  {
+                    "name": "failed_count",
+                    "type": "int",
+                    "description": "失败数量"
+                  },
+                  {
+                    "name": "data",
+                    "type": "object[]",
+                    "fields": [
+                      {
+                        "name": "code",
+                        "type": "int",
+                        "description": "错误码"
+                      },
+                      {
+                        "name": "error",
+                        "type": "string",
+                        "description": "错误信息"
+                      },
+                      {
+                        "name": "data",
+                        "type": "map[]",
+                        "description": "错误数据"
+                      }
+                    ],
+                    "description": "失败数据"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "批量导入节点",
+            "en": "Batch Import Nodes"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/api/v1/next-builder/604a846464329/nodes/import",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            },
+            "body": "{\n    \"projectInstanceId\": \"604a846464329\",\n    \"nodesInfo\": [\n        {\n            \"objectId\": \"STORYBOARD_ROUTE\",\n            \"keys\": [\n                \"id\"\n            ],\n            \"datas\": [\n                {\n                    \"alias\": \"test-alias\",\n                    \"appId\": \"janice-test-create1\",\n                    \"children\": [],\n                    \"context\": null,\n                    \"contextModel\": [],\n                    \"exact\": true,\n                    \"hybrid\": false,\n                    \"id\": \"B-52633\",\n                    \"org\": 6620199,\n                    \"parent\": [],\n                    \"path\": \"${APP.homepage}/new\",\n                    \"previewSettings\": null,\n                    \"public\": false,\n                    \"tests\": [],\n                    \"type\": \"bricks\",\n                    \"userFlowNode\": []\n                }\n            ]\n        },\n        {\n            \"objectId\": \"STORYBOARD_BRICK\",\n            \"keys\": [\n                \"id\"\n            ],\n            \"datas\": [\n                {\n                    \"alias\": \"test-alias\",\n                    \"appId\": \"janice-test-create1\",\n                    \"children\": [],\n                    \"context\": null,\n                    \"contextModel\": [],\n                    \"exact\": true,\n                    \"hybrid\": false,\n                    \"id\": \"B-52633\",\n                    \"org\": 6620199,\n                    \"parent\": [],\n                    \"path\": \"${APP.homepage}/new\",\n                    \"previewSettings\": null,\n                    \"public\": false,\n                    \"tests\": [],\n                    \"type\": \"bricks\",\n                    \"userFlowNode\": []\n                }\n            ]\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"importResult\": [\n            {\n                \"objectId\": \"STORYBOARD_ROUTE\",\n                \"result\": {\n                    \"insert_count\": 0,\n                    \"update_count\": 1,\n                    \"failed_count\": 0,\n                    \"data\": []\n                }\n            },\n            {\n                \"objectId\": \"STORYBOARD_BRICK\",\n                \"result\": {\n                    \"insert_count\": 0,\n                    \"update_count\": 1,\n                    \"failed_count\": 0,\n                    \"data\": []\n                }\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "next_builder.storyboard.CloneRoutes",
@@ -4174,6 +5076,66 @@
       "response": null
     },
     {
+      "contract": "next_builder.storyboard.DeleteNode",
+      "category": {
+        "en": "Storyboard",
+        "zh": "Storyboard"
+      },
+      "name": "DeleteNode",
+      "version": "1.0.0",
+      "description": "Delete Node",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/next-builder/:projectInstanceId/nodes"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectInstanceId",
+            "type": "string",
+            "description": "project instanceId"
+          },
+          {
+            "name": "objectId",
+            "type": "string",
+            "description": "objectId"
+          },
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "instance_id"
+          }
+        ],
+        "required": ["projectInstanceId", "objectId", "instanceId"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "zh": "删除节点",
+            "en": "Delete Node"
+          },
+          "request": {
+            "method": "DELETE",
+            "uri": "/api/v1/next-builder/604a846464329/nodes",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            },
+            "body": "{\n    \"projectInstanceId\": \"604a846464329\",\n    \"objectId\": \"STORYBOARD_ROUTE\",\n    \"instanceId\": \"60625b4bf9b79\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {}\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "next_builder.storyboard.DeleteStoryboardNode",
       "category": {
         "en": "Storyboard",
@@ -4198,6 +5160,86 @@
         "required": ["nodeId"]
       },
       "response": null
+    },
+    {
+      "contract": "next_builder.storyboard.EditNode",
+      "category": {
+        "en": "Storyboard",
+        "zh": "Storyboard"
+      },
+      "name": "EditNode",
+      "version": "1.0.0",
+      "description": "Edit Node",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/next-builder/:projectInstanceId/nodes"
+      },
+      "import": ["easyops/model/cmdb/update_by_query_result"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectInstanceId",
+            "type": "string",
+            "description": "project instanceId"
+          },
+          {
+            "name": "objectId",
+            "type": "string",
+            "description": "objectId"
+          },
+          {
+            "name": "mtime",
+            "type": "string",
+            "description": "实例上一次修改时间"
+          },
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "instance_id"
+          },
+          {
+            "name": "instance",
+            "type": "map",
+            "description": "node instance"
+          }
+        ],
+        "required": ["projectInstanceId", "objectId", "instance"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceInfo",
+            "type": "map",
+            "description": "更新成功的实例信息"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "EditNode",
+            "en": "Edit Node"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "/api/v1/next-builder/604a846464329//nodes",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            },
+            "body": "{\n    \"projectInstanceId\": \"604a846464329\",\n    \"objectId\": \"STORYBOARD_ROUTE\",\n    \"instanceId\": \"60625b4bf9b79\",\n    \"mtime\": \"2023-09-25 10:38:40\",\n    \"instance\": {\n        \"_object_id\": \"STORYBOARD_ROUTE\",\n        \"alias\": \"test-alias\",\n        \"appId\": \"janice-test-create1\",\n        \"children\": [],\n        \"context\": null,\n        \"contextModel\": [],\n        \"exact\": true,\n        \"hybrid\": false,\n        \"id\": \"B-52633\",\n        \"instanceId\": \"60625b4bf9b79\",\n        \"org\": 6620199,\n        \"parent\": [],\n        \"path\": \"${APP.homepage}/new\",\n        \"previewSettings\": null,\n        \"public\": false,\n        \"tests\": [],\n        \"type\": \"bricks\",\n        \"userFlowNode\": []\n    }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"successResult\": [\n            {\n                \"instanceId\": \"60625b4bf9b79\",\n                \"code\": 0,\n                \"message\": \"\"\n            }\n        ],\n        \"failResult\": [],\n        \"total\": 1,\n        \"successTotal\": 1,\n        \"failTotal\": 0\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "next_builder.storyboard.GetStoryboardNode",
@@ -4567,6 +5609,85 @@
               "Content-Type": "application/json; charset=utf-8"
             },
             "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"data\": {\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "next_builder.workflow.GetReturnSteps",
+      "name": "GetReturnSteps",
+      "version": "1.0.0",
+      "description": "获取可回退的步骤信息",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/workflow/:instanceId/step/:id/return"
+      },
+      "import": [
+        "easyops/model/next_builder/workflow_def",
+        "easyops/model/next_builder/workflow_step"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkflowDef.instanceId"
+          },
+          {
+            "ref": "WorkflowStep.id"
+          },
+          {
+            "name": "returnType",
+            "type": "int",
+            "description": "回退处理完成后的设置, 0: 重新执行流程 1：直接返回审批节点"
+          }
+        ],
+        "required": ["WorkflowDef.instanceId", "WorkflowStep.id"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkflowStep.id"
+          },
+          {
+            "ref": "WorkflowStep.name"
+          },
+          {
+            "ref": "WorkflowStep.type"
+          },
+          {
+            "name": "returnSteps",
+            "type": "object[]",
+            "description": "可回退的步骤id/name/type",
+            "fields": [
+              {
+                "ref": "WorkflowStep.id"
+              },
+              {
+                "ref": "WorkflowStep.name"
+              },
+              {
+                "ref": "WorkflowStep.type"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get Return Steps",
+            "zh": "获取当前步骤的可回退步骤"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8142/api/v1/workflow/5f77c3715f9a6/step/janice-test-step/return"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n        \"id\": \"janice-test-step\",\n        \"name\": \"approval2\",\n        \"type\": \"approval\",\n        \"returnSteps\": [\n            {\n                \"id\": \"approval1\",\n                \"name\": \"审批1\",\n                \"type\": \"approval\"\n            },\n            {\n                \"id\": \"start\",\n                \"name\": \"开始\",\n                \"type\": \"start\"\n            }\n        ]\n    }\n}"
           }
         }
       ]

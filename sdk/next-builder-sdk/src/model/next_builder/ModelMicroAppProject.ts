@@ -24,6 +24,9 @@ export interface ModelMicroAppProject {
   /** model列表 */
   models: string[];
 
+  /** UI版本 */
+  uiVersion: string;
+
   /** 开发环境 */
   developmentEnv: Partial<ModelMicroAppDevelopmentEnv>;
 
@@ -35,6 +38,9 @@ export interface ModelMicroAppProject {
 
   /** Storyboard Json */
   storyboardJson: string;
+
+  /** Storyboard Json URL */
+  storyboardJsonUrl: string;
 
   /** Dependencies */
   dependencies: ModelMicroAppProject_dependencies_item[];
@@ -66,6 +72,9 @@ export interface ModelMicroAppProject {
   /** 最新一次export的权限点 */
   lastExportedPermissions: string;
 
+  /** 权限点资源Json URL */
+  permissionsJsonUrl: string;
+
   /** 最新一次export的文档 */
   lastExportedDocuments: string;
 
@@ -74,6 +83,18 @@ export interface ModelMicroAppProject {
 
   /** 使用的主题模板ID */
   useThemeId: string;
+
+  /** storyboardType */
+  storyboardType: "micro-app" | "templates" | "theme-template";
+
+  /** 微应用描述信息 */
+  description: string;
+
+  /** 框架版本 */
+  brickNextVersion: number;
+
+  /** 当前项目所在分支 */
+  curBranch: string;
 }
 
 export interface ModelMicroAppProject_appSetting {

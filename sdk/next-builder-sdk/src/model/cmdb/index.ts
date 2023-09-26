@@ -8,3 +8,5 @@ export * from "./ModelObjectView";
 export * from "./ModelObjectBasicInfo";
 export * from "./ModelCmdbObject";
 export * from "./ModelListObjectRequest";
+export * from "./ModelResourceDiscoveryRuleConfig";
+export * from "./ModelUpdateByQueryResult";

@@ -11,6 +11,9 @@ export interface ModelDataDefinition {
 
   /** 字段值类型，不同类型有不同字段 */
   value: ModelDataDefinition_value;
+
+  /** valueInfo */
+  valueInfo: ModelDataDefinition_valueInfo;
 }
 
 export interface ModelDataDefinition_value {
@@ -43,6 +46,14 @@ export interface ModelDataDefinition_value {
 
   /** 结构体字段定义: 当type 为 struct 和 structs 时候为必填 */
   structDefine?: ModelDataDefinition_value_structDefine_item[];
+}
+
+export interface ModelDataDefinition_valueInfo {
+  /** type */
+  type?: "const" | "expr";
+
+  /** value */
+  value?: any;
 }
 
 export interface ModelDataDefinition_value_structDefine_item {

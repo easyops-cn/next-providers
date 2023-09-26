@@ -1,3 +1,4 @@
+export * from "./createMicroAppProject";
 export * from "./deleteStoryboardProject";
 export * from "./getMicroAppProject";
 export * from "./getMicroAppProjectByAppId";

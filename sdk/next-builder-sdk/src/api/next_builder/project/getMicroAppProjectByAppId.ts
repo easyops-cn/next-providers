@@ -5,6 +5,9 @@ import { ResponseBodyWrapper } from "../../../wrapper";
 export interface ProjectApi_GetMicroAppProjectByAppIdRequestParams {
   /** appId */
   appId?: string;
+
+  /** 指定返回的fields */
+  fields?: string;
 }
 
 export type ProjectApi_GetMicroAppProjectByAppIdResponseBody =
