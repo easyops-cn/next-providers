@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.10.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/next-builder-sdk@2.9.0...@next-sdk/next-builder-sdk@2.10.0) (2023-09-26)
+
+### Features
+
+- add apis: DocumentApi_exportDocumentFile, GitApi_codeDiff, GitApi_commitAppData, GitApi_index, GitApi_recoverMicroApp, ModelApi_exportColumnTables, ModelApi_exportMetrics, ProjectApi_createMicroAppProject, StoryboardApi_addNode, StoryboardApi_batchImportNodes, StoryboardApi_deleteNode, StoryboardApi_editNode, WorkflowApi_getReturnSteps ([04abc0a](https://github.com/easyops-cn/next-providers/commit/04abc0ab2d71b977b564b2ac9db3036909bb581e))
+
 # 2.9.0 (2023-06-08)
 
 ### Features
