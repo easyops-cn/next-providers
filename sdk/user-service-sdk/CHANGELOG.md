@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/user-service-sdk@2.2.3...@next-sdk/user-service-sdk@2.3.0) (2023-10-08)
+
+### Features
+
+- add apis: ApiAccountApi_createApiAccount, ApiAccountApi_index, ApiAccountApi_listApiAccount, ApiAccountApi_updateApiAccount, AuthApi_validateCaptcha, MyCollectionApi_index, MyCollectionApi_listMyCollection, MyCollectionApi_upsertMyCollection, OrganizationApi_createOrgV2, UserAdminApi_getUserAllRoles, UserAdminApi_listGroupsInfo ([22ffdef](https://github.com/easyops-cn/next-providers/commit/22ffdefc1abff1de58d653dc39e8e25757ee862e))
+
 ## 2.2.3 (2023-06-08)
 
 **Note:** Version bump only for package @next-sdk/user-service-sdk
