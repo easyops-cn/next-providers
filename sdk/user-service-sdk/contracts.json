@@ -2,6 +2,170 @@
   "name": "user_service",
   "contracts": [
     {
+      "contract": "user_service.api_account.CreateApiAccount",
+      "name": "CreateApiAccount",
+      "version": "1.0.0",
+      "description": "创建api用户",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/user_service/v1/api_account"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "user",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "nickname",
+            "type": "string",
+            "description": "用户昵称"
+          }
+        ],
+        "required": ["user"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "string",
+            "description": "jobID"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Create Api Account",
+            "zh": "创建api用户"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8111/api/user_service/v1/api_account",
+            "body": "{\n  \"user\": \"easyops\",\n  \"nickname\": \"easyops\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n      \"instanceId\": \"5c2d520975c6b\"\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "user_service.api_account.ListApiAccount",
+      "name": "ListApiAccount",
+      "version": "1.0.0",
+      "description": "api用户列表",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/user_service/v1/api_account"
+      },
+      "import": ["easyops/model/user_service/api_account"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "每页数据量"
+          },
+          {
+            "name": "q",
+            "type": "string",
+            "description": "模糊搜索账号名"
+          }
+        ],
+        "default": {
+          "page": 1,
+          "pageSize": 10
+        }
+      },
+      "response": {
+        "type": "ApiCount"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "List Api Account",
+            "zh": "搜索api用户列表"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8111/api/user_service/v1/api_account"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n      \"list\": [\n        {\"instanceId\": \"5c2d520975c6b\",\"user\": \"easyops\",\"nickname\":\"easyops\"}\n      ]\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "user_service.api_account.UpdateApiAccount",
+      "name": "UpdateApiAccount",
+      "version": "1.0.0",
+      "description": "修改api账户",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/user_service/v1/api_account/:id"
+      },
+      "import": ["easyops/model/user_service/api_account"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "ApiCount.id"
+          },
+          {
+            "ref": "ApiCount.nickname"
+          },
+          {
+            "ref": "ApiCount.status"
+          },
+          {
+            "ref": "ApiCount.access_key"
+          },
+          {
+            "name": "XXX_RestFieldMask",
+            "type": "string[]",
+            "description": "更新参数过滤，如仅更新昵称，该值里写[\"nickname\"]，为空时更新所有字段"
+          }
+        ]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Update Api Account",
+            "zh": "创建api用户"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8111/api/user_service/v1/api_account/5c2d520975c6b",
+            "body": "{\n  \"user\": \"easyops\",\n  \"nickname\": \"easyops\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "user_service.apikey.CreateApiKey",
       "name": "CreateApiKey",
       "version": "1.0.0",
@@ -476,6 +640,47 @@
       }
     },
     {
+      "contract": "user_service.auth.ValidateCaptcha",
+      "name": "ValidateCaptcha",
+      "version": "1.0.0",
+      "description": "验证码校验",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/users/validate/captcha"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "phrase",
+            "type": "string",
+            "description": "验证码"
+          }
+        ],
+        "required": ["phrase"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "ValidateCaptcha",
+            "zh": "验证码校验"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8111/api/v1/users/validate/captcha",
+            "headers": {
+              "Cookie": "Captcha:0bb9939df162401ca35048d15fd6761e"
+            },
+            "body": "{\n    \"phrase\": \"57mn\"\n}"
+          },
+          "response": {
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"codeExplain\": \"\",\n    \"data\": {}\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "user_service.gateway.ListApiKey",
       "name": "ListApiKey",
       "version": "1.0.0",
@@ -907,7 +1112,7 @@
     {
       "contract": "user_service.ldap.Auth",
       "name": "Auth",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "LDAP认证",
       "endpoint": {
         "method": "POST",
@@ -956,10 +1161,37 @@
             "name": "org",
             "type": "int",
             "description": "org"
+          },
+          {
+            "name": "isAdmin",
+            "type": "bool",
+            "description": "是否为管理员"
           }
         ],
         "required": ["username", "name", "org"]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Auth",
+            "zh": "LDAP认证"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8111/api/v1/users/ldap_auth",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n\t\"login_id\": \"test\",\n    \"password:\" \"aaa\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"username\": \"test\",\n        \"name\": \"test\",\n        \"instanceId\": \"5fd9b1a84ce09\",\n        \"org\": 8888,\n        \"isAdmin\": false\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "user_service.ldap.Config",
@@ -1026,6 +1258,100 @@
       "response": null
     },
     {
+      "contract": "user_service.my_collection.ListMyCollection",
+      "name": "ListMyCollection",
+      "version": "1.0.0",
+      "description": "获取我的收藏列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/user_service/my_collection/collections"
+      },
+      "import": ["easyops/model/user_service/my_collection"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MyCollection.module"
+          },
+          {
+            "ref": "MyCollection.collectionName"
+          }
+        ],
+        "required": ["MyCollection.module", "MyCollection.collectionName"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MyCollection.*"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get",
+            "zh": "获取我的收藏列表"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://localhost:8111/api/v1/user_service/my_collection/collections?module=ci&collectionName=my_collection",
+            "headers": {
+              "Content-Type": "application/json"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\":0,\n    \"codeExplain\":\"\",\n    \"error\":\"\",\n    \"data\": {\n               \"name\": \"ci_test_my_collection\",\n               \"module\": \"ci\",\n               \"collectionName\": \"my_collection\",\n               \"payloads\": [\n                   {\n                       \"name\": \"ci\",\n                       \"to\": \"/ci/xxx\"\n                   }\n               ]\n            }\n\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "user_service.my_collection.UpsertMyCollection",
+      "name": "UpsertMyCollection",
+      "version": "1.0.0",
+      "description": "更新/新增我的收藏，这个接口用于全量更新单实例",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/user_service/my_collection/upsert_collections"
+      },
+      "import": ["easyops/model/user_service/my_collection"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MyCollection.*"
+          }
+        ]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "UpsertMyCollection",
+            "zh": "更新/新增我的收藏，这个接口用于全量更新单实例"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8111/api/v1/user_service/my_collection/upsert_collections",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n     \"name\": \"ci_test_my_collection\",\n     \"module\": \"ci\",\n     \"collectionName\": \"my_collection\",\n     \"payloads\": [\n         {\n             \"name\": \"ci\",\n             \"instanceId\": \"instanceId\",\n             \"url\": \"/ci/xxx\"\n         }\n     ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\":0,\n    \"codeExplain\":\"\",\n    \"error\":\"\",\n    \"data\": \"\"\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "user_service.organization.CreateOrg",
       "name": "CreateOrg",
       "version": "1.0.0",
@@ -1077,6 +1403,76 @@
           "OrgInfo.ts"
         ]
       }
+    },
+    {
+      "contract": "user_service.organization.CreateOrgV2",
+      "name": "CreateOrgV2",
+      "version": "1.0.0",
+      "description": "创建OrgV2, 在mongoDB创建org信息",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v2/org"
+      },
+      "import": ["easyops/model/user_service/org_info"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "OrgInfo.id"
+          },
+          {
+            "ref": "OrgInfo.name"
+          },
+          {
+            "ref": "OrgInfo.memo"
+          },
+          {
+            "ref": "OrgInfo.namespaces"
+          },
+          {
+            "name": "expired_days",
+            "type": "int",
+            "description": "过期日期(天数)"
+          }
+        ],
+        "default": {
+          "id": 0,
+          "expired_days": 0
+        }
+      },
+      "response": {
+        "type": "OrgInfo",
+        "required": [
+          "OrgInfo.id",
+          "OrgInfo.expires",
+          "OrgInfo.createAt",
+          "OrgInfo.valid",
+          "OrgInfo.ts"
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "create org to mongoDB",
+            "zh": "创建org，在mongoDB写入org信息"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8111/api/v2/org",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "defaultUser"
+            },
+            "body": "{\n  \"id\": 8888,\n  \"name\": \"8888\",\n  \"memo\": \"memo\",\n  \"expired_days\": -1\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"id\": 8888\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "user_service.organization.DisableOrg",
@@ -1684,9 +2080,73 @@
       }
     },
     {
+      "contract": "user_service.user_admin.GetUserAllRoles",
+      "name": "GetUserAllRoles",
+      "version": "1.0.0",
+      "description": "获取用户所有角色",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/users/roles/:username/all"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "username",
+            "type": "user_name",
+            "description": "用户名"
+          }
+        ]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "int",
+            "description": "返回码"
+          },
+          {
+            "name": "error",
+            "type": "string",
+            "description": "错误信息"
+          },
+          {
+            "name": "codeExplain",
+            "type": "string",
+            "description": "错误码解析"
+          },
+          {
+            "name": "data",
+            "type": "string[]",
+            "description": "角色"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "get user all roles",
+            "zh": "获取用户所有角色"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8111/api/v1/users/roles/ronezhan/all"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": [\"运维自动化使用人员\",\"自动采集管理人员\",\"自动采集使用人员\"]\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "user_service.user_admin.InvitedUserRegister",
       "name": "InvitedUserRegister",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "受邀用户注册",
       "endpoint": {
         "method": "POST",
@@ -1719,6 +2179,71 @@
         "required": ["username", "password", "email", "invitation_code"]
       },
       "response": null
+    },
+    {
+      "contract": "user_service.user_admin.ListGroupsInfo",
+      "name": "ListGroupsInfo",
+      "version": "1.0.0",
+      "description": "获取用户组信息列表",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/v1/groups"
+      },
+      "import": ["easyops/model/user_service/user_group"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "name",
+            "type": "comma_separated_string",
+            "description": "查询的name列表(精确匹配),使用逗号分隔"
+          },
+          {
+            "name": "keyword",
+            "type": "string",
+            "description": "name字段模糊搜索，如name字段不为空则忽略当前字段"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "页大小"
+          }
+        ],
+        "default": {
+          "page": 1,
+          "pageSize": 20
+        }
+      },
+      "response": {
+        "type": "UserGroup"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "list group info",
+            "zh": "获取用户组信息列表"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8111/api/v1/groups",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"page\": 1,\n    \"pageSize\": 10\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n       \"page\": 1,\n       \"pageSize\": 10,\n       \"total\": 100,\n       \"list\": [\n          {\n              \"instanceId\": \"5a3dd40fd55f8\",\n              \"name\": \"samuel\",\n              \"description\": \"\"\n          }\n       ]\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "user_service.user_admin.ListGroupsId",
@@ -1968,7 +2493,7 @@
     {
       "contract": "user_service.user_admin.ListUsersInfoV3",
       "name": "ListUsersInfoV3",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "description": "获取用户信息列表v3",
       "detail": "返回结构化信息,方便使用",
       "endpoint": {
@@ -1987,12 +2512,22 @@
           {
             "name": "name",
             "type": "comma_separated_string",
-            "description": "查询的name列表,使用逗号分隔"
+            "description": "查询的name列表(精确匹配),使用逗号分隔"
           },
           {
             "name": "page",
             "type": "page",
             "description": "页码"
+          },
+          {
+            "name": "keyword",
+            "type": "string",
+            "description": "name字段模糊搜索，如name字段不为空则忽略当前字段"
+          },
+          {
+            "name": "fields",
+            "type": "string",
+            "description": "查询字段列表,使用逗号分隔"
           },
           {
             "name": "pageSize",
@@ -2191,7 +2726,7 @@
     {
       "contract": "user_service.user_admin.GetUserLoginInfo",
       "name": "GetUserLoginInfo",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "查询用户登录信息",
       "endpoint": {
         "method": "GET",
@@ -2225,6 +2760,16 @@
             "name": "org",
             "type": "int",
             "description": "org"
+          },
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "用户instanceId"
+          },
+          {
+            "name": "isAdmin",
+            "type": "bool",
+            "description": "是否为管理员"
           }
         ],
         "required": ["name", "org"]

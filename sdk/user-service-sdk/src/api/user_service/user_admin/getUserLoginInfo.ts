@@ -15,6 +15,12 @@ export interface UserAdminApi_GetUserLoginInfoResponseBody {
 
   /** org */
   org: number;
+
+  /** 用户instanceId */
+  instanceId?: string;
+
+  /** 是否为管理员 */
+  isAdmin?: boolean;
 }
 
 /**
@@ -25,7 +31,7 @@ export const UserAdminApi_getUserLoginInfo = async (
   params: UserAdminApi_GetUserLoginInfoRequestParams,
   options?: HttpOptions
 ): Promise<UserAdminApi_GetUserLoginInfoResponseBody> =>
-  /**! @contract easyops.api.user_service.user_admin.GetUserLoginInfo@1.0.0 */ (
+  /**! @contract easyops.api.user_service.user_admin.GetUserLoginInfo@1.0.1 */ (
     await http.get<
       ResponseBodyWrapper<UserAdminApi_GetUserLoginInfoResponseBody>
     >(

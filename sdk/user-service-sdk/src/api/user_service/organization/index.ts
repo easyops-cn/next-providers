@@ -1,4 +1,5 @@
 export * from "./createOrg";
+export * from "./createOrgV2";
 export * from "./disableOrg";
 export * from "./enableOrg";
 export * from "./getCurrentOrg";

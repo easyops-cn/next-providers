@@ -3,7 +3,7 @@ import { ModelOrgInfo } from "../../../model/user_service";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 export type OrganizationApi_GetCurrentOrgResponseBody = Partial<ModelOrgInfo> &
-  ModelOrgInfo_partial_2;
+  ModelOrgInfo_partial_3;
 
 /**
  * @description 获取当前用户所属Org[内部]
@@ -21,7 +21,7 @@ export const OrganizationApi_getCurrentOrg = async (
     )
   ).data;
 
-export interface ModelOrgInfo_partial_2 {
+export interface ModelOrgInfo_partial_3 {
   /** org */
   id: number;
 

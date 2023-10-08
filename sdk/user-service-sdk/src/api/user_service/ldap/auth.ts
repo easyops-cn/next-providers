@@ -24,6 +24,9 @@ export interface LdapApi_AuthResponseBody {
 
   /** org */
   org: number;
+
+  /** 是否为管理员 */
+  isAdmin?: boolean;
 }
 
 /**
@@ -34,7 +37,7 @@ export const LdapApi_auth = async (
   data: LdapApi_AuthRequestBody,
   options?: HttpOptions
 ): Promise<LdapApi_AuthResponseBody> =>
-  /**! @contract easyops.api.user_service.ldap.Auth@1.0.0 */ (
+  /**! @contract easyops.api.user_service.ldap.Auth@1.0.1 */ (
     await http.post<ResponseBodyWrapper<LdapApi_AuthResponseBody>>(
       "api/gateway/user_service.ldap.Auth/api/v1/users/ldap_auth",
       data,
