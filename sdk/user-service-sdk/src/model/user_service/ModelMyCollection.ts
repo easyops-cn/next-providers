@@ -22,4 +22,7 @@ export interface ModelMyCollection_payloads_item {
 
   /** 跳转目标 */
   url?: string;
+
+  /** 额外信息 */
+  extInfo?: Record<string, any>;
 }
