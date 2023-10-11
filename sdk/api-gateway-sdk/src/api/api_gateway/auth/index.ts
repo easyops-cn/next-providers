@@ -1,4 +1,5 @@
 export * from "./checkLogin";
+export * from "./checkLoginByName";
 export * from "./getCaptcha";
 export * from "./ldapLogin";
 export * from "./loginV2";

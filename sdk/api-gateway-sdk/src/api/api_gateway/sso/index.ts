@@ -6,3 +6,4 @@ export * from "./ssoAuthorizeRedirect";
 export * from "./ssoLogin";
 export * from "./ssoLogout";
 export * from "./ssoLogoutV2";
+export * from "./validateAccessToken";
