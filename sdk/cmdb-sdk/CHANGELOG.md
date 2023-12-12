@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.6.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/cmdb-sdk@3.5.1...@next-sdk/cmdb-sdk@3.6.0) (2023-12-12)
+
+### Features
+
+- add apis: BusinessInstanceApi_getBusinessTreeListV2, CmdbObjectApi_batchListChildObject, CmdbObjectApi_exportExcel, CmdbObjectApi_exportExcelExample, CmdbObjectApi_getObjectRelationRelatedPath, CmdbObjectApi_parseExcel, ColumnInstanceApi_columnInstanceCount, ColumnInstanceApi_index, HistoryApi_listChangeHistory, InstanceApi_autoDiscoveryV2, InstanceApi_getListDisplayView, InstanceApi_getPropertyValueDetail, InstanceApi_olapV2, InstanceApi_updateListDisplayView ([723ab73](https://github.com/easyops-cn/next-providers/commit/723ab730f36f517f42b3d7a993d4c445e74c650b))
+
 ## 3.5.1 (2023-06-08)
 
 **Note:** Version bump only for package @next-sdk/cmdb-sdk
