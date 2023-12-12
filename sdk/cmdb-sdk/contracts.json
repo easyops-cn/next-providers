@@ -82,6 +82,88 @@
       ]
     },
     {
+      "contract": "cmdb.business_instance.GetBusinessTreeListV2",
+      "category": {
+        "en": "Business Instance",
+        "zh": "业务实例"
+      },
+      "name": "GetBusinessTreeListV2",
+      "version": "1.0.0",
+      "description": "批量获取业务业务树全路径V2",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/v2/system/business_tree/list"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "ids",
+            "type": "string",
+            "description": "实例Id列表使用逗号分隔"
+          }
+        ],
+        "required": ["ids"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "businessList",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "instanceId",
+                "type": "string",
+                "description": "实例Id"
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "description": "业务名称"
+              },
+              {
+                "name": "parents",
+                "type": "object[]",
+                "description": "第一个为根节点,最后一个为该业务的父节点, 例如 parents=[根节点...,父节点的父节点, 父节点]",
+                "fields": [
+                  {
+                    "name": "instanceId",
+                    "type": "string",
+                    "description": "实例Id"
+                  },
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "description": "业务名称"
+                  }
+                ]
+              }
+            ],
+            "description": "业务id路径列表"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get the full path of the business tree in batches",
+            "zh": "批量获取业务业务树全路径V2"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8079/v2/system/business_tree/list?ids=5c2d520975c6b"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"instanceId\": \"5c2d520975c6b\",\n            \"name\": \"hollise业务2\",\n            \"parents\": [\n                {\n                    \"instanceId\": \"5c2d517267d02\",\n                    \"name\": \"hollise业务\"\n                }\n            ]\n        }\n    ]\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "cmdb.business_instance.GetBusinessGraph",
       "category": {
         "en": "Business Instance",
@@ -275,7 +357,7 @@
         "zh": "业务实例"
       },
       "name": "SearchSubSystem",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "搜索系统的子系统以及，以及递归的获取子系统的子系统",
       "detail": "关于搜索条件的文档说明请参考[实例搜索接口]的说明",
       "endpoint": {
@@ -289,6 +371,12 @@
             "name": "systemInstanceId",
             "type": "instance_id",
             "description": "系统的实例ID"
+          },
+          {
+            "name": "systemObject",
+            "type": "string",
+            "enum": ["BUSINESS", "APP_SYSTEM@ONEMODEL"],
+            "description": "系统模型的id，目前有BUSINESS,APP_SYSTEM@ONEMODEL，默认BUSINESS"
           },
           {
             "name": "page",
@@ -335,7 +423,8 @@
           "page": 1,
           "page_size": 30,
           "only_relation_view": false,
-          "only_my_instance": false
+          "only_my_instance": false,
+          "systemObject": "BUSINESS"
         }
       },
       "response": {
@@ -363,7 +452,25 @@
           }
         ],
         "required": ["total", "page", "page_size", "list"]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "get sub system",
+            "zh": "搜索系统的子系统以及，以及递归的获取子系统的子系统"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8079/system/601d5861aeee9/_search_subsystem"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"total\": 5,\n        \"page\": 1,\n        \"page_size\": 30,\n        \"list\": [\n            {\n                \"_object_id\": \"APP_SYSTEM@ONEMODEL\",\n                \"instanceId\": \"601d587b78785\",\n                \"int\": null,\n                \"memo\": null,\n                \"menu\": null,\n                \"name\": \"abcd\"\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.cmdb_object.AlertNotifyDenied",
@@ -464,6 +571,69 @@
               "Content-Type": "application/json; charset=utf-8"
             },
             "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": null\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "cmdb.cmdb_object.BatchListChildObject",
+      "category": {
+        "en": "CMDB Object",
+        "zh": "CMDB 模型"
+      },
+      "name": "BatchListChildObject",
+      "version": "1.0.2",
+      "description": "批量获取模型所有关联子模型",
+      "detail": "",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/object/batch/child",
+        "ext_fields": []
+      },
+      "import": [],
+      "request": {
+        "description": "",
+        "default": {},
+        "required": ["objectIds"],
+        "type": "object",
+        "fields": [
+          {
+            "name": "objectIds",
+            "type": "string[]",
+            "description": "要获取的模型id数组",
+            "deprecated": false,
+            "enum": [],
+            "validateRule": null,
+            "ref": ""
+          }
+        ]
+      },
+      "response": {
+        "description": "以父模型id为key的map",
+        "default": {},
+        "wrapper": true,
+        "type": "map",
+        "required": []
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "BatchListChildObject",
+            "zh": "BatchListChildObject"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8079/object/batch/child",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"objectIds\": [\"HOST\"]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"objectMap\": {}\n}"
           }
         }
       ]
@@ -1010,6 +1180,99 @@
       ]
     },
     {
+      "contract": "cmdb.cmdb_object.ExportExcel",
+      "category": {
+        "en": "CMDB Object",
+        "zh": "CMDB 模型"
+      },
+      "name": "ExportExcel",
+      "version": "1.1.0",
+      "description": "export excel",
+      "detail": "导出模型excel文件",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/object_excel/export"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "objectIds",
+            "type": "object_id[]",
+            "description": "模型Id列表"
+          }
+        ],
+        "required": ["objectIds"]
+      },
+      "response": {
+        "type": "file"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "export object with excel",
+            "zh": "导出模型excel"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8079/object_excel/export",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"objectIds\": [\"APP\"]\n}"
+          },
+          "response": {
+            "headers": {
+              "Set-Cookie": "PHPSESSID=VFMTWAJHYRCMUWODZMVGHPSMV4UXCDN4Q3OKODAQAQBZYTUH2QDA; Path=/; Expires=Tue, 28 Dec 2021 11:45:20 GMT; Max-Age=7200",
+              "X-B3-Traceid": "8fffffffffffffff6c1e84cea8ce252c"
+            },
+            "status_code": 200,
+            "body": "二进制文件流"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "cmdb.cmdb_object.ExportExcelExample",
+      "category": {
+        "en": "CMDB Object",
+        "zh": "CMDB 模型"
+      },
+      "name": "ExportExcelExample",
+      "version": "1.1.0",
+      "description": "export excel example",
+      "detail": "导出excel文件示例",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/object_excel/example"
+      },
+      "import": ["easyops/model/cmdb/cmdb_object"],
+      "request": null,
+      "response": {
+        "type": "file"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "get object excel example",
+            "zh": "获取模型导入excel示例"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://localhost:8079/object_excel/example"
+          },
+          "response": {
+            "headers": {
+              "Set-Cookie": "PHPSESSID=VFMTWAJHYRCMUWODZMVGHPSMV4UXCDN4Q3OKODAQAQBZYTUH2QDA; Path=/; Expires=Tue, 28 Dec 2021 11:45:20 GMT; Max-Age=7200",
+              "X-B3-Traceid": "8fffffffffffffff6c1e84cea8ce252c"
+            },
+            "status_code": 200,
+            "body": "二进制文件流"
+          }
+        }
+      ]
+    },
+    {
       "contract": "cmdb.cmdb_object.ExportObject",
       "category": {
         "en": "CMDB Object",
@@ -1219,6 +1482,11 @@
             "name": "emptySystem",
             "type": "bool",
             "description": "system是否为空，为true时会忽略参数system"
+          },
+          {
+            "name": "parentObjectId",
+            "type": "string",
+            "description": "父模型id"
           }
         ],
         "default": {
@@ -1606,6 +1874,11 @@
             "name": "show_inherit_node",
             "type": "bool",
             "description": "若节点关联抽象关系，是否展示关联的子模型节点"
+          },
+          {
+            "name": "path_ids",
+            "type": "string",
+            "description": "检索的路径id列表(路径id通过sha1算法哈希路径字符串得到),用逗号进行分割"
           }
         ],
         "required": ["src_object_id", "dst_object_id"],
@@ -1793,6 +2066,99 @@
           }
         ],
         "required": ["code", "error", "message", "data"]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get the resource model path instance query key",
+            "zh": "获取资源模型路径实例查询key"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8079/object_relation_related_key"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"id\": \"9da49aa661e3ceb30a21c48ec615ae5a6791d38d\",\n            \"label\": \"服务节点-所属主机(主机)\",\n            \"reverseQueryKey\": \"_SERVICENODE\",\n            \"path\": [\n                {\n                    \"objectId\": \"_SERVICENODE\",\n                    \"object_name\": \"服务节点\"\n                },\n                {\n                    \"relation_id\": \"_SERVICENODE_HOST_IP__SERVICENODE_HOST\",\n                    \"relation_side_id\": \"HOST_IP\",\n                    \"relation_side_name\": \"所属主机\"\n                },\n                {\n                    \"objectId\": \"HOST\",\n                    \"object_name\": \"主机\"\n                }\n            ]\n        }\n    ]\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "cmdb.cmdb_object.GetObjectRelationRelatedPath",
+      "category": {
+        "en": "CMDB Object",
+        "zh": "CMDB 模型"
+      },
+      "name": "GetObjectRelationRelatedPath",
+      "version": "1.0.1",
+      "description": "拼接返回资源模型路径",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/object_relation_related_path"
+      },
+      "import": ["easyops/model/cmdb/strategy_path_node_basic"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "objectDefines",
+            "type": "object[]",
+            "description": "模型数组，数组顺序就是层级",
+            "fields": [
+              {
+                "name": "objectId",
+                "type": "string",
+                "description": "模型id"
+              },
+              {
+                "name": "relationSideId",
+                "type": "string",
+                "description": "对端模型的关系名称id"
+              },
+              {
+                "name": "relationId",
+                "type": "string",
+                "description": "本模型与下一跳模型的关系id，数组终点模型可不填，如果填了则以关系id对端模型为终点。"
+              }
+            ]
+          }
+        ],
+        "required": ["objectDefines"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "data",
+            "type": "object",
+            "fields": [
+              {
+                "name": "id",
+                "type": "string",
+                "description": "自动生成哈希id"
+              },
+              {
+                "name": "label",
+                "type": "string",
+                "description": "路径描述"
+              },
+              {
+                "name": "reverseQueryKey",
+                "type": "string",
+                "description": "query条件key"
+              },
+              {
+                "name": "path",
+                "type": "StrategyPathNodeBasic[]",
+                "description": "路径"
+              }
+            ],
+            "description": "路径信息"
+          }
+        ]
       },
       "examples": [
         {
@@ -2416,7 +2782,7 @@
       "version": "1.1.0",
       "description": "获取某个模型所有关联子模型",
       "endpoint": {
-        "method": "get",
+        "method": "GET",
         "uri": "/object/:objectId/child"
       },
       "import": ["easyops/model/cmdb/cmdb_object"],
@@ -2462,7 +2828,25 @@
           }
         ],
         "required": ["code", "error", "message", "data"]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "ListChildObject",
+            "zh": "获取某个模型所有关联子模型"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8079/object/SERVICE@ONEMODEL/child"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n\t\"code\": 0,\n\t\"error\": \"\",\n\t\"message\": \"\",\n\t\"data\": {\n\t\t\"total\": 769,\n\t\t\"page\": 1,\n\t\t\"page_size\": 1,\n\t\t\"list\": [{\n\t\t\t\"objectId\": \"BUSINESS\",\n\t\t\t\"name\": \"应用系统\",\n\t\t\t\"icon\": \"fa fa-cubes\",\n\t\t\t\"category\": \"应用资源.门户\",\n\t\t\t\"memo\": \"\",\n\t\t\t\"protected\": true,\n\t\t\t\"system\": \"\",\n\t\t\t\"notifyDenied\": false,\n\t\t\t\"view\": {\n\t\t\t\t\"attr_authorizers\": null,\n\t\t\t\t\"attr_category_order\": [\n\t\t\t\t\t\"基本信息\",\n\t\t\t\t\t\"默认属性\"\n\t\t\t\t],\n\t\t\t\t\"attr_order\": [\n\t\t\t\t\t\"applicationProfile\"\n\t\t\t\t],\n\t\t\t\t\"hide_columns\": [\n\t\t\t\t\t\"BUSINESS_POST\",\n\t\t\t\t\t\"HOST\",\n\t\t\t\t\t\"_owner_BUSINESS\"\n\t\t\t\t],\n\t\t\t\t\"relation_group_order\": [],\n\t\t\t\t\"relation_order\": [],\n\t\t\t\t\"showHideAttrs\": true,\n\t\t\t\t\"show_key\": [\n\t\t\t\t\t\"name\"\n\t\t\t\t],\n\t\t\t\t\"visible\": true\n\t\t\t},\n\t\t\t\"attrList\": [{\n\t\t\t\t\"id\": \"applicationProfile\",\n\t\t\t\t\"name\": \"应用简介\",\n\t\t\t\t\"protected\": false,\n\t\t\t\t\"custom\": \"true\",\n\t\t\t\t\"unique\": \"false\",\n\t\t\t\t\"readonly\": \"false\",\n\t\t\t\t\"required\": \"true\",\n\t\t\t\t\"tag\": [\n\t\t\t\t\t\"基本信息\"\n\t\t\t\t],\n\t\t\t\t\"description\": \"\",\n\t\t\t\t\"tips\": \"\",\n\t\t\t\t\"value\": {\n\t\t\t\t\t\"type\": \"str\",\n\t\t\t\t\t\"regex\": null,\n\t\t\t\t\t\"default_type\": \"value\",\n\t\t\t\t\t\"default\": null,\n\t\t\t\t\t\"struct_define\": [],\n\t\t\t\t\t\"mode\": \"default\",\n\t\t\t\t\t\"prefix\": \"\",\n\t\t\t\t\t\"start_value\": 0,\n\t\t\t\t\t\"series_number_length\": 0\n\t\t\t\t},\n\t\t\t\t\"wordIndexDenied\": false,\n\t\t\t\t\"isInherit\": false,\n\t\t\t\t\"notifyDenied\": false,\n\t\t\t\t\"inheritObjectId\": \"\"\n\t\t\t}],\n\t\t\t\"relation_groups\": [{\n\t\t\t\t\t\"id\": \"_user\",\n\t\t\t\t\t\"name\": \"负责人\",\n\t\t\t\t\t\"protected\": true\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"id\": \"_relate_business\",\n\t\t\t\t\t\"name\": \"父子关系\",\n\t\t\t\t\t\"protected\": true\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"id\": \"_relate_app\",\n\t\t\t\t\t\"name\": \"关联应用\",\n\t\t\t\t\t\"protected\": true\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"id\": \"basic_info\",\n\t\t\t\t\t\"name\": \"基本属性\",\n\t\t\t\t\t\"protected\": true\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"relation_list\": [{\n\t\t\t\t\t\"relation_id\": \"APP_INTERFACE_belongToBUSINESS_APP_INTERFACE_BUSINESS\",\n\t\t\t\t\t\"name\": \"\",\n\t\t\t\t\t\"protected\": false,\n\t\t\t\t\t\"notifyDenied\": false,\n\t\t\t\t\t\"isInherit\": false,\n\t\t\t\t\t\"left_object_id\": \"APP_INTERFACE\",\n\t\t\t\t\t\"leftInheritObjectId\": \"\",\n\t\t\t\t\t\"left_id\": \"belongToBUSINESS\",\n\t\t\t\t\t\"left_description\": \"包含应用接口\",\n\t\t\t\t\t\"left_name\": \"所属应用系统\",\n\t\t\t\t\t\"left_min\": 0,\n\t\t\t\t\t\"left_max\": -1,\n\t\t\t\t\t\"left_groups\": [],\n\t\t\t\t\t\"left_tags\": [],\n\t\t\t\t\t\"right_object_id\": \"BUSINESS\",\n\t\t\t\t\t\"rightInheritObjectId\": \"\",\n\t\t\t\t\t\"right_id\": \"APP_INTERFACE\",\n\t\t\t\t\t\"right_description\": \"所属应用系统\",\n\t\t\t\t\t\"right_name\": \"包含应用接口\",\n\t\t\t\t\t\"right_min\": 0,\n\t\t\t\t\t\"right_max\": -1,\n\t\t\t\t\t\"right_groups\": [],\n\t\t\t\t\t\"right_tags\": [\n\t\t\t\t\t\t\"默认属性\"\n\t\t\t\t\t],\n\t\t\t\t\t\"_version\": 3\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"relation_id\": \"APP_businesses_BUSINESS\",\n\t\t\t\t\t\"name\": \"所属系统\",\n\t\t\t\t\t\"protected\": true,\n\t\t\t\t\t\"notifyDenied\": false,\n\t\t\t\t\t\"isInherit\": false,\n\t\t\t\t\t\"left_object_id\": \"APP\",\n\t\t\t\t\t\"leftInheritObjectId\": \"\",\n\t\t\t\t\t\"left_id\": \"businesses\",\n\t\t\t\t\t\"left_description\": \"应用\",\n\t\t\t\t\t\"left_name\": \"所属系统\",\n\t\t\t\t\t\"left_min\": 0,\n\t\t\t\t\t\"left_max\": 1,\n\t\t\t\t\t\"left_groups\": [\n\t\t\t\t\t\t\"_relate_business\",\n\t\t\t\t\t\t\"basic_info\"\n\t\t\t\t\t],\n\t\t\t\t\t\"left_tags\": [],\n\t\t\t\t\t\"right_object_id\": \"BUSINESS\",\n\t\t\t\t\t\"rightInheritObjectId\": \"\",\n\t\t\t\t\t\"right_id\": \"_businesses_APP\",\n\t\t\t\t\t\"right_description\": \"所属系统\",\n\t\t\t\t\t\"right_name\": \"应用\",\n\t\t\t\t\t\"right_min\": 0,\n\t\t\t\t\t\"right_max\": -1,\n\t\t\t\t\t\"right_groups\": [\n\t\t\t\t\t\t\"_relate_app\",\n\t\t\t\t\t\t\"basic_info\"\n\t\t\t\t\t],\n\t\t\t\t\t\"right_tags\": [],\n\t\t\t\t\t\"_version\": 1\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"indexList\": [{\n\t\t\t\t\"name\": \"1030&u&name\",\n\t\t\t\t\"propertyIds\": [\n\t\t\t\t\t\"name\"\n\t\t\t\t],\n\t\t\t\t\"unique\": true\n\t\t\t}],\n\t\t\t\"updateAuthorizers\": [],\n\t\t\t\"deleteAuthorizers\": [],\n\t\t\t\"readAuthorizers\": [],\n\t\t\t\"wordIndexDenied\": false,\n\t\t\t\"_version\": 102,\n\t\t\t\"creator\": \"defaultUser\",\n\t\t\t\"modifier\": \"easyops\",\n\t\t\t\"isAbstract\": false,\n\t\t\t\"parentObjectId\": \"\",\n\t\t\t\"permissionDenied\": false,\n\t\t\t\"parentObjectIds\": []\n\t\t}]\n\t}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.cmdb_object.ListObjectBasic",
@@ -2854,6 +3238,69 @@
         ],
         "required": ["import_result"]
       }
+    },
+    {
+      "contract": "cmdb.cmdb_object.ParseExcel",
+      "category": {
+        "en": "CMDB Object",
+        "zh": "CMDB 模型"
+      },
+      "name": "ParseExcel",
+      "version": "1.1.0",
+      "description": "parse excel",
+      "detail": "导入excel文件解析模型",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/object_excel/parse"
+      },
+      "import": ["easyops/model/cmdb/cmdb_object"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "attachment",
+            "type": "file",
+            "description": "excel文件"
+          }
+        ],
+        "required": ["attachment"]
+      },
+      "response": {
+        "type": "object",
+        "wrapper": true,
+        "fields": [
+          {
+            "name": "object_list",
+            "type": "CmdbObject[]",
+            "description": "模型列表"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "parse excel to object list",
+            "zh": "解析excel转换为模型列表"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8079/object_excel/parse",
+            "headers": {
+              "Content-Type": "multipart/form-data"
+            },
+            "body": "\"attachment\": 导入文件流"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8",
+              "Set-Cookie": "PHPSESSID=VFMTWAJHYRCMUWODZMVGHPSMV4UXCDN4Q3OKODAQAQBZYTUH2QDA; Path=/; Expires=Tue, 28 Dec 2021 11:45:20 GMT; Max-Age=7200",
+              "X-B3-Traceid": "8fffffffffffffff6c1e84cea8ce252c"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"error\": \"\",\n  \"message\": \"\",\n  \"data\": {\n    \"object_list\": [\n        {\n            \"objectId\": \"HOST\",\n            \"name\": \"主机\",\n            \"icon\": \"\",\n            \"category\": \"平台资源\",\n            \"memo\": \"\",\n            \"protected\": false,\n            \"system\": \"\",\n            \"notifyDenied\": false\n        }\n    ]\n  }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.cmdb_object.SearchCollect",
@@ -3375,6 +3822,47 @@
       ]
     },
     {
+      "contract": "cmdb.column_instance.ColumnInstanceCount",
+      "name": "ColumnInstanceCount",
+      "version": "1.0.0",
+      "description": "获取列模型实例数量",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/column_object_count"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "objectIds",
+            "type": "comma_separated_string",
+            "description": "列模型ID列表，不传则获取所有列模型实例数量"
+          }
+        ]
+      },
+      "response": {
+        "type": "map"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get the number of column model instances",
+            "zh": "获取列模型实例数量"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8079/column_object_count?objectIds=PARK,dataCenter@FINTECHDATA"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"PARK\": 1,\n        \"dataCenter@FINTECHDATA\": 2\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "cmdb.database.ListV1",
       "name": "ListV1",
       "version": "1.0.0",
@@ -3552,6 +4040,201 @@
             "headers": {
               "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
             }
+          }
+        }
+      ]
+    },
+    {
+      "contract": "cmdb.history.ListChangeHistory",
+      "category": {
+        "en": "History",
+        "zh": "历史"
+      },
+      "name": "ListChangeHistory",
+      "version": "1.0.0",
+      "description": "查询变更历史",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/change/history"
+      },
+      "import": ["easyops/model/cmdb/change_history"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "nextToken",
+            "type": "string",
+            "description": "查询凭证（Token）。取值为上一次调用该接口返回的 nextToken 参数值，初次调用接口时无需设置该参数。"
+          },
+          {
+            "name": "maxResults",
+            "type": "int",
+            "description": "分页查询时每页的最大条目数。默认10，最大3000。"
+          },
+          {
+            "name": "page",
+            "type": "int",
+            "description": "页码。从1开始。推荐使用 nextToken 与 maxResults 完成分页查询操作。"
+          },
+          {
+            "name": "pageSize",
+            "type": "int",
+            "description": "每页条数。默认100，最大3000。推荐使用 nextToken 与 maxResults 完成分页查询操作。"
+          },
+          {
+            "name": "system",
+            "type": "string",
+            "description": "系统名称"
+          },
+          {
+            "name": "target_name",
+            "type": "string",
+            "description": "目标名称(工具名/流程名/对象名/实例名)"
+          },
+          {
+            "name": "target_category",
+            "type": "string",
+            "description": "目标分组"
+          },
+          {
+            "name": "target_id",
+            "type": "string",
+            "description": "目标名称(多个以逗号分隔,且建议只传递target_id)"
+          },
+          {
+            "name": "event_id",
+            "type": "string",
+            "description": "事件id"
+          },
+          {
+            "name": "parent_event_id",
+            "type": "string",
+            "description": "父事件id"
+          },
+          {
+            "name": "operator",
+            "type": "string",
+            "description": "操作人"
+          },
+          {
+            "name": "event",
+            "type": "string",
+            "description": "事件名称"
+          },
+          {
+            "name": "exclude_event",
+            "type": "string",
+            "description": "排除事件名称"
+          },
+          {
+            "name": "exclude_system",
+            "type": "string",
+            "description": "排除的系统名称"
+          },
+          {
+            "name": "memo",
+            "type": "string",
+            "description": "事件备注"
+          },
+          {
+            "name": "with_children",
+            "type": "bool",
+            "description": "是否查询子事件（true查询子事件，false不查询子时间，默认false)"
+          },
+          {
+            "name": "user",
+            "type": "string",
+            "description": "通知相关人（包含operator和notifier)"
+          },
+          {
+            "name": "start_time",
+            "type": "string",
+            "description": "开始时间。格式为 `2006-01-02 15:04:05`"
+          },
+          {
+            "name": "end_time",
+            "type": "string",
+            "description": "截止时间。格式为 `2006-01-02 15:04:05`"
+          },
+          {
+            "name": "without_total",
+            "type": "bool",
+            "description": "是否不需要查询总数"
+          },
+          {
+            "name": "topic",
+            "type": "string",
+            "description": "topic"
+          },
+          {
+            "name": "query",
+            "type": "string",
+            "description": "query"
+          },
+          {
+            "name": "ctime_order",
+            "type": "string",
+            "description": "ctime_order 默认 desc"
+          },
+          {
+            "name": "skip",
+            "type": "int",
+            "description": "skip"
+          },
+          {
+            "name": "limit",
+            "type": "int",
+            "description": "limit"
+          },
+          {
+            "name": "field_id",
+            "type": "string",
+            "description": "模型属性或者关系的边id"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "CmdbChangeHistory[]",
+            "description": "OperationLog 列表"
+          },
+          {
+            "name": "nextToken",
+            "type": "string",
+            "description": "本次调用返回的查询凭证（Token）。当该返回值为空时，表示该页为末页，不再有后续页。"
+          },
+          {
+            "name": "page",
+            "type": "int",
+            "description": "页码。使用 maxResults 和 nextToken 参数进行分页查询时，返回的 page 参数值无意义。"
+          },
+          {
+            "name": "pageSize",
+            "type": "int",
+            "description": "页大小。使用 maxResults 和 nextToken 参数进行分页查询时，返回的 pageSize 参数值无意义。"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总条数。使用 maxResults 和 nextToken 参数进行分页查询时，返回的 total 参数值无意义。"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "ListChangeHistory",
+            "zh": "获取变更历史"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://localhost:8079/change/history?page=1&pageSize=2"
+          },
+          "response": {
+            "body": "{\n  \"code\": 0,\n  \"error\": \"\",\n  \"message\": \"\",\n  \"data\": {\n    \"page\": 1,\n    \"pageSize\": 2,\n    \"total\": 4841,\n    \"list\": [\n      {\n        \"system\": \"cmdb\",\n        \"topic\": \"event.instance_create\",\n        \"event_id\": \"63297e09a41f8b78bd774469\",\n        \"parent_event_id\": \"\",\n        \"parent_event\": null,\n        \"event\": \"event.instance_create\",\n        \"operator\": \"easyops\",\n        \"target_name\": \"WORKEMAIL-TEST01(工具)\",\n        \"target_id\": \"58b78bd774469\",\n        \"target_category\": \"AAA\",\n        \"ext_info\": {\n          \"alarm_level\": \"\",\n          \"app_sys_name\": \"\"\n        },\n        \"mtime\": 1663663627,\n        \"ctime\": 1663663627\n      }\n    ]\n  }\n}"
           }
         }
       ]
@@ -4138,7 +4821,7 @@
         "zh": "实例"
       },
       "name": "AutoDiscovery",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "实例自动发现的接口",
       "endpoint": {
         "method": "POST",
@@ -4157,6 +4840,16 @@
             "name": "objectId",
             "type": "object_id",
             "description": "资源模型ID"
+          },
+          {
+            "name": "ignoreReadonlyFields",
+            "type": "bool",
+            "description": "更新时是否忽略只读字段"
+          },
+          {
+            "name": "disableNestedCreateInstance",
+            "type": "bool",
+            "description": "禁止导入时通过关系嵌套创建实例"
           },
           {
             "name": "body",
@@ -4250,6 +4943,122 @@
               "Content-Type": "application/json"
             },
             "body": "[\n    {\n        \"filter\": {\n            \"name\": \"name\"\n        },\n        \"update\": {\n            \"name\": \"foo\",\n            \"fans\": \"bar\"\n        },\n        \"upsert\": true\n    }\n]"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"instanceId\": \"5d38ef407b4a4\",\n            \"code\": 0,\n            \"matched\": true,\n            \"effected\": false,\n            \"message\": \"\"\n        }\n    ]\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "cmdb.instance.AutoDiscoveryV2",
+      "category": {
+        "en": "Instance",
+        "zh": "实例"
+      },
+      "name": "AutoDiscoveryV2",
+      "version": "1.0.0",
+      "description": "自动发现的接口V2版本，主要将body参数改成非数组",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/v2/object/:objectId/instance/_import-json"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "objectId",
+            "type": "object_id",
+            "description": "资源模型ID"
+          },
+          {
+            "name": "ignoreReadonlyFields",
+            "type": "bool",
+            "description": "更新时是否忽略只读字段"
+          },
+          {
+            "name": "disableNestedCreateInstance",
+            "type": "bool",
+            "description": "禁止导入时通过关系嵌套创建实例"
+          },
+          {
+            "name": "importData",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "filter",
+                "type": "map",
+                "description": "筛选器"
+              },
+              {
+                "name": "update",
+                "type": "map",
+                "description": "更新数据"
+              },
+              {
+                "name": "upsert",
+                "type": "bool",
+                "description": "存在即更新"
+              }
+            ],
+            "description": "导入详情"
+          }
+        ],
+        "required": ["objectId", "importData"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "importDetails",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "instanceId",
+                "type": "instance_id",
+                "description": "实例Id"
+              },
+              {
+                "name": "code",
+                "type": "int",
+                "description": "状态码"
+              },
+              {
+                "name": "matched",
+                "type": "bool",
+                "description": "是否匹配到数据"
+              },
+              {
+                "name": "effected",
+                "type": "bool",
+                "description": "是否有效"
+              },
+              {
+                "name": "message",
+                "type": "string",
+                "description": "错误信息"
+              }
+            ],
+            "description": "导入详情"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Interface for instance auto-discovery",
+            "zh": "实例自动发现的接口"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8079/v2/object/TEST123/instance/_import-json",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"disableNestedCreateInstance\":true,\n  \"importData\":[\n      {\n          \"filter\": {\n              \"name\": \"name\"\n          },\n          \"update\": {\n              \"name\": \"foo\",\n              \"fans\": \"bar\"\n          },\n          \"upsert\": true\n      }\n  ]\n}"
           },
           "response": {
             "headers": {
@@ -5390,6 +6199,168 @@
       }
     },
     {
+      "contract": "cmdb.instance.GetListDisplayView",
+      "category": {
+        "en": "Instance",
+        "zh": "实例"
+      },
+      "name": "GetListDisplayView",
+      "version": "1.0.1",
+      "description": "获取cmdb实例列表的展示字段规则、排序规则。",
+      "detail": "",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/object/:object_id/list/view",
+        "ext_fields": []
+      },
+      "import": [],
+      "request": {
+        "description": "",
+        "default": null,
+        "required": [],
+        "type": "object",
+        "fields": [
+          {
+            "name": "object_id",
+            "type": "string",
+            "description": "模型"
+          }
+        ]
+      },
+      "response": {
+        "description": "",
+        "default": null,
+        "wrapper": true,
+        "type": "object",
+        "required": [],
+        "fields": [
+          {
+            "name": "object_id",
+            "type": "string",
+            "description": "要创建的模型",
+            "deprecated": false,
+            "enum": [],
+            "validateRule": null,
+            "ref": ""
+          },
+          {
+            "name": "sortFields",
+            "type": "object[]",
+            "description": "排序字段",
+            "deprecated": false,
+            "enum": [],
+            "validateRule": null,
+            "ref": "",
+            "fields": [
+              {
+                "name": "field",
+                "type": "string",
+                "description": "要排序的字段",
+                "deprecated": false,
+                "enum": [],
+                "validateRule": null,
+                "ref": ""
+              },
+              {
+                "name": "order",
+                "type": "int",
+                "description": "-1为降序，0为默认，1为升序",
+                "deprecated": false,
+                "enum": [],
+                "validateRule": null,
+                "ref": ""
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "GetListDisplayView",
+            "zh": "GetListDisplayView"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8079/object/HOST/list/view",
+            "headers": {
+              "Content-Type": "application/json"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"object_id\": \"HOST\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "cmdb.instance.GetPropertyValueDetail",
+      "category": {
+        "en": "Instance",
+        "zh": "实例"
+      },
+      "name": "GetPropertyValueDetail",
+      "version": "1.1.0",
+      "description": "获取属性值列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/object/:object_id/field/:field"
+      },
+      "import": ["easyops/model/cmdb/property_value_detail"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "object_id",
+            "type": "object_id",
+            "description": "模型对象ID"
+          },
+          {
+            "name": "field",
+            "type": "string",
+            "description": "属性字段名"
+          }
+        ],
+        "required": ["object_id", "field"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "PropertyValueDetail[]",
+            "description": "属性值列表"
+          }
+        ],
+        "required": ["list"]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "GetPropertyValueDetail",
+            "zh": "获取属性值列表"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8079/object/BUSINESS_FLOW/field/businessLine",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{ }"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"list\": [\n            {\n              \"value\": \"line1\",\n              \"count\": 1\n            },\n            {\n              \"value\": \"line2\",\n              \"count\": 2\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "cmdb.instance.GroupInstance",
       "category": {
         "en": "Instance",
@@ -5844,6 +6815,11 @@
             "name": "importMetadata",
             "type": "bool",
             "description": "是否导入metadata字段,ctime,creator,创建实例为true时将会默认填充mtime,modifier字段"
+          },
+          {
+            "name": "ignoreReadonlyFields",
+            "type": "bool",
+            "description": "更新时是否忽略只读字段"
           }
         ],
         "required": ["objectId", "keys", "datas"]
@@ -6509,6 +7485,11 @@
             "name": "data",
             "type": "map[]",
             "description": "实例列表,实例数据里需要有_object_id字段"
+          },
+          {
+            "name": "fill_metadata",
+            "type": "bool",
+            "description": "是否可指定metadata字段"
           }
         ],
         "required": ["data"]
@@ -6523,7 +7504,29 @@
           }
         ],
         "required": ["list"]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Mix Create Instance",
+            "zh": "批量创建实例"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8079/mix/object/instance/create",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"fill_metadata\": true,\n    \"data\": [\n        {\n            \"_object_id\": \"STORYBOARD_FUNCTION\",\n            \"ctime\": \"2023-09-11 17:16:47\",\n            \"name\": \"test-today\"\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"list\": [\n            \"5d234ee4acecd\"\n        ]\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.MixDeleteInstance",
@@ -6590,6 +7593,182 @@
         "required": ["data"]
       },
       "response": null
+    },
+    {
+      "contract": "cmdb.instance.OlapV2",
+      "category": {
+        "en": "Instance",
+        "zh": "实例"
+      },
+      "name": "OlapV2",
+      "version": "1.1.0",
+      "description": "olap_v2接口",
+      "detail": "查询指标并校验权限",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/v2/object/:objectId/olap"
+      },
+      "import": ["easyops/model/cmdb/measure"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "objectId",
+            "type": "object_id",
+            "description": "模型对象ID"
+          },
+          {
+            "name": "instance_filter",
+            "type": "map",
+            "description": "instance_filter"
+          },
+          {
+            "name": "metrics_filter",
+            "type": "map",
+            "description": "metrics_filter"
+          },
+          {
+            "name": "fields",
+            "type": "string[]",
+            "description": "指定返回字段"
+          },
+          {
+            "name": "sort",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "key",
+                "type": "string",
+                "description": "属性id"
+              },
+              {
+                "name": "order",
+                "type": "int",
+                "description": "order"
+              }
+            ],
+            "description": "按字段排序"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "页大小"
+          },
+          {
+            "name": "time_range",
+            "type": "object",
+            "fields": [
+              {
+                "name": "start_time",
+                "type": "int64",
+                "description": "start_time"
+              },
+              {
+                "name": "end_time",
+                "type": "int64",
+                "description": "end_time"
+              }
+            ],
+            "description": "time_range"
+          },
+          {
+            "name": "measures",
+            "type": "CmdbMeasure[]",
+            "description": "measures"
+          },
+          {
+            "name": "group_fields",
+            "type": "string[]",
+            "description": "group_fields"
+          },
+          {
+            "name": "with_empty_data",
+            "type": "bool",
+            "description": "指标数据查询"
+          },
+          {
+            "name": "having",
+            "type": "map",
+            "description": "having"
+          },
+          {
+            "name": "minimum_step",
+            "type": "string",
+            "description": "minimum_step"
+          },
+          {
+            "name": "resolution_offset",
+            "type": "int64",
+            "description": "汇聚时相对于UTC偏移量，单位ms。比如需要按照本地时间偏移：8 * 3600 * 1000（加8小时），如果需要按照start_time偏移，可以设置为start_time"
+          }
+        ],
+        "required": ["objectId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "total",
+            "type": "int",
+            "description": "实例总数"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "页大小"
+          },
+          {
+            "name": "resolution",
+            "type": "int",
+            "description": "resolution"
+          },
+          {
+            "name": "records",
+            "type": "object[]",
+            "fields": [
+              {
+                "name": "data",
+                "type": "map",
+                "description": "data"
+              }
+            ],
+            "description": "records"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "OlapV2",
+            "zh": "olap v2"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8079/v2/object/HOST/olap",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"fields\": [\"ID\", \"name\", \"address\", \"age\"],\n    \"page\": 1,\n    \"page_size\": 2\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"data\": {\n        \"records\": [\n            {\n                \"data\": {\n                    \"ID\": 1,\n                    \"address\": \"addr1\",\n                    \"age\": 1,\n                    \"instanceId\": \"5d3914e090876\",\n                    \"name\": \"name1\"\n                }\n            }\n        ],\n        \"total\": 1,\n        \"page\": 1,\n        \"page_size\": 2,\n        \"resolution\": 1,\n    },\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\"\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.PostSearch",
@@ -7950,6 +9129,138 @@
       ]
     },
     {
+      "contract": "cmdb.instance.UpdateListDisplayView",
+      "category": {
+        "en": "Instance",
+        "zh": "实例"
+      },
+      "name": "UpdateListDisplayView",
+      "version": "1.0.0",
+      "description": "更新cmdb实例列表的展示字段规则、排序规则。",
+      "detail": "",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/object/:object_id/list/view",
+        "ext_fields": []
+      },
+      "import": [],
+      "request": {
+        "description": "",
+        "default": null,
+        "required": ["object_id", "sortFields"],
+        "type": "object",
+        "fields": [
+          {
+            "name": "object_id",
+            "type": "string",
+            "description": "要创建的模型",
+            "deprecated": false,
+            "enum": [],
+            "validateRule": null,
+            "ref": ""
+          },
+          {
+            "name": "sortFields",
+            "type": "object[]",
+            "description": "排序字段",
+            "deprecated": false,
+            "enum": [],
+            "validateRule": null,
+            "ref": "",
+            "fields": [
+              {
+                "name": "field",
+                "type": "string",
+                "description": "要排序的字段",
+                "deprecated": false,
+                "enum": [],
+                "validateRule": null,
+                "ref": ""
+              },
+              {
+                "name": "order",
+                "type": "int",
+                "description": "降序-1、升序1、 不排0",
+                "deprecated": false,
+                "enum": [],
+                "validateRule": null,
+                "ref": ""
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "description": "",
+        "default": null,
+        "wrapper": true,
+        "type": "object",
+        "required": [],
+        "fields": [
+          {
+            "name": "object_id",
+            "type": "string",
+            "description": "要创建的模型",
+            "deprecated": false,
+            "enum": [],
+            "validateRule": null,
+            "ref": ""
+          },
+          {
+            "name": "sortFields",
+            "type": "object[]",
+            "description": "排序字段",
+            "deprecated": false,
+            "enum": [],
+            "validateRule": null,
+            "ref": "",
+            "fields": [
+              {
+                "name": "field",
+                "type": "string",
+                "description": "要排序的字段",
+                "deprecated": false,
+                "enum": [],
+                "validateRule": null,
+                "ref": ""
+              },
+              {
+                "name": "order",
+                "type": "int",
+                "description": "只能为降序desc、升序asc",
+                "deprecated": false,
+                "enum": [],
+                "validateRule": null,
+                "ref": ""
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "UpdateListDisplayView",
+            "zh": "UpdateListDisplayView"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8079/object/HOST/list/view",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"object_id\": \"HOST\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"object_id\": \"HOST\"\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "cmdb.instance.UpdatePermissionBatch",
       "category": {
         "en": "Instance",
@@ -8045,8 +9356,8 @@
         "zh": "实例"
       },
       "name": "UpsertInstance",
-      "version": "1.1.0",
-      "description": "批量创建实例，存在时更新",
+      "version": "1.2.0",
+      "description": "【注意！！】仅校验实例编辑功能权限，忽略实例编辑白名单及变更历史。批量创建实例，存在时更新。",
       "detail": "body为实例信息,字段限制参考模型定义,支持关系创建",
       "endpoint": {
         "method": "POST",
@@ -8058,39 +9369,59 @@
           {
             "name": "objectId",
             "type": "object_id",
-            "description": "objectId"
+            "description": "实例所属的模型ID"
+          },
+          {
+            "name": "keys",
+            "type": "string[]",
+            "description": "联合唯一的key(只支持普通属性,不支持结构体与关系字段),以这些key与datas里的数据组装query,作为插入/更新的依据"
           },
           {
             "name": "datas",
             "type": "map[]",
-            "description": "实例数据列表"
+            "description": "导入实例数据列表,必须包含keys里面的字段"
           },
           {
-            "name": "only_instance_id",
+            "name": "importMetadata",
             "type": "bool",
-            "description": "是否只返回实例id"
-          },
-          {
-            "name": "fill_metadata",
-            "type": "bool",
-            "description": "是否可指定metadata字段,如ctime,creator,为true时将会默认填充mtime,modifier字段"
+            "description": "是否导入metadata字段,ctime,creator,创建实例为true时将会默认填充mtime,modifier字段"
           }
         ],
-        "default": {
-          "only_instance_id": false,
-          "fill_metadata": false
-        }
+        "required": ["objectId", "keys", "datas"]
       },
       "response": {
         "type": "object",
         "fields": [
           {
-            "name": "list",
-            "type": "map[]",
-            "description": "实例列表"
+            "name": "upsertCount",
+            "type": "int",
+            "description": "实例变更总数"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "upsert instance",
+            "zh": "批量更新或插入实例"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8079/object/PARK/instance/upsert",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"keys\": [\"name\"],\n    \"datas\": [\n        {\n            \"name\": \"name1\",\n            \"address\": \"testAddr\",\n            \"age\": 18\n        }\n    ]\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"upsertCount\": 0\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.ValidateInstance",
@@ -9066,7 +10397,7 @@
         "zh": "实例路径查询"
       },
       "name": "PathSearchExportV3",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "实例路径查询v3导出excel",
       "endpoint": {
         "method": "POST",
@@ -9095,6 +10426,11 @@
             "name": "exportAllFields",
             "type": "bool",
             "description": "是否导出所有字段"
+          },
+          {
+            "name": "showOriginFieldName",
+            "type": "bool",
+            "description": "导出表头是否展示原始字段名"
           }
         ],
         "required": ["path"]
@@ -9131,7 +10467,7 @@
         "zh": "实例路径查询"
       },
       "name": "PathSearchExportV4",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "实例路径查询v4导出excel",
       "endpoint": {
         "method": "POST",
@@ -9160,6 +10496,11 @@
             "name": "exportAllFields",
             "type": "bool",
             "description": "是否导出所有字段"
+          },
+          {
+            "name": "showOriginFieldName",
+            "type": "bool",
+            "description": "导出表头是否展示原始字段名"
           }
         ],
         "required": ["path"]

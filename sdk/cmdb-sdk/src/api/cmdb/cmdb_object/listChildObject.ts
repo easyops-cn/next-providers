@@ -22,7 +22,7 @@ export interface CmdbObjectApi_ListChildObjectResponseBody {
 
 /**
  * @description 获取某个模型所有关联子模型
- * @endpoint get /object/:objectId/child
+ * @endpoint GET /object/:objectId/child
  */
 export const CmdbObjectApi_listChildObject = (
   objectId: string | number,

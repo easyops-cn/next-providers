@@ -2,6 +2,9 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface BusinessInstanceApi_SearchSubSystemRequestBody {
+  /** 系统模型的id，目前有BUSINESS,APP_SYSTEM@ONEMODEL，默认BUSINESS */
+  systemObject?: "BUSINESS" | "APP_SYSTEM@ONEMODEL";
+
   /** 页码 */
   page?: number;
 
@@ -50,7 +53,7 @@ export const BusinessInstanceApi_searchSubSystem = async (
   data: BusinessInstanceApi_SearchSubSystemRequestBody,
   options?: HttpOptions
 ): Promise<BusinessInstanceApi_SearchSubSystemResponseBody> =>
-  /**! @contract easyops.api.cmdb.business_instance.SearchSubSystem@1.0.0 */ (
+  /**! @contract easyops.api.cmdb.business_instance.SearchSubSystem@1.1.0 */ (
     await http.post<
       ResponseBodyWrapper<BusinessInstanceApi_SearchSubSystemResponseBody>
     >(

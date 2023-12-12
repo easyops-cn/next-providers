@@ -14,6 +14,9 @@ export interface ModelObjectView {
   /** 定义如何展示关系，e.g.: { business: ['name'], tester: ['name'] }, 当relation_view为空时，会返回一个空数组 */
   relation_view: any;
 
+  /** 保存关系默认展示的字段，如果没有值，则默认展示前8个字段 */
+  relation_default_attr: Record<string, any>;
+
   /** 展示时的属性顺序 */
   attr_order: string[];
 

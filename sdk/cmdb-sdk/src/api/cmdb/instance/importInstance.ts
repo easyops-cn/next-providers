@@ -10,6 +10,9 @@ export interface InstanceApi_ImportInstanceRequestBody {
 
   /** 是否导入metadata字段,ctime,creator,创建实例为true时将会默认填充mtime,modifier字段 */
   importMetadata?: boolean;
+
+  /** 更新时是否忽略只读字段 */
+  ignoreReadonlyFields?: boolean;
 }
 
 export interface InstanceApi_ImportInstanceResponseBody {

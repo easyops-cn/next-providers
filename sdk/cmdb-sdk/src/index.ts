@@ -1,5 +1,6 @@
 export * from "./api/cmdb/business_instance";
 export * from "./api/cmdb/cmdb_object";
+export * from "./api/cmdb/column_instance";
 export * from "./api/cmdb/database";
 export * from "./api/cmdb/history";
 export * from "./api/cmdb/index";

@@ -13,6 +13,9 @@ export interface CmdbObjectApi_GetIdMapNameRequestParams {
 
   /** system是否为空，为true时会忽略参数system */
   emptySystem?: boolean;
+
+  /** 父模型id */
+  parentObjectId?: string;
 }
 
 export type CmdbObjectApi_GetIdMapNameResponseBody = Record<string, any>;

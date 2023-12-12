@@ -25,6 +25,9 @@ export interface CmdbObjectApi_GetObjectRelationPathRequestParams {
 
   /** 若节点关联抽象关系，是否展示关联的子模型节点 */
   show_inherit_node?: boolean;
+
+  /** 检索的路径id列表(路径id通过sha1算法哈希路径字符串得到),用逗号进行分割 */
+  path_ids?: string;
 }
 
 export interface CmdbObjectApi_GetObjectRelationPathResponseBody {

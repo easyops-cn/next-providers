@@ -27,7 +27,7 @@ export const InstanceApi_autoDiscovery = (
   data: InstanceApi_AutoDiscoveryRequestBody,
   options?: HttpOptions
 ): Promise<InstanceApi_AutoDiscoveryResponseBody> =>
-  /**! @contract easyops.api.cmdb.instance.AutoDiscovery@1.0.0 */ http.post<InstanceApi_AutoDiscoveryResponseBody>(
+  /**! @contract easyops.api.cmdb.instance.AutoDiscovery@1.0.1 */ http.post<InstanceApi_AutoDiscoveryResponseBody>(
     `api/gateway/cmdb.instance.AutoDiscovery/object/${objectId}/instance/_import-json`,
     data,
     options

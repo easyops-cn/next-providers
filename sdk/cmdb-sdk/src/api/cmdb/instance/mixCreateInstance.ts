@@ -4,6 +4,9 @@ import { ResponseBodyWrapper } from "../../../wrapper";
 export interface InstanceApi_MixCreateInstanceRequestBody {
   /** 实例列表,实例数据里需要有_object_id字段 */
   data: Record<string, any>[];
+
+  /** 是否可指定metadata字段 */
+  fill_metadata?: boolean;
 }
 
 export interface InstanceApi_MixCreateInstanceResponseBody {
