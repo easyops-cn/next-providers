@@ -47,7 +47,7 @@
     "@next-core/illustrations": "^0.11.4",
     "@next-core/loader": "^1.4.3",
     "@next-core/pipes": "^1.0.15",
-    "@next-core/sdk-scripts": "^2.7.19",
+    "@next-core/sdk-scripts": "^2.7.20",
     "@size-limit/file": "^8.1.0",
     "@types/d3": "^6.7.5",
     "@types/dompurify": "^2.4.0",

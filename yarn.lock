@@ -2546,10 +2546,10 @@
   dependencies:
     "@easyops-cn/brick-next-pipes" "^0.4.0"
 
-"@next-core/public-scoped-sdk@^0.2.12":
-  version "0.2.12"
-  resolved "https://registry.npmjs.org/@next-core/public-scoped-sdk/-/public-scoped-sdk-0.2.12.tgz#740a9b975a441cfd60e34da2c42b4565002ee20f"
-  integrity sha512-357fGuCIHNyGoGW0FRaovj1vx34Cos2F/Cxfp9UaTfLgXQM4DD1ai8G4MVJzIMyDU+gh5UQnKKO1poZBUDs5cw==
+"@next-core/public-scoped-sdk@^0.2.14":
+  version "0.2.14"
+  resolved "https://registry.npmjs.org/@next-core/public-scoped-sdk/-/public-scoped-sdk-0.2.14.tgz#74581958009d3fef389739cd610c9b6eaa314b6c"
+  integrity sha512-AZclSKaZH/bf47lkuQZbwUorjZXfysO1VGMpeDwUGwhMULwza8VkBwf+1/Tep5IZ1DbsicuKUOSAm/8sLrSV5g==
 
 "@next-core/repo-config@^0.2.5":
   version "0.2.5"
@@ -2574,12 +2574,12 @@
     rollup-plugin-postcss "^4.0.2"
     string-hash "^1.1.3"
 
-"@next-core/sdk-scripts@^2.7.19":
-  version "2.7.19"
-  resolved "https://registry.npmjs.org/@next-core/sdk-scripts/-/sdk-scripts-2.7.19.tgz#8384e8ea1306c6a337f0dcf8a565bccfbb9eea56"
-  integrity sha512-e9x532+PLKKYWaUGpxcBA5spzSAVbBtCvXD3yxShs765oibw/JNeFCJBYJsEvlSWtzrgMZx38f4NWrzNaraMNQ==
+"@next-core/sdk-scripts@^2.7.20":
+  version "2.7.21"
+  resolved "https://registry.npmjs.org/@next-core/sdk-scripts/-/sdk-scripts-2.7.21.tgz#7425aa81800446b792189d7183c8be5484944fd0"
+  integrity sha512-kLXmzedCO00z4uX41uj1B5yxccGOrYc2gqt75a/PM/m9ffZYRo7sDs1aOjsoNDtekOl7py7X8bwfVyLZhuXOEw==
   dependencies:
-    "@next-core/public-scoped-sdk" "^0.2.12"
+    "@next-core/public-scoped-sdk" "^0.2.14"
     "@next-core/repo-config" "^0.2.5"
     chalk "^4.1.2"
     change-case "^4.1.2"
