@@ -2361,10 +2361,10 @@
     request "^2.88.2"
     request-promise-native "^1.0.9"
 
-"@next-core/brick-types@^2.82.0", "@next-core/brick-types@^2.82.5", "@next-core/brick-types@^2.90.1":
-  version "2.82.0"
-  resolved "https://registry.npmjs.org/@next-core/brick-types/-/brick-types-2.82.0.tgz#894b1a019431a90d99eb080f9c21d492fed47cc3"
-  integrity sha512-fROvX519KIot8N98CWa8255+yNm4g2rSrcQ6eOzwNXhUAzXxKOHcw1iok5EZToR/mHXb/EDj08+BoPwBg3KAgg==
+"@next-core/brick-types@^2.82.5", "@next-core/brick-types@^2.90.1":
+  version "2.90.1"
+  resolved "https://registry.npmjs.org/@next-core/brick-types/-/brick-types-2.90.1.tgz#e92542e910757bb136b6f0e656784d3190473a00"
+  integrity sha512-xkxZF1oFLzueZ9uVKl2gxDeFP/l437xJjlyGo5mYSTApoH2c7DT6eJuqbfkiH9689Ah6+tkGg9r0fD31GudIzw==
 
 "@next-core/brick-utils@^2.45.20", "@next-core/brick-utils@^2.51.10":
   version "2.51.10"
@@ -2534,10 +2534,10 @@
   resolved "https://registry.npmjs.org/@next-core/less-plugin-css-variables/-/less-plugin-css-variables-0.2.8.tgz#58ab26e5c9231b8071fe6c4d79ac0df91db58898"
   integrity sha512-JAy1XgmockHEpG78SDnKP2y0I8fMEHR4r1A+oweYPBNjBM4CzCSS52UsxsuTfdFgUQG/7SUo5AaMQTARxEsgyw==
 
-"@next-core/loader@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.npmjs.org/@next-core/loader/-/loader-1.3.0.tgz#7f2cfc430c1d5b04ca0a9ba5a57ae2250316d25f"
-  integrity sha512-OBHTgpUBoyS+jsQQxiiwsZNtNsmtdY+PFKk3ux2U2dgsrGATbH61Q4a6UuqIm8BPQADDIJ3UklNsQO/c292xqQ==
+"@next-core/loader@^1.3.0", "@next-core/loader@^1.4.3":
+  version "1.5.0"
+  resolved "https://registry.npmjs.org/@next-core/loader/-/loader-1.5.0.tgz#f307f42810284248185f7e63358acc2542fa15ee"
+  integrity sha512-WdXce/NeuJ2+BCqcnU/OK/7EeE0WwYqykCl5RLGYNpMfGTDLZiNt4XZd7uYNXvgsABFMDXsTRkEeQ1NdOn5ZMg==
 
 "@next-core/pipes@^1.0.15":
   version "1.0.16"

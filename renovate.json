@@ -7,85 +7,8 @@
   "ignorePresets": [":ignoreModulesAndTests"],
   "packageRules": [
     {
-      "automerge": true,
-      "matchDepTypes": ["devDependencies"],
-      "matchUpdateTypes": ["patch"]
-    },
-    {
-      "enabled": false,
-      "matchPackagePatterns": [
-        "^@bricks/",
-        "^@libs/",
-        "^@micro-apps/",
-        "^@sdk/",
-        "^@templates/",
-        "^@next-bricks/",
-        "^@next-micro-apps/",
-        "^@next-sdk/",
-        "^@next-legacy-templates/"
-      ],
-      "matchPackageNames": [
-        "@ant-design/compatible",
-        "@ant-design/icons",
-        "@babel/runtime",
-        "@fortawesome/react-fontawesome",
-        "@next-core/babel-runtime-helpers",
-        "@next-core/brick-http",
-        "@next-core/brick-icons",
-        "@next-core/brick-kit",
-        "@next-core/brick-types",
-        "@next-core/brick-utils",
-        "@next-core/easyops-analytics",
-        "@next-core/editor-bricks-helper",
-        "@next-core/fontawesome-library",
-        "@next-core/illustrations",
-        "@next-core/pipes",
-        "@size-limit/file",
-        "@types/classnames",
-        "@types/d3",
-        "@types/dompurify",
-        "@types/echarts",
-        "@types/enzyme",
-        "@types/enzyme-adapter-react-16",
-        "@types/history",
-        "@types/jest",
-        "@types/js-yaml",
-        "@types/lodash",
-        "@types/lolex",
-        "@types/node",
-        "@types/react",
-        "@types/react-dom",
-        "@types/react-test-renderer",
-        "@types/react-transition-group",
-        "antd",
-        "d3-drag",
-        "d3-force",
-        "d3-hierarchy",
-        "d3-selection",
-        "d3-shape",
-        "d3-zoom",
-        "dnd-core",
-        "echarts",
-        "enzyme",
-        "history",
-        "i18next",
-        "js-yaml",
-        "lodash",
-        "lolex",
-        "moment",
-        "react",
-        "react-ace",
-        "react-dnd",
-        "react-dnd-html5-backend",
-        "react-dom",
-        "react-i18next",
-        "react-transition-group"
-      ]
-    },
-    {
-      "groupName": "next-core packages",
-      "matchPackagePatterns": ["^@next-core/"],
-      "automerge": false
+      "excludePackagePatterns": ["^@next-core/", "^@next-libs/"],
+      "enabled": false
     },
     {
       "matchPackagePatterns": ["^@next-core/"],
@@ -93,9 +16,14 @@
       "enabled": false
     },
     {
+      "groupName": "next-core packages",
+      "matchPackagePatterns": ["^@next-core/"],
+      "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
       "groupName": "next-libs packages",
       "matchPackagePatterns": ["^@next-libs/"],
-      "automerge": false
+      "separateMajorMinor": false
     }
   ],
   "postUpdateOptions": ["yarnDedupeHighest"]
