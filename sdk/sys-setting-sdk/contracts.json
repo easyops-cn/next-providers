@@ -1,0 +1,2871 @@
+{
+  "name": "sys_setting",
+  "contracts": [
+    {
+      "contract": "sys_setting.announce.CountEffectiveAnnounce",
+      "name": "CountEffectiveAnnounce",
+      "version": "1.0.1",
+      "description": "获取当前用户有效公告数量",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/sys_setting/v1/announce/count"
+      },
+      "import": [],
+      "request": null,
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "count",
+            "type": "int",
+            "description": "当前用户的有效公告数量"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "CountEffectiveAnnounce",
+            "zh": "获取当前用户有效公告数量"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/announce/count"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n      \"list\": [\n      {\n        \"count\": 10\n      }\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.announce.CreateAnnounce",
+      "name": "CreateAnnounce",
+      "version": "1.1.0",
+      "description": "创建通知公告",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/sys_setting/v1/announce"
+      },
+      "import": ["easyops/model/sys_setting/sys_announce"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "SysAnnounce.title"
+          },
+          {
+            "ref": "SysAnnounce.category"
+          },
+          {
+            "ref": "SysAnnounce.data"
+          },
+          {
+            "ref": "SysAnnounce.effectTime"
+          },
+          {
+            "ref": "SysAnnounce.expires"
+          },
+          {
+            "ref": "SysAnnounce.fileInfo"
+          },
+          {
+            "ref": "SysAnnounce.isPublish"
+          },
+          {
+            "ref": "SysAnnounce.enableNotify"
+          },
+          {
+            "ref": "SysAnnounce.notifyConf"
+          },
+          {
+            "ref": "SysAnnounce.isPopup"
+          }
+        ],
+        "required": [
+          "SysAnnounce.title",
+          "SysAnnounce.category",
+          "SysAnnounce.data",
+          "SysAnnounce.isPublish",
+          "SysAnnounce.isPopup"
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "SysAnnounce.instanceId"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "CreateAnnounce",
+            "zh": "创建通知公告"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/announce",
+            "body": "{\n  \"title\": \"title\",\n  \"category\": \"other\",\n  \"data\": \"<p>data</p>\",\n  \"isPublish\": false,\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n      \"instanceId\": \"5fad60e448859\"\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.announce.DeleteAnnounce",
+      "name": "DeleteAnnounce",
+      "version": "1.0.1",
+      "description": "批量删除通知公告",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/sys_setting/v1/announce/:instanceIds"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceIds",
+            "type": "string",
+            "description": "公告id(多个用;分割)"
+          }
+        ],
+        "required": ["instanceIds"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "DeleteAnnounce",
+            "zh": "批量删除通知公告"
+          },
+          "request": {
+            "method": "DELETE",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/announce/5fad60e448859"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {}\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.announce.GetAnnounce",
+      "name": "GetAnnounce",
+      "version": "1.0.1",
+      "description": "获取通知公告详情",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/sys_setting/v1/announce/detail/:instanceId"
+      },
+      "import": ["easyops/model/sys_setting/sys_announce"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "SysAnnounce.instanceId"
+          },
+          {
+            "name": "autoIgnore",
+            "type": "bool",
+            "description": "自动忽略, 用于前台使用时, 查看详情后自动忽略当前公告"
+          }
+        ],
+        "required": ["SysAnnounce.instanceId"],
+        "default": {
+          "autoIgnore": false
+        }
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "SysAnnounce.*"
+          },
+          {
+            "name": "userInfo",
+            "type": "object",
+            "description": "用户信息",
+            "fields": [
+              {
+                "name": "username",
+                "type": "string",
+                "description": "用户名称"
+              },
+              {
+                "name": "nickname",
+                "type": "string",
+                "description": "用户昵称"
+              },
+              {
+                "name": "isAdmin",
+                "type": "bool",
+                "description": "是否是管理员"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "GetAnnounce",
+            "zh": "获取通知公告详情"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/announce/5fad60e448859"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n      \"instanceId\": \"5fad60e448859\"\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.announce.IgnoreAnnounce",
+      "name": "IgnoreAnnounce",
+      "version": "1.0.1",
+      "description": "批量忽略公告",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/sys_setting/v1/announce/ignore"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceIds",
+            "type": "string[]",
+            "description": "公告id列表"
+          }
+        ],
+        "required": ["instanceIds"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "IgnoreAnnounce",
+            "zh": "批量忽略公告"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/announce/ignore",
+            "body": "{\n  \"instanceIds\": [\"5fad60e448859\"],\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {}\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.announce.IgnoreAllAnnounce",
+      "name": "IgnoreAllAnnounce",
+      "version": "1.0.1",
+      "description": "忽略所有公告",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/sys_setting/v1/announce/ignore_all"
+      },
+      "import": [],
+      "request": null,
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "IgnoreAllAnnounce",
+            "zh": "忽略所有公告"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/announce/ignore_all",
+            "body": "{}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {}\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.announce.ListAnnounce",
+      "name": "ListAnnounce",
+      "version": "1.0.1",
+      "description": "查找通知公告列表",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/sys_setting/v1/announce"
+      },
+      "import": ["easyops/model/sys_setting/sys_announce"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "每页数据量"
+          },
+          {
+            "name": "q",
+            "type": "string",
+            "description": "模糊搜索标题"
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "description": "状态(publish-已发布 unPublish-未发布 全部-\"\")"
+          },
+          {
+            "name": "category",
+            "type": "string",
+            "description": "类别"
+          },
+          {
+            "name": "from",
+            "type": "string",
+            "description": "开始时间"
+          },
+          {
+            "name": "to",
+            "type": "string",
+            "description": "结束时间"
+          }
+        ],
+        "default": {
+          "page": 1,
+          "pageSize": 10
+        }
+      },
+      "response": {
+        "type": "SysAnnounce"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "ListAnnounce",
+            "zh": "查找通知公告列表"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/announce"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n      \"list\": [\n      {\n        \"instanceId\": \"5fad60e448859\"\n      }\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.announce.ListEffectiveAnnounce",
+      "name": "ListEffectiveAnnounce",
+      "version": "1.0.1",
+      "description": "查找当前用户的有效公告",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/sys_setting/v1/announce/effective"
+      },
+      "import": ["easyops/model/sys_setting/sys_announce"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "每页数据量"
+          }
+        ],
+        "default": {
+          "page": 1,
+          "pageSize": 10
+        }
+      },
+      "response": {
+        "type": "SysAnnounce"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "ListEffectiveAnnounce",
+            "zh": "查找当前用户的有效公告"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/announce/effective"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n      \"list\": [\n      {\n        \"instanceId\": \"5fad60e448859\"\n      }\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.announce.PollAnnounce",
+      "name": "PollAnnounce",
+      "version": "1.0.0",
+      "description": "获取实时公告，长链接",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/sys_setting/v1/announce/poll"
+      },
+      "import": ["easyops/model/sys_setting/sys_announce"],
+      "request": null,
+      "response": {
+        "type": "SysAnnounce"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Poll Announce",
+            "zh": "获取实时通知公告详情"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/announce/poll"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n      \"instanceId\": \"5fad60e448859\",\n      \"title\": \"测试公告\",\n      \"creator\": \"easyops\",\n      \"category\": \"safetyNotice\"\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.announce.PublishAnnounce",
+      "name": "PublishAnnounce",
+      "version": "1.0.1",
+      "description": "批量发布(下线)公告",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/sys_setting/v1/announce/publish"
+      },
+      "import": ["easyops/model/sys_setting/sys_announce"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceIds",
+            "type": "string[]",
+            "description": "公告id列表"
+          },
+          {
+            "ref": "SysAnnounce.isPublish"
+          }
+        ],
+        "required": ["instanceIds", "SysAnnounce.isPublish"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "PublishAnnounce",
+            "zh": "批量发布(下线)公告"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/announce/publish",
+            "body": "{\n  \"instanceIds\": [\"5fad60e448859\"],\n  \"isPublish\": false,\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {}\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.announce.UpdateAnnounce",
+      "name": "UpdateAnnounce",
+      "version": "1.1.0",
+      "description": "更新通知公告",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/sys_setting/v1/announce/:instanceId"
+      },
+      "import": ["easyops/model/sys_setting/sys_announce"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "SysAnnounce.instanceId"
+          },
+          {
+            "ref": "SysAnnounce.title"
+          },
+          {
+            "ref": "SysAnnounce.category"
+          },
+          {
+            "ref": "SysAnnounce.data"
+          },
+          {
+            "ref": "SysAnnounce.effectTime"
+          },
+          {
+            "ref": "SysAnnounce.expires"
+          },
+          {
+            "ref": "SysAnnounce.fileInfo"
+          },
+          {
+            "ref": "SysAnnounce.isPublish"
+          },
+          {
+            "ref": "SysAnnounce.enableNotify"
+          },
+          {
+            "ref": "SysAnnounce.notifyConf"
+          },
+          {
+            "ref": "SysAnnounce.isPopup"
+          }
+        ],
+        "required": [
+          "SysAnnounce.instanceId",
+          "SysAnnounce.title",
+          "SysAnnounce.category",
+          "SysAnnounce.data",
+          "SysAnnounce.isPublish",
+          "SysAnnounce.isPopup"
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "SysAnnounce.instanceId"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "UpdateAnnounce",
+            "zh": "更新通知公告"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/announce/5fad60e448859",
+            "body": "{\n  \"title\": \"title\",\n  \"category\": \"other\",\n  \"data\": \"<p>data</p>\",\n  \"isPublish\": false,\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n      \"instanceId\": \"5fad60e448859\"\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.comment.CreateComment",
+      "name": "CreateComment",
+      "version": "1.0.1",
+      "description": "创建评论",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/sys_setting/v1/comment"
+      },
+      "import": ["easyops/model/sys_setting/comment_data"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "CommentData.sourceObjId"
+          },
+          {
+            "ref": "CommentData.sourceInstId"
+          },
+          {
+            "ref": "CommentData.content"
+          }
+        ],
+        "required": [
+          "CommentData.sourceObjId",
+          "CommentData.sourceInstId",
+          "CommentData.content"
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "CommentData.instanceId"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "CreateComment",
+            "zh": "创建评论"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/comment",
+            "body": "{\n  \"content\": \"title\",\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n      \"instanceId\": \"5fad60e448859\"\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.comment.DeleteComment",
+      "name": "DeleteComment",
+      "version": "1.0.1",
+      "description": "删除评论",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/sys_setting/v1/comment/:instanceId"
+      },
+      "import": ["easyops/model/sys_setting/comment_data"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "CommentData.instanceId"
+          }
+        ],
+        "required": ["CommentData.instanceId"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "DeleteComment",
+            "zh": "删除评论"
+          },
+          "request": {
+            "method": "DELETE",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/comment/5fbef564e3081"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {}\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.comment.ListComment",
+      "name": "ListComment",
+      "version": "1.0.1",
+      "description": "查找评论列表",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/sys_setting/v1/comment"
+      },
+      "import": ["easyops/model/sys_setting/comment_data_view"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "sourceId",
+            "type": "string",
+            "description": "来源"
+          }
+        ]
+      },
+      "response": {
+        "type": "CommentDataView"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "ListComment",
+            "zh": "查找评论列表"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/comment"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n      \"list\": [\n      {\n        \"instanceId\": \"5fad60e448859\"\n      }\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.comment.UpdateComment",
+      "name": "UpdateComment",
+      "version": "1.0.1",
+      "description": "更新评论",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/sys_setting/v1/comment/:instanceId"
+      },
+      "import": ["easyops/model/sys_setting/comment_data"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "CommentData.instanceId"
+          },
+          {
+            "ref": "CommentData.sourceObjId"
+          },
+          {
+            "ref": "CommentData.sourceInstId"
+          },
+          {
+            "ref": "CommentData.content"
+          }
+        ],
+        "required": [
+          "CommentData.instanceId",
+          "CommentData.sourceObjId",
+          "CommentData.sourceInstId",
+          "CommentData.content"
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "CommentData.instanceId"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "UpdateComment",
+            "zh": "更新评论"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/comment/5fad60e448859",
+            "body": "{\n  \"content\": \"title\",\n  \"configId\": \"5fbef564e3081\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n      \"instanceId\": \"5fad60e448859\"\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.organization.AddDepartment",
+      "name": "AddDepartment",
+      "version": "1.0.0",
+      "description": "添加部门",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/sys_setting/v1/organization/department"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string",
+            "description": "名称"
+          },
+          {
+            "name": "parentDepartmentId",
+            "type": "string",
+            "description": "父部门id"
+          }
+        ],
+        "required": ["name"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "departmentId",
+            "type": "instance_id",
+            "description": "部门id"
+          }
+        ],
+        "required": ["departmentId"]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Add Department",
+            "zh": "创建部门"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/organization/department",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"name\":\"部门a\",\n  \"parentDepartmentId\": \"5f31719edf2fd\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"msg\": \"\",\n  \"data\": {\n    \"id\": \"5f31719edf2fe\"\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.organization.DeleteDepartment",
+      "name": "DeleteDepartment",
+      "version": "1.0.0",
+      "description": "删除部门，会删除部门下的子部门，同时解除部门与职员的关系，职员在该部门的职责也会一并移除",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/sys_setting/v1/organization/department/:departmentId"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "departmentId",
+            "type": "instance_id",
+            "description": "部门id"
+          }
+        ],
+        "required": ["departmentId"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Delete Department",
+            "zh": "删除部门"
+          },
+          "request": {
+            "method": "DELETE",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/organization/department/5f31719edf2fd",
+            "headers": {
+              "Content-Type": "application/json"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"msg\": \"\",\n  \"data\": null\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.organization.ExportOrganizationExcel",
+      "name": "ExportOrganizationExcel",
+      "version": "1.0.0",
+      "description": "导出组织架构信息Excel（部门、员工）",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/sys_setting/v1/file/organization/excel_export/:object"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "object",
+            "type": "string",
+            "description": "导出对象，department 部门，staff 员工",
+            "enum": ["department", "staff"]
+          }
+        ],
+        "required": ["object"]
+      },
+      "response": {
+        "download_enable": true,
+        "type": "file"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Export Organization Excel",
+            "zh": "导出组织结构信息为Excel（包含部门及员工）"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/file/organization/excel_export/staff"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/octet-stream"
+            },
+            "body": "file"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.organization.GetDepartmentTree",
+      "name": "GetDepartmentTree",
+      "version": "1.0.0",
+      "description": "获取组织部门树，增加单独获取部门下子部门的能力",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/sys_setting/v1/organization/department_tree"
+      },
+      "import": ["easyops/model/sys_setting/department_tree_view"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "departmentId",
+            "type": "instance_id",
+            "description": "部门id"
+          },
+          {
+            "name": "showAncestor",
+            "type": "bool",
+            "description": "是否展示先祖部门节点"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "tree",
+            "type": "DepartmentTreeView[]",
+            "description": "组织部门树"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get Department Tree",
+            "zh": "获取组织部门树"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/organization/department_tree",
+            "headers": {
+              "Content-Type": "application/json"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"msg\": \"\",\n  \"data\": {\n    \"tree\": [\n      {\"departmentId\":\"id1\",\"name\":\"部门a\",\"hasChild\":false},\n      {\"departmentId\":\"id2\",\"name\":\"部门b\",\"hasChild\":true, \"childDepartment\":[\n        {\"departmentId\":\"id3\",\"name\":\"部门c\",\"hasChild\":false}\n      ]}\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.organization.GetImportTemplate",
+      "name": "GetImportTemplate",
+      "version": "1.0.0",
+      "description": "获取组织架构相关导入模板，模板中有填写规则",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/sys_setting/v1/file/organization/import_template/:object"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "object",
+            "type": "string",
+            "description": "模板对象：department（部门）, staff（员工）",
+            "enum": ["department", "staff"]
+          }
+        ]
+      },
+      "response": {
+        "download_enable": true,
+        "type": "file"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get Import Template",
+            "zh": "下载导入的模板"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/file/organization/import_template/staff"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/octet-stream"
+            },
+            "body": "file"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.organization.GetStaffDepartment",
+      "name": "GetStaffDepartment",
+      "version": "1.0.0",
+      "description": "获取职员所属部门",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/sys_setting/v1/organization/staff/:staffId/department"
+      },
+      "import": ["easyops/model/sys_setting/department_tree_view"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "staffId",
+            "type": "instance_id",
+            "description": "用户ID"
+          }
+        ],
+        "required": ["staffId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "object[]",
+            "description": "部门基本信息",
+            "fields": [
+              {
+                "ref": "DepartmentTreeView.departmentId"
+              },
+              {
+                "ref": "DepartmentTreeView.departmentIdPath"
+              },
+              {
+                "ref": "DepartmentTreeView.name"
+              },
+              {
+                "ref": "DepartmentTreeView.namePath"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get Staff Department",
+            "zh": "获取员工所在部门"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/staff/:id1/department",
+            "headers": {
+              "Content-Type": "application/json"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"msg\": \"\",\n  \"data\": {\n    \"list\": [\n      {\"departmentId\":\"id1\",\"name\":\"部门a\",\"namePath\":\"部门a\"},\n      {\"departmentId\":\"id2\",\"name\":\"部门b\",\"namePath\":\"部门a/部门b\"}\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.organization.GetStaffByDepartmentPosition",
+      "name": "GetStaffByDepartmentPosition",
+      "version": "1.0.0",
+      "description": "获取某部门下的某职位的职员",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/sys_setting/v1/organization/department/:departmentId/staff_position"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "departmentId",
+            "type": "instance_id",
+            "description": "部门id"
+          },
+          {
+            "name": "position",
+            "type": "string",
+            "enums": ["leader"],
+            "description": "职位，后续可能有多个职位，目前只有leader"
+          }
+        ],
+        "required": ["departmentId", "position"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "object[]",
+            "description": "职位人员列表",
+            "fields": [
+              {
+                "name": "instanceId",
+                "type": "string",
+                "description": "用户实例ID，cmdb中的instanceId"
+              },
+              {
+                "name": "username",
+                "type": "user_name",
+                "description": "用户名"
+              },
+              {
+                "name": "nickname",
+                "type": "string",
+                "description": "昵称"
+              },
+              {
+                "name": "state",
+                "type": "string",
+                "description": "账户状态（invalid 禁用，valid 启用）"
+              },
+              {
+                "name": "userIcon",
+                "type": "string",
+                "description": "用户头像地址"
+              },
+              {
+                "name": "showName",
+                "type": "string",
+                "description": "用户根据showkey组装的展示名"
+              },
+              {
+                "name": "userTel",
+                "type": "string",
+                "description": "用户手机号"
+              },
+              {
+                "name": "userEmail",
+                "type": "string",
+                "description": "用户邮箱"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get Staff By Department Position",
+            "zh": "根据部门下的职位获取对应的员工"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8271/api/api/sys_setting/v1/organization/department/:id1/staff_position?position=leader",
+            "headers": {
+              "Content-Type": "application/json"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"msg\": \"\",\n  \"data\": {\n    \"list\": [\n      {\"instanceId\":\"id1\",\"username\":\"easyops\",\"state\":\"valid\"},\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.organization.ImportAllDepartment",
+      "name": "ImportAllDepartment",
+      "version": "1.0.0",
+      "description": "全量（覆盖）导入组织架构部门（excel导入）",
+      "detail": "文件中存在，组织架构中也存在的部门，执行更新操作\n文件中存在，组织架构中不存在的部门，执行添加操作\n文件中不存在，组织架构中存在的部门，执行删除操作，此操作将会删除子部门，以及移除部门下的成员",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/sys_setting/v1/file/organization/batch/department/import_all"
+      },
+      "import": [],
+      "request": {
+        "multipart_enable": true,
+        "type": "object",
+        "fields": [
+          {
+            "name": "file",
+            "type": "file",
+            "description": "上传部门信息Excel文件"
+          }
+        ],
+        "required": ["file"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "createCount",
+            "type": "int",
+            "description": "新增数量"
+          },
+          {
+            "name": "updateCount",
+            "type": "int",
+            "description": "更新数量"
+          },
+          {
+            "name": "deleteCount",
+            "type": "int",
+            "description": "删除数量"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Import All Department",
+            "zh": "导入所有部门信息"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/file/organization/batch/department/import_all",
+            "headers": {
+              "Content-Type": "multipart/form-data; boundary=1x02zjmql"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"msg\": \"\",\n  \"data\": {\n    \"createCount\": 1,\n    \"updateCount\": 2,\n    \"deleteCount\": 0\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.organization.ImportAllStaff",
+      "name": "ImportAllStaff",
+      "version": "1.0.0",
+      "description": "全量（覆盖）导入员工部门信息（Excel导入）",
+      "detail": "文件中存在，用户管理中不存在的员工，忽略\n文件中存在，组织架构中不存在的部门，忽略\n文件中存在，用户管理中也存在的员工，执行员工部门更新操作，此操作会覆盖员工原有部门信息",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/sys_setting/v1/file/organization/batch/staff/import_all"
+      },
+      "import": [],
+      "request": {
+        "multipart_enable": true,
+        "type": "object",
+        "fields": [
+          {
+            "name": "file",
+            "type": "file",
+            "description": "上传员工部门信息Excel文件"
+          }
+        ],
+        "required": ["file"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "updateCount",
+            "type": "int",
+            "description": "更新数量"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Import All Staff",
+            "zh": "导入所有员工信息"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/file/organization/batch/staff/import_all",
+            "headers": {
+              "Content-Type": "multipart/form-data; boundary=1x02zjmql"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"msg\": \"\",\n  \"data\": {\n    \"updateCount\": 2\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.organization.ImportIncrDepartment",
+      "name": "ImportIncrDepartment",
+      "version": "1.0.0",
+      "description": "增量导入部门信息（Excel导入）",
+      "detail": "文件中存在，组织架构中也存在的部门，执行更新操作\n文件中存在，组织架构中不存在的部门，执行添加操作",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/sys_setting/v1/file/organization/batch/department/import_incr"
+      },
+      "import": [],
+      "request": {
+        "multipart_enable": true,
+        "type": "object",
+        "fields": [
+          {
+            "name": "file",
+            "type": "file",
+            "description": "上传部门信息Excel文件"
+          }
+        ],
+        "required": ["file"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "createCount",
+            "type": "int",
+            "description": "新增数量"
+          },
+          {
+            "name": "updateCount",
+            "type": "int",
+            "description": "更新数量"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Import Increase Department",
+            "zh": "增量导入部门信息"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/file/organization/batch/department/import_incr",
+            "headers": {
+              "Content-Type": "multipart/form-data; boundary=1x02zjmql"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"msg\": \"\",\n  \"data\": {\n    \"createCount\": 0,\n    \"updateCount\": 2\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.organization.ListDepartmentStaff",
+      "name": "ListDepartmentStaff",
+      "version": "1.1.0",
+      "description": "获取部门员工列表",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/sys_setting/v1/organization/department/:departmentId/staff"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "departmentId",
+            "type": "instance_id",
+            "description": "部门id"
+          },
+          {
+            "name": "q",
+            "type": "string",
+            "description": "模糊搜索（用户名，昵称）"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "每页用户数"
+          }
+        ],
+        "required": ["departmentId"],
+        "default": {
+          "page": 1,
+          "pageSize": 10
+        }
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "string",
+            "description": "用户实例ID，cmdb中的instanceId"
+          },
+          {
+            "name": "username",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "nickname",
+            "type": "string",
+            "description": "昵称"
+          },
+          {
+            "name": "state",
+            "type": "string",
+            "description": "账户状态（invalid 禁用，valid 启用）"
+          },
+          {
+            "name": "userIcon",
+            "type": "string",
+            "description": "用户头像地址"
+          },
+          {
+            "name": "showName",
+            "type": "string",
+            "description": "用户根据showkey组装的展示名"
+          },
+          {
+            "name": "userTel",
+            "type": "string",
+            "description": "用户手机号"
+          },
+          {
+            "name": "userEmail",
+            "type": "string",
+            "description": "用户邮箱"
+          },
+          {
+            "name": "position",
+            "type": "string",
+            "description": "职位"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "List Department Staff",
+            "zh": "获取部门下的人员"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/organization/department/:id1/staff",
+            "headers": {
+              "Content-Type": "application/json"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"msg\": \"\",\n  \"data\": {\n    \"list\": [\n      {\"instanceId\":\"id1\",\"username\":\"easyops\",\"state\":\"valid\"},\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.organization.SetDepartmentStaff",
+      "name": "SetDepartmentStaff",
+      "version": "1.0.0",
+      "description": "设置部门职员（添加/移除）,职员被移除后，该职员的职位将一并移除",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/sys_setting/v1/organization/department/:departmentId/staff"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "departmentId",
+            "type": "instance_id",
+            "description": "部门id"
+          },
+          {
+            "name": "action",
+            "type": "string",
+            "enums": ["add", "remove"],
+            "description": "add：添加，remove：移除"
+          },
+          {
+            "name": "userIds",
+            "type": "instance_id[]",
+            "description": "添加或移除的用户ID列表"
+          }
+        ],
+        "required": ["action", "userIds"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Set Department Staff",
+            "zh": "添加或者移除部门下的人员"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/organization/department/:id1/staff",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"action\":\"add\",\n  \"userIds\": [\"uId1\", \"uId2\"]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"msg\": \"\",\n  \"data\": null\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.organization.SetStaffPosition",
+      "name": "SetStaffPosition",
+      "version": "1.0.0",
+      "description": "设置职员职位",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/sys_setting/v1/organization/bulk/:departmentId/staff_position"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "departmentId",
+            "type": "instance_id",
+            "description": "部门id"
+          },
+          {
+            "name": "userIds",
+            "type": "instance_id[]",
+            "description": "用户ID列表"
+          },
+          {
+            "name": "position",
+            "type": "string",
+            "enums": ["leader"],
+            "description": "职位，后续可能有多个职位，目前只有leader"
+          }
+        ],
+        "required": ["departmentId", "userIds", "position"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Set Department Staff Position",
+            "zh": "设置部门下的人员职位"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/organization/bulk/:id1/staff_position",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"userIds\":[\"uId1\",\"uId2\"],\n  \"position\":\"leader\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"msg\": \"\",\n  \"data\": null\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.organization.TraverseDepartmentStaff",
+      "name": "TraverseDepartmentStaff",
+      "version": "1.0.0",
+      "description": "获取多部门（递归子部门）员工列表",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/sys_setting/v1/organization/department_staff"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "departmentIds",
+            "type": "string[]",
+            "description": "部门ID列表"
+          }
+        ],
+        "required": ["departmentIds"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "object[]",
+            "description": "用户列表",
+            "fields": [
+              {
+                "name": "instanceId",
+                "type": "string",
+                "description": "用户实例ID，cmdb中的instanceId"
+              },
+              {
+                "name": "username",
+                "type": "user_name",
+                "description": "用户名"
+              },
+              {
+                "name": "nickname",
+                "type": "string",
+                "description": "昵称"
+              },
+              {
+                "name": "state",
+                "type": "string",
+                "description": "账户状态（invalid 禁用，valid 启用）"
+              },
+              {
+                "name": "userIcon",
+                "type": "string",
+                "description": "用户头像地址"
+              },
+              {
+                "name": "showName",
+                "type": "string",
+                "description": "用户根据showkey组装的展示名"
+              },
+              {
+                "name": "userTel",
+                "type": "string",
+                "description": "用户手机号"
+              },
+              {
+                "name": "userEmail",
+                "type": "string",
+                "description": "用户邮箱"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Traverse Department Staff",
+            "zh": "获取部门及子部门的人员"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/organization/department_staff",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"departmentIds\": [\"dId1\",\"dId2\"]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"msg\": \"\",\n  \"data\": {\n    \"list\": [\n      {\"instanceId\":\"id1\",\"username\":\"easyops\",\"state\":\"valid\"},\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.organization.UpdateDepartment",
+      "name": "UpdateDepartment",
+      "version": "1.0.0",
+      "description": "编辑部门基本信息",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/sys_setting/v1/organization/department/:departmentId"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "departmentId",
+            "type": "instance_id",
+            "description": "id"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "description": "名称"
+          }
+        ],
+        "required": ["name"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Update Department",
+            "zh": "修改部门信息"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/organization/department/:id1",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"name\":\"部门b\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"msg\": \"\",\n  \"data\": null\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.site_msg.GetSiteMessageDetail",
+      "name": "GetSiteMessageDetail",
+      "version": "1.0.0",
+      "description": "获取当前用户的站内信",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/sys_setting/v1/site_msg/:msgId"
+      },
+      "import": ["easyops/model/sys_setting/site_message_view"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "msgId",
+            "type": "mongo_object_id",
+            "description": "消息ID(objectId)"
+          }
+        ]
+      },
+      "response": {
+        "type": "SiteMessageView"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get Site Message Detail",
+            "zh": "获取当前用户的站内信详情"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/site_msg/id1"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\":0,\n  \"error\":null,\n  \"data\": {\n      \"id\": \"id1\", \"title\": \"这是标题\", \"content\": \"这是内容\", \"source\": \"\"\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.site_msg.GetSiteMessageCount",
+      "name": "GetSiteMessageCount",
+      "version": "1.0.0",
+      "description": "获取当前用户的站内信数量",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/sys_setting/v1/site_msg_count"
+      },
+      "import": [],
+      "request": null,
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "total",
+            "type": "int",
+            "description": "总数"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get Site Message Count",
+            "zh": "获取当前用户的站内信数量"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/site_msg_count"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\":0,\n  \"error\":null,\n  \"data\": {\n    \"total\": 3\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.site_msg.ListSiteMessage",
+      "name": "ListSiteMessage",
+      "version": "1.0.0",
+      "description": "获取当前用户的站内信",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/sys_setting/v1/site_msg"
+      },
+      "import": ["easyops/model/sys_setting/site_message_view"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "isRead",
+            "type": "bool",
+            "description": "是否已读"
+          },
+          {
+            "name": "titleLike",
+            "type": "string",
+            "description": "标题模糊搜索"
+          },
+          {
+            "name": "msgTypeLike",
+            "type": "string",
+            "description": "分类模板搜索"
+          },
+          {
+            "name": "page",
+            "type": "int",
+            "description": "页"
+          },
+          {
+            "name": "pageSize",
+            "type": "int",
+            "description": "页大小"
+          }
+        ],
+        "default": {
+          "page": 1,
+          "pageSize": 20
+        }
+      },
+      "response": {
+        "type": "SiteMessageView"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "List Site Message",
+            "zh": "获取当前用户的站内信列表"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/site_msg?page=1&pageSize=10"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\":0,\n  \"error\":null,\n  \"data\": {\n    \"list\": [\n      {\"id\": \"id1\", \"title\": \"这是标题\", \"content\": \"这是内容\", \"source\": \"\"}\n    ],\n    \"page\": 1,\n    \"pageSize\": 10,\n    \"total\": 10\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.site_msg.MarkAllSiteMessageRead",
+      "name": "MarkAllSiteMessageRead",
+      "version": "1.0.0",
+      "description": "标记所有消息已读",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/sys_setting/v1/site_msg"
+      },
+      "import": ["easyops/model/sys_setting/site_message"],
+      "request": null,
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Mark All Site Message Read",
+            "zh": "标记所有站内信已读"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/site_msg"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.site_msg.MarkSiteMessageRead",
+      "name": "MarkSiteMessageRead",
+      "version": "1.0.0",
+      "description": "标记消息已读",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/sys_setting/v1/site_msg/:msgId"
+      },
+      "import": ["easyops/model/sys_setting/site_message"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "msgId",
+            "type": "mongo_object_id",
+            "description": "消息ID"
+          }
+        ],
+        "required": ["msgId"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Mark Site Message Read",
+            "zh": "标记站内信已读"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/site_msg/id1"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.site_msg.SendSiteMessage",
+      "name": "SendSiteMessage",
+      "version": "1.0.0",
+      "description": "发送站内信",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/sys_setting/v1/site_msg"
+      },
+      "import": ["easyops/model/sys_setting/site_message"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "SiteMessage.title"
+          },
+          {
+            "ref": "SiteMessage.content"
+          },
+          {
+            "ref": "SiteMessage.source"
+          },
+          {
+            "ref": "SiteMessage.extInfo"
+          },
+          {
+            "name": "receivers",
+            "type": "string[]",
+            "description": "收件人列表(user.name或user_group.instanceId，后者以:开头)"
+          }
+        ],
+        "required": ["SiteMessage.title", "SiteMessage.source", "receivers"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Send Site Message",
+            "zh": "发送站内信"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/site_msg",
+            "body": "{\n    \"title\": \"2023-05-15 18:00~22:00 admin升级\",\n    \"content\": \"请及时处理事务!\"\n    \"source\": \"sys_setting.announcement\",\n    \"extInfo\": {\n      \"announceId\":\"id1\"\n    },\n    \"receivers\": [\"easyops\", \"hughwang\", \":5fbef564e3081\"]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.work_calendar.CreateWorkCalendar",
+      "name": "CreateWorkCalendar",
+      "version": "1.1.0",
+      "description": "通过配置创建工作日历",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/sys_setting/v1/work/calendar"
+      },
+      "import": ["easyops/model/sys_setting/work_calendar"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkCalendar.name"
+          },
+          {
+            "ref": "WorkCalendar.config"
+          },
+          {
+            "ref": "WorkCalendar.memo"
+          },
+          {
+            "ref": "WorkCalendar.key"
+          },
+          {
+            "ref": "WorkCalendar.builtin"
+          }
+        ],
+        "required": ["WorkCalendar.name", "WorkCalendar.config"],
+        "default": {
+          "builtin": false
+        }
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkCalendar.id"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "sys_setting.work_calendar.DeleteWorkCalendar",
+      "name": "DeleteWorkCalendar",
+      "version": "1.0.0",
+      "description": "删除工作日历",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/sys_setting/v1/work/calendar/:ids"
+      },
+      "import": ["easyops/model/sys_setting/work_calendar"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "ids",
+            "type": "string",
+            "description": "要删除的工作日历列表，以;分割"
+          }
+        ],
+        "required": ["ids"]
+      },
+      "response": null
+    },
+    {
+      "contract": "sys_setting.work_calendar.EditWorkCalendarConfig",
+      "name": "EditWorkCalendarConfig",
+      "version": "1.0.0",
+      "description": "修改日历配置,重新生成日历",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/sys_setting/v1/work/calendar/:id"
+      },
+      "import": ["easyops/model/sys_setting/work_calendar"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkCalendar.id"
+          },
+          {
+            "ref": "WorkCalendar.name"
+          },
+          {
+            "ref": "WorkCalendar.memo"
+          },
+          {
+            "ref": "WorkCalendar.config"
+          }
+        ],
+        "required": [
+          "WorkCalendar.id",
+          "WorkCalendar.name",
+          "WorkCalendar.config"
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkCalendar.id"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "sys_setting.work_calendar.EditWorkCalendarConfigV2",
+      "name": "EditWorkCalendarConfigV2",
+      "version": "1.0.0",
+      "description": "增量修改日历配置,重新生成日历",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/sys_setting/v2/work/calendar/:id"
+      },
+      "import": ["easyops/model/sys_setting/work_calendar"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkCalendar.id"
+          },
+          {
+            "ref": "WorkCalendar.name"
+          },
+          {
+            "ref": "WorkCalendar.memo"
+          },
+          {
+            "ref": "WorkCalendar.config"
+          }
+        ],
+        "required": [
+          "WorkCalendar.id",
+          "WorkCalendar.name",
+          "WorkCalendar.config"
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkCalendar.id"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "sys_setting.work_calendar.EditWorkCalendarDayConfig",
+      "name": "EditWorkCalendarDayConfig",
+      "version": "1.0.0",
+      "description": "修改指定日期的配置",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/sys_setting/v1/work/calendar_day/:id"
+      },
+      "import": ["easyops/model/sys_setting/work_calendar"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkCalendar.id"
+          },
+          {
+            "name": "date",
+            "type": "date",
+            "description": "日期"
+          },
+          {
+            "name": "isOff",
+            "type": "int",
+            "description": "是否休息日(1是,0否)"
+          },
+          {
+            "name": "hours",
+            "type": "string",
+            "description": "时间范围",
+            "validate": {
+              "pattern": "^((?:[01]\\d|2[0-3]):[0-5]\\d)~((?:[01]\\d|2[0-3]):[0-5]\\d)"
+            }
+          }
+        ],
+        "required": ["WorkCalendar.id", "date", "isOff", "hours"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkCalendar.id"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "sys_setting.work_calendar.GetWorkCalendarByMonth",
+      "name": "GetWorkCalendarByMonth",
+      "version": "1.0.0",
+      "description": "获取日历的按月详情",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/sys_setting/v1/work/calendar_month/:id"
+      },
+      "import": ["easyops/model/sys_setting/work_calendar"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "id",
+            "type": "mongo_object_id",
+            "description": "日历ID"
+          },
+          {
+            "name": "year",
+            "type": "int",
+            "description": "年份(默认为当前年份)"
+          },
+          {
+            "name": "month",
+            "type": "month",
+            "description": "月份"
+          }
+        ],
+        "required": ["month", "id"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkCalendar.id"
+          },
+          {
+            "ref": "WorkCalendar.name"
+          },
+          {
+            "ref": "WorkCalendar.days"
+          },
+          {
+            "ref": "WorkCalendar.creator"
+          },
+          {
+            "ref": "WorkCalendar.ctime"
+          },
+          {
+            "ref": "WorkCalendar.memo"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "sys_setting.work_calendar.GetWorkCalendarByYear",
+      "name": "GetWorkCalendarByYear",
+      "version": "1.0.0",
+      "description": "获取日历的按年查看统计",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/sys_setting/v1/work/calendar_year/:id"
+      },
+      "import": ["easyops/model/sys_setting/work_calendar"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "id",
+            "type": "mongo_object_id",
+            "description": "日历ID"
+          },
+          {
+            "name": "year",
+            "type": "int",
+            "description": "年份(默认为当前年份)"
+          }
+        ],
+        "required": ["id"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkCalendar.id"
+          },
+          {
+            "name": "statistic",
+            "type": "object[]",
+            "description": "月份统计",
+            "fields": [
+              {
+                "name": "month",
+                "type": "month",
+                "description": "月份"
+              },
+              {
+                "name": "workDayCount",
+                "type": "int",
+                "description": "工作日天数"
+              },
+              {
+                "name": "holidayCount",
+                "type": "int",
+                "description": "假期天数"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "contract": "sys_setting.work_calendar.GetWorkCalendarDetail",
+      "name": "GetWorkCalendarDetail",
+      "version": "1.0.0",
+      "description": "获取日历的配置详情",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/sys_setting/v1/work/calendar/:id"
+      },
+      "import": ["easyops/model/sys_setting/work_calendar"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "id",
+            "type": "mongo_object_id",
+            "description": "日历ID"
+          }
+        ],
+        "required": ["id"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkCalendar.id"
+          },
+          {
+            "ref": "WorkCalendar.name"
+          },
+          {
+            "ref": "WorkCalendar.creator"
+          },
+          {
+            "ref": "WorkCalendar.ctime"
+          },
+          {
+            "ref": "WorkCalendar.memo"
+          },
+          {
+            "ref": "WorkCalendar.config"
+          },
+          {
+            "ref": "WorkCalendar.key"
+          },
+          {
+            "ref": "WorkCalendar.builtin"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "sys_setting.work_calendar.GetWorkCalendarDetailByKey",
+      "name": "GetWorkCalendarDetailByKey",
+      "version": "1.0.0",
+      "description": "获取日历的配置详情(根据Key获取)",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/sys_setting/v1/work/calendar_key/:key"
+      },
+      "import": ["easyops/model/sys_setting/work_calendar"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "key",
+            "type": "string",
+            "description": "日历标识"
+          }
+        ],
+        "required": ["key"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkCalendar.id"
+          },
+          {
+            "ref": "WorkCalendar.name"
+          },
+          {
+            "ref": "WorkCalendar.creator"
+          },
+          {
+            "ref": "WorkCalendar.ctime"
+          },
+          {
+            "ref": "WorkCalendar.memo"
+          },
+          {
+            "ref": "WorkCalendar.config"
+          },
+          {
+            "ref": "WorkCalendar.key"
+          },
+          {
+            "ref": "WorkCalendar.builtin"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "sys_setting.work_calendar.GetHoliday",
+      "name": "GetHoliday",
+      "version": "1.0.0",
+      "description": "获取节假日列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/sys_setting/v1/holiday"
+      },
+      "import": ["easyops/model/sys_setting/work_day"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "st",
+            "type": "string",
+            "description": "开始时间"
+          },
+          {
+            "name": "ed",
+            "type": "string",
+            "description": "结束时间"
+          },
+          {
+            "name": "key",
+            "type": "string",
+            "description": "节假日的key(区分不同的工作日历,为空使用默认的工作日历)"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "result",
+            "type": "WorkDay[]",
+            "description": "节假日列表"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "sys_setting.work_calendar.GetWorkdayByKey",
+      "name": "GetWorkdayByKey",
+      "version": "1.0.0",
+      "description": "获取key获取工作日列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/sys_setting/v1/work_day/calendar_key"
+      },
+      "import": ["easyops/model/sys_setting/work_day"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "st",
+            "type": "string",
+            "description": "开始时间"
+          },
+          {
+            "name": "ed",
+            "type": "string",
+            "description": "结束时间"
+          },
+          {
+            "name": "key",
+            "type": "string",
+            "description": "节假日的key(区分不同的工作日历,为空使用默认的工作日历)"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "result",
+            "type": "WorkDay[]",
+            "description": "工作日列表"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "sys_setting.work_calendar.GetWorkdayByMonth",
+      "name": "GetWorkdayByMonth",
+      "version": "1.0.0",
+      "description": "根据年月获取工作日",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/sys_setting/v1/work_calendar/work_day/year_month"
+      },
+      "import": ["easyops/model/sys_setting/work_day"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "calendarName",
+            "type": "string",
+            "description": "日历名称,为空则默认取国家法定节假日日历",
+            "default": "国家法定节假日"
+          },
+          {
+            "name": "month",
+            "type": "string",
+            "description": "年月，如 2023-01",
+            "validate": {
+              "pattern": "^((?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])$"
+            }
+          },
+          {
+            "name": "sort",
+            "type": "int",
+            "enum": [1, -1],
+            "description": "排序方式(1表示升序， -1表示降序)"
+          }
+        ],
+        "required": ["month"]
+      },
+      "response": {
+        "type": "WorkDay"
+      }
+    },
+    {
+      "contract": "sys_setting.work_calendar.ListWorkCalendar",
+      "name": "ListWorkCalendar",
+      "version": "1.2.0",
+      "description": "获取营业时间日历列表",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/sys_setting/v1/work/calendar"
+      },
+      "import": ["easyops/model/sys_setting/work_calendar"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "页面大小"
+          }
+        ],
+        "default": {
+          "page": 1,
+          "pageSize": 20
+        }
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkCalendar.id"
+          },
+          {
+            "ref": "WorkCalendar.name"
+          },
+          {
+            "ref": "WorkCalendar.creator"
+          },
+          {
+            "ref": "WorkCalendar.ctime"
+          },
+          {
+            "ref": "WorkCalendar.memo"
+          },
+          {
+            "ref": "WorkCalendar.config"
+          },
+          {
+            "ref": "WorkCalendar.key"
+          },
+          {
+            "ref": "WorkCalendar.builtin"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "sys_setting.work_calendar.ListWorkDay",
+      "name": "ListWorkDay",
+      "version": "1.0.0",
+      "description": "查找工作日列表",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/sys_setting/v1/work_calendar/work_day"
+      },
+      "import": ["easyops/model/sys_setting/work_day"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "startDate",
+            "type": "date",
+            "description": "开始时间"
+          },
+          {
+            "name": "endDate",
+            "type": "date",
+            "description": "结束时间,为空则为当日"
+          },
+          {
+            "name": "calendarName",
+            "type": "string",
+            "description": "日历名称,为空则默认取国家法定节假日日历",
+            "default": "国家法定节假日"
+          },
+          {
+            "name": "sort",
+            "type": "int",
+            "enum": [1, -1],
+            "description": "排序方式(1表示升序， -1表示降序)"
+          }
+        ],
+        "required": ["startDate"]
+      },
+      "response": {
+        "type": "WorkDay"
+      }
+    },
+    {
+      "contract": "sys_setting.work_calendar.QueryWorkCalendar",
+      "name": "QueryWorkCalendar",
+      "version": "1.2.0",
+      "description": "模糊搜索工作日历",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/sys_setting/v1/query/work/calendar"
+      },
+      "import": ["easyops/model/sys_setting/work_calendar"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "页面大小"
+          },
+          {
+            "name": "Q",
+            "type": "string",
+            "description": "模糊搜索关键词，适用于创建人及日历名"
+          }
+        ],
+        "default": {
+          "page": 1,
+          "pageSize": 20
+        }
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkCalendar.id"
+          },
+          {
+            "ref": "WorkCalendar.name"
+          },
+          {
+            "ref": "WorkCalendar.creator"
+          },
+          {
+            "ref": "WorkCalendar.ctime"
+          },
+          {
+            "ref": "WorkCalendar.memo"
+          },
+          {
+            "ref": "WorkCalendar.config"
+          },
+          {
+            "ref": "WorkCalendar.key"
+          },
+          {
+            "ref": "WorkCalendar.builtin"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "sys_setting.work_calendar.SearchWorkday",
+      "name": "SearchWorkday",
+      "version": "1.0.0",
+      "description": "查找工作日列表",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/sys_setting/v1/work_day/calendar_id"
+      },
+      "import": ["easyops/model/sys_setting/work_day"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "st",
+            "type": "string",
+            "description": "开始时间"
+          },
+          {
+            "name": "ed",
+            "type": "string",
+            "description": "结束时间"
+          },
+          {
+            "name": "id",
+            "type": "mongo_object_id",
+            "description": "日历ID"
+          },
+          {
+            "name": "sort",
+            "type": "object",
+            "description": "排序方式",
+            "fields": [
+              {
+                "name": "key",
+                "type": "string",
+                "description": "属性id"
+              },
+              {
+                "name": "order",
+                "type": "int",
+                "description": "1表示升序， -1表示降序"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "result",
+            "type": "WorkDay[]",
+            "description": "工作日列表"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "sys_setting.workbench.GetWorkbench",
+      "name": "GetWorkbench",
+      "version": "1.0.0",
+      "description": "获取工作台信息",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/sys_setting/v1/workbench"
+      },
+      "import": ["easyops/model/sys_setting/workbench_hub"],
+      "request": null,
+      "response": {
+        "type": "WorkbenchHub"
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "工作台配置",
+            "en": "workbench"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/workbench"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"instanceId\": \"5fad60e448859\",\n        \"layouts\": [\n            {\n                \"i\": \"cmdb-instance-management\",\n                \"x\": 0,\n                \"y\": 0,\n                \"w\": 2,\n                \"h\": 1\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.workbench.SetWorkbench",
+      "name": "SetWorkbench",
+      "version": "1.0.0",
+      "description": "设置工作台",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/sys_setting/workbench/set"
+      },
+      "import": ["easyops/model/sys_setting/workbench_hub"],
+      "request": {
+        "type": "WorkbenchHub"
+      },
+      "response": {
+        "type": "WorkbenchHub"
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "工作台配置",
+            "en": "workbench"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/workbench/set",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"instanceId\": \"5fad60e448859\",\n    \"layouts\": [\n        {\n            \"i\": \"hello\",\n            \"x\": 0,\n            \"y\": 0,\n            \"w\": 2,\n            \"h\": 1\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"instanceId\": \"5fad60e448859\",\n        \"layouts\": [\n            {\n                \"i\": \"hello\",\n                \"x\": 0,\n                \"y\": 0,\n                \"w\": 2,\n                \"h\": 1\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
+    }
+  ]
+}
