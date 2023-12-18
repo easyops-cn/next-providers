@@ -1,6 +1,6 @@
 {
   "name": "@next-sdk/sys-setting-sdk",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "SDK for Sys Setting",
   "homepage": "https://github.com/easyops-cn/next-providers/tree/master/sdk/sys-setting-sdk",
   "license": "GPL-3.0",
