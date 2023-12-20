@@ -368,6 +368,22 @@
             "name": "csrfToken",
             "type": "string",
             "description": "csrf_token，开启了csrf特性才返回值"
+          },
+          {
+            "name": "changePasswordRequired",
+            "type": "bool",
+            "description": "是否需要修改密码（开启 check-password-security 特性时, 初次登录和密码过期时需要修改密码）"
+          },
+          {
+            "name": "changePasswordReason",
+            "type": "string",
+            "enum": ["firstLogin", "expired"],
+            "description": "修改密码的具体原因（firstLogin:初次登录, expired:密码已过期）"
+          },
+          {
+            "name": "passwordRemainingDays",
+            "type": "int",
+            "description": "密码有效期剩余时间（当 changePasswordRequired 为 true 时，这个值为 -1）"
           }
         ]
       },
@@ -392,7 +408,7 @@
               "X-B3-Traceid": "8fffffffffffffff6c1e84cea8ce252c"
             },
             "status_code": 200,
-            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n        \"loggedIn\": true,\n        \"username\": \"easyops\",\n        \"org\": 2988466,\n        \"location\": \"\",\n        \"userInstanceId\": \"5b1338f33ee9c\",\n        \"loginFrom\": \"\",\n        \"accessRule\": \"\",\n        \"isAdmin\": true,\n        \"csrfToken\": \"\"\n    }\n}"
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n        \"loggedIn\": true,\n        \"username\": \"easyops\",\n        \"org\": 2988466,\n        \"location\": \"\",\n        \"userInstanceId\": \"5b1338f33ee9c\",\n        \"loginFrom\": \"\",\n        \"accessRule\": \"\",\n        \"isAdmin\": true,\n        \"csrfToken\": \"\",\n        \"changePasswordRequired\": true,\n        \"changePasswordReason\": \"firstLogin\",\n        \"passwordRemainingDays\": 30,\n    }\n}"
           }
         }
       ]

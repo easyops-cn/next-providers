@@ -10,6 +10,9 @@ export interface ModelLaunchpadStoryboard {
 }
 
 export interface ModelLaunchpadStoryboard_app {
+  /** 实例Id */
+  instanceId?: string;
+
   /** 小产品id */
   id?: string;
 
