@@ -1,8 +1,17 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 
 export interface WorkflowApi_ApprovalRequestBody {
-  /** 审批结果 */
-  action: "approve" | "refuse";
+  /** 审批操作 */
+  action: "approve" | "refuse" | "return" | "assign";
+
+  /** 要回退到哪一个步骤id */
+  returnStepId?: string;
+
+  /** 转审人 */
+  assigner?: string;
+
+  /** 运行时指定其他步骤的审批人 */
+  approversSetting?: WorkflowApi_ApprovalRequestBody_approversSetting_item[];
 
   /** 审批意见 */
   comment?: string;
@@ -23,3 +32,11 @@ export const WorkflowApi_approval = (
     data,
     options
   );
+
+export interface WorkflowApi_ApprovalRequestBody_approversSetting_item {
+  /** 步骤id */
+  stepId?: string;
+
+  /** 审批人 */
+  approvers?: string[];
+}

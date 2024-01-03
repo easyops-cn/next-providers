@@ -3,7 +3,10 @@ import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface WorkflowApi_ExecuteRequestBody {
   /** 输入 */
-  inputs?: WorkflowApi_ExecuteRequestBody_inputs_item[];
+  inputs?: Record<string, any>;
+
+  /** 启动工作流的描述信息 */
+  description?: string;
 }
 
 export interface WorkflowApi_ExecuteResponseBody {
@@ -28,17 +31,3 @@ export const WorkflowApi_execute = async (
       options
     )
   ).data;
-
-export interface WorkflowApi_ExecuteRequestBody_inputs_item {
-  /** 变量名 */
-  name?: string;
-
-  /** 变量值，type为enum时，使用英文逗号拼接多个枚举值 */
-  value?: string;
-
-  /** 变量类型 */
-  type?: "int" | "string" | "enum";
-
-  /** 枚举值列表 */
-  enum_values?: string[];
-}

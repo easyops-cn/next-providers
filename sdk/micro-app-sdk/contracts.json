@@ -899,8 +899,7 @@
         "easyops/model/micro_app/installed_micro_app",
         "easyops/model/micro_app/installed_micro_app_cloned_from",
         "easyops/model/micro_app/installed_micro_app_menu_icon",
-        "easyops/model/micro_app/installed_micro_app_icon",
-        "easyops/model/next_builder/workflow_def"
+        "easyops/model/micro_app/installed_micro_app_icon"
       ],
       "request": {
         "type": "object",
@@ -1002,15 +1001,13 @@
             "ref": "InstalledMicroApp.theme"
           },
           {
+            "ref": "InstalledMicroApp.uiVersion"
+          },
+          {
             "ref": "InstalledMicroApp.defaultContainer"
           },
           {
             "ref": "InstalledMicroApp.standaloneMode"
-          },
-          {
-            "name": "workflows",
-            "type": "WorkflowDef[]",
-            "description": "小产品关联的工作流定义"
           }
         ]
       },
@@ -1031,13 +1028,60 @@
           "request": {
             "method": "POST",
             "uri": "http://127.0.0.1:8146/api/micro_app/v1/import_installed_micro_app/janice-hei-hei",
-            "body": "{\n    \"icons\": {\n        \"large\": \"/next/api/gateway/object_store.object_store.GetObject/api/v1/objectStore/bucket/next-builder/object/image16080390648879824081636614785510056761.png\"\n    },\n    \"clonedFrom\": null,\n    \"menuIcon\": {\n        \"lib\": \"fa\",\n        \"type\": \"\",\n        \"theme\": \"\",\n        \"icon\": \"ambulance\",\n        \"prefix\": \"fas\",\n        \"category\": \"\",\n        \"color\": \"\"\n    },\n    \"instanceId\": \"\",\n    \"appId\": \"my-micro-app\",\n    \"homepage\": \"/my-micro-app\",\n    \"name\": \"我的微应用\",\n    \"owner\": \"defaultUser\",\n    \"storyboardJson\": \"{\\\"routes\\\":[{\\\"alias\\\":\\\"首页\\\",\\\"exact\\\":true,\\\"hybrid\\\":false,\\\"path\\\":\\\"${APP.homepage}\\\",\\\"public\\\":false,\\\"type\\\":\\\"bricks\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.micro-view\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"pageTitle\\\":\\\"Hello world\\\"},\\\"slots\\\":{\\\"toolbar\\\":{\\\"type\\\":\\\"bricks\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.general-button\\\",\\\"events\\\":{\\\"general.button.click\\\":[{\\\"action\\\":\\\"message.success\\\",\\\"args\\\":[\\\"点击操作按钮\\\"]}]},\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"buttonName\\\":\\\"操作\\\"}}]},\\\"content\\\":{\\\"type\\\":\\\"bricks\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"presentational-bricks.brick-result\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"customTitle\\\":\\\"Today is Tuesday\\\",\\\"status\\\":\\\"info\\\",\\\"subTitle\\\":\\\"2019/10/29 21:35\\\"}}]}}}]},{\\\"alias\\\":\\\"用户列表\\\",\\\"exact\\\":true,\\\"hybrid\\\":false,\\\"path\\\":\\\"${APP.homepage}/users\\\",\\\"public\\\":false,\\\"type\\\":\\\"bricks\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.micro-view\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"pageTitle\\\":\\\"用户列表\\\"}}]}],\\\"meta\\\":{\\\"customTemplates\\\":[],\\\"menus\\\":[],\\\"i18n\\\":{\\\"en\\\":{},\\\"zh\\\":{}},\\\"functions\\\":[]},\\\"dependsAll\\\":false}\",\n    \"installStatus\": \"ok\",\n    \"tags\": [],\n    \"appVersion\": \"\",\n    \"internal\": \"false\",\n    \"private\": \"false\",\n    \"status\": \"developing\",\n    \"iconBackground\": \"\",\n    \"defaultConfig\": \"\",\n    \"dependsAll\": false,\n    \"legacy\": \"\",\n    \"env\": \"\",\n    \"locales\": \"\",\n    \"visibility\": \"\",\n    \"layoutType\": \"\",\n    \"isBuildPush\": true,\n    \"noAuthGuard\": false,\n    \"breadcrumb\": \"\",\n    \"theme\": \"\",\n    \"defaultContainer\": {\n        \"id\": \"\",\n        \"name\": \"\",\n        \"type\": \"\",\n        \"order\": 0\n    },\n    \"workflows\": [\n        {\n            \"id\": \"janice-workflow1\",\n            \"appId\": \"janice-hei\",\n            \"name\": \"janice-workflow1\",\n            \"description\": \"janice-workflow\",\n            \"workflowYaml\": \"{\\\"kind\\\": \\\"workflow\\\", \\\"id\\\": \\\"Ask for leave\\\", \\\"name\\\": \\\"请假申情\\\", \\\"steps\\\": [{\\\"id\\\": \\\"1\\\", \\\"name\\\": \\\"开始\\\", \\\"type\\\": \\\"start\\\", \\\"next\\\": [\\\"2\\\"]}, {\\\"id\\\": \\\"2\\\", \\\"name\\\": \\\"结束\\\", \\\"type\\\": \\\"end\\\", \\\"pre\\\": [\\\"1\\\"]}]}\"\n        }\n    ]\n}"
+            "body": "{\n    \"icons\": {\n        \"large\": \"/next/api/gateway/object_store.object_store.GetObject/api/v1/objectStore/bucket/next-builder/object/image16080390648879824081636614785510056761.png\"\n    },\n    \"clonedFrom\": null,\n    \"menuIcon\": {\n        \"lib\": \"fa\",\n        \"type\": \"\",\n        \"theme\": \"\",\n        \"icon\": \"ambulance\",\n        \"prefix\": \"fas\",\n        \"category\": \"\",\n        \"color\": \"\"\n    },\n    \"instanceId\": \"\",\n    \"appId\": \"my-micro-app\",\n    \"homepage\": \"/my-micro-app\",\n    \"name\": \"我的微应用\",\n    \"owner\": \"defaultUser\",\n    \"storyboardJson\": \"{\\\"routes\\\":[{\\\"alias\\\":\\\"首页\\\",\\\"exact\\\":true,\\\"hybrid\\\":false,\\\"path\\\":\\\"${APP.homepage}\\\",\\\"public\\\":false,\\\"type\\\":\\\"bricks\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.micro-view\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"pageTitle\\\":\\\"Hello world\\\"},\\\"slots\\\":{\\\"toolbar\\\":{\\\"type\\\":\\\"bricks\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.general-button\\\",\\\"events\\\":{\\\"general.button.click\\\":[{\\\"action\\\":\\\"message.success\\\",\\\"args\\\":[\\\"点击操作按钮\\\"]}]},\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"buttonName\\\":\\\"操作\\\"}}]},\\\"content\\\":{\\\"type\\\":\\\"bricks\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"presentational-bricks.brick-result\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"customTitle\\\":\\\"Today is Tuesday\\\",\\\"status\\\":\\\"info\\\",\\\"subTitle\\\":\\\"2019/10/29 21:35\\\"}}]}}}]},{\\\"alias\\\":\\\"用户列表\\\",\\\"exact\\\":true,\\\"hybrid\\\":false,\\\"path\\\":\\\"${APP.homepage}/users\\\",\\\"public\\\":false,\\\"type\\\":\\\"bricks\\\",\\\"bricks\\\":[{\\\"brick\\\":\\\"basic-bricks.micro-view\\\",\\\"injectDeep\\\":true,\\\"portal\\\":false,\\\"properties\\\":{\\\"pageTitle\\\":\\\"用户列表\\\"}}]}],\\\"meta\\\":{\\\"customTemplates\\\":[],\\\"menus\\\":[],\\\"i18n\\\":{\\\"en\\\":{},\\\"zh\\\":{}},\\\"functions\\\":[]},\\\"dependsAll\\\":false}\",\n    \"installStatus\": \"ok\",\n    \"tags\": [],\n    \"appVersion\": \"\",\n    \"internal\": \"false\",\n    \"private\": \"false\",\n    \"status\": \"developing\",\n    \"iconBackground\": \"\",\n    \"defaultConfig\": \"\",\n    \"dependsAll\": false,\n    \"legacy\": \"\",\n    \"env\": \"\",\n    \"locales\": \"\",\n    \"visibility\": \"\",\n    \"layoutType\": \"\",\n    \"isBuildPush\": true,\n    \"noAuthGuard\": false,\n    \"breadcrumb\": \"\",\n    \"theme\": \"\",\n    \"defaultContainer\": {\n        \"id\": \"\",\n        \"name\": \"\",\n        \"type\": \"\",\n        \"order\": 0\n    }\n}"
           },
           "response": {
             "headers": {
               "Content-Type": "application/json; charset=utf-8"
             },
             "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"instanceId\": \"5f7f4ff757233\"\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app.installed_micro_app.ImportWorkflows",
+      "name": "ImportWorkflows",
+      "version": "1.2.0",
+      "description": "导入工作流",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/micro_app/v1/installed_micro_app/workflows"
+      },
+      "import": ["easyops/model/next_builder/workflow_def"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "workflows",
+            "type": "WorkflowDef[]",
+            "description": "小产品关联的工作流定义"
+          },
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "micro_app id"
+          }
+        ],
+        "required": ["workflows", "appId"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "ImportMicroApp",
+            "zh": "导入小产品"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8146/api/micro_app/v1/import_installed_micro_app/janice-hei-hei",
+            "body": "{\n   \"appId\": \"my-micro-app\",\n    \"workflows\": [\n        {\n            \"id\": \"janice-workflow1\",\n            \"appId\": \"janice-hei\",\n            \"name\": \"janice-workflow1\",\n            \"description\": \"janice-workflow\",\n            \"workflowYaml\": \"{\\\"kind\\\": \\\"workflow\\\", \\\"id\\\": \\\"Ask for leave\\\", \\\"name\\\": \\\"请假申情\\\", \\\"steps\\\": [{\\\"id\\\": \\\"1\\\", \\\"name\\\": \\\"开始\\\", \\\"type\\\": \\\"start\\\", \\\"next\\\": [\\\"2\\\"]}, {\\\"id\\\": \\\"2\\\", \\\"name\\\": \\\"结束\\\", \\\"type\\\": \\\"end\\\", \\\"pre\\\": [\\\"1\\\"]}]}\"\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n    }\n}"
           }
         }
       ]
@@ -1780,6 +1824,117 @@
       "response": null
     },
     {
+      "contract": "micro_app.micro_app_container.DeleteContainer",
+      "name": "DeleteContainer",
+      "version": "1.0.0",
+      "description": "删除导航菜单/分类菜单(容器)",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/micro_app/v1/micro_app_container/:instanceId"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "桌面容器实例Id"
+          },
+          {
+            "name": "newContainerInstanceId",
+            "type": "instance_id",
+            "description": "可以选择将原容器下的app和自定义菜单项移动到新容器"
+          }
+        ]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Delete Container",
+            "zh": "删除容器"
+          },
+          "request": {
+            "method": "DELETE",
+            "uri": "http://127.0.0.1:8259/api/micro_app/v1/micro_app_container/5b2c7773f9be0",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": null\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app.micro_app_container.DesktopItemSort",
+      "name": "DesktopItemSort",
+      "version": "1.0.0",
+      "description": "菜单项排序",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/micro_app/v1/micro_app_container/desktop_item_sort"
+      },
+      "import": ["easyops/model/micro_app_standalone/launchpad_desktop_item"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "sortedTargets",
+            "type": "object[]",
+            "description": "排序后的菜单项",
+            "fields": [
+              {
+                "name": "instanceId",
+                "type": "instance_id",
+                "description": "实例ID"
+              },
+              {
+                "ref": "LaunchpadDesktopItem.type"
+              },
+              {
+                "name": "order",
+                "type": "int",
+                "description": "排序"
+              }
+            ]
+          }
+        ],
+        "required": ["sortedTargets"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Sort desktop item",
+            "zh": "菜单项排序"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8259/api/micro_app/v1/micro_app_container/desktop_item_sort",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            },
+            "body": "{\n  \"sortedTargets\": [\n    {\n      \"instanceId\": \"5d3914ca4406a\",\n      \"sort\": 10,\n      \"type\": \"app\"\n    },\n    {\n      \"instanceId\": \"5d3914e090876\",\n      \"sort\": 20,\n      \"type\": \"custom\"\n    }\n  ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": null\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "micro_app.micro_app_container.ListMicroAppContainer",
       "name": "ListMicroAppContainer",
       "version": "1.0.0",
@@ -1873,6 +2028,155 @@
         ]
       },
       "response": null
+    },
+    {
+      "contract": "micro_app.micro_app_container.UpdateDesktopItemContainer",
+      "name": "UpdateDesktopItemContainer",
+      "version": "1.0.0",
+      "description": "批量修改菜单项所在容器(导航菜单/分类菜单)",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/micro_app/v1/micro_app_container/desktop_item_container"
+      },
+      "import": ["easyops/model/micro_app_standalone/launchpad_desktop_item"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "targets",
+            "type": "object[]",
+            "description": "修改对象",
+            "fields": [
+              {
+                "name": "instanceId",
+                "type": "instance_id",
+                "description": "实例ID"
+              },
+              {
+                "ref": "LaunchpadDesktopItem.type"
+              }
+            ]
+          },
+          {
+            "name": "containerInstanceId",
+            "type": "string",
+            "description": "新桌面容器实例ID(为空表示移出当前容器)"
+          }
+        ]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Update desktop item container",
+            "zh": "修改菜单项所在容器"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8259/api/micro_app/v1/micro_app_container/desktop_item_container",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            },
+            "body": "{\n    \"targets\": [\n      {\n        \"instanceId\": \"5d3914ca4406a\",\n        \"type\": \"app\"\n      },\n      {\n        \"instanceId\": \"5d3914e090876\",\n        \"type\": \"custom\"\n      }\n    ],\n    \"containerInstanceId\": \"5b2c7773f9be0\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": null\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app.micro_app_container.UpdateDesktopItemPermission",
+      "name": "UpdateDesktopItemPermission",
+      "version": "1.0.0",
+      "description": "批量修改菜单项白名单(支持不同类型)",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/micro_app/v1/micro_app_container/desktop_item_permission"
+      },
+      "import": ["easyops/model/micro_app_standalone/launchpad_desktop_item"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "targets",
+            "type": "object[]",
+            "description": "修改对象",
+            "fields": [
+              {
+                "name": "instanceId",
+                "type": "instance_id",
+                "description": "实例ID"
+              },
+              {
+                "ref": "LaunchpadDesktopItem.type"
+              }
+            ]
+          },
+          {
+            "name": "fields",
+            "type": "string[]",
+            "enum": [
+              "updateAthorizers",
+              "deleteAuthorizers",
+              "readAuthorizers",
+              "operateAuthorizers"
+            ],
+            "description": "updateAthorizers, deleteAuthorizers, readAuthorizers, operateAuthorizers中的一个或多个"
+          },
+          {
+            "name": "method",
+            "type": "string",
+            "enum": ["overwrite", "append", "pull"],
+            "description": "修改操作的类型(overwrite, append, pull)(在枚举之外的操作类型会报错)"
+          },
+          {
+            "name": "list",
+            "type": "string[]",
+            "description": "用户,用户组列表"
+          }
+        ],
+        "required": ["targets", "fields", "method", "list"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "noAuthorizedList",
+            "type": "map[]",
+            "description": "没有权限更新的实例列表"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Update permission batch",
+            "zh": "批量修改菜单项白名单"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8146/api/v1/micro_app_standalone/launchpad/desktop_item_permission_batch",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            },
+            "body": "{\n    \"targets\": [\n      {\n        \"instanceId\": \"5d3914ca4406a\",\n        \"type\": \"app\"\n      },\n      {\n        \"instanceId\": \"5d3914e090876\",\n        \"type\": \"custom\"\n      }\n    ],\n    \"fields\": [\"readAuthorizers\"],\n    \"list\": [\"easyops\"],\n    \"method\": \"overwrite\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"noAuthorizedList\": []\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "micro_app.micro_app_container.UpdateDirContainer",
@@ -2607,8 +2911,35 @@
           {
             "name": "action",
             "type": "string",
-            "enum": ["approve", "refuse"],
-            "description": "审批结果"
+            "enum": ["approve", "refuse", "return", "assign"],
+            "description": "审批操作"
+          },
+          {
+            "name": "returnStepId",
+            "type": "string",
+            "description": "要回退到哪一个步骤id"
+          },
+          {
+            "name": "assigner",
+            "type": "string",
+            "description": "转审人"
+          },
+          {
+            "name": "approversSetting",
+            "type": "object[]",
+            "description": "运行时指定其他步骤的审批人",
+            "fields": [
+              {
+                "name": "stepId",
+                "type": "string",
+                "description": "步骤id"
+              },
+              {
+                "name": "approvers",
+                "type": "string[]",
+                "description": "审批人"
+              }
+            ]
           },
           {
             "name": "comment",
@@ -2627,7 +2958,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "http://localhost:8146/api/v1/micro_app/build/645903525a33efd0db76940f/approval/test_approval_id",
+            "uri": "http://localhost:8146/api/v1/micro_app/build/645903525a33efd0db76940f/steps/test_approval_id/approval",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -2700,41 +3031,23 @@
         "fields": [
           {
             "name": "project_id",
-            "type": "instance_id",
-            "description": "关联的project id"
+            "type": "string",
+            "description": "关联的projectAppId"
           },
           {
             "name": "workflow_id",
-            "type": "instance_id",
-            "description": "要执行的workflow id"
+            "type": "string",
+            "description": "要执行的workflowId"
           },
           {
             "name": "inputs",
-            "type": "object[]",
-            "description": "输入",
-            "fields": [
-              {
-                "name": "name",
-                "type": "string",
-                "description": "变量名"
-              },
-              {
-                "name": "value",
-                "type": "string",
-                "description": "变量值，type为enum时，使用英文逗号拼接多个枚举值"
-              },
-              {
-                "name": "type",
-                "type": "string",
-                "enum": ["int", "string", "enum"],
-                "description": "变量类型"
-              },
-              {
-                "name": "enum_values",
-                "type": "string[]",
-                "description": "枚举值列表"
-              }
-            ]
+            "type": "map",
+            "description": "输入"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "启动工作流的描述信息"
           }
         ],
         "required": ["project_id", "workflow_id"]
@@ -2757,7 +3070,7 @@
           },
           "request": {
             "method": "POST",
-            "uri": "http://localhost:8146/api/v1/micro_app/projects/5b58cfd9556c5/workflows/5c27bf8662b5e/execute",
+            "uri": "http://localhost:8146/api/v1/micro_app/projects/projectAppId/workflows/workflowId/execute",
             "headers": {
               "Content-Type": "application/json"
             },
@@ -2822,13 +3135,68 @@
       ]
     },
     {
+      "contract": "micro_app.workflow.ImportUserGroups",
+      "name": "ImportUserGroups",
+      "version": "1.0.0",
+      "description": "导入用户组",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro_app/import_user_groups"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "userGroups",
+            "type": "object[]",
+            "description": "用户组",
+            "fields": [
+              {
+                "name": "name",
+                "type": "string",
+                "description": "组名称"
+              },
+              {
+                "name": "description",
+                "type": "string",
+                "description": "组描述"
+              }
+            ]
+          }
+        ]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Import UserGroups",
+            "zh": "导入用户组"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8146/api/v1/micro_app/import_user_groups",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"userGroups\": [\n        {\n            \"name\": \"group1\",\n            \"description\": \"group1\"\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\":0,\n    \"codeExplain\":\"\",\n    \"error\":\"\",\n    \"data\":{\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "micro_app.workflow.List",
       "name": "List",
       "version": "1.0.0",
       "description": "获取工作流任务列表",
       "endpoint": {
         "method": "LIST",
-        "uri": "/api/v1/:projectId/workflow/:workflowId/build"
+        "uri": "/api/v1/micro_app/workflows/build"
       },
       "import": ["easyops/model/micro_app/build"],
       "request": {
@@ -2836,13 +3204,13 @@
         "fields": [
           {
             "name": "projectId",
-            "type": "instance_id",
-            "description": "项目instanceId"
+            "type": "string",
+            "description": "项目appId"
           },
           {
-            "name": "workflowId",
-            "type": "instance_id",
-            "description": "工作流instance_id"
+            "name": "workflowIds",
+            "type": "string",
+            "description": "工作流ids, 多个id通过逗号分开"
           },
           {
             "name": "page",
@@ -2868,9 +3236,14 @@
             "name": "state",
             "type": "string",
             "description": "状态"
+          },
+          {
+            "name": "triggerer",
+            "type": "user_name",
+            "description": "用户名, 用于查看某个用户发起的工作流"
           }
         ],
-        "required": ["projectId", "workflowId", "page", "page_size"]
+        "required": ["page", "page_size"]
       },
       "response": {
         "type": "BuildDetail"
@@ -2883,7 +3256,7 @@
           },
           "request": {
             "method": "GET",
-            "uri": "http://127.0.0.1:8146/api/v1/5f90b3114dcdm/workflow/5f90b3114dcdb/build",
+            "uri": "http://127.0.0.1:8146/api/v1/micro_app/workflows/build",
             "headers": {
               "Org": 8888,
               "User": "easyops"
@@ -2895,6 +3268,119 @@
               "Content-Type": "application/json"
             },
             "body": "{\n  \"list\": [\n    {\n      \"id\": \"5f90b3114dcdb\",\n      \"projectId\": \"5f1fabf57d74d\",\n      \"workflowId\": \"5fac624a9b2b9\",\n      \"yamlString\": \"\",\n      \"status\": {\n        \"state\": \"succeeded\",\n        \"started\": 1683115074,\n        \"updated\": 1683115074,\n        \"finished\": 1683115074\n      },\n      \"steps\": [\n        {\n          \"id\": \"janice-test-ppp-janice_test_workflow_start\",\n          \"name\": \"开始\",\n          \"state\": \"succeeded\",\n          \"next\": [\n            \"janice-test-ppp-condtion_tests-gateway\"\n          ],\n          \"type\": \"start\",\n          \"started\": 1683115074,\n          \"finished\": 1683115074\n        },\n        {\n          \"id\": \"janice-test-ppp-janice_test_workflow_end\",\n          \"name\": \"结束\",\n          \"state\": \"succeeded\",\n          \"pre\": [\n            \"janice-test-ppp-cccc\"\n          ],\n          \"type\": \"end\",\n          \"started\": 1683115074,\n          \"finished\": 1683115074\n        },\n        {\n          \"id\": \"janice-test-ppp-condtion_tests-gateway\",\n          \"name\": \"condition_testsGateway\",\n          \"state\": \"succeeded\",\n          \"pre\": [\n            \"janice-test-ppp-janice_test_workflow_start\"\n          ],\n          \"next\": [\n            \"janice-test-ppp-cccc\"\n          ],\n          \"children\": [\n            \"janice-test-ppp-condtion_tests\",\n            \"janice-test-ppp-approval_tet\"\n          ],\n          \"type\": \"gateway\",\n          \"started\": 1683115074,\n          \"finished\": 1683115074\n        },\n        {\n          \"id\": \"janice-test-ppp-condtion_tests\",\n          \"name\": \"condition_tests\",\n          \"state\": \"succeeded\",\n          \"next\": [\n            \"janice-test-ppp-approval_tet\"\n          ],\n          \"parent\": \"janice-test-ppp-condtion_tests-gateway\",\n          \"type\": \"condition\",\n          \"started\": 1683115074,\n          \"finished\": 1683115074\n        },\n        {\n          \"id\": \"janice-test-ppp-approval_tet\",\n          \"name\": \"approval_tet\",\n          \"state\": \"succeeded\",\n          \"pre\": [\n            \"janice-test-ppp-condtion_tests\"\n          ],\n          \"parent\": \"janice-test-ppp-condtion_tests-gateway\",\n          \"type\": \"approval\",\n          \"started\": 1683115074,\n          \"finished\": 1683115074\n        },\n        {\n          \"uid\": \"70131bd300524f0cb71dd25e4845daa7\",\n          \"id\": \"janice-test-ppp-cccc\",\n          \"name\": \"cccc\",\n          \"state\": \"succeeded\",\n          \"pre\": [\n            \"janice-test-ppp-condtion_tests-gateway\"\n          ],\n          \"next\": [\n            \"janice-test-ppp-janice_test_workflow_end\"\n          ],\n          \"type\": \"cc\",\n          \"started\": 1683115074,\n          \"finished\": 1683115074\n        }\n      ],\n      \"created\": 1683115074,\n      \"inputs\": [\n        {\n          \"name\": \"id\",\n          \"value\": \"\",\n          \"type\": \"string\",\n          \"enumvalues\": []\n        },\n        {\n          \"name\": \"name\",\n          \"value\": \"\",\n          \"type\": \"string\",\n          \"enumvalues\": []\n        }\n      ],\n      \"org\": 8888,\n      \"buildVars\": [\n        {\n          \"name\": \"name\",\n          \"value\": \"aa\",\n          \"type\": \"\",\n          \"enumvalues\": null\n        }\n      ]\n    }\n  ]\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app.workflow.TriggerWhenDataChanged",
+      "name": "TriggerWhenDataChanged",
+      "version": "1.0.0",
+      "description": "数据变更时触发工作流",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/micro_app/projects/:projectId/workflows/:workflowId/trigger"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectId",
+            "type": "string",
+            "description": "关联的projectAppId"
+          },
+          {
+            "name": "workflowId",
+            "type": "string",
+            "description": "要执行的workflowId"
+          },
+          {
+            "name": "topic",
+            "type": "string",
+            "description": "订阅主题"
+          },
+          {
+            "name": "data",
+            "type": "map",
+            "description": "消息订阅数据"
+          }
+        ],
+        "required": ["projectId", "workflowId"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "TriggerWhenDataChanged",
+            "zh": "数据变更时触发工作流"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8146/api/v1/micro_app/projects/projectAppId/workflows/workflowId/trigger",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"topic\": \"event_v2.instance.create.JANICE_TEST_0830@EASYOPS\",\n    \"data\": {\n        \"targetId\": \"5fd86b1b6642d\",\n        \"target_category\": \"JANICE_TEST_0830@EASYOPS\"\n    }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\":0,\n    \"codeExplain\":\"\",\n    \"error\":\"\",\n    \"data\":{\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app.workflow.UpdateStepData",
+      "name": "UpdateStepData",
+      "version": "1.0.0",
+      "description": "更新步骤数据",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro_app/build/:buildId/steps/:stepId/update_data"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "buildId",
+            "type": "string",
+            "description": "工作流任务id"
+          },
+          {
+            "name": "stepId",
+            "type": "string",
+            "description": "步骤id"
+          },
+          {
+            "name": "stepData",
+            "type": "map",
+            "description": "步骤数据"
+          }
+        ],
+        "required": ["buildId", "stepId", "stepData"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Update Step Data",
+            "zh": "更新步骤数据"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8146/api/v1/micro_app/build/645903525a33efd0db76940f/steps/start_step_id/update_data",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"stepData\": {\n        \"name\": \"nancy\"\n    }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\":0,\n    \"codeExplain\":\"\",\n    \"error\":\"\",\n    \"data\":{\n    }\n}"
           }
         }
       ]

@@ -8,6 +8,7 @@ export * from "./getMenusInfo";
 export * from "./getI18NData";
 export * from "./getOssObjectsStat";
 export * from "./importMicroApp";
+export * from "./importWorkflows";
 export * from "./listMicroApp";
 export * from "./getPackageReleaseList";
 export * from "./packageUpload";

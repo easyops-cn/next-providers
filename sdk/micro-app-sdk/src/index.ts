@@ -19,6 +19,7 @@ export * as MicroAppModels from "./model/micro_app";
 export * as CmdbModels from "./model/cmdb";
 export * as CommonModels from "./model/common";
 export * as NextBuilderModels from "./model/next_builder";
+export * as MicroAppStandaloneModels from "./model/micro_app_standalone";
 export * as PermissionModels from "./model/permission";
 export * as ApiGatewayModels from "./model/api_gateway";
 export * as PipelineModels from "./model/pipeline";

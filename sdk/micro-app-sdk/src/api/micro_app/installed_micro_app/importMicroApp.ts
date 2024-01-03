@@ -5,7 +5,6 @@ import {
   ModelInstalledMicroAppClonedFrom,
   ModelInstalledMicroAppMenuIcon,
 } from "../../../model/micro_app";
-import { ModelWorkflowDef } from "../../../model/next_builder";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface InstalledMicroAppApi_ImportMicroAppRequestBody {
@@ -96,14 +95,14 @@ export interface InstalledMicroAppApi_ImportMicroAppRequestBody {
   /** 使用主题 */
   theme?: string;
 
+  /** UI版本 */
+  uiVersion?: string;
+
   /** 默认容器 */
   defaultContainer?: ModelInstalledMicroApp["defaultContainer"];
 
   /** 是否独立部署 */
   standaloneMode?: boolean;
-
-  /** 小产品关联的工作流定义 */
-  workflows?: Partial<ModelWorkflowDef>[];
 }
 
 export interface InstalledMicroAppApi_ImportMicroAppResponseBody {

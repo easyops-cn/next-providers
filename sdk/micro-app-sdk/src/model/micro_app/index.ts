@@ -12,5 +12,6 @@ export * from "./ModelMicroAppVersionLog";
 export * from "./ModelObjectMicroApp";
 export * from "./ModelMicroappapiorchestration";
 export * from "./ModelInstalledBricksNextPackage";
+export * from "./ModelStepConfig";
 export * from "./ModelStepStatus";
 export * from "./ModelBuildDetail";

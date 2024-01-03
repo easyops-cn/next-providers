@@ -1,3 +1,5 @@
+import { ModelStepConfig } from ".";
+
 /** 步骤状态 */
 export interface ModelStepStatus {
   /** step id */
@@ -20,9 +22,6 @@ export interface ModelStepStatus {
     | "terminating"
     | "approving";
 
-  /** 退出码 */
-  exit_code: number;
-
   /** step开始时间 */
   started: number;
 
@@ -42,11 +41,30 @@ export interface ModelStepStatus {
   children: string[];
 
   /** 每个步骤的具体信息， 比如审批步骤有approvers/actType, 条件步骤有condition信息 */
-  stepInfo: Record<string, any>;
+  stepInfo: Partial<ModelStepConfig>;
+
+  /** 步骤数据信息 */
+  stepData: Record<string, any>;
 
   /** type */
-  type: "approval" | "cc" | "condition" | "gateway" | "start" | "end";
+  type:
+    | "approval"
+    | "notice"
+    | "condition"
+    | "gateway"
+    | "start"
+    | "end"
+    | "cmdb_create"
+    | "cmdb_edit"
+    | "cmdb_delete"
+    | "cmdb_search";
 
-  /** 步骤超时时间 */
-  timeout: number;
+  /** 步骤错误信息 */
+  errMsg: string;
+
+  /** 该步骤是否跳过 */
+  skipped: boolean;
+
+  /** 当前节点的历史处理信息，主要给回退节点使用 */
+  history: Partial<ModelStepConfig>[];
 }
