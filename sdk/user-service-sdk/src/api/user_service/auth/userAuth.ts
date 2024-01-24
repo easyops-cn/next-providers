@@ -27,6 +27,15 @@ export interface AuthApi_UserAuthResponseBody {
 
   /** org */
   org: number;
+
+  /** 是否需要修改密码（开启 check-password-security 特性时, 初次登录和密码过期时需要修改密码） */
+  changePasswordRequired?: boolean;
+
+  /** 修改密码的具体原因（firstLogin:初次登录, expired:密码已过期） */
+  changePasswordReason?: "firstLogin" | "expired";
+
+  /** 密码有效期剩余时间（当 changePasswordRequired 为 true 时，这个值为 -1） */
+  passwordRemainingDays?: number;
 }
 
 /**

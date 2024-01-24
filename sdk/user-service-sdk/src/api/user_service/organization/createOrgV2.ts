@@ -23,7 +23,7 @@ export type OrganizationApi_CreateOrgV2ResponseBody = Partial<ModelOrgInfo> &
   ModelOrgInfo_partial_2;
 
 /**
- * @description 创建OrgV2, 在mongoDB创建org信息
+ * @description 创建OrgV2, 在cmdb创建org信息
  * @endpoint POST /api/v2/org
  */
 export const OrganizationApi_createOrgV2 = async (

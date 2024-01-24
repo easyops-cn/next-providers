@@ -587,10 +587,49 @@
             "name": "org",
             "type": "int",
             "description": "org"
+          },
+          {
+            "name": "changePasswordRequired",
+            "type": "bool",
+            "description": "是否需要修改密码（开启 check-password-security 特性时, 初次登录和密码过期时需要修改密码）"
+          },
+          {
+            "name": "changePasswordReason",
+            "type": "string",
+            "enum": ["firstLogin", "expired"],
+            "description": "修改密码的具体原因（firstLogin:初次登录, expired:密码已过期）"
+          },
+          {
+            "name": "passwordRemainingDays",
+            "type": "int",
+            "description": "密码有效期剩余时间（当 changePasswordRequired 为 true 时，这个值为 -1）"
           }
         ],
         "required": ["name", "org"]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "UserAuth",
+            "zh": "登录认证"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8111/api/v1/users/auth",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"name\": \"easyops\",\n  \"password\": \"password\",\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n        \"name\": \"easyops\",\n        \"instanceId\": \"1234567\",\n        \"org\": 2988466,\n        \"changePasswordRequired\": true,\n        \"changePasswordReason\": \"firstLogin\",\n        \"passwordRemainingDays\": 30,\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "user_service.auth.UserValidate",
@@ -637,7 +676,30 @@
           }
         ],
         "required": ["name", "org"]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "UserValidate",
+            "zh": "用户密码验证"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8111/api/v1/users/validate",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"name\": \"easyops\",\n  \"password\": \"password\",\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n        \"name\": \"easyops\",\n        \"instanceId\": \"1234567\",\n        \"org\": 2988466,\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "user_service.auth.ValidateCaptcha",
@@ -981,6 +1043,89 @@
       }
     },
     {
+      "contract": "user_service.launchpad.CreateCollectionV2",
+      "name": "CreateCollectionV2",
+      "version": "1.0.0",
+      "description": "新增我的收藏V2",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v2/launchpad/collection"
+      },
+      "import": ["easyops/model/user_service/launchpad_collection_v2"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "LaunchpadCollectionV2.name"
+          },
+          {
+            "ref": "LaunchpadCollectionV2.icon"
+          },
+          {
+            "ref": "LaunchpadCollectionV2.link"
+          },
+          {
+            "ref": "LaunchpadCollectionV2.type"
+          },
+          {
+            "name": "relatedInstanceId",
+            "type": "string",
+            "description": "type是microApp或者customItem时生效，表示关联对象的实例Id，并且 name/icon/link 参数无效; 类型是link时此参数无效，name/icon/link 参数生效。"
+          }
+        ],
+        "required": ["LaunchpadCollectionV2.type"]
+      },
+      "response": {
+        "type": "LaunchpadCollectionV2"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Create micro app collection",
+            "zh": "新增微应用收藏"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8111/api/v2/launchpad/collection",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            },
+            "body": "{\n    \"type\": \"microApp\",\n    \"relatedInstanceId\": \"6032b0f9a3d6d\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"instanceId\": \"5cb76b1845ec6\",\n    \"type\": \"microApp\",\n    \"relatedApp\": {\n        \"instanceId\": \"6032b0f9a3d6d\",\n        \"id\": \"app-deploy\",\n        \"name\": \"next 应用部署\",\n        \"homepage\": \"/app-deploy\",\n        \"menuIcon\": {\n            \"lib\": \"easyops\",\n            \"type\": \"\",\n            \"theme\": \"\",\n            \"icon\": \"cd-deploy\",\n            \"prefix\": \"\",\n            \"category\": \"app\",\n            \"color\": \"\",\n            \"imgSrc\": \"\"\n        },\n        \"locales\": {\n            \"en\": {\n                \"name\": \"App Deploy\"\n            },\n            \"zh\": {\n                \"name\": \"应用部署\"\n            }\n        }\n    },\n    \"relatedCustomItem\": null\n}"
+          }
+        },
+        {
+          "description": {
+            "en": "Create link collection",
+            "zh": "新增链接收藏"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8111/api/v2/launchpad/collection",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            },
+            "body": "{\n    \"name\": \"常用工具\",\n    \"type\": \"link\",\n    \"icon\": {\n        \"lib\": \"fa\",\n        \"type\": \"\",\n        \"theme\": \"\",\n        \"icon\": \"apple-alt\",\n        \"prefix\": \"fas\",\n        \"category\": \"\"\n    },\n    \"link\": \"/tools\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"instanceId\": \"5cb76b1845ec6\",\n    \"name\": \"常用工具\",\n    \"type\": \"link\",\n    \"icon\": {\n        \"lib\": \"fa\",\n        \"type\": \"\",\n        \"theme\": \"\",\n        \"icon\": \"apple-alt\",\n        \"prefix\": \"fas\",\n        \"category\": \"\"\n    },\n    \"link\": \"/tools\",\n    \"relatedApp\": null,\n    \"relatedCustomItem\": null\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "user_service.launchpad.DeleteCollection",
       "name": "DeleteCollection",
       "version": "1.0.0",
@@ -1001,6 +1146,51 @@
         "required": ["instanceId"]
       },
       "response": null
+    },
+    {
+      "contract": "user_service.launchpad.DeleteCollectionV2",
+      "name": "DeleteCollectionV2",
+      "version": "1.0.0",
+      "description": "删除我的收藏V2",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v2/launchpad/collection/:instanceId"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "实例Id"
+          }
+        ],
+        "required": ["instanceId"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Delete collection v2",
+            "zh": "删除我的收藏V2"
+          },
+          "request": {
+            "method": "DELETE",
+            "uri": "http://127.0.0.1:8111/api/v2/launchpad/collection/5cb76b1845ec6",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": null\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "user_service.launchpad.ListCollection",
@@ -1052,6 +1242,62 @@
           "launchpadCollection.instanceId"
         ]
       }
+    },
+    {
+      "contract": "user_service.launchpad.ListCollectionV2",
+      "name": "ListCollectionV2",
+      "version": "1.0.0",
+      "description": "获取我的收藏列表V2",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/v2/launchpad/collection"
+      },
+      "import": ["easyops/model/user_service/launchpad_collection_v2"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "页大小"
+          }
+        ],
+        "default": {
+          "page": 1,
+          "pageSize": 10
+        }
+      },
+      "response": {
+        "type": "LaunchpadCollectionV2"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "List collection v2",
+            "zh": "获取我的收藏列表V2"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8111/api/v2/launchpad/collection?page=1&pageSize=10",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"page\": 1,\n        \"page_size\": 25,\n        \"total\": 13,\n        \"list\": [\n            {\n                \"instanceId\": \"5cb76baf334de\",\n                \"type\": \"link\",\n                \"name\": \"常用工具\",\n                \"link\": \"/tools\",\n                \"icon\": {\n                    \"lib\": \"fa\",\n                    \"type\": \"\",\n                    \"theme\": \"\",\n                    \"icon\": \"apple-alt\",\n                    \"prefix\": \"fas\",\n                    \"category\": \"\"\n                },\n                \"relatedApp\": null,\n                \"relatedCustomItem\": null\n            },\n            {\n                \"instanceId\": \"5cb76b1845ec6\",\n                \"type\": \"microApp\",\n                \"name\": \"\",\n                \"link\": \"\",\n                \"icon\": null,\n                \"relatedApp\": {\n                    \"instanceId\": \"6032b0f9a3d6d\",\n                    \"id\": \"app-deploy\",\n                    \"name\": \"next 应用部署\",\n                    \"homepage\": \"/app-deploy\",\n                    \"menuIcon\": {\n                        \"lib\": \"easyops\",\n                        \"type\": \"\",\n                        \"theme\": \"\",\n                        \"icon\": \"cd-deploy\",\n                        \"prefix\": \"\",\n                        \"category\": \"app\",\n                        \"color\": \"\",\n                        \"imgSrc\": \"\"\n                    },\n                    \"locales\": {\n                        \"en\": {\n                            \"name\": \"App Deploy\"\n                        },\n                        \"zh\": {\n                            \"name\": \"应用部署\"\n                        }\n                    }\n                },\n                \"relatedCustomItem\": null\n            },\n            {\n                \"instanceId\": \"5cb76b1845ec6\",\n                \"type\": \"customItem\",\n                \"name\": \"\",\n                \"link\": \"\",\n                \"icon\": null,\n                \"relatedCustomItem\": {\n                    \"instanceId\": \"6089893b13bed\",\n                    \"type\": \"custom\",\n                    \"id\": \"david_test\",\n                    \"name\": \"david_test\",\n                    \"url\": \"https://www.baidu.com\",\n                    \"menuIcon\": {\n                        \"lib\": \"antd\",\n                        \"type\": \"\",\n                        \"theme\": \"outlined\",\n                        \"icon\": \"cloud-server\",\n                        \"prefix\": \"\",\n                        \"category\": \"\",\n                        \"color\": \"\",\n                        \"imgSrc\": \"\"\n                    }\n                },\n                \"relatedApp\": null\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "user_service.launchpad.SortCollection",
@@ -1408,7 +1654,7 @@
       "contract": "user_service.organization.CreateOrgV2",
       "name": "CreateOrgV2",
       "version": "1.0.0",
-      "description": "创建OrgV2, 在mongoDB创建org信息",
+      "description": "创建OrgV2, 在cmdb创建org信息",
       "endpoint": {
         "method": "POST",
         "uri": "/api/v2/org"
@@ -1835,6 +2081,300 @@
       ]
     },
     {
+      "contract": "user_service.sso_auth_server.OauthAccessToken",
+      "name": "OauthAccessToken",
+      "version": "1.0.0",
+      "description": "oauth2授权码模式，获取accessToken接口",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/user_service/sso_auth_server/oauth2/access_token"
+      },
+      "import": ["easyops/model/user_service/sso_client"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "SSOClient.redirectUri"
+          },
+          {
+            "ref": "SSOClient.clientId"
+          },
+          {
+            "ref": "SSOClient.clientSecret"
+          },
+          {
+            "name": "code",
+            "type": "string",
+            "description": "授权码，这里传拿到的授权码"
+          },
+          {
+            "name": "grantType",
+            "type": "string",
+            "description": "授权类型，这里是使用授权码，传authorization_code"
+          }
+        ],
+        "required": [
+          "SSOClient.clientId",
+          "SSOClient.redirectUri",
+          "grantType",
+          "code"
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "accessToken",
+            "type": "string",
+            "description": "生成的accessToken"
+          },
+          {
+            "name": "expiresIn",
+            "type": "int64",
+            "description": "超时时间，单位秒"
+          },
+          {
+            "name": "tokenType",
+            "type": "string",
+            "description": "访问令牌的类型，通常值为 \"Bearer\""
+          },
+          {
+            "name": "scope",
+            "type": "string",
+            "description": "表示访问令牌的范围"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "OauthAccessToken",
+            "zh": "oauth2授权码模式，获取accessToken接口"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8111/api/v1/user_service/sso_auth_server/oauth2/access_token",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"redirectUri\": \"http://your_redirect_uri\",\n    \"clientId\": \"your_client_id\",\n    \"clientSecret\": \"your_client_secret\",\n    \"code\": \"your_authorization_code\",\n    \"grantType\": \"authorization_code\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\":0,\n    \"codeExplain\":\"\",\n    \"error\":\"\",\n    \"data\": {\n        \"accessToken\": \"your_access_token\",\n        \"tokenType\": \"Bearer\",\n        \"scope\": \"read\",\n        \"expiresIn\": 3600\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "user_service.sso_auth_server.OauthAuth",
+      "name": "OauthAuth",
+      "version": "1.0.0",
+      "description": "oauth2授权码模式，授权接口",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/user_service/sso_auth_server/oauth2/auth"
+      },
+      "import": ["easyops/model/user_service/sso_client"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "SSOClient.redirectUri"
+          },
+          {
+            "ref": "SSOClient.clientId"
+          },
+          {
+            "name": "responseType",
+            "type": "string",
+            "description": "响应类型，这里默认传code"
+          },
+          {
+            "name": "username",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "scope",
+            "type": "string",
+            "description": "授权范围，这里直接传read，授权后可以获取用户名"
+          },
+          {
+            "name": "state",
+            "type": "string",
+            "description": "用于防止 CSRF 攻击，客户端生成的随机值，认证服务器会原样返回，推荐传这个参数"
+          }
+        ],
+        "required": [
+          "SSOClient.redirectUri",
+          "SSOClient.clientId",
+          "SSOClient.responseType"
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "code",
+            "type": "string",
+            "description": "授权码"
+          },
+          {
+            "name": "state",
+            "type": "string",
+            "description": "与授权请求中的 state 参数一致，用于防止 CSRF 攻击，认证服务器会原样返回"
+          },
+          {
+            "name": "redirectWay",
+            "type": "string",
+            "enum": ["GET", "POST"],
+            "description": "重定向方式，在oauth2中，这里应该是直接接口302，但为了后续可以兼容多种协议，这里由页面重定向"
+          },
+          {
+            "name": "redirectUri",
+            "type": "url",
+            "description": "重定向uri"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "OauthAuth",
+            "zh": "oauth2授权码模式，授权接口"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://localhost:8111/api/v1/user_service/sso_auth_server/oauth2/auth?redirectUri=http://127.0.0.1/redirect_uri&clientId=clientId&responseType=code&scope=read&state=testState",
+            "headers": {
+              "Content-Type": "application/json"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\":0,\n    \"codeExplain\":\"\",\n    \"error\":\"\",\n    \"data\": {\n       \"code\": \"your_authorization_code\",\n       \"state\": \"testState\",\n       \"redirectWay\": \"GET\",\n       \"redirectUri\": \"http://127.0.0.1/redirect_uri\"\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "user_service.sso_auth_server.OauthUserInfo",
+      "name": "OauthUserInfo",
+      "version": "1.0.0",
+      "description": "oauth2授权码模式，获取userInfo接口",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/user_service/sso_auth_server/oauth2/user_info"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "accessToken",
+            "type": "string",
+            "description": "token"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "sub",
+            "type": "string",
+            "description": "用户信息"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "OauthUserInfo",
+            "zh": "oauth2授权码模式，获取userInfo接口"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://localhost:8111/api/v1/user_service/sso_auth_server/oauth2/user_info&accessToken={your_access_token}",
+            "headers": {
+              "Content-Type": "application/json"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n   \"code\":0,\n   \"codeExplain\":\"\",\n   \"error\":\"\",\n   \"data\":{\n      \"sub\": \"user_id\"\n   }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "user_service.sso_auth_server.RegisterSSOClient",
+      "name": "RegisterSSOClient",
+      "version": "1.0.0",
+      "description": "注册sso client",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/user_service/sso_auth_server/sso_clients"
+      },
+      "import": ["easyops/model/user_service/sso_client"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "SSOClient.clientName"
+          },
+          {
+            "ref": "SSOClient.redirectUri"
+          },
+          {
+            "ref": "SSOClient.clientUser"
+          },
+          {
+            "ref": "SSOClient.email"
+          },
+          {
+            "ref": "SSOClient.phone"
+          },
+          {
+            "ref": "SSOClient.describe"
+          },
+          {
+            "ref": "SSOClient.clientImage"
+          }
+        ],
+        "required": ["clientName", "redirectUri"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "RegisterSSOClient",
+            "zh": "注册sso client"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8111/api/v1/user_service/sso_auth_server/register_sso_client",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"clientName\": \"测试应用\",\n    \"redirectUri\": \"http://127.0.0.1/redirect_uri\",\n    \"clientUser\": \"test\",\n    \"email\": \"xxx@easyops.cn\",\n    \"phone\": \"12345\"\n    \"describe\": \"demo\",\n    \"clientImage\": \n    {\n        \"name\": \"test\",\n        \"url\": \"xxx.png\"\n    }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\":0,\n    \"codeExplain\":\"\",\n    \"error\":\"\",\n    \"data\":null\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "user_service.user_admin.AlterPassword",
       "name": "AlterPassword",
       "version": "1.0.0",
@@ -2080,6 +2620,72 @@
       }
     },
     {
+      "contract": "user_service.user_admin.GetUserOrgs",
+      "name": "GetUserOrgs",
+      "version": "1.0.0",
+      "description": "获取用户关联的所有org",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/users/orgs"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "username",
+            "type": "user_name",
+            "description": "用户名"
+          }
+        ],
+        "required": ["username"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "orgList",
+            "type": "object[]",
+            "description": "已加入的组织列表",
+            "fields": [
+              {
+                "name": "org",
+                "type": "org",
+                "description": "用户关联的组织"
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "description": "组织名称"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "GetUserOrgs",
+            "zh": "获取用户关联的所有org"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://localhost:8111/api/v1/users/orgs",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"username\": \"easyops\",\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n        \"orgList\": [\n              {\n                   \"org\": 1888,\n                   \"name\": \"1888org\",\n              },\n              {\n                   \"org\": 8888,\n                   \"name\": \"8888org\",\n              }\n        ]\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "user_service.user_admin.GetUserAllRoles",
       "name": "GetUserAllRoles",
       "version": "1.0.0",
@@ -2139,6 +2745,56 @@
               "Content-Type": "application/json; charset=utf-8"
             },
             "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": [\"运维自动化使用人员\",\"自动采集管理人员\",\"自动采集使用人员\"]\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "user_service.user_admin.InviteUserToOrg",
+      "name": "InviteUserToOrg",
+      "version": "1.0.0",
+      "description": "邀请用户加入组织",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/users/orgs/join"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "username",
+            "type": "string[]",
+            "description": "用户名, 可以批量邀请多个用户"
+          },
+          {
+            "name": "org",
+            "type": "org",
+            "description": "邀请加入的组织"
+          }
+        ],
+        "required": ["username", "org"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "InviteUserToOrg",
+            "zh": "邀请用户加入组织"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8111/api/v1/users/orgs/join",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"username\": [\"easyops\", \"test\"],\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {}\n}"
           }
         }
       ]
@@ -2565,6 +3221,56 @@
           }
         ]
       }
+    },
+    {
+      "contract": "user_service.user_admin.RemoveUserFromOrg",
+      "name": "RemoveUserFromOrg",
+      "version": "1.0.0",
+      "description": "将用户移出组织[内部]",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/users/orgs/remove"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "username",
+            "type": "string[]",
+            "description": "即将移出组织的用户, 可以批量移出多个用户"
+          },
+          {
+            "name": "org",
+            "type": "org",
+            "description": "移出哪个组织"
+          }
+        ],
+        "required": ["username", "org"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "RemoveUserFromOrg",
+            "zh": "将用户移出组织"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8111/api/v1/users/orgs/remove",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"username\": [\"easyops\", \"test\"],\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {}\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "user_service.user_admin.ResetPassword",
