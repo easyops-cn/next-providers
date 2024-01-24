@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/user-service-sdk@2.3.1...@next-sdk/user-service-sdk@2.4.0) (2024-01-24)
+
+### Features
+
+- add apis: LaunchpadApi_createCollectionV2, LaunchpadApi_deleteCollectionV2, LaunchpadApi_listCollectionV2, SsoAuthServerApi_index, SsoAuthServerApi_oauthAccessToken, SsoAuthServerApi_oauthAuth, SsoAuthServerApi_oauthUserInfo, SsoAuthServerApi_registerSsoClient, UserAdminApi_getUserOrgs, UserAdminApi_inviteUserToOrg, UserAdminApi_removeUserFromOrg ([fe63e52](https://github.com/easyops-cn/next-providers/commit/fe63e5252631483c9b36b40fd34b9d676a249263))
+
 ## [2.3.1](https://github.com/easyops-cn/next-providers/compare/@next-sdk/user-service-sdk@2.3.0...@next-sdk/user-service-sdk@2.3.1) (2023-10-09)
 
 **Note:** Version bump only for package @next-sdk/user-service-sdk
