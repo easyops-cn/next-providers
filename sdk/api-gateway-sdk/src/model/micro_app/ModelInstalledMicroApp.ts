@@ -131,6 +131,12 @@ export interface ModelInstalledMicroApp {
 
   /** 数据变更触发的工作流信息 */
   dataChangedWorkflowInfo: ModelInstalledMicroApp_dataChangedWorkflowInfo_item[];
+
+  /** 应用描述 */
+  description: string;
+
+  /** 应用作者 */
+  author: string[];
 }
 
 export interface ModelInstalledMicroApp_defaultContainer {

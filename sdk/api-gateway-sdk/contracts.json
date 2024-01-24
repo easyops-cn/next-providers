@@ -721,6 +721,86 @@
       ]
     },
     {
+      "contract": "api_gateway.auth.SwitchOrg",
+      "category": {
+        "en": "auth",
+        "zh": "认证"
+      },
+      "name": "SwitchOrg",
+      "version": "1.0.0",
+      "description": "多组织用户切换组织",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/auth/login/switch_org"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "org",
+            "type": "org",
+            "description": "切换到哪个组织 (具体是哪个用户切换组织，从 context 中获取 username)"
+          }
+        ],
+        "required": ["org"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "username",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "org",
+            "type": "org",
+            "description": "组织 org"
+          },
+          {
+            "name": "userInstanceId",
+            "type": "instance_id",
+            "description": "用户 id"
+          },
+          {
+            "name": "isAdmin",
+            "type": "bool",
+            "description": "判断当前登录用户是否是系统管理员"
+          },
+          {
+            "name": "userShowValue",
+            "type": "string[]",
+            "description": "主名称 次名称"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "SwitchOrg",
+            "zh": "多组织用户切换组织"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8104/api/auth/login/switch",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"org\":      8888,\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8",
+              "Set-Cookie": "PHPSESSID=VFMTWAJHYRCMUWODZMVGHPSMV4UXCDN4Q3OKODAQAQBZYTUH2QDA; Path=/; Expires=Tue, 28 Dec 2021 11:45:20 GMT; Max-Age=7200",
+              "X-B3-Traceid": "8fffffffffffffff6c1e84cea8ce252c"
+            },
+            "status_code": 200,
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n        \"username\": \"easyops\",\n        \"org\": 2988466,\n        \"userInstanceId\": \"5b1338f33ee9c\",\n        \"isAdmin\": true,\n        \"userShowValue\": [],\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "api_gateway.auth.TokenLDAPLogin",
       "category": {
         "en": "auth",
@@ -2696,6 +2776,147 @@
           },
           "response": {
             "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"codeExplain\": \"\",\n    \"data\": {\n        \"username\": \"demo\",\n        \"userId\": \"xxx\",\n        \"expired\": 7200,\n        \"nickname\": \"\"\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "api_gateway.sso_server.OauthAccessToken",
+      "name": "OauthAccessToken",
+      "version": "1.0.0",
+      "description": "oauth2授权码模式，获取accessToken接口",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/api_gateway/sso_server/oauth2/access_token"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "client_id",
+            "type": "string",
+            "description": "clientId",
+            "validate": {
+              "pattern": "^[0-9a-z]{20}$"
+            }
+          },
+          {
+            "name": "client_secret",
+            "type": "string",
+            "description": "可信任的密钥凭证"
+          },
+          {
+            "name": "redirect_uri",
+            "type": "url",
+            "description": "重定向uri"
+          },
+          {
+            "name": "code",
+            "type": "string",
+            "description": "授权码，这里传拿到的授权码"
+          },
+          {
+            "name": "grant_type",
+            "type": "string",
+            "description": "授权类型，这里是使用授权码，传authorization_code"
+          }
+        ],
+        "required": ["client_id", "redirect_uri", "grant_type", "code"]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "access_token",
+            "type": "string",
+            "description": "生成的accessToken"
+          },
+          {
+            "name": "expires_in",
+            "type": "int64",
+            "description": "超时时间，单位秒"
+          },
+          {
+            "name": "token_type",
+            "type": "string",
+            "description": "访问令牌的类型，通常值为 \"Bearer\""
+          },
+          {
+            "name": "scope",
+            "type": "string",
+            "description": "表示访问令牌的范围"
+          },
+          {
+            "name": "refresh_token",
+            "type": "string",
+            "description": "refresh_token，这里先声明这个字段，暂不生成"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "OauthAccessToken",
+            "zh": "oauth2授权码模式，获取accessToken接口"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8107/api/v1/api_gateway/sso_server/oauth2/access_token",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"redirect_uri\": \"http://your_redirect_uri\",\n    \"client_id\": \"your_client_id\",\n    \"client_secret\": \"your_client_secret\",\n    \"code\": \"your_authorization_code\",\n    \"grant_type\": \"authorization_code\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n   \"access_token\": \"your_access_token\",\n   \"token_type\": \"Bearer\",\n   \"scope\": \"read\",\n   \"expires_in\": 3600,\n   \"refresh_token\": \"\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "api_gateway.sso_server.OauthUserInfo",
+      "name": "OauthUserInfo",
+      "version": "1.0.0",
+      "description": "oauth2授权码模式，获取userInfo接口",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/api_gateway/sso_server/oauth2/user_info"
+      },
+      "request": null,
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "sub",
+            "type": "string",
+            "description": "用户信息"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "OauthUserInfo",
+            "zh": "oauth2授权码模式，获取userInfo接口"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://localhost:8107/api/v1/api_gateway/sso_server/oauth2/user_info",
+            "headers": {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer {your_access_token}"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n   \"sub\": \"user_id\"\n}"
           }
         }
       ]

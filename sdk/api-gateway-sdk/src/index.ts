@@ -9,6 +9,7 @@ export * from "./api/api_gateway/mfa";
 export * from "./api/api_gateway/oauth";
 export * from "./api/api_gateway/org";
 export * from "./api/api_gateway/sso";
+export * from "./api/api_gateway/sso_server";
 export * from "./api/api_gateway/union_pay";
 export * from "./api/api_gateway/walmart";
 export * from "./api/api_gateway/wechat";
