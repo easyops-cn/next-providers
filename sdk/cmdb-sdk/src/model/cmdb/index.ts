@@ -37,3 +37,5 @@ export * from "./ModelInstanceBasicInfo";
 export * from "./ModelInstanceTreeChildNode";
 export * from "./ModelInstanceTreeRootNode";
 export * from "./ModelTfLockInfo";
+export * from "./ModelTopoCenterView";
+export * from "./ModelCollectStrategyData";

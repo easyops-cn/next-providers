@@ -5,6 +5,9 @@ import { ResponseBodyWrapper } from "../../../wrapper";
 export interface CmdbObjectApi_GetDetailRequestParams {
   /** 忽略模型字段权限校验 */
   ignoreAttrPermission?: boolean;
+
+  /** 是否校验对模型的访问权限 */
+  isValidatePermission?: boolean;
 }
 
 export type CmdbObjectApi_GetDetailResponseBody = Partial<ModelCmdbObject>;
@@ -18,7 +21,7 @@ export const CmdbObjectApi_getDetail = async (
   params: CmdbObjectApi_GetDetailRequestParams,
   options?: HttpOptions
 ): Promise<CmdbObjectApi_GetDetailResponseBody> =>
-  /**! @contract easyops.api.cmdb.cmdb_object.GetDetail@1.1.0 */ (
+  /**! @contract easyops.api.cmdb.cmdb_object.GetDetail@1.1.1 */ (
     await http.get<ResponseBodyWrapper<CmdbObjectApi_GetDetailResponseBody>>(
       `api/gateway/cmdb.cmdb_object.GetDetail/object/${objectId}`,
       { ...options, params }

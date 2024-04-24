@@ -18,6 +18,9 @@ export interface InstanceApi_GroupInstanceForHoneycombRequestBody {
   /** 额外实例字段 */
   extFields?: string[];
 
+  /** 实例cmdb字段 */
+  cmdbFields?: string[];
+
   /** 分组字段描述 */
   groupFieldsDesc?: string[];
 

@@ -17,6 +17,9 @@ export interface InstanceGraphApi_TraverseGraphV3RequestBody {
 
   /** 是否需要返回图的方向 */
   need_redirection?: boolean;
+
+  /** 限制返回节点最大数量，若超出数量则接口报错 */
+  limit_node_count?: number;
 }
 
 export interface InstanceGraphApi_TraverseGraphV3ResponseBody {

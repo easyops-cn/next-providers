@@ -25,6 +25,15 @@ export interface InstancePathSearchApi_PathSearchV4ResponseBody {
 
   /** 结果列表 eg: [[{"_object_id": "APP","attrId1": 2.355, "instanceId": "xxxx","name": "test1253" },{"_object_id": "CLUSTER","instanceId": "xxxxx","name": "dev"}]] */
   list?: any;
+
+  /** 页数 */
+  page?: number;
+
+  /** 页大小 */
+  page_size?: number;
+
+  /** 查询总数 */
+  total?: number;
 }
 
 /**

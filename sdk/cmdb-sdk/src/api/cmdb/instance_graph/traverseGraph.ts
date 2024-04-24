@@ -14,6 +14,9 @@ export interface InstanceGraphApi_TraverseGraphRequestBody {
 
   /** 子节点列表 */
   child: Partial<ModelTraverseChildNode>[];
+
+  /** 限制返回节点最大数量，若超出数量则接口报错 */
+  limit_node_count?: number;
 }
 
 export interface InstanceGraphApi_TraverseGraphResponseBody {

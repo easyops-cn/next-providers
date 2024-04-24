@@ -6,6 +6,7 @@ export * from "./discoveryV2";
 export * from "./instanceRelationSnapshot";
 export * from "./groupInstanceByRelation";
 export * from "./list";
+export * from "./relationExist";
 export * from "./remove";
 export * from "./searchInstanceByRelation";
 export * from "./set";

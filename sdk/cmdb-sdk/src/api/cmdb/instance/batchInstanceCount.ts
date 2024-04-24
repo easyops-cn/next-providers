@@ -4,6 +4,9 @@ import { ResponseBodyWrapper } from "../../../wrapper";
 export interface InstanceApi_BatchInstanceCountRequestBody {
   /** 模型列表 */
   objectList?: InstanceApi_BatchInstanceCountRequestBody_objectList_item[];
+
+  /** 是否校验访问权限 */
+  isValidatePermission?: boolean;
 }
 
 export interface InstanceApi_BatchInstanceCountResponseBody {

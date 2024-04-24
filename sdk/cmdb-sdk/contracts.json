@@ -1402,7 +1402,7 @@
         "zh": "CMDB 模型"
       },
       "name": "GetDetail",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "description": "获取模型详情",
       "endpoint": {
         "method": "get",
@@ -1419,6 +1419,11 @@
             "name": "ignoreAttrPermission",
             "type": "bool",
             "description": "忽略模型字段权限校验"
+          },
+          {
+            "name": "isValidatePermission",
+            "type": "bool",
+            "description": "是否校验对模型的访问权限"
           }
         ],
         "default": {
@@ -5101,6 +5106,11 @@
               }
             ],
             "description": "模型列表"
+          },
+          {
+            "name": "isValidatePermission",
+            "type": "bool",
+            "description": "是否校验访问权限"
           }
         ]
       },
@@ -5125,7 +5135,26 @@
             "description": "模型信息列表"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Batch Instance Count",
+            "zh": "获取多个模型指定过滤条件对应的实例数量"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8079/v1/batch/instance/count",
+            "body": "{\n  \"objectList\": [\n    {\n      \"objectId\": \"PHYSICAL_SERVER@ONEMODEL\"\n    },\n    {\n      \"objectId\": \"MONGODB_SERVICE@ONEMODEL\"\n    }\n  ],\n  \"isValidatePermission\": true\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"error\": \"\",\n  \"message\": \"\",\n  \"data\": {\n    \"objectInfo\": [\n      {\n        \"objectId\": \"PHYSICAL_SERVER@ONEMODEL\",\n        \"count\": 0\n      },\n      {\n        \"objectId\": \"MONGODB_SERVICE@ONEMODEL\",\n        \"count\": 33\n      }\n    ]\n  }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.BatchListInstanceQueryStrategy",
@@ -5867,6 +5896,180 @@
       ]
     },
     {
+      "contract": "cmdb.instance.ExportInstanceExcelBatch",
+      "category": {
+        "en": "Instance",
+        "zh": "实例"
+      },
+      "name": "ExportInstanceExcelBatch",
+      "version": "1.0.0",
+      "description": "实例批量导出excel, 每个模型一个sheet",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/batch/export/object/instance/excel"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "file_name",
+            "type": "string",
+            "description": "文件名"
+          },
+          {
+            "name": "export_list",
+            "type": "object[]",
+            "description": "导出列表",
+            "fields": [
+              {
+                "name": "object_id",
+                "type": "object_id",
+                "description": "模型Id"
+              },
+              {
+                "name": "query",
+                "type": "map",
+                "description": "e.g.: { name: { $like: '%q%' } }, { $or: [{ name: { $like: '%q%' }}] }"
+              },
+              {
+                "name": "fields",
+                "type": "map",
+                "description": "e.g.: { instanceId: true, name: true }"
+              },
+              {
+                "name": "only_my_instance",
+                "type": "bool",
+                "description": "当为 true 时，只搜索与我相关实例"
+              },
+              {
+                "name": "sort",
+                "type": "map",
+                "description": "按字段排序, 留空默认按照实例ID降序排序(1表示升序， -1表示降序, 2表示自然升序， -2表示自然降序) e.g.: { instanceId: 1 }"
+              },
+              {
+                "name": "permission",
+                "type": "string[]",
+                "description": "按照权限过滤(通用实例都有 read, update, delete 权限控制, 主机实例在通用实例权限基础上有额外的 operate 权限, 应用实例在通用实例权限基础上有额外的 developClusterOperate, testClusterOperate, prereleaseClusterOperate, productionClusterOperate 权限) e.g.: [ \"operate\", \"update\" ]"
+              }
+            ]
+          }
+        ],
+        "required": ["file_name", "export_list"]
+      },
+      "response": {
+        "type": "file"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "batch export instance excel",
+            "zh": "实例批量导出excel"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8079/batch/export/object/instance/excel",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n   \"file_name\": \"111\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+              "body": "<File Content>"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "contract": "cmdb.instance.ExportInstanceExcelBatchV2",
+      "category": {
+        "en": "Instance",
+        "zh": "实例"
+      },
+      "name": "ExportInstanceExcelBatchV2",
+      "version": "1.1.0",
+      "description": "实例批量导出excelV2,多个模型展示在同一个sheet",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/batch/export/object/instance/excel/v2"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "file_name",
+            "type": "string",
+            "description": "文件名"
+          },
+          {
+            "name": "export_list",
+            "type": "object[]",
+            "description": "导出列表",
+            "fields": [
+              {
+                "name": "object_id",
+                "type": "object_id",
+                "description": "模型Id"
+              },
+              {
+                "name": "query",
+                "type": "map",
+                "description": "e.g.: { name: { $like: '%q%' } }, { $or: [{ name: { $like: '%q%' }}] }"
+              },
+              {
+                "name": "fields",
+                "type": "map",
+                "description": "e.g.: { instanceId: true, name: true }"
+              },
+              {
+                "name": "only_my_instance",
+                "type": "bool",
+                "description": "当为 true 时，只搜索与我相关实例"
+              },
+              {
+                "name": "sort",
+                "type": "map",
+                "description": "按字段排序, 留空默认按照实例ID降序排序(1表示升序， -1表示降序, 2表示自然升序， -2表示自然降序) e.g.: { instanceId: 1 }"
+              },
+              {
+                "name": "permission",
+                "type": "string[]",
+                "description": "按照权限过滤(通用实例都有 read, update, delete 权限控制, 主机实例在通用实例权限基础上有额外的 operate 权限, 应用实例在通用实例权限基础上有额外的 developClusterOperate, testClusterOperate, prereleaseClusterOperate, productionClusterOperate 权限) e.g.: [ \"operate\", \"update\" ]"
+              }
+            ]
+          }
+        ],
+        "required": ["file_name", "export_list"]
+      },
+      "response": {
+        "type": "file"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "batch export instance excel v2",
+            "zh": "实例批量导出excelV2"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8079/batch/export/object/instance/excel/v2",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n   \"file_name\": \"111\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+              "body": "<File Content>"
+            }
+          }
+        }
+      ]
+    },
+    {
       "contract": "cmdb.instance.FulltextSearch",
       "category": {
         "en": "Instance",
@@ -6527,6 +6730,11 @@
             "description": "额外实例字段"
           },
           {
+            "name": "cmdbFields",
+            "type": "string[]",
+            "description": "实例cmdb字段"
+          },
+          {
             "name": "groupFieldsDesc",
             "type": "string[]",
             "description": "分组字段描述"
@@ -6610,7 +6818,29 @@
           "sizeByMetricMax",
           "total"
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Group Instance For Honeycomb",
+            "zh": "实例分组蜂窝图"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/v1/object/HOST/instance/honeycomb",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n        \"total\": 0,\n        \"list\": []\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance.GroupInstanceV2",
@@ -7242,6 +7472,58 @@
               "Content-Type": "application/json; charset=utf-8"
             },
             "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"instanceId\": \"5d3914e090876\",\n        \"p_k\": 0,\n        \"p_m\": 0,\n        \"p_n\": 0\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "cmdb.instance.InstanceRelationsCountV2",
+      "category": {
+        "en": "Instance",
+        "zh": "实例"
+      },
+      "name": "InstanceRelationsCountV2",
+      "version": "1.0.0",
+      "description": "多个实例关系统计",
+      "detail": "对于APP会额外返回其集群下所有主机的数量(_clusters_deviceList)",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/v2/object/:object_id/instance/_relation_count"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "object_id",
+            "type": "object_id",
+            "description": "模型ID"
+          },
+          {
+            "name": "instance_ids",
+            "type": "string[]",
+            "description": "实例ID列表"
+          }
+        ],
+        "required": ["object_id", "instance_ids"]
+      },
+      "response": {
+        "type": "map"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "instance relationship statistics",
+            "zh": "多个实例关系统计"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8079/v2/object/PARK/instance/_relation_count"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"instanceIds\": [\"5d3914e090876\"],\n        \"p_k\": 0,\n        \"p_m\": 0,\n        \"p_n\": 0\n    }\n}"
           }
         }
       ]
@@ -9847,6 +10129,206 @@
       }
     },
     {
+      "contract": "cmdb.instance_baseline.BatchCreateInstanceBaseline",
+      "category": {
+        "en": "Instance baseline",
+        "zh": "实例基线"
+      },
+      "name": "BatchCreateInstanceBaseline",
+      "version": "1.0.0",
+      "description": "批量创建实例基线",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/object/:object_id/create_instance_baseline"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "object_id",
+            "type": "object_id",
+            "description": "实例所属的模型ID"
+          },
+          {
+            "name": "instanceIds",
+            "type": "instance_id[]",
+            "description": "实例Id列表"
+          }
+        ],
+        "required": ["object_id", "instanceIds"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Batch Create Instance Baseline",
+            "zh": "批量创建实例基线"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8079/object/HOST/create_instance_baseline",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"instanceIds\": [\"5d38fa40c9a19\"]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "contract": "cmdb.instance_baseline.GetInstanceBaseline",
+      "category": {
+        "en": "Instance baseline",
+        "zh": "实例基线"
+      },
+      "name": "GetInstanceBaseline",
+      "version": "1.0.0",
+      "description": "获取实例基线",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/object/:objectId/instance_baseline/:instanceId"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "objectId",
+            "type": "object_id",
+            "description": "模型对象ID"
+          },
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "实例ID"
+          },
+          {
+            "name": "fields",
+            "type": "string",
+            "description": "多个逗号分隔，不传则默认返回页面需要的所有字段"
+          }
+        ],
+        "required": ["objectId", "instanceId"]
+      },
+      "response": {
+        "type": "map"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get instance baseline",
+            "zh": "获取实例基线"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8079/object/HOST/instance_baseline/5d3914ca4406a"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n       \"name\": \"111\"\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "cmdb.instance_baseline.ListInstanceBaseline",
+      "category": {
+        "en": "Instance baseline",
+        "zh": "实例基线"
+      },
+      "name": "ListInstanceBaseline",
+      "version": "1.0.0",
+      "description": "分页列表查询实例基线",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/object/:object_id/instance_baseline"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "object_id",
+            "type": "object_id",
+            "description": "实例所属的模型ID"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "页大小"
+          },
+          {
+            "name": "key_word",
+            "type": "string",
+            "description": "筛选#showKey对应的字段"
+          }
+        ],
+        "required": ["object_id"],
+        "default": {
+          "page": 1,
+          "page_size": 200
+        }
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "map[]",
+            "description": "instance base list"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "实例总数"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "页大小"
+          }
+        ],
+        "required": ["list", "total", "page", "page_size"]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "List Instance Baseline",
+            "zh": "分页查询实例基线"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8079/object/HOST/instance_baseline?page=1&page_size=20&key_word=",
+            "headers": {
+              "Content-Type": "application/json"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"data\": {\n        \"list\": [\n            {\n                \"instanceId\": \"5d3914ca4406a\"\n            },\n            {\n                \"instanceId\": \"5d3914e090876\"\n            }\n        ],\n        \"total\": 2,\n        \"page\": 1,\n        \"page_size\": 2\n    },\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\"\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "cmdb.instance_graph.TraverseGraph",
       "category": {
         "en": "Instance graph",
@@ -9882,6 +10364,11 @@
             "name": "child",
             "type": "TraverseChildNode[]",
             "description": "子节点列表"
+          },
+          {
+            "name": "limit_node_count",
+            "type": "int",
+            "description": "限制返回节点最大数量，若超出数量则接口报错"
           }
         ],
         "required": ["object_id", "fields", "query", "child"]
@@ -10073,6 +10560,11 @@
             "name": "need_redirection",
             "type": "bool",
             "description": "是否需要返回图的方向"
+          },
+          {
+            "name": "limit_node_count",
+            "type": "int",
+            "description": "限制返回节点最大数量，若超出数量则接口报错"
           }
         ],
         "required": ["object_id", "select_fields", "query", "child"]
@@ -10189,6 +10681,11 @@
             "name": "need_redirection",
             "type": "bool",
             "description": "是否需要返回图的方向"
+          },
+          {
+            "name": "limit_node_count",
+            "type": "int",
+            "description": "限制返回节点最大数量，若超出数量则接口报错"
           }
         ],
         "required": ["object_id", "select_fields", "query", "child"]
@@ -10675,6 +11172,21 @@
             "name": "list",
             "type": "value",
             "description": "结果列表 eg: [[{\"_object_id\": \"APP\",\"attrId1\": 2.355, \"instanceId\": \"xxxx\",\"name\": \"test1253\" },{\"_object_id\": \"CLUSTER\",\"instanceId\": \"xxxxx\",\"name\": \"dev\"}]]"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页数"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "页大小"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "查询总数"
           }
         ]
       },
@@ -11421,6 +11933,89 @@
       }
     },
     {
+      "contract": "cmdb.instance_relation.RelationExist",
+      "category": {
+        "en": "Instance relation",
+        "zh": "实例关系"
+      },
+      "name": "RelationExist",
+      "version": "1.0.0",
+      "description": "判断实例之间关系是否存在",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/object/relation/exist"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "leftObjectId",
+            "type": "object_id",
+            "description": "模型Id"
+          },
+          {
+            "name": "rightObjectId",
+            "type": "object_id",
+            "description": "模型Id"
+          },
+          {
+            "name": "leftInstanceId",
+            "type": "string",
+            "description": "实例Id"
+          },
+          {
+            "name": "rightInstanceId",
+            "type": "string",
+            "description": "实例Id"
+          }
+        ],
+        "required": [
+          "leftObjectId",
+          "rightObjectId",
+          "leftInstanceId",
+          "rightInstanceId"
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "isExist",
+            "type": "bool",
+            "description": "是否存在"
+          },
+          {
+            "name": "sideId",
+            "type": "string",
+            "description": "关系边id"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Relation Exist",
+            "zh": "实例关系是否存在"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8079/object/relation/exist",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"leftObjectId\": \"HOST\",\n    \"rightObjectId\": \"USER\",\n    \"leftInstanceId\": \"111\",\n    \"rightInstanceId\": \"222\",\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n      \"isExist\": true\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "cmdb.instance_relation.Remove",
       "category": {
         "en": "Instance relation",
@@ -11578,7 +12173,30 @@
             "description": "页大小"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Search Instance By Relation",
+            "zh": "通过关系搜索实例"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8079/relation/AAA/instance/_search",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"query\": {\n        \"name\": {\n            \"$like\": \"%na%\"\n        }\n    },\n    \"fields\": [\"ID\", \"name\", \"address\", \"age\"],\n    \"page\": 1,\n    \"page_size\": 2\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"data\": {\n        \"list\": [\n            {\n                \"ID\": 1,\n                \"address\": \"testAddr\",\n                \"age\": 18,\n                \"instanceId\": \"5d3914ca4406a\",\n                \"name\": \"name1\"\n            },\n            {\n                \"ID\": 2,\n                \"address\": \"addr2\",\n                \"age\": 2,\n                \"instanceId\": \"5d3914e090876\",\n                \"name\": \"name2\"\n            }\n        ],\n        \"total\": 2,\n        \"page\": 1,\n        \"page_size\": 2\n    },\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\"\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "cmdb.instance_relation.Set",
@@ -12874,6 +13492,69 @@
       ]
     },
     {
+      "contract": "cmdb.permission.BuildInstanceAuthorizerQuery",
+      "category": {
+        "en": "CMDB Permission",
+        "zh": "CMDB权限"
+      },
+      "name": "BuildInstanceAuthorizerQuery",
+      "version": "1.1.0",
+      "description": "构造实例白名单查询条件",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/authorizers/query/instance"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "permission",
+            "type": "string",
+            "description": "权限"
+          },
+          {
+            "name": "objectId",
+            "type": "object_id",
+            "description": "模型id"
+          },
+          {
+            "name": "user",
+            "type": "string",
+            "description": "用户"
+          }
+        ],
+        "required": ["permission", "objectId", "user"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "query",
+            "type": "map",
+            "description": "过滤条件"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "BuildInstanceAuthorizerQuery",
+            "zh": "构造实例白名单查询条件"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8079/authorizers/query/instance?objectId=HOST&permission=read&user=boo"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n      \"query\": {\n      }\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "cmdb.permission.GetRoleCmdbPermission",
       "category": {
         "en": "CMDB Permission",
@@ -13494,6 +14175,542 @@
         "required": ["objectId", "instanceId", "org", "body"]
       },
       "response": null
+    },
+    {
+      "contract": "cmdb.topo_view.CreateTopoAdjustStrategy",
+      "name": "CreateTopoAdjustStrategy",
+      "version": "1.0.1",
+      "description": "创建拓扑中心调和策略",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/create-topo-adjust-strategy"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "strategy",
+            "type": "object",
+            "description": "汇聚策略定义",
+            "fields": [
+              {
+                "name": "args",
+                "type": "map",
+                "description": "调和参数"
+              },
+              {
+                "name": "sort",
+                "type": "int",
+                "description": "排序值"
+              },
+              {
+                "name": "method",
+                "type": "string",
+                "description": "处理方法"
+              },
+              {
+                "name": "dataId",
+                "type": "string",
+                "description": "数据id"
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "description": "策略名称"
+              },
+              {
+                "name": "editMode",
+                "type": "string",
+                "description": "编辑模式",
+                "enum": ["default", "highLevel"]
+              }
+            ]
+          },
+          {
+            "name": "viewId",
+            "type": "string",
+            "description": "关联视图实例ID"
+          }
+        ],
+        "required": ["strategy", "strategy.name"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "string",
+            "description": "实例ID"
+          }
+        ],
+        "required": []
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "CreateTopoAdjustStrategy",
+            "zh": "创建拓扑中心调和策略"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://172.30.0.57:12016/api/v1/create-topo-adjust-strategy",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"viewId\": \"616bad4143219\",\n  \"strategy\": {\n    \"name\": \"addNodes-timestamp\",\n    \"args\": {\n      \"nodes\": [\n        {\n          \"id\": \"src-api\",\n          \"_nodeType\": \"API@ONEMODEL\",\n          \"_nodeName\": \"src-api\"\n        },\n        {\n          \"id\": \"dest-api\",\n          \"_nodeType\": \"API@ONEMODEL\",\n          \"_nodeName\": \"dest-api\"\n        }\n      ]\n    },\n    \"method\": \"addNodes\"\n  }\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"error\": \"\",\n  \"codeExplain\": \"\",\n  \"data\": {\n    \"instanceId\": \"616bbb615a521\"\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "cmdb.topo_view.CreateTopoView",
+      "name": "CreateTopoView",
+      "version": "1.0.2",
+      "description": "创建拓扑视图",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/create-topo-view"
+      },
+      "import": ["easyops/model/cmdb/topo_center_view"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "view",
+            "type": "TopoCenterView",
+            "description": "视图"
+          },
+          {
+            "name": "template",
+            "type": "object",
+            "description": "模版信息",
+            "fields": [
+              {
+                "name": "id",
+                "type": "string",
+                "description": "模版ID"
+              },
+              {
+                "name": "args",
+                "type": "object[]",
+                "description": "请求参数",
+                "fields": [
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "description": "参数id"
+                  },
+                  {
+                    "name": "value",
+                    "type": "value",
+                    "description": "参数值"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "required": []
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "viewId",
+            "type": "string",
+            "description": "视图id"
+          }
+        ],
+        "required": []
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "CreateTopoView",
+            "zh": "创建拓扑视图"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://172.30.0.57:12016/api/v1/create-topo-view",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"view\": {\n    \"name\": \"testCreateTopoView\",\n    \"description\": \"测试创建空白拓扑视图\",\n    \"tag\": [\n      \"test\"\n    ]\n  }\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"error\": \"\",\n  \"codeExplain\": \"\",\n  \"data\": {\n    \"viewId\": \"616bdb07a0411\"\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "cmdb.topo_view.CreateTopoViewVersion",
+      "name": "CreateTopoViewVersion",
+      "version": "1.0.3",
+      "description": "创建拓扑视图版本",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/create-topo-view-version"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "viewId",
+            "type": "string",
+            "description": "拓扑视图ID"
+          },
+          {
+            "name": "version",
+            "type": "string",
+            "description": "版本"
+          },
+          {
+            "name": "isSaveSnapshot",
+            "type": "bool",
+            "description": "是否同时保存数据快照"
+          },
+          {
+            "name": "nodes",
+            "type": "map[]",
+            "description": "节点数据"
+          },
+          {
+            "name": "edges",
+            "type": "map[]",
+            "description": "边数据"
+          },
+          {
+            "name": "isNotify",
+            "type": "bool",
+            "description": "是否发送审批通知"
+          },
+          {
+            "name": "isGeneral",
+            "type": "bool",
+            "description": "是否通用逻辑， 汉口开关isNotify打开时，为false， 汉口开关关闭时, 恒为true, 与汉口的开关互斥"
+          }
+        ],
+        "required": ["viewId", "version"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "string",
+            "description": "实例ID"
+          }
+        ],
+        "required": []
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "CreateTopoViewVersion",
+            "zh": "创建拓扑视图版本"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://172.30.0.57:12016/api/v1/create-topo-view-version",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"viewId\": \"616bad4143219\",\n  \"version\": \"2\",\n  \"isSaveSnapshot\": false\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"error\": \"\",\n  \"codeExplain\": \"\",\n  \"data\": {\n    \"instanceId\": \"616bbb8a56ec5\"\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "cmdb.topo_view.GenTopoDataByVersion",
+      "name": "GenTopoDataByVersion",
+      "version": "1.0.4",
+      "description": "根据拓扑视图版本id，生成拓扑数据",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/view-version/topo-data"
+      },
+      "import": ["easyops/model/cmdb/collect_strategy_data"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "viewVersionId",
+            "type": "string",
+            "description": "视图版本的实例id"
+          },
+          {
+            "name": "viewArgs",
+            "type": "object[]",
+            "description": "占位符的定义",
+            "fields": [
+              {
+                "name": "id",
+                "type": "string",
+                "description": "占位符，不包含$"
+              },
+              {
+                "name": "value",
+                "type": "value",
+                "description": "要替换的数据"
+              }
+            ]
+          },
+          {
+            "name": "isCompareWithLatest",
+            "type": "bool",
+            "description": "是否与最新数据对比"
+          }
+        ],
+        "required": ["viewVersionId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "topo",
+            "type": "CollectStrategyData",
+            "description": "拓扑定义"
+          }
+        ],
+        "required": []
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "GenTopoDataByVersion",
+            "zh": "根据拓扑视图版本id，生成拓扑数据"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://172.30.0.57:12016/api/v1/view-version/topo-data",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"viewVersionId\": \"616bbb8a56ec5\"\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"error\": \"\",\n  \"codeExplain\": \"\",\n  \"data\": {\n    \"type\": \"topology\",\n    \"nodes\": [\n      {\n        \"_nodeName\": \"dest-api\",\n        \"_nodeType\": \"API@ONEMODEL\",\n        \"id\": \"dest-api\"\n      },\n      {\n        \"_nodeName\": \"root\",\n        \"_nodeType\": \"API@ONEMODEL\",\n        \"id\": \"root\"\n      },\n      {\n        \"_nodeName\": \"src-api\",\n        \"_nodeType\": \"API@ONEMODEL\",\n        \"id\": \"src-api\"\n      }\n    ],\n    \"edges\": [\n      {\n        \"name\": \"root-call-src-api\",\n        \"source\": \"root\",\n        \"target\": \"src-api\"\n      },\n      {\n        \"name\": \"src-api-call-dest-api\",\n        \"source\": \"src-api\",\n        \"target\": \"dest-api\"\n      }\n    ],\n    \"Hidden\": false,\n    \"StrategyInstanceId\": \"\"\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "cmdb.topo_view.ListTopoViewVersion",
+      "name": "ListTopoViewVersion",
+      "version": "1.0.2",
+      "description": "获取拓扑视图版本列表",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/list-topo-view-version"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "viewId",
+            "type": "string",
+            "description": "视图ID"
+          },
+          {
+            "name": "page",
+            "type": "int",
+            "description": "page"
+          },
+          {
+            "name": "pageSize",
+            "type": "int",
+            "description": "pageSize"
+          },
+          {
+            "name": "sort",
+            "type": "object[]",
+            "description": "排序",
+            "fields": [
+              {
+                "name": "key",
+                "type": "string",
+                "description": "属性id"
+              },
+              {
+                "name": "order",
+                "type": "int",
+                "description": "排序"
+              }
+            ]
+          }
+        ],
+        "required": []
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "int",
+            "description": "page"
+          },
+          {
+            "name": "pageSize",
+            "type": "int",
+            "description": "pageSize"
+          },
+          {
+            "name": "total",
+            "type": "int",
+            "description": "total"
+          },
+          {
+            "name": "list",
+            "type": "map[]",
+            "description": "list"
+          }
+        ],
+        "required": []
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "ListTopoViewVersion",
+            "zh": "获取拓扑视图版本列表"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://172.30.0.57:12016/api/v1/list-topo-view-version",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"viewId\": \"616bad4143219\",\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"sort\": [\n    {\n      \"key\": \"ctime\",\n      \"order\": -1\n    }\n  ]\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"error\": \"\",\n  \"codeExplain\": \"\",\n  \"data\": {\n    \"list\": [\n      {\n        \"creator\": \"easyops\",\n        \"ctime\": \"2024-04-23 12:09:32\",\n        \"instanceId\": \"616bbb8a56ec5\",\n        \"version\": \"2\"\n      },\n      {\n        \"creator\": \"easyops\",\n        \"ctime\": \"2024-04-23 12:07:40\",\n        \"instanceId\": \"616bbb1f265f1\",\n        \"version\": \"1\"\n      }\n    ],\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"total\": 2\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "cmdb.topo_view.UpdateTopoAdjustStrategy",
+      "name": "UpdateTopoAdjustStrategy",
+      "version": "1.0.2",
+      "description": "更新拓扑中心汇聚策略",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/update-topo-adjust-strategy/:instanceId"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "调和策略实例 ID"
+          },
+          {
+            "name": "strategy",
+            "type": "object",
+            "description": "汇聚策略定义",
+            "fields": [
+              {
+                "name": "dataId",
+                "type": "string",
+                "description": "数据ID"
+              },
+              {
+                "name": "args",
+                "type": "map",
+                "description": "调和参数"
+              },
+              {
+                "name": "sort",
+                "type": "int",
+                "description": "排序值"
+              },
+              {
+                "name": "method",
+                "type": "string",
+                "description": "处理方法"
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "description": "策略名称"
+              },
+              {
+                "name": "editMode",
+                "type": "string",
+                "description": "编辑模式",
+                "enum": ["default", "highLevel"]
+              }
+            ]
+          },
+          {
+            "name": "viewId",
+            "type": "string",
+            "description": "视图id"
+          }
+        ],
+        "required": ["strategy", "strategy.name"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "string",
+            "description": "实例ID"
+          }
+        ],
+        "required": []
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "UpdateTopoAdjustStrategy",
+            "zh": "更新拓扑中心汇聚策略"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://172.30.0.57:12016/api/v1/update-topo-adjust-strategy/616bbb12bef4d",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"viewId\": \"616bad4143219\",\n  \"strategy\": {\n    \"name\": \"addNodes-timestamp\",\n    \"args\": {\n      \"nodes\": [\n        {\n          \"id\": \"src-api\",\n          \"_nodeType\": \"API@ONEMODEL\",\n          \"_nodeName\": \"src-api\"\n        },\n        {\n          \"id\": \"dest-api\",\n          \"_nodeType\": \"API@ONEMODEL\",\n          \"_nodeName\": \"dest-api\"\n        }\n      ]\n    },\n    \"method\": \"addNodes\"\n  }\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"error\": \"\",\n  \"codeExplain\": \"\",\n  \"data\": {\n    \"instanceId\": \"616bbb12bef4d\"\n  }\n}"
+          }
+        }
+      ]
     }
   ]
 }

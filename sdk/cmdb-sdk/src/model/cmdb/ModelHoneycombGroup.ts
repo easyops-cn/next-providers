@@ -31,4 +31,7 @@ export interface ModelHoneycombGroup_data_item {
 
   /** 额外字段 */
   extFields?: Record<string, any>;
+
+  /** cmdb实例字段 */
+  cmdbFields?: Record<string, any>;
 }
