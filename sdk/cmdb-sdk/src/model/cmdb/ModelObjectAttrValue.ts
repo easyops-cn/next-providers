@@ -38,7 +38,16 @@ export interface ModelObjectAttrValue {
   struct_define: Partial<ModelObjectAttrValueStruct>[];
 
   /** 字符串模式定义: 多行文本和普通字符串 */
-  mode: "" | "multiple-lines" | "default" | "markdown" | "tag" | "url";
+  mode:
+    | ""
+    | "multiple-lines"
+    | "default"
+    | "markdown"
+    | "tag"
+    | "url"
+    | "xml"
+    | "yaml"
+    | "password";
 
   /** 自增ID和流水号的前缀: 当default_type 是series-number和 auto-increment-id时候为必填 */
   prefix: string;
