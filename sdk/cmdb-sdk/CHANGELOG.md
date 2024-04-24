@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.7.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/cmdb-sdk@3.6.0...@next-sdk/cmdb-sdk@3.7.0) (2024-04-24)
+
+### Features
+
+- add apis: InstanceApi_exportInstanceExcelBatch, InstanceApi_exportInstanceExcelBatchV2, InstanceApi_instanceRelationsCountV2, InstanceBaselineApi_batchCreateInstanceBaseline, InstanceBaselineApi_getInstanceBaseline, InstanceBaselineApi_index, InstanceBaselineApi_listInstanceBaseline, InstanceRelationApi_relationExist, PermissionApi_buildInstanceAuthorizerQuery, TopoViewApi_createTopoAdjustStrategy, TopoViewApi_createTopoView, TopoViewApi_createTopoViewVersion, TopoViewApi_genTopoDataByVersion, TopoViewApi_index, TopoViewApi_listTopoViewVersion, TopoViewApi_updateTopoAdjustStrategy ([aa8c8ea](https://github.com/easyops-cn/next-providers/commit/aa8c8ea85e6dbd8abeb9af4d436b6913c2c6ff4f))
+
 # [3.6.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/cmdb-sdk@3.5.1...@next-sdk/cmdb-sdk@3.6.0) (2023-12-12)
 
 ### Features
