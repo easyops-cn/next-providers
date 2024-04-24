@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.1](https://github.com/easyops-cn/next-providers/compare/@next-sdk/cmdb-sdk@3.7.0...@next-sdk/cmdb-sdk@3.7.1) (2024-04-24)
+
+**Note:** Version bump only for package @next-sdk/cmdb-sdk
+
 # [3.7.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/cmdb-sdk@3.6.0...@next-sdk/cmdb-sdk@3.7.0) (2024-04-24)
 
 ### Features
