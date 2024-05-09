@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.11.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/api-gateway-sdk@2.10.0...@next-sdk/api-gateway-sdk@2.11.0) (2024-05-09)
+
+### Features
+
+- add apis: BootstrapStandaloneApi_batchDeleteBootstrapStandaloneCache, CustomAuthConfigApi_createBackendNode, CustomAuthConfigApi_updateBackendNode ([f56039b](https://github.com/easyops-cn/next-providers/commit/f56039b6315e6366f9e9fbee29059c732e91ff25))
+
 # [2.10.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/api-gateway-sdk@2.9.1...@next-sdk/api-gateway-sdk@2.10.0) (2024-01-24)
 
 ### Features
