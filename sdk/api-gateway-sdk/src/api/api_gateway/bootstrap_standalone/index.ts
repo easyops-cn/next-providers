@@ -1,3 +1,4 @@
+export * from "./batchDeleteBootstrapStandaloneCache";
 export * from "./deleteBootstrapStandaloneCache";
 export * from "./deleteLaunchpadEtagCache";
 export * from "./getBrandFavicon";

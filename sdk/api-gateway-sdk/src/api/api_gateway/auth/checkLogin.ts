@@ -34,6 +34,9 @@ export interface AuthApi_CheckLoginResponseBody {
 
   /** 主名称 次名称 */
   userShowValue?: string[];
+
+  /** SSO OAuth2 授权登录场景下，认证中心签发的令牌 */
+  accessToken?: string;
 }
 
 /**

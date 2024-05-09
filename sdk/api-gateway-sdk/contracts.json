@@ -89,6 +89,11 @@
             "name": "userShowValue",
             "type": "string[]",
             "description": "主名称 次名称"
+          },
+          {
+            "name": "accessToken",
+            "type": "string",
+            "description": "SSO OAuth2 授权登录场景下，认证中心签发的令牌"
           }
         ]
       },
@@ -106,7 +111,7 @@
             "headers": {
               "Content-Type": "application/json; charset=utf-8"
             },
-            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n        \"loggedIn\": true,\n        \"username\": \"easyops\",\n        \"org\": 8888,\n        \"location\": \"\",\n        \"userInstanceId\": \"5dc1e51810dc4\",\n        \"loginFrom\": \"\",\n        \"accessRule\": \"\",\n        \"isAdmin\": true,\n        \"csrfToken\": \"\"\n    }\n}"
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n        \"loggedIn\": true,\n        \"username\": \"easyops\",\n        \"org\": 8888,\n        \"location\": \"\",\n        \"userInstanceId\": \"5dc1e51810dc4\",\n        \"loginFrom\": \"\",\n        \"accessRule\": \"\",\n        \"isAdmin\": true,\n        \"csrfToken\": \"\",\n        \"accessToken\": \"\",\n    }\n}"
           }
         }
       ]
@@ -1116,6 +1121,46 @@
       }
     },
     {
+      "contract": "api_gateway.bootstrap_standalone.BatchDeleteBootstrapStandaloneCache",
+      "category": {
+        "en": "Bootstrap Standalone",
+        "zh": "独立部署Bootstrap"
+      },
+      "name": "BatchDeleteBootstrapStandaloneCache",
+      "version": "1.0.0",
+      "description": "批量删除独立小产品主页缓存",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/bootstrap_standalone_cache/batch_delete"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "homePage",
+            "type": "string[]",
+            "description": "主页"
+          }
+        ]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Batch Delete bootstrap standalone home page cache",
+            "zh": "批量删除独立小产品主页缓存"
+          },
+          "request": {
+            "method": "DELETE",
+            "uri": "http://127.0.0.1:8104/api/v1/bootstrap_standalone_cache/batch_delete"
+          },
+          "response": {
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": null\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "api_gateway.bootstrap_standalone.DeleteBootstrapStandaloneCache",
       "category": {
         "en": "Bootstrap Standalone",
@@ -1653,6 +1698,71 @@
       }
     },
     {
+      "contract": "api_gateway.custom_auth_config.CreateBackendNode",
+      "name": "CreateBackendNode",
+      "version": "1.4.0",
+      "description": "创建后端节点",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/api_gateway/backend_node"
+      },
+      "import": ["easyops/model/api_gateway/backend_node"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "node",
+            "type": "BackendNode",
+            "description": "节点"
+          },
+          {
+            "name": "serviceInstanceIds",
+            "type": "instance_id[]",
+            "description": "关联的服务ID列表"
+          }
+        ],
+        "required": [
+          "node.ip",
+          "node.port",
+          "node.scheme",
+          "node.weight",
+          "node.enabled"
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "id",
+            "type": "instance_id",
+            "description": "节点id"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "CreateBackendNode",
+            "zh": "创建后端节点"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8107/api/v1/api_gateway/backend_node",
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"serviceInstanceIds\": [\"5aaec6de45fd6\"],\n  \"node\": {\n    \"ip\":\"172.30.0.90\",\n    \"port\":8888,\n    \"scheme\":\"http\",\n    \"enabled\":true,\n    \"weight\":100\n  },\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"data\": {\n    \"instanceId\": \"5aaec6de45fe7\"  \n  },\n    \"error\": \"\"\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "api_gateway.custom_auth_config.CreateCustomAuthConfig",
       "name": "CreateCustomAuthConfig",
       "version": "1.4.0",
@@ -1998,6 +2108,85 @@
               "Content-Type": "application/json; charset=utf-8"
             },
             "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"data\": {\n    \"instanceId\": \"5aaec6de45fe7\",\n    \"serviceInstanceIds\": [\n      \"5aaec6de45fc5\",\n      \"5aaec6de45fd6\"\n    ],\n    \"configName\": \"oauth2\",\n    \"description\": \"测试服务\",\n    \"authType\": \"oauth2\",\n    \"authConfig\": {\n      \"configPosition\": \"header\",\n      \"configKey\": \"Authorization\",\n      \"configValuePrefix\": \"Bearer \",\n      \"configEnv\": [\n        {\n          \"key\": \"k1\",\n          \"value\": \"v1\"\n        }\n      ],\n      \"oauth2\": {\n        \"accessTokenUrl\": \"http://127.0.0.1/oauth/accessToken\",\n        \"accessTokenMethod\": \"POST\",\n        \"accessTokenHeader\": [\n          {\n            \"key\": \"k1\",\n            \"value\": \"v1\"\n          }\n        ],\n        \"accessTokenParams\": [],\n        \"accessTokenBodyType\": \"json\",\n        \"accessTokenBodyJson\": {\n          \"k1\": \"accessTokenBody类型不定，可能是数组\"\n        },\n        \"accessTokenBodyUrlEncoded\": null,\n        \"expireTime\": 7200,\n        \"accessTokenJsonPath\": \"access_token\"\n      },\n      \"basicAuth\": null,\n      \"apiKey\": null\n    }\n  },\n  \"error\": \"\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "api_gateway.custom_auth_config.UpdateBackendNode",
+      "name": "UpdateBackendNode",
+      "version": "1.4.0",
+      "description": "更新后端节点",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/api_gateway/backend_node"
+      },
+      "import": ["easyops/model/api_gateway/backend_node"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "node",
+            "type": "BackendNode",
+            "description": "节点"
+          },
+          {
+            "name": "serviceOperation",
+            "type": "object[]",
+            "description": "解绑或者绑定服务",
+            "fields": [
+              {
+                "name": "operate",
+                "type": "string",
+                "enum": ["append", "remove"],
+                "description": "绑定/解绑"
+              },
+              {
+                "name": "instanceId",
+                "type": "instance_id",
+                "description": "服务实例id"
+              }
+            ]
+          }
+        ],
+        "required": [
+          "node.ip",
+          "node.port",
+          "node.scheme",
+          "node.weight",
+          "node.enabled",
+          "node.instanceId"
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "id",
+            "type": "instance_id",
+            "description": "节点id"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "UpdateBackendNode",
+            "zh": "更新后端节点"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8107/api/v1/api_gateway/backend_node",
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"serviceInstanceIds\": [\"5aaec6de45fd6\"],\n  \"node\": {\n    \"ip\":\"172.30.0.90\",\n    \"port\":8888,\n    \"scheme\":\"http\",\n    \"enabled\":true,\n    \"weight\":100\n  },\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"data\": {\n    \"instanceId\": \"5aaec6de45fe7\"  \n  },\n    \"error\": \"\"\n  }\n}"
           }
         }
       ]
