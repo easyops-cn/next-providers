@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/form-builder-service-sdk@1.4.1...@next-sdk/form-builder-service-sdk@2.0.0) (2024-10-29)
+
+### Features
+
+- add apis: FormModelsApi_importCompleteModelsBatch, FormProjectApi_copyFormProject, FormProjectApi_searchFormTemplate, FormTemplateApi_deleteFormTemplateByFormId, FormTemplateApi_index, FormTemplateApi_setMainVersionFormTemplate ([4ba8347](https://github.com/easyops-cn/next-providers/commit/4ba834786bb5763a93b687b935155f09f809daf4))
+
+### BREAKING CHANGES
+
+- remove apis: FormProjectApi_setMainVersionFormTemplate
+
+INFRA-0
+
 ## 1.4.1 (2023-06-08)
 
 **Note:** Version bump only for package @next-sdk/form-builder-service-sdk
