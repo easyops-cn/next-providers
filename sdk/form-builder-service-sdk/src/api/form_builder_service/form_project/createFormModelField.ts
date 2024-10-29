@@ -19,6 +19,9 @@ export interface FormProjectApi_CreateFormModelFieldRequestBody {
 
   /** 默认值 */
   defaultValue?: string;
+
+  /** 正则/枚举 */
+  regex?: any;
 }
 
 export interface FormProjectApi_CreateFormModelFieldResponseBody {

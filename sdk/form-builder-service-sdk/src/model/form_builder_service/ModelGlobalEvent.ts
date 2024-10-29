@@ -21,6 +21,15 @@ export interface ModelGlobalEvent {
   /** 来源 */
   origin: string;
 
+  /** settingValue */
+  settingValue: string;
+
   /** 目标 */
   target: string;
+
+  /** 配置 */
+  conf: string;
+
+  /** 事件回调 */
+  callback: string;
 }

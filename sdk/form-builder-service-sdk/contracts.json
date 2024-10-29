@@ -62,6 +62,93 @@
       }
     },
     {
+      "contract": "form_builder_service.form_models.ImportCompleteModelsBatch",
+      "name": "ImportCompleteModelsBatch",
+      "version": "1.0.0",
+      "description": "批量创建表单模型",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/form_builder/v1/project/:projectId/models/batch_import"
+      },
+      "import": [
+        "easyops/model/form_builder_service/form_models",
+        "easyops/model/form_builder_service/form_model_field"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectId",
+            "type": "instance_id",
+            "description": "表单项目实例id"
+          },
+          {
+            "name": "importInfos",
+            "type": "object[]",
+            "description": "导入模型信息",
+            "fields": [
+              {
+                "ref": "FormModels.modelId"
+              },
+              {
+                "ref": "FormModels.modelName"
+              },
+              {
+                "name": "modelFields",
+                "type": "object[]",
+                "description": "模型字段信息",
+                "fields": [
+                  {
+                    "ref": "FormModelField.fieldId"
+                  },
+                  {
+                    "ref": "FormModelField.name"
+                  },
+                  {
+                    "ref": "FormModelField.fieldType"
+                  },
+                  {
+                    "name": "required",
+                    "type": "bool",
+                    "description": "是否必填"
+                  },
+                  {
+                    "name": "unique",
+                    "type": "bool",
+                    "description": "是否唯一"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "required": ["projectId"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "zh": "批量导入模型以及模型的属性列表(入参是全量数据)",
+            "en": "Batch Import Complete Models"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "HTTP://127.0.0.1:/api/form_builder/v1/61d93751823fd/models/import",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"projectId\": \"61d93751823fd\",\n    \"importInfos\": [\n        {\n            \"modelId\": \"apply_form\",\n            \"modelName\": \"申请表单\",\n            \"modelFields\": [\n                {\n                    \"fieldId\": \"aa\",\n                    \"name\": \"aa\",\n                    \"type\": \"str\"\n                }\n            ]\n        },\n        {\n            \"modelId\": \"stepA\",\n            \"modelName\": \"步骤A\",\n            \"modelFields\": [\n                {\n                    \"fieldId\": \"bb\",\n                    \"name\": \"bb\",\n                    \"type\": \"int\"\n                }\n            ]\n        },\n        {\n            \"modelId\": \"stepB\",\n            \"modelName\": \"步骤B\",\n            \"modelFields\": [\n                {\n                    \"fieldId\": \"cc\",\n                    \"name\": \"cc\",\n                    \"type\": \"bool\"\n                }\n            ]\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {}\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "form_builder_service.form_project.BatchUpdateFormItem",
       "name": "BatchUpdateFormItem",
       "version": "1.0.0",
@@ -93,6 +180,56 @@
         "required": ["formItemList", "isDraft"]
       },
       "response": null
+    },
+    {
+      "contract": "form_builder_service.form_project.CopyFormProject",
+      "name": "CopyFormProject",
+      "version": "1.0.0",
+      "description": "copy表单项目",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/form_builder_service/v1/form_project/form_project/copy"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "实例id"
+          }
+        ],
+        "required": null
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "string",
+            "description": "实例id"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "CopyFormProject",
+            "zh": "copy表单项目"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/api/form_builder_service/v1/form_project/form_project/copy"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"data\": {\n    \"instanceId\": \"\"\n  }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "form_builder_service.form_project.CreateFormDraft",
@@ -415,6 +552,9 @@
           },
           {
             "ref": "FormModelField.defaultValue"
+          },
+          {
+            "ref": "FormModelField.regex"
           }
         ],
         "required": [
@@ -433,7 +573,29 @@
             "description": "实例id"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "创建表单模型字段",
+            "en": "CreateFormModelField"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://172.30.0.153:8260/api/form_builder_service/v1/form_project/form_model_field/create/form_model/61e96201b765d",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"fieldId\": \"janice1\",\n    \"name\": \"janice1\",\n    \"fieldType\": \"ENUM\",\n    \"regex\": [\n        \"1\",\n        \"2\"\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"instanceId\": \"61f2553bc3751\"\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "form_builder_service.form_project.CreateFormProject",
@@ -1166,19 +1328,24 @@
       "description": "获取表单全部版本",
       "endpoint": {
         "method": "LIST",
-        "uri": "/api/form_builder_service/v1/form_project/form_tamplate/retrieve/form_name/:name"
+        "uri": "/api/form_builder_service/v1/form_project/form_template/retrieve/form_id/:formId"
       },
       "import": ["easyops/model/form_builder_service/form_tpl"],
       "request": {
         "type": "object",
         "fields": [
           {
-            "name": "name",
+            "name": "formId",
             "type": "string",
-            "description": "名字"
+            "description": "id"
+          },
+          {
+            "name": "projectInstanceId",
+            "type": "string",
+            "description": "表单项目实例Id"
           }
         ],
-        "required": ["name"]
+        "required": ["formId", "projectInstanceId"]
       },
       "response": {
         "type": "FormTpl"
@@ -1284,6 +1451,81 @@
       "response": null
     },
     {
+      "contract": "form_builder_service.form_project.SearchFormTemplate",
+      "name": "SearchFormTemplate",
+      "version": "1.0.0",
+      "description": "表单模板查询",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/form_builder_service/v1/form_project/form_template/_search"
+      },
+      "import": ["easyops/model/form_builder_service/form_tpl"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "每页数据量"
+          },
+          {
+            "name": "projectId",
+            "type": "string",
+            "description": "项目Id"
+          },
+          {
+            "name": "ids",
+            "type": "string[]",
+            "description": "formId过滤"
+          },
+          {
+            "name": "versionIds",
+            "type": "string[]",
+            "description": "formVersionId过滤"
+          },
+          {
+            "name": "q",
+            "type": "string",
+            "description": "模糊查询 (支持名称,id,版本号模糊查询)"
+          }
+        ],
+        "default": {
+          "page": 1,
+          "pageSize": 20
+        }
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "total",
+            "type": "int",
+            "description": "total"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "page"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "page_size"
+          },
+          {
+            "name": "list",
+            "type": "FormTpl[]",
+            "description": "表单模板列表"
+          }
+        ]
+      }
+    },
+    {
       "contract": "form_builder_service.form_project.SetFormItemPosition",
       "name": "SetFormItemPosition",
       "version": "1.0.0",
@@ -1327,7 +1569,16 @@
         ],
         "required": ["formTemplateId", "itemSortList.instanceId", "isDraft"]
       },
-      "response": null
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "draftInstanceId",
+            "type": "string",
+            "description": "草稿模版实例Id"
+          }
+        ]
+      }
     },
     {
       "contract": "form_builder_service.form_project.SetFormSchema",
@@ -1351,34 +1602,6 @@
             "name": "formSchema",
             "type": "string",
             "description": "表单定义"
-          }
-        ],
-        "required": ["instanceId"]
-      },
-      "response": null
-    },
-    {
-      "contract": "form_builder_service.form_project.SetMainVersionFormTemplate",
-      "name": "SetMainVersionFormTemplate",
-      "version": "1.0.0",
-      "description": "设置主版本模版",
-      "endpoint": {
-        "method": "POST",
-        "uri": "/api/form_builder_service/v1/form_project/form_template/update/main_version/:instanceId"
-      },
-      "import": [],
-      "request": {
-        "type": "object",
-        "fields": [
-          {
-            "name": "instanceId",
-            "type": "string",
-            "description": "id"
-          },
-          {
-            "name": "name",
-            "type": "string",
-            "description": "名字（分组凭据）"
           }
         ],
         "required": ["instanceId"]
@@ -1564,7 +1787,8 @@
       },
       "import": [
         "easyops/model/form_builder_service/form_model_global_setting",
-        "easyops/model/form_builder_service/form_model_global_event"
+        "easyops/model/form_builder_service/form_model_global_event",
+        "easyops/model/form_builder_service/draft_template_info"
       ],
       "request": {
         "type": "object",
@@ -1622,7 +1846,31 @@
         ],
         "required": ["instanceId", "projectInstanceId"]
       },
-      "response": null
+      "response": {
+        "type": "DraftTemplateInfo"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "get step task info",
+            "zh": "获取步骤任务信息"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8260/api/form_builder_service/v1/form_project/form_template/update/62589ff684125",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"id\": \"apply1025\",\n  \"instanceId\": \"62589ff684125\",\n  \"formDescription\": \"sssabbb\",\n  \"formName\": \"apply1025\",\n  \"formSchema\": \"xxx\",\n  \"projectInstanceId\": \"6254507b210d5\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"data\": {\n        \"draftInstanceId\": \"62589ff684125\"\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "form_builder_service.form_project.UpdateFormModelField",
@@ -1642,6 +1890,67 @@
           }
         ],
         "required": ["FormModelField.instanceId"]
+      },
+      "response": null
+    },
+    {
+      "contract": "form_builder_service.form_template.DeleteFormTemplateByFormId",
+      "name": "DeleteFormTemplateByFormId",
+      "version": "1.0.0",
+      "description": "删除项目内id相同的表单模版(删除表单及其所有版本)",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/form_builder_service/v1/form_template/delete/project_instanceId/:projectInstanceId/form_id/:id"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "projectInstanceId",
+            "type": "string",
+            "description": "表单所属项目实例id"
+          },
+          {
+            "name": "id",
+            "type": "string",
+            "description": "表单Id"
+          }
+        ],
+        "required": ["projectInstanceId", "id"]
+      },
+      "response": null
+    },
+    {
+      "contract": "form_builder_service.form_template.SetMainVersionFormTemplate",
+      "name": "SetMainVersionFormTemplate",
+      "version": "1.0.0",
+      "description": "设置主版本模版",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/form_builder_service/v1/form_template/update/main_version/form_project/:projectId/form_template/:instanceId"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "string",
+            "description": "表单模版实例Id"
+          },
+          {
+            "name": "id",
+            "type": "string",
+            "description": "formId（分组凭据）"
+          },
+          {
+            "name": "projectId",
+            "type": "string",
+            "description": "表单项目实例Id"
+          }
+        ],
+        "required": ["instanceId", "id", "projectId"]
       },
       "response": null
     }

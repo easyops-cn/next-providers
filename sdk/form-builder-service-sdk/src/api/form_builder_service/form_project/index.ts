@@ -1,4 +1,5 @@
 export * from "./batchUpdateFormItem";
+export * from "./copyFormProject";
 export * from "./createFormDraft";
 export * from "./createFormItem";
 export * from "./createFormItemByField";
@@ -26,9 +27,9 @@ export * from "./initFormItemRootNode";
 export * from "./listAllVersionFormTemplate";
 export * from "./listFormTemplate";
 export * from "./releaseProjectFormVersion";
+export * from "./searchFormTemplate";
 export * from "./setFormItemPosition";
 export * from "./setFormSchema";
-export * from "./setMainVersionFormTemplate";
 export * from "./updateFormItem";
 export * from "./updateFormModel";
 export * from "./updateFormProject";

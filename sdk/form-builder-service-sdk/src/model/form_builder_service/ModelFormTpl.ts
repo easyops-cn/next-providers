@@ -34,6 +34,12 @@ export interface ModelFormTpl {
 
   /** 公共事件列表 */
   globalEventList: Partial<ModelGlobalEvent>[];
+
+  /** 创建人 */
+  creator: string;
+
+  /** 创建时间 */
+  ctime: string;
 }
 
 export interface ModelFormTpl_versionList_item {

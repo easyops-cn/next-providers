@@ -1,8 +1,10 @@
 import { http, HttpOptions } from "@next-core/brick-http";
 import {
+  ModelDraftTemplateInfo,
   ModelGlobalSetting,
   ModelGlobalEvent,
 } from "../../../model/form_builder_service";
+import { ResponseBodyWrapper } from "../../../wrapper";
 
 export interface FormProjectApi_UpdateFormTemplateRequestBody {
   /** 表单id */
@@ -33,17 +35,24 @@ export interface FormProjectApi_UpdateFormTemplateRequestBody {
   globalEventList?: Partial<ModelGlobalEvent>[];
 }
 
+export type FormProjectApi_UpdateFormTemplateResponseBody =
+  Partial<ModelDraftTemplateInfo>;
+
 /**
  * @description 更新表单模版
  * @endpoint PUT /api/form_builder_service/v1/form_project/form_template/update/:instanceId
  */
-export const FormProjectApi_updateFormTemplate = (
+export const FormProjectApi_updateFormTemplate = async (
   instanceId: string | number,
   data: FormProjectApi_UpdateFormTemplateRequestBody,
   options?: HttpOptions
-): Promise<void> =>
-  /**! @contract easyops.api.form_builder_service.form_project.UpdateFormTemplate@1.0.0 */ http.put<void>(
-    `api/gateway/form_builder_service.form_project.UpdateFormTemplate/api/form_builder_service/v1/form_project/form_template/update/${instanceId}`,
-    data,
-    options
-  );
+): Promise<FormProjectApi_UpdateFormTemplateResponseBody> =>
+  /**! @contract easyops.api.form_builder_service.form_project.UpdateFormTemplate@1.0.0 */ (
+    await http.put<
+      ResponseBodyWrapper<FormProjectApi_UpdateFormTemplateResponseBody>
+    >(
+      `api/gateway/form_builder_service.form_project.UpdateFormTemplate/api/form_builder_service/v1/form_project/form_template/update/${instanceId}`,
+      data,
+      options
+    )
+  ).data;

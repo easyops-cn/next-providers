@@ -20,4 +20,7 @@ export interface ModelFormModelField {
 
   /** 默认值 */
   defaultValue: string;
+
+  /** 正则/枚举 */
+  regex: any;
 }
