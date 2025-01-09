@@ -10,3 +10,4 @@ export * from "./registerV2";
 export * from "./switchOrg";
 export * from "./tokenLdapLogin";
 export * from "./tokenLogin";
+export * from "./userNameAuthorization";

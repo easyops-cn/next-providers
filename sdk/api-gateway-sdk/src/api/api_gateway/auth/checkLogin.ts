@@ -59,4 +59,7 @@ export interface AuthApi_CheckLoginResponseBody_license {
 
   /** 剩余有效天数 */
   validDaysLeft?: number;
+
+  /** 黑名单url列表 */
+  blackList?: string[];
 }
