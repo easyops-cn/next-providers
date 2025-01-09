@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.12.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/api-gateway-sdk@2.11.0...@next-sdk/api-gateway-sdk@2.12.0) (2025-01-09)
+
+### Features
+
+- add apis: AuthApi_userNameAuthorization, BootstrapStandaloneApi_deleteResourcesRedisCache, WechatLlmApi_getWechatLiveUser, WechatLlmApi_index, WechatLlmApi_weChatLogin ([3aa7e0f](https://github.com/easyops-cn/next-providers/commit/3aa7e0f3c241cc235a4ee5417a412dc59ff1510a))
+
 # [2.11.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/api-gateway-sdk@2.10.0...@next-sdk/api-gateway-sdk@2.11.0) (2024-05-09)
 
 ### Features
