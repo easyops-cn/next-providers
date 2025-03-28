@@ -1,0 +1,3484 @@
+{
+  "name": "llm",
+  "contracts": [
+    {
+      "contract": "llm.agent.BaseGeneralAgent",
+      "name": "BaseGeneralAgent",
+      "version": "1.0.0",
+      "description": "基础agent，支持知识库、执行工具",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/agent/base"
+      },
+      "import": [
+        "easyops/model/aiops_service/llm_chat_agent_task_request",
+        "easyops/model/aiops_service/llm_chat_agent_task_response"
+      ],
+      "request": {
+        "type": "LlmChatAgentTaskRequest"
+      },
+      "response": {
+        "type": "LlmChatAgentTaskResponse",
+        "description": "接口返回,有两种格式,流式返回为delta, 非流式返回为message\n"
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "大模型聊天接口"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://ip:port/api/v1/llm/agent/base",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "linus",
+              "org": 1234
+            },
+            "body": "{\n    \"input\": \"你好啊\",\n    \"agentId\": \"general-helper\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"created\": 1703487403,\n  \"type\": \"TEXT\",\n  \"taskId\": \"8239375684858666781\",\n  \"message\": {\n    \"role\":\"assistant\",\n    \"content\":\"有什么可以帮到你\"\n  }\n}"
+          }
+        },
+        {
+          "description": {
+            "zh": "流式返回"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://ip:port/api/v1/llm/agent/base",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            },
+            "body": "{\n  \"input\": \"你好啊\",\n  \"agentId\": \"general-helper\",\n  \"stream\": true\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "text/event-stream"
+            },
+            "body": "data: {\"created\":1703487403,\"type\":\"TEXT\",\"taskId\":\"8239375684858666781\",\"delta\":{\"role\":\"assistant\",\"content\":\"有什么可以\"}}\\n\\n data: {\"created\":1703487404,\"type\":\"TEXT\",\"taskId\":\"8239375684858666781\",\"delta\":{\"role\":\"assistant\",\"content\":\"帮到你\"}}\\n\\n data: [DONE]"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.agent.WebSearchAgent",
+      "name": "WebSearchAgent",
+      "version": "1.0.0",
+      "description": "网络搜索的agent",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/agent/web_search"
+      },
+      "import": [
+        "easyops/model/aiops_service/llm_chat_agent_task_request",
+        "easyops/model/aiops_service/llm_chat_agent_task_response"
+      ],
+      "request": {
+        "type": "LlmChatAgentTaskRequest"
+      },
+      "response": {
+        "type": "LlmChatAgentTaskResponse",
+        "description": "接口返回,有两种格式,流式返回为delta, 非流式返回为message\n"
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "大模型聊天接口"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://ip:port/api/v1/llm/agent/web_search",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "linus",
+              "org": 1234
+            },
+            "body": "{\n    \"input\": \"你好啊\",\n    \"agentId\": \"general-helper\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"created\": 1703487403,\n  \"type\": \"TEXT\",\n  \"taskId\": \"8239375684858666781\",\n  \"message\": {\n    \"role\":\"assistant\",\n    \"content\":\"有什么可以帮到你\"\n  }\n}"
+          }
+        },
+        {
+          "description": {
+            "zh": "流式返回"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://ip:port/api/v1/llm/agent/web_search",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            },
+            "body": "{\n  \"input\": \"你好啊\",\n  \"agentId\": \"general-helper\",\n  \"stream\": true\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "text/event-stream"
+            },
+            "body": "data: {\"created\":1703487403,\"type\":\"TEXT\",\"taskId\":\"8239375684858666781\",\"delta\":{\"role\":\"assistant\",\"content\":\"有什么可以\"}}\\n\\n data: {\"created\":1703487404,\"type\":\"TEXT\",\"taskId\":\"8239375684858666781\",\"delta\":{\"role\":\"assistant\",\"content\":\"帮到你\"}}\\n\\n data: [DONE]"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_base.DeleteEmbedding",
+      "name": "DeleteEmbedding",
+      "version": "1.1.0",
+      "description": "删除向量数据库中的向量",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_base/embedding/delete"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "namespace",
+            "type": "string",
+            "description": "知识库id，同search中的命名空间(废弃)"
+          },
+          {
+            "name": "deleteKnowledge",
+            "type": "bool",
+            "description": "是否删除整个知识库(废弃)"
+          },
+          {
+            "name": "ids",
+            "type": "string[]",
+            "description": "文档所包含的id列表(废弃)"
+          },
+          {
+            "name": "instanceIds",
+            "type": "string[]",
+            "description": "文档的instanceId"
+          }
+        ]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "zh": "删除指定向量"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:port/api/v1/llm/aiops_base/embedding/delete",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 8888
+            },
+            "body": "{\n  \"instanceIds\": [\"6211a7e379579\"]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"data\": null\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_base.DeleteKnowledge",
+      "name": "DeleteKnowledge",
+      "version": "1.0.0",
+      "description": "删除知识库",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_base/knowledge/delete"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "string",
+            "description": "知识库的instanceId"
+          }
+        ]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "zh": "删除知识库"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:port/api/v1/llm/aiops_base/knowledge/delete",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 8888
+            },
+            "body": "{\n  \"instanceId\": \"6211a7e379579\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"data\": null\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_base.ImportDocumentEmbeddings",
+      "name": "ImportDocumentEmbeddings",
+      "version": "1.0.0",
+      "description": "导入document",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_base/import_doc"
+      },
+      "import": ["easyops/model/llm/llm_document"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "namespace",
+            "type": "string",
+            "description": "导入的namespace"
+          },
+          {
+            "name": "docId",
+            "type": "string",
+            "description": "doc id"
+          },
+          {
+            "name": "docList",
+            "type": "object[]",
+            "description": "导入的document",
+            "fields": [
+              {
+                "name": "pageContent",
+                "type": "string",
+                "description": "内容"
+              },
+              {
+                "name": "metadata",
+                "type": "map",
+                "description": "metadata"
+              }
+            ]
+          },
+          {
+            "name": "append",
+            "type": "bool",
+            "description": "是否append"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "docs",
+            "type": "LLMDocument[]",
+            "description": "解析的文档内容"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "直接导入document"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v1/llm/aiops_base/import_doc",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 8888
+            },
+            "body": "{\n  \"namespace\": \"fal_knowledge\",\n  \"docId\": \"doc1\",\n  “docList”: [\n    {\"pageContent\":\"1\", metadata:{}}\n  ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"data\": {\n    \"docs\": [\n      {\"id\":\"id1\", \"len\": 10},\n      {\"id\":\"id2\", \"len\": 11},\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_base.LLMChatServiceV1",
+      "name": "LLMChatServiceV1",
+      "version": "1.0.0",
+      "description": "大模型聊天接口",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_base/chat_service"
+      },
+      "import": [
+        "easyops/model/aiops_service/llm_chat_request",
+        "easyops/model/aiops_service/llm_chat_response"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "LLMChatRequest.*"
+          }
+        ],
+        "default": {
+          "LLMChatResponse.temperature": 0.1,
+          "LLMChatResponse.stream": false
+        }
+      },
+      "response": {
+        "type": "object",
+        "description": "接口返回,有两种格式,流式返回为sseDataList:[{\"role\":\"assistant\",\"content\":\"abc\"}],非流式返回为LLMChatResponse",
+        "fields": [
+          {
+            "ref": "LLMChatResponse.*"
+          },
+          {
+            "name": "sseDataList",
+            "type": "value[]",
+            "description": "流式数据列表"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "大模型聊天接口"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v1/llm/aiops_base/chat_service",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 8888
+            },
+            "body": "{\n    \"model\": \"glm-4\",\n    \"messages\": [\n      {\"role\": \"user\", \"content\": \"作为一名营销专家，请为我的产品创作一个吸引人的slogan\"},\n      {\"role\": \"assistant\", \"content\": \"当然，为了创作一个吸引人的slogan，请告诉我一些关于您产品的信息\"},\n      {\"role\": \"user\", \"content\": \"智谱AI开放平台\"},\n      {\"role\": \"assistant\", \"content\": \"智启未来，谱绘无限一智谱AI，让创新触手可及!\"},\n      {\"role\": \"user\", \"content\": \"创造一个更精准、吸引人的slogan\"}\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"created\": 1703487403,\n  \"id\": \"8239375684858666781\",\n  \"model\": \"glm-4\",\n  \"request_id\": \"8239375684858666781\",\n  \"choices\": [\n    {\n      \"finish_reason\": \"stop\",\n      \"index\": 0,\n      \"message\": {\n        \"content\": \"智绘蓝图，AI驱动 —— 智谱AI，让每一刻创新成为可能。\",\n        \"role\": \"assistant\"\n      }\n    }\n  ],\n  \"usage\": {\n    \"completion_tokens\": 217,\n    \"prompt_tokens\": 31,\n    \"total_tokens\": 248\n  }\n}"
+          }
+        },
+        {
+          "description": {
+            "zh": "调用智谱glm-4模型，流式返回"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://ip:port/api/v1/llm/aiops_service/chat_service",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            },
+            "body": "{\n  \"message\": [\n    {\"role\": \"user\", \"content\": \"1+1等于多少\"}\n  ],\n  \"stream\": true,\n  \"model\": \"glm-4\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "text/event-stream"
+            },
+            "body": "data:{\"role\":\"assistant\", \"content\":\"等于\"}\\n\\n data:{\"role\":\"assistant\", \"content\":\"2\"}\\n\\n"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_base.OpenaiChat",
+      "name": "OpenaiChat",
+      "version": "1.0.0",
+      "description": "通用大模型聊天接口, 直接转发返回大模型请求",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/v1/chat/completions"
+      },
+      "import": [
+        "easyops/model/aiops_service/llm_chat_request",
+        "easyops/model/aiops_service/llm_chat_response"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "LLMChatRequest.*"
+          }
+        ],
+        "default": {
+          "LLMChatResponse.temperature": 0.1,
+          "LLMChatResponse.stream": false
+        }
+      },
+      "response": {
+        "type": "object",
+        "description": "接口返回,有两种格式,流式返回为sseDataList:[{\"role\":\"assistant\",\"content\":\"abc\"}],非流式返回为LLMChatResponse",
+        "wrapper": false,
+        "fields": [
+          {
+            "ref": "LLMChatResponse.*"
+          },
+          {
+            "name": "sseDataList",
+            "type": "value[]",
+            "description": "流式数据列表"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "调用智谱glm-4模型，流式返回"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://ip:port/api/v1/llm/aiops_base/chat_service_proxy",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            },
+            "body": "{\n  \"message\": [\n    {\"role\": \"user\", \"content\": \"1+1等于多少\"}\n  ],\n  \"stream\": true,\n  \"model\": \"glm-4\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "text/event-stream"
+            },
+            "body": "data:{\"role\":\"assistant\", \"content\":\"等于\"}\\n\\n data:{\"role\":\"assistant\", \"content\":\"2\"}\\n\\n"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_base.SearchEmbedding",
+      "name": "SearchEmbedding",
+      "version": "1.0.0",
+      "description": "向向量数据库做相似查询",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_base/embedding/search"
+      },
+      "import": ["easyops/model/llm/llm_document"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "namespace",
+            "type": "string",
+            "description": "命名空间"
+          },
+          {
+            "name": "query",
+            "type": "string",
+            "description": "查询的句子"
+          },
+          {
+            "name": "filter",
+            "type": "map",
+            "description": "过滤条件"
+          },
+          {
+            "name": "topk",
+            "type": "int",
+            "description": "返回topk条记录"
+          },
+          {
+            "name": "uniqWithContent",
+            "type": "bool",
+            "description": "是否按文档内容去重"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "matchedDocs",
+            "type": "LLMDocument[]",
+            "description": "相似查询结果"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "文档向量搜索"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v1/llm/aiops_service/embedding/search_doc",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "linus",
+              "org": 1234
+            },
+            "body": "{\n    \"namespace\": \"easyops_cmdb123\",\n    \"query\": \"查询负责人为aaa的主机\",\n    \"uniqWithContent\":true,\n    \"topk\": 2\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"data\": {\n    \"matchedDocs\": [\n    {\"pageContent\":\"host:主机\",\"metadata\":{\"id\":\"HOST\",\"name\":\"主机\"}},\n    {\"pageContent\":\"app:应用\",\"metadata\":{\"id\":\"APP\",\"name\":\"应用\"}},\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_base.UpsertDocument",
+      "name": "UpsertDocument",
+      "version": "1.0.0",
+      "description": "更新或者插入文档",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_base/upsert_doc"
+      },
+      "import": ["easyops/model/llm/llm_document"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "namespace",
+            "type": "string",
+            "description": "导入的namespace"
+          },
+          {
+            "name": "filter",
+            "type": "map",
+            "description": "过滤条件"
+          },
+          {
+            "name": "docList",
+            "type": "object[]",
+            "description": "导入的document",
+            "fields": [
+              {
+                "name": "pageContent",
+                "type": "string",
+                "description": "内容"
+              },
+              {
+                "name": "metadata",
+                "type": "map",
+                "description": "metadata"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "docs",
+            "type": "LLMDocument[]",
+            "description": "解析的文档内容"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "直接导入document"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v1/llm/aiops_base/upsert_doc",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 8888
+            },
+            "body": "{\n  \"namespace\": \"fal_knowledge\",\n  \"filter\":{\"docId\":\"doc1\"},\n  “docList”: [\n    {\"pageContent\":\"1\", metadata:{}}\n  ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"data\": {\n    \"docs\": [\n      {\"id\":\"id1\", \"len\": 10},\n      {\"id\":\"id2\", \"len\": 11},\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_base.UpsertWithDocId",
+      "name": "UpsertWithDocId",
+      "version": "1.0.0",
+      "description": "根据DocId更新或者插入文档",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_base/upsert_with_doc_id"
+      },
+      "import": ["easyops/model/llm/llm_document"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "namespace",
+            "type": "string",
+            "description": "导入的namespace"
+          },
+          {
+            "name": "docId",
+            "type": "string",
+            "description": "文档id"
+          },
+          {
+            "name": "docList",
+            "type": "object[]",
+            "description": "导入的document",
+            "fields": [
+              {
+                "name": "pageContent",
+                "type": "string",
+                "description": "内容"
+              },
+              {
+                "name": "metadata",
+                "type": "map",
+                "description": "metadata"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "docs",
+            "type": "LLMDocument[]",
+            "description": "解析的文档内容"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "直接导入document"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v1/llm/aiops_base/upsert_with_doc_id_",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 8888
+            },
+            "body": "{\n  \"namespace\": \"fal_knowledge\",\n  \"docId\":\"doc1\",\n  “docList”: [\n    {\"pageContent\":\"1\", metadata:{}}\n  ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"data\": {\n    \"docs\": [\n      {\"id\":\"id1\", \"len\": 10},\n      {\"id\":\"id2\", \"len\": 11},\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_memory.CreateMemoryEnv",
+      "name": "CreateMemoryEnv",
+      "version": "1.0.0",
+      "description": "创建大模型记忆的调试环境",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/memory/env/create"
+      },
+      "import": ["easyops/model/llm/llm_memory_env"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "LLMMemoryEnv.*"
+          }
+        ]
+      },
+      "response": {
+        "type": "LLMMemoryEnv"
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "创建大模型记忆的调试环境"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://localhost:8320/api/v1/llm/aiops_service/memory/env/create",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 1234
+            },
+            "body": "{\n    \"name\": \"测试1环境\",\n    \"remark\": \"Google搜索专用\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"data\": {\n    \"_row_id\": \"xxxxxx\"\n    \"name\": \"测试1环境\",\n    \"remark\": \"Google搜索专用\",\n    \"\"\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_memory.DeleteLlmMemoryWithConversationId",
+      "name": "DeleteLlmMemoryWithConversationId",
+      "version": "1.0.0",
+      "description": "通过会话id删除大模型记忆",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/llm/aiops_service/memory/delete/:conversationId"
+      },
+      "import": ["easyops/model/llm/llm_memory"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "conversationId",
+            "type": "string",
+            "description": "会话id"
+          }
+        ]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "zh": "删除会话中的记忆"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8320/api/v1/llm/aiops_service/memory/delete/a1427b34-7709-11ef-837e-06f1e0835fb3",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 1234
+            },
+            "body": "{ }"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"data\": {\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_memory.DeleteLlmMemoryWithConversationIdAndKey",
+      "name": "DeleteLlmMemoryWithConversationIdAndKey",
+      "version": "1.0.0",
+      "description": "通过会话id和记忆key删除大模型记忆",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/memory/delete/:conversationId/key"
+      },
+      "import": ["easyops/model/llm/llm_memory"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "conversationId",
+            "type": "string",
+            "description": "会话id"
+          },
+          {
+            "name": "memKey",
+            "type": "string",
+            "description": "记忆key"
+          }
+        ]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "zh": "删除会话中单个记忆信息"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8320/api/v1/llm/aiops_service/memory/delete/a1427b34-7709-11ef-837e-06f1e0835fb3/key",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 1234
+            },
+            "body": "{\n    \"memKey\": \"birthday\",\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"data\": { \n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_memory.DeleteMemoryEnv",
+      "name": "DeleteMemoryEnv",
+      "version": "1.0.0",
+      "description": "删除大模型记忆的调试环境",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/v1/llm/aiops_service/memory/env/:_row_id"
+      },
+      "import": ["easyops/model/llm/llm_memory_env"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "LLMMemoryEnv._row_id"
+          }
+        ]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "zh": "删除大模型记忆的调试环境"
+          },
+          "request": {
+            "method": "DELETE",
+            "uri": "http://localhost:8320/api/v1/llm/aiops_service/memory/env/5daa2e9a6d6ae",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 1234
+            },
+            "body": "{}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"data\": {\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_memory.GetLlmMemoryWithConversationId",
+      "name": "GetLlmMemoryWithConversationId",
+      "version": "1.0.0",
+      "description": "通过会话id获取大模型记忆",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/memory/get_with_conversation"
+      },
+      "import": ["easyops/model/llm/llm_memory"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "conversationId",
+            "type": "string",
+            "description": "会话id"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "memories",
+            "type": "LLMMemory[]",
+            "description": "大模型记忆"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "查询会话中的记忆"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8320/api/v1/llm/aiops_service/memory/get_with_conversation",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 1234
+            },
+            "body": "{\n    \"conversationId\": \"a1427b34-7709-11ef-837e-06f1e0835fb3\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"data\": {\n    \"memories\": [\n    {\"conversationId\":\"a1427b34-7709-11ef-837e-06f1e0835fb3\",\"memKey\":\"birthday\",\"description\":\"小明的生日\",\"memValue\":\"1999-01-25\",\"mtime\":\"1999-01-25\"}\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_memory.GetLlmMemoryWithConversationIdAndKey",
+      "name": "GetLlmMemoryWithConversationIdAndKey",
+      "version": "1.0.0",
+      "description": "通过会话id和记忆key获取大模型记忆",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/memory/get_with_conversation_and_key"
+      },
+      "import": ["easyops/model/llm/llm_memory"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "conversationId",
+            "type": "string",
+            "description": "会话id"
+          },
+          {
+            "name": "memKey",
+            "type": "string",
+            "description": "记忆key"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "memory",
+            "type": "LLMMemory",
+            "description": "大模型记忆"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "查询会话中单个记忆信息"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8320/api/v1/llm/aiops_service/memory/get_with_conversation_and_key",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 1234
+            },
+            "body": "{\n    \"conversationId\": \"a1427b34-7709-11ef-837e-06f1e0835fb3\",\n    \"memKey\": \"birthday\",\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"data\": {\n    \"memory\":{\n        \"conversationId\":\"a1427b34-7709-11ef-837e-06f1e0835fb3\",\"memKey\":\"birthday\",\"description\":\"小明的生日\",\"memValue\":\"1999-01-25\",\"mtime\":\"1999-01-25\"\n    }\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_memory.SearchMemoryEnv",
+      "name": "SearchMemoryEnv",
+      "version": "1.0.0",
+      "description": "查询大模型记忆的调试环境",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/memory/env/search"
+      },
+      "import": ["easyops/model/llm/llm_memory_env"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "limit",
+            "type": "int",
+            "description": "返回限制的数量"
+          },
+          {
+            "name": "nextToken",
+            "type": "string",
+            "description": "上一页，或者下一页的token"
+          },
+          {
+            "name": "query",
+            "type": "string",
+            "description": "查询关键字，使用字符串模糊匹配"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "LLMMemoryEnv[]",
+            "description": "环境 列表"
+          },
+          {
+            "name": "nextToken",
+            "type": "string",
+            "description": "本次调用返回的查询凭证（Token）。当该返回值为空时，表示该页为末页，不再有后续页。"
+          },
+          {
+            "name": "previousToken",
+            "type": "string",
+            "description": "上一页token"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "搜索大模型记忆的调试环境"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8320/api/v1/llm/aiops_service/memory/env/search",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 1234
+            },
+            "body": "{\n    \"limit\": 3000,\n    \"query\": \"google\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"data\": {\n      \"list\": [\n        {\"_row_id\": \"xxxxxxx\", \"name\": \"测试2环境\", \"remark\": \"Google搜索专用\"}\n      ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_memory.UpdateMemoryEnv",
+      "name": "UpdateMemoryEnv",
+      "version": "1.0.0",
+      "description": "更新大模型记忆的调试环境",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/memory/env/:_row_id/update"
+      },
+      "import": ["easyops/model/llm/llm_memory_env"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "LLMMemoryEnv.*"
+          }
+        ]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "zh": "更新大模型记忆的调试环境"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8320/api/v1/llm/aiops_service/memory/env/5daa2e9a6d6ae/update",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 1234
+            },
+            "body": "{\n    \"name\": \"测试2环境\",\n    \"remark\": \"Google搜索专用\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"data\": {\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_memory.UpsertLlmMemoryWithConversationIdAndKey",
+      "name": "UpsertLlmMemoryWithConversationIdAndKey",
+      "version": "1.0.0",
+      "description": "通过会话id和记忆key导入大模型记忆",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/memory/upsert/:conversationId"
+      },
+      "import": ["easyops/model/llm/llm_memory"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "memories",
+            "type": "LLMMemory[]",
+            "description": "需要更新或插入的记忆"
+          },
+          {
+            "name": "conversationId",
+            "type": "string",
+            "description": "会话id"
+          }
+        ]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "zh": "查询会话中单个记忆信息"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8320/api/v1/llm/aiops_service/memory/upsert/a1427b34-7709-11ef-837e-06f1e0835fb3",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 1234
+            },
+            "body": "{\n    \"memories\": [\n      {\"conversationId\":\"a1427b34-7709-11ef-837e-06f1e0835fb3\",\"memKey\":\"birthday\",\"description\":\"小明的生日\",\"memValue\":\"1999-01-25\",\"mtime\":\"1999-01-25\"}\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"data\": {\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_prompt.LLMDeletePrompt",
+      "name": "LLMDeletePrompt",
+      "version": "1.0.0",
+      "description": "删除提示词",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/prompt/delete"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "string",
+            "description": "instanceId"
+          },
+          {
+            "name": "agentId",
+            "type": "string",
+            "description": "agent的id"
+          },
+          {
+            "name": "key",
+            "type": "string",
+            "description": "对应的key"
+          },
+          {
+            "name": "modelId",
+            "type": "string",
+            "description": "对应模型的id"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "nums",
+            "type": "int",
+            "description": "删除的提示词的数量"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "删除提示词"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://ip:port/api/v1/llm/aiops_service/prompt/delete",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "user",
+              "org": 1234
+            },
+            "body": "{\n  \"instanceId\": \"618611d9dc7a1\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"nums\": 1\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_prompt.LLMGetPrompt",
+      "name": "LLMGetPrompt",
+      "version": "1.0.0",
+      "description": "获取提示词",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/prompt/get"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "agentId",
+            "type": "string",
+            "description": "agent的id"
+          },
+          {
+            "name": "key",
+            "type": "string",
+            "description": "对应的key"
+          },
+          {
+            "name": "modelId",
+            "type": "string",
+            "description": "对应模型的id"
+          }
+        ],
+        "required": ["agentId", "key"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "prompt",
+            "type": "string",
+            "description": "获取到的提示词"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "获取提示词"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://ip:port/api/v1/llm/aiops_service/prompt/get",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "user",
+              "org": 1234
+            },
+            "body": "{\n  \"agentId\": \"agentId\",\n  \"key\": \"key\",\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"prompt\": \"你是xxx\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_prompt.LLMUpsertPrompt",
+      "name": "LLMUpsertPrompt",
+      "version": "1.0.0",
+      "description": "插入或更新提示词",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/prompt/upsert"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "agentId",
+            "type": "string",
+            "description": "agent的id"
+          },
+          {
+            "name": "key",
+            "type": "string",
+            "description": "对应的key"
+          },
+          {
+            "name": "modelId",
+            "type": "string",
+            "description": "对应模型的id"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "描述"
+          },
+          {
+            "name": "prompt",
+            "type": "string",
+            "description": "对应的提示词"
+          }
+        ],
+        "required": ["agentId", "key", "prompt"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "string",
+            "description": "插入或更新的实例的instanceId"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "插入提示词"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://ip:port/api/v1/llm/aiops_service/prompt/upsert",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "user",
+              "org": 1234
+            },
+            "body": "{\n  \"agentId\": \"agentId\",\n  \"key\": \"key\",\n  \"prompt\": \"你是xxx\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"instanceId\": \"618611d9dc7a1\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_rag.AddSynonymsWords",
+      "name": "AddSynonymsWords",
+      "version": "1.0.0",
+      "description": "增加同义词",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_rag/add_synonyms_words"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "url",
+            "type": "string",
+            "description": "url"
+          },
+          {
+            "name": "synonyms",
+            "type": "object[]",
+            "description": "同义词列表",
+            "fields": [
+              {
+                "name": "words",
+                "type": "string[]",
+                "description": "同义词"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "words",
+            "type": "int",
+            "description": "导入的同义词数量"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "导入同义词"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v1/llm/aiops_service/add_synonyms_words",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 8888
+            },
+            "body": "{\n  \"url\": \"api/gateway/object_store.object_store.GetObject/api/v1/objectStore/bucket/ai-center/object/abc.txt\",\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"words\": 10\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_rag.ImportConfluenceEmbedding",
+      "name": "ImportConfluenceEmbedding",
+      "version": "1.0.0",
+      "description": "导入Confluence向量",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_rag/import_confluence"
+      },
+      "import": ["easyops/model/llm/llm_document"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "namespace",
+            "type": "string",
+            "description": "知识库id/namespace"
+          },
+          {
+            "name": "docId",
+            "type": "string",
+            "description": "文档的id,非instanceId"
+          },
+          {
+            "name": "append",
+            "type": "bool",
+            "description": "是否append"
+          },
+          {
+            "name": "confluenceMeta",
+            "type": "object",
+            "description": "confluence配置信息",
+            "fields": [
+              {
+                "name": "url",
+                "type": "string",
+                "description": "confluence终端，如：http://tapd.easyops.local"
+              },
+              {
+                "name": "token",
+                "type": "string",
+                "description": "认证token"
+              },
+              {
+                "name": "username",
+                "type": "string",
+                "description": "username"
+              },
+              {
+                "name": "apiKey",
+                "type": "string",
+                "description": "api_key/password"
+              },
+              {
+                "name": "spaceKey",
+                "type": "string",
+                "description": "confluence space key"
+              },
+              {
+                "name": "maxPages",
+                "type": "int",
+                "description": "最大page条目"
+              },
+              {
+                "name": "includeAttachments",
+                "type": "bool",
+                "description": "是否包含附件"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "docs",
+            "type": "LLMDocument[]",
+            "description": "解析的文档内容"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "导入confluence文档"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v1/llm/aiops_service/import_confluence",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 8888
+            },
+            "body": "{\n  \"namespace\": \"fal_knowledge\",\n  \"docId\": \"doc1\",\n  \"confluence_meta\": {\n    \"url\": \"http://tapd.easyops.local\",\n    \"username\": \"monitor\",\n    \"apiKey\": \"password\",\n    \"spaceKey\": \"platform\",\n    \"maxPages\": 10,\n    \"includeAttachments\": true\n  }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"data\": {\n    \"docs\": [\n      {\"id\":\"id1\", \"len\": 10},\n      {\"id\":\"id2\", \"len\": 11},\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_rag.ImportURLEmbedding",
+      "name": "ImportURLEmbedding",
+      "version": "1.0.0",
+      "description": "向向量数据库中导入知识库文档",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_rag/import_url"
+      },
+      "import": ["easyops/model/llm/llm_document"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "namespace",
+            "type": "string",
+            "description": "知识库id，同search中的命名空间"
+          },
+          {
+            "name": "docId",
+            "type": "string",
+            "description": "文档id"
+          },
+          {
+            "name": "url",
+            "type": "string",
+            "description": "文档链接"
+          },
+          {
+            "name": "openapiUrl",
+            "type": "string",
+            "description": "优先使用openapiUrl，上面的url目前不生效"
+          },
+          {
+            "name": "docType",
+            "type": "string",
+            "description": "文档类型，为file或者url"
+          },
+          {
+            "name": "append",
+            "type": "bool",
+            "description": "是否为append"
+          },
+          {
+            "name": "contentType",
+            "type": "string",
+            "description": "文档内容类型,QA:问答对,document:普通文档"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "docs",
+            "type": "LLMDocument[]",
+            "description": "解析的文档内容"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "向量化文档"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v1/llm/aiops_service/embedding/search_doc",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "linus",
+              "org": 1234
+            },
+            "body": "{\n  \"knowledgeId\": \"knowledge_id\",\n  \"docId\": \"document_id\",\n  \"append\": false,\n  \"contentType\":\"document\",\n  \"url\": \"http://sit.easyops.local/next/api/gateway/object_store.object_store.GetObject/api/v1/objectStore/bucket/ai-center/object/long_text_2024-03-15-10-21-151711596669017324400.txt\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"data\": {\n    \"docs\": [\n      {\"pageContent\":\"host:主机\"},\n      {\"pageContent\":\"app:应用\"},\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_rag.UpsertKnowledgeDocument",
+      "name": "UpsertKnowledgeDocument",
+      "version": "1.0.0",
+      "description": "根据knowledge instanceId导入数据到向量库",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_rag/upsert_knowledge_document"
+      },
+      "import": ["easyops/model/llm/llm_document"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "string",
+            "description": "knowledge instanceId"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "docs",
+            "type": "int",
+            "description": "插入或更新的文档数量"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "导入向量库"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v1/llm/aiops_service/upsert_knowledge_document",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 8888
+            },
+            "body": "{\n  \"instanceId\": \"abc\",\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"docs\": 10\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_service.LLMEmbeddingDeleteDocs",
+      "name": "LLMEmbeddingDeleteDocs",
+      "version": "1.0.0",
+      "description": "向量数据库中删除知识库中的文档",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/delete_docs"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "knowledgeId",
+            "type": "string",
+            "description": "知识库id，同search中的命名空间"
+          },
+          {
+            "name": "deleteKnowledge",
+            "type": "bool",
+            "description": "是否删除整个知识库"
+          },
+          {
+            "name": "ids",
+            "type": "string[]",
+            "description": "文档所包含的id列表"
+          }
+        ]
+      },
+      "response": {
+        "type": "map"
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "向量化文档"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v1/llm/aiops_service/embedding/delete_docs",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "linus",
+              "org": 1234
+            },
+            "body": "{\n  \"knowledgeId\": \"knowledge_id\",\n  \"deleteKnowledge\": false,\n  \"ids\": [\"aaa\",\"bbb\"]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"data\": {\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_service.LLMEmbeddingImportUrl",
+      "name": "LLMEmbeddingImportUrl",
+      "version": "1.0.0",
+      "description": "向向量数据库中导入知识库文档",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/import_url"
+      },
+      "import": ["easyops/model/llm/llm_document"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "knowledgeId",
+            "type": "string",
+            "description": "知识库id，同search中的命名空间"
+          },
+          {
+            "name": "docId",
+            "type": "string",
+            "description": "文档id"
+          },
+          {
+            "name": "url",
+            "type": "string",
+            "description": "文档链接"
+          },
+          {
+            "name": "openapiUrl",
+            "type": "string",
+            "description": "优先使用openapiUrl，上面的url目前不生效"
+          },
+          {
+            "name": "docType",
+            "type": "string",
+            "description": "文档类型，为file或者url"
+          },
+          {
+            "name": "append",
+            "type": "bool",
+            "description": "是否为append"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "docs",
+            "type": "LLMDocument[]",
+            "description": "解析的文档内容"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "向量化文档"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v1/llm/aiops_service/embedding/search_doc",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "linus",
+              "org": 1234
+            },
+            "body": "{\n  \"knowledgeId\": \"knowledge_id\",\n  \"docId\": \"document_id\",\n  \"append\": false,\n  \"url\": \"http://sit.easyops.local/next/api/gateway/object_store.object_store.GetObject/api/v1/objectStore/bucket/ai-center/object/long_text_2024-03-15-10-21-151711596669017324400.txt\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"data\": {\n    \"docs\": [\n      {\"pageContent\":\"host:主机\"},\n      {\"pageContent\":\"app:应用\"},\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_service.LLMEmbeddingSearch",
+      "name": "LLMEmbeddingSearch",
+      "version": "1.0.0",
+      "description": "从向量数据库查询匹配的文档",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/embedding/search_doc"
+      },
+      "import": ["easyops/model/llm/llm_document"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "namespace",
+            "type": "string",
+            "description": "命名空间"
+          },
+          {
+            "name": "query",
+            "type": "string",
+            "description": "查询的句子"
+          },
+          {
+            "name": "filter",
+            "type": "map",
+            "description": "过滤条件"
+          },
+          {
+            "name": "topk",
+            "type": "int",
+            "description": "返回topk条记录"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "matchedDocs",
+            "type": "LLMDocument[]",
+            "description": "相似查询结果"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "文档向量搜索"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v1/llm/aiops_service/embedding/search_doc",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "linus",
+              "org": 1234
+            },
+            "body": "{\n    \"namespace\": \"easyops_cmdb123\",\n    \"query\": \"查询负责人为aaa的主机\",\n    \"topk\": 2\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"data\": {\n    \"matchedDocs\": [\n    {\"pageContent\":\"host:主机\",\"metadata\":{\"id\":\"HOST\",\"name\":\"主机\"}},\n    {\"pageContent\":\"app:应用\",\"metadata\":{\"id\":\"APP\",\"name\":\"应用\"}},\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_service.LLMExecTools",
+      "name": "LLMExecTools",
+      "version": "1.0.0",
+      "description": "大模型执行工具",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/tools/exec"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "toolId",
+            "type": "string",
+            "description": "工具id"
+          },
+          {
+            "name": "parameters",
+            "type": "map",
+            "description": "输入的参数"
+          },
+          {
+            "name": "conversationId",
+            "type": "string",
+            "description": "当前任务上下文的id"
+          },
+          {
+            "name": "agentId",
+            "type": "string",
+            "description": "在多agent场景，指定使用哪个agent"
+          },
+          {
+            "name": "callId",
+            "type": "string",
+            "description": "执行工具的过程id"
+          }
+        ],
+        "required": ["toolId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "data",
+            "type": "value",
+            "description": "执行工具的结果"
+          },
+          {
+            "name": "callId",
+            "type": "string",
+            "description": "执行工具的过程id"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "执行大模型工具tools"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:port/api/v1/llm/aiops_service/tools/exec",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "user",
+              "org": 1234
+            },
+            "body": "{\n    \"conversationId\": \"xxxxx\",\n    \"toolId\": \"search-weather\",\n    \"parameters\": {\n      \"city\": \"深圳\"\n    }\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "body": "{\n  \"data\": {\n    \"xxx\":\"xxx\"\n  }\n  \"callId\": \"xxxx\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_service.ExportAgents",
+      "name": "ExportAgents",
+      "version": "1.0.0",
+      "description": "导出agent",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/agents/export"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "agents",
+            "type": "string[]",
+            "description": "需要导出的agent id"
+          }
+        ],
+        "required": ["agents"]
+      },
+      "response": {
+        "type": "file"
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "导出agent"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:port/api/v1/llm/aiops_service/agents/export",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "user",
+              "org": 1234
+            },
+            "body": "{\n  \"agents\": [\"agent1\", \"agent2\"]\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "body": "二进制文件流"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_service.ExportConversation",
+      "name": "ExportConversation",
+      "version": "1.0.0",
+      "description": "导出会话历史",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/conversation/export"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "start_time",
+            "type": "int64",
+            "description": "开始时间"
+          },
+          {
+            "name": "end_time",
+            "type": "int64",
+            "description": "结束时间"
+          },
+          {
+            "name": "agent_id",
+            "type": "string",
+            "description": "指定智能体"
+          },
+          {
+            "name": "robot_id",
+            "type": "string",
+            "description": "指定助手"
+          },
+          {
+            "name": "is_like",
+            "type": "bool",
+            "description": "is_like"
+          },
+          {
+            "name": "is_solve",
+            "type": "bool",
+            "description": "is_solve"
+          },
+          {
+            "name": "user_name",
+            "type": "string",
+            "description": "按用户搜索"
+          }
+        ],
+        "required": ["start_time", "end_time"]
+      },
+      "response": {
+        "type": "file"
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "导出会话历史"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:port/api/v1/llm/aiops_service/conversation/export",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "user",
+              "org": 1234
+            },
+            "body": "{\n  \"start_time\": 1725941620274,\n  \"end_time\": 1725941627274\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "body": "二进制文件流"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_service.ExportRobots",
+      "name": "ExportRobots",
+      "version": "1.0.0",
+      "description": "导出robots",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/robots/export"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "robots",
+            "type": "string[]",
+            "description": "需要导出的robot id"
+          }
+        ],
+        "required": ["robots"]
+      },
+      "response": {
+        "type": "file"
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "导出robots"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:port/api/v1/llm/aiops_service/robots/export",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "user",
+              "org": 1234
+            },
+            "body": "{\n  \"robots\": [\"robot1\", \"robot2\"]\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "body": "二进制文件流"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_service.ExportTools",
+      "name": "ExportTools",
+      "version": "1.0.0",
+      "description": "导出工具",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/tools/export"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "tools",
+            "type": "string[]",
+            "description": "需要导出的tool id"
+          }
+        ],
+        "required": ["tools"]
+      },
+      "response": {
+        "type": "file"
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "导出工具"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:port/api/v1/llm/aiops_service/tools/export",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "user",
+              "org": 1234
+            },
+            "body": "{\n  \"tools\": [\"tool1\", \"tool2\"]\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "body": "二进制文件流"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_service.ImportAgents",
+      "name": "ImportAgents",
+      "version": "1.0.0",
+      "description": "导入agent",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/agents/import"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "agents",
+            "type": "file",
+            "description": "需要导入的文件"
+          },
+          {
+            "name": "update",
+            "type": "bool",
+            "description": "是否覆盖原来的"
+          }
+        ],
+        "required": ["agents"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "agents",
+            "type": "int",
+            "description": "导入成功的agent数量"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "导入agent"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:port/api/v1/llm/aiops_service/agents/import",
+            "headers": {
+              "Content-Type": "multipart/form-data",
+              "user": "user",
+              "org": 1234
+            },
+            "body": "\"file\": 导入文件流"
+          },
+          "response": {
+            "status_code": 200,
+            "body": "{\n  \"agents\": 1\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_service.ImportConfluenceEmbedding",
+      "name": "ImportConfluenceEmbedding",
+      "version": "1.0.0",
+      "description": "导入Confluence向量",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/import_confluence"
+      },
+      "import": ["easyops/model/llm/llm_document"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "namespace",
+            "type": "string",
+            "description": "知识库id/namespace"
+          },
+          {
+            "name": "doc_id",
+            "type": "string",
+            "description": "文档的id,非instanceId"
+          },
+          {
+            "name": "append",
+            "type": "bool",
+            "description": "是否append"
+          },
+          {
+            "name": "confluence_meta",
+            "type": "object",
+            "description": "confluence配置信息",
+            "fields": [
+              {
+                "name": "url",
+                "type": "string",
+                "description": "confluence终端，如：http://tapd.easyops.local"
+              },
+              {
+                "name": "token",
+                "type": "string",
+                "description": "认证token"
+              },
+              {
+                "name": "username",
+                "type": "string",
+                "description": "username"
+              },
+              {
+                "name": "api_key",
+                "type": "string",
+                "description": "api_key/password"
+              },
+              {
+                "name": "space_key",
+                "type": "string",
+                "description": "confluence space key"
+              },
+              {
+                "name": "max_pages",
+                "type": "int",
+                "description": "最大page条目"
+              },
+              {
+                "name": "include_attachments",
+                "type": "bool",
+                "description": "是否包含附件"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "docs",
+            "type": "LLMDocument[]",
+            "description": "解析的文档内容"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "导入confluence文档"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v1/llm/aiops_service/import_confluence",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 8888
+            },
+            "body": "{\n  \"namespace\": \"fal_knowledge\",\n  \"doc_id\": \"doc1\",\n  \"confluence_meta\": {\n    \"url\": \"http://tapd.easyops.local\",\n    \"username\": \"monitor\",\n    \"api_key\": \"password\",\n    \"space_key\": \"platform\",\n    \"max_pages\": 10,\n    \"include_attachments\": true\n  }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"data\": {\n    \"docs\": [\n      {\"id\":\"id1\", \"len\": 10},\n      {\"id\":\"id2\", \"len\": 11},\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_service.ImportDocumentEmbedding",
+      "name": "ImportDocumentEmbedding",
+      "version": "1.0.2",
+      "description": "导入document",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/import_doc"
+      },
+      "import": ["easyops/model/llm/llm_document"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "namespace",
+            "type": "string",
+            "description": "导入的namespace"
+          },
+          {
+            "name": "doc_id",
+            "type": "string",
+            "description": "doc id"
+          },
+          {
+            "name": "docList",
+            "type": "object[]",
+            "description": "导入的document",
+            "fields": [
+              {
+                "name": "page_content",
+                "type": "string",
+                "description": "内容"
+              },
+              {
+                "name": "metadata",
+                "type": "map",
+                "description": "metadata"
+              }
+            ]
+          },
+          {
+            "name": "append",
+            "type": "bool",
+            "description": "是否append"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "docs",
+            "type": "LLMDocument[]",
+            "description": "解析的文档内容"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "直接导入document"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v1/llm/aiops_service/import_doc",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 8888
+            },
+            "body": "{\n  \"namespace\": \"fal_knowledge\",\n  \"doc_id\": \"doc1\",\n  “docList”: [\n    {\"page_content\":\"1\", metadata:{}}\n  ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"data\": {\n    \"docs\": [\n      {\"id\":\"id1\", \"len\": 10},\n      {\"id\":\"id2\", \"len\": 11},\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_service.ImportRobots",
+      "name": "ImportRobots",
+      "version": "1.0.0",
+      "description": "导入robots",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/robots/import"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "robots",
+            "type": "file",
+            "description": "需要导入的文件"
+          },
+          {
+            "name": "update",
+            "type": "bool",
+            "description": "是否覆盖原来的"
+          }
+        ],
+        "required": ["robots"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "robots",
+            "type": "int",
+            "description": "导入成功的robot数量"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "导入robot"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:port/api/v1/llm/aiops_service/robots/import",
+            "headers": {
+              "Content-Type": "multipart/form-data",
+              "user": "user",
+              "org": 1234
+            },
+            "body": "\"robots\": 导入文件流 \"update\": true"
+          },
+          "response": {
+            "status_code": 200,
+            "body": "{\n  \"robots\": 1\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_service.ImportTools",
+      "name": "ImportTools",
+      "version": "1.0.0",
+      "description": "导入tools",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/tools/import"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "tools",
+            "type": "file",
+            "description": "需要导入的文件"
+          },
+          {
+            "name": "update",
+            "type": "bool",
+            "description": "是否覆盖原来的"
+          }
+        ],
+        "required": ["tools"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "tools",
+            "type": "int",
+            "description": "导入成功的agent数量"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "导入tools"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:port/api/v1/llm/aiops_service/tools/import",
+            "headers": {
+              "Content-Type": "multipart/form-data",
+              "user": "user",
+              "org": 1234
+            },
+            "body": "\"tools\": 导入文件流 \"update\": true"
+          },
+          "response": {
+            "status_code": 200,
+            "body": "{\n  \"tools\": 1\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_service.LLMAgentChat",
+      "name": "LLMAgentChat",
+      "version": "1.2.0",
+      "description": "大模型agent对话，不会记录会话历史",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/agent/chat"
+      },
+      "import": [
+        "easyops/model/aiops_service/llm_chat_message",
+        "easyops/model/aiops_service/llm_chat_agent_task_response"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "inputTemplate",
+            "type": "string",
+            "description": "任务需求, 支持模板引擎"
+          },
+          {
+            "name": "inputVariables",
+            "type": "map",
+            "description": "模板所需要的数据"
+          },
+          {
+            "name": "systemTemplate",
+            "type": "string",
+            "description": "system角色的提示词模板"
+          },
+          {
+            "name": "systemVariables",
+            "type": "map",
+            "description": "system模板所需要的数据"
+          },
+          {
+            "name": "config",
+            "type": "map",
+            "description": "任务配置"
+          },
+          {
+            "name": "conversationId",
+            "type": "string",
+            "description": "当前任务上下文的id"
+          },
+          {
+            "name": "agentId",
+            "type": "string",
+            "description": "在多agent场景，指定使用哪个agent"
+          },
+          {
+            "name": "taskId",
+            "type": "string",
+            "description": "当前任务Id"
+          },
+          {
+            "name": "formData",
+            "type": "value",
+            "description": "已经提取的表单数据"
+          },
+          {
+            "name": "outputType",
+            "type": "string",
+            "description": "输出格式，默认json"
+          },
+          {
+            "name": "stream",
+            "type": "bool",
+            "description": "是否流式返回"
+          },
+          {
+            "name": "historyMessages",
+            "type": "LLMChatMessage[]",
+            "description": "历史会话消息，适用支持多轮会话的agent"
+          },
+          {
+            "name": "images",
+            "type": "string[]",
+            "description": "图片的url，支持多个图片"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "description": "接口返回,有两种格式,流式返回为delta, 非流式返回为message\n",
+        "fields": [
+          {
+            "name": "data",
+            "type": "value",
+            "description": "提取返回的数据"
+          },
+          {
+            "name": "debug_resp",
+            "type": "string",
+            "description": "调试时大模型返回值"
+          },
+          {
+            "name": "errorOutput",
+            "type": "string",
+            "description": "如果解析不到正确的数据格式，则将大模型返回的数据塞到这里"
+          },
+          {
+            "ref": "LlmChatAgentTaskResponse.*"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "大模型聊天接口"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v1/llm/aiops_service/agent/chat",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "linus",
+              "org": 1234
+            },
+            "body": "{\n    \"inputTemplate\": \"你好啊\",\n    \"agentId\": \"general-helper\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"created\": 1703487403,\n  \"type\": \"TEXT\",\n  \"taskId\": \"8239375684858666781\",\n  \"message\": {\n    \"role\":\"assistant\",\n    \"content\":\"有什么可以帮到你\"\n  }\n}"
+          }
+        },
+        {
+          "description": {
+            "zh": "调用智谱glm-4模型，流式返回"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://ip:port/api/v1/llm/aiops_service/chat_service",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            },
+            "body": "{\n  \"inputTemplate\": \"你好啊\",\n  \"agentId\": \"general-helper\",\n  \"stream\": true\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "text/event-stream"
+            },
+            "body": "data: {\"created\":1703487403,\"type\":\"TEXT\",\"taskId\":\"8239375684858666781\",\"delta\":{\"role\":\"assistant\",\"content\":\"有什么可以\"}}\\n\\n data: {\"created\":1703487404,\"type\":\"TEXT\",\"taskId\":\"8239375684858666781\",\"delta\":{\"role\":\"assistant\",\"content\":\"帮到你\"}}\\n\\n data: [DONE]"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_service.LLMChatSelectAgent",
+      "name": "LLMChatSelectAgent",
+      "version": "1.1.0",
+      "description": "大模型选择处理的agent",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/agent/select"
+      },
+      "import": [
+        "easyops/model/aiops_service/llm_chat_select_agent_request",
+        "easyops/model/aiops_service/llm_chat_select_agent_response"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "LlmChatSelectAgentRequest.*"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "description": "接口返回选择agent的结果，有breakMsg时，需要中断",
+        "fields": [
+          {
+            "ref": "LlmChatSelectAgentResponse.*"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "大模型代理聊天接口,选择agent"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v1/llm/aiops_service/chat/completions",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "linus",
+              "org": 1234
+            },
+            "body": "{\n    \"input\": \"你好啊\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"created\": 1703487403000,\n  \"conversationId\": \"adfa7fde-3773-4d43-a6ba-bedf04d4c2fe\",\n  \"agentId\":\"no_agent\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_service.LLMChatService",
+      "name": "LLMChatService",
+      "version": "1.0.0",
+      "description": "大模型聊天接口",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/chat_service"
+      },
+      "import": [
+        "easyops/model/aiops_service/llm_chat_request",
+        "easyops/model/aiops_service/llm_chat_response"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "LLMChatRequest.*"
+          }
+        ],
+        "default": {
+          "LLMChatResponse.temperature": 0.1,
+          "LLMChatResponse.stream": false
+        }
+      },
+      "response": {
+        "type": "object",
+        "description": "接口返回,有两种格式,流式返回为sseDataList:[{\"role\":\"assistant\",\"content\":\"abc\"}],非流式返回为LLMChatResponse",
+        "fields": [
+          {
+            "ref": "LLMChatResponse.*"
+          },
+          {
+            "name": "sseDataList",
+            "type": "value[]",
+            "description": "流式数据列表"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "大模型聊天接口"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v1/llm/aiops_service/chat_service",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "linus",
+              "org": 1234
+            },
+            "body": "{\n    \"model\": \"glm-4\",\n    \"messages\": [\n      {\"role\": \"user\", \"content\": \"作为一名营销专家，请为我的产品创作一个吸引人的slogan\"},\n      {\"role\": \"assistant\", \"content\": \"当然，为了创作一个吸引人的slogan，请告诉我一些关于您产品的信息\"},\n      {\"role\": \"user\", \"content\": \"智谱AI开放平台\"},\n      {\"role\": \"assistant\", \"content\": \"智启未来，谱绘无限一智谱AI，让创新触手可及!\"},\n      {\"role\": \"user\", \"content\": \"创造一个更精准、吸引人的slogan\"}\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"created\": 1703487403,\n  \"id\": \"8239375684858666781\",\n  \"model\": \"glm-4\",\n  \"request_id\": \"8239375684858666781\",\n  \"choices\": [\n    {\n      \"finish_reason\": \"stop\",\n      \"index\": 0,\n      \"message\": {\n        \"content\": \"智绘蓝图，AI驱动 —— 智谱AI，让每一刻创新成为可能。\",\n        \"role\": \"assistant\"\n      }\n    }\n  ],\n  \"usage\": {\n    \"completion_tokens\": 217,\n    \"prompt_tokens\": 31,\n    \"total_tokens\": 248\n  }\n}"
+          }
+        },
+        {
+          "description": {
+            "zh": "调用智谱glm-4模型，流式返回"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://ip:port/api/v1/llm/aiops_service/chat_service",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            },
+            "body": "{\n  \"message\": [\n    {\"role\": \"user\", \"content\": \"1+1等于多少\"}\n  ],\n  \"stream\": true,\n  \"model\": \"glm-4\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "text/event-stream"
+            },
+            "body": "data:{\"role\":\"assistant\", \"content\":\"等于\"}\\n\\n data:{\"role\":\"assistant\", \"content\":\"2\"}\\n\\n"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_service.LLMCreateConversation",
+      "name": "LLMCreateConversation",
+      "version": "1.0.0",
+      "description": "大模型新建会话",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/conversation/create"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "sessionId",
+            "type": "string",
+            "description": "sessionId"
+          },
+          {
+            "name": "conversationTitle",
+            "type": "string",
+            "description": "会话标题"
+          },
+          {
+            "name": "robotId",
+            "type": "string",
+            "description": "助手id"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "conversationId",
+            "type": "string",
+            "description": "会话ID"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "大模型新建会话"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v1/llm/aiops_service/conversation/create",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "linus",
+              "org": 1234
+            },
+            "body": "{\n    \"conversationTitle\": \"你好啊\",\n    \"sessionId\": \"xxxx\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"conversationId\": \"adfa7fde-3773-4d43-a6ba-bedf04d4c2fe\",\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_service.LLMRobotChat",
+      "name": "LLMRobotChat",
+      "version": "1.2.0",
+      "description": "大模型助手聊天",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/robot/chat"
+      },
+      "import": [
+        "easyops/model/aiops_service/llm_chat_agent_task_request",
+        "easyops/model/aiops_service/llm_chat_agent_task_response"
+      ],
+      "request": {
+        "type": "LlmChatAgentTaskRequest"
+      },
+      "response": {
+        "type": "LlmChatAgentTaskResponse",
+        "description": "接口返回,有两种格式,流式返回为delta, 非流式返回为message\n"
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "大模型聊天接口"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v1/llm/aiops_service/chat_service",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "linus",
+              "org": 1234
+            },
+            "body": "{\n    \"input\": \"你好啊\",\n    \"robotId\": \"general-helper\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"created\": 1703487403,\n  \"type\": \"TEXT\",\n  \"taskId\": \"8239375684858666781\",\n  \"message\": {\n    \"role\":\"assistant\",\n    \"content\":\"有什么可以帮到你\"\n  }\n}"
+          }
+        },
+        {
+          "description": {
+            "zh": "调用智谱glm-4模型，流式返回"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://ip:port/api/v1/llm/aiops_service/chat_service",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            },
+            "body": "{\n  \"input\": \"你好啊\",\n  \"robotId\": \"general-helper\",\n  \"stream\": true\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "text/event-stream"
+            },
+            "body": "data: {\"created\":1703487403,\"type\":\"TEXT\",\"taskId\":\"8239375684858666781\",\"delta\":{\"role\":\"assistant\",\"content\":\"有什么可以\"}}\\n\\n data: {\"created\":1703487404,\"type\":\"TEXT\",\"taskId\":\"8239375684858666781\",\"delta\":{\"role\":\"assistant\",\"content\":\"帮到你\"}}\\n\\n data: [DONE]"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_service.LLMStreamChatService",
+      "name": "LLMStreamChatService",
+      "version": "1.0.0",
+      "description": "大模型聊天流式接口",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/aiops_service/stream_chat_service"
+      },
+      "import": ["easyops/model/aiops_service/llm_chat_request"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "LLMChatRequest.*"
+          }
+        ]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "name": "data",
+            "type": "value[]",
+            "description": "流式接口，返回的是一个数组。fb会做后置校验，这里最好先声明为value格式且name为data。这个返回的为：{\"role\":\"assistant\",\"content\":\"土\"}"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "大模型聊天接口"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v1/llm/aiops_service/chat_service",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "linus",
+              "org": 1234
+            },
+            "body": "{\n    \"model\": \"glm-4\",\n    \"messages\": [\n      {\"role\": \"user\", \"content\": \"作为一名营销专家，请为我的产品创作一个吸引人的slogan\"},\n      {\"role\": \"assistant\", \"content\": \"当然，为了创作一个吸引人的slogan，请告诉我一些关于您产品的信息\"},\n      {\"role\": \"user\", \"content\": \"智谱AI开放平台\"},\n      {\"role\": \"assistant\", \"content\": \"智启未来，谱绘无限一智谱AI，让创新触手可及!\"},\n      {\"role\": \"user\", \"content\": \"创造一个更精准、吸引人的slogan\"}\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "[\n  {\n    \"content\": \"智绘蓝图，AI驱动 —— 智谱AI，让每一刻创新成为可能。\",\n    \"role\": \"assistant\"\n  },\n  {\n    \"content\": \"智绘蓝图，AI驱动 —— 智谱AI，让每一刻创新成为可能。\",\n    \"role\": \"assistant\"\n  }\n]"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_tools.ExecLlmTools",
+      "name": "ExecLlmTools",
+      "version": "1.0.0",
+      "description": "执行大模型工具，非MCP协议的一部分",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/tools/exec"
+      },
+      "request": {
+        "fields": [
+          {
+            "description": "要执行的工具名称，也是id",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "description": "执行工具的参数",
+            "name": "arguments",
+            "type": "map"
+          },
+          {
+            "description": "执行工具的配置，例如agentId，\"agentId\":\"cmdb_search_agent\"",
+            "name": "config",
+            "type": "map"
+          }
+        ],
+        "required": ["name"],
+        "type": "object"
+      },
+      "response": {
+        "default": {},
+        "fields": [
+          {
+            "description": "执行结果，返回类型，目前只支持text",
+            "name": "type",
+            "type": "string"
+          },
+          {
+            "description": "执行工具的结果",
+            "name": "result",
+            "type": "value"
+          }
+        ],
+        "type": "object"
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "执行大模型工具"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8320/api/v1/llm/tools/exec",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "linus",
+              "org": 1234
+            },
+            "body": "{\n    \"name\": \"web_search\",\n    \"arguments\": {\n      \"query\": \"什么是MCP\"\n    },\n    \"config\":{\n      \"agentId\": \"cmdb_search_agent\",\n      \"conversationId\": \"xxxxxxx\",\n    }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n   \"code\": 0,\n   \"error\": \"\",\n   \"data\": {\n    \"type\": \"text\",\n    \"result\": \"MCP 是一种开放协议\", \"content\":\"什么是MCP？ MCP 是一种开放协议，通过标准化的服务器实现，使AI 模型能够安全地与本地和远程资源进行交互。 此列表重点关注可用于生产和实验性的MCP 服务器，这些服务器通过文件访问、数据库连接、API 集成和其他上下文服务来扩展AI 功能。\"\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_tools.SummaryQuestionV2",
+      "name": "SummaryQuestionV2",
+      "version": "1.0.0",
+      "description": "根据模板与大模型对话，总结用户问题",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/tools/summary_question_v2"
+      },
+      "import": [
+        "easyops/model/aiops_service/llm_chat_message",
+        "easyops/model/aiops_service/llm_chat_agent_task_response"
+      ],
+      "request": {
+        "fields": [
+          {
+            "description": "总结提示词模版引擎，为空时，使用默认模板",
+            "name": "template",
+            "type": "string"
+          },
+          {
+            "description": "模板引擎的数据，默认会注入 input 变量",
+            "name": "variables",
+            "type": "map"
+          },
+          {
+            "description": "大模型id",
+            "name": "model",
+            "type": "string"
+          },
+          {
+            "description": "历史对话消息",
+            "name": "historyMessages",
+            "type": "LLMChatMessage[]"
+          },
+          {
+            "description": "输入的问题",
+            "name": "input",
+            "type": "string"
+          },
+          {
+            "description": "system角色的提示词模板",
+            "name": "systemTemplate",
+            "type": "string"
+          },
+          {
+            "description": "system模板所需要的数据",
+            "name": "systemVariables",
+            "type": "map"
+          },
+          {
+            "description": "输入的图片url",
+            "name": "images",
+            "type": "string[]"
+          }
+        ],
+        "required": [],
+        "type": "object"
+      },
+      "response": {
+        "default": {},
+        "fields": [
+          {
+            "description": "总结后的新问题",
+            "name": "data",
+            "type": "string"
+          }
+        ],
+        "type": "object"
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "根据模板与大模型对话，总结用户问题"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8320/api/v1/llm/tools/summary_question_v2",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "linus",
+              "org": 1234
+            },
+            "body": "{\n    \"input\": \"你好啊\",\n    \"outputType\": \"string\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"data\": \"你好啊\",\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.aiops_tools.TemplateLlmChatV2",
+      "name": "TemplateLlmChatV2",
+      "version": "1.0.0",
+      "description": "根据模板与大模型对话，返回json",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/tools/template_llm_chat_v2"
+      },
+      "import": [
+        "easyops/model/aiops_service/llm_chat_message",
+        "easyops/model/aiops_service/llm_chat_agent_task_response"
+      ],
+      "request": {
+        "default": {
+          "temperature": 0.1
+        },
+        "fields": [
+          {
+            "description": "模板，为空时，不使用默认引擎",
+            "name": "template",
+            "type": "string"
+          },
+          {
+            "description": "模板引擎的数据",
+            "name": "variables",
+            "type": "map"
+          },
+          {
+            "description": "大模型id",
+            "name": "model",
+            "type": "string"
+          },
+          {
+            "description": "历史对话消息",
+            "name": "historyMessages",
+            "type": "LLMChatMessage[]"
+          },
+          {
+            "description": "输入对话,模板为空时才生效",
+            "name": "input",
+            "type": "string"
+          },
+          {
+            "description": "输出格式，默认json",
+            "name": "outputType",
+            "type": "string"
+          },
+          {
+            "description": "取值范围是：(0.0, 1.0]，不能等于 0，默认值为 0.1，值越大，会使输出更随机，更具创造性；值越小，输出会更加稳定或确定",
+            "name": "temperature",
+            "type": "float"
+          },
+          {
+            "description": "是否是调试模式，为true时，返回debug_resp",
+            "name": "debug",
+            "type": "bool"
+          },
+          {
+            "description": "是否是流式",
+            "name": "stream",
+            "type": "bool"
+          },
+          {
+            "description": "system角色的提示词模板",
+            "name": "systemTemplate",
+            "type": "string"
+          },
+          {
+            "description": "system模板所需要的数据",
+            "name": "systemVariables",
+            "type": "map"
+          },
+          {
+            "description": "任务id",
+            "name": "taskId",
+            "type": "string"
+          },
+          {
+            "description": "输入的图片url",
+            "name": "images",
+            "type": "string[]"
+          }
+        ],
+        "required": [],
+        "type": "object"
+      },
+      "response": {
+        "default": {},
+        "fields": [
+          {
+            "ref": "LlmChatAgentTaskResponse.*"
+          },
+          {
+            "description": "提取返回的数据",
+            "name": "data",
+            "type": "value"
+          },
+          {
+            "description": "调试时大模型返回值",
+            "name": "debug_resp",
+            "type": "string"
+          },
+          {
+            "description": "如果解析不到正确的数据格式，则将大模型返回的数据塞到这里",
+            "name": "errorOutput",
+            "type": "string"
+          }
+        ],
+        "type": "object"
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "根据模板与大模型对话，返回json"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8320/api/v1/llm/tools/template_llm_chat_v2",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "linus",
+              "org": 1234
+            },
+            "body": "{\n    \"input\": \"你好啊\",\n    \"outputType\": \"string\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"data\": \"有什么可以帮你\",\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.virtual_builder.GenerateStoryboard",
+      "name": "GenerateStoryboard",
+      "version": "1.0.0",
+      "description": "自动生成brick",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/virtual_builder/generate_storyboard"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "userInput",
+            "type": "string",
+            "description": "用户输入"
+          },
+          {
+            "name": "sessionId",
+            "type": "string",
+            "description": "会话id"
+          }
+        ],
+        "required": ["userInput"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "outputs",
+            "type": "object[]",
+            "description": "llm的输出",
+            "fields": [
+              {
+                "name": "type",
+                "type": "string",
+                "enum": ["markdown", "storyboard"],
+                "description": "输出内容的类型,markdown或者storyboard"
+              },
+              {
+                "name": "content",
+                "type": "string",
+                "description": "输出内容"
+              }
+            ]
+          },
+          {
+            "name": "sessionId",
+            "type": "string",
+            "description": "会话id"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "自动生成storyboard"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v1/llm/virtual_builder/generate_storyboard",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "linus",
+              "org": 1234
+            },
+            "body": "{\n    \"userInput\": \"生成一个通用按钮,圆形\",\n    \"sessionId\": \"1233abc\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"error\": \"\",\n  \"message\": \"\",\n  \"data\": {\n      \"outputs\":[\n         {\"type\":\"markdown\",\"content\":\"根据用户需求，生成以下storyboard\"},\n         {\"type\":\"storyboard\",\"content\":\"{\\\"brick\\\":\\\"abc\\\"}\"},\n         {\"type\":\"markdown\",\"content\":\"\"},\n      ],\n      \"sessionId\":\"12345\"\n\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "llm.virtual_builder.GenerateStoryboardStream",
+      "name": "GenerateStoryboardStream",
+      "version": "1.0.0",
+      "description": "流式自动生成brick",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/llm/virtual_builder/generate_storyboard/stream"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "userInput",
+            "type": "string",
+            "description": "用户输入"
+          },
+          {
+            "name": "sessionId",
+            "type": "string",
+            "description": "会话id"
+          }
+        ],
+        "required": ["userInput"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "websocket",
+            "type": "object",
+            "description": "websocket消息信息",
+            "fields": [
+              {
+                "name": "system",
+                "type": "string",
+                "description": "websocket消息的system"
+              },
+              {
+                "name": "topic",
+                "type": "string",
+                "description": "websocket消息的topic"
+              }
+            ]
+          },
+          {
+            "name": "sessionId",
+            "type": "string",
+            "description": "会话id"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "自动生成storyboard"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v1/llm/virtual_builder/generate_storyboard",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "linus",
+              "org": 1234
+            },
+            "body": "{\n    \"userInput\": \"生成一个通用按钮,圆形\",\n    \"sessionId\": \"1233abc\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"error\": \"\",\n  \"message\": \"\",\n  \"data\": {\n      \"websocket\": {\n           \"system\":\"aiops\",\n           \"topic\":\"aiops.visual_builder.generate_dashboard.12345\"\n           },\n      \"sessionId\":\"12345\"\n\n  }\n}"
+          }
+        }
+      ]
+    }
+  ]
+}
