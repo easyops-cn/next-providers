@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/sys-setting-sdk@1.1.0...@next-sdk/sys-setting-sdk@1.2.0) (2025-04-10)
+
+### Features
+
+- add apis: OrganizationApi_listDepartmentStaffV2, TrafficLimitApi_getLimitRate, TrafficLimitApi_index, TrafficLimitApi_setLimitRate, WorkCalendarApi_checkHolidayByDate, WorkCalendarApi_checkWorkCalendarEffectTime, WorkCalendarApi_cloneWorkCalendar, WorkbenchApi_createWorkbenchCustomEntry, WorkbenchApi_createWorkbenchTemplate, WorkbenchApi_deleteWorkbenchTemplate, WorkbenchApi_editWorkbenchCustomEntry, WorkbenchApi_editWorkbenchTemplate ([2a43a14](https://github.com/easyops-cn/next-providers/commit/2a43a14861da0fc9d3a247d050d74f53edfbc4ef))
+
 # 1.1.0 (2023-12-18)
 
 ### Features
