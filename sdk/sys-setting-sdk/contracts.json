@@ -971,6 +971,11 @@
             "name": "showAncestor",
             "type": "bool",
             "description": "是否展示先祖部门节点"
+          },
+          {
+            "name": "isAll",
+            "type": "bool",
+            "description": "departmentId为空时，查询最顶级的部门，是否返回每一级部门的子节点"
           }
         ]
       },
@@ -1402,7 +1407,7 @@
       "contract": "sys_setting.organization.ListDepartmentStaff",
       "name": "ListDepartmentStaff",
       "version": "1.1.0",
-      "description": "获取部门员工列表",
+      "description": "获取部门员工列表(当前部门)",
       "endpoint": {
         "method": "LIST",
         "uri": "/api/sys_setting/v1/organization/department/:departmentId/staff"
@@ -1419,7 +1424,7 @@
           {
             "name": "q",
             "type": "string",
-            "description": "模糊搜索（用户名，昵称）"
+            "description": "模糊搜索（用户名，昵称, 联系方式, 邮箱）"
           },
           {
             "name": "page",
@@ -1497,6 +1502,170 @@
           "request": {
             "method": "GET",
             "uri": "http://127.0.0.1:8271/api/sys_setting/v1/organization/department/:id1/staff",
+            "headers": {
+              "Content-Type": "application/json"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"msg\": \"\",\n  \"data\": {\n    \"list\": [\n      {\"instanceId\":\"id1\",\"username\":\"easyops\",\"state\":\"valid\"},\n    ]\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.organization.ListDepartmentStaffV2",
+      "name": "ListDepartmentStaffV2",
+      "version": "1.1.0",
+      "description": "获取部门员工列表V2(递归所有子部门)",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/sys_setting/v2/organization/department/:departmentId/staff"
+      },
+      "import": [],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "departmentId",
+            "type": "instance_id",
+            "description": "部门id"
+          },
+          {
+            "name": "q",
+            "type": "string",
+            "description": "模糊搜索（用户名，昵称, 联系方式, 邮箱）"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "每页用户数"
+          },
+          {
+            "name": "includeSub",
+            "type": "bool",
+            "description": "包含子部门员工(默认true, 包含子部门员工)"
+          },
+          {
+            "name": "sort",
+            "type": "object[]",
+            "description": "按字段排序, 为空默认按name升序排列",
+            "fields": [
+              {
+                "name": "key",
+                "type": "string",
+                "enum": ["name", "nickname"],
+                "description": "排序key, 支持 name与nickname"
+              },
+              {
+                "name": "order",
+                "type": "int",
+                "description": "1或-1, 1为升序, -1为降序"
+              }
+            ]
+          }
+        ],
+        "required": ["departmentId"],
+        "default": {
+          "page": 1,
+          "pageSize": 10,
+          "includeSub": true
+        }
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "total",
+            "type": "int",
+            "description": "实例总数"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "页大小"
+          },
+          {
+            "name": "list",
+            "type": "object[]",
+            "description": "instance list",
+            "fields": [
+              {
+                "name": "instanceId",
+                "type": "string",
+                "description": "用户实例ID，cmdb中的instanceId"
+              },
+              {
+                "name": "username",
+                "type": "user_name",
+                "description": "用户名"
+              },
+              {
+                "name": "nickname",
+                "type": "string",
+                "description": "昵称"
+              },
+              {
+                "name": "state",
+                "type": "string",
+                "description": "账户状态（invalid 禁用，valid 启用）"
+              },
+              {
+                "name": "userIcon",
+                "type": "string",
+                "description": "用户头像地址"
+              },
+              {
+                "name": "showName",
+                "type": "string",
+                "description": "用户根据showkey组装的展示名"
+              },
+              {
+                "name": "userTel",
+                "type": "string",
+                "description": "用户手机号"
+              },
+              {
+                "name": "userEmail",
+                "type": "string",
+                "description": "用户邮箱"
+              },
+              {
+                "name": "position",
+                "type": "string",
+                "description": "职位"
+              },
+              {
+                "name": "department",
+                "type": "string",
+                "description": "所属部门(向上拿三层组织层级, 多个部门使用分号分隔)"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "List Department Staff v2",
+            "zh": "获取部门下的人员v2"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v2/organization/department/:id1/staff",
+            "body": "{\n    \"page\": 1,\n    \"pageSize\": 10\n}",
             "headers": {
               "Content-Type": "application/json"
             }
@@ -2043,6 +2212,291 @@
       ]
     },
     {
+      "contract": "sys_setting.traffic_limit.GetLimitRate",
+      "name": "GetLimitRate",
+      "version": "1.0.0",
+      "description": "获取配置项上行和下行限速值",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/sys_setting/v1/traffic_limit/:name"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string",
+            "enum": ["artifact", "agent"],
+            "description": "配置项名称（例：\"artifact\" 获取制品包上传/下载接口限速值）"
+          }
+        ],
+        "required": ["name"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "upload_limit",
+            "type": "string",
+            "description": "上行速率（单位：k 或 m, 表示 Kbps 或 Mbps; 示例：100k 或 100m）"
+          },
+          {
+            "name": "download_limit",
+            "type": "string",
+            "description": "下行速率（单位：k 或 m, 表示 Kbps 或 Mbps; 示例：100k 或 100m）"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "GetLimitRate",
+            "zh": "获取配置项上行和下行限速值"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/traffic_limit/artifact",
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"name\": \"artifact\",\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"upload_limit\": \"500K\",\n        \"download_limit\": \"500K\"\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.traffic_limit.SetLimitRate",
+      "name": "SetLimitRate",
+      "version": "1.0.0",
+      "description": "设置配置项上行和下行限速值",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/sys_setting/v1/traffic_limit/:name"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string",
+            "enum": ["artifact", "agent"],
+            "description": "配置项名称（例：\"artifact\" 设置制品包上传/下载接口限速值）"
+          },
+          {
+            "name": "upload_limit",
+            "type": "string",
+            "description": "上行速率（单位：k 或 m, 表示 Kbps 或 Mbps; 示例：100k 或 100m）"
+          },
+          {
+            "name": "download_limit",
+            "type": "string",
+            "description": "下行速率（单位：k 或 m, 表示 Kbps 或 Mbps; 示例：100k 或 100m）"
+          },
+          {
+            "name": "limit_total",
+            "type": "bool",
+            "description": "是否限制总量"
+          }
+        ],
+        "required": ["name"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "SetLimitRate",
+            "zh": "设置配置项上行和下行限速值"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/nginx_config/limit_rate",
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"name\": \"artifact\",\n    \"upload_limit\": \"500K\",\n    \"download_limit\": \"500K\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {}\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.work_calendar.CheckWorkCalendarEffectTime",
+      "name": "CheckWorkCalendarEffectTime",
+      "version": "1.1.0",
+      "description": "校验日历生效时间",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/sys_setting/v1/work/calendar/:id/check_effect_time"
+      },
+      "import": ["easyops/model/alert_service/effective_time"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "description": "日历id"
+          },
+          {
+            "name": "timestamp",
+            "type": "int64",
+            "description": "时间戳"
+          },
+          {
+            "name": "effectiveTime",
+            "type": "EffectiveTime",
+            "description": "时间配置"
+          }
+        ],
+        "required": ["timestamp", "effectiveTime"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "effect",
+            "type": "bool",
+            "description": "是否有效"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Check WorkCalendar EffectTime",
+            "zh": "校验日历生效时间"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8226/api/sys_setting/v1/work/calendar/6671095c21a40bd5d3430a3d/check_effect_time",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{ \n    \"timestamp\": 1609430400,\n    \"effectiveTime\": {\n        \"type\": \"calendar\",\n        \"calendar\": {\n            \"calendarId\": \"6671095c21a40bd5d3430a3d\",\n            \"dayOfCalendar\": \"off\",\n            \"period\": \"allDay\"\n        },\n        \"static\": {\n            \"dayStartTime\": \"09:00\",\n            \"dayEndTime\": \"18:00\",\n            \"dayOfWeek\": [\"monday\", \"tuesday\", \"wednesday\", \"thursday\", \"friday\"]\n        }\n    }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\":0,\n    \"msg\":\"get success\",\n    \"data\":{\n        \"effect\": true\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.work_calendar.CheckHolidayByDate",
+      "name": "CheckHolidayByDate",
+      "version": "1.1.0",
+      "description": "验证日期是否是节假日",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/sys_setting/v1/work/calendar/holiday"
+      },
+      "import": ["easyops/model/sys_setting/work_calendar"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "date",
+            "type": "string",
+            "description": "年月日，如 2023-01-01"
+          },
+          {
+            "name": "calendarId",
+            "type": "string",
+            "description": "日历id,为空则默认取国家法定节假日日历"
+          }
+        ],
+        "required": ["date"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "isHoliday",
+            "type": "bool",
+            "description": "是否是节假日"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "CheckHolidayByDate",
+            "zh": "验证日期是否是节假日"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8134/api/sys_setting/v1/work/calendar/holiday",
+            "body": "{\n  \"data\": \"2024-05-01\",\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n      \"isHoliday\": true,\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.work_calendar.CloneWorkCalendar",
+      "name": "CloneWorkCalendar",
+      "version": "1.1.0",
+      "description": "通过其他日历克隆工作日历",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/sys_setting/v1/work/calendar/clone"
+      },
+      "import": ["easyops/model/sys_setting/work_calendar"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkCalendar.id"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkCalendar.id"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "CloneWorkCalendar",
+            "zh": "通过其他日历克隆工作日历"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/api/sys_setting/v1/work/calendar/clone",
+            "body": "{\n   \"id\":\"id\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n   \"id\":\"id1\"\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "sys_setting.work_calendar.CreateWorkCalendar",
       "name": "CreateWorkCalendar",
       "version": "1.1.0",
@@ -2069,6 +2523,12 @@
           },
           {
             "ref": "WorkCalendar.builtin"
+          },
+          {
+            "ref": "WorkCalendar.status"
+          },
+          {
+            "ref": "WorkCalendar.year"
           }
         ],
         "required": ["WorkCalendar.name", "WorkCalendar.config"],
@@ -2083,7 +2543,26 @@
             "ref": "WorkCalendar.id"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "CreateWorkCalendar",
+            "zh": "通过配置创建工作日历"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/api/sys_setting/v1/work/calendar",
+            "body": "{\n   \"id\":\"id\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n   \"id\":\"id1\"\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "sys_setting.work_calendar.DeleteWorkCalendar",
@@ -2132,6 +2611,12 @@
           },
           {
             "ref": "WorkCalendar.config"
+          },
+          {
+            "ref": "WorkCalendar.status"
+          },
+          {
+            "ref": "WorkCalendar.year"
           }
         ],
         "required": [
@@ -2147,7 +2632,26 @@
             "ref": "WorkCalendar.id"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "EditWorkCalendarConfig",
+            "zh": "修改日历配置,重新生成日历"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/api/sys_setting/v1/work/calendar/id",
+            "body": "{\n   \"id\":\"id\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n   \"id\":\"id1\"\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "sys_setting.work_calendar.EditWorkCalendarConfigV2",
@@ -2173,6 +2677,12 @@
           },
           {
             "ref": "WorkCalendar.config"
+          },
+          {
+            "ref": "WorkCalendar.status"
+          },
+          {
+            "ref": "WorkCalendar.year"
           }
         ],
         "required": [
@@ -2188,7 +2698,26 @@
             "ref": "WorkCalendar.id"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "EditWorkCalendarConfigV2",
+            "zh": "增量修改日历配置,重新生成日历"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "/api/sys_setting/v1/work/calendar/id",
+            "body": "{\n   \"id\":\"id\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n   \"id\":\"id1\"\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "sys_setting.work_calendar.EditWorkCalendarDayConfig",
@@ -2287,9 +2816,40 @@
           },
           {
             "ref": "WorkCalendar.memo"
+          },
+          {
+            "ref": "WorkCalendar.status"
+          },
+          {
+            "ref": "WorkCalendar.year"
+          },
+          {
+            "ref": "WorkCalendar.modifier"
+          },
+          {
+            "ref": "WorkCalendar.mtime"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "GetWorkCalendarByMonth",
+            "zh": "获取日历的按月详情"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "/api/sys_setting/v1/work/calendar_month/:id",
+            "body": "{\n   \"id\":\"id\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n   \"id\":\"id1\"\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "sys_setting.work_calendar.GetWorkCalendarByYear",
@@ -2365,6 +2925,11 @@
             "name": "id",
             "type": "mongo_object_id",
             "description": "日历ID"
+          },
+          {
+            "name": "year",
+            "type": "string",
+            "description": "年份"
           }
         ],
         "required": ["id"]
@@ -2395,9 +2960,45 @@
           },
           {
             "ref": "WorkCalendar.builtin"
+          },
+          {
+            "ref": "WorkCalendar.status"
+          },
+          {
+            "ref": "WorkCalendar.year"
+          },
+          {
+            "ref": "WorkCalendar.modifier"
+          },
+          {
+            "ref": "WorkCalendar.mtime"
+          },
+          {
+            "name": "dataYears",
+            "type": "string[]",
+            "description": "有数据的年份"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "GetWorkCalendarDetail",
+            "zh": "获取日历的配置详情"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "/api/sys_setting/v1/work/calendar/:id",
+            "body": "{\n   \"id\":\"id\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n   \"id\":\"id1\"\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "sys_setting.work_calendar.GetWorkCalendarDetailByKey",
@@ -2416,6 +3017,11 @@
             "name": "key",
             "type": "string",
             "description": "日历标识"
+          },
+          {
+            "name": "year",
+            "type": "string",
+            "description": "年份"
           }
         ],
         "required": ["key"]
@@ -2446,9 +3052,45 @@
           },
           {
             "ref": "WorkCalendar.builtin"
+          },
+          {
+            "ref": "WorkCalendar.status"
+          },
+          {
+            "ref": "WorkCalendar.year"
+          },
+          {
+            "ref": "WorkCalendar.modifier"
+          },
+          {
+            "ref": "WorkCalendar.mtime"
+          },
+          {
+            "name": "dataYears",
+            "type": "string[]",
+            "description": "有数据的年份"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "GetWorkCalendarDetailByKey",
+            "zh": "获取日历的配置详情(根据Key获取)"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "/api/sys_setting/v1/work/calendar_key/:id",
+            "body": "{\n   \"id\":\"id\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n   \"id\":\"id1\"\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "sys_setting.work_calendar.GetHoliday",
@@ -2627,9 +3269,40 @@
           },
           {
             "ref": "WorkCalendar.builtin"
+          },
+          {
+            "ref": "WorkCalendar.status"
+          },
+          {
+            "ref": "WorkCalendar.year"
+          },
+          {
+            "ref": "WorkCalendar.modifier"
+          },
+          {
+            "ref": "WorkCalendar.mtime"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "ListWorkCalendar",
+            "zh": "获取营业时间日历列表"
+          },
+          "request": {
+            "method": "LIST",
+            "uri": "/api/sys_setting/v1/work/calendar",
+            "body": "{\n   \"id\":\"id\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n   \"id\":\"id1\"\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "sys_setting.work_calendar.ListWorkDay",
@@ -2700,6 +3373,16 @@
             "name": "Q",
             "type": "string",
             "description": "模糊搜索关键词，适用于创建人及日历名"
+          },
+          {
+            "name": "year",
+            "type": "string",
+            "description": "年份"
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "description": "状态"
           }
         ],
         "default": {
@@ -2733,9 +3416,43 @@
           },
           {
             "ref": "WorkCalendar.builtin"
+          },
+          {
+            "ref": "WorkCalendar.status"
+          },
+          {
+            "ref": "WorkCalendar.year"
+          },
+          {
+            "ref": "WorkCalendar.modifier"
+          },
+          {
+            "ref": "WorkCalendar.mtime"
+          },
+          {
+            "ref": "WorkCalendar.dataYears"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "QueryWorkCalendar",
+            "zh": "模糊搜索工作日历"
+          },
+          "request": {
+            "method": "LIST",
+            "uri": "/api/sys_setting/v1/query/work/calendar",
+            "body": "{\n   \"id\":\"id\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n   \"id\":\"id1\"\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "sys_setting.work_calendar.SearchWorkday",
@@ -2794,6 +3511,245 @@
           }
         ]
       }
+    },
+    {
+      "contract": "sys_setting.workbench.CreateWorkbenchCustomEntry",
+      "name": "CreateWorkbenchCustomEntry",
+      "version": "1.0.1",
+      "description": "创建工作台自定义入口",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/sys_setting/v1/workbench_custom_entry"
+      },
+      "import": ["easyops/model/sys_setting/workbench_custom_entry"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkbenchCustomEntry.title"
+          },
+          {
+            "ref": "WorkbenchCustomEntry.type"
+          },
+          {
+            "ref": "WorkbenchCustomEntry.list"
+          },
+          {
+            "ref": "WorkbenchCustomEntry.timeRange"
+          }
+        ]
+      },
+      "response": {
+        "type": "WorkbenchCustomEntry"
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "编辑工作台自定义入口",
+            "en": "Add Workbench Custom Entry"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/workbench_custom_entry",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"type\": \"normal\",\n    \"list\": [],\n    \"title\": \"自定义入口(标准)\",\n    \"timeRange\": {\n        \"from\": \"now-3d\",\n        \"to\": \"\"\n    }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"instanceId\": \"5fad60e448859\",\n        \"type\": \"normal\",\n        \"list\": [],\n        \"title\": \"自定义入口(标准)\",\n        \"isCreatedBySystemAdmin\": true\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.workbench.CreateWorkbenchTemplate",
+      "name": "CreateWorkbenchTemplate",
+      "version": "1.0.0",
+      "description": "新增工作台模板",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/sys_setting/v1/workbench/template"
+      },
+      "import": ["easyops/model/sys_setting/workbench_hub_template"],
+      "request": {
+        "type": "WorkbenchHubTemplate"
+      },
+      "response": {
+        "type": "WorkbenchHubTemplate"
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "新增工作台模板",
+            "en": "Create Workbench Hub Template"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/workbench/template",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"name\": \"workbench hub template\",\n    \"isDefault\": true,\n    \"layouts\": [\n        {\n            \"i\": \"hello\",\n            \"x\": 0,\n            \"y\": 0,\n            \"w\": 2,\n            \"h\": 1\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"instanceId\": \"5fad60e448859\",\n        \"name\": \"workbench hub template\",\n        \"isDefault\": true,\n        \"layouts\": [\n            {\n                \"i\": \"hello\",\n                \"x\": 0,\n                \"y\": 0,\n                \"w\": 2,\n                \"h\": 1\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.workbench.DeleteWorkbenchTemplate",
+      "name": "DeleteWorkbenchTemplate",
+      "version": "1.0.0",
+      "description": "删除工作台模板",
+      "endpoint": {
+        "method": "DELETE",
+        "uri": "/api/sys_setting/v1/workbench/template/:instanceId"
+      },
+      "import": ["easyops/model/sys_setting/workbench_hub_template"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkbenchHubTemplate.instanceId"
+          }
+        ]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "zh": "删除工作台模板",
+            "en": "Delete Workbench Hub Template"
+          },
+          "request": {
+            "method": "DELETE",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/workbench/template/60d78d4207607",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"instanceId\": \"5fad60e448859\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {}\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.workbench.EditWorkbenchCustomEntry",
+      "name": "EditWorkbenchCustomEntry",
+      "version": "1.0.1",
+      "description": "编辑工作台自定义入口",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/sys_setting/v1/workbench_custom_entry/:instanceId"
+      },
+      "import": ["easyops/model/sys_setting/workbench_custom_entry"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkbenchCustomEntry.instanceId"
+          },
+          {
+            "ref": "WorkbenchCustomEntry.title"
+          },
+          {
+            "ref": "WorkbenchCustomEntry.type"
+          },
+          {
+            "ref": "WorkbenchCustomEntry.list"
+          },
+          {
+            "ref": "WorkbenchCustomEntry.timeRange"
+          }
+        ]
+      },
+      "response": {
+        "type": "WorkbenchCustomEntry"
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "编辑工作台自定义入口",
+            "en": "Edit Workbench Custom Entry"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/workbench_custom_entry/5fad60e448859",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"instanceId\": \"5fad60e448859\",\n    \"type\": \"normal\",\n    \"list\": [],\n    \"title\": \"自定义入口(标准)\",\n    \"timeRange\": {\n        \"from\": \"now-3d\",\n        \"to\": \"\"\n    }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"instanceId\": \"5fad60e448859\",\n        \"type\": \"normal\",\n        \"list\": [],\n        \"title\": \"自定义入口(标准)\",\n        \"isCreatedBySystemAdmin\": true\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "sys_setting.workbench.EditWorkbenchTemplate",
+      "name": "EditWorkbenchTemplate",
+      "version": "1.0.0",
+      "description": "编辑工作台模板",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/sys_setting/v1/workbench/template/:instanceId"
+      },
+      "import": ["easyops/model/sys_setting/workbench_hub_template"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "WorkbenchHubTemplate.instanceId"
+          },
+          {
+            "name": "templateData",
+            "type": "map",
+            "description": "要更新的工作台模板数据"
+          }
+        ]
+      },
+      "response": {
+        "type": "WorkbenchHubTemplate"
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "编辑工作台模板",
+            "en": "Edit Workbench Hub Template"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8271/api/sys_setting/v1/workbench/template/60d78d4207607",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"instanceId\": \"5fad60e448859\",\n    \"templateData\": {\n        \"name\": \"workbench hub template\",\n        \"isDefault\": true,\n        \"layouts\": [\n            {\n                \"i\": \"hello\",\n                \"x\": 0,\n                \"y\": 0,\n                \"w\": 2,\n                \"h\": 1\n            }\n        ]\n    }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"instanceId\": \"5fad60e448859\",\n        \"name\": \"workbench hub template\",\n        \"isDefault\": true,\n        \"layouts\": [\n            {\n                \"i\": \"hello\",\n                \"x\": 0,\n                \"y\": 0,\n                \"w\": 2,\n                \"h\": 1\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "sys_setting.workbench.GetWorkbench",

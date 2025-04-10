@@ -22,7 +22,7 @@ export const CommentApi_listComment = async (
 ): Promise<CommentApi_ListCommentResponseBody> =>
   /**! @contract easyops.api.sys_setting.comment.ListComment@1.0.1 */ (
     await http.get<ResponseBodyWrapper<CommentApi_ListCommentResponseBody>>(
-      "api/gateway/sys_setting.comment.ListComment/api/sys_setting/v1/comment",
+      "api/gateway/logic.sys_setting/api/sys_setting/v1/comment",
       { ...options, params }
     )
   ).data;

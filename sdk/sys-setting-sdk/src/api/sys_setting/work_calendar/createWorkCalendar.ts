@@ -17,6 +17,12 @@ export interface WorkCalendarApi_CreateWorkCalendarRequestBody {
 
   /** 是否内置 */
   builtin?: boolean;
+
+  /** 状态 */
+  status?: boolean;
+
+  /** 年份 */
+  year?: string;
 }
 
 export interface WorkCalendarApi_CreateWorkCalendarResponseBody {
@@ -36,7 +42,7 @@ export const WorkCalendarApi_createWorkCalendar = async (
     await http.post<
       ResponseBodyWrapper<WorkCalendarApi_CreateWorkCalendarResponseBody>
     >(
-      "api/gateway/sys_setting.work_calendar.CreateWorkCalendar/api/sys_setting/v1/work/calendar",
+      "api/gateway/logic.sys_setting/api/sys_setting/v1/work/calendar",
       data,
       options
     )

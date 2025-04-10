@@ -33,7 +33,7 @@ export const WorkCalendarApi_searchWorkday = async (
     await http.post<
       ResponseBodyWrapper<WorkCalendarApi_SearchWorkdayResponseBody>
     >(
-      "api/gateway/sys_setting.work_calendar.SearchWorkday/api/sys_setting/v1/work_day/calendar_id",
+      "api/gateway/logic.sys_setting/api/sys_setting/v1/work_day/calendar_id",
       data,
       options
     )

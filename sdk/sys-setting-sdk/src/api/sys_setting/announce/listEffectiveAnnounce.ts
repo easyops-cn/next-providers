@@ -27,8 +27,8 @@ export const AnnounceApi_listEffectiveAnnounce = async (
   /**! @contract easyops.api.sys_setting.announce.ListEffectiveAnnounce@1.0.1 */ (
     await http.get<
       ResponseBodyWrapper<AnnounceApi_ListEffectiveAnnounceResponseBody>
-    >(
-      "api/gateway/sys_setting.announce.ListEffectiveAnnounce/api/sys_setting/v1/announce/effective",
-      { ...options, params }
-    )
+    >("api/gateway/logic.sys_setting/api/sys_setting/v1/announce/effective", {
+      ...options,
+      params,
+    })
   ).data;

@@ -11,6 +11,12 @@ export interface WorkCalendarApi_QueryWorkCalendarRequestParams {
 
   /** 模糊搜索关键词，适用于创建人及日历名 */
   Q?: string;
+
+  /** 年份 */
+  year?: string;
+
+  /** 状态 */
+  status?: string;
 }
 
 export interface WorkCalendarApi_QueryWorkCalendarResponseItem {
@@ -37,6 +43,21 @@ export interface WorkCalendarApi_QueryWorkCalendarResponseItem {
 
   /** 是否内置 */
   builtin?: boolean;
+
+  /** 状态 */
+  status?: boolean;
+
+  /** 年份 */
+  year?: string;
+
+  /** 修改人 */
+  modifier?: string;
+
+  /** 修改时间 */
+  mtime?: string;
+
+  /** 已经新建的年份 */
+  dataYears?: string[];
 }
 
 export type WorkCalendarApi_QueryWorkCalendarResponseBody =
@@ -53,8 +74,8 @@ export const WorkCalendarApi_queryWorkCalendar = async (
   /**! @contract easyops.api.sys_setting.work_calendar.QueryWorkCalendar@1.2.0 */ (
     await http.get<
       ResponseBodyWrapper<WorkCalendarApi_QueryWorkCalendarResponseBody>
-    >(
-      "api/gateway/sys_setting.work_calendar.QueryWorkCalendar/api/sys_setting/v1/query/work/calendar",
-      { ...options, params }
-    )
+    >("api/gateway/logic.sys_setting/api/sys_setting/v1/query/work/calendar", {
+      ...options,
+      params,
+    })
   ).data;

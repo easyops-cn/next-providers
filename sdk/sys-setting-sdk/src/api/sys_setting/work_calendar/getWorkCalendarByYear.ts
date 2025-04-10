@@ -27,7 +27,7 @@ export const WorkCalendarApi_getWorkCalendarByYear = async (
     await http.get<
       ResponseBodyWrapper<WorkCalendarApi_GetWorkCalendarByYearResponseBody>
     >(
-      `api/gateway/sys_setting.work_calendar.GetWorkCalendarByYear/api/sys_setting/v1/work/calendar_year/${id}`,
+      `api/gateway/logic.sys_setting/api/sys_setting/v1/work/calendar_year/${id}`,
       { ...options, params }
     )
   ).data;

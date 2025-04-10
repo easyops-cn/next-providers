@@ -26,7 +26,7 @@ export const OrganizationApi_addDepartment = async (
     await http.post<
       ResponseBodyWrapper<OrganizationApi_AddDepartmentResponseBody>
     >(
-      "api/gateway/sys_setting.organization.AddDepartment/api/sys_setting/v1/organization/department",
+      "api/gateway/logic.sys_setting/api/sys_setting/v1/organization/department",
       data,
       options
     )

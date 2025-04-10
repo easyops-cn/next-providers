@@ -35,7 +35,7 @@ export const SiteMsgApi_listSiteMessage = async (
 ): Promise<SiteMsgApi_ListSiteMessageResponseBody> =>
   /**! @contract easyops.api.sys_setting.site_msg.ListSiteMessage@1.0.0 */ (
     await http.get<ResponseBodyWrapper<SiteMsgApi_ListSiteMessageResponseBody>>(
-      "api/gateway/sys_setting.site_msg.ListSiteMessage/api/sys_setting/v1/site_msg",
+      "api/gateway/logic.sys_setting/api/sys_setting/v1/site_msg",
       { ...options, params }
     )
   ).data;

@@ -26,7 +26,7 @@ export const SiteMsgApi_sendSiteMessage = (
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.sys_setting.site_msg.SendSiteMessage@1.0.0 */ http.post<void>(
-    "api/gateway/sys_setting.site_msg.SendSiteMessage/api/sys_setting/v1/site_msg",
+    "api/gateway/logic.sys_setting/api/sys_setting/v1/site_msg",
     data,
     options
   );

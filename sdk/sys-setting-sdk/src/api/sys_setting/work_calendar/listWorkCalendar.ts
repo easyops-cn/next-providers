@@ -34,6 +34,18 @@ export interface WorkCalendarApi_ListWorkCalendarResponseItem {
 
   /** 是否内置 */
   builtin?: boolean;
+
+  /** 状态 */
+  status?: boolean;
+
+  /** 年份 */
+  year?: string;
+
+  /** 修改人 */
+  modifier?: string;
+
+  /** 修改时间 */
+  mtime?: string;
 }
 
 export type WorkCalendarApi_ListWorkCalendarResponseBody =
@@ -50,8 +62,8 @@ export const WorkCalendarApi_listWorkCalendar = async (
   /**! @contract easyops.api.sys_setting.work_calendar.ListWorkCalendar@1.2.0 */ (
     await http.get<
       ResponseBodyWrapper<WorkCalendarApi_ListWorkCalendarResponseBody>
-    >(
-      "api/gateway/sys_setting.work_calendar.ListWorkCalendar/api/sys_setting/v1/work/calendar",
-      { ...options, params }
-    )
+    >("api/gateway/logic.sys_setting/api/sys_setting/v1/work/calendar", {
+      ...options,
+      params,
+    })
   ).data;

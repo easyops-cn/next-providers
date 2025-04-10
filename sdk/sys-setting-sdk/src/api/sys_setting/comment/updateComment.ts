@@ -28,7 +28,7 @@ export const CommentApi_updateComment = async (
 ): Promise<CommentApi_UpdateCommentResponseBody> =>
   /**! @contract easyops.api.sys_setting.comment.UpdateComment@1.0.1 */ (
     await http.put<ResponseBodyWrapper<CommentApi_UpdateCommentResponseBody>>(
-      `api/gateway/sys_setting.comment.UpdateComment/api/sys_setting/v1/comment/${instanceId}`,
+      `api/gateway/logic.sys_setting/api/sys_setting/v1/comment/${instanceId}`,
       data,
       options
     )

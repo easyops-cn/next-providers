@@ -9,6 +9,6 @@ export const WorkCalendarApi_deleteWorkCalendar = (
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.sys_setting.work_calendar.DeleteWorkCalendar@1.0.0 */ http.delete<void>(
-    `api/gateway/sys_setting.work_calendar.DeleteWorkCalendar/api/sys_setting/v1/work/calendar/${ids}`,
+    `api/gateway/logic.sys_setting/api/sys_setting/v1/work/calendar/${ids}`,
     options
   );

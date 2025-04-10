@@ -9,6 +9,6 @@ export const OrganizationApi_exportOrganizationExcel = (
   options?: HttpOptions
 ): Promise<Blob> =>
   /**! @contract easyops.api.sys_setting.organization.ExportOrganizationExcel@1.0.0 */ http.get<Blob>(
-    `api/gateway/sys_setting.organization.ExportOrganizationExcel/api/sys_setting/v1/file/organization/excel_export/${object}`,
+    `api/gateway/logic.sys_setting/api/sys_setting/v1/file/organization/excel_export/${object}`,
     { ...options, responseType: "blob" }
   );

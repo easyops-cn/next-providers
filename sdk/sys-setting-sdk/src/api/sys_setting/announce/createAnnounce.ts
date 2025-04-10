@@ -57,7 +57,7 @@ export const AnnounceApi_createAnnounce = async (
     await http.post<
       ResponseBodyWrapper<AnnounceApi_CreateAnnounceResponseBody>
     >(
-      "api/gateway/sys_setting.announce.CreateAnnounce/api/sys_setting/v1/announce",
+      "api/gateway/logic.sys_setting/api/sys_setting/v1/announce",
       data,
       options
     )

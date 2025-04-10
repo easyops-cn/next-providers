@@ -23,7 +23,7 @@ export const OrganizationApi_traverseDepartmentStaff = async (
     await http.post<
       ResponseBodyWrapper<OrganizationApi_TraverseDepartmentStaffResponseBody>
     >(
-      "api/gateway/sys_setting.organization.TraverseDepartmentStaff/api/sys_setting/v1/organization/department_staff",
+      "api/gateway/logic.sys_setting/api/sys_setting/v1/organization/department_staff",
       data,
       options
     )

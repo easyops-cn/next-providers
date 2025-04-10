@@ -30,7 +30,7 @@ export const WorkCalendarApi_editWorkCalendarDayConfig = async (
     await http.put<
       ResponseBodyWrapper<WorkCalendarApi_EditWorkCalendarDayConfigResponseBody>
     >(
-      `api/gateway/sys_setting.work_calendar.EditWorkCalendarDayConfig/api/sys_setting/v1/work/calendar_day/${id}`,
+      `api/gateway/logic.sys_setting/api/sys_setting/v1/work/calendar_day/${id}`,
       data,
       options
     )

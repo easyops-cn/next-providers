@@ -9,6 +9,6 @@ export const AnnounceApi_deleteAnnounce = (
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.sys_setting.announce.DeleteAnnounce@1.0.1 */ http.delete<void>(
-    `api/gateway/sys_setting.announce.DeleteAnnounce/api/sys_setting/v1/announce/${instanceIds}`,
+    `api/gateway/logic.sys_setting/api/sys_setting/v1/announce/${instanceIds}`,
     options
   );

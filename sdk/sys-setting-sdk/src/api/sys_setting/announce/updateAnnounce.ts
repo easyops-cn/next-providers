@@ -56,7 +56,7 @@ export const AnnounceApi_updateAnnounce = async (
 ): Promise<AnnounceApi_UpdateAnnounceResponseBody> =>
   /**! @contract easyops.api.sys_setting.announce.UpdateAnnounce@1.1.0 */ (
     await http.put<ResponseBodyWrapper<AnnounceApi_UpdateAnnounceResponseBody>>(
-      `api/gateway/sys_setting.announce.UpdateAnnounce/api/sys_setting/v1/announce/${instanceId}`,
+      `api/gateway/logic.sys_setting/api/sys_setting/v1/announce/${instanceId}`,
       data,
       options
     )

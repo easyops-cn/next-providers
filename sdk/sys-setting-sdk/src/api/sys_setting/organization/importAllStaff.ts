@@ -37,7 +37,7 @@ export const OrganizationApi_importAllStaff = async (
     await http.post<
       ResponseBodyWrapper<OrganizationApi_ImportAllStaffResponseBody>
     >(
-      "api/gateway/sys_setting.organization.ImportAllStaff/api/sys_setting/v1/file/organization/batch/staff/import_all",
+      "api/gateway/logic.sys_setting/api/sys_setting/v1/file/organization/batch/staff/import_all",
       _formData,
       options
     )

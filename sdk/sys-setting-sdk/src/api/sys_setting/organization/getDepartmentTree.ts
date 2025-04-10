@@ -8,6 +8,9 @@ export interface OrganizationApi_GetDepartmentTreeRequestParams {
 
   /** 是否展示先祖部门节点 */
   showAncestor?: boolean;
+
+  /** departmentId为空时，查询最顶级的部门，是否返回每一级部门的子节点 */
+  isAll?: boolean;
 }
 
 export interface OrganizationApi_GetDepartmentTreeResponseBody {
@@ -27,7 +30,7 @@ export const OrganizationApi_getDepartmentTree = async (
     await http.get<
       ResponseBodyWrapper<OrganizationApi_GetDepartmentTreeResponseBody>
     >(
-      "api/gateway/sys_setting.organization.GetDepartmentTree/api/sys_setting/v1/organization/department_tree",
+      "api/gateway/logic.sys_setting/api/sys_setting/v1/organization/department_tree",
       { ...options, params }
     )
   ).data;

@@ -40,7 +40,7 @@ export const AnnounceApi_listAnnounce = async (
 ): Promise<AnnounceApi_ListAnnounceResponseBody> =>
   /**! @contract easyops.api.sys_setting.announce.ListAnnounce@1.0.1 */ (
     await http.get<ResponseBodyWrapper<AnnounceApi_ListAnnounceResponseBody>>(
-      "api/gateway/sys_setting.announce.ListAnnounce/api/sys_setting/v1/announce",
+      "api/gateway/logic.sys_setting/api/sys_setting/v1/announce",
       { ...options, params }
     )
   ).data;

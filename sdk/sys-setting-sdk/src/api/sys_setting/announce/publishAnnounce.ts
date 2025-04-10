@@ -17,7 +17,7 @@ export const AnnounceApi_publishAnnounce = (
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.sys_setting.announce.PublishAnnounce@1.0.1 */ http.post<void>(
-    "api/gateway/sys_setting.announce.PublishAnnounce/api/sys_setting/v1/announce/publish",
+    "api/gateway/logic.sys_setting/api/sys_setting/v1/announce/publish",
     data,
     options
   );

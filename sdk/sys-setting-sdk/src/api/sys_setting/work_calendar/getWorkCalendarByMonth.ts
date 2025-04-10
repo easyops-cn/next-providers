@@ -28,6 +28,18 @@ export interface WorkCalendarApi_GetWorkCalendarByMonthResponseBody {
 
   /** 备注 */
   memo?: string;
+
+  /** 状态 */
+  status?: boolean;
+
+  /** 年份 */
+  year?: string;
+
+  /** 修改人 */
+  modifier?: string;
+
+  /** 修改时间 */
+  mtime?: string;
 }
 
 /**
@@ -43,7 +55,7 @@ export const WorkCalendarApi_getWorkCalendarByMonth = async (
     await http.get<
       ResponseBodyWrapper<WorkCalendarApi_GetWorkCalendarByMonthResponseBody>
     >(
-      `api/gateway/sys_setting.work_calendar.GetWorkCalendarByMonth/api/sys_setting/v1/work/calendar_month/${id}`,
+      `api/gateway/logic.sys_setting/api/sys_setting/v1/work/calendar_month/${id}`,
       { ...options, params }
     )
   ).data;

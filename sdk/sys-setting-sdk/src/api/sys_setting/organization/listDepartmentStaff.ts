@@ -2,7 +2,7 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ResponseListWrapper, ResponseBodyWrapper } from "../../../wrapper";
 
 export interface OrganizationApi_ListDepartmentStaffRequestParams {
-  /** 模糊搜索（用户名，昵称） */
+  /** 模糊搜索（用户名，昵称, 联系方式, 邮箱） */
   q?: string;
 
   /** 页码 */
@@ -45,7 +45,7 @@ export type OrganizationApi_ListDepartmentStaffResponseBody =
   ResponseListWrapper<OrganizationApi_ListDepartmentStaffResponseItem>;
 
 /**
- * @description 获取部门员工列表
+ * @description 获取部门员工列表(当前部门)
  * @endpoint LIST /api/sys_setting/v1/organization/department/:departmentId/staff
  */
 export const OrganizationApi_listDepartmentStaff = async (
@@ -57,7 +57,7 @@ export const OrganizationApi_listDepartmentStaff = async (
     await http.get<
       ResponseBodyWrapper<OrganizationApi_ListDepartmentStaffResponseBody>
     >(
-      `api/gateway/sys_setting.organization.ListDepartmentStaff/api/sys_setting/v1/organization/department/${departmentId}/staff`,
+      `api/gateway/logic.sys_setting/api/sys_setting/v1/organization/department/${departmentId}/staff`,
       { ...options, params }
     )
   ).data;

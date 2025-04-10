@@ -28,4 +28,19 @@ export interface ModelWorkCalendar {
 
   /** 是否内置 */
   builtin: boolean;
+
+  /** 状态 */
+  status: boolean;
+
+  /** 年份 */
+  year: string;
+
+  /** 已经新建的年份 */
+  dataYears: string[];
+
+  /** 修改人 */
+  modifier: string;
+
+  /** 修改时间 */
+  mtime: string;
 }

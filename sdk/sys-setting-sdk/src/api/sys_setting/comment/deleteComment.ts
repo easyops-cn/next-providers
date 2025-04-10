@@ -9,6 +9,6 @@ export const CommentApi_deleteComment = (
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.sys_setting.comment.DeleteComment@1.0.1 */ http.delete<void>(
-    `api/gateway/sys_setting.comment.DeleteComment/api/sys_setting/v1/comment/${instanceId}`,
+    `api/gateway/logic.sys_setting/api/sys_setting/v1/comment/${instanceId}`,
     options
   );

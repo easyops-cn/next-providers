@@ -17,7 +17,7 @@ export const AnnounceApi_countEffectiveAnnounce = async (
     await http.get<
       ResponseBodyWrapper<AnnounceApi_CountEffectiveAnnounceResponseBody>
     >(
-      "api/gateway/sys_setting.announce.CountEffectiveAnnounce/api/sys_setting/v1/announce/count",
+      "api/gateway/logic.sys_setting/api/sys_setting/v1/announce/count",
       options
     )
   ).data;

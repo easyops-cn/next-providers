@@ -8,4 +8,6 @@ export * from "./ModelWorkDayConfig";
 export * from "./ModelWorkCalendarConfig";
 export * from "./ModelWorkDay";
 export * from "./ModelWorkCalendar";
+export * from "./ModelWorkbenchCustomEntry";
+export * from "./ModelWorkbenchHubTemplate";
 export * from "./ModelWorkbenchHub";

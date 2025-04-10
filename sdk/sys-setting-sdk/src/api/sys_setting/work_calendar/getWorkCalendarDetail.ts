@@ -2,6 +2,11 @@ import { http, HttpOptions } from "@next-core/brick-http";
 import { ModelWorkCalendar } from "../../../model/sys_setting";
 import { ResponseBodyWrapper } from "../../../wrapper";
 
+export interface WorkCalendarApi_GetWorkCalendarDetailRequestParams {
+  /** 年份 */
+  year?: string;
+}
+
 export interface WorkCalendarApi_GetWorkCalendarDetailResponseBody {
   /** ID(objectId类型) */
   id?: string;
@@ -26,6 +31,21 @@ export interface WorkCalendarApi_GetWorkCalendarDetailResponseBody {
 
   /** 是否内置 */
   builtin?: boolean;
+
+  /** 状态 */
+  status?: boolean;
+
+  /** 年份 */
+  year?: string;
+
+  /** 修改人 */
+  modifier?: string;
+
+  /** 修改时间 */
+  mtime?: string;
+
+  /** 有数据的年份 */
+  dataYears?: string[];
 }
 
 /**
@@ -34,13 +54,14 @@ export interface WorkCalendarApi_GetWorkCalendarDetailResponseBody {
  */
 export const WorkCalendarApi_getWorkCalendarDetail = async (
   id: string | number,
+  params: WorkCalendarApi_GetWorkCalendarDetailRequestParams,
   options?: HttpOptions
 ): Promise<WorkCalendarApi_GetWorkCalendarDetailResponseBody> =>
   /**! @contract easyops.api.sys_setting.work_calendar.GetWorkCalendarDetail@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<WorkCalendarApi_GetWorkCalendarDetailResponseBody>
-    >(
-      `api/gateway/sys_setting.work_calendar.GetWorkCalendarDetail/api/sys_setting/v1/work/calendar/${id}`,
-      options
-    )
+    >(`api/gateway/logic.sys_setting/api/sys_setting/v1/work/calendar/${id}`, {
+      ...options,
+      params,
+    })
   ).data;

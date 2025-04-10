@@ -9,6 +9,6 @@ export const OrganizationApi_getImportTemplate = (
   options?: HttpOptions
 ): Promise<Blob> =>
   /**! @contract easyops.api.sys_setting.organization.GetImportTemplate@1.0.0 */ http.get<Blob>(
-    `api/gateway/sys_setting.organization.GetImportTemplate/api/sys_setting/v1/file/organization/import_template/${object}`,
+    `api/gateway/logic.sys_setting/api/sys_setting/v1/file/organization/import_template/${object}`,
     { ...options, responseType: "blob" }
   );

@@ -27,7 +27,7 @@ export const CommentApi_createComment = async (
 ): Promise<CommentApi_CreateCommentResponseBody> =>
   /**! @contract easyops.api.sys_setting.comment.CreateComment@1.0.1 */ (
     await http.post<ResponseBodyWrapper<CommentApi_CreateCommentResponseBody>>(
-      "api/gateway/sys_setting.comment.CreateComment/api/sys_setting/v1/comment",
+      "api/gateway/logic.sys_setting/api/sys_setting/v1/comment",
       data,
       options
     )

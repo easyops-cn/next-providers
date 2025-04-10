@@ -18,7 +18,7 @@ export const OrganizationApi_setDepartmentStaff = (
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.sys_setting.organization.SetDepartmentStaff@1.0.0 */ http.post<void>(
-    `api/gateway/sys_setting.organization.SetDepartmentStaff/api/sys_setting/v1/organization/department/${departmentId}/staff`,
+    `api/gateway/logic.sys_setting/api/sys_setting/v1/organization/department/${departmentId}/staff`,
     data,
     options
   );

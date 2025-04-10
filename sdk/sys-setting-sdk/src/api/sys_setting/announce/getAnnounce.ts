@@ -21,7 +21,7 @@ export const AnnounceApi_getAnnounce = async (
 ): Promise<AnnounceApi_GetAnnounceResponseBody> =>
   /**! @contract easyops.api.sys_setting.announce.GetAnnounce@1.0.1 */ (
     await http.get<ResponseBodyWrapper<AnnounceApi_GetAnnounceResponseBody>>(
-      `api/gateway/sys_setting.announce.GetAnnounce/api/sys_setting/v1/announce/detail/${instanceId}`,
+      `api/gateway/logic.sys_setting/api/sys_setting/v1/announce/detail/${instanceId}`,
       { ...options, params }
     )
   ).data;

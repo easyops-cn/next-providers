@@ -24,7 +24,7 @@ export const OrganizationApi_getStaffByDepartmentPosition = async (
     await http.get<
       ResponseBodyWrapper<OrganizationApi_GetStaffByDepartmentPositionResponseBody>
     >(
-      `api/gateway/sys_setting.organization.GetStaffByDepartmentPosition/api/sys_setting/v1/organization/department/${departmentId}/staff_position`,
+      `api/gateway/logic.sys_setting/api/sys_setting/v1/organization/department/${departmentId}/staff_position`,
       { ...options, params }
     )
   ).data;

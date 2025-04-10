@@ -17,7 +17,7 @@ export const SiteMsgApi_getSiteMessageDetail = async (
     await http.get<
       ResponseBodyWrapper<SiteMsgApi_GetSiteMessageDetailResponseBody>
     >(
-      `api/gateway/sys_setting.site_msg.GetSiteMessageDetail/api/sys_setting/v1/site_msg/${msgId}`,
+      `api/gateway/logic.sys_setting/api/sys_setting/v1/site_msg/${msgId}`,
       options
     )
   ).data;

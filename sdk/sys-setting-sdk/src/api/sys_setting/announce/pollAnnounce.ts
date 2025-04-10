@@ -13,7 +13,7 @@ export const AnnounceApi_pollAnnounce = async (
 ): Promise<AnnounceApi_PollAnnounceResponseBody> =>
   /**! @contract easyops.api.sys_setting.announce.PollAnnounce@1.0.0 */ (
     await http.get<ResponseBodyWrapper<AnnounceApi_PollAnnounceResponseBody>>(
-      "api/gateway/sys_setting.announce.PollAnnounce/api/sys_setting/v1/announce/poll",
+      "api/gateway/logic.sys_setting/api/sys_setting/v1/announce/poll",
       options
     )
   ).data;

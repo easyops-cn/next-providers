@@ -1,3 +1,6 @@
+export * from "./checkWorkCalendarEffectTime";
+export * from "./checkHolidayByDate";
+export * from "./cloneWorkCalendar";
 export * from "./createWorkCalendar";
 export * from "./deleteWorkCalendar";
 export * from "./editWorkCalendarConfig";

@@ -28,7 +28,7 @@ export const WorkCalendarApi_getHoliday = async (
 ): Promise<WorkCalendarApi_GetHolidayResponseBody> =>
   /**! @contract easyops.api.sys_setting.work_calendar.GetHoliday@1.0.0 */ (
     await http.get<ResponseBodyWrapper<WorkCalendarApi_GetHolidayResponseBody>>(
-      "api/gateway/sys_setting.work_calendar.GetHoliday/api/sys_setting/v1/holiday",
+      "api/gateway/logic.sys_setting/api/sys_setting/v1/holiday",
       { ...options, params }
     )
   ).data;

@@ -39,7 +39,7 @@ export const OrganizationApi_importIncrDepartment = async (
     await http.post<
       ResponseBodyWrapper<OrganizationApi_ImportIncrDepartmentResponseBody>
     >(
-      "api/gateway/sys_setting.organization.ImportIncrDepartment/api/sys_setting/v1/file/organization/batch/department/import_incr",
+      "api/gateway/logic.sys_setting/api/sys_setting/v1/file/organization/batch/department/import_incr",
       _formData,
       options
     )

@@ -16,7 +16,7 @@ export const WorkbenchApi_setWorkbench = async (
 ): Promise<WorkbenchApi_SetWorkbenchResponseBody> =>
   /**! @contract easyops.api.sys_setting.workbench.SetWorkbench@1.0.0 */ (
     await http.put<ResponseBodyWrapper<WorkbenchApi_SetWorkbenchResponseBody>>(
-      "api/gateway/sys_setting.workbench.SetWorkbench/api/sys_setting/workbench/set",
+      "api/gateway/logic.sys_setting/api/sys_setting/workbench/set",
       data,
       options
     )

@@ -11,6 +11,12 @@ export interface WorkCalendarApi_EditWorkCalendarConfigRequestBody {
 
   /** 日历配置 */
   config: ModelWorkCalendar["config"];
+
+  /** 状态 */
+  status?: boolean;
+
+  /** 年份 */
+  year?: string;
 }
 
 export interface WorkCalendarApi_EditWorkCalendarConfigResponseBody {
@@ -31,7 +37,7 @@ export const WorkCalendarApi_editWorkCalendarConfig = async (
     await http.put<
       ResponseBodyWrapper<WorkCalendarApi_EditWorkCalendarConfigResponseBody>
     >(
-      `api/gateway/sys_setting.work_calendar.EditWorkCalendarConfig/api/sys_setting/v1/work/calendar/${id}`,
+      `api/gateway/logic.sys_setting/api/sys_setting/v1/work/calendar/${id}`,
       data,
       options
     )

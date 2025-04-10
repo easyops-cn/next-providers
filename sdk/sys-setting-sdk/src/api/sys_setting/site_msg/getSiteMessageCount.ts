@@ -17,7 +17,7 @@ export const SiteMsgApi_getSiteMessageCount = async (
     await http.get<
       ResponseBodyWrapper<SiteMsgApi_GetSiteMessageCountResponseBody>
     >(
-      "api/gateway/sys_setting.site_msg.GetSiteMessageCount/api/sys_setting/v1/site_msg_count",
+      "api/gateway/logic.sys_setting/api/sys_setting/v1/site_msg_count",
       options
     )
   ).data;

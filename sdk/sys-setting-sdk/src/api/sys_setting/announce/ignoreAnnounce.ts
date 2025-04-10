@@ -14,7 +14,7 @@ export const AnnounceApi_ignoreAnnounce = (
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.sys_setting.announce.IgnoreAnnounce@1.0.1 */ http.post<void>(
-    "api/gateway/sys_setting.announce.IgnoreAnnounce/api/sys_setting/v1/announce/ignore",
+    "api/gateway/logic.sys_setting/api/sys_setting/v1/announce/ignore",
     data,
     options
   );

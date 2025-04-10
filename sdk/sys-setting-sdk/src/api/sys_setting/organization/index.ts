@@ -9,6 +9,7 @@ export * from "./importAllDepartment";
 export * from "./importAllStaff";
 export * from "./importIncrDepartment";
 export * from "./listDepartmentStaff";
+export * from "./listDepartmentStaffV2";
 export * from "./setDepartmentStaff";
 export * from "./setStaffPosition";
 export * from "./traverseDepartmentStaff";
