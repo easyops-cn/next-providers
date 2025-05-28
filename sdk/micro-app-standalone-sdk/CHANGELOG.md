@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/micro-app-standalone-sdk@1.2.1...@next-sdk/micro-app-standalone-sdk@1.3.0) (2025-05-28)
+
+### Features
+
+- add apis: LaunchpadApi_getLaunchpadConfig, LaunchpadApi_launchpadFactoryRestore, LaunchpadApi_scenarioCategoryFactoryRestore, LaunchpadApi_solutionCategoryFactoryRestore, OpenPlatformApi_applicationList, OpenPlatformApi_applyForAppActivation, OpenPlatformApi_approval, OpenPlatformApi_approvalList, OpenPlatformApi_getActiveAppConfig, OpenPlatformApi_getAppLaunchpadConfig, OpenPlatformApi_index, OpenPlatformApi_listMicroApp, OpenPlatformApi_listMicroAppLaunchpadCategory, OpenPlatformApi_searchMicroApp, OpenPlatformApi_searchMicroAppCategory, OpenPlatformApi_updateActiveAppConfig, ReportApi_buildBootstrapStandalone, ReportApi_getLackingDependencies, ReportApi_reportAfterFactoryUpdate, ReportApi_restoreMenus, ReportApi_syncDependency, RuntimeApi_createMenuItem, RuntimeApi_deleteMenuItem, RuntimeApi_getAppIdByUrl, RuntimeApi_moveMenuItem, RuntimeApi_updateMenu, RuntimeApi_updateMenuItem ([17cdd38](https://github.com/easyops-cn/next-providers/commit/17cdd386adcf514dfdea9f6245cfd2dca7c4c49a))
+
 ## 1.2.1 (2023-06-08)
 
 **Note:** Version bump only for package @next-sdk/micro-app-standalone-sdk
