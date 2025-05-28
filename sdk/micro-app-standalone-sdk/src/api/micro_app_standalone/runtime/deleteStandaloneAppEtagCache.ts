@@ -14,6 +14,6 @@ export const RuntimeApi_deleteStandaloneAppEtagCache = (
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.micro_app_standalone.runtime.DeleteStandaloneAppEtagCache@1.0.0 */ http.delete<void>(
-    "api/gateway/micro_app_standalone.runtime.DeleteStandaloneAppEtagCache/api/v1/standalone_micro_app/bootstrap_etag",
+    "api/gateway/logic.micro_app_standalone_service/api/v1/standalone_micro_app/bootstrap_etag",
     { ...options, params }
   );

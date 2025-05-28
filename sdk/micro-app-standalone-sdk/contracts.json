@@ -6,6 +6,59 @@
   },
   "contracts": [
     {
+      "contract": "micro_app_standalone.launchpad.GetLaunchpadConfig",
+      "name": "GetLaunchpadConfig",
+      "version": "1.0.0",
+      "description": "Launchpad 配置信息",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/micro_app_standalone/launchpad_config"
+      },
+      "import": [
+        "easyops/model/micro_app_standalone/launchpad_desktop",
+        "easyops/model/micro_app_standalone/launchpad_storyboard"
+      ],
+      "request": null,
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "desktops",
+            "type": "LaunchpadDesktop[]",
+            "description": "导航菜单列表"
+          },
+          {
+            "name": "storyboards",
+            "type": "LaunchpadStoryboard[]",
+            "description": "storyboards"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get launchpad config",
+            "zh": "Launchpad 配置信息"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8259/api/v1/micro_app_standalone/launchpad_config",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"data\": {\n    \"desktops\": [\n      {\n        \"name\": \"持续交付\",\n        \"order\": 2,\n        \"items\": [\n          {\n            \"type\": \"app\",\n            \"id\": \"app-deploy\",\n            \"instanceId\": \"5e20601a01c19\",\n            \"name\": \"应用部署\",\n            \"position\": 10,\n            \"url\": \"\",\n            \"items\": []\n          },\n          {\n            \"type\": \"dir\",\n            \"id\": \"test-dir\",\n            \"instanceId\": \"60a01289fc703\",\n            \"name\": \"测试文件夹\",\n            \"url\": \"\",\n            \"position\": 0,\n            \"items\": [\n              {\n                \"type\": \"app\",\n                \"id\": \"janice-test\",\n                \"instanceId\": \"5fd72aa1d0cd7\",\n                \"name\": \"jancie-test\",\n                \"url\": \"\",\n                \"menuIcon\": {\n                  \"lib\": \"antd\",\n                  \"type\": \"\",\n                  \"theme\": \"outlined\",\n                  \"icon\": \"desktop\",\n                  \"prefix\": \"\",\n                  \"category\": \"\"\n                },\n                \"position\": 0,\n                \"items\": [\n\n                ]\n              }\n            ]\n          }\n        ]\n      }\n    ],\n    \"storyboards\": []\n  },\n  \"error\": \"\"\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "micro_app_standalone.launchpad.GetLaunchpadInfo",
       "name": "GetLaunchpadInfo",
       "version": "1.1.0",
@@ -15,9 +68,10 @@
         "uri": "/api/v1/micro_app_standalone/launchpad_info"
       },
       "import": [
-        "easyops/model/api_gateway/settings",
-        "easyops/model/micro_app/installed_micro_app_bootstrap",
-        "easyops/model/api_gateway/desktop"
+        "easyops/model/micro_app_standalone/launchpad_settings",
+        "easyops/model/micro_app_standalone/launchpad_storyboard",
+        "easyops/model/micro_app_standalone/launchpad_desktop",
+        "easyops/model/micro_app_standalone/launchpad_site_map"
       ],
       "request": {
         "type": "object",
@@ -34,64 +88,23 @@
         "fields": [
           {
             "name": "settings",
-            "type": "Settings",
+            "type": "LaunchpadSettings",
             "description": "配置"
           },
           {
             "name": "desktops",
-            "type": "Desktop[]",
+            "type": "LaunchpadDesktop[]",
             "description": "桌面列表"
           },
           {
             "name": "storyboards",
-            "type": "object[]",
-            "description": "storyboards",
-            "fields": [
-              {
-                "name": "app",
-                "type": "InstalledMicroAppBootstrap",
-                "description": "小产品基本信息"
-              }
-            ]
+            "type": "LaunchpadStoryboard[]",
+            "description": "storyboards"
           },
           {
             "name": "siteSort",
-            "type": "object[]",
-            "description": "系统地图",
-            "fields": [
-              {
-                "name": "id",
-                "type": "string",
-                "description": "分类ID"
-              },
-              {
-                "name": "name",
-                "type": "string",
-                "description": "分类名称"
-              },
-              {
-                "name": "order",
-                "type": "int",
-                "description": "分类顺序"
-              },
-              {
-                "name": "apps",
-                "type": "object[]",
-                "description": "微应用列表",
-                "fields": [
-                  {
-                    "name": "id",
-                    "type": "string",
-                    "description": "微应用id"
-                  },
-                  {
-                    "name": "sort",
-                    "type": "int",
-                    "description": "微应用排序"
-                  }
-                ]
-              }
-            ]
+            "type": "LaunchpadSiteMap[]",
+            "description": "系统地图"
           }
         ]
       },
@@ -115,6 +128,1212 @@
       ]
     },
     {
+      "contract": "micro_app_standalone.launchpad.LaunchpadFactoryRestore",
+      "name": "LaunchpadFactoryRestore",
+      "version": "1.0.0",
+      "description": "Launchpad 恢复出厂设置",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro_app_standalone/launchpad_factory_restore"
+      },
+      "import": ["easyops/model/micro_app_standalone/launchpad_desktop"],
+      "request": null,
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "desktops",
+            "type": "LaunchpadDesktop[]",
+            "description": "导航菜单列表"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Launchpad factory restore",
+            "zh": "Launchpad 恢复出厂设置"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8259/api/v1/micro_app_standalone/launchpad_factory_restore",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"data\": {\n    \"desktops\": [\n      {\n        \"name\": \"持续交付\",\n        \"order\": 2,\n        \"items\": [\n          {\n            \"type\": \"app\",\n            \"id\": \"app-deploy\",\n            \"instanceId\": \"5e20601a01c19\",\n            \"name\": \"应用部署\",\n            \"position\": 10,\n            \"url\": \"\",\n            \"items\": []\n          },\n          {\n            \"type\": \"dir\",\n            \"id\": \"test-dir\",\n            \"instanceId\": \"60a01289fc703\",\n            \"name\": \"测试文件夹\",\n            \"url\": \"\",\n            \"position\": 0,\n            \"items\": [\n              {\n                \"type\": \"app\",\n                \"id\": \"janice-test\",\n                \"instanceId\": \"5fd72aa1d0cd7\",\n                \"name\": \"jancie-test\",\n                \"url\": \"\",\n                \"menuIcon\": {\n                  \"lib\": \"antd\",\n                  \"type\": \"\",\n                  \"theme\": \"outlined\",\n                  \"icon\": \"desktop\",\n                  \"prefix\": \"\",\n                  \"category\": \"\"\n                },\n                \"position\": 0,\n                \"items\": [\n\n                ]\n              }\n            ]\n          }\n        ]\n      }\n    ]\n  },\n  \"error\": \"\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app_standalone.launchpad.ScenarioCategoryFactoryRestore",
+      "name": "ScenarioCategoryFactoryRestore",
+      "version": "1.0.0",
+      "description": "场景中心分类恢复出厂设置",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro_app_standalone/scenario_category_factory_restore"
+      },
+      "request": null,
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Scenario Category factory restore",
+            "zh": "场景中心分类恢复出厂设置"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8259/api/v1/micro_app_standalone/scenario_category_factory_restore",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"data\": null,\n  \"error\": \"\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app_standalone.launchpad.SolutionCategoryFactoryRestore",
+      "name": "SolutionCategoryFactoryRestore",
+      "version": "1.0.0",
+      "description": "解决方案分类恢复出厂设置",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro_app_standalone/solution_category_factory_restore"
+      },
+      "request": null,
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Solution Category factory restore",
+            "zh": "解决方案分类恢复出厂设置"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8259/api/v1/micro_app_standalone/solution_category_factory_restore",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"data\": null,\n  \"error\": \"\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app_standalone.open_platform.ApplicationList",
+      "category": {
+        "en": "Open",
+        "zh": "开放平台"
+      },
+      "name": "ApplicationList",
+      "version": "1.0.0",
+      "description": "申请开通app列表",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/v1/open_platform/micro_app/application"
+      },
+      "import": ["easyops/model/micro_app_standalone/app_application_detail"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "每页大小"
+          },
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "query condition: app Id"
+          },
+          {
+            "name": "state",
+            "type": "string",
+            "description": "query condition: app state(多字段用;分开)"
+          }
+        ],
+        "required": ["page", "page_size"]
+      },
+      "response": {
+        "type": "AppApplicationDetail"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Application List",
+            "zh": "用户申请列表"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8146/api/v1/open_platform/micro_app/application",
+            "headers": {
+              "Org": 8888,
+              "User": "easyops"
+            }
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"list\": [\n        {\n            \"id\": \"5f90b3114dcdb\",\n            \"appId\": \"demo-app\",\n            \"appName\": \"demo-app\",\n            \"applicant\": \"janice\",\n            \"applicationTime\": 1683115074,\n            \"userRange\": [\n                \"janice\"\n            ],\n            \"state\": \"pending\"\n        }\n    ]\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app_standalone.open_platform.ApplyForAppActivation",
+      "category": {
+        "en": "Open",
+        "zh": "开放平台"
+      },
+      "name": "ApplyForAppActivation",
+      "version": "1.0.0",
+      "description": "申请app访问权限",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/open_platform/:appId/apply_for_app_activation"
+      },
+      "import": ["easyops/model/micro_app_standalone/app_application_detail"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "微应用Id"
+          },
+          {
+            "name": "userRange",
+            "type": "string[]",
+            "description": "用户开通范围(user.name或user_group.instanceId，后者以:开头)"
+          },
+          {
+            "name": "userType",
+            "type": "string",
+            "description": "userType",
+            "enum": ["all", "part", "onlyMe"]
+          },
+          {
+            "name": "appName",
+            "type": "string",
+            "description": "微应用name"
+          }
+        ],
+        "required": ["appId", "userRange"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "AppApplicationDetail.id"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "ApplyFor App Activation",
+            "zh": "申请app访问权限"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8259/api/v1/open_platform/demo-app/apply_for_app_activation"
+          },
+          "body": "{\n    \"appId\": \"demo-app\",\n    \"userRange\": [\"easyops\", \":60d78d4207607\"]\n}",
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": null\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app_standalone.open_platform.Approval",
+      "category": {
+        "en": "Open",
+        "zh": "开放平台"
+      },
+      "name": "Approval",
+      "version": "1.0.0",
+      "description": "审批工单:开通app",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/open_platform/approval/:id"
+      },
+      "import": ["easyops/model/micro_app_standalone/app_application_detail"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "description": "申请单id"
+          },
+          {
+            "name": "action",
+            "type": "string",
+            "enum": ["approve", "refuse"],
+            "description": "审批操作"
+          },
+          {
+            "ref": "AppApplicationDetail.launchpadConfig"
+          }
+        ],
+        "required": ["id", "action"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Approval",
+            "zh": "审批开通微应用"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8146/api/v1/open_platform/approval/645903525a33efd0db76940f",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"action\": \"approve\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\":0,\n    \"codeExplain\":\"\",\n    \"error\":\"\",\n    \"data\":{\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app_standalone.open_platform.ApprovalList",
+      "category": {
+        "en": "Open",
+        "zh": "开放平台"
+      },
+      "name": "ApprovalList",
+      "version": "1.0.0",
+      "description": "审批列表",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/v1/open_platform/app_application/approval"
+      },
+      "import": ["easyops/model/micro_app_standalone/app_application_detail"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "每页大小"
+          },
+          {
+            "name": "state",
+            "type": "string",
+            "description": "状态(多状态用;分开)"
+          }
+        ],
+        "required": ["page", "page_size"]
+      },
+      "response": {
+        "type": "AppApplicationDetail"
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "ApprovalList",
+            "zh": "审批列表"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8146/api/v1/open_platform/app_application/approval",
+            "headers": {
+              "Org": 8888,
+              "User": "easyops"
+            }
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"list\": [\n        {\n            \"id\": \"5f90b3114dcdb\",\n            \"appId\": \"demo-app\",\n            \"appName\": \"demo-app\",\n            \"applicant\": \"janice\",\n            \"applicationTime\": 1683115074,\n            \"userRange\": [\n                \"janice\"\n            ],\n            \"state\": \"pending\"\n        }\n    ]\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app_standalone.open_platform.GetActiveAppConfig",
+      "category": {
+        "en": "Open",
+        "zh": "开放平台"
+      },
+      "name": "GetActiveAppConfig",
+      "version": "1.0.0",
+      "description": "获取默认开通app的配置",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/open_platform/active_app_config"
+      },
+      "request": null,
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "isDefaultActiveApp",
+            "type": "bool",
+            "description": "是否默认开通app"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "GetActiveAppConfig",
+            "zh": "获取\"默认开通app\"开关配置"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8146/api/v1/open_platform/active_app_config",
+            "headers": {
+              "Org": 8888,
+              "User": "easyops"
+            }
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"code\":0,\n    \"codeExplain\":\"\",\n    \"error\":\"\",\n    \"data\":{\n      \"isDefaultActiveApp\": true\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app_standalone.open_platform.GetAppLaunchpadConfig",
+      "category": {
+        "en": "Open",
+        "zh": "开放平台"
+      },
+      "name": "GetAppLaunchpadConfig",
+      "version": "1.0.0",
+      "description": "获取app的launchpad信息",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/micro_app/:appId/launchpad_info"
+      },
+      "import": ["easyops/model/micro_app_standalone/app_application_detail"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "appId"
+          }
+        ],
+        "required": ["appId"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "AppApplicationDetail.launchpadConfig"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "GetAppLaunchpadConfig",
+            "zh": "获取app的launchpad信息"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8146/api/v1/micro_app/demo-app/launchpad_info",
+            "headers": {
+              "Org": 8888,
+              "User": "easyops"
+            }
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n        \"launchpadConfig\": {\n            \"instanceId\": \"5a6193f16cba8\",\n            \"id\": \"cmdb\",\n            \"name\": \"cmdb\"\n        }\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app_standalone.open_platform.ListMicroApp",
+      "category": {
+        "en": "Open",
+        "zh": "开放平台"
+      },
+      "name": "ListMicroApp",
+      "version": "1.0.0",
+      "description": "微应用列表(全量)",
+      "endpoint": {
+        "method": "LIST",
+        "uri": "/api/v1/open_platform/micro_app"
+      },
+      "import": ["easyops/model/micro_app/installed_micro_app"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "指定appId查询"
+          },
+          {
+            "name": "activateStatus",
+            "type": "string",
+            "description": "过滤开通状态(activated/inactive), 空为不过滤"
+          },
+          {
+            "name": "category",
+            "type": "string",
+            "description": "按所属Launchpad分类查询, 空为不限制分类"
+          },
+          {
+            "name": "uncategorized",
+            "type": "bool",
+            "description": "仅查询未分类应用（优先级比category参数高）"
+          },
+          {
+            "name": "q",
+            "type": "string",
+            "description": "模糊搜索（应用名称、ID、描述）"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "分页页码"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "分页大小"
+          }
+        ],
+        "default": {
+          "page": 1,
+          "pageSize": 20
+        }
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "InstalledMicroApp.instanceId"
+          },
+          {
+            "ref": "InstalledMicroApp.name"
+          },
+          {
+            "ref": "InstalledMicroApp.appId"
+          },
+          {
+            "ref": "InstalledMicroApp.homepage"
+          },
+          {
+            "ref": "InstalledMicroApp.description"
+          },
+          {
+            "ref": "InstalledMicroApp.author"
+          },
+          {
+            "ref": "InstalledMicroApp.icons"
+          },
+          {
+            "ref": "InstalledMicroApp.currentVersion"
+          },
+          {
+            "ref": "InstalledMicroApp.locales"
+          },
+          {
+            "ref": "InstalledMicroApp.standaloneMode"
+          },
+          {
+            "name": "readAuthorizers",
+            "type": "string[]",
+            "description": "开通白名单。[]空数组表示向全部用户开通, [\"defaultUser\"]表示未有人开通(仅管理员)"
+          },
+          {
+            "name": "launchpadInfo",
+            "type": "object[]",
+            "description": "所属导航菜单及分类菜单",
+            "fields": [
+              {
+                "name": "id",
+                "type": "string",
+                "description": "菜单id"
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "description": "菜单名称"
+              }
+            ]
+          },
+          {
+            "name": "activated",
+            "type": "bool",
+            "description": "开通状态"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Uncategorized Micro App",
+            "zh": "未分类微应用"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8259/api/v1/open_platform/micro_app?q=cmdb&page=1&pageSize=10&uncategorized=true"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"list\": [\n            {\n                \"instanceId\": \"5d3914ca4406a\",\n                \"name\": \"cmdb微应用\",\n                \"appId\": \"cmdb_app\",\n                \"description\": \"cmdb描述\",\n                \"author\": [\"Easyops\"],\n                \"icons\": [\n                    {\n                        \"large\": \"icons/large.png\"\n                    }\n                ],\n                \"currentVersion\": \"2.4.0\",\n                \"launchpadInfo\": [\n                    {\n                        \"id\": \"easy_cmdb\",\n                        \"name\": \"IT资源管理\"\n                    },\n                    {\n                        \"id\": \"my_cmdb\",\n                        \"name\": \"我的CMDB\"\n                    }\n                ],\n                \"readAuthorizers\": [\"zhangsan\", \":60af41ca447809\"],\n                \"activated\": true\n            }\n        ],\n        \"total\": 1,\n        \"page\": 1,\n        \"pageSize\": 10\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app_standalone.open_platform.ListMicroAppLaunchpadCategory",
+      "category": {
+        "en": "Open",
+        "zh": "开放平台"
+      },
+      "name": "ListMicroAppLaunchpadCategory",
+      "version": "1.0.0",
+      "description": "微应用Launchpad分类(全量)",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v1/open_platform/micro_app_launchpad_category"
+      },
+      "import": ["easyops/model/micro_app_standalone/launchpad_desktop"],
+      "request": null,
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "launchpad",
+            "type": "LaunchpadDesktop[]",
+            "description": "微应用Launchpad分类"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "List Micro App Launchpad",
+            "zh": "微应用Launchpad分类列表"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://127.0.0.1:8259/api/v1/open_platform/micro_app_launchpad_category"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"launchpad\": [\n            {\n                \"id\": \"ci\",\n                \"name\": \"持续交付\",\n                \"order\": 1,\n                \"items\": [\n                    {\n                        \"type\": \"dir\",\n                        \"id\": \"app-deploy\",\n                        \"name\": \"持续部署\",\n                        \"position\": 10,\n                        \"url\": \"\",\n                        \"items\": []\n                    }\n                ]\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app_standalone.open_platform.SearchMicroApp",
+      "category": {
+        "en": "Open",
+        "zh": "开放平台"
+      },
+      "name": "SearchMicroApp",
+      "version": "1.0.0",
+      "description": "查询微应用",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/open_platform/micro_app/search"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "fields",
+            "type": "string[]",
+            "description": "查询字段"
+          },
+          {
+            "name": "query",
+            "type": "map",
+            "description": "查询条件"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "分页页码"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "分页大小"
+          }
+        ],
+        "required": ["fields"],
+        "default": {
+          "page": 1,
+          "pageSize": 30
+        }
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "map[]",
+            "description": "查询结果"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "查询微应用"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8259/api/v1/open_platform/micro_app/search",
+            "body": "{\n  \"fields\": [\"name\"],\n  \"page\": 1,\n  \"pageSize\": 10\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"list\": [\n    {\n      \"name\": \"cmdb微应用\"\n    }\n  ]\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app_standalone.open_platform.SearchMicroAppCategory",
+      "category": {
+        "en": "Open",
+        "zh": "开放平台"
+      },
+      "name": "SearchMicroAppCategory",
+      "version": "1.0.0",
+      "description": "查询微应用分类及微应用",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/open_platform/micro_app/category/search"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "fields",
+            "type": "string[]",
+            "description": "查询字段"
+          },
+          {
+            "name": "query",
+            "type": "map",
+            "description": "查询条件"
+          },
+          {
+            "name": "appType",
+            "type": "string",
+            "enum": ["scenario", "solution"],
+            "description": "查询类型"
+          },
+          {
+            "name": "page",
+            "type": "page",
+            "description": "分页页码"
+          },
+          {
+            "name": "pageSize",
+            "type": "page_size",
+            "description": "分页大小"
+          }
+        ],
+        "required": ["appType", "fields"],
+        "default": {
+          "page": 1,
+          "pageSize": 30
+        }
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "list",
+            "type": "map[]",
+            "description": "查询结果"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "查询微应用分类"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8259/api/v1/open_platform/micro_app/category/search",
+            "body": "{\n  \"fields\": [\"name\"],\n  \"page\": 1,\n  \"pageSize\": 10\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"list\": [\n    {\n      \"name\": \"资源云\"\n    }\n  ]\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app_standalone.open_platform.UpdateActiveAppConfig",
+      "category": {
+        "en": "Open",
+        "zh": "开放平台"
+      },
+      "name": "UpdateActiveAppConfig",
+      "version": "1.0.0",
+      "description": "更新开通app的开关配置",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/open_platform/active_app_config"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "isDefaultActiveApp",
+            "type": "bool",
+            "description": "是否默认开通app"
+          }
+        ],
+        "required": ["isDefaultActiveApp"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "UpdateActiveAppConfig",
+            "zh": "更新\"默认开通app\"开关配置"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8146/api/v1/open_platform/active_app_config?isDefaultActiveApp=true",
+            "headers": {
+              "Org": 8888,
+              "User": "easyops"
+            }
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"code\":0,\n    \"codeExplain\":\"\",\n    \"error\":\"\",\n    \"data\":{\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app_standalone.report.BuildBootstrapStandalone",
+      "category": {
+        "en": "Data Report",
+        "zh": "数据上报"
+      },
+      "name": "BuildBootstrapStandalone",
+      "version": "1.0.0",
+      "description": "构建standalone app的bootstrap",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro_app_standalone/build_boostrap_standalone"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "微应用Id"
+          },
+          {
+            "name": "storyboards",
+            "type": "map[]",
+            "description": "storyboard json (支持多个打包)"
+          },
+          {
+            "name": "dependencies",
+            "type": "object",
+            "description": "依赖名称",
+            "fields": [
+              {
+                "name": "bricks",
+                "type": "object[]",
+                "description": "构件依赖",
+                "fields": [
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "description": "构件名"
+                  },
+                  {
+                    "name": "version",
+                    "type": "string",
+                    "description": "构件版本"
+                  }
+                ]
+              },
+              {
+                "name": "templates",
+                "type": "object[]",
+                "description": "template依赖",
+                "fields": [
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "description": "template名"
+                  },
+                  {
+                    "name": "version",
+                    "type": "string",
+                    "description": "template版本"
+                  }
+                ]
+              },
+              {
+                "name": "core",
+                "type": "object[]",
+                "description": "框架依赖",
+                "fields": [
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "description": "框架名(通常是brick_next)"
+                  },
+                  {
+                    "name": "version",
+                    "type": "string",
+                    "description": "框架版本"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "noAuth",
+            "type": "bool",
+            "description": "是否免登录"
+          },
+          {
+            "name": "toSingleNode",
+            "type": "bool",
+            "description": "是否push到单节点：默认false"
+          }
+        ],
+        "required": ["appId"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Sync Dependency",
+            "zh": "同步依赖"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8259/api/v1/micro_app_standalone/build_boostrap_standalone"
+          },
+          "body": "{\n    \"appId\": \"standalone-app-a\",\n    \"storyboards\": [\n        {\n            \"routes\": [\n                {\n                    \"alias\": \"home\",\n                    \"context\": [\n                        {\n                            \"name\": \"hostList\",\n                            \"path\": \"\",\n                            \"resolve\": {\n                                \"args\": [\n                                    \"HOST\",\n                                    {\n                                        \"fields\": {\n                                            \"hostname\": true,\n                                            \"ip\": true\n                                        },\n                                        \"page\": \"<% QUERY.page ?? 1 %>\",\n                                        \"page_size\": \"<% QUERY.pageSize ?? 10 %>\"\n                                    }\n                                ],\n                                \"useProvider\": \"providers-of-cmdb.instance-api-post-search\"\n                            }\n                        }\n                    ],\n                    \"exact\": true,\n                    \"hybrid\": false,\n                    \"iid\": \"5e427f50e19e2\",\n                    \"lock\": false,\n                    \"menu\": {\n                        \"menuId\": \"main-sa-a\"\n                    },\n                    \"path\": \"${APP.homepage}\",\n                    \"public\": false,\n                    \"type\": \"bricks\",\n                    \"bricks\": [\n                        {\n                            \"bg\": false,\n                            \"brick\": \"basic-bricks.general-button\",\n                            \"events\": {\n                                \"general.button.click\": [\n                                    {\n                                        \"action\": \"history.push\",\n                                        \"args\": [\n                                            \"/standalone-app-b\"\n                                        ]\n                                    }\n                                ]\n                            },\n                            \"injectDeep\": true,\n                            \"iid\": \"5e4280ffd853a\",\n                            \"portal\": false,\n                            \"properties\": {\n                                \"buttonName\": \"跳转到B\",\n                                \"dataset\": {\n                                    \"testid\": \"jump-to-b\"\n                                }\n                            }\n                        }\n                    ]\n                }\n            ],\n            \"meta\": {\n                \"customTemplates\": [],\n                \"menus\": [\n                    {\n                        \"defaultCollapsed\": false,\n                        \"defaultCollapsedBreakpoint\": 0,\n                        \"dynamicItems\": false,\n                        \"icon\": {\n                            \"XXX_NoUnkeyedLiteral\": {\n                                \n                            },\n                            \"XXX_sizecache\": 0\n                        },\n                        \"link\": \"${APP.homepage}\",\n                        \"menuId\": \"main-sa-a\",\n                        \"titleDataSource\": {\n                            \n                        },\n                        \"type\": \"main\",\n                        \"items\": [\n                            {\n                                \"activeExcludes\": [\n                                    \"<% APP.homepage + \\\"/detail\\\" %>\"\n                                ],\n                                \"activeIncludes\": [\n                                    \"<% APP.homepage + \\\"/path\\\" %>\"\n                                ],\n                                \"defaultExpanded\": false,\n                                \"text\": \"test\",\n                                \"to\": \"test\",\n                                \"children\": [\n                                    \n                                ]\n                            }\n                        ],\n                        \"i18n\": {\n                            \n                        }\n                    }\n                ],\n                \"i18n\": {\n                    \"en\": {\n                        \"janice-test\": \"hh\"\n                    },\n                    \"zh\": {\n                        \"janice-test\": \"哈哈\"\n                    }\n                },\n                \"functions\": [\n                    \n                ],\n                \"mocks\": {\n                    \"mockId\": \"1a2cff6b\",\n                    \"mockList\": [\n                        \n                    ]\n                }\n            },\n            \"dependsAll\": false\n        }\n    ],\n    \"dependencies\": {\n        \"bricks\": [\n            {\n                \"name\": \"aa-NB\",\n                \"version\": \"1.0.0\"\n            },\n            {\n                \"name\": \"bb-NB\",\n                \"version\": \"1.2.0\"\n            }\n        ],\n        \"core\": [\n            {\n                \"name\": \"brick_next\",\n                \"version\": \"2.1.0\"\n            }\n        ]\n    },\n    \"noAuth\": false\n}",
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": null\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app_standalone.report.GetLackingDependencies",
+      "category": {
+        "en": "Data Report",
+        "zh": "数据上报"
+      },
+      "name": "GetLackingDependencies",
+      "version": "1.0.0",
+      "description": "获取缺少的依赖",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro_app_standalone/report/lacking_dependencies"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "bricks",
+            "type": "object[]",
+            "description": "构件依赖",
+            "fields": [
+              {
+                "name": "name",
+                "type": "string",
+                "description": "构件名"
+              },
+              {
+                "name": "version",
+                "type": "string",
+                "description": "构件版本"
+              }
+            ]
+          },
+          {
+            "name": "templates",
+            "type": "object[]",
+            "description": "template依赖",
+            "fields": [
+              {
+                "name": "name",
+                "type": "string",
+                "description": "template名"
+              },
+              {
+                "name": "version",
+                "type": "string",
+                "description": "template版本"
+              }
+            ]
+          },
+          {
+            "name": "core",
+            "type": "object[]",
+            "description": "框架依赖",
+            "fields": [
+              {
+                "name": "name",
+                "type": "string",
+                "description": "框架名(通常是brick_next)"
+              },
+              {
+                "name": "version",
+                "type": "string",
+                "description": "框架版本"
+              }
+            ]
+          },
+          {
+            "name": "appResources",
+            "type": "object[]",
+            "description": "微应用静态资源依赖",
+            "fields": [
+              {
+                "name": "path",
+                "type": "string",
+                "description": "资源文件路径"
+              },
+              {
+                "name": "md5",
+                "type": "string",
+                "description": "md5值"
+              }
+            ]
+          },
+          {
+            "name": "toSingleNode",
+            "type": "bool",
+            "description": "获取单节点/集群的依赖"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "bricks",
+            "type": "object[]",
+            "description": "构件依赖",
+            "fields": [
+              {
+                "name": "name",
+                "type": "string",
+                "description": "构件名"
+              },
+              {
+                "name": "version",
+                "type": "string",
+                "description": "构件版本"
+              }
+            ]
+          },
+          {
+            "name": "templates",
+            "type": "object[]",
+            "description": "template依赖",
+            "fields": [
+              {
+                "name": "name",
+                "type": "string",
+                "description": "template名"
+              },
+              {
+                "name": "version",
+                "type": "string",
+                "description": "template版本"
+              }
+            ]
+          },
+          {
+            "name": "core",
+            "type": "object[]",
+            "description": "框架依赖",
+            "fields": [
+              {
+                "name": "name",
+                "type": "string",
+                "description": "框架名(通常是brick_next)"
+              },
+              {
+                "name": "version",
+                "type": "string",
+                "description": "框架版本"
+              }
+            ]
+          },
+          {
+            "name": "appResources",
+            "type": "object[]",
+            "description": "微应用静态资源依赖",
+            "fields": [
+              {
+                "name": "path",
+                "type": "string",
+                "description": "资源文件路径"
+              },
+              {
+                "name": "md5",
+                "type": "string",
+                "description": "md5值"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Get Lacking Dependencies",
+            "zh": "获取缺少的依赖"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8259/api/v1/micro_app_standalone/report/lacking_dependencies",
+            "body": "{\n    \"bricks\": [\n        {\n            \"name\": \"aa-NB\",\n            \"version\": \"1.0.0\"\n        },\n        {\n            \"name\": \"bb-NB\",\n            \"version\": \"1.2.0\"\n        }\n    ],\n    \"core\": [\n        {\n            \"name\": \"brick_next\",\n            \"version\": \"2.1.0\"\n        }\n    ],\n    \"appResources\": [\n        {\n            \"path\": \"icons/large.png\",\n            \"md5\": \"e8752d0c4d904c1363ea434a2f620f7e\"\n        },\n        {\n            \"path\": \"images/abc.png\",\n            \"md5\": \"\"bcab804d3b196e582691647120d2ac95\n        }\n    ]\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"bricks\": [\n            {\n                \"name\": \"aa-NB\",\n                \"version\": \"1.0.0\"\n            }\n        ],\n        \"core\": [],\n        \"appResources\": [\n            {\n                \"path\": \"icons/large.png\",\n                \"md5\": \"e8752d0c4d904c1363ea434a2f620f7e\"\n            }\n        ]\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app_standalone.report.ReportAfterFactoryUpdate",
+      "category": {
+        "en": "Data Report",
+        "zh": "数据上报"
+      },
+      "name": "ReportAfterFactoryUpdate",
+      "version": "1.0.0",
+      "description": "更新出厂设置后上报数据",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/report/after_factory_update"
+      },
+      "request": null,
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Report after factory update",
+            "zh": "出厂设置更新后上报数据"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8259/api/v1/report/after_factory_update",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            }
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"data\": null,\n  \"error\": \"\"\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "micro_app_standalone.report.ReportMicroAppStandalone",
       "category": {
         "en": "Data Report",
@@ -128,13 +1347,19 @@
         "uri": "/api/v1/micro_app_standalone/report"
       },
       "import": [
-        "easyops/model/micro_app_standalone/installed_micro_app_standalone"
+        "easyops/model/micro_app_standalone/installed_micro_app_standalone",
+        "easyops/model/micro_app/installed_micro_app"
       ],
       "request": {
         "type": "object",
         "fields": [
           {
             "ref": "InstalledMicroAppStandalone.*"
+          },
+          {
+            "name": "usePublicDependencies",
+            "type": "value",
+            "description": "是否使用公共依赖"
           },
           {
             "name": "meta",
@@ -147,36 +1372,308 @@
             "description": "是否设置为启用版本"
           },
           {
-            "name": "defaultContainer",
-            "type": "object",
-            "fields": [
-              {
-                "name": "id",
-                "type": "string",
-                "description": "容器id"
-              },
-              {
-                "name": "name",
-                "type": "string",
-                "description": "容器name"
-              },
-              {
-                "name": "type",
-                "type": "string",
-                "enum": ["desktop", "dir"],
-                "description": "容器类型"
-              },
-              {
-                "name": "order",
-                "type": "int",
-                "description": "排序"
-              }
-            ],
-            "description": "默认容器"
+            "ref": "InstalledMicroApp.defaultContainer"
+          },
+          {
+            "ref": "InstalledMicroApp.description"
+          },
+          {
+            "ref": "InstalledMicroApp.author"
+          },
+          {
+            "name": "isFromUnionApp",
+            "type": "bool",
+            "description": "是否是联合app升级方式：当前有两种：联合app升级/单个sa-na升级"
           }
         ]
       },
-      "response": null
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "skipUpdate",
+            "type": "bool",
+            "description": "是否跳过升级"
+          },
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "report app id"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "ReportMicroAppStandalone",
+            "zh": "上报独立打包小产品"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8259/api/v1/micro_app_standalone/report",
+            "body": "{\n    \"status\": \"enabled\",\n    \"entryHtml\": \"<!doctype html><html lang=\\\"zh-CN\\\" data-theme=\\\"light\\\" data-mode=\\\"default\\\"><head><meta charset=\\\"utf-8\\\"><title>DevOps 管理专家</title><base href=\\\"<!--# echo var='base_href' default='/' -->\\\"><link rel=\\\"shortcut icon\\\" type=\\\"image/png\\\" href=\\\"<!--# echo var='core_root' default='' -->assets/favicon.png\\\"/><script>(!(\\\"documentMode\\\" in document)&&CSS.supports(\\\"display\\\",\\\"grid\\\")&&window.customElements)||(location.href=\\\"<!--# echo var='base_href' default='/' -->browse-happy.html\\\")</script><script>window.MOCK_DATE=\\\"<!--# echo var='mock_date' default='' -->\\\";window.PUBLIC_ROOT=window.CORE_ROOT=window.PUBLIC_CDN=\\\"<!--# echo var='public_cdn' default='' -->\\\";</script><link href=\\\"<!--# echo var='core_root' default='' -->main.762a64cc903c82e83d3a.css\\\" rel=\\\"stylesheet\\\"><script>((w) => { w.STANDALONE_MICRO_APPS = !0; var a = w.APP_ROOT = \\\"<!--# echo var='app_root' default='' -->\\\"; var d=a+\\\"-/\\\"; var p=w.PUBLIC_ROOT=(w.PUBLIC_CDN||\\\"\\\")+d; w.CORE_ROOT = p + \\\"core/\\\"; w.BOOTSTRAP_FILE = d + \\\"bootstrap.825c43c2b6c08306.json\\\"; })(window)</script></head><body><div id=\\\"root-layout\\\"><nav id=\\\"menu-bar-mount-point\\\" class=\\\"print-hide\\\"></nav><div id=\\\"root-content\\\"><header id=\\\"app-bar-mount-point\\\" class=\\\"print-hide\\\"></header><div id=\\\"main-mount-point\\\"></div><div id=\\\"legacy-iframe-mount-point\\\"></div></div><div id=\\\"loading-bar-mount-point\\\"><div class=\\\"global-loading-bar initial-loading-bar\\\"><div></div></div></div></div><div id=\\\"bg-mount-point\\\"></div><div id=\\\"portal-mount-point\\\"></div><script src=\\\"<!--# echo var='core_root' default='' -->dll.558d8560.js\\\"></script><script src=\\\"<!--# echo var='core_root' default='' -->polyfill.f257e611b86e1c02a39d.js\\\"></script><script src=\\\"<!--# echo var='core_root' default='' -->main.f2df013b3d25fcf6ab8b.js\\\"></script></body></html>\",\n    \"setActiveVersion\": true,\n    \"version\": \"1.1.0\",\n    \"meta\": \"{\\\"functions\\\":[{\\\"source\\\":\\\"function filterIssueV3(\\\\n  issues: Record<string, unknown>[],\\\\n  filters: Filters\\\\n): Record<string, unknown>[] {\\\\n  return issues.filter((issue) => {\\\\n    if (\\\\n      filters.producerName &&\\\\n      issue.producer[0]?.name !== filters.producerName\\\\n    ) {\\\\n      return false;\\\\n    }\\\\n\\\\n    if (filters.assignee) {\\\\n      if (\\\\n        issue._type !== \\\\\\\"story\\\\\\\" &&\\\\n        issue.assignee[0]?.name !== filters.assignee\\\\n      ) {\\\\n        return false;\\\\n      }\\\\n    }\\\\n\\\\n    if (\\\\n      filters.productId &&\\\\n      issue.product[0]?.instanceId !== filters.productId\\\\n    ) {\\\\n      return false;\\\\n    }\\\\n\\\\n    if (filters.type) {\\\\n      if (issue._type !== \\\\\\\"story\\\\\\\" && issue._type !== filters.type) {\\\\n        return false;\\\\n      }\\\\n    }\\\\n\\\\n    if (filters.story) {\\\\n      if (issue._type !== \\\\\\\"story\\\\\\\" && issue.parent[0]?.name !== filters.story) {\\\\n        return false;\\\\n      }\\\\n    }\\\\n\\\\n    if(filters.step) {\\\\n      if(issue.step != filters.step){\\\\n        return false\\\\n      }\\\\n    }\\\\n\\\\n    return true;\\\\n  });\\\\n}\\\\n\\\\ninterface Filters {\\\\n  producerName?: string;\\\\n  assignee?: string;\\\\n  productId?: string;\\\\n  type?: string;\\\\n  story?: string;\\\\n  step?: string\\\\n}\\\\n\\\", \\\"typescript\\\":true, \\\"name\\\":\\\"filterIssueV3\\\"}, {\\\"source\\\":\\\"function test() {\\\\n  console.log(\\\\\\\"ahaha\\\\\\\");\\\\n  return \\\\\\\"a\\\\\\\";\\\\n}\\\\n\\\", \\\"typescript\\\":false, \\\"name\\\":\\\"test\\\"}], \\\"customTemplates\\\":[{\\\"bricks\\\":[{\\\"injectDeep\\\":true, \\\"iid\\\":\\\"5cd21ec580874\\\", \\\"bg\\\":false, \\\"portal\\\":false, \\\"brick\\\":\\\"basic-bricks.general-button\\\", \\\"properties\\\":{\\\"target\\\":\\\"_blank\\\", \\\"buttonShape\\\":\\\"round\\\", \\\"buttonType\\\":\\\"primary\\\", \\\"dataset\\\":{\\\"testid\\\":\\\"signUpButton\\\"}, \\\"buttonHref\\\":\\\"<% `${APP.config?.signupUrl??'https://monitor.uwintech.cn/next/auth/signup'}` %>\\\", \\\"buttonName\\\":\\\"立即注册，开始免费使用\\\", \\\"buttonProps\\\":{\\\"style\\\":{\\\"width\\\":\\\"286px\\\", \\\"font-size\\\":\\\"18px\\\", \\\"font-weight\\\":500, \\\"font-family\\\":\\\"PingFangSC-Medium, PingFang SC\\\", \\\"height\\\":\\\"62px\\\"}}}}], \\\"name\\\":\\\"tpl-sign-up-button\\\"}, {\\\"bricks\\\":[{\\\"properties\\\":{\\\"notRender\\\":true, \\\"name\\\":\\\"name\\\", \\\"options\\\":[]}, \\\"injectDeep\\\":true, \\\"lifeCycle\\\":{}, \\\"iid\\\":\\\"5e101756320c6\\\", \\\"bg\\\":false, \\\"portal\\\":false, \\\"brick\\\":\\\"forms.general-select\\\", \\\"events\\\":{\\\"general.select.change\\\":[{\\\"action\\\":\\\"console.log\\\"}]}}, {\\\"injectDeep\\\":true, \\\"properties\\\":{\\\"notRender\\\":true, \\\"options\\\":[], \\\"name\\\":\\\"name\\\"}, \\\"iid\\\":\\\"5e1017564154e\\\", \\\"bg\\\":false, \\\"portal\\\":false, \\\"events\\\":{}, \\\"brick\\\":\\\"forms.general-input\\\", \\\"lifeCycle\\\":{\\\"onPageLeave\\\":[{\\\"action\\\":\\\"history.reload\\\"}]}}, {\\\"properties\\\":{\\\"labelTooltip\\\":\\\"haha\\\", \\\"name\\\":\\\"age\\\", \\\"value\\\":666}, \\\"bg\\\":false, \\\"lifeCycle\\\":{\\\"useResolves\\\":[{\\\"args\\\":[\\\"APP\\\"], \\\"useProvider\\\":\\\"cmdb-brick.instance-api-post-search\\\"}]}, \\\"iid\\\":\\\"5e101756499ba\\\", \\\"injectDeep\\\":true, \\\"portal\\\":false, \\\"brick\\\":\\\"forms.general-input-number\\\", \\\"events\\\":{}}, {\\\"injectDeep\\\":true, \\\"properties\\\":{\\\"dataset\\\":{\\\"testid\\\":\\\"a\\\"}}, \\\"iid\\\":\\\"5e32f3f0824f5\\\", \\\"bg\\\":false, \\\"portal\\\":true, \\\"brick\\\":\\\"basic-bricks.general-modal\\\", \\\"events\\\":{\\\"modal.open\\\":{\\\"callback\\\":{\\\"success\\\":null}, \\\"targetRef\\\":\\\"modal\\\", \\\"method\\\":\\\"getFieldsValue\\\"}}}], \\\"state\\\":[{\\\"name\\\":\\\"name\\\"}, {\\\"resolve\\\":{\\\"args\\\":[\\\"APP\\\"], \\\"useProvider\\\":\\\"easyops.api.next_builder.project@GetMicroAppProject:1.0.0\\\"}, \\\"name\\\":\\\"appList\\\"}, {\\\"resolve\\\":{\\\"args\\\":[\\\"APP\\\", {\\\"fields\\\":[\\\"name\\\"]}], \\\"useProvider\\\":\\\"easyops.api.cmdb.instance@PostSearchV3:1.1.0\\\"}, \\\"name\\\":\\\"detailData\\\"}], \\\"proxy\\\":{\\\"properties\\\":{\\\"inputValue\\\":{\\\"refProperty\\\":\\\"value\\\", \\\"ref\\\":\\\"select-input\\\"}}}, \\\"name\\\":\\\"tpl-test-luck\\\"}, {\\\"bricks\\\":[{\\\"iid\\\":\\\"5e4db67ec8a62\\\", \\\"brick\\\":\\\"basic-bricks.micro-view\\\", \\\"injectDeep\\\":true, \\\"portal\\\":false, \\\"slots\\\":{\\\"content\\\":{\\\"bricks\\\":[{\\\"injectDeep\\\":true, \\\"iid\\\":\\\"5e4ddedecd927\\\", \\\"bg\\\":false, \\\"portal\\\":false, \\\"brick\\\":\\\"div\\\", \\\"properties\\\":{\\\"textContent\\\":\\\"<% STATE.test4 %>\\\"}}], \\\"type\\\":\\\"bricks\\\"}}}, {\\\"bg\\\":false, \\\"iid\\\":\\\"5e398ed609d27\\\", \\\"injectDeep\\\":true, \\\"portal\\\":false, \\\"slots\\\":{\\\"content\\\":{\\\"bricks\\\":[{\\\"injectDeep\\\":true, \\\"properties\\\":{\\\"cardTitle\\\":\\\"<% STATE.test %>\\\", \\\"dataset\\\":{\\\"testid\\\":\\\"card\\\"}}, \\\"iid\\\":\\\"5e4db6953f5b7\\\", \\\"bg\\\":false, \\\"portal\\\":false, \\\"brick\\\":\\\"basic-bricks.general-card\\\", \\\"slots\\\":{\\\"content\\\":{\\\"bricks\\\":[{\\\"injectDeep\\\":true, \\\"iid\\\":\\\"5e4dbaff1cb1a\\\", \\\"bg\\\":false, \\\"portal\\\":false, \\\"brick\\\":\\\"basic-bricks.general-button\\\", \\\"properties\\\":{\\\"dataset\\\":{\\\"testid\\\":\\\"btn\\\"}, \\\"buttonName\\\":123456789}}, {\\\"injectDeep\\\":true, \\\"iid\\\":\\\"5e575e982f1b5\\\", \\\"bg\\\":false, \\\"portal\\\":false, \\\"brick\\\":\\\"basic-bricks.general-button\\\", \\\"properties\\\":{\\\"dataset\\\":{\\\"testid\\\":\\\"btn\\\"}, \\\"buttonName\\\":\\\"ac\\\"}}], \\\"type\\\":\\\"bricks\\\"}}}, {\\\"injectDeep\\\":true, \\\"properties\\\":{\\\"cardTitle\\\":\\\"<% STATE.test %>\\\"}, \\\"iid\\\":\\\"5e398eeb688cb\\\", \\\"bg\\\":false, \\\"portal\\\":false, \\\"slots\\\":{\\\"content\\\":{\\\"bricks\\\":[{\\\"iid\\\":\\\"5e57568006ddb\\\", \\\"brick\\\":\\\"basic-bricks.general-button\\\", \\\"injectDeep\\\":true, \\\"portal\\\":false}, {\\\"iid\\\":\\\"5e4dae9734909\\\", \\\"brick\\\":\\\"basic-bricks.general-button\\\", \\\"injectDeep\\\":true, \\\"portal\\\":false}, {\\\"injectDeep\\\":true, \\\"iid\\\":\\\"5e3997ce169da\\\", \\\"bg\\\":false, \\\"portal\\\":false, \\\"brick\\\":\\\"forms.general-input\\\", \\\"properties\\\":{\\\"value\\\":\\\"<% CTX.test %>\\\", \\\"dataset\\\":{\\\"testid\\\":\\\"input\\\"}}}], \\\"type\\\":\\\"bricks\\\"}}, \\\"brick\\\":\\\"basic-bricks.general-card\\\"}], \\\"type\\\":\\\"bricks\\\"}}, \\\"brick\\\":\\\"basic-bricks.micro-view\\\", \\\"properties\\\":{\\\"pageTitle\\\":\\\"<% STATE.test1 %>\\\"}}], \\\"state\\\":[{\\\"path\\\":\\\"a\\\", \\\"name\\\":\\\"test\\\"}, {\\\"path\\\":\\\"a\\\", \\\"name\\\":\\\"test1\\\", \\\"value\\\":\\\"test1\\\"}, {\\\"path\\\":\\\"a/b/c\\\", \\\"name\\\":\\\"test4\\\", \\\"value\\\":\\\"test4\\\"}], \\\"proxy\\\":{\\\"slots\\\":{\\\"aSlot\\\":{\\\"refSlot\\\":\\\"aSlotOfChild\\\", \\\"ref\\\":\\\"ref-of-a-child\\\"}}, \\\"properties\\\":{\\\"aProperty\\\":{\\\"refProperty\\\":\\\"aPropertyOfChild\\\", \\\"ref\\\":\\\"ref-of-a-child\\\"}}, \\\"events\\\":{\\\"awesome.happen\\\":{\\\"ref\\\":\\\"ref-of-a-child\\\", \\\"refEvent\\\":\\\"something.happen\\\"}}, \\\"methods\\\":{\\\"aMethod\\\":{\\\"refMethod\\\":\\\"aMethodOfChild\\\", \\\"ref\\\":\\\"ref-of-a-child\\\"}}}, \\\"name\\\":\\\"tpl-test-1\\\"}, {\\\"bricks\\\":[{\\\"iid\\\":\\\"5e4de0b68d64e\\\", \\\"slots\\\":{\\\"content\\\":{\\\"bricks\\\":[{\\\"injectDeep\\\":true, \\\"iid\\\":\\\"5e4df893c6ac6\\\", \\\"bg\\\":false, \\\"portal\\\":true, \\\"brick\\\":\\\"basic-bricks.general-modal\\\", \\\"ref\\\":\\\"modal\\\", \\\"properties\\\":{\\\"modalTitle\\\":\\\"<% STATE.modalTitle %>\\\", \\\"dataset\\\":{\\\"testid\\\":\\\"modal\\\"}}}, {\\\"injectDeep\\\":true, \\\"properties\\\":{\\\"dataset\\\":{\\\"testid\\\":\\\"button\\\"}, \\\"buttonName\\\":\\\"test\\\"}, \\\"iid\\\":\\\"5e4de0ce27502\\\", \\\"bg\\\":false, \\\"portal\\\":false, \\\"brick\\\":\\\"basic-bricks.general-button\\\", \\\"events\\\":{\\\"general.button.click\\\":[{\\\"targetRef\\\":\\\"modal\\\", \\\"method\\\":\\\"open\\\"}]}}], \\\"type\\\":\\\"bricks\\\"}}, \\\"injectDeep\\\":true, \\\"portal\\\":false, \\\"brick\\\":\\\"basic-bricks.micro-view\\\"}], \\\"state\\\":[{\\\"name\\\":\\\"modalTitle\\\"}], \\\"name\\\":\\\"tpl-test-2\\\"}, {\\\"bricks\\\":[{\\\"iid\\\":\\\"5e5caabb8624e\\\", \\\"slots\\\":{\\\"bricks\\\":{\\\"bricks\\\":[{\\\"bg\\\":false, \\\"iid\\\":\\\"5e5caac0d6081\\\", \\\"injectDeep\\\":true, \\\"portal\\\":false, \\\"brick\\\":\\\"basic-bricks.general-button\\\", \\\"properties\\\":{\\\"dataset\\\":{\\\"testid\\\":\\\"btn\\\"}, \\\"buttonName\\\":\\\"tpl-test-3\\\"}}, {\\\"iid\\\":\\\"5e5cabe36d2b5\\\", \\\"brick\\\":\\\"basic-bricks.general-button\\\", \\\"injectDeep\\\":true, \\\"portal\\\":false}, {\\\"injectDeep\\\":true, \\\"iid\\\":\\\"5e5cae7ceae45\\\", \\\"bg\\\":false, \\\"portal\\\":false, \\\"brick\\\":\\\"basic-bricks.general-button\\\", \\\"properties\\\":{\\\"dataset\\\":{\\\"testid\\\":\\\"test\\\"}, \\\"buttonName\\\":\\\"abc\\\"}}], \\\"type\\\":\\\"bricks\\\"}}, \\\"injectDeep\\\":true, \\\"portal\\\":false, \\\"brick\\\":\\\"basic-bricks.general-card\\\"}], \\\"name\\\":\\\"tpl-test-3\\\"}, {\\\"bricks\\\":[{\\\"iid\\\":\\\"5e5cbd03a640d\\\", \\\"brick\\\":\\\"basic-bricks.micro-view\\\", \\\"injectDeep\\\":true, \\\"portal\\\":false, \\\"slots\\\":{\\\"bricks\\\":{\\\"bricks\\\":[{\\\"bg\\\":false, \\\"iid\\\":\\\"5e5cbd09e1a9d\\\", \\\"injectDeep\\\":true, \\\"portal\\\":false, \\\"brick\\\":\\\"basic-bricks.general-button\\\", \\\"properties\\\":{\\\"dataset\\\":{\\\"testid\\\":\\\"btn\\\"}, \\\"buttonName\\\":\\\"abcd\\\"}}, {\\\"injectDeep\\\":true, \\\"properties\\\":{\\\"allowClear\\\":true, \\\"name\\\":\\\"app\\\", \\\"objectId\\\":\\\"APP\\\", \\\"fields\\\":{\\\"label\\\":\\\"ctime\\\"}, \\\"label\\\":\\\"选择应用创建时间(自定义字段显示)\\\", \\\"dataset\\\":{\\\"testid\\\":\\\"cmdb-instance-select-fields\\\"}}, \\\"iid\\\":\\\"5e5cbd602541d\\\", \\\"portal\\\":false, \\\"brick\\\":\\\"forms.cmdb-instance-select\\\", \\\"events\\\":{\\\"forms.cmdb-instance-select.change\\\":{\\\"action\\\":\\\"console.log\\\"}, \\\"forms.cmdb-instance-select.change.v2\\\":{\\\"action\\\":\\\"console.log\\\"}}}, {\\\"iid\\\":\\\"5e5cbd3fc3893\\\", \\\"brick\\\":\\\"basic-bricks.general-button\\\", \\\"injectDeep\\\":true, \\\"portal\\\":false, \\\"properties\\\":{\\\"buttonType\\\":\\\"primary\\\"}}, {\\\"injectDeep\\\":true, \\\"iid\\\":\\\"5e5deb107c492\\\", \\\"bg\\\":false, \\\"portal\\\":false, \\\"brick\\\":\\\"forms.general-select\\\", \\\"properties\\\":{\\\"options\\\":\\\"<% STATE.selectOptions %>\\\", \\\"dataset\\\":{\\\"testid\\\":\\\"select\\\"}}}, {\\\"bg\\\":false, \\\"iid\\\":\\\"5e5cc054dbe2a\\\", \\\"injectDeep\\\":true, \\\"portal\\\":false, \\\"brick\\\":\\\"basic-bricks.general-button\\\", \\\"ref\\\":\\\"test-btn\\\", \\\"properties\\\":{\\\"buttonIcon\\\":{\\\"prefix\\\":\\\"fas\\\", \\\"lib\\\":\\\"fa\\\", \\\"icon\\\":\\\"edit\\\"}, \\\"dataset\\\":{\\\"testid\\\":\\\"test-btn\\\"}}}], \\\"type\\\":\\\"bricks\\\"}}}], \\\"state\\\":[{\\\"name\\\":\\\"selectOptions\\\"}], \\\"name\\\":\\\"tpl-test-5\\\", \\\"proxy\\\":{\\\"properties\\\":{\\\"buttonType\\\":{\\\"refProperty\\\":\\\"buttonType\\\", \\\"ref\\\":\\\"test-btn\\\"}, \\\"buttonName\\\":{\\\"refProperty\\\":\\\"buttonName\\\", \\\"ref\\\":\\\"test-btn\\\"}}}}], \\\"menus\\\":[{\\\"defaultCollapsed\\\":false, \\\"title\\\":\\\"sailor-test\\\", \\\"menuId\\\":\\\"sailor-test-route-menu\\\", \\\"items\\\":[{\\\"activeIncludes\\\":[], \\\"text\\\":\\\"<% I18N(\\\\\\\"Hello_World\\\\\\\", \\\\\\\"你好世界\\\\\\\") %>\\\", \\\"href\\\":\\\"https://www.baidu.com\\\", \\\"activeExcludes\\\":[], \\\"children\\\":[], \\\"defaultExpanded\\\":false}], \\\"titleDataSource\\\":{}, \\\"i18n\\\":{\\\"en\\\":{\\\"Hello_World\\\":\\\"Hello World\\\"}, \\\"zh\\\":{\\\"Hello_World\\\":\\\"你好, 世界\\\"}}, \\\"type\\\":\\\"main\\\", \\\"icon\\\":{\\\"category\\\":\\\"default\\\", \\\"color\\\":\\\"blue\\\", \\\"lib\\\":\\\"easyops\\\", \\\"icon\\\":\\\"account\\\"}}, {\\\"defaultCollapsed\\\":false, \\\"menuId\\\":\\\"main-menu-id-haha\\\", \\\"items\\\":[], \\\"injectMenuGroupId\\\":\\\"test-inject-group\\\", \\\"i18n\\\":{}, \\\"type\\\":\\\"inject\\\"}], \\\"contracts\\\":[{\\\"endpoint\\\":{\\\"ext_fields\\\":[], \\\"method\\\":\\\"GET\\\", \\\"uri\\\":\\\"/api/v1/next-builder/project/:projectId\\\"}, \\\"version\\\":\\\"1.0.0\\\", \\\"request\\\":{\\\"default\\\":null, \\\"fields\\\":[{\\\"ref\\\":\\\"MicroAppProject.projectId\\\", \\\"description\\\":\\\"\\\", \\\"deprecated\\\":false, \\\"type\\\":\\\"\\\", \\\"enum\\\":[], \\\"fields\\\":[], \\\"validateRule\\\":null, \\\"name\\\":\\\"\\\"}], \\\"required\\\":[], \\\"type\\\":\\\"object\\\", \\\"description\\\":\\\"\\\"}, \\\"response\\\":{\\\"description\\\":\\\"\\\", \\\"default\\\":null, \\\"fields\\\":[], \\\"required\\\":[], \\\"wrapper\\\":true, \\\"type\\\":\\\"MicroAppProject\\\"}, \\\"serviceName\\\":\\\"logic.next_builder_service\\\", \\\"namespaceId\\\":\\\"easyops.api.next_builder.project\\\", \\\"name\\\":\\\"GetMicroAppProject\\\"}, {\\\"endpoint\\\":{\\\"ext_fields\\\":[], \\\"method\\\":\\\"POST\\\", \\\"uri\\\":\\\"/v3/object/:objectId/instance/_search\\\"}, \\\"name\\\":\\\"PostSearchV3\\\", \\\"request\\\":{\\\"default\\\":{\\\"only_my_instance\\\":false, \\\"page\\\":1, \\\"page_size\\\":30}, \\\"fields\\\":[{\\\"ref\\\":\\\"\\\", \\\"description\\\":\\\"模型对象ID\\\", \\\"deprecated\\\":false, \\\"type\\\":\\\"object_id\\\", \\\"enum\\\":[], \\\"fields\\\":[], \\\"validateRule\\\":null, \\\"name\\\":\\\"objectId\\\"}, {\\\"ref\\\":\\\"\\\", \\\"description\\\":\\\"e.g.: { name: { $like: '%q%' } }, { $or: [{ name: { $like: '%q%' }}] }\\\", \\\"fields\\\":[], \\\"validateRule\\\":null, \\\"enum\\\":[], \\\"deprecated\\\":false, \\\"type\\\":\\\"map\\\", \\\"name\\\":\\\"query\\\"}, {\\\"ref\\\":\\\"\\\", \\\"description\\\":\\\"查询条件模板上下文 模板格式为 @{key} ,e.g.: query:{ name: { $like: '%@{key1}%'}, int: '@{key2}' }, query_context:{ key1: 'val1', 'key2': 12 }, query则会被转换成{ name: { $like: '%val1%' }, int: 12 }, 如果key1对应的值为null或者空字符串, query则会被转换成{ int: 12 }\\\", \\\"fields\\\":[], \\\"validateRule\\\":null, \\\"enum\\\":[], \\\"deprecated\\\":false, \\\"type\\\":\\\"map\\\", \\\"name\\\":\\\"query_context\\\"}, {\\\"type\\\":\\\"string[]\\\", \\\"description\\\":\\\"指定返回字段(支持通过父模型指定子模型属性)(支持关系数据的二级jsonPath格式的指定字段如clusters.name), e.g.: [name, instanceId]\\\", \\\"deprecated\\\":false, \\\"validateRule\\\":null, \\\"enum\\\":[], \\\"fields\\\":[], \\\"ref\\\":\\\"\\\", \\\"name\\\":\\\"fields\\\"}, {\\\"ref\\\":\\\"\\\", \\\"description\\\":\\\"当为 true 时，只搜索与我相关实例\\\", \\\"fields\\\":[], \\\"validateRule\\\":null, \\\"enum\\\":[], \\\"deprecated\\\":false, \\\"type\\\":\\\"bool\\\", \\\"name\\\":\\\"only_my_instance\\\"}, {\\\"ref\\\":\\\"\\\", \\\"type\\\":\\\"page\\\", \\\"name\\\":\\\"page\\\", \\\"fields\\\":[], \\\"enum\\\":[], \\\"deprecated\\\":false, \\\"validateRule\\\":null, \\\"description\\\":\\\"页码\\\"}, {\\\"ref\\\":\\\"\\\", \\\"name\\\":\\\"page_size\\\", \\\"deprecated\\\":false, \\\"fields\\\":[], \\\"enum\\\":[], \\\"type\\\":\\\"page_size\\\", \\\"validateRule\\\":null, \\\"description\\\":\\\"页大小\\\"}, {\\\"ref\\\":\\\"\\\", \\\"description\\\":\\\"按字段排序， 留空默认按照实例ID降序排序(1表示升序， -1表示降序, 2表示自然升序， -2表示自然降序) e.g.: [{ key: instanceId, order: 1}]\\\", \\\"fields\\\":[{\\\"ref\\\":\\\"\\\", \\\"type\\\":\\\"string\\\", \\\"name\\\":\\\"key\\\", \\\"fields\\\":[], \\\"enum\\\":[], \\\"deprecated\\\":false, \\\"validateRule\\\":null, \\\"description\\\":\\\"属性id\\\"}, {\\\"ref\\\":\\\"\\\", \\\"description\\\":\\\"1表示升序， -1表示降序, 2表示自然升序， -2表示自然降序\\\", \\\"validateRule\\\":null, \\\"enum\\\":[-1, 1, -2, 2], \\\"name\\\":\\\"order\\\", \\\"deprecated\\\":false, \\\"type\\\":\\\"int\\\", \\\"fields\\\":[]}], \\\"validateRule\\\":null, \\\"enum\\\":[], \\\"deprecated\\\":false, \\\"type\\\":\\\"object[]\\\", \\\"name\\\":\\\"sort\\\"}, {\\\"ref\\\":\\\"\\\", \\\"description\\\":\\\"按照权限过滤(通用实例都有 read， update， delete 权限控制， 主机实例在通用实例权限基础上有额外的 operate 权限， 应用实例在通用实例权限基础上有额外的 developClusterOperate， testClusterOperate， prereleaseClusterOperate， productionClusterOperate 权限) e.g.: [ \\\\\\\"operate\\\\\\\", \\\\\\\"update\\\\\\\" ]\\\", \\\"deprecated\\\":false, \\\"type\\\":\\\"string[]\\\", \\\"enum\\\":[], \\\"fields\\\":[], \\\"validateRule\\\":null, \\\"name\\\":\\\"permission\\\"}, {\\\"ref\\\":\\\"\\\", \\\"description\\\":\\\"限制fields所带出的关系的数量， 0为不限制，全局配置\\\", \\\"fields\\\":[], \\\"validateRule\\\":null, \\\"enum\\\":[], \\\"deprecated\\\":false, \\\"type\\\":\\\"int\\\", \\\"name\\\":\\\"relation_limit\\\"}, {\\\"ref\\\":\\\"\\\", \\\"name\\\":\\\"limitations\\\", \\\"deprecated\\\":false, \\\"fields\\\":[{\\\"type\\\":\\\"string\\\", \\\"description\\\":\\\"关系id， 支持多级关系， 如owner， owner.app\\\", \\\"deprecated\\\":false, \\\"validateRule\\\":null, \\\"enum\\\":[], \\\"fields\\\":[], \\\"ref\\\":\\\"\\\", \\\"name\\\":\\\"field\\\"}, {\\\"ref\\\":\\\"\\\", \\\"description\\\":\\\"关系数量限制， 0为不限制， 优先级高于relation_limit\\\", \\\"validateRule\\\":null, \\\"enum\\\":[], \\\"name\\\":\\\"limit\\\", \\\"deprecated\\\":false, \\\"type\\\":\\\"int\\\", \\\"fields\\\":[]}, {\\\"ref\\\":\\\"\\\", \\\"type\\\":\\\"object[]\\\", \\\"description\\\":\\\"关系排序\\\", \\\"deprecated\\\":false, \\\"enum\\\":[], \\\"fields\\\":[{\\\"ref\\\":\\\"\\\", \\\"description\\\":\\\"属性id\\\", \\\"validateRule\\\":null, \\\"enum\\\":[], \\\"name\\\":\\\"key\\\", \\\"deprecated\\\":false, \\\"type\\\":\\\"string\\\", \\\"fields\\\":[]}, {\\\"ref\\\":\\\"\\\", \\\"description\\\":\\\"1表示升序， -1表示降序, 2表示自然升序， -2表示自然降序\\\", \\\"fields\\\":[], \\\"validateRule\\\":null, \\\"enum\\\":[-1, 1, -2, 2], \\\"deprecated\\\":false, \\\"type\\\":\\\"int\\\", \\\"name\\\":\\\"order\\\"}], \\\"validateRule\\\":null, \\\"name\\\":\\\"sort\\\"}], \\\"enum\\\":[], \\\"type\\\":\\\"object[]\\\", \\\"validateRule\\\":null, \\\"description\\\":\\\"单独指定关系的limit与sort\\\"}, {\\\"ref\\\":\\\"\\\", \\\"type\\\":\\\"bool\\\", \\\"name\\\":\\\"ignore_missing_field_error\\\", \\\"fields\\\":[], \\\"enum\\\":[], \\\"deprecated\\\":false, \\\"validateRule\\\":null, \\\"description\\\":\\\"是否忽略fields有不存在的字段的报错\\\"}, {\\\"ref\\\":\\\"\\\", \\\"type\\\":\\\"object\\\", \\\"description\\\":\\\"指标数据查询\\\", \\\"deprecated\\\":false, \\\"enum\\\":[], \\\"fields\\\":[{\\\"ref\\\":\\\"\\\", \\\"type\\\":\\\"object\\\", \\\"description\\\":\\\"指标查询时间范围\\\", \\\"deprecated\\\":false, \\\"enum\\\":[], \\\"fields\\\":[{\\\"ref\\\":\\\"\\\", \\\"description\\\":\\\"起始时间，秒\\\", \\\"validateRule\\\":null, \\\"enum\\\":[], \\\"name\\\":\\\"start_time\\\", \\\"deprecated\\\":false, \\\"type\\\":\\\"int\\\", \\\"fields\\\":[]}, {\\\"ref\\\":\\\"\\\", \\\"description\\\":\\\"终止时间，秒\\\", \\\"deprecated\\\":false, \\\"type\\\":\\\"int\\\", \\\"enum\\\":[], \\\"fields\\\":[], \\\"validateRule\\\":null, \\\"name\\\":\\\"end_time\\\"}], \\\"validateRule\\\":null, \\\"name\\\":\\\"time_range\\\"}, {\\\"ref\\\":\\\"\\\", \\\"description\\\":\\\"指标维度查询\\\", \\\"fields\\\":[], \\\"validateRule\\\":null, \\\"enum\\\":[], \\\"deprecated\\\":false, \\\"type\\\":\\\"map\\\", \\\"name\\\":\\\"tags_filter\\\"}, {\\\"ref\\\":\\\"\\\", \\\"description\\\":\\\"指标数据limit，sort\\\", \\\"deprecated\\\":false, \\\"type\\\":\\\"object[]\\\", \\\"enum\\\":[], \\\"fields\\\":[{\\\"ref\\\":\\\"\\\", \\\"description\\\":\\\"指标名\\\", \\\"deprecated\\\":false, \\\"type\\\":\\\"string\\\", \\\"enum\\\":[], \\\"fields\\\":[], \\\"validateRule\\\":null, \\\"name\\\":\\\"metric\\\"}, {\\\"ref\\\":\\\"\\\", \\\"type\\\":\\\"int\\\", \\\"name\\\":\\\"limit\\\", \\\"fields\\\":[], \\\"enum\\\":[], \\\"deprecated\\\":false, \\\"validateRule\\\":null, \\\"description\\\":\\\"指标数据limit\\\"}, {\\\"ref\\\":\\\"\\\", \\\"type\\\":\\\"SearchSort[]\\\", \\\"description\\\":\\\"指标数据sort\\\", \\\"deprecated\\\":false, \\\"enum\\\":[], \\\"fields\\\":[], \\\"validateRule\\\":null, \\\"name\\\":\\\"sort\\\"}], \\\"validateRule\\\":null, \\\"name\\\":\\\"limitations\\\"}], \\\"validateRule\\\":null, \\\"name\\\":\\\"metrics_filter\\\"}, {\\\"ref\\\":\\\"\\\", \\\"description\\\":\\\"结果是否仅返回上面filter匹配上的对端关系，默认false返回全部对端关系。\\\", \\\"fields\\\":[], \\\"validateRule\\\":null, \\\"enum\\\":[], \\\"deprecated\\\":false, \\\"type\\\":\\\"bool\\\", \\\"name\\\":\\\"filter_relation\\\"}], \\\"required\\\":[\\\"objectId\\\", \\\"fields\\\"], \\\"type\\\":\\\"object\\\", \\\"description\\\":\\\"\\\"}, \\\"namespaceId\\\":\\\"easyops.api.cmdb.instance\\\", \\\"serviceName\\\":\\\"logic.cmdb.service\\\", \\\"version\\\":\\\"1.1.0\\\", \\\"response\\\":{\\\"description\\\":\\\"\\\", \\\"default\\\":null, \\\"fields\\\":[{\\\"ref\\\":\\\"\\\", \\\"name\\\":\\\"list\\\", \\\"deprecated\\\":false, \\\"fields\\\":[], \\\"enum\\\":[], \\\"type\\\":\\\"map[]\\\", \\\"validateRule\\\":null, \\\"description\\\":\\\"instance list\\\"}, {\\\"ref\\\":\\\"\\\", \\\"description\\\":\\\"实例总数\\\", \\\"validateRule\\\":null, \\\"enum\\\":[], \\\"name\\\":\\\"total\\\", \\\"deprecated\\\":false, \\\"type\\\":\\\"int\\\", \\\"fields\\\":[]}, {\\\"ref\\\":\\\"\\\", \\\"description\\\":\\\"页码\\\", \\\"fields\\\":[], \\\"validateRule\\\":null, \\\"enum\\\":[], \\\"deprecated\\\":false, \\\"type\\\":\\\"page\\\", \\\"name\\\":\\\"page\\\"}, {\\\"ref\\\":\\\"\\\", \\\"description\\\":\\\"页大小\\\", \\\"fields\\\":[], \\\"validateRule\\\":null, \\\"enum\\\":[], \\\"deprecated\\\":false, \\\"type\\\":\\\"page_size\\\", \\\"name\\\":\\\"page_size\\\"}], \\\"required\\\":[], \\\"wrapper\\\":true, \\\"type\\\":\\\"object\\\"}}], \\\"i18n\\\":{\\\"en\\\":{\\\"Hello_World\\\":\\\"Hello World\\\"}, \\\"zh\\\":{\\\"Hello_World\\\":\\\"你好, 世界\\\"}}, \\\"mocks\\\":{\\\"mockList\\\":[], \\\"mockId\\\":\\\"112353ee\\\"}}\",\n    \"appId\": \"sailor-test-route-clone-1\",\n    \"name\": \"sailor-test-route-clone-1\",\n    \"homepage\": \"/sailor-test-route-clone-1\"\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n      \"skipUpdate\": true,\n      \"appId\": \"demo\"\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app_standalone.report.RestoreMenus",
+      "category": {
+        "en": "Data Report",
+        "zh": "数据上报"
+      },
+      "name": "RestoreMenus",
+      "version": "1.0.0",
+      "description": "恢复出厂菜单",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/report/restore_menus"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "menuId",
+            "type": "string",
+            "description": "需要恢复出厂菜单的menuId"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "success",
+            "type": "bool",
+            "description": "是否成功"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "恢复出厂菜单"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8259/api/v1/report/restore_menus",
+            "headers": {
+              "Content-Type": "application/json",
+              "Org": 8888,
+              "User": "easyops"
+            },
+            "body": "{\n  \"menuId\": \"abc\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n  \"success\": true\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app_standalone.report.SyncDependency",
+      "category": {
+        "en": "Data Report",
+        "zh": "数据上报"
+      },
+      "name": "SyncDependency",
+      "version": "1.0.0",
+      "description": "同步依赖(包括框架、构件、图片)",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro_app_standalone/sync_dependency"
+      },
+      "request": {
+        "multipart_enable": true,
+        "type": "object",
+        "fields": [
+          {
+            "name": "file",
+            "type": "file",
+            "description": "依赖的压缩打包文件, 格式为tar.gz"
+          },
+          {
+            "name": "depName",
+            "type": "string",
+            "description": "依赖名称"
+          },
+          {
+            "name": "depVersion",
+            "type": "string",
+            "description": "依赖版本"
+          },
+          {
+            "name": "depType",
+            "type": "string",
+            "enum": ["bricks", "templates", "core", "appResources"],
+            "description": "依赖类型"
+          },
+          {
+            "name": "toSingleNode",
+            "type": "bool",
+            "description": "是否sync到单节点：默认false"
+          }
+        ],
+        "required": ["file", "depName", "depVersion", "depType"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "Sync Dependency",
+            "zh": "同步依赖"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8259/api/v1/micro_app_standalone/sync_dependency",
+            "headers": {
+              "Content-Type": "multipart/form-data; boundary=abcdefg1234567"
+            },
+            "body": "--abcdefg1234567 Content-Disposition: form-data; name=\"depName\"\nbrick_next --abcdefg1234567 Content-Disposition: form-data; name=\"depVersion\"\n1.0.0 --abcdefg1234567 Content-Disposition: form-data; name=\"depType\"\ncore --abcdefg1234567 Content-Disposition: form-data; name=\"file\"; filename=\"brick_next.tar.gz\" Content-Type: application/x-gzip\n<File Content> --abcdefg1234567"
+          },
+          "response": {
+            "status_code": 200,
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": null\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app_standalone.runtime.CreateMenuItem",
+      "category": {
+        "en": "Runtime",
+        "zh": "运行时"
+      },
+      "name": "CreateMenuItem",
+      "version": "1.0.0",
+      "description": "创建菜单项（分组）",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro_app_standalone/menu/create_menu_item"
+      },
+      "import": ["easyops/model/micro_app_standalone/standalone_menu_item"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "parent_instanceId",
+            "type": "string",
+            "description": "父菜单或者父菜单项的instanceId"
+          },
+          {
+            "name": "item",
+            "type": "StandaloneMenuItem",
+            "description": "菜单的数据"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "string",
+            "description": "新建的菜单项的instanceId"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "添加菜单项"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8259/api/v1/micro_app_standalone/menu/create_item",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 8888
+            },
+            "body": "{\n  \"parent_instanceId\": \"abc\",\n  \"item\": {\n    \"menuItemId\": \"xyz\"\n  }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"instanceId\": \"def\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app_standalone.runtime.DeleteMenuItem",
+      "category": {
+        "en": "Runtime",
+        "zh": "运行时"
+      },
+      "name": "DeleteMenuItem",
+      "version": "1.0.0",
+      "description": "删除或隐藏菜单项（分组）",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro_app_standalone/menu/delete_menu_item"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "string",
+            "description": "要隐藏或者删除的菜单项的instanceId"
+          },
+          {
+            "name": "delete",
+            "type": "bool",
+            "description": "是否真的删除菜单，为false时仅隐藏菜单项而不删除"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "success",
+            "type": "bool",
+            "description": "是否成功"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "删除菜单项"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8259/api/v1/micro_app_standalone/menu/delete_menu_item",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 8888
+            },
+            "body": "{\n  \"instanceId\": \"abc\",\n  \"delete\": true\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"success\": true\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "micro_app_standalone.runtime.DeleteStandaloneAppEtagCache",
@@ -204,6 +1701,128 @@
       "response": null
     },
     {
+      "contract": "micro_app_standalone.runtime.GetAppIdByUrl",
+      "category": {
+        "en": "Runtime",
+        "zh": "运行时"
+      },
+      "name": "GetAppIdByUrl",
+      "version": "1.0.0",
+      "description": "通过url获取appId",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro_app_standalone/get_app_id_by_url"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "url",
+            "type": "string",
+            "description": "url"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "appId",
+            "type": "string",
+            "description": "appId"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "获取appId"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8259/api/v1/micro_app_standalone/get_app_id_by_url",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 8888
+            },
+            "body": "{\n  \"url\": \"/next/abc/xyz\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"appId\": \"abc\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app_standalone.runtime.MoveMenuItem",
+      "category": {
+        "en": "Runtime",
+        "zh": "运行时"
+      },
+      "name": "MoveMenuItem",
+      "version": "1.0.0",
+      "description": "移动菜单项（分组）",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro_app_standalone/menu/move_menu_item"
+      },
+      "import": ["easyops/model/micro_app_standalone/standalone_menu_item"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "target",
+            "type": "string",
+            "description": "要移动到目标下面的instanceId，支持menu和menuItem"
+          },
+          {
+            "name": "instanceId",
+            "type": "string",
+            "description": "被移动的菜单项的instanceId"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "string",
+            "description": "被移动的菜单项的instanceId"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "移动菜单项"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8259/api/v1/micro_app_standalone/menu/move_menu_item",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 8888
+            },
+            "body": "{\n  \"target\": \"abc\",\n  \"instanceId\": \"id1\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"instanceId\": \"id1\"\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "micro_app_standalone.runtime.RuntimeMicroAppStandalone",
       "category": {
         "en": "Runtime",
@@ -218,7 +1837,8 @@
       },
       "import": [
         "easyops/model/micro_app_standalone/installed_micro_app_standalone",
-        "easyops/model/micro_app/storyboard_menu"
+        "easyops/model/micro_app_standalone/standalone_menu",
+        "easyops/model/resource_package/resource_package_deploy_record"
       ],
       "request": {
         "type": "object",
@@ -227,6 +1847,16 @@
             "name": "appId",
             "type": "string",
             "description": "小产品Id"
+          },
+          {
+            "name": "version",
+            "type": "string",
+            "description": "version"
+          },
+          {
+            "name": "showHidden",
+            "type": "bool",
+            "description": "是否显示隐藏菜单"
           }
         ]
       },
@@ -242,9 +1872,67 @@
             "name": "userConfig",
             "type": "map",
             "description": "用户配置"
+          },
+          {
+            "name": "blackList",
+            "type": "map[]",
+            "description": "禁止访问的菜单和launchpad"
+          },
+          {
+            "name": "relatedResourceDetails",
+            "type": "object",
+            "description": "sa_na关联的资源包详情",
+            "fields": [
+              {
+                "name": "resourcePackageList",
+                "type": "string[]",
+                "description": "关联的所有资源包"
+              },
+              {
+                "name": "needDeployedResourceInfos",
+                "type": "object[]",
+                "description": "需要部署的资源包信息",
+                "fields": [
+                  {
+                    "ref": "ResourcePackageDeployRecord.packageName"
+                  },
+                  {
+                    "ref": "ResourcePackageDeployRecord.oldVersion"
+                  },
+                  {
+                    "ref": "ResourcePackageDeployRecord.curVersion"
+                  },
+                  {
+                    "ref": "ResourcePackageDeployRecord.changeLog"
+                  },
+                  {
+                    "ref": "ResourcePackageDeployRecord.deployType"
+                  }
+                ]
+              }
+            ]
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "Runtime Standalone MicroApp",
+            "zh": "独立小产品Runtime接口"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8259/api/v1/micro_app_standalone/runtime/contract-center",
+            "body": "{\n    \"version\": \"1.0.0\",\n    \"appId\": \"demo-app\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\": 0,\n    \"error\": \"\",\n    \"message\": \"\",\n    \"data\": {\n        \"userConfig\": {},\n        \"injectMenus\": [],\n        \"relatedResourceDetails\": {\n            \"resourcePackageList\": [\n                \"devops-union-R\",\n                \"mabuilder-union-R\"\n            ],\n            \"needDeployedResourceInfos\": [\n                {\n                    \"packageName\": \"devops-union-R\",\n                    \"curVersion\": \"1.0.0\",\n                    \"changeLog\": \"\",\n                    \"deployType\": \"install\"\n                },\n                {\n                    \"packageName\": \"mabuilder-union-R\",\n                    \"oldVersion\": \"1.0.0\",\n                    \"curVersion\": \"1.1.0\",\n                    \"changeLog\": \"- 新增模型test@onemodel\",\n                    \"deployType\": \"upgrade\"\n                }\n            ]\n        }\n    }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "micro_app_standalone.runtime.SearchMicroAppStandalone",
@@ -292,6 +1980,144 @@
           }
         ]
       }
+    },
+    {
+      "contract": "micro_app_standalone.runtime.UpdateMenu",
+      "category": {
+        "en": "Runtime",
+        "zh": "运行时"
+      },
+      "name": "UpdateMenu",
+      "version": "1.0.0",
+      "description": "修改菜单",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro_app_standalone/menu/update_menu"
+      },
+      "import": ["easyops/model/micro_app_standalone/standalone_menu"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "string",
+            "description": "被修改的菜单的instanceId"
+          },
+          {
+            "name": "fields",
+            "type": "string[]",
+            "description": "修改的菜单的属性列表"
+          },
+          {
+            "name": "menu",
+            "type": "StandaloneMenu",
+            "description": "菜单的数据"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "string",
+            "description": "被修改的菜单的instanceId"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "修改菜单"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8259/api/v1/micro_app_standalone/menu/update_menu",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 8888
+            },
+            "body": "{\n  \"instanceId\": \"abc\",\n  \"menu\": {\n    \"text\": \"xyz\"\n  }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"instanceId\": \"abc\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "micro_app_standalone.runtime.UpdateMenuItem",
+      "category": {
+        "en": "Runtime",
+        "zh": "运行时"
+      },
+      "name": "UpdateMenuItem",
+      "version": "1.0.0",
+      "description": "修改菜单项（分组）",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/micro_app_standalone/menu/update_menu_item"
+      },
+      "import": ["easyops/model/micro_app_standalone/standalone_menu_item"],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "string",
+            "description": "被修改的菜单项的instanceId"
+          },
+          {
+            "name": "fields",
+            "type": "string[]",
+            "description": "修改的菜单项的属性列表"
+          },
+          {
+            "name": "item",
+            "type": "StandaloneMenuItem",
+            "description": "菜单的数据"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "instanceId",
+            "type": "string",
+            "description": "被修改的菜单项的instanceId"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "修改菜单项"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8259/api/v1/micro_app_standalone/menu/update_menu_item",
+            "headers": {
+              "Content-Type": "application/json",
+              "user": "easyops",
+              "org": 8888
+            },
+            "body": "{\n  \"instanceId\": \"abc\",\n  \"item\": {\n    \"menuItemId\": \"xyz\"\n  }\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"instanceId\": \"abc\"\n}"
+          }
+        }
+      ]
     }
   ]
 }

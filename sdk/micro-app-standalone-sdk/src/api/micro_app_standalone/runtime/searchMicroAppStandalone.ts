@@ -29,7 +29,7 @@ export const RuntimeApi_searchMicroAppStandalone = async (
     await http.post<
       ResponseBodyWrapper<RuntimeApi_SearchMicroAppStandaloneResponseBody>
     >(
-      "api/gateway/micro_app_standalone.runtime.SearchMicroAppStandalone/api/v1/micro_app_standalone/search",
+      "api/gateway/logic.micro_app_standalone_service/api/v1/micro_app_standalone/search",
       data,
       options
     )

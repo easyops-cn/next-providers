@@ -1,7 +1,10 @@
-/** Storyboard menu item */
-export interface ModelStoryboardMenuItem {
+/** standalone menu item */
+export interface ModelStandaloneMenuItem {
   /** Text */
   text: string;
+
+  /** 同步自uuid */
+  menuItemId: string;
 
   /** To */
   to: string;
@@ -30,17 +33,11 @@ export interface ModelStoryboardMenuItem {
   /** DefaultExpanded */
   defaultExpanded: boolean;
 
-  /** Sort */
+  /** 排序字段 */
   sort: number;
 
   /** If */
   if: any;
-
-  /** 子节点 */
-  children: Partial<ModelStoryboardMenuItem>[];
-
-  /** 父节点 */
-  parent: Partial<ModelStoryboardMenuItem>;
 
   /** target */
   target: string;
@@ -50,4 +47,16 @@ export interface ModelStoryboardMenuItem {
 
   /** 外链地址 */
   href: string;
+
+  /** 子项布局 */
+  childLayout: string;
+
+  /** InstanceId */
+  instanceId: string;
+
+  /** 是否隐藏 */
+  hidden: boolean;
+
+  /** 是否为自定义 */
+  isCustom: boolean;
 }
