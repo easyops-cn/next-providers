@@ -14,7 +14,7 @@ export const UserAdminApi_getUserInfoV3 = async (
 ): Promise<UserAdminApi_GetUserInfoV3ResponseBody> =>
   /**! @contract easyops.api.user_service.user_admin.GetUserInfoV3@1.1.0 */ (
     await http.get<ResponseBodyWrapper<UserAdminApi_GetUserInfoV3ResponseBody>>(
-      `api/gateway/user_service.user_admin.GetUserInfoV3/api/v3/users/detail/${username}`,
+      `api/gateway/logic.user_service/api/v3/users/detail/${username}`,
       options
     )
   ).data;

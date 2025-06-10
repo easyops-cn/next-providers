@@ -34,7 +34,7 @@ export const LaunchpadApi_createCollectionV2 = async (
     await http.post<
       ResponseBodyWrapper<LaunchpadApi_CreateCollectionV2ResponseBody>
     >(
-      "api/gateway/user_service.launchpad.CreateCollectionV2/api/v2/launchpad/collection",
+      "api/gateway/logic.user_service/api/v2/launchpad/collection",
       data,
       options
     )

@@ -28,9 +28,5 @@ export const UserAdminApi_searchAllUserGroup = async (
   /**! @contract easyops.api.user_service.user_admin.SearchAllUserGroup@1.0.0 */ (
     await http.post<
       ResponseBodyWrapper<UserAdminApi_SearchAllUserGroupResponseBody>
-    >(
-      "api/gateway/user_service.user_admin.SearchAllUserGroup/api/v1/users/group/all",
-      data,
-      options
-    )
+    >("api/gateway/logic.user_service/api/v1/users/group/all", data, options)
   ).data;

@@ -25,8 +25,5 @@ export const InvitationCodeApi_getInvitationCode = async (
   /**! @contract easyops.api.user_service.invitation_code.GetInvitationCode@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<InvitationCodeApi_GetInvitationCodeResponseBody>
-    >(
-      "api/gateway/user_service.invitation_code.GetInvitationCode/api/v1/invitation/code",
-      options
-    )
+    >("api/gateway/logic.user_service/api/v1/invitation/code", options)
   ).data;

@@ -32,8 +32,8 @@ export const LaunchpadApi_listCollection = async (
   /**! @contract easyops.api.user_service.launchpad.ListCollection@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<LaunchpadApi_ListCollectionResponseBody>
-    >(
-      "api/gateway/user_service.launchpad.ListCollection/api/v1/launchpad/collection",
-      { ...options, params }
-    )
+    >("api/gateway/logic.user_service/api/v1/launchpad/collection", {
+      ...options,
+      params,
+    })
   ).data;

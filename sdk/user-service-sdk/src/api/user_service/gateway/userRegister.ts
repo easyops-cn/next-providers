@@ -45,7 +45,7 @@ export const GatewayApi_userRegister = async (
 ): Promise<GatewayApi_UserRegisterResponseBody> =>
   /**! @contract easyops.api.user_service.gateway.UserRegister@1.0.0 */ (
     await http.post<ResponseBodyWrapper<GatewayApi_UserRegisterResponseBody>>(
-      "api/gateway/user_service.gateway.UserRegister/api/user_service/v1/users/register",
+      "api/gateway/logic.user_service/api/user_service/v1/users/register",
       data,
       options
     )

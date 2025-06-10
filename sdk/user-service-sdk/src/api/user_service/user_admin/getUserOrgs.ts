@@ -21,7 +21,7 @@ export const UserAdminApi_getUserOrgs = async (
 ): Promise<UserAdminApi_GetUserOrgsResponseBody> =>
   /**! @contract easyops.api.user_service.user_admin.GetUserOrgs@1.0.0 */ (
     await http.get<ResponseBodyWrapper<UserAdminApi_GetUserOrgsResponseBody>>(
-      "api/gateway/user_service.user_admin.GetUserOrgs/api/v1/users/orgs",
+      "api/gateway/logic.user_service/api/v1/users/orgs",
       { ...options, params }
     )
   ).data;

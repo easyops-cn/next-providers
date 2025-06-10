@@ -23,7 +23,7 @@ export const UserAdminApi_invitedUserRegister = (
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.user_service.user_admin.InvitedUserRegister@1.1.0 */ http.post<void>(
-    "api/gateway/user_service.user_admin.InvitedUserRegister/api/v1/users/register_with_code",
+    "api/gateway/logic.user_service/api/v1/users/register_with_code",
     data,
     options
   );

@@ -23,7 +23,7 @@ export const SsoAuthServerApi_oauthUserInfo = async (
     await http.get<
       ResponseBodyWrapper<SsoAuthServerApi_OauthUserInfoResponseBody>
     >(
-      "api/gateway/user_service.sso_auth_server.OauthUserInfo/api/v1/user_service/sso_auth_server/oauth2/user_info",
+      "api/gateway/logic.user_service/api/v1/user_service/sso_auth_server/oauth2/user_info",
       { ...options, params }
     )
   ).data;

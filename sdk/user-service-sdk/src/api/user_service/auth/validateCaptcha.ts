@@ -14,7 +14,7 @@ export const AuthApi_validateCaptcha = (
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.user_service.auth.ValidateCaptcha@1.0.0 */ http.post<void>(
-    "api/gateway/user_service.auth.ValidateCaptcha/api/v1/users/validate/captcha",
+    "api/gateway/logic.user_service/api/v1/users/validate/captcha",
     data,
     options
   );

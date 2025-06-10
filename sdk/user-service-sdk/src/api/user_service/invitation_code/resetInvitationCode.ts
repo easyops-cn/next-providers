@@ -26,7 +26,7 @@ export const InvitationCodeApi_resetInvitationCode = async (
     await http.put<
       ResponseBodyWrapper<InvitationCodeApi_ResetInvitationCodeResponseBody>
     >(
-      "api/gateway/user_service.invitation_code.ResetInvitationCode/api/v1/invitation/code/_reset",
+      "api/gateway/logic.user_service/api/v1/invitation/code/_reset",
       undefined,
       options
     )

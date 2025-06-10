@@ -13,7 +13,7 @@ export const MyCollectionApi_upsertMyCollection = (
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.user_service.my_collection.UpsertMyCollection@1.0.0 */ http.post<void>(
-    "api/gateway/user_service.my_collection.UpsertMyCollection/api/v1/user_service/my_collection/upsert_collections",
+    "api/gateway/logic.user_service/api/v1/user_service/my_collection/upsert_collections",
     data,
     options
   );

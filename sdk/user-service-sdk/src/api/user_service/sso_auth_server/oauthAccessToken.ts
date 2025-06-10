@@ -44,7 +44,7 @@ export const SsoAuthServerApi_oauthAccessToken = async (
     await http.post<
       ResponseBodyWrapper<SsoAuthServerApi_OauthAccessTokenResponseBody>
     >(
-      "api/gateway/user_service.sso_auth_server.OauthAccessToken/api/v1/user_service/sso_auth_server/oauth2/access_token",
+      "api/gateway/logic.user_service/api/v1/user_service/sso_auth_server/oauth2/access_token",
       data,
       options
     )

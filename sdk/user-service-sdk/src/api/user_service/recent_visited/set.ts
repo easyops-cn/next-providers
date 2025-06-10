@@ -18,7 +18,7 @@ export const RecentVisitedApi_set = (
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.user_service.recent_visited.Set@1.0.0 */ http.post<void>(
-    `api/gateway/user_service.recent_visited.Set/api/v1/user_services/users/${userId}/recent_visited`,
+    `api/gateway/logic.user_service/api/v1/user_services/users/${userId}/recent_visited`,
     data,
     options
   );

@@ -10,6 +10,7 @@ export * from "./api/user_service/organization";
 export * from "./api/user_service/recent_visited";
 export * from "./api/user_service/sso_auth_server";
 export * from "./api/user_service/user_admin";
+export * from "./api/user_service/verification_code";
 export * as UserServiceModels from "./model/user_service";
 export * as CommonModels from "./model/common";
 export * as MicroAppModels from "./model/micro_app";

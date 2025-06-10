@@ -19,7 +19,7 @@ export const RecentVisitedApi_get = async (
 ): Promise<RecentVisitedApi_GetResponseBody> =>
   /**! @contract easyops.api.user_service.recent_visited.Get@1.0.0 */ (
     await http.get<ResponseBodyWrapper<RecentVisitedApi_GetResponseBody>>(
-      `api/gateway/user_service.recent_visited.Get/api/v1/user_services/users/${userId}/recent_visited`,
+      `api/gateway/logic.user_service/api/v1/user_services/users/${userId}/recent_visited`,
       { ...options, params }
     )
   ).data;

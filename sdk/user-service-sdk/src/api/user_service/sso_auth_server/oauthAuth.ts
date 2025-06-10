@@ -45,7 +45,7 @@ export const SsoAuthServerApi_oauthAuth = async (
 ): Promise<SsoAuthServerApi_OauthAuthResponseBody> =>
   /**! @contract easyops.api.user_service.sso_auth_server.OauthAuth@1.0.0 */ (
     await http.get<ResponseBodyWrapper<SsoAuthServerApi_OauthAuthResponseBody>>(
-      "api/gateway/user_service.sso_auth_server.OauthAuth/api/v1/user_service/sso_auth_server/oauth2/auth",
+      "api/gateway/logic.user_service/api/v1/user_service/sso_auth_server/oauth2/auth",
       { ...options, params }
     )
   ).data;

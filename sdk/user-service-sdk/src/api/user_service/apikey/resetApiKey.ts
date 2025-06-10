@@ -34,7 +34,7 @@ export const ApikeyApi_resetApiKey = async (
 ): Promise<ApikeyApi_ResetApiKeyResponseBody> =>
   /**! @contract easyops.api.user_service.apikey.ResetApiKey@1.0.0 */ (
     await http.put<ResponseBodyWrapper<ApikeyApi_ResetApiKeyResponseBody>>(
-      `api/gateway/user_service.apikey.ResetApiKey/api/v1/apikey/_reset/${user}`,
+      `api/gateway/logic.user_service/api/v1/apikey/_reset/${user}`,
       undefined,
       options
     )

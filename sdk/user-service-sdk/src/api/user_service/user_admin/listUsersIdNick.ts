@@ -19,8 +19,8 @@ export const UserAdminApi_listUsersIdNick = async (
   /**! @contract easyops.api.user_service.user_admin.ListUsersIdNick@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<UserAdminApi_ListUsersIdNickResponseBody>
-    >(
-      "api/gateway/user_service.user_admin.ListUsersIdNick/api/v1/users/id_map_nickname",
-      { ...options, params }
-    )
+    >("api/gateway/logic.user_service/api/v1/users/id_map_nickname", {
+      ...options,
+      params,
+    })
   ).data;

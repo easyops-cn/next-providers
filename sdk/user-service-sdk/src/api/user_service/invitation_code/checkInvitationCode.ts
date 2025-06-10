@@ -21,7 +21,7 @@ export const InvitationCodeApi_checkInvitationCode = async (
     await http.get<
       ResponseBodyWrapper<InvitationCodeApi_CheckInvitationCodeResponseBody>
     >(
-      `api/gateway/user_service.invitation_code.CheckInvitationCode/api/v1/invitation/code/${code}/check`,
+      `api/gateway/logic.user_service/api/v1/invitation/code/${code}/check`,
       options
     )
   ).data;

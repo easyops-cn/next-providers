@@ -9,6 +9,6 @@ export const LaunchpadApi_deleteCollection = (
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.user_service.launchpad.DeleteCollection@1.0.0 */ http.delete<void>(
-    `api/gateway/user_service.launchpad.DeleteCollection/api/v1/launchpad/collection/${instanceId}`,
+    `api/gateway/logic.user_service/api/v1/launchpad/collection/${instanceId}`,
     options
   );

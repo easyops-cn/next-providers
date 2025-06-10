@@ -28,6 +28,6 @@ export const UserAdminApi_listGroupsId = (
   options?: HttpOptions
 ): Promise<UserAdminApi_ListGroupsIdResponseBody> =>
   /**! @contract easyops.api.user_service.user_admin.ListGroupsId@1.0.0 */ http.get<UserAdminApi_ListGroupsIdResponseBody>(
-    "api/gateway/user_service.user_admin.ListGroupsId/api/v1/groups/id",
+    "api/gateway/logic.user_service/api/v1/groups/id",
     { ...options, params }
   );

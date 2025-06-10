@@ -15,6 +15,9 @@ export interface ModelApiCount {
   /** 密钥 */
   access_key: string;
 
+  /** 切换用户 */
+  switchUsers: string[];
+
   /** 创建人 */
   creator: string;
 

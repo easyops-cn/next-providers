@@ -34,8 +34,8 @@ export const UserAdminApi_getUserLoginInfo = async (
   /**! @contract easyops.api.user_service.user_admin.GetUserLoginInfo@1.0.1 */ (
     await http.get<
       ResponseBodyWrapper<UserAdminApi_GetUserLoginInfoResponseBody>
-    >(
-      "api/gateway/user_service.user_admin.GetUserLoginInfo/api/v1/user/login_info",
-      { ...options, params }
-    )
+    >("api/gateway/logic.user_service/api/v1/user/login_info", {
+      ...options,
+      params,
+    })
   ).data;

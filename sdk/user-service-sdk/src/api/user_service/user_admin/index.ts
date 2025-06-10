@@ -23,6 +23,8 @@ export * from "./removeUserFromOrg";
 export * from "./resetPassword";
 export * from "./searchAllUserGroup";
 export * from "./searchAllUsersInfo";
+export * from "./updateGroupMembers";
+export * from "./updateUserAvatar";
 export * from "./updateUserInfo";
 export * from "./userDelete";
 export * from "./getUserLoginInfo";

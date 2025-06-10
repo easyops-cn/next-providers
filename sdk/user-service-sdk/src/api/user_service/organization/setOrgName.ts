@@ -15,7 +15,7 @@ export const OrganizationApi_setOrgName = (
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.user_service.organization.SetOrgName@1.0.0 */ http.put<void>(
-    `api/gateway/user_service.organization.SetOrgName/api/v1/org/${id}/name`,
+    `api/gateway/logic.user_service/api/v1/org/${id}/name`,
     data,
     options
   );

@@ -17,7 +17,7 @@ export const LdapApi_config = (
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.user_service.ldap.Config@1.0.0 */ http.post<void>(
-    "api/gateway/user_service.ldap.Config/api/v1/users/ldap_conf",
+    "api/gateway/logic.user_service/api/v1/users/ldap_conf",
     data,
     options
   );

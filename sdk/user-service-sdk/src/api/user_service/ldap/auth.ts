@@ -39,7 +39,7 @@ export const LdapApi_auth = async (
 ): Promise<LdapApi_AuthResponseBody> =>
   /**! @contract easyops.api.user_service.ldap.Auth@1.0.1 */ (
     await http.post<ResponseBodyWrapper<LdapApi_AuthResponseBody>>(
-      "api/gateway/user_service.ldap.Auth/api/v1/users/ldap_auth",
+      "api/gateway/logic.user_service/api/v1/users/ldap_auth",
       data,
       options
     )

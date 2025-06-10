@@ -34,7 +34,7 @@ export const ApikeyApi_createApiKey = async (
 ): Promise<ApikeyApi_CreateApiKeyResponseBody> =>
   /**! @contract easyops.api.user_service.apikey.CreateApiKey@1.0.0 */ (
     await http.post<ResponseBodyWrapper<ApikeyApi_CreateApiKeyResponseBody>>(
-      `api/gateway/user_service.apikey.CreateApiKey/api/v1/apikey/${user}`,
+      `api/gateway/logic.user_service/api/v1/apikey/${user}`,
       undefined,
       options
     )

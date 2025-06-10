@@ -517,6 +517,71 @@
       }
     },
     {
+      "contract": "user_service.apikey.UpdateApiKey",
+      "name": "UpdateApiKey",
+      "version": "1.0.0",
+      "description": "修改用户ApiKey[内部]",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/apikey/update/:user"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "user",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "switchUsers",
+            "type": "string[]",
+            "description": "切换用户(组)"
+          }
+        ],
+        "required": ["user"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "user",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "switchUsers",
+            "type": "string[]",
+            "description": "切换用户id(组id)"
+          }
+        ],
+        "required": ["user", "switchUsers"]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "UpdateApiKey",
+            "zh": "修改apikey"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://localhost:8111/api/v1/apikey/easyops",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"user\": \"easyops\",\n  \"switchUsers\": [\"fanpu\"]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n        \"user\": \"easyops\",\n        \"switchUsers\": [\"fanpu\"]\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "user_service.auth.GetCaptcha",
       "name": "GetCaptcha",
       "version": "1.0.0",
@@ -627,6 +692,71 @@
             },
             "status_code": 200,
             "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n        \"name\": \"easyops\",\n        \"instanceId\": \"1234567\",\n        \"org\": 2988466,\n        \"changePasswordRequired\": true,\n        \"changePasswordReason\": \"firstLogin\",\n        \"passwordRemainingDays\": 30,\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "user_service.auth.UserNameValidate",
+      "name": "UserNameValidate",
+      "version": "1.0.0",
+      "description": "用户名验证[内部]",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v1/users/name/validate"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string",
+            "description": "用户名"
+          }
+        ],
+        "required": ["name"]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "name",
+            "type": "user_name",
+            "description": "用户名"
+          },
+          {
+            "name": "instanceId",
+            "type": "instance_id",
+            "description": "用户instanceId"
+          },
+          {
+            "name": "org",
+            "type": "int",
+            "description": "org"
+          }
+        ],
+        "required": ["name", "org"]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "UserNameValidate",
+            "zh": "用户名验证"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8111/api/v1/users/name/validate",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n  \"name\": \"easyops\",\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n        \"name\": \"easyops\",\n        \"instanceId\": \"1234567\",\n        \"org\": 2988466,\n    }\n}"
           }
         }
       ]
@@ -2399,7 +2529,31 @@
         ],
         "required": ["name"]
       },
-      "response": null
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "zh": "修改密码",
+            "en": "Alter Password"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8111/api/v1/users/alter_password",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"name\": \"easyops\",\n    \"password\": \"test123\"\n}"
+          },
+          "response": {
+            "response": {
+              "headers": {
+                "Content-Type": "application/json; charset=utf-8"
+              },
+              "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n    }\n}"
+            }
+          }
+        }
+      ]
     },
     {
       "contract": "user_service.user_admin.AlterSelfPassword",
@@ -2426,7 +2580,31 @@
         ],
         "required": ["password", "oldPassword"]
       },
-      "response": null
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "zh": "修改自己密码",
+            "en": "Alter Self Password"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://127.0.0.1:8111/api/v1/users/password",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"password\": \"123456\",\n    \"oldPassword\": \"test123\"\n}"
+          },
+          "response": {
+            "response": {
+              "headers": {
+                "Content-Type": "application/json; charset=utf-8"
+              },
+              "body": "{\n    \"code\": 0,\n    \"codeExplain\": \"\",\n    \"error\": \"\",\n    \"data\": {\n    }\n}"
+            }
+          }
+        }
+      ]
     },
     {
       "contract": "user_service.user_admin.CheckUserExist",
@@ -2787,7 +2965,7 @@
             "headers": {
               "Content-Type": "application/json"
             },
-            "body": "{\n  \"username\": [\"easyops\", \"test\"],\n}"
+            "body": "{\n  \"username\": [\"easyops\", \"test\"],\n  \"org\": 8888,\n}"
           },
           "response": {
             "headers": {
@@ -3260,7 +3438,7 @@
             "headers": {
               "Content-Type": "application/json"
             },
-            "body": "{\n  \"username\": [\"easyops\", \"test\"],\n}"
+            "body": "{\n  \"username\": [\"easyops\", \"test\"],\n  \"org\": 8888,\n}"
           },
           "response": {
             "headers": {
@@ -3390,6 +3568,123 @@
           }
         ]
       }
+    },
+    {
+      "contract": "user_service.user_admin.UpdateGroupMembers",
+      "name": "UpdateGroupMembers",
+      "version": "1.0.0",
+      "description": "更新用户组成员(添加/移除)",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/groups/:groupId/members"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "groupId",
+            "type": "string",
+            "description": "group id"
+          },
+          {
+            "name": "userIds",
+            "type": "string[]",
+            "description": "用户instanceId列表"
+          },
+          {
+            "name": "op",
+            "type": "string",
+            "enum": ["append", "remove"],
+            "description": "操作, append: 添加用户到用户组 remove: 将用户从用户组中移除"
+          }
+        ],
+        "required": ["groupId", "userIds"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "UpdateGroupMembers",
+            "zh": "更新用户组成员"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8111/api/v1/groups/:groupId/members",
+            "body": "{\n  \"op\": \"append\",\n  \"userIds\": [\n    \"6357978df5b4f\"\n  ]\n}"
+          },
+          "response": {
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"msg\": \"OK\",\n  \"data\": {\n  }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "user_service.user_admin.UpdateUserAvatar",
+      "name": "UpdateUserAvatar",
+      "version": "1.1.0",
+      "description": "更新用户头像",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v1/users/avatar/:name"
+      },
+      "import": ["easyops/model/user_service/user_info"],
+      "request": {
+        "multipart_enable": true,
+        "type": "object",
+        "fields": [
+          {
+            "ref": "UserInfo.name"
+          },
+          {
+            "name": "avatarFile",
+            "type": "file",
+            "description": "avatar file"
+          },
+          {
+            "name": "isSystemAvatar",
+            "type": "bool",
+            "description": "上传的头像文件是否是自带头像"
+          }
+        ]
+      },
+      "response": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "bucketName",
+            "type": "string",
+            "description": "bucket"
+          },
+          {
+            "name": "objectName",
+            "type": "string",
+            "description": "object name"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "zh": "更新用户头像",
+            "en": "Update User Avatar"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://127.0.0.1:8111/api/v1/users/icon/easyops",
+            "headers": {
+              "Content-Type": "multipart/form-data; boundary=----WebKitFormBoundaryfbNzkSVBVBBrbum5"
+            },
+            "body": "------WebKitFormBoundaryfbNzkSVBVBBrbum5 Content-Disposition: form-data; name=\"file\"; filename=\"blob\" Content-Type: image/png ------WebKitFormBoundaryfbNzkSVBVBBrbum5--"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json;charset=utf-8"
+            },
+            "body": "{\n  \"code\": 0,\n  \"codeExplain\": \"\",\n  \"error\": \"\",\n  \"data\": {\n    \"bucketName\": \"avatar\",\n    \"objectName\": \"blob1720424100462523309\"\n  }\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "user_service.user_admin.UpdateUserInfo",
@@ -3552,6 +3847,149 @@
         ],
         "required": ["name", "email", "org", "instanceId"]
       }
+    },
+    {
+      "contract": "user_service.verification_code.CheckVerificationCode",
+      "name": "CheckVerificationCode",
+      "version": "1.0.0",
+      "description": "校验验证码",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/user_service/v1/verification/codes/check"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "user",
+            "type": "string",
+            "description": "用户名"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "description": "发送类型（eg: email, phone）"
+          },
+          {
+            "name": "service",
+            "type": "string",
+            "description": "服务名称（eg: tool_service）"
+          },
+          {
+            "name": "scene",
+            "type": "string",
+            "description": "使用场景 （eg: tool_execute）"
+          },
+          {
+            "name": "resourceIds",
+            "type": "string[]",
+            "description": "资源id （eg: 9ff366020435ce53d73e69128c611bdd）"
+          },
+          {
+            "name": "code",
+            "type": "string",
+            "description": "验证码"
+          }
+        ],
+        "required": ["user", "service", "code"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "CheckVerificationCode",
+            "zh": "校验验证码"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8111/api/user_service/v1/verification/codes/check",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"user\": \"easyops\",\n    \"type\": \"email\",\n    \"service\": \"tool_service\",\n    \"scene\": \"tool_execute\",\n    \"code\": \"123456\",\n    \"resourceIds\": [\"9ff366020435ce53d73e69128c611bdd\"]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\":0,\n    \"codeExplain\":\"\",\n    \"error\":\"\",\n    \"data\": null\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "user_service.verification_code.SendVerificationCode",
+      "name": "SendVerificationCode",
+      "version": "1.0.0",
+      "description": "发送验证码",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/user_service/v1/verification/codes"
+      },
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "user",
+            "type": "string",
+            "description": "用户名(多个用逗号,分割)"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "description": "发送类型（多个用逗号,分割; eg: email, phone）"
+          },
+          {
+            "name": "service",
+            "type": "string",
+            "description": "服务名称（eg: tool_service）"
+          },
+          {
+            "name": "scene",
+            "type": "string",
+            "description": "使用场景 （eg: tool_execute）"
+          },
+          {
+            "name": "resourceIds",
+            "type": "string[]",
+            "description": "资源id （eg: 9ff366020435ce53d73e69128c611bdd）"
+          },
+          {
+            "name": "template",
+            "type": "string",
+            "description": "验证码模板 （eg: 工具验证码为 %s（10分钟内有效）。此验证码用于【easyops】申请执行工具【安装agent】，请确认工具可被执行后，将验证码转告给该用户。）"
+          },
+          {
+            "name": "expiredTime",
+            "type": "int",
+            "description": "验证码有效期（秒）"
+          }
+        ],
+        "required": ["user", "type", "service", "template"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "SendVerificationCode",
+            "zh": "发送验证码"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8111/api/user_service/v1/verification/codes",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"user\": \"easyops\",\n    \"type\": \"email\",\n    \"service\": \"tool_service\",\n    \"scene\": \"tool_execute\",\n    \"resourceIds\": [\"9ff366020435ce53d73e69128c611bdd\"],\n    \"template\": \"此验证码用于【easyops】申请执行工具【安装agent】，请确认工具可被执行后，将验证码转告给该用户。\"\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\n    \"code\":0,\n    \"codeExplain\":\"\",\n    \"error\":\"\",\n    \"data\": null\n}"
+          }
+        }
+      ]
     }
   ]
 }

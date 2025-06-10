@@ -23,6 +23,6 @@ export const UserAdminApi_getUserAllRoles = (
   options?: HttpOptions
 ): Promise<UserAdminApi_GetUserAllRolesResponseBody> =>
   /**! @contract easyops.api.user_service.user_admin.GetUserAllRoles@1.0.0 */ http.get<UserAdminApi_GetUserAllRolesResponseBody>(
-    `api/gateway/user_service.user_admin.GetUserAllRoles/api/v1/users/roles/${username}/all`,
+    `api/gateway/logic.user_service/api/v1/users/roles/${username}/all`,
     options
   );

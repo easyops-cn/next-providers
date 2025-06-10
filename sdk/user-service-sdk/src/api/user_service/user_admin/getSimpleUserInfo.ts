@@ -21,7 +21,7 @@ export const UserAdminApi_getSimpleUserInfo = async (
     await http.get<
       ResponseBodyWrapper<UserAdminApi_GetSimpleUserInfoResponseBody>
     >(
-      `api/gateway/user_service.user_admin.GetSimpleUserInfo/api/v1/users/simple_detail/${username}`,
+      `api/gateway/logic.user_service/api/v1/users/simple_detail/${username}`,
       options
     )
   ).data;

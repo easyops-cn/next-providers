@@ -9,6 +9,6 @@ export const UserAdminApi_userDelete = (
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.user_service.user_admin.UserDelete@1.0.0 */ http.delete<void>(
-    `api/gateway/user_service.user_admin.UserDelete/api/v1/users/${username}`,
+    `api/gateway/logic.user_service/api/v1/users/${username}`,
     options
   );

@@ -15,10 +15,7 @@ export const OrganizationApi_getCurrentOrg = async (
   /**! @contract easyops.api.user_service.organization.GetCurrentOrg@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<OrganizationApi_GetCurrentOrgResponseBody>
-    >(
-      "api/gateway/user_service.organization.GetCurrentOrg/api/v1/org/current",
-      options
-    )
+    >("api/gateway/logic.user_service/api/v1/org/current", options)
   ).data;
 
 export interface ModelOrgInfo_partial_3 {

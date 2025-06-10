@@ -9,7 +9,7 @@ export const OrganizationApi_disableOrg = (
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.user_service.organization.DisableOrg@1.0.0 */ http.put<void>(
-    `api/gateway/user_service.organization.DisableOrg/api/v1/org/${id}/disable`,
+    `api/gateway/logic.user_service/api/v1/org/${id}/disable`,
     undefined,
     options
   );

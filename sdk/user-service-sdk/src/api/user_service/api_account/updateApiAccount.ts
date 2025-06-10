@@ -24,7 +24,7 @@ export const ApiAccountApi_updateApiAccount = (
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.user_service.api_account.UpdateApiAccount@1.0.0 */ http.put<void>(
-    `api/gateway/user_service.api_account.UpdateApiAccount/api/user_service/v1/api_account/${id}`,
+    `api/gateway/logic.user_service/api/user_service/v1/api_account/${id}`,
     data,
     options
   );

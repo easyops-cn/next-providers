@@ -5,3 +5,4 @@ export * from "./enableApiKey";
 export * from "./getApiKey";
 export * from "./listApiKey";
 export * from "./resetApiKey";
+export * from "./updateApiKey";

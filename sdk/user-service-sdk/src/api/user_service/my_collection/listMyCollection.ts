@@ -25,7 +25,7 @@ export const MyCollectionApi_listMyCollection = async (
     await http.get<
       ResponseBodyWrapper<MyCollectionApi_ListMyCollectionResponseBody>
     >(
-      "api/gateway/user_service.my_collection.ListMyCollection/api/v1/user_service/my_collection/collections",
+      "api/gateway/logic.user_service/api/v1/user_service/my_collection/collections",
       { ...options, params }
     )
   ).data;

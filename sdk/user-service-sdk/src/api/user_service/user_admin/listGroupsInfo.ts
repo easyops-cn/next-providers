@@ -32,8 +32,5 @@ export const UserAdminApi_listGroupsInfo = async (
   /**! @contract easyops.api.user_service.user_admin.ListGroupsInfo@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<UserAdminApi_ListGroupsInfoResponseBody>
-    >("api/gateway/user_service.user_admin.ListGroupsInfo/api/v1/groups", {
-      ...options,
-      params,
-    })
+    >("api/gateway/logic.user_service/api/v1/groups", { ...options, params })
   ).data;

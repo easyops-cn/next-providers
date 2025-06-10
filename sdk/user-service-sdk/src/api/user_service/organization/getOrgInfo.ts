@@ -15,7 +15,7 @@ export const OrganizationApi_getOrgInfo = async (
 ): Promise<OrganizationApi_GetOrgInfoResponseBody> =>
   /**! @contract easyops.api.user_service.organization.GetOrgInfo@1.0.0 */ (
     await http.get<ResponseBodyWrapper<OrganizationApi_GetOrgInfoResponseBody>>(
-      `api/gateway/user_service.organization.GetOrgInfo/api/v1/org/info/${id}`,
+      `api/gateway/logic.user_service/api/v1/org/info/${id}`,
       options
     )
   ).data;

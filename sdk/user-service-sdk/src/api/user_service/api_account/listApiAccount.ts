@@ -29,8 +29,8 @@ export const ApiAccountApi_listApiAccount = async (
   /**! @contract easyops.api.user_service.api_account.ListApiAccount@1.0.0 */ (
     await http.get<
       ResponseBodyWrapper<ApiAccountApi_ListApiAccountResponseBody>
-    >(
-      "api/gateway/user_service.api_account.ListApiAccount/api/user_service/v1/api_account",
-      { ...options, params }
-    )
+    >("api/gateway/logic.user_service/api/user_service/v1/api_account", {
+      ...options,
+      params,
+    })
   ).data;

@@ -48,7 +48,7 @@ export const AuthApi_userAuth = async (
 ): Promise<AuthApi_UserAuthResponseBody> =>
   /**! @contract easyops.api.user_service.auth.UserAuth@1.0.0 */ (
     await http.post<ResponseBodyWrapper<AuthApi_UserAuthResponseBody>>(
-      "api/gateway/user_service.auth.UserAuth/api/v1/users/auth",
+      "api/gateway/logic.user_service/api/v1/users/auth",
       data,
       options
     )

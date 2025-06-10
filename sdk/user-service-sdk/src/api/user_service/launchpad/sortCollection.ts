@@ -14,7 +14,7 @@ export const LaunchpadApi_sortCollection = (
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.user_service.launchpad.SortCollection@1.0.0 */ http.post<void>(
-    "api/gateway/user_service.launchpad.SortCollection/api/v1/launchpad/sort-collection",
+    "api/gateway/logic.user_service/api/v1/launchpad/sort-collection",
     data,
     options
   );

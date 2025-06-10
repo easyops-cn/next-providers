@@ -26,7 +26,7 @@ export const ApiAccountApi_createApiAccount = async (
     await http.post<
       ResponseBodyWrapper<ApiAccountApi_CreateApiAccountResponseBody>
     >(
-      "api/gateway/user_service.api_account.CreateApiAccount/api/user_service/v1/api_account",
+      "api/gateway/logic.user_service/api/user_service/v1/api_account",
       data,
       options
     )

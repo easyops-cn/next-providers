@@ -9,6 +9,6 @@ export const ApikeyApi_deleteApiKey = (
   options?: HttpOptions
 ): Promise<void> =>
   /**! @contract easyops.api.user_service.apikey.DeleteApiKey@1.0.0 */ http.delete<void>(
-    `api/gateway/user_service.apikey.DeleteApiKey/api/v1/apikey/delete/${access_key}`,
+    `api/gateway/logic.user_service/api/v1/apikey/delete/${access_key}`,
     options
   );
