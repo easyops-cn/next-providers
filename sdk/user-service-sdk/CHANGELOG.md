@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/user-service-sdk@2.4.0...@next-sdk/user-service-sdk@2.5.0) (2025-06-10)
+
+### Features
+
+- add apis: ApikeyApi_updateApiKey, AuthApi_userNameValidate, UserAdminApi_updateGroupMembers, UserAdminApi_updateUserAvatar, VerificationCodeApi_checkVerificationCode, VerificationCodeApi_index, VerificationCodeApi_sendVerificationCode ([1e9d52a](https://github.com/easyops-cn/next-providers/commit/1e9d52aba50d36466aacb689d6313c5dcd91cf97))
+
 # [2.4.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/user-service-sdk@2.3.1...@next-sdk/user-service-sdk@2.4.0) (2024-01-24)
 
 ### Features
