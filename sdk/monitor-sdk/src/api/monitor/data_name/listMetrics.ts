@@ -38,6 +38,6 @@ export const DataNameApi_listMetrics = (
   options?: HttpOptions
 ): Promise<DataNameApi_ListMetricsResponseBody> =>
   /**! @contract easyops.api.monitor.data_name.ListMetrics@1.0.0 */ http.get<DataNameApi_ListMetricsResponseBody>(
-    "api/gateway/monitor.data_name.ListMetrics/api/v1/collector/general_config",
+    "api/gateway/logic.dc_console/api/v1/collector/general_config",
     { ...options, params }
   );

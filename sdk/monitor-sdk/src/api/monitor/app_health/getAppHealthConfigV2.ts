@@ -21,6 +21,6 @@ export const AppHealthApi_getAppHealthConfigV2 = (
   options?: HttpOptions
 ): Promise<AppHealthApi_GetAppHealthConfigV2ResponseBody> =>
   /**! @contract easyops.api.monitor.app_health.GetAppHealthConfigV2@1.0.0 */ http.get<AppHealthApi_GetAppHealthConfigV2ResponseBody>(
-    `api/gateway/monitor.app_health.GetAppHealthConfigV2/api/v2/app_health/config/${app_id}`,
+    `api/gateway/logic.dc_console/api/v2/app_health/config/${app_id}`,
     options
   );

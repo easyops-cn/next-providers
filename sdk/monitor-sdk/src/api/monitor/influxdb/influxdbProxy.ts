@@ -25,7 +25,7 @@ export const InfluxdbApi_influxdbProxy = (
   options?: HttpOptions
 ): Promise<InfluxdbApi_InfluxdbProxyResponseBody> =>
   /**! @contract easyops.api.monitor.influxdb.InfluxdbProxy@1.0.0 */ http.get<InfluxdbApi_InfluxdbProxyResponseBody>(
-    "api/gateway/monitor.influxdb.InfluxdbProxy/api/v1/influxdb/proxy/query",
+    "api/gateway/logic.dc_console/api/v1/influxdb/proxy/query",
     { ...options, params }
   );
 

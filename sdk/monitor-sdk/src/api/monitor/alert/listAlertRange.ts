@@ -35,6 +35,6 @@ export const AlertApi_listAlertRange = (
   options?: HttpOptions
 ): Promise<AlertApi_ListAlertRangeResponseBody> =>
   /**! @contract easyops.api.monitor.alert.ListAlertRange@1.0.0 */ http.get<AlertApi_ListAlertRangeResponseBody>(
-    "api/gateway/monitor.alert.ListAlertRange/api/v1/alert_range",
+    "api/gateway/logic.dc_console/api/v1/alert_range",
     { ...options, params }
   );

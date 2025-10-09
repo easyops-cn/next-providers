@@ -38,6 +38,6 @@ export const AlertRuleApi_listAlertRuleAll = (
   options?: HttpOptions
 ): Promise<AlertRuleApi_ListAlertRuleAllResponseBody> =>
   /**! @contract easyops.api.monitor.alert_rule.ListAlertRuleAll@1.0.0 */ http.get<AlertRuleApi_ListAlertRuleAllResponseBody>(
-    "api/gateway/monitor.alert_rule.ListAlertRuleAll/api/v3/alert_rule/config/all",
+    "api/gateway/logic.dc_console/api/v3/alert_rule/config/all",
     { ...options, params }
   );

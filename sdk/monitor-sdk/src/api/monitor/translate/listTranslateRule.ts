@@ -38,6 +38,6 @@ export const TranslateApi_listTranslateRule = (
   options?: HttpOptions
 ): Promise<TranslateApi_ListTranslateRuleResponseBody> =>
   /**! @contract easyops.api.monitor.translate.ListTranslateRule@1.0.0 */ http.get<TranslateApi_ListTranslateRuleResponseBody>(
-    "api/gateway/monitor.translate.ListTranslateRule/api/v1/translate/rule",
+    "api/gateway/logic.dc_console/api/v1/translate/rule",
     { ...options, params }
   );

@@ -50,6 +50,6 @@ export const AlertRuleApi_getAlertRuleList = (
   options?: HttpOptions
 ): Promise<AlertRuleApi_GetAlertRuleListResponseBody> =>
   /**! @contract easyops.api.monitor.alert_rule.GetAlertRuleList@1.0.0 */ http.get<AlertRuleApi_GetAlertRuleListResponseBody>(
-    "api/gateway/monitor.alert_rule.GetAlertRuleList/api/v3/alert_rule/config",
+    "api/gateway/logic.dc_console/api/v3/alert_rule/config",
     { ...options, params }
   );

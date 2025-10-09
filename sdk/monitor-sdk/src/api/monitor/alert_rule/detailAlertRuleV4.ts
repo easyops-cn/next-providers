@@ -27,6 +27,6 @@ export const AlertRuleApi_detailAlertRuleV4 = (
   options?: HttpOptions
 ): Promise<AlertRuleApi_DetailAlertRuleV4ResponseBody> =>
   /**! @contract easyops.api.monitor.alert_rule.DetailAlertRuleV4@1.0.0 */ http.get<AlertRuleApi_DetailAlertRuleV4ResponseBody>(
-    `api/gateway/monitor.alert_rule.DetailAlertRuleV4/api/v4/alert_rule/config/${id}`,
+    `api/gateway/logic.dc_console/api/v4/alert_rule/config/${id}`,
     { ...options, params }
   );

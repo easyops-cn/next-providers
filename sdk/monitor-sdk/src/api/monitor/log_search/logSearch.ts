@@ -44,7 +44,7 @@ export const LogSearchApi_logSearch = (
   options?: HttpOptions
 ): Promise<LogSearchApi_LogSearchResponseBody> =>
   /**! @contract easyops.api.monitor.log_search.LogSearch@1.0.0 */ http.post<LogSearchApi_LogSearchResponseBody>(
-    "api/gateway/monitor.log_search.LogSearch/api/v1/log_search/search",
+    "api/gateway/logic.dc_console/api/v1/log_search/search",
     data,
     options
   );

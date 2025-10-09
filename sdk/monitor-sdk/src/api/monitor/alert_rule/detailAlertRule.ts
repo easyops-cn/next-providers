@@ -21,6 +21,6 @@ export const AlertRuleApi_detailAlertRule = (
   options?: HttpOptions
 ): Promise<AlertRuleApi_DetailAlertRuleResponseBody> =>
   /**! @contract easyops.api.monitor.alert_rule.DetailAlertRule@1.0.0 */ http.get<AlertRuleApi_DetailAlertRuleResponseBody>(
-    `api/gateway/monitor.alert_rule.DetailAlertRule/api/v3/alert_rule/config/${id}`,
+    `api/gateway/logic.dc_console/api/v3/alert_rule/config/${id}`,
     options
   );

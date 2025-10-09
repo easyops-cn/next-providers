@@ -43,7 +43,7 @@ export const AlertApi_getAlertCount = (
   options?: HttpOptions
 ): Promise<AlertApi_GetAlertCountResponseBody> =>
   /**! @contract easyops.api.monitor.alert.GetAlertCount@1.0.0 */ http.get<AlertApi_GetAlertCountResponseBody>(
-    "api/gateway/monitor.alert.GetAlertCount/api/v1/alert/count",
+    "api/gateway/logic.dc_console/api/v1/alert/count",
     { ...options, params }
   );
 

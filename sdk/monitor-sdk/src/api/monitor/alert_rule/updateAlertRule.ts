@@ -24,7 +24,7 @@ export const AlertRuleApi_updateAlertRule = (
   options?: HttpOptions
 ): Promise<AlertRuleApi_UpdateAlertRuleResponseBody> =>
   /**! @contract easyops.api.monitor.alert_rule.UpdateAlertRule@1.0.0 */ http.put<AlertRuleApi_UpdateAlertRuleResponseBody>(
-    `api/gateway/monitor.alert_rule.UpdateAlertRule/api/v3/alert_rule/config/${id}`,
+    `api/gateway/logic.dc_console/api/v3/alert_rule/config/${id}`,
     data,
     options
   );

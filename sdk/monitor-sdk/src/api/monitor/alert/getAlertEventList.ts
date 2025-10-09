@@ -59,6 +59,6 @@ export const AlertApi_getAlertEventList = (
   options?: HttpOptions
 ): Promise<AlertApi_GetAlertEventListResponseBody> =>
   /**! @contract easyops.api.monitor.alert.GetAlertEventList@1.0.0 */ http.get<AlertApi_GetAlertEventListResponseBody>(
-    "api/gateway/monitor.alert.GetAlertEventList/api/v1/alert",
+    "api/gateway/logic.dc_console/api/v1/alert",
     { ...options, params }
   );
