@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/easyops-cn/next-providers/compare/@next-sdk/msgsender-sdk@2.2.2...@next-sdk/msgsender-sdk@2.3.0) (2025-11-06)
+
+### Features
+
+- add apis: ConfigApi_createConfigV2, ConfigApi_listConfigV2, ConfigApi_updateConfigV2, CustomSenderApi_sendMessageDebug, CustomSenderApi_sendMessageDebugV2 ([e5e79fe](https://github.com/easyops-cn/next-providers/commit/e5e79feb7cda4cba04f87b88f4b604c5427d6a34))
+
 ## 2.2.2 (2023-06-08)
 
 **Note:** Version bump only for package @next-sdk/msgsender-sdk
