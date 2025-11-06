@@ -23,4 +23,7 @@ export interface ModelMessageData {
 
   /** 邮件内容类型 */
   msg_type: "plain" | "html";
+
+  /** 扩展字段 */
+  extraData: Record<string, any>;
 }

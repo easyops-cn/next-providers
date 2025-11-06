@@ -13,7 +13,7 @@ export const CustomSenderApi_listSupportInform = (
   options?: HttpOptions
 ): Promise<CustomSenderApi_ListSupportInformResponseBody> =>
   /**! @contract easyops.api.msgsender.custom_sender.ListSupportInform@1.0.0 */ http.get<CustomSenderApi_ListSupportInformResponseBody>(
-    "api/gateway/msgsender.custom_sender.ListSupportInform/api/v1/message_sender/method",
+    "api/gateway/logic.msgsender/api/v1/message_sender/method",
     options
   );
 

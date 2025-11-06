@@ -31,7 +31,7 @@ export const CustomSenderApi_sendMessageWithAppendix = (
     }
   }
   return http.post<CustomSenderApi_SendMessageWithAppendixResponseBody>(
-    "api/gateway/msgsender.custom_sender.SendMessageWithAppendix/api/v1/message_sender/mail_with_appendix",
+    "api/gateway/logic.msgsender/api/v1/message_sender/mail_with_appendix",
     _formData,
     options
   );

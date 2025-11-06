@@ -18,7 +18,7 @@ export const ConfigApi_createConfig = (
   options?: HttpOptions
 ): Promise<ConfigApi_CreateConfigResponseBody> =>
   /**! @contract easyops.api.msgsender.config.CreateConfig@1.0.0 */ http.post<ConfigApi_CreateConfigResponseBody>(
-    "api/gateway/msgsender.config.CreateConfig/api/v1/message_sender/configs",
+    "api/gateway/logic.msgsender/api/v1/message_sender/configs",
     data,
     options
   );

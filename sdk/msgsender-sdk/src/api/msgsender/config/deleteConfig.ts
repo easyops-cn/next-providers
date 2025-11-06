@@ -14,7 +14,7 @@ export const ConfigApi_deleteConfig = (
   options?: HttpOptions
 ): Promise<ConfigApi_DeleteConfigResponseBody> =>
   /**! @contract easyops.api.msgsender.config.DeleteConfig@1.0.0 */ http.delete<ConfigApi_DeleteConfigResponseBody>(
-    `api/gateway/msgsender.config.DeleteConfig/api/v1/message_sender/configs/${instanceId}`,
+    `api/gateway/logic.msgsender/api/v1/message_sender/configs/${instanceId}`,
     options
   );
 

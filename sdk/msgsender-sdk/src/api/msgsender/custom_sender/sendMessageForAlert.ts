@@ -19,7 +19,7 @@ export const CustomSenderApi_sendMessageForAlert = (
   options?: HttpOptions
 ): Promise<CustomSenderApi_SendMessageForAlertResponseBody> =>
   /**! @contract easyops.api.msgsender.custom_sender.SendMessageForAlert@1.0.0 */ http.post<CustomSenderApi_SendMessageForAlertResponseBody>(
-    "api/gateway/msgsender.custom_sender.SendMessageForAlert/api/v1/alert_adapter/receive",
+    "api/gateway/logic.msgsender/api/v1/alert_adapter/receive",
     data,
     options
   );

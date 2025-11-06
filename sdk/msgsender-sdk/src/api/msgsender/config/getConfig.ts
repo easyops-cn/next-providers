@@ -14,7 +14,7 @@ export const ConfigApi_getConfig = (
   options?: HttpOptions
 ): Promise<ConfigApi_GetConfigResponseBody> =>
   /**! @contract easyops.api.msgsender.config.GetConfig@1.0.0 */ http.get<ConfigApi_GetConfigResponseBody>(
-    `api/gateway/msgsender.config.GetConfig/api/v1/message_sender/configs/${instanceId}`,
+    `api/gateway/logic.msgsender/api/v1/message_sender/configs/${instanceId}`,
     options
   );
 

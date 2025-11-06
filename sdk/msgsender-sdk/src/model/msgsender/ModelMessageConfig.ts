@@ -1,3 +1,5 @@
+import { ModelMessageServerConfigField } from ".";
+
 /** 通知配置 */
 export interface ModelMessageConfig {
   /** 实例id */
@@ -26,4 +28,7 @@ export interface ModelMessageConfig {
 
   /** 自定义类型脚本内容 */
   scriptContent: string;
+
+  /** 服务器配置字段定义 */
+  configFields: Partial<ModelMessageServerConfigField>[];
 }

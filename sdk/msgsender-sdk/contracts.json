@@ -38,6 +38,65 @@
       }
     },
     {
+      "contract": "msgsender.config.CreateConfigV2",
+      "name": "CreateConfigV2",
+      "version": "1.0.0",
+      "description": "创建通知配置",
+      "endpoint": {
+        "method": "POST",
+        "uri": "/api/v2/message_sender/configs"
+      },
+      "import": [
+        "easyops/model/monitor/easy_tornado_response",
+        "easyops/model/msgsender/message_config"
+      ],
+      "request": {
+        "type": "MessageConfig",
+        "required": [
+          "MessageConfig.name",
+          "MessageConfig.cmdbUserObjectColName",
+          "MessageConfig.pluginName"
+        ]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "ref": "EasyTornadoCommonResponse.*"
+          },
+          {
+            "name": "data",
+            "type": "MessageConfig",
+            "description": "通知配置"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "create configV2",
+            "zh": "创建"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v2/message_sender/configs",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"error\": \"\",\n  \"message\": \"\",\n  \"data\": \"\"\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "msgsender.config.DeleteConfig",
       "name": "DeleteConfig",
       "version": "1.0.0",
@@ -177,6 +236,95 @@
       }
     },
     {
+      "contract": "msgsender.config.ListConfigV2",
+      "name": "ListConfigV2",
+      "version": "1.0.0",
+      "description": "获取通知配置列表",
+      "endpoint": {
+        "method": "GET",
+        "uri": "/api/v2/message_sender/configs"
+      },
+      "import": [
+        "easyops/model/monitor/easy_tornado_response",
+        "easyops/model/msgsender/message_config"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "page",
+            "type": "page",
+            "description": "页码"
+          },
+          {
+            "name": "page_size",
+            "type": "page_size",
+            "description": "每页大小"
+          }
+        ],
+        "required": ["page", "page_size"]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "ref": "EasyTornadoCommonResponse.*"
+          },
+          {
+            "name": "data",
+            "type": "object",
+            "description": "通知配置",
+            "fields": [
+              {
+                "name": "list",
+                "type": "MessageConfig[]",
+                "description": "配置列表"
+              },
+              {
+                "name": "total",
+                "type": "int",
+                "description": "总数"
+              },
+              {
+                "name": "page",
+                "type": "page",
+                "description": "页码"
+              },
+              {
+                "name": "pageSize",
+                "type": "page_size",
+                "description": "页大小"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "list config V2",
+            "zh": "获取列表"
+          },
+          "request": {
+            "method": "GET",
+            "uri": "http://localhost:8095/api/v2/message_sender/configs",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"error\": \"\",\n  \"message\": \"\",\n  \"data\": \"\"\n}"
+          }
+        }
+      ]
+    },
+    {
       "contract": "msgsender.config.UpdateConfig",
       "name": "UpdateConfig",
       "version": "1.0.0",
@@ -222,6 +370,76 @@
           }
         ]
       }
+    },
+    {
+      "contract": "msgsender.config.UpdateConfigV2",
+      "name": "UpdateConfigV2",
+      "version": "1.0.0",
+      "description": "更新通知配置",
+      "endpoint": {
+        "method": "PUT",
+        "uri": "/api/v2/message_sender/configs/:instanceId",
+        "ext_fields": [
+          {
+            "name": "instance",
+            "source": "body"
+          }
+        ]
+      },
+      "import": [
+        "easyops/model/monitor/easy_tornado_response",
+        "easyops/model/msgsender/message_config"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "ref": "MessageConfig.instanceId"
+          },
+          {
+            "name": "instance",
+            "type": "MessageConfig",
+            "description": "要更新的实例"
+          }
+        ]
+      },
+      "response": {
+        "wrapper": false,
+        "type": "object",
+        "fields": [
+          {
+            "ref": "EasyTornadoCommonResponse.*"
+          },
+          {
+            "name": "data",
+            "type": "MessageConfig",
+            "description": "通知配置"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": {
+            "en": "update config V2",
+            "zh": "更新"
+          },
+          "request": {
+            "method": "PUT",
+            "uri": "http://localhost:8095/api/v2/message_sender/configs/:instanceId",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"error\": \"\",\n  \"message\": \"\",\n  \"data\": \"\"\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "msgsender.custom_sender.ListSupportInform",
@@ -306,6 +524,110 @@
           }
         ]
       }
+    },
+    {
+      "contract": "msgsender.custom_sender.SendMessageDebug",
+      "name": "SendMessageDebug",
+      "version": "1.0.0",
+      "description": "发送通知消息调试",
+      "endpoint": {
+        "method": "post",
+        "uri": "/api/v1/message_sender/send_message_debug"
+      },
+      "import": [
+        "easyops/model/msgsender/message_config",
+        "easyops/model/msgsender/message_receiver"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "receivers",
+            "type": "MessageReceiver[]",
+            "description": "消息接收者"
+          },
+          {
+            "ref": "MessageConfig.*"
+          }
+        ],
+        "required": ["receivers", "MessageConfig.msgType"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "send message debug",
+            "zh": "调试发送通知消息"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v1/message_sender/send_message_debug",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"scriptContent\": \"script send msg \",\n    \"msgType\": \"custom\",\n    \"receivers\": [\n        {\n            \"user\": \"willniu\"\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"error\": \"\",\n  \"message\": \"\",\n  \"data\": \"\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "msgsender.custom_sender.SendMessageDebugV2",
+      "name": "SendMessageDebugV2",
+      "version": "1.0.0",
+      "description": "发送通知消息调试",
+      "endpoint": {
+        "method": "post",
+        "uri": "/api/v2/message_sender/send_message_debug"
+      },
+      "import": [
+        "easyops/model/msgsender/message_config",
+        "easyops/model/msgsender/message_receiver"
+      ],
+      "request": {
+        "type": "object",
+        "fields": [
+          {
+            "name": "receivers",
+            "type": "MessageReceiver[]",
+            "description": "消息接收者"
+          },
+          {
+            "ref": "MessageConfig.*"
+          }
+        ],
+        "required": ["receivers", "MessageConfig.msgType"]
+      },
+      "response": null,
+      "examples": [
+        {
+          "description": {
+            "en": "send message debug",
+            "zh": "调试发送通知消息"
+          },
+          "request": {
+            "method": "POST",
+            "uri": "http://localhost:8095/api/v2/message_sender/send_message_debug",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": "{\n    \"scriptContent\": \"script send msg \",\n    \"msgType\": \"custom\",\n    \"receivers\": [\n        {\n            \"user\": \"willniu\"\n        }\n    ]\n}"
+          },
+          "response": {
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "status_code": 200,
+            "body": "{\n  \"code\": 0,\n  \"error\": \"\",\n  \"message\": \"\",\n  \"data\": \"\"\n}"
+          }
+        }
+      ]
     },
     {
       "contract": "msgsender.custom_sender.SendMessageForAlert",
